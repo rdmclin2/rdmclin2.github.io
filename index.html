@@ -109,17 +109,11 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="Fatjar简介">Fatjar简介</h1><p>Fatjar.jar是eclipse上很方便进行打包的插件，对于较小的项目使用eclipse内置的打包jar可能就够了，但是如果工程较大，需要引用资源之类的，用fatjar比较方便省心。不过笔者在安装的时候遇到不少困难，不管是在线方式，还是离线方式都无法安装成功，现在纪录一下。在Windows =&gt; prefernce =&gt; fat jar preference 看到他就说明已经安装成功。</p>
-<hr>
-<h1 id="Fatjar在线安装">Fatjar在线安装</h1><p>help －&gt; Install New Sofware －&gt; Work with。<br>粘贴 <a href="http://kurucz-grafika.de/fatjar，然后回车，等待安装即可,时间较长" target="_blank" rel="external">http://kurucz-grafika.de/fatjar，然后回车，等待安装即可,时间较长</a></p>
-<hr>
-<h1 id="Fatjar手动安装">Fatjar手动安装</h1><p>在<a href="http://sourceforge.net/projects/fjep/" target="_blank" rel="external">sourceforge</a>上手动下载最新版本（目前0.31），解压，将.jar文件复制粘贴到<br>$eclipse_Home\plugins文件夹下，重启eclipse即可。</p>
-<hr>
-<h1 id="Fatjar安装失败的解决方法">Fatjar安装失败的解决方法</h1><p>1.清除缓存<br>新建eclipse的快捷方式，右键属性 -&gt; 目标 后添加 -clean 选项，eclipse将清除缓存重新加载插件。</p>
-<ol>
-<li>手动清除配置<br>删除$eclipse_Home\configuration\org.eclipse.update\platform.xml<br>该文件会自动生成。</li>
-</ol>
-<p>3.对于版本较高的eclipse，可能需要安装较低版本的eclipse的框架（笔者遇到的情况）<br>通过Help -&gt; Install New Software… -&gt; Work with.<br>选择“The Eclipse Project Updates - <a href="http://download.eclipse.org/eclipse/updates/4.4”" target="_blank" rel="external">http://download.eclipse.org/eclipse/updates/4.4”</a><br>然后 勾选”Eclipse Tests, Examples, and Extras” 下的 “Eclipse 2.0 Style Plugin Support”<br>之后再安装fatjar.jar即可</p>
-
+        
+          <p class="article-more-link">
+            <a href="/2015/05/10/Fatjar-install/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
