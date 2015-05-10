@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>安卓应用的分段进化测试 | Mcl&#39;s space</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="EvoDroid:Segmented Evolutionary Testing of Android Apps">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安卓应用的分段进化测试">
+<meta property="og:url" content="http://www.mclspace.com/2014/12/18/EvoDroid/index.html">
+<meta property="og:site_name" content="Mcl's space">
+<meta property="og:description" content="EvoDroid:Segmented Evolutionary Testing of Android Apps">
+<meta property="og:image" content="http://7pun7p.com1.z0.glb.clouddn.com/image/test/进化测试.PNG">
+<meta property="og:image" content="http://7pun7p.com1.z0.glb.clouddn.com/image/test/ERS.PNG">
+<meta property="og:image" content="http://7pun7p.com1.z0.glb.clouddn.com/image/test/进化测试的问题.PNG">
+<meta property="og:image" content="http://7pun7p.com1.z0.glb.clouddn.com/image/test/方法总览.PNG">
+<meta property="og:image" content="http://7pun7p.com1.z0.glb.clouddn.com/image/test/IM.PNG">
+<meta property="og:image" content="http://7pun7p.com1.z0.glb.clouddn.com/image/test/CGM.PNG">
+<meta property="og:image" content="http://7pun7p.com1.z0.glb.clouddn.com/image/test/Evodroid.PNG">
+<meta property="og:image" content="http://7pun7p.com1.z0.glb.clouddn.com/image/test/formula1.PNG">
+<meta property="og:image" content="http://7pun7p.com1.z0.glb.clouddn.com/image/test/formula2.PNG">
+<meta property="og:image" content="http://7pun7p.com1.z0.glb.clouddn.com/image/test/Fitness.PNG">
+<meta property="og:image" content="http://7pun7p.com1.z0.glb.clouddn.com/image/test/table1.PNG">
+<meta property="og:image" content="http://7pun7p.com1.z0.glb.clouddn.com/image/test/figure8.PNG">
+<meta property="og:image" content="http://7pun7p.com1.z0.glb.clouddn.com/image/test/table2.PNG">
+<meta property="og:image" content="http://7pun7p.com1.z0.glb.clouddn.com/image/test/figure9.PNG">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="安卓应用的分段进化测试">
+<meta name="twitter:description" content="EvoDroid:Segmented Evolutionary Testing of Android Apps">
+  
+    <link rel="alternative" href="/atom.xml" title="Mcl&#39;s space" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F6b26d13232555e4d64b5a8c3567ccda9' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+  <!--%- partial('google-analytics') %-->
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Mcl&#39;s space</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">You are what you do everyday!</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">主页</a>
+        
+          <a class="main-nav-link" href="/archives">档案</a>
+        
+          <a class="main-nav-link" href="/events">成功日记</a>
+        
+          <a class="main-nav-link" href="/powers">激励</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+          <a class="main-nav-link" href="/goals">目标</a>
+        
+          <a class="main-nav-link" href="/self">自我介绍</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="www.mclspace.com">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-EvoDroid" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/18/EvoDroid/" class="article-date">
+  <time datetime="2014-12-18T06:15:41.000Z" itemprop="datePublished">12月 18 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/testing/">testing</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      安卓应用的分段进化测试
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言">前言</h2><p>本篇为阅读<a href="https://dl.acm.org/citation.cfm?id=2635896" target="_blank" rel="external">EvoDroid:Segmented Evolutionary Testing of Android Apps</a>的阅读总结，该论文是今年<a href="https://fse22.gatech.edu/program" target="_blank" rel="external">FSE</a>上的一篇paper。关于进化测试原来的实现方法可以看百度文库上的一篇<a href="http://wenku.baidu.com/link?url=_3ozehVevOFK9ZG_pqcnDRbofQTSyKfjXAyJlqRjR0MsDE5Y3IYyulu9Eq2X5A33NQmmM9Rpx_biumxKT2b1RN93PHYn2k6xA5Elor5bZsG" target="_blank" rel="external">ppt</a>，讲的挺详细的。<br><a id="more"></a></p>
+<hr>
+<h2 id="写作动机">写作动机</h2><p>写paper总会先提出原有方法不足的地方，然后在此基础上进行了何种改进。本篇paper解决的就是原有的进化测试局限于本地测试或者单元测试，而无法进行系统测试的问题，因为它无法将搜索中好的个体的基因组成传递下去。论文的平台为安卓，原有的自动系统测试方法为monkey，monkey是安卓框架中自带的能够随机产生事件的工具，但是这种暴力的方法的代码覆盖率不高。</p>
+<p>本文的方法主要解决的是代码覆盖率的问题，并没有解决测试oracle的问题，因此输出的结果一方面是代码覆盖率相关的信息，一方面它会将测试执行过程中的异常都输出出来。进化测试是基于搜索的方法，通常要进行多次迭代，每次将优秀的基因传递到下一代中，并进行变体，以期能够最大化覆盖率，因此基于搜索的方法一个关心的问题就是执行时间。本文的方法没有从算法入手削减时间，而是使用云端部署多台设备进行并行测试的方式解决，使时间减小了几个量级。下面贴一个进化测试的流程图以提供直观的理解：<br><img src="http://7pun7p.com1.z0.glb.clouddn.com/image/test/进化测试.PNG" alt="进化测试流程图"></p>
+<hr>
+<h2 id="背景知识介绍">背景知识介绍</h2><p>这里背景知识主要是关于安卓框架，安卓平台提供的开发框架叫做ADF(application development framework)。本篇文章利用App对ADF的依赖导致app的实现逻辑在某种程度上具有一致性来方便自动化的测试。安卓程序强制性的需要一份manifest文件，该文件记录了该app的组件信息和配置信息等。安卓四大组件为Activities,Services,Broadcast Receivers和Content Providers。<strong>Activity</strong>用于和用户进行操作，包括一组布局文件layout，layout中记录了用到的UI控制工具。<strong>Service</strong>可以提供在后台持续运行长时间任务，但和Activity不同，它没有界面。<strong>Content Provider</strong>管理系统中的结构化数据，例如通讯录等。<strong>Broadcast Receiver</strong> 可以响应在系统范围内的消息，例如屏幕关闭。这些组件可以通过一个intent进行激活，组件的生存期由ADF预定义的生存期事件管理器控制。</p>
+<hr>
+<h2 id="例子程序">例子程序</h2><p><img src="http://7pun7p.com1.z0.glb.clouddn.com/image/test/ERS.PNG" alt="ERS"><br>本文的例子为一个花费报告系统ERS(Expense Reporting System)。该系统有两种功能，一种是快速报告，输入项目和数目，然后点击提交或退出，另一种是物品报告，允许进行多个物品的提交.</p>
+<hr>
+<h2 id="传统进化测试的问题">传统进化测试的问题</h2><p><img src="http://7pun7p.com1.z0.glb.clouddn.com/image/test/进化测试的问题.PNG" alt="传统进化测试的问题"><br>在进化测试中，individual代表一个测试用例，population是多个个体的集合，在这里基因指的是一个事件，本例中有输入事件和动作事件，如图(a)所示。传统进化测试无法解决将个体的基因组成进行传递的问题，没有将基因组成以一种有意义的方式保存下来。造成该问题的原因有两点,(1)其交叉策略没有考虑哪些输入和动作基因应该连在一起（2）交叉策略将两个不同执行路径的基因混合起来了。因此产生的基因可能无法运行，或者比他们的祖先都要差。一种解决方案是将测试用例作为基因，如图（b)所示，但这种方法其实没有产生新的测试用例，其覆盖率还是和一开始产生的测试用例的覆盖率是一样的。</p>
+<hr>
+<h2 id="方法总览">方法总览</h2><p><img src="http://7pun7p.com1.z0.glb.clouddn.com/image/test/方法总览.PNG" alt="方法总览"><br>本文方法的输入为程序的源代码，从源代码中生成两个模型，一个是<strong>IM</strong>(<em>Interface Model</em>),代表应用的外部接口。一个是<strong>CGM</strong>(Call Graph Model),代表应用的内部行为。用IM来决定个体的结构，例如哪些输入和事件基因应该放在一起。用CGM来决定（1）哪些代码可以被单独搜索（2）基于测试用例在CGM覆盖的路径来评价其拟合程度(fitness)，并指导搜索进行。</p>
+<p>该方法的目标是找到覆盖尽可能多的独特路径（从起始节点到叶子节点），因此在逻辑上将每条路径分为了多个段，并使用启发式方法搜索输入集合和事件序列来覆盖这些段。</p>
+<hr>
+<h2 id="IM模型的建立">IM模型的建立</h2><p><img src="http://7pun7p.com1.z0.glb.clouddn.com/image/test/IM.PNG" alt="layout例子和IM模型"><br>IM包括所有输入接口，以及每个Activity处理的intents，该信息从Manifest和layout文件中得到。其步骤如下：</p>
+<ol>
+<li>在Manifest文件中获取安卓的组件，如Activities和Services。</li>
+<li>对于每一个Activity解析对应的Layout文件</li>
+</ol>
+<p>发现的问题：</p>
+<ul>
+<li>【<strong>这里文章中没有解释如何获取Services的信息，应该是没有考虑</strong>】</li>
+<li>【<strong>没有看到如何筛选输入接口的？输入接口应该不止EditText一个吧，在看到的例子里面只有button和EditText</strong>】</li>
+<li>【<strong>没有说明是如何获取每个Acitivity所要处理的intents的</strong>】</li>
+</ul>
+<hr>
+<h2 id="CGM模型的建立">CGM模型的建立</h2><p><img src="http://7pun7p.com1.z0.glb.clouddn.com/image/test/CGM.PNG" alt="CGM模型"></p>
+<p>CGM包括一个连通的调用图的集合，记录了可能的不同调用序列。本文用MoDisco(开源的程序分析工具)来产生程序的调用图，但是android是基于事件的系统，MoDisco只能产生不连通的调用图，因此本文扩展了该工具来产生连通图（如图虚线所示），让该工具具备分析安卓程序的能力。<br>方法是通过分析Inent事件和他们的接受者以及GUI控制器和他们的事件处理器。</p>
+<p>这里定义root nodes：</p>
+<blockquote>
+<p>根节点是每个调用图中没有应用的其他部分明确调用的方法。有两种类型的根节点：</p>
+<blockquote>
+<p>组件间根节点：代表用来响应由其他组件或者安卓框架产生的事件的方法，如一个Activity产生StartActivity事件导致了另一个事件的onCreate()方法被调用，或者android框架产生的Resume事件导致一个Acitivity的onResume方法被调用。这些onCreate()方法或者onResume()方法就是组件间根节点</p>
+<p>内部组件根节点：代表组件内部的事件（并在内部进行响应），如button的click事件被该Acitivity中实现onClickListener接口的onClick方法所处理。</p>
+</blockquote>
+</blockquote>
+<p>组件间根节点是段的逻辑分裂节点，在这些节点上收到的输入构成了对应段的个体的结构，我们可以用IM来确定input的结构。另一方面，内部组件节点不会到达新的段，因此不会受到交叉问题的影响。</p>
+<p>对于组件间的事件，intent的发送者将接受者作为其参数。对于内部的事件，处理事件的根节点被注册为了发送者的callback方法，例如button的点击事件。在例子中就是加1button和减1button。</p>
+<p>问题：<br>【这里没有说明他们是如何获取这些intent和callback方法的，是对源码进行解析？如何解析?】<br>【起始节点可以根据mainActivity的onCreate方法决定，但是叶子节点？如何判断叶子节点，没有说明。为什么只有setText方法作为了叶子节点？一般不是应该认为到达最后一个Activity的方法是才是叶子节点么？】</p>
+<hr>
+<h2 id="EVOROID">EVOROID</h2><p>Evodroid的目标是找到一组测试用例，最大化代码覆盖率，在这里表示成找到尽可能多的从初始节点到叶节点的独特路径，例如例子总就是从A到n1,n2,n3，可能的路径为A-&gt;B-&gt;C-&gt;n1，和A-&gt;B-&gt;E-&gt;F-&gt;n3,前者包含2个段，后者包含4个段。和传统方法不同的是，Evodroid将每个路径分成段，然后对每个段运行进化搜索。因此这里的进化过程是对每条路径的每个段进行不断重复的过程。<br>【这里一开始的路径如何来的也没有说明，可能进化测试的传统方法中有】。</p>
+<p>对于每个路径的每一段会产生一定数量的个体组成的人口(population)，进化过程直到所有的路径和他们的段都被覆盖或者到达某个阀值（可以是时间限制，覆盖率，总的测试用例）。如果进化进行了一定次数的迭代而没有提高覆盖率那么这个段或者该路径的搜索结束，这就保证了不浪费资源，不陷入循环。每个个体都用fitness函数进行评价，然后根据fitness选择个体进行交叉，在进行变体来产生新的个体到下一轮中。</p>
+<p>如果一个段中的一个个体能够覆盖整个段【什么叫覆盖整个段？怎么判断？里面的每个事件都被触发了一次？如果是这样某些段不可能有ideal的个体，应该是覆盖到下一个段的路径】则称为是理想的（<strong>ideal</strong>)个体，前一个段的理想个体会被前置到新个体的基因中，一个测试用例就是不断建立在前一段的解决方案上，最终形成一个系统测试用例。</p>
+<p>一段路径如果在尝试覆盖另一个段时候被覆盖过了，那么可以跳过这一段路径，例如A-&gt;B-&gt;E-&gt;F-&gt;n3 和A-&gt;E-&gt;F-&gt;n3中E-&gt;F是共享的，只需要进行一次。类似的如果对A-&gt;B进行进化的时候，如果不小心跑到了A-&gt;E，理想的个体会被存下来，然后选择跳过解决A-&gt;E.(因为该文中的进化测试是依据路径来的。)</p>
+<hr>
+<h2 id="个体表示">个体表示</h2><p><img src="http://7pun7p.com1.z0.glb.clouddn.com/image/test/Evodroid.PNG" alt="Evodroid"><br>前面定义的两个模型就是用来决定每个段的基因的结构的。IM可以告诉我们输入，输入的数据类型，GUI元素的数量，和当前段有关的系统事件等。图中的previous segment是一个迭代的结构，输入基因的数量是固定的，但事件基因的数量是变量，程序的某些未探索的区域可能需要特定的事件序列，例如在点next之前加1的数量要大于减1的数量，才能到达下一屏。</p>
+<hr>
+<h2 id="交叉">交叉</h2><p>建立新个体的第一步就是交叉，交叉的过程首先选择两个个体，采取多点交叉策略，至少会有一个点进行交叉。段交叉的概率用交叉概率模型来表示：p(c) = 1 / e ^ (s-c).</p>
+<p>s是当前段的索引，c是前面段的索引，当前段的交叉概率为100%，前面段按照上面的公式有一定概率交叉，越往前的段交叉的概率越低，这确保前面的基因组成不被频繁的改变，但又有一定的概率可以产生探出新的搜索区域的个体。</p>
+<p>当前段的交叉点的位置可以在任何基因位置（只要在两个individual的较小者的长度以内）,目前只允许一次交叉，足够产生新的个体了。而前面段的交叉只能完全交换，而不允许中间交叉，保留之前段的基因组成。新个体的前面的段共享同样的路径，因此在前面的段每个个体的结构可以很好的连起来。</p>
+<hr>
+<h2 id="变体">变体</h2><p>变体可以改变新个体的基因组成，只有当前的段可以以一定的概率进行变体，可以进行创建，变形，删除等变体操作。有两种类型的变体，一种是针对输入基因的：</p>
+<ul>
+<li>创建：数值输入，可以是二值，随机数，特殊数（如0）。字符输入，用字母表随机组成的字符串或者null。</li>
+<li>变形：该数据类型的随机值，bit翻转，算术操作和binary space reduction between boundary values</li>
+<li>删除：没有删除，直接赋值null。</li>
+</ul>
+<p>一种是针对事件基因的：</p>
+<ul>
+<li>创建：在可用的IM事件列表中产生一个事件。产生事件的数量随机，至少一个，有个上限</li>
+<li>变形：交换基因的索引，改变基因，在任意位置插入基因</li>
+<li>删除：删除一个或多个事件基因。</li>
+</ul>
+<hr>
+<h2 id="Fitness评价函数">Fitness评价函数</h2><p>评价函数用来选择个体，这个就是搜索的目标。fitness的范围从0到1，主要有两个评价标准，一个是到下一个segment走的距离，第二个是和同一代中其他个体相比的独特程度。个体评价函数如下：<br><img src="http://7pun7p.com1.z0.glb.clouddn.com/image/test/formula1.PNG" alt=""><br><img src="http://7pun7p.com1.z0.glb.clouddn.com/image/test/formula2.PNG" alt=""><br>x是覆盖到目标段的节点的节点个数，n是到目标段的节点的总个数【这里到目标段的节点个数是最少需要经过的路径？没明说怎么算】。u(i)是独立性方程，rk是个体路径上第k个覆盖的节点，如果rk上的节点相比其他个体在同一个index的节点不同则unique(rk) = 1， 否则为0. L是路径的长度。</p>
+<p>如果对于一个给定的段其个体覆盖了整个段的路径，我们认为他是这个段的理想个体，fitness值为1。</p>
+<p>考虑下面的情况：<br><img src="http://7pun7p.com1.z0.glb.clouddn.com/image/test/Fitness.PNG" alt="例子"><br>从LineItemActivity到SummaryActivity的节点个数为5，阴影部分为第一个个体覆盖的节点，它覆盖了3个路径节点。因此x/n = 0.6 . u(i) = 0.4 * 1/(4+1) + 1/(4+2) + 1/(4+3)+1/(4+4) = 0.25。因此f(i)为0.85.</p>
+<p>如果另一个个体从LineItemActivity-&gt;n1-&gt;n2-&gt;n3，那么x/n = 1/5 = 0.2.该路径除了第一个点，其他点都和第一个个体不同，因此 u(i) = 0.8 * (1/(4+2) + 1/(4+3) + 1/(4+4)) = 0.34. 因此f(i) = 0.54。虽然该路径没有覆盖多少到目标段的点，但是它探索了新的区域因此得到了加成。</p>
+<p>上面的两个公式保证如果没有到达目标段，fitness方程的值不可能为1，这避免了一个个体没有到达下一个段就被标为理想个体。之后分数最高的一些个体传到下一代中。</p>
+<hr>
+<h2 id="实验">实验</h2><h3 id="实验环境">实验环境</h3><p>实验设在云端，用ECJ框架实现了Evodroid，使用EMMA监视代码覆盖率，所有测试用例使用robotium格式。</p>
+<h3 id="实验设置">实验设置</h3><p>比较Monkey以及Dynodroid。但Moneky是黑盒，Dynodroid是灰盒，而Evodroid是百盒。<br>理由：</p>
+<ul>
+<li>任何安卓app都可以逆向工程【成立么？逆向有时不行吧】</li>
+<li>对于随机搜索算法，需要和无偏的解空间的随机样本进行比较。</li>
+</ul>
+<hr>
+<h3 id="实验结果">实验结果</h3><p>对10个开源app进行行覆盖率测试</p>
+<p><img src="http://7pun7p.com1.z0.glb.clouddn.com/image/test/table1.PNG" alt="行覆盖率"></p>
+<p>为什么不能获得完全的代码覆盖率？</p>
+<ul>
+<li>某些函数模拟器不支持，如camera函数</li>
+<li>异步的任务，运行失败或者耗时过长，到测试完还没跑完。</li>
+<li>外部的事件（例如收到一个邮件），或者依赖其他的app，或者没有遇到的处理异常情况的代码</li>
+<li>一些死代码或者测试代码。</li>
+</ul>
+<hr>
+<p>在4个维度上分析随机选取的100个app</p>
+<p><img src="http://7pun7p.com1.z0.glb.clouddn.com/image/test/figure8.PNG" alt="app复杂度"></p>
+<p>根据4个维度产生app，分为9个复杂度，每个复杂度生成2个app，进行执行时间的比较，Evodroid的parallel运行时间假设有多少testcase就有多少机器跑，实际可能只有几台，因此时间应该在最差和最好之间【我觉得比较差，因为只有几台】。<br><img src="http://7pun7p.com1.z0.glb.clouddn.com/image/test/table2.PNG" alt="执行时间"></p>
+<hr>
+<p>分别对复杂度，输入约束满足（例如if语句的条件是输入值必须等于特定的值，那么用随机的方法其输入约束满足的概率几乎为0）和序列长度（特定的序列或者特定长度的序列必须先发生才能执行某一部分的代码）的影响进行试验。<br><img src="http://7pun7p.com1.z0.glb.clouddn.com/image/test/figure9.PNG" alt="代码覆盖率"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://www.mclspace.com/2014/12/18/EvoDroid/" data-id="ci9i99z9o001qf2clyf9fv00y" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://www.mclspace.com/2014/12/18/EvoDroid/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/test/">test</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/12/18/douban-fm-offline/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          解决豆瓣FM客户端4.0无法离线的问题
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/12/09/break-the-wall-down-with-hongxin/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">红杏出墙</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2014/12/18/EvoDroid/" data-title="安卓应用的分段进化测试" data-url="http://www.mclspace.com/2014/12/18/EvoDroid/"></div>
+  </section>
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+    <aside id="sidebar" class="outer">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/android/">android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/dev/">dev</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/internet/">internet</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/life/">life</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mac/">mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/testing/">testing</a><span class="category-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/app/">app</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bug/">bug</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fsm/">fsm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/internet/">internet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a><span class="tag-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/android/" style="font-size: 20px;">android</a><a href="/tags/app/" style="font-size: 10px;">app</a><a href="/tags/bug/" style="font-size: 10px;">bug</a><a href="/tags/fsm/" style="font-size: 10px;">fsm</a><a href="/tags/git/" style="font-size: 10px;">git</a><a href="/tags/hexo/" style="font-size: 16.67px;">hexo</a><a href="/tags/internet/" style="font-size: 10px;">internet</a><a href="/tags/java/" style="font-size: 10px;">java</a><a href="/tags/mac/" style="font-size: 16.67px;">mac</a><a href="/tags/markdown/" style="font-size: 13.33px;">markdown</a><a href="/tags/test/" style="font-size: 20px;">test</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/04/03/MacThings/">Mac 那些事</a>
+          </li>
+        
+          <li>
+            <a href="/2015/03/12/android-emma-coverage-md/">如何用emma产生android程序的测试覆盖率报告</a>
+          </li>
+        
+          <li>
+            <a href="/2015/03/10/mac_java_home/">mac 如何配置java_home环境变量</a>
+          </li>
+        
+          <li>
+            <a href="/2015/03/02/android_studio_remove_project/">Android Studio 如何彻底删除Project</a>
+          </li>
+        
+          <li>
+            <a href="/2015/03/02/git_local_to_remote_responsity/">git将本地仓库推送到远程仓库</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://chuan92.com" target="_blank">真三</a>
+          </li>
+        
+          <li>
+            <a href="https://chepeatio.github.io" target="_blank">开大</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 Calvin Meng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">主页</a>
+  
+    <a href="/archives" class="mobile-nav-link">档案</a>
+  
+    <a href="/events" class="mobile-nav-link">成功日记</a>
+  
+    <a href="/powers" class="mobile-nav-link">激励</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+    <a href="/goals" class="mobile-nav-link">目标</a>
+  
+    <a href="/self" class="mobile-nav-link">自我介绍</a>
+  
+</nav>
+    
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"co-co"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a> 
+  </div>
+</div>
+<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"nocss.css"}};with(document)0[(getElementsByTagName("head")[0]||body).appendChild(createElement("script")).src="http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion="+~(-new Date()/36e5)];</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+  </div>
+</body>
+</html>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>基于有限状态自动机的测试 | Mcl&#39;s space</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="基于有限状态机的测试方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于有限状态自动机的测试">
+<meta property="og:url" content="http://www.mclspace.com/2014/12/03/finite-state-based-testing/index.html">
+<meta property="og:site_name" content="Mcl's space">
+<meta property="og:description" content="基于有限状态机的测试方法">
+<meta property="og:image" content="http://icoco.qiniudn.com/image/test/FSM.PNG">
+<meta property="og:image" content="http://icoco.qiniudn.com/image/test/检验内部状态.PNG">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于有限状态自动机的测试">
+<meta name="twitter:description" content="基于有限状态机的测试方法">
+  
+    <link rel="alternative" href="/atom.xml" title="Mcl&#39;s space" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F6b26d13232555e4d64b5a8c3567ccda9' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+  <!--%- partial('google-analytics') %-->
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Mcl&#39;s space</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">You are what you do everyday!</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">主页</a>
+        
+          <a class="main-nav-link" href="/archives">档案</a>
+        
+          <a class="main-nav-link" href="/events">成功日记</a>
+        
+          <a class="main-nav-link" href="/powers">激励</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+          <a class="main-nav-link" href="/goals">目标</a>
+        
+          <a class="main-nav-link" href="/self">自我介绍</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="www.mclspace.com">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-finite-state-based-testing" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/03/finite-state-based-testing/" class="article-date">
+  <time datetime="2014-12-03T13:39:54.000Z" itemprop="datePublished">12月 3 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/testing/">testing</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      基于有限状态自动机的测试
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言">前言</h2><p>本篇为阅读ACM digital的论文Using Formal Specifications to Support Testing的第五章Finite State Based Testing的笔记。该论文在后文文献中给出了链接。</p>
+<hr>
+<h2 id="什么是基于有限状态机(FSM)的测试">什么是基于有限状态机(FSM)的测试</h2><p><strong>FSM</strong> 是<em>finite-state machine</em>的缩写，许多系统都可以自然地被描述成一个有限状态的结构，因此基于FSM的测试问题得到了极大的关注。基于FSM的很多测试方法都依赖于测试假设或者错误模型，这两种情况下测试集能够保证可以确定其正确性，通常情况下测试假设或错误模型会给<strong>SUT</strong>（<em>Software under test</em> )的状态数量设置一个范围。<br><a id="more"></a></p>
+<p>在基于FSM <strong>F</strong>进行测试时，我们通常假设SUT 等价于一个未知的FSM <strong>I</strong>（这里I是最小的FSM，使用最小性假设），测试集就是用来检查I是否和F一致。如果F是确定性的，那么如果I等价于F即I和F一致。如果F是不确定性的，那么存在I和F一致的其他表示形式，包括F和I等价(equivalent)，I是F的归约(reduction)，或者I和F是<a href="http://www.chinabaike.com/article/baike/1002/2008/200806041507474.html" target="_blank" rel="external">拟等价</a>的。</p>
+<hr>
+<h3 id="一个简单的FSM规格(Specification)的例子">一个简单的FSM规格(Specification)的例子</h3><p><img src="http://icoco.qiniudn.com/image/test/FSM.PNG" alt="FSM F"></p>
+<hr>
+<h2 id="测试标准">测试标准</h2><p>典型的测试策略致力于检测<strong>输出错误</strong>（转移产生了错误输出）和<strong>状态迁移错误</strong>（转到了错误的状态）。测试集通常称为<em>test suite</em>,是从规格模型F中产生的。在测试中我们通常期望确定是否一组行为能够造成内部状态错误（corrupt).如果有输入x让 h2(s,x) 和 h2(t,x)没有交集则称x将s和t<strong>区分</strong>(<em>distinguished</em>)，在例子中b能够将s2和s0与s1区分开来。在确定性FSM（DFSM）中我们通常用以下方法检查内部状态。<br><img src="http://icoco.qiniudn.com/image/test/检验内部状态.PNG" alt="检查内部状态"></p>
+<ul>
+<li><strong>特征集</strong>：该集合中的输入可以把任意两个不同状态分开</li>
+<li><strong>区分序列（D)</strong>：该序列对任意两个不同状态的输出不同</li>
+<li><strong>独特输入输出（UIO）</strong>：该输入输出序列只有某个状态拥有，其他状态没有</li>
+</ul>
+<p>一个FSM F称为最小FSM如果没有更少状态的FSM和F等价。任何最小FSM都有一个特征集合，但不是每个最小FSM都有D-sequence 或者 UIO-sequence。如果每一对有序状态(s,t)都存在输入序列让F从s转到t我们就称F是<strong>强连通</strong>的(<em>strongly connected</em>).</p>
+<p>如果F是DFSM，那么一组输入序列Q是F的状态覆盖(<em>state cover</em>)如果Q包含空序列并且对于S中的每一个状态s都有 Xs 属于Q 使得 s = theta(s0,Xs).<br>一组输入序列P称为F的转移覆盖如果对于每一个转移pi = (s,a/t,t)都有序列p,pa 属于P使 s = theta(s0,p).</p>
+<hr>
+<h2 id="产生测试集">产生测试集</h2><h3 id="完全规格化的确定FSMs">完全规格化的确定FSMs</h3><p>首先考虑确定性的，最小的，完全规格化的FSM，这里的一致关系是等价，等价的意思就是对于每一个输入序列，他们都有相同的输出序列</p>
+<ul>
+<li><p><strong>TT</strong><br>TT是transition tour的缩写，TT产生一个能够遍历所有转移的test suite。例如上图的例子中就会产生&lt; a/e,c/f,a/f.b/f,b/f,a/f,c/e,c/e,b/e &gt;的测试序列。这种方法只试图找到输出错误，并且假设I的每个转移都有预期的最终状态。</p>
+</li>
+<li><p><strong>D-method</strong><br>D-方法依赖于D-sequence 的存在并且假设I的状态不比F多。该方法检测该规格的所有状态si(i &gt;=0  &amp;&amp; i &lt;= n-1)都被SUT正确的实现了，例如检测一个转换pi = (s,a/b,t)是否正确，假设当时状态为s’，会先转换到中间状态s’’,然后再转到s，最后输入a，验证输出和最终状态。D方法不仅检测输出错误，还检测转换错误。</p>
+</li>
+<li><p><strong>UIO-method</strong><br>UIO方法假设I比F的状态要多，并且有一个reset操作可以将I从任何状态转到初始状态。该方法对s到s’输入为a的每一个转换用一个测试序列t(s0,s) a UIOs’,t(s0,s)为能将s0转到s状态的序列,UIOs’为s’状态的独特IO序列。例如，对于转换t = (s1,b/f,s2),因为最终状态s2有独特序列&lt; b/e &gt; ,那么测试序列为&lt; a/e,b/f,b/e &gt;.</p>
+</li>
+</ul>
+<hr>
+<h3 id="局部FSM">局部FSM</h3><p>现实中很多规格说明都是局部的，他们没有覆盖多有可能的状态输入组合，因此会使用局部定义的FSM。因为未定义的转换将会带来各种干扰，因此这些转换要么被空输出的自循环转换代替，要么会进入错误状态输出error。这样就得到了一个完全的FSM，前面的方法就可以使用了。也有将这些转换表示为<em>forbidden transitions</em>的,他们将永远不被执行。</p>
+<hr>
+<h3 id="非确定性有限自动机">非确定性有限自动机</h3><p>多种情况会导致不确定性，一种是对于状态s的一个输入x，有2个或多个转移，但是输出相同。另一种是输出不同。如果只有第一种情况可以转成DFSM，第二种不行。第三种不确定性是没有输入的内部状态，如果一个状态的所有的内部操作都有相同的输出，那么情况和第一种一样，否则和第二种一样。<br>不确定性出现在规格中有以下几个原因</p>
+<ul>
+<li>可以代表SUT I中需要的的不确定性，这种情况下如果I和F等价那么I就和F一致</li>
+<li>不确定性代表选择。那么I中的所有行为都要包括在F中，I是F的归约（reduction，减少？子集？）。</li>
+</ul>
+<p>不确定性导致了一些额外的议题：</p>
+<ul>
+<li>是否能观测到SUT特定输入序列的所有可能的响应</li>
+<li>是否有不等价的状态，对于每个输入序列有一些共同的输出序列。</li>
+</ul>
+<p>对于<strong>第一个问题</strong>，使用一个公平的假设(fair assumption) 叫做<strong>完全测试假设</strong>，就是说只要同一个输入x对于某个状态s输入足够的次数，就能保证每个输出序列都被观测到。在DFSM中是成立的，但不是DFSM就不知道了。<strong>第二个问题</strong>导致了<strong>可观察不确定性有限自动机(ONFSM)</strong>概念的出现,一个NFSM是可观测的如果对于S中的任何状态s，X中的任何输入a,(s,a)都属于DA，并且对于Y中的输出b,S中至多只有一个状态t 使(t,b)属于h(s,a)。每个NFSM都可以被重写成等价的ONFSM但是可能导致组合爆炸问题。</p>
+<p>如果ONFSM是最小的，其实现是一个只有至多给定个数状态的FSM，并且我们测试其等价性，那么<strong>Wp-method</strong>可以用来产生测试集。如果其实现是一个有上限状态个数的FSM，并且其关系是归约，那么测试集也可以产生。这些测试集在测试假设下保证正确性。</p>
+<hr>
+<h3 id="沟通有限自动机(Communicating_FSMs)">沟通有限自动机(Communicating FSMs)</h3><p>一些系统可能更适合用一组FSM来建模，这些FSM可以相互通信并且合作，我们称之为<strong>CFSMs</strong>(<em>Communicating FSMs</em>).他们之间的沟通通过队列和信道来支持，我们用F1,。。。Fp来表示CFSMs中的自动机。以下是它的模型</p>
+<ul>
+<li>每个Fi都由一个FSM加一个FIFO队列构成，信道中的输入符号或环境中的输入符号都被存放在队列中</li>
+<li>在每一对Fi,Fj之间都由两个FIFO信道，每个一个方向</li>
+<li>如果Fi和Fj可以通过信道通信，那么一个符号就能通过信道进入另一个机器的输入队列</li>
+</ul>
+<p>一个CFSM系统有时候可以通过穷尽可达性分析被转换成一个等价的FSM。如果所有的队列和信道都有有限的长度，只有队列和信道为空时环境中的输入才能被送到系统中（<em>slow environment assumption</em>)，那么生成的FSM最多有n1 * n2 * n3 …*np个状态，ni是Fi的状态个数。这可能会导致组合爆炸。</p>
+<p>另一个方法是<strong>Hit-or-Jump</strong>。这个算法执行一个由另一个机器定义上下文的SUT A中的所有转换。该算法是迭代的，直到A中所有的状态被包括才停止。在每一次迭代中，算法都会进行给定深度的搜索，如果找到一个还未被覆盖的转换的序列，那么就hit，加入当前的测试序列，否则随机产生一个序列称为jump。</p>
+<hr>
+<h3 id="扩展有限自动机">扩展有限自动机</h3><p>很多有限状态的规格实际上是<strong>扩展的FSMs(EFSMs)</strong>,一个FMS可以被扩展输入输出参数，环境变量，操作，预测等。可以通过对数据使用一致性假设来抽象出EFSM中的数据来产生测试序列。这个可以看做是测试SUT的控制结构，但选择的路径不一定是可运性的。</p>
+<p>如果不适用一致性假设意味着测试EFSM要测试控制部分和数据部分，他们可以被看做不同的元素可以被独立的测试。基于FSM的方法用来测试控制部分，数据流测试方法用来测试数据部分。有时候EFSM可以被转成等价的FSM。上面的方法通常会遇到有名的状态爆炸问题。</p>
+<p><strong>X-machines</strong>是一种描述EFSMs的方法，在X-machines中一系列的测试假设被提出来称为 <em>design for test conditions</em>,这些假设极大地简化了测试产生问题并且消除了可行路径和状态爆炸问题。</p>
+<p>上面说的技术都致力于通过产生测试序列在某种程度上覆盖EFSM的规格，然而他们除非使用很强的限制否则将会有状态爆炸和可行路径问题。一个解决方法是使用<strong>测试目的</strong>集合，我们对每个测试目的都生成满足该目的的测试用例。一个测试目的可以被表示成一个有穷状态自动机，然后对它进行可达性分析自动产生测试用例。虽然可达性分析可能导致状态爆炸，但在实践中效果不错。</p>
+<hr>
+<p>参考文献<br><a href="https://dl.acm.org/citation.cfm?id=1459354" target="_blank" rel="external">Using Formal Specifications to Support Testing</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://www.mclspace.com/2014/12/03/finite-state-based-testing/" data-id="ci9i99z8y000sf2clvvz5zfs5" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://www.mclspace.com/2014/12/03/finite-state-based-testing/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fsm/">fsm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/test/">test</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/12/09/break-the-wall-down-with-hongxin/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          红杏出墙
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/10/28/mark-down/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">MarkDown 简明语法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2014/12/03/finite-state-based-testing/" data-title="基于有限状态自动机的测试" data-url="http://www.mclspace.com/2014/12/03/finite-state-based-testing/"></div>
+  </section>
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+    <aside id="sidebar" class="outer">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/android/">android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/dev/">dev</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/internet/">internet</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/life/">life</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mac/">mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/testing/">testing</a><span class="category-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/app/">app</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bug/">bug</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fsm/">fsm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/internet/">internet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a><span class="tag-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/android/" style="font-size: 20px;">android</a><a href="/tags/app/" style="font-size: 10px;">app</a><a href="/tags/bug/" style="font-size: 10px;">bug</a><a href="/tags/fsm/" style="font-size: 10px;">fsm</a><a href="/tags/git/" style="font-size: 10px;">git</a><a href="/tags/hexo/" style="font-size: 16.67px;">hexo</a><a href="/tags/internet/" style="font-size: 10px;">internet</a><a href="/tags/java/" style="font-size: 10px;">java</a><a href="/tags/mac/" style="font-size: 16.67px;">mac</a><a href="/tags/markdown/" style="font-size: 13.33px;">markdown</a><a href="/tags/test/" style="font-size: 20px;">test</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/04/03/MacThings/">Mac 那些事</a>
+          </li>
+        
+          <li>
+            <a href="/2015/03/12/android-emma-coverage-md/">如何用emma产生android程序的测试覆盖率报告</a>
+          </li>
+        
+          <li>
+            <a href="/2015/03/10/mac_java_home/">mac 如何配置java_home环境变量</a>
+          </li>
+        
+          <li>
+            <a href="/2015/03/02/android_studio_remove_project/">Android Studio 如何彻底删除Project</a>
+          </li>
+        
+          <li>
+            <a href="/2015/03/02/git_local_to_remote_responsity/">git将本地仓库推送到远程仓库</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://chuan92.com" target="_blank">真三</a>
+          </li>
+        
+          <li>
+            <a href="https://chepeatio.github.io" target="_blank">开大</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 Calvin Meng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">主页</a>
+  
+    <a href="/archives" class="mobile-nav-link">档案</a>
+  
+    <a href="/events" class="mobile-nav-link">成功日记</a>
+  
+    <a href="/powers" class="mobile-nav-link">激励</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+    <a href="/goals" class="mobile-nav-link">目标</a>
+  
+    <a href="/self" class="mobile-nav-link">自我介绍</a>
+  
+</nav>
+    
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"co-co"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a> 
+  </div>
+</div>
+<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"nocss.css"}};with(document)0[(getElementsByTagName("head")[0]||body).appendChild(createElement("script")).src="http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion="+~(-new Date()/36e5)];</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+  </div>
+</body>
+</html>
