@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: java | Mcl&#39;s space</title>
+  <title>Eclipse 安装 Fatjar.jar失败的解决方法 | Mcl&#39;s space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="mclspace | java | blog | algorithm | bigdata">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Mcl's space">
-<meta property="og:url" content="http://www.mclspace.com/tags/java/index.html">
+  <meta name="description" content="eclipse 如何安装 fatjar.jar,eclipse如何对工程进行打包成jar，eclipse安装fatjar失败">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Eclipse 安装 Fatjar.jar失败的解决方法">
+<meta property="og:url" content="http://www.mclspace.com/2015/05/10/Fatjar-install/index.html">
 <meta property="og:site_name" content="Mcl's space">
-<meta property="og:description" content="mclspace | java | blog | algorithm | bigdata">
+<meta property="og:description" content="eclipse 如何安装 fatjar.jar,eclipse如何对工程进行打包成jar，eclipse安装fatjar失败">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mcl's space">
-<meta name="twitter:description" content="mclspace | java | blog | algorithm | bigdata">
+<meta name="twitter:title" content="Eclipse 安装 Fatjar.jar失败的解决方法">
+<meta name="twitter:description" content="eclipse 如何安装 fatjar.jar,eclipse如何对工程进行打包成jar，eclipse安装fatjar失败">
   
     <link rel="alternative" href="/atom.xml" title="Mcl&#39;s space" type="application/atom+xml">
   
@@ -80,58 +80,79 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/05/10/Fatjar-install/" class="archive-article-date">
-  <time datetime="2015-05-10T14:53:51.000Z" itemprop="datePublished">5月 10</time>
+        <section id="main"><article id="post-Fatjar-install" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/05/10/Fatjar-install/" class="article-date">
+  <time datetime="2015-05-10T14:53:51.000Z" itemprop="datePublished">5月 10 2015</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/dev/">dev</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/05/10/Fatjar-install/">Eclipse 安装 Fatjar.jar失败的解决方法</a>
+    <h1 class="article-title" itemprop="name">
+      Eclipse 安装 Fatjar.jar失败的解决方法
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/03/10/mac_java_home/" class="archive-article-date">
-  <time datetime="2015-03-10T02:48:31.000Z" itemprop="datePublished">3月 10</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/03/10/mac_java_home/">mac 如何配置java_home环境变量</a>
-    </h1>
-  
+        <h1 id="Fatjar简介">Fatjar简介</h1><p>Fatjar.jar是eclipse上很方便进行打包的插件，对于较小的项目使用eclipse内置的打包jar可能就够了，但是如果工程较大，需要引用资源之类的，用fatjar比较方便省心。不过笔者在安装的时候遇到不少困难，不管是在线方式，还是离线方式都无法安装成功，现在纪录一下。在Windows =&gt; prefernce =&gt; fat jar preference 看到他就说明已经安装成功。</p>
+<hr>
+<h1 id="Fatjar在线安装">Fatjar在线安装</h1><p>help －&gt; Install New Sofware －&gt; Work with。<br>粘贴 <a href="http://kurucz-grafika.de/fatjar，然后回车，等待安装即可,时间较长" target="_blank" rel="external">http://kurucz-grafika.de/fatjar，然后回车，等待安装即可,时间较长</a></p>
+<hr>
+<h1 id="Fatjar手动安装">Fatjar手动安装</h1><p>在<a href="http://sourceforge.net/projects/fjep/" target="_blank" rel="external">sourceforge</a>上手动下载最新版本（目前0.31），解压，将.jar文件复制粘贴到<br>$eclipse_Home\plugins文件夹下，重启eclipse即可。</p>
+<hr>
+<h1 id="Fatjar安装失败的解决方法">Fatjar安装失败的解决方法</h1><p>1.清除缓存<br>新建eclipse的快捷方式，右键属性 -&gt; 目标 后添加 -clean 选项，eclipse将清除缓存重新加载插件。</p>
+<ol>
+<li>手动清除配置<br>删除$eclipse_Home\configuration\org.eclipse.update\platform.xml<br>该文件会自动生成。</li>
+</ol>
+<p>3.对于版本较高的eclipse，可能需要安装较低版本的eclipse的框架（笔者遇到的情况）<br>通过Help -&gt; Install New Software… -&gt; Work with.<br>选择“The Eclipse Project Updates - <a href="http://download.eclipse.org/eclipse/updates/4.4”" target="_blank" rel="external">http://download.eclipse.org/eclipse/updates/4.4”</a><br>然后 勾选”Eclipse Tests, Examples, and Extras” 下的 “Eclipse 2.0 Style Plugin Support”<br>之后再安装fatjar.jar即可</p>
 
-    </header>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://www.mclspace.com/2015/05/10/Fatjar-install/" data-id="ci9imyrzt00003q60ldjwd8cl" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://www.mclspace.com/2015/05/10/Fatjar-install/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dev/">dev</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/04/03/MacThings/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Mac 那些事</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2015/05/10/Fatjar-install/" data-title="Eclipse 安装 Fatjar.jar失败的解决方法" data-url="http://www.mclspace.com/2015/05/10/Fatjar-install/"></div>
+  </section>
 </section>
         
       </div>
