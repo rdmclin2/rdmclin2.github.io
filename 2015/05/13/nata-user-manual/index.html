@@ -112,7 +112,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 <li>安装JDK 1.7及以上，<a href="http://www.oracle.com/technetwork/cn/java/javase/downloads/jdk7-downloads-1880260.html" target="_blank" rel="external">JDK下载网址</a></li>
 <li><p>安装Android SDK ,最新的即可，用SDK Manager下载platform-tools和tools，以及需要的platforms,参考下载地址:<br><a href="http://dl.google.com/android/adt/adt-bundle-windows-x86-20140702.zip" target="_blank" rel="external">Win32</a>，<br><a href="http://dl.google.com/android/adt/adt-bundle-windows-x86_64-20140702.zip" target="_blank" rel="external">Win64</a></p>
 </li>
-<li><p>安装ANT,下载地址[<a href="http://ant.apache.org/]，下载后解压即可。" target="_blank" rel="external">http://ant.apache.org/]，下载后解压即可。</a></p>
+<li><p>安装ANT,<a href="http://ant.apache.org" target="_blank" rel="external">下载地址</a>，下载后解压即可。</p>
 </li>
 <li>将提供的android-21文件夹粘贴到sdk的platforms文件夹下（因为我们的测试apk的版本是21）</li>
 </ul>
@@ -163,7 +163,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 </blockquote>
 <p>5.Caused by: java.lang.RuntimeException: error: target android.jar (C:\Program Fil<br>es\Android\android-sdk\platforms\android-4\android.jar) does not exist.</p>
 <blockquote>
-<p>答：如果开启了－s（即代码插桩选项），那么sdk的platforms文件夹中应当包含这个apk的目标平台的platforms，我们整理了安卓各平台（3-21）的platform文件，可以在<a href="https://github.com/rdmclin2/AndroidPlatforms" target="_blank" rel="external">github</a>上选择缺失平台下载，然后粘贴到sdk的platforms文件夹下。</p>
+<p>答：如果开启了－s（即代码插桩选项），那么sdk的platforms文件夹中应当包含这个apk的目标平台的platforms，我们整理了安卓各平台（api3-api21）的platform文件，可以在<a href="https://github.com/rdmclin2/AndroidPlatforms" target="_blank" rel="external">github</a>上选择缺失平台下载，然后粘贴到sdk的platforms文件夹下。</p>
 </blockquote>
 <p>6.INFO: signapk &amp; zipalign returned:jarsigner 错误: java.lang.RuntimeException: 密<br>钥库加载: C:\Users\Lenovo.android\debug.keystore (系统找不到指定的文件。)<br>ERROR: Problem occured while signing apk<br>INFO: Error occured while doInstrumentation with testApp</p>
 <blockquote>
