@@ -5,33 +5,15 @@
   
   <title>NATA 用户手册 | Mcl&#39;s space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="环境配置
-安装JDK 1.7及以上，JDK下载网址
-安装Android SDK ,最新的即可，用SDK Manager下载platform-tools和tools，以及需要的platforms,参考下载地址:Win32，Win64
-
-安装ANT,下载地址[http://ant.apache.org/]，下载后解压即可。
-
-将提供的android-21文件夹粘贴到sdk的platforms文件夹下（">
+  <meta name="description" content="前言本文为NATA用户手册,为使用该工具的用户提供帮助">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NATA 用户手册">
 <meta property="og:url" content="http://www.mclspace.com/2015/05/13/nata-user-manual/index.html">
 <meta property="og:site_name" content="Mcl's space">
-<meta property="og:description" content="环境配置
-安装JDK 1.7及以上，JDK下载网址
-安装Android SDK ,最新的即可，用SDK Manager下载platform-tools和tools，以及需要的platforms,参考下载地址:Win32，Win64
-
-安装ANT,下载地址[http://ant.apache.org/]，下载后解压即可。
-
-将提供的android-21文件夹粘贴到sdk的platforms文件夹下（">
+<meta property="og:description" content="前言本文为NATA用户手册,为使用该工具的用户提供帮助">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NATA 用户手册">
-<meta name="twitter:description" content="环境配置
-安装JDK 1.7及以上，JDK下载网址
-安装Android SDK ,最新的即可，用SDK Manager下载platform-tools和tools，以及需要的platforms,参考下载地址:Win32，Win64
-
-安装ANT,下载地址[http://ant.apache.org/]，下载后解压即可。
-
-将提供的android-21文件夹粘贴到sdk的platforms文件夹下（">
+<meta name="twitter:description" content="前言本文为NATA用户手册,为使用该工具的用户提供帮助">
   
     <link rel="alternative" href="/atom.xml" title="Mcl&#39;s space" type="application/atom+xml">
   
@@ -124,7 +106,9 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="环境配置">环境配置</h2><ul>
+        <h2 id="前言">前言</h2><p>本文为NATA用户手册,为使用该工具的用户提供帮助</p>
+<a id="more"></a>
+<h2 id="环境配置">环境配置</h2><ul>
 <li>安装JDK 1.7及以上，<a href="http://www.oracle.com/technetwork/cn/java/javase/downloads/jdk7-downloads-1880260.html" target="_blank" rel="external">JDK下载网址</a></li>
 <li><p>安装Android SDK ,最新的即可，用SDK Manager下载platform-tools和tools，以及需要的platforms,参考下载地址:<br><a href="http://dl.google.com/android/adt/adt-bundle-windows-x86-20140702.zip" target="_blank" rel="external">Win32</a>，<br><a href="http://dl.google.com/android/adt/adt-bundle-windows-x86_64-20140702.zip" target="_blank" rel="external">Win64</a></p>
 </li>
@@ -161,17 +145,30 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 <li>web 产生的树状遍历图。</li>
 </ul>
 <hr>
-<h2 id="常见错误处理">常见错误处理</h2><p>如果出现错误，请看下面的内容是否能够帮助您：<br>1.Unsupported major.minor version 51.0 error?<br>答：请检查你的jdk版本，至少需要jdk1.7,请下载1.7的最新版本。</p>
+<h2 id="常见错误处理">常见错误处理</h2><p>如果出现错误，请看下面的内容是否能够帮助您：<br>1.Unsupported major.minor version 51.0 error? </p>
+<blockquote>
+<p>答：请检查你的jdk版本，至少需要jdk1.7,请下载1.7的最新版本。</p>
+</blockquote>
 <p>2.Cannot run program “zipalign”: CreateProcess error=2, ?????????<br>INFO: signapk &amp; zipalign returned:jar 已签名。警告: 未提供 -tsa 或 -tsacert, 此<br>jar 没有时间戳。如果没有时间戳, 则在签名者证书的到期日期 (2045-03-04) 或以后的任<br>何撤销日期之后, 用户可能无法验证此 jar。null</p>
+<blockquote>
 <p>答：是否忘记把build-tools文件夹加入到PATH路径中了？</p>
+</blockquote>
 <p>3.[echo] Resolving Build Target for Test…BUILD FAILEDD:\adt\sdk\tools\ant\build.xml:542: Unable to resolve project target ‘android-21’Total time: 0 seconds</p>
+<blockquote>
 <p>答：是否忘记将android－21放到platforms文件夹中？</p>
+</blockquote>
 <p>4.app apk install failed.  Error[INSTALL_PARSE_FAILED_INCONSISTENT_CERTIFICATES]?</p>
+<blockquote>
 <p>答：因为不同机器上产生的keystone不同，如果是新的pc,目标手机上先前安装过该应用，需要将其先卸载。注意测试apk［smartTest]也需要一并卸载，可以在设置－》应用中卸载。</p>
+</blockquote>
 <p>5.Caused by: java.lang.RuntimeException: error: target android.jar (C:\Program Fil<br>es\Android\android-sdk\platforms\android-4\android.jar) does not exist.</p>
+<blockquote>
 <p>答：如果开启了－s（即代码插桩选项），那么sdk的platforms文件夹中应当包含这个apk的目标平台的platforms，我们整理了安卓各平台（3-21）的platform文件，可以在<a href="https://github.com/rdmclin2/AndroidPlatforms" target="_blank" rel="external">github</a>上选择缺失平台下载，然后粘贴到sdk的platforms文件夹下。</p>
+</blockquote>
 <p>6.INFO: signapk &amp; zipalign returned:jarsigner 错误: java.lang.RuntimeException: 密<br>钥库加载: C:\Users\Lenovo.android\debug.keystore (系统找不到指定的文件。)<br>ERROR: Problem occured while signing apk<br>INFO: Error occured while doInstrumentation with testApp</p>
+<blockquote>
 <p>答：如果在机器上用安卓环境编译过apk，那么在用户的.android文件夹下会生成默认的debug.keystone,如果该目录下没有该文件，请创建一个新的anroid工程并进行编译。</p>
+</blockquote>
 
       
     </div>
