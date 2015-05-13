@@ -82,6 +82,102 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
       <div class="outer">
         <section id="main">
   
+    <article id="post-nata-user-manual" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/05/13/nata-user-manual/" class="article-date">
+  <time datetime="2015-05-13T08:31:52.000Z" itemprop="datePublished">5月 13 2015</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/test/">test</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/05/13/nata-user-manual/">NATA 用户手册</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="环境配置">环境配置</h2><ul>
+<li>安装JDK 1.7及以上，<a href="http://www.oracle.com/technetwork/cn/java/javase/downloads/jdk7-downloads-1880260.html" target="_blank" rel="external">JDK下载网址</a></li>
+<li><p>安装Android SDK ,最新的即可，用SDK Manager下载platform-tools和tools，以及需要的platforms,参考下载地址:<br><a href="http://dl.google.com/android/adt/adt-bundle-windows-x86-20140702.zip" target="_blank" rel="external">Win32</a>，<br><a href="http://dl.google.com/android/adt/adt-bundle-windows-x86_64-20140702.zip" target="_blank" rel="external">Win64</a></p>
+</li>
+<li><p>安装ANT,下载地址[<a href="http://ant.apache.org/]，下载后解压即可。" target="_blank" rel="external">http://ant.apache.org/]，下载后解压即可。</a></p>
+</li>
+<li>将提供的android-21文件夹粘贴到sdk的platforms文件夹下（因为我们的测试apk的版本是21）</li>
+</ul>
+<hr>
+<h2 id="设置系统环境变量：">设置系统环境变量：</h2><p>将tools和platform－tools，以及build－tools的某一个版本文件夹加入到path路径中,将ant的bin目录加入到path路径中<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="rule"><span class="attribute">JAVA_HOME </span>:<span class="value"> jdk安装地址 如&lt; C:\Program Files\Java\jdk1.<span class="number">7.0</span>_79 &gt;</span><br><span class="line">ANDROID_HOME : SDK存放的文件夹如&lt; D:\adt\sdk &gt;</span><br><span class="line">ANT_HOME: ant解压后的地址如&lt; C:\apache-ant-<span class="number">1.7</span>.<span class="number">1</span> &gt;</span><br><span class="line">PATH: %JAVA_HOME%\bin</span></span>;</span><br><span class="line"><span class="rule"><span class="attribute">PATH</span>:<span class="value"> %ANDROID_HOME%\tools</span></span>;</span><br><span class="line"><span class="rule"><span class="attribute">PATH</span>:<span class="value"> %ANDROID_HOME%\platform－tools</span></span>;</span><br><span class="line"><span class="rule"><span class="attribute">PATH</span>:<span class="value"> %ANDROID_HOME%\build-tools\<span class="number">19.0</span>.<span class="number">0</span>           //<span class="number">19.0</span>.<span class="number">0</span>是你的build－tools文件夹下的某个版本号。</span><br><span class="line">PATH: %ANT_HOME%\bin</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>在cmd中输入ant测试ant环境是否配置正确<br>输入adb查看是否有help提示<br>输入aapt查看是否有help提示</p>
+<hr>
+<h2 id="使用">使用</h2><p>NATA默认读取 $ANADROID_HOME$ 环境变量作为sdk目录，sdk目录中的platforms为插桩apk时所需要使用的平台库。<br>NATA默认不进行soot方法插桩，因为插桩对于大型apk不一定插桩成功。<br>注意：我们假设apk的目标平台在sdk的platforms文件夹中存在！如果不存在，请用SDK Manager下载，或者看下面的问题5。</p>
+<p>在使用本工具之前，请确保设备连接手机,在cmd中输入<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">adb</span> devices</span><br></pre></td></tr></table></figure></p>
+<p>观察是否设备已连接上。</p>
+<p>基本使用<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$ java -jar nata<span class="class">.jar</span> --apk testapp<span class="class">.apk</span></span><br><span class="line">INFO: Extracing apk...</span><br><span class="line">I: Copying raw classes<span class="class">.dex</span> file...</span><br><span class="line">I: Loading resource <span class="tag">table</span>...</span><br><span class="line">I: Loaded.</span><br><span class="line">I: Decoding AndroidManifest<span class="class">.xml</span> with resources...</span><br><span class="line">I: Loading resource <span class="tag">table</span> from file: C:\Users\mcl\apktool\framework\<span class="number">1</span><span class="class">.apk</span></span><br><span class="line">I: Loaded.</span><br><span class="line">I: Regular manifest package...</span><br><span class="line">I: Decoding file-resources...</span><br><span class="line">I: Decoding values *<span class="comment">/* XMLs...</span><br><span class="line">I: Done.</span><br><span class="line">I: Copying assets and libs...</span><br><span class="line">INFO: Signing apk...</span><br><span class="line">INFO: Modifying manifest.xml...</span><br><span class="line">INFO: Modifying test_DFS.java...</span><br><span class="line">INFO: Building instruApk...</span><br><span class="line">......</span></span><br></pre></td></tr></table></figure></p>
+<p>带方法插桩的测试<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ java -jar nata<span class="class">.jar</span> －s --apk testapp.apk</span><br></pre></td></tr></table></figure></p>
+<p>默认我们认为目标apk所需要使用的安卓平台在sdk的platfroms中存在，如果不存在，请下在对应平台到platforms文件夹中</p>
+<h2 id="可配置参数">可配置参数</h2><ul>
+<li><code>--apk</code> 对象apk的路径，或者工程源代码（源代码目前对有库函数的工程支持不好，最好不要使用）</li>
+<li><code>--output</code> 输出路径,默认路径为&lt; 当前目录/nata-output &gt;</li>
+<li><code>--sdk</code> ANDROID SDK的路径，默认读取 $ANADROID_HOME$ 环境变量</li>
+<li><code>-h or --help</code> 显示帮助信息</li>
+<li><code>-s</code> 开启方法插桩，方法插桩有几率失败，默认不开启</li>
+</ul>
+<hr>
+<h2 id="查看结果">查看结果</h2><p>测试结果存放在nata-output/SpoonRunner/SpoonOutput中，文件结构如下：</p>
+<ul>
+<li>ActivityCoverages activity覆盖率的统计报告</li>
+<li>image 测试过程中的截图</li>
+<li>junit-reports junit的测试报告，可查看测试运行情况，如测试时间等等</li>
+<li>logs 测试过程中产生的log，包括运行到的方法的统计（如果开启了-s选项的话)</li>
+<li>MethodCoverages 方法覆盖率的统计报告(如果开启－s选项的话)</li>
+<li>model 测试工程的中间结果,可忽略</li>
+<li>web 产生的树状遍历图。</li>
+</ul>
+<hr>
+<h2 id="常见错误处理">常见错误处理</h2><p>如果出现错误，请看下面的内容是否能够帮助您：<br>1.Unsupported major.minor version 51.0 error?<br>答：请检查你的jdk版本，至少需要jdk1.7,请下载1.7的最新版本。</p>
+<p>2.Cannot run program “zipalign”: CreateProcess error=2, ?????????<br>INFO: signapk &amp; zipalign returned:jar 已签名。警告: 未提供 -tsa 或 -tsacert, 此<br>jar 没有时间戳。如果没有时间戳, 则在签名者证书的到期日期 (2045-03-04) 或以后的任<br>何撤销日期之后, 用户可能无法验证此 jar。null</p>
+<p>答：是否忘记把build-tools文件夹加入到PATH路径中了？</p>
+<p>3.[echo] Resolving Build Target for Test…BUILD FAILEDD:\adt\sdk\tools\ant\build.xml:542: Unable to resolve project target ‘android-21’Total time: 0 seconds</p>
+<p>答：是否忘记将android－21放到platforms文件夹中？</p>
+<p>4.app apk install failed.  Error[INSTALL_PARSE_FAILED_INCONSISTENT_CERTIFICATES]?</p>
+<p>答：因为不同机器上产生的keystone不同，如果是新的pc,目标手机上先前安装过该应用，需要将其先卸载。注意测试apk［smartTest]也需要一并卸载，可以在设置－》应用中卸载。</p>
+<p>5.Caused by: java.lang.RuntimeException: error: target android.jar (C:\Program Fil<br>es\Android\android-sdk\platforms\android-4\android.jar) does not exist.</p>
+<p>答：如果开启了－s（即代码插桩选项），那么sdk的platforms文件夹中应当包含这个apk的目标平台的platforms，我们整理了安卓各平台（3-21）的platform文件，可以在<a href="https://github.com/rdmclin2/AndroidPlatforms" target="_blank" rel="external">github</a>上选择缺失平台下载，然后粘贴到sdk的platforms文件夹下。</p>
+<p>6.INFO: signapk &amp; zipalign returned:jarsigner 错误: java.lang.RuntimeException: 密<br>钥库加载: C:\Users\Lenovo.android\debug.keystore (系统找不到指定的文件。)<br>ERROR: Problem occured while signing apk<br>INFO: Error occured while doInstrumentation with testApp</p>
+<p>答：如果在机器上用安卓环境编译过apk，那么在用户的.android文件夹下会生成默认的debug.keystone,如果该目录下没有该文件，请创建一个新的anroid工程并进行编译。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://www.mclspace.com/2015/05/13/nata-user-manual/" data-id="ci9mwpo1300067lclx0o9sqs1" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://www.mclspace.com/2015/05/13/nata-user-manual/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/test/">test</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Fatjar-install" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/05/10/Fatjar-install/" class="article-date">
@@ -118,7 +214,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://www.mclspace.com/2015/05/10/Fatjar-install/" data-id="ci9imyrzt00003q60ldjwd8cl" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://www.mclspace.com/2015/05/10/Fatjar-install/" data-id="ci9mwpo2f001u7lclsldrucm8" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -260,7 +356,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://www.mclspace.com/2015/04/03/MacThings/" data-id="ci9imxpiw001n3a60x3g2mwu6" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://www.mclspace.com/2015/04/03/MacThings/" data-id="ci9mwpo2d001r7lclwvlxfbqw" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -313,7 +409,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://www.mclspace.com/2015/03/12/android-emma-coverage-md/" data-id="ci9imxpis001g3a60rpbhrpug" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://www.mclspace.com/2015/03/12/android-emma-coverage-md/" data-id="ci9mwpo28001k7lclrejdtiq3" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -366,7 +462,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://www.mclspace.com/2015/03/10/mac_java_home/" data-id="ci9imxpi2000d3a60i19c7y69" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://www.mclspace.com/2015/03/10/mac_java_home/" data-id="ci9mwpo1g000i7lclcf33t2t2" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -419,7 +515,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://www.mclspace.com/2015/03/02/android_studio_remove_project/" data-id="ci9imxpiq001c3a60aybmrvah" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://www.mclspace.com/2015/03/02/android_studio_remove_project/" data-id="ci9mwpo25001g7lcljecmh18h" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -472,7 +568,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://www.mclspace.com/2015/03/02/git_local_to_remote_responsity/" data-id="ci9imxpi9000n3a60pl6wg3iu" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://www.mclspace.com/2015/03/02/git_local_to_remote_responsity/" data-id="ci9mwpo1p000s7lclupimba89" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -521,7 +617,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://www.mclspace.com/2015/02/28/hexo_from_windows_to_mac/" data-id="ci9imxpi5000k3a608srxb2s9" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://www.mclspace.com/2015/02/28/hexo_from_windows_to_mac/" data-id="ci9mwpo1l000p7lclkym4p9aj" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -571,7 +667,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://www.mclspace.com/2015/02/16/50yin/" data-id="ci9imxpj5001u3a60r981pk4q" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://www.mclspace.com/2015/02/16/50yin/" data-id="ci9mwpo2m00237lclf9iq4uvb" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -623,7 +719,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://www.mclspace.com/2014/12/26/markdown-here/" data-id="ci9imxpht00063a60ivold6dk" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://www.mclspace.com/2014/12/26/markdown-here/" data-id="ci9mwpo1a000b7lclg7sq8rv0" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -632,62 +728,6 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/">markdown</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-emma-tutorial" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/12/25/emma-tutorial/" class="article-date">
-  <time datetime="2014-12-25T13:57:09.000Z" itemprop="datePublished">12月 25 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/testing/">testing</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/25/emma-tutorial/">EMMA教程</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="什么是Emma？">什么是Emma？</h2><blockquote>
-<p>EMMA 是一个用于检测和报告 JAVA 代码覆盖率的开源工具。它不但能很好的用于小型项目，很方便得得出覆盖率报告，而且适用于大型企业级别的项目。</p>
-</blockquote>
-<p>本篇教程写给不愿意看emma userguide文档的兔子们，主要目标是给没有接触过emma的人一个可以成功运行的实例，傻瓜式教程，更多的知识请参考【参考文献】<br>
-        
-          <p class="article-more-link">
-            <a href="/2014/12/25/emma-tutorial/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://www.mclspace.com/2014/12/25/emma-tutorial/" data-id="ci9imxpif000z3a60jzi1l12y" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="http://www.mclspace.com/2014/12/25/emma-tutorial/#ds-thread" class="article-comment-link">Comments</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/test/">test</a></li></ul>
 
     </footer>
   </div>
@@ -712,7 +752,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/android/">android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/dev/">dev</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/internet/">internet</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/life/">life</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mac/">mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/testing/">testing</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/android/">android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/dev/">dev</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/internet/">internet</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/life/">life</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mac/">mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/test/">test</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/testing/">testing</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -721,7 +761,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/app/">app</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bug/">bug</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dev/">dev</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fsm/">fsm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/internet/">internet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a><span class="tag-list-count">4</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/app/">app</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bug/">bug</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dev/">dev</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fsm/">fsm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/internet/">internet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a><span class="tag-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -730,7 +770,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/android/" style="font-size: 20px;">android</a><a href="/tags/app/" style="font-size: 10px;">app</a><a href="/tags/bug/" style="font-size: 10px;">bug</a><a href="/tags/dev/" style="font-size: 10px;">dev</a><a href="/tags/fsm/" style="font-size: 10px;">fsm</a><a href="/tags/git/" style="font-size: 10px;">git</a><a href="/tags/hexo/" style="font-size: 16.67px;">hexo</a><a href="/tags/internet/" style="font-size: 10px;">internet</a><a href="/tags/java/" style="font-size: 13.33px;">java</a><a href="/tags/mac/" style="font-size: 16.67px;">mac</a><a href="/tags/markdown/" style="font-size: 13.33px;">markdown</a><a href="/tags/test/" style="font-size: 20px;">test</a>
+      <a href="/tags/android/" style="font-size: 17.5px;">android</a><a href="/tags/app/" style="font-size: 10px;">app</a><a href="/tags/bug/" style="font-size: 10px;">bug</a><a href="/tags/dev/" style="font-size: 10px;">dev</a><a href="/tags/fsm/" style="font-size: 10px;">fsm</a><a href="/tags/git/" style="font-size: 10px;">git</a><a href="/tags/hexo/" style="font-size: 15px;">hexo</a><a href="/tags/internet/" style="font-size: 10px;">internet</a><a href="/tags/java/" style="font-size: 12.5px;">java</a><a href="/tags/mac/" style="font-size: 15px;">mac</a><a href="/tags/markdown/" style="font-size: 12.5px;">markdown</a><a href="/tags/test/" style="font-size: 20px;">test</a>
     </div>
   </div>
 
@@ -739,7 +779,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -749,6 +789,10 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2015/05/13/nata-user-manual/">NATA 用户手册</a>
+          </li>
         
           <li>
             <a href="/2015/05/10/Fatjar-install/">Eclipse 安装 Fatjar.jar失败的解决方法</a>
@@ -764,10 +808,6 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
         
           <li>
             <a href="/2015/03/10/mac_java_home/">mac 如何配置java_home环境变量</a>
-          </li>
-        
-          <li>
-            <a href="/2015/03/02/android_studio_remove_project/">Android Studio 如何彻底删除Project</a>
           </li>
         
       </ul>
