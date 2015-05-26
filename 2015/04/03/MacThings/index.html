@@ -136,9 +136,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 <li>安装<a href="http://pan.baidu.com/s/1jGGGs54" target="_blank" rel="external">网络转换器的驱动</a></li>
 </ul>
 <hr>
-<h3 id="配置java_home_环境变量">配置java_home 环境变量</h3><p>vim ~/.zshrc 添加<br><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export JAV<span class="built_in">A_HOME</span>=$(/usr/libexec/jav<span class="built_in">a_home</span> -v <span class="number">1.8</span>)</span><br></pre></td></tr></table></figure></p>
-<p>然后source ~/.zshrc一下，可以用echo $JAVA_HOME$查看是否成功，其他终端下可以参考<a href="http://mclspace.com/2015/03/10/mac_java_home/" target="_blank" rel="external">我之前的文章</a></p>
-<h3 id="oh_my_zsh~_配置">oh my zsh~ 配置</h3><ol>
+<h3 id="oh_my_zsh~_安装配置">oh my zsh~ 安装配置</h3><ol>
 <li><p>切换zsh</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chsh <span class="operator">-s</span> /bin/zsh</span><br></pre></td></tr></table></figure>
 </li>
@@ -164,7 +162,13 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 <p>在.zshrc文件中添加：<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]]</span> &amp;&amp; . $(brew <span class="comment">--prefix)/etc/profile.d/autojump.sh</span></span><br></pre></td></tr></table></figure></p>
 <p>按brew提示的为准，在.zshrc文件中找到plugins关键字，在括号里添加autojump，如：<br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plugins=<span class="list">(<span class="keyword">git</span> textmate ruby autojump osx mvn gradle)</span></span><br></pre></td></tr></table></figure></p>
 <p>7.更多关于oh my zsh的介绍可以看<a href="http://macshuo.com/?p=676" target="_blank" rel="external">mac君的说明</a></p>
+<h3 id="配置android环境变量">配置android环境变量</h3><p>vim ~/.zshrc 添加<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ANDROID_HOME=<span class="variable">$HOME</span>/Library/Android/sdk</span><br><span class="line"><span class="built_in">export</span> ANDROID_HOME</span><br><span class="line"></span><br><span class="line">PATH=<span class="variable">$PATH</span>:<span class="variable">$ANDROID_HOME</span>/tools</span><br><span class="line">PATH=<span class="variable">$PATH</span>:<span class="variable">$ANDROID_HOME</span>/platform-tools</span><br><span class="line">PATH=<span class="variable">$PATH</span>:<span class="variable">$ANDROID_HOME</span>/build-tools/<span class="number">19.0</span>.<span class="number">0</span>    <span class="comment"># installed version number</span></span><br><span class="line"><span class="built_in">export</span> PATH</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="配置java_home_环境变量">配置java_home 环境变量</h3><p>vim ~/.zshrc 添加<br><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export JAV<span class="built_in">A_HOME</span>=$(/usr/libexec/jav<span class="built_in">a_home</span> -v <span class="number">1.8</span>)</span><br></pre></td></tr></table></figure></p>
+<p>然后source ~/.zshrc一下，可以用echo $JAVA_HOME$查看是否成功，其他终端下可以参考<a href="http://mclspace.com/2015/03/10/mac_java_home/" target="_blank" rel="external">我之前的文章</a></p>
+<hr>
 <h3 id="iTerm2配色">iTerm2配色</h3><p>安装完oh my zsh后你可能对iterm2默认的配色不太满意，可以到<a href="https://github.com/mbadolato/iTerm2-Color-Schemes" target="_blank" rel="external">iTerm2-Color-Schemes</a>将此工程克隆下来,然后在iterm2下用cmd+i呼出颜色配置，然后Colors -&gt; Load Presets -&gt; import 选项将schemes文件夹下面的配置都倒入进去，然后一个个试哪一款配色适合你，我选择的是kibble。</p>
+<hr>
 <h3 id="sublime2_配置">sublime2 配置</h3><p>设置macdown语法高亮 ,使用<a href="https://packagecontrol.io/packages/Monokai%20Extended" target="_blank" rel="external">Monokai Extended</a>这个主题。</p>
 <ol>
 <li>首先安装<a href="https://packagecontrol.io/installation" target="_blank" rel="external">package control</a></li>
@@ -173,33 +177,41 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 <li>在Preferences -&gt; Color Scheme -&gt; Monokai Extended中选择一款自己喜欢的配色</li>
 </ol>
 <p>开启vim模式<br>在Preferences -&gt; Settings - User中将”Vintage”去掉，变成<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"ignored_packages"</span><span class="symbol">:[]</span></span><br></pre></td></tr></table></figure></p>
+<p>安装前端神奇emmet,如上。</p>
+<hr>
 <h3 id="通过wifi分享网络">通过wifi分享网络</h3><p>通过System Preferences -&gt; Sharing -&gt; Internet Sharing.<br>勾选Wi-Fi,并通过 Wi-Fi Options设置接入密码，然后在左侧勾选Internet Sharing。<br>可以看到menu bar上的wifi图标变成了向上的箭头。</p>
-<h3 id="alias_可以用来在命令行中添加sublime">alias 可以用来在命令行中添加sublime</h3><p>如果你也用zsh，在～目录，vim .zshrc，添加以下alias（别名）可以快捷调用应用，如下所示：</p>
-<figure class="highlight monkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alias</span> <span class="title">sublime</span>=<span class="comment">'open -a "Sublime Text 2"'</span></span><br><span class="line"><span class="keyword">alias</span> <span class="title">chrome</span>=<span class="comment">'open -a "Google Chrome"'</span></span><br><span class="line"><span class="keyword">alias</span> <span class="title">mou</span>=<span class="comment">'open -a "Mou"'</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="alias_可以用来在命令行中添加sublime">alias 可以用来在命令行中添加sublime</h3><p>如果你也用zshrc，在～目录，vim .zshrc，添加以下alias（别名）可以快捷调用应用，如下所示：</p>
+<figure class="highlight monkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alias</span> <span class="title">sublime</span>=<span class="comment">'open -a "Sublime Text 2"'</span></span><br><span class="line"><span class="keyword">alias</span> <span class="title">chrome</span>=<span class="comment">'open -a "Google Chrome"'</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="Mac下的截图技巧">Mac下的截图技巧</h3><p>1.Command＋shift＋3:全屏截图<br>2.Command＋shift＋4:鼠标选定区域截图<br>使用第二种截图，还有两个小技巧<br>第一个：<br>使用Command＋shift＋4后，按下空格键，鼠标会变成一个小相机，这时候你使用鼠标对一个窗口点击一下鼠标左键，你已经对一个窗口进行了截图。<br>第二个：<br>按Command＋shift＋4 后 ,画一个抓取的区域，不要松开鼠标，接着</p>
+<ol>
+<li>按住空格可以移动这个区域</li>
+<li>按住 Shift后，将锁定X 或者 Y轴进行拖动</li>
+<li>按住 Option后 将按照区域圆心进行放大.<br>最后所有截图将直接显示在桌面上。</li>
+</ol>
+<hr>
+<h3 id="其他">其他</h3><ul>
+<li>如何修改电脑名称？<br>  系统偏好设置 -&gt; 共享 －&gt; 电脑名称</li>
+<li>如何剪切？<br>  mac中没有剪切的概念，只有move，因此我们可以先cmd+C,然后用option+cmd+v的方式进行移动。</li>
+<li>为什么登录界面的大小写不灵？<br>  苹果为防止误触专门设计成这样。</li>
+<li>mac下如何剪切文件？<br>  先复制，然后到移动的文件夹下，按opt+cmd+v使用move to here功能。</li>
+<li><p>mac chrome 看视频 风扇狂转<br>  可以用<a href="https://github.com/feelinglucky/chrome-plugin-to-replace-fuck-flash-player" target="_blank" rel="external">chrome-plugin-to-replace-fuck-flash-player</a>,或者给safari安装ClickToFlash插件(<a href="https://extensions.apple.com/details/?id=com.hoyois.safari.clicktoflash-GY5KR7239Q),safari官方插件页都有了，作者当时还明令禁止传播的。" target="_blank" rel="external">https://extensions.apple.com/details/?id=com.hoyois.safari.clicktoflash-GY5KR7239Q),safari官方插件页都有了，作者当时还明令禁止传播的。</a></p>
+</li>
+<li><p>mac 如何显示隐藏文件?</p>
+</li>
+</ul>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">显示：defaults write com<span class="class">.apple</span><span class="class">.finder</span> AppleShowAllFiles -bool true</span><br><span class="line">隐藏：defaults write com<span class="class">.apple</span><span class="class">.finder</span> AppleShowAllFiles -bool false</span><br></pre></td></tr></table></figure>
 <ul>
-<li>为什么登录界面的大小写不灵？</li>
-<li>oh my zsh的环境变量如何设置？</li>
-<li>sublime 如何开启vim模式？</li>
-<li>mac下如何剪切文件？先复制，然后到移动的文件夹下，按opt+cmd+v使用move to here功能。</li>
-<li>mac 下如何将网络共享出去？</li>
-<li>mac 下如何设置Android SDK环境变量</li>
-<li>mac chrome 看视频 风扇狂转, 可以用<a href="https://github.com/feelinglucky/chrome-plugin-to-replace-fuck-flash-player" target="_blank" rel="external">chrome-plugin-to-replace-fuck-flash-player</a>,或者给safari安装ClickToFlash插件(<a href="https://extensions.apple.com/details/?id=com.hoyois.safari.clicktoflash-GY5KR7239Q),safari官方插件页都有了，作者当时海明令禁止传播的。" target="_blank" rel="external">https://extensions.apple.com/details/?id=com.hoyois.safari.clicktoflash-GY5KR7239Q),safari官方插件页都有了，作者当时海明令禁止传播的。</a></li>
-<li>mac 如何截图？</li>
-<li>mac 选用什么浏览器</li>
-<li>mac 下载git后？生成ssh－key，设置user.name和user.email.</li>
-<li>mac 如何显示隐藏文件?</li>
-<li>mac 下神奇的geek软件：FlashLight,    Today-Scripts,alfred,oh-my-zsh</li>
-<li>mac 快捷键</li>
-<li>chrome vimium插件</li>
-<li>mac iterm2 主题配色 <a href="https://github.com/mbadolato/iTerm2-Color-Schemes" target="_blank" rel="external">https://github.com/mbadolato/iTerm2-Color-Schemes</a></li>
-<li>mac ftp终端命令</li>
-<li>当前程序是浏览器时，可以直接定位到地址栏</li>
+<li>chrome vimium插件.<br>   chrome应用市场下搜索vimium，可以像使用vim一样操作网页</li>
+<li>mac iterm2 主题配色<br>   <a href="https://github.com/mbadolato/iTerm2-Color-Schemes" target="_blank" rel="external">https://github.com/mbadolato/iTerm2-Color-Schemes</a></li>
 <li>用splotlight定位文件后可以按住command键单击打开文件所在位置的文件夹</li>
 <li>可以用smcFanCon进行夏天时候的风扇控制，3000-4000就够了</li>
 <li>命令行下用wget＋下载链接就可以进行下载</li>
-<li>命令行下如何远程登录linux服务器？ ssh user@hostname,例如mcl@114.212.87.56</li>
-<li>翻墙<a href="https://github.com/shadowsocks/shadowsocks" target="_blank" rel="external">https://github.com/shadowsocks/shadowsocks</a></li>
-<li>gogtwxetreydzfsc</li>
+<li>命令行下如何远程登录linux服务器？<br>  ssh user@hostname,例如mcl@114.212.87.56</li>
+<li>一些翻墙软件推荐<br> shadowsocks  xx-net   goagent   hongxin（浏览器）</li>
+<li>我的google appid : yfefmdngzfhjjgbb</li>
+<li>Mac 下如何隐藏dock？<br>  快捷键 cmd + option + d</li>
 </ul>
 
       
