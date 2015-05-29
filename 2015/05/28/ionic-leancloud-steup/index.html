@@ -110,10 +110,33 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 <a id="more"></a>
 <hr>
 <h2 id="前端">前端</h2><h3 id="总体">总体</h3><p>首先对ionic有所了解，直接看<a href="http://ionicframework.com/" target="_blank" rel="external">官网</a>即可，跟着例子走一遍，有个直观的感觉。<br>然后前端要学的东西很多，html5，css，js等，这些可以在<a href="http://www.w3schools.com/" target="_blank" rel="external">w3school</a>上学习,另外可以看看知乎上的<a href="http://www.zhihu.com/question/19651401" target="_blank" rel="external">这个回答</a><br>另外ionic的逻辑是用angularJS写的，因此必须要对其有比较好的理解</p>
+<h3 id="编写ionic代码时的一些坑">编写ionic代码时的一些坑</h3><ol>
+<li><p>模块记得填写依赖，如下面代码中如果你的controller放在zlyc.controllers模块中，记得填写</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">angular.<span class="function"><span class="title">module</span><span class="params">(<span class="string">'zlyc'</span>, [<span class="string">'ionic'</span>, <span class="string">'zlyc.controllers'</span>])</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在js文件夹中的js文件需要初始化，默认只有app.js会初始化，初始化的方法是在index.html的<head> tag 中用script加载，如下:</head></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- your app's js --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/app.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/controllers.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/services.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/utils.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果某个界面上不想要导航栏，可以简单地在最顶端的标签中添加hide-nav-bar=”true”</p>
+</li>
+<li><p>onclick方法后面调用函数要加括号，如:</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"padding signup-opt"</span> ng-click=<span class="string">"goToSign()"</span>&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>看<a href="http://blog.ionic.io/automating-icons-and-splash-screens/" target="_blank" rel="external">这篇文章</a>生成各尺寸的图片.</p>
+</li>
+<li><p>对于css文件夹中的样式文件中如果要调用本地的图片的话要加../ 否则在浏览器中可以正常显示，在设备上不行，结构如下所示：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.login-page</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">background</span>:<span class="value"><span class="function">url</span>(../img/signup_bg.png)</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">background-size</span>:<span class="value"> cover</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">background-repeat</span>:<span class="value"> no-repeat</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <hr>
 <h2 id="后端">后端</h2><h3 id="Node">Node</h3><p>现在写后端比较火的是用<a href="http://nodejs.org/" target="_blank" rel="external">nodejs</a>编写，然后nodejs有个很好的应用开发框架叫<a href="http://expressjs.com/zh/" target="_blank" rel="external">Express</a>，这里<a href="http://cwbuecheler.com/web/tutorials/2013/node-express-mongo/" target="_blank" rel="external">有篇文章</a>是教你如何从零开始搭建node,express,monggodb服务器，<a href="http://www.unfish.net/archives/772-20131207.html" target="_blank" rel="external">这里</a>是国人翻译的版本.</p>
 <hr>
 <h3 id="LeanCloud">LeanCloud</h3><p>如果不想自己租用服务器，编写后端代码，国外有<a href="https://www.parse.com/" target="_blank" rel="external">parse</a>，国内有<a href="https://leancloud.cn/" target="_blank" rel="external">LeanCloud</a>都提供后端云服务。<br>由于学习后端开发需要的时间比较长，本app暂时使用LeanCloud作为后端进行开发，然后专注前端。</p>
+<h3 id="一些坑">一些坑</h3><ol>
+<li>对于javascript版本的leancloud api ，官方文档给出的方法是直接将<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"https://cdn1.lncld.net/static/js/av-mini-0.5.4.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这样一段代码插入到页面中，但我们这个hybird app，每次都要去网上下载太费时间，可以先将它下载到本地，在本地载入。</p>
 <hr>
 
       
