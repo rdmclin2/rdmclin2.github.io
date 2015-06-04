@@ -8,7 +8,7 @@
   <meta name="description" content="ionic leancloud 项目初始化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ionic 项目记录">
-<meta property="og:url" content="http://www.mclspace.com/2015/05/28/ionic-leancloud-steup/index.html">
+<meta property="og:url" content="http://www.mclspace.com/2015/05/28/ionic-steup/index.html">
 <meta property="og:site_name" content="Mcl's space">
 <meta property="og:description" content="ionic leancloud 项目初始化">
 <meta name="twitter:card" content="summary">
@@ -80,9 +80,9 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-ionic-leancloud-steup" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-ionic-steup" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/05/28/ionic-leancloud-steup/" class="article-date">
+    <a href="/2015/05/28/ionic-steup/" class="article-date">
   <time datetime="2015-05-28T04:47:44.000Z" itemprop="datePublished">5月 28 2015</time>
 </a>
     
@@ -106,7 +106,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言">前言</h1><p>最近用ionic做hybrid app的开发，这篇文章用来记录探索过程中遇到的方方面面。<br>声明：在开始这个项目之前本屌没有接触过任何web开发相关的知识</p>
+        <h1 id="前言">前言</h1><p>最近用ionic做hybrid app的开发，这篇文章用来记录探索过程中遇到的方方面面。<br>声明：在开始这个项目之前本屌没有接触过任何web开发相关的知识,所以下面的内容是从一个初学者的角度出发。</p>
 <a id="more"></a>
 <hr>
 <h2 id="前端">前端</h2><h3 id="总体">总体</h3><p>首先对ionic有所了解，直接看<a href="http://ionicframework.com/" target="_blank" rel="external">官网</a>即可，跟着例子走一遍，有个直观的感觉。<br>然后前端要学的东西很多，html5，css，js等，这些可以在<a href="http://www.w3schools.com/" target="_blank" rel="external">w3school</a>上学习,另外可以看看知乎上的<a href="http://www.zhihu.com/question/19651401" target="_blank" rel="external">这个回答</a><br>另外ionic的逻辑是用angularJS写的，因此必须要对其有比较好的理解</p>
@@ -127,12 +127,51 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 <li><p>对于css文件夹中的样式文件中如果要调用本地的图片的话要加../ 否则在浏览器中可以正常显示，在设备上不行，结构如下所示：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.login-page</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">background</span>:<span class="value"><span class="function">url</span>(../img/signup_bg.png)</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">background-size</span>:<span class="value"> cover</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">background-repeat</span>:<span class="value"> no-repeat</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
 </li>
+<li><p>如果要使用ionic的图标，可以到<a href="http://ionicons.com/" target="_blank" rel="external">ionicons</a>上查找名字，然后通过icon=”<name>“使用</name></p>
+</li>
 </ol>
 <hr>
 <h2 id="后端">后端</h2><h3 id="Node">Node</h3><p>现在写后端比较火的是用<a href="http://nodejs.org/" target="_blank" rel="external">nodejs</a>编写，然后nodejs有个很好的应用开发框架叫<a href="http://expressjs.com/zh/" target="_blank" rel="external">Express</a>，这里<a href="http://cwbuecheler.com/web/tutorials/2013/node-express-mongo/" target="_blank" rel="external">有篇文章</a>是教你如何从零开始搭建node,express,monggodb服务器，<a href="http://www.unfish.net/archives/772-20131207.html" target="_blank" rel="external">这里</a>是国人翻译的版本.</p>
+<h3 id="NodeJs_后端开发记录">NodeJs 后端开发记录</h3><p>上面推荐的文章是webapp的方式，和我们的需求有些不同，这篇文章<a href="http://thejackalofjavascript.com/an-end-to-end-hybrid-app/" target="_blank" rel="external">an-end-to-end-hybrid-app</a>和ionic结合的更紧密，推荐阅读。</p>
+<h3 id="Npm命令简介(转载自网络)">Npm命令简介(转载自网络)</h3><ul>
+<li>npm install <name>安装nodejs的依赖包</name></li>
+</ul>
+<p>例如npm install express 就会默认安装express的最新版本，也可以通过在后面加版本号的方式安装指定版本，如npm install express@3.0.6</p>
+<ul>
+<li>npm install <name> -g  将包安装到全局环境中</name></li>
+</ul>
+<p>但是代码中，直接通过require()的方式是没有办法调用全局安装的包的。全局的安装是供命令行使用的，就好像全局安装了vmarket后，就可以在命令行中直接运行vm命令</p>
+<ul>
+<li>npm install <name> —save  安装的同时，将信息写入package.json中<br>项目路径中如果有package.json文件时，直接使用npm install方法就可以根据dependencies配置安装所有的依赖包</name></li>
+</ul>
+<p>这样代码提交到github时，就不用提交node_modules这个文件夹了。</p>
+<ul>
+<li><p>npm init  会引导你创建一个package.json文件，包括名称、版本、作者这些信息等</p>
+</li>
+<li><p>npm remove <name>移除</name></p>
+</li>
+<li><p>npm update <name>更新</name></p>
+</li>
+<li><p>npm ls 列出当前安装的了所有包</p>
+</li>
+<li><p>npm root 查看当前包的安装路径</p>
+</li>
+<li><p>npm root -g  查看全局的包的安装路径</p>
+</li>
+<li><p>npm help  帮助，如果要单独查看install命令的帮助，可以使用的npm help install</p>
+</li>
+</ul>
+<p>官网文档：<a href="https://npmjs.org/doc/" target="_blank" rel="external">https://npmjs.org/doc/</a></p>
+<h3 id="生成的package-json文件中的dependencies前面的~,^符号的含义">生成的package.json文件中的dependencies前面的~,^符号的含义</h3><p>典型的文件形式是,其中的～和^ 是什么含义呢<br><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"dependencies"</span>: &#123;</span><br><span class="line">  <span class="string">"express"</span>: <span class="string">"~4.2.0"</span>,</span><br><span class="line">  <span class="string">"body-parser"</span>: <span class="string">"~1.0.0"</span>,</span><br><span class="line">  <span class="string">"mongoose"</span>: <span class="string">"~3.8.11"</span>,</span><br><span class="line">  <span class="string">"bcrypt"</span>: <span class="string">"^0.8.3"</span>,</span><br><span class="line">  <span class="string">"mongojs"</span>: <span class="string">"^0.18.2"</span>,</span><br><span class="line">  <span class="string">"morgan"</span>: <span class="string">"^1.5.3"</span>,</span><br><span class="line">  <span class="string">"restify"</span>: <span class="string">"^3.0.3"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>借用stackoverflow上的<a href="https://stackoverflow.com/questions/22343224/difference-between-tilde-and-caret-in-package-json" target="_blank" rel="external">回答</a>:</p>
+<blockquote>
+<p>In the simplest terms, the tilde matches the most recent minor version (the middle number). ~1.2.3 will match all 1.2.x versions but will miss 1.3.0.<br>The caret, on the other hand, is more relaxed. It will update you to the most recent major version (the first number). ^1.2.3 will match any 1.x.x release including 1.3.0, but will hold off on 2.0.0.</p>
+</blockquote>
+<h3 id="Http_Status_code">Http Status code</h3><p>服务器发送响应时需要指定状态编码，如404，203等，看<a href="http://www.restapitutorial.com/httpstatuscodes.html" target="_blank" rel="external">这里</a></p>
 <hr>
-<h3 id="LeanCloud">LeanCloud</h3><p>如果不想自己租用服务器，编写后端代码，国外有<a href="https://www.parse.com/" target="_blank" rel="external">parse</a>，国内有<a href="https://leancloud.cn/" target="_blank" rel="external">LeanCloud</a>都提供后端云服务。<br>由于学习后端开发需要的时间比较长，本app暂时使用LeanCloud作为后端进行开发，然后专注前端。</p>
-<h3 id="一些坑">一些坑</h3><ol>
+<h3 id="LeanCloud">LeanCloud</h3><p>如果不想自己租用服务器，编写后端代码，国外有<a href="https://www.parse.com/" target="_blank" rel="external">parse</a>，国内有<a href="https://leancloud.cn/" target="_blank" rel="external">LeanCloud</a>都提供后端云服务。尝试使用了，感觉不错，不过本app的数据比较敏感，所以还是得自己搭服务器。</p>
+<p>一些坑:</p>
+<ol>
 <li>对于javascript版本的leancloud api ，官方文档给出的方法是直接将<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"https://cdn1.lncld.net/static/js/av-mini-0.5.4.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
@@ -143,11 +182,11 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://www.mclspace.com/2015/05/28/ionic-leancloud-steup/" data-id="cia7qhkzm000q8fbdqccygbnh" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://www.mclspace.com/2015/05/28/ionic-steup/" data-id="ciahl22dv0000m1bdgisjbte2" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
-        <a href="http://www.mclspace.com/2015/05/28/ionic-leancloud-steup/#ds-thread" class="article-comment-link">Comments</a>
+        <a href="http://www.mclspace.com/2015/05/28/ionic-steup/#ds-thread" class="article-comment-link">Comments</a>
       
 
       
@@ -172,7 +211,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2015/05/28/ionic-leancloud-steup/" data-title="ionic 项目记录" data-url="http://www.mclspace.com/2015/05/28/ionic-leancloud-steup/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2015/05/28/ionic-steup/" data-title="ionic 项目记录" data-url="http://www.mclspace.com/2015/05/28/ionic-steup/"></div>
   </section>
 </section>
         
@@ -224,7 +263,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
       <ul>
         
           <li>
-            <a href="/2015/05/28/ionic-leancloud-steup/">ionic 项目记录</a>
+            <a href="/2015/05/28/ionic-steup/">ionic 项目记录</a>
           </li>
         
           <li>
