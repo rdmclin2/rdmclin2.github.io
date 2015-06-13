@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>如何用emma产生android程序的测试覆盖率报告 | Mcl&#39;s space</title>
+  <title>如何从零开始构建一个ionic应用[updating] | Mcl&#39;s space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="如何用emma产生android程序的测试覆盖率报告">
+  <meta name="description" content="如何从零开始构建一个ionic应用">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何用emma产生android程序的测试覆盖率报告">
-<meta property="og:url" content="http://www.mclspace.com/2015/03/12/android-emma-coverage-md/index.html">
+<meta property="og:title" content="如何从零开始构建一个ionic应用[updating]">
+<meta property="og:url" content="http://www.mclspace.com/2015/06/12/how-to-build-an-ionic-app-from-scratch/index.html">
 <meta property="og:site_name" content="Mcl's space">
-<meta property="og:description" content="如何用emma产生android程序的测试覆盖率报告">
+<meta property="og:description" content="如何从零开始构建一个ionic应用">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="如何用emma产生android程序的测试覆盖率报告">
-<meta name="twitter:description" content="如何用emma产生android程序的测试覆盖率报告">
+<meta name="twitter:title" content="如何从零开始构建一个ionic应用[updating]">
+<meta name="twitter:description" content="如何从零开始构建一个ionic应用">
   
     <link rel="alternative" href="/atom.xml" title="Mcl&#39;s space" type="application/atom+xml">
   
@@ -80,14 +80,14 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-android-emma-coverage-md" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-how-to-build-an-ionic-app-from-scratch" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/03/12/android-emma-coverage-md/" class="article-date">
-  <time datetime="2015-03-12T14:37:47.000Z" itemprop="datePublished">3月 12 2015</time>
+    <a href="/2015/06/12/how-to-build-an-ionic-app-from-scratch/" class="article-date">
+  <time datetime="2015-06-12T06:18:55.000Z" itemprop="datePublished">6月 12 2015</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/android/">android</a>
+    <a class="article-category-link" href="/categories/dev/">dev</a>
   </div>
 
   </div>
@@ -98,7 +98,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
         
   
     <h1 class="article-title" itemprop="name">
-      如何用emma产生android程序的测试覆盖率报告
+      如何从零开始构建一个ionic应用[updating]
     </h1>
   
 
@@ -106,48 +106,21 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Emma是什么？">Emma是什么？</h1><p>Emma是用来生成java程序代码覆盖率报告的工具，具体的介绍和简单教程请看之前博客的链接<a href="http://mclspace.com/2014/12/25/emma-tutorial/" target="_blank" rel="external">EMMA教程</a>。而EMMA这款工具怎么生成安卓测试程序运行安卓程序的代码覆盖率呢？上网查了很多教程，但大多冗余没有干货，抄来抄去没有新的内容，导致能解决我的问题的内容少之又少。于是整理一下今天使用Emma的一些难点和心得。</p>
-<a id="more"></a>
-<hr>
-<h1 id="环境准备">环境准备</h1><ul>
-<li>Android SDK</li>
-<li>ANT</li>
-</ul>
-<p>没有的搜一下网上的教程就好，这里我们要用到ant进行插装编译，ant中集成了emma，所以emma也不用下了。这里的使用环境为Windows，SDK版本为Android-21.注意EMMA只能对有源码的工程进行覆盖率监测。</p>
-<hr>
-<h1 id="步骤">步骤</h1><p>假设待测APK的目录为\Lesson3,测试工程的目录为\Lesson3Test。\代表当前目录，步骤如下：</p>
-<ul>
-<li><p>首先cd到\Lesson3，输入android update project -p \ <code>Enter</code>,这一步将在Lesson3目录下生成ant的配置文件build.xml。</p>
-</li>
-<li><p>再cd到\Lesson3Test,输入android update test-project -m ..\Lesson3 -p \ <code>Enter</code> ,这一步将在测试工程Lesson3Test目录下生成ant的配置文件build.xml。</p>
-</li>
-<li><p>这一步针对你的应用依赖appcompat_v7这个库的工程。打开以上两个工程目录中的build.xml，在<code>&lt;fail\&gt;</code>标签前面加上</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">property</span> <span class="property">name</span>=<span class="string">"aapt.ignore.assets"</span> value=<span class="string">"!.svn:!.git:\x3Cdir\x3E_*:.*:!CVS:!thumbs.db:!picasa.ini:!*.scc:*~:crunch"</span> /&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>否则会出return null 1的错误。</p>
-<ul>
-<li><p>如果工程有依赖的包，新建一个libs文件夹，放到其中，ant将自动建立依赖。</p>
-</li>
-<li><p>cd到\LessonTest文件夹，输入ant emma debug install test 命令，大功告成！</p>
-</li>
-</ul>
-<hr>
-<h1 id="参考目录">参考目录</h1><p><a href="http://www.haodaima.net/art/1769137" target="_blank" rel="external">EMMA对Android工程单元测试覆盖率进行检查</a><br><a href="http://clasnake.net/emma_for_android/" target="_blank" rel="external">使用EMMA获取Android测试覆盖率</a><br><a href="http://blog.csdn.net/zhbpd/article/details/41869987" target="_blank" rel="external">使用 ANT 命令行编译 Android 工程</a></p>
-
+        <h2 id="前言">前言</h2><p>本文为从零创建ionic应用的教程，将会持续更新，直到完成。</p>
+<h1 id="#">#</h1>
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://www.mclspace.com/2015/03/12/android-emma-coverage-md/" data-id="ciav47c9m001zy5bdrq025j2z" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://www.mclspace.com/2015/06/12/how-to-build-an-ionic-app-from-scratch/" data-id="ciav47c8u000xy5bdsftjgy6p" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
-        <a href="http://www.mclspace.com/2015/03/12/android-emma-coverage-md/#ds-thread" class="article-comment-link">Comments</a>
+        <a href="http://www.mclspace.com/2015/06/12/how-to-build-an-ionic-app-from-scratch/#ds-thread" class="article-comment-link">Comments</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/test/">test</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dev/">dev</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ionic/">ionic</a></li></ul>
 
     </footer>
   </div>
@@ -155,19 +128,10 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     
 <nav id="article-nav">
   
-    <a href="/2015/04/03/MacThings/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Mac 那些事
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/03/10/mac_java_home/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2015/06/09/docker-note/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">mac 如何配置java_home环境变量</div>
+      <div class="article-nav-title">Docker 学习笔记</div>
     </a>
   
 </nav>
@@ -177,7 +141,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2015/03/12/android-emma-coverage-md/" data-title="如何用emma产生android程序的测试覆盖率报告" data-url="http://www.mclspace.com/2015/03/12/android-emma-coverage-md/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2015/06/12/how-to-build-an-ionic-app-from-scratch/" data-title="如何从零开始构建一个ionic应用[updating]" data-url="http://www.mclspace.com/2015/06/12/how-to-build-an-ionic-app-from-scratch/"></div>
   </section>
 </section>
         

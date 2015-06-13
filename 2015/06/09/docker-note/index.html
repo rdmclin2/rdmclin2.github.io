@@ -107,31 +107,80 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="前言">前言</h2><p>本篇为学习使用docker过程中的一些记录，学习docker的原因是希望使用docker在服务器上自动化部署本地编写的服务端程序。本文为学习笔记型文章，方便快速查阅，关于docker的安装等内容请移步<a href="docker.com">官网</a>,想系统的学习docker可以看dockerpool出的<a href="http://dockerpool.com/static/books/docker_practice" target="_blank" rel="external">书</a>。<br>PS:下文的使用环境为macos<br><a id="more"></a></p>
-<h2 id="常用命令">常用命令</h2><h3 id="获取镜像docker_pull,如">获取镜像<code>docker pull</code>,如</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ docker pull <span class="string">ubuntu:</span><span class="number">12.04</span></span><br><span class="line">Pulling repository ubuntu</span><br><span class="line"><span class="string">ab8e2728644c:</span> Pulling dependent layers</span><br><span class="line"><span class="number">511136</span><span class="string">ea3c5a:</span> Download complete</span><br><span class="line"><span class="number">5</span><span class="string">f0ffaa9455e:</span> Download complete</span><br><span class="line"><span class="string">a300658979be:</span> Download complete</span><br><span class="line"><span class="number">904483</span><span class="string">ae0c30:</span> Download complete</span><br><span class="line"><span class="string">ffdaafd1ca50:</span> Download complete</span><br><span class="line"><span class="string">d047ae21eeaf:</span> Download complete</span><br></pre></td></tr></table></figure>
+<h2 id="常用命令">常用命令</h2><ul>
+<li>获取镜像<code>docker pull</code>,如<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ docker pull <span class="string">ubuntu:</span><span class="number">12.04</span></span><br><span class="line">Pulling repository ubuntu</span><br><span class="line"><span class="string">ab8e2728644c:</span> Pulling dependent layers</span><br><span class="line"><span class="number">511136</span><span class="string">ea3c5a:</span> Download complete</span><br><span class="line"><span class="number">5</span><span class="string">f0ffaa9455e:</span> Download complete</span><br><span class="line"><span class="string">a300658979be:</span> Download complete</span><br><span class="line"><span class="number">904483</span><span class="string">ae0c30:</span> Download complete</span><br><span class="line"><span class="string">ffdaafd1ca50:</span> Download complete</span><br><span class="line"><span class="string">d047ae21eeaf:</span> Download complete</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 <p>从 Docker Hub 仓库下载一个 Ubuntu 12.04 操作系统的镜像</p>
-<h3 id="列出本地镜像docker_images,如">列出本地镜像<code>docker images</code>,如</h3><figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ docker images</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             <span class="keyword">VIRTUAL</span> SIZE</span><br><span class="line">nginx               latest              a785ba7493fd        <span class="number">12</span> days ago         <span class="number">132.9</span> MB</span><br><span class="line">hello-world         latest              <span class="number">91</span>c95931e552        <span class="number">7</span> weeks ago         <span class="number">910</span> B</span><br></pre></td></tr></table></figure>
-<h3 id="Mac环境下启动docker_boot2docker_start">Mac环境下启动docker <code>boot2docker start</code></h3><p>mac下需要开启一个虚拟机，和其他linux系统不同</p>
-<h3 id="列入已有的容器_docker_ps">列入已有的容器 <code>docker ps</code></h3><h3 id="查看boot2docker状态_boot2docker_status">查看boot2docker状态 <code>boot2docker status</code></h3><h3 id="启动一个容器并运行一个镜像_如：docker_run_-d_-P_-name_web_nginx">启动一个容器并运行一个镜像 如：<code>docker run -d -P --name web nginx</code></h3><p>-d :让容器在命令完成后在后台继续运行<br>－P :The -P flag publishes exposed ports from the container to your local host; this lets you access them from your Mac.</p>
-<h3 id="查看容器端口docker_port_web,如:">查看容器端口<code>docker port web</code>,如:</h3><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>docker port web</span><br><span class="line"><span class="number">443</span>/tcp -&gt; <span class="number">0</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">0</span><span class="symbol">:</span><span class="number">32770</span></span><br><span class="line"><span class="number">80</span>/tcp -&gt; <span class="number">0</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">0</span><span class="symbol">:</span><span class="number">32771</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>列出本地镜像<code>docker images</code>,如</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ docker images</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             <span class="keyword">VIRTUAL</span> SIZE</span><br><span class="line">nginx               latest              a785ba7493fd        <span class="number">12</span> days ago         <span class="number">132.9</span> MB</span><br><span class="line">hello-world         latest              <span class="number">91</span>c95931e552        <span class="number">7</span> weeks ago         <span class="number">910</span> B</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Mac环境下启动docker <code>boot2docker start</code><br>mac下需要开启一个虚拟机，和其他linux系统不同</p>
+</li>
+<li><p>列入已有的容器 <code>docker ps</code></p>
+</li>
+<li><p>查看boot2docker状态 <code>boot2docker status</code></p>
+</li>
+<li><p>启动一个容器并运行一个镜像 如：<code>docker run -d -P --name web nginx</code><br>-d :让容器在命令完成后在后台继续运行<br>－P :The -P flag publishes exposed ports from the container to your local host; this lets you access them from your Mac.</p>
+</li>
+<li><p>查看容器端口<code>docker port web</code>,如:</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>docker port web</span><br><span class="line"><span class="number">443</span>/tcp -&gt; <span class="number">0</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">0</span><span class="symbol">:</span><span class="number">32770</span></span><br><span class="line"><span class="number">80</span>/tcp -&gt; <span class="number">0</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">0</span><span class="symbol">:</span><span class="number">32771</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 <p>容器端口80映射到host端口32771</p>
-<h3 id="查看VM的ip地址_boot2docker_ip">查看VM的ip地址 <code>boot2docker ip</code></h3><h3 id="在网页中访问应用的地址为_$VM_ip地址_/host_port，如:">在网页中访问应用的地址为 <code>$VM ip地址 /host port</code>，如:</h3><p><a href="http://192.168.59.103:32771" target="_blank" rel="external">http://192.168.59.103:32771</a></p>
-<h3 id="停止容器_docker_stop,如:">停止容器 <code>docker stop</code>,如:</h3><figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="keyword">stop</span> web</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>查看VM的ip地址 <code>boot2docker ip</code></p>
+</li>
+<li><p>在网页中访问应用的地址为 <code>$VM ip地址 /host port</code>，如:<br><a href="http://192.168.59.103:32771" target="_blank" rel="external">http://192.168.59.103:32771</a></p>
+</li>
+<li><p>停止容器 <code>docker stop</code>,如:</p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="keyword">stop</span> web</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 <p>stop container name / container id</p>
-<h3 id="删除容器_docker_rm,如:">删除容器 <code>docker rm</code>,如:</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">docker</span> rm web</span><br></pre></td></tr></table></figure>
+<ul>
+<li>删除容器 <code>docker rm</code>,如:<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">docker</span> rm web</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 <p>rm container name / container id</p>
-<h3 id="从dockerfile中构建镜像docker_build_如:">从dockerfile中构建镜像<code>docker build</code> 如:</h3><figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t=<span class="string">"ouruser/sinatra:v2"</span> .</span><br></pre></td></tr></table></figure>
+<ul>
+<li>从dockerfile中构建镜像<code>docker build</code> 如:<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t=<span class="string">"ouruser/sinatra:v2"</span> .</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 <p>其中 -t 标记来添加 tag，指定新的镜像的用户信息。 “.” 是 Dockerfile 所在的路径（当前目录），也可以替换为一个具体的 Dockerfile 的路径。</p>
-<h3 id="推送到dockerhub_docker_push_如:">推送到dockerhub <code>docker push</code> 如:</h3><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="keyword">push</span> user/sinatra</span><br></pre></td></tr></table></figure>
+<ul>
+<li>推送到dockerhub <code>docker push</code> 如:<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="keyword">push</span> user/sinatra</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 <p>注意创建和推送时把user替换成自己的用户名</p>
-<h3 id="进入容器控制台_docker_attach如:">进入容器控制台 <code>docker attach</code>如:</h3><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker attach <span class="property">name</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>进入容器控制台 <code>docker attach</code>如:<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker attach <span class="property">name</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 <p>按两次回车进入，按ctrl+p+q退出(按住ctrl，先按p再按q)</p>
-<h3 id="查看容器信息_`docker_inspect’_如:">查看容器信息 `docker inspect’ 如:</h3><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect <span class="property">name</span></span><br></pre></td></tr></table></figure>
-<h3 id="将本地文件挂载到container中,-v">将本地文件挂载到container中,<code>-v</code></h3><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -v <span class="regexp">/data:/m</span>nt -i -t rdmclin2<span class="regexp">/node /</span>bin<span class="regexp">/bash</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>查看容器信息 <code>docker inspect</code> 如:</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect <span class="property">name</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将本地文件挂载到container中,<code>-v</code></p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -v <span class="regexp">/data:/m</span>nt -i -t rdmclin2<span class="regexp">/node /</span>bin<span class="regexp">/bash</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 <p>例如将data文件夹挂载到container中的mnt文件夹中，可以在mnt文件夹中查看，这个文件是共享的，所以两边的操作都会互相看到。<br>将mnt的文件拷贝到container中即可。</p>
-<h3 id="启动容器的终端">启动容器的终端</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -t -<span class="tag">i</span> ouruser/sinatra:v2 /bin/bash</span><br></pre></td></tr></table></figure>
-<h3 id="提交修改过的container创建为image,docker_commit">提交修改过的container创建为image,<code>docker commit</code></h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker commit -m <span class="string">"Added app file and do npm insall"</span> -<span class="tag">a</span> <span class="string">"xxxx"</span> <span class="number">6</span>f878669e0d7 rdmclin2/node</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>启动容器的终端</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -t -<span class="tag">i</span> ouruser/sinatra:v2 /bin/bash</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提交修改过的container创建为image,<code>docker commit</code></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker commit -m <span class="string">"Added app file and do npm insall"</span> -<span class="tag">a</span> <span class="string">"xxxx"</span> <span class="number">6</span>f878669e0d7 rdmclin2/node</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 <p><code>-m</code>为信息，<code>－a</code>为用户信息。后面的id胃container的id</p>
-<h3 id="指定端口运行image_-p,如">指定端口运行image <code>-p</code>,如</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="keyword">run</span> -p 49160:8080 -<span class="keyword">d</span> &lt;your username&gt;/centos-node-hello</span><br></pre></td></tr></table></figure>
+<ul>
+<li>指定端口运行image <code>-p</code>,如<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="keyword">run</span> -p 49160:8080 -<span class="keyword">d</span> &lt;your username&gt;/centos-node-hello</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 <hr>
 <!--
 ##nodejs+mongodb应用服务器端部署过程
@@ -197,7 +246,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://www.mclspace.com/2015/06/09/docker-note/" data-id="ciarkbfk9001i0zbdxqi1psz2" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://www.mclspace.com/2015/06/09/docker-note/" data-id="ciav47c9e001ny5bdtq0oqnpo" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -213,11 +262,11 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     
 <nav id="article-nav">
   
-    <a href="/2015/06/11/docker-nodejs-mongodb/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/06/12/how-to-build-an-ionic-app-from-scratch/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          如何用docker搭建nodejs mongodb服务器环境
+          如何从零开始构建一个ionic应用[updating]
         
       </div>
     </a>
@@ -257,7 +306,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/app/">app</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bug/">bug</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dev/">dev</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fsm/">fsm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/internet/">internet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a><span class="tag-list-count">5</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/app/">app</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bug/">bug</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dev/">dev</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fsm/">fsm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/internet/">internet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ionic/">ionic</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a><span class="tag-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -266,7 +315,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/android/" style="font-size: 17.5px;">android</a><a href="/tags/app/" style="font-size: 10px;">app</a><a href="/tags/bug/" style="font-size: 10px;">bug</a><a href="/tags/dev/" style="font-size: 17.5px;">dev</a><a href="/tags/fsm/" style="font-size: 10px;">fsm</a><a href="/tags/git/" style="font-size: 10px;">git</a><a href="/tags/hexo/" style="font-size: 15px;">hexo</a><a href="/tags/internet/" style="font-size: 10px;">internet</a><a href="/tags/java/" style="font-size: 12.5px;">java</a><a href="/tags/js/" style="font-size: 10px;">js</a><a href="/tags/mac/" style="font-size: 15px;">mac</a><a href="/tags/markdown/" style="font-size: 12.5px;">markdown</a><a href="/tags/test/" style="font-size: 20px;">test</a>
+      <a href="/tags/android/" style="font-size: 17.5px;">android</a><a href="/tags/app/" style="font-size: 10px;">app</a><a href="/tags/bug/" style="font-size: 10px;">bug</a><a href="/tags/dev/" style="font-size: 17.5px;">dev</a><a href="/tags/fsm/" style="font-size: 10px;">fsm</a><a href="/tags/git/" style="font-size: 10px;">git</a><a href="/tags/hexo/" style="font-size: 15px;">hexo</a><a href="/tags/internet/" style="font-size: 10px;">internet</a><a href="/tags/ionic/" style="font-size: 10px;">ionic</a><a href="/tags/java/" style="font-size: 12.5px;">java</a><a href="/tags/js/" style="font-size: 10px;">js</a><a href="/tags/mac/" style="font-size: 15px;">mac</a><a href="/tags/markdown/" style="font-size: 12.5px;">markdown</a><a href="/tags/test/" style="font-size: 20px;">test</a>
     </div>
   </div>
 
@@ -287,7 +336,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
       <ul>
         
           <li>
-            <a href="/2015/06/11/docker-nodejs-mongodb/">如何用docker搭建nodejs mongodb服务器环境</a>
+            <a href="/2015/06/12/how-to-build-an-ionic-app-from-scratch/">如何从零开始构建一个ionic应用[updating]</a>
           </li>
         
           <li>
