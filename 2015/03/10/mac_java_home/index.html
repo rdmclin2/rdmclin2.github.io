@@ -161,7 +161,6 @@
 
       
         <h2 id="打开终端，新建-bash_profile文件">打开终端，新建.bash_profile文件</h2><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">cd</span> <span class="regexp">~</span><br><span class="line">vim</span> .bash_profile</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
 <hr>
 <h2 id="输入java_home环境变量,并保存">输入java_home环境变量,并保存</h2><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export JAV<span class="built_in">A_HOME</span>=$(/usr/libexec/jav<span class="built_in">a_home</span> -v <span class="number">1.8</span>)</span><br></pre></td></tr></table></figure>
 <p>这种方法可以动态地获取这个环境变量，当自动升级了新版本的JAVA时，总能找到合适的JAVA_HOME目录，这里-v 可以指定java的版本，也可以不写使用默认的JAVA_HOME 路径</p>

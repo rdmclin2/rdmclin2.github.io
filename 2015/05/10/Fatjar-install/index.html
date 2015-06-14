@@ -161,11 +161,11 @@
 
       
         <h1 id="Fatjar简介">Fatjar简介</h1><p>Fatjar.jar是eclipse上很方便进行打包的插件，对于较小的项目使用eclipse内置的打包jar可能就够了，但是如果工程较大，需要引用资源之类的，用fatjar比较方便省心。不过笔者在安装的时候遇到不少困难，不管是在线方式，还是离线方式都无法安装成功，现在纪录一下。在Windows =&gt; prefernce =&gt; fat jar preference 看到他就说明已经安装成功。</p>
-<a id="more"></a>
 <hr>
 <h1 id="Fatjar在线安装">Fatjar在线安装</h1><p>help －&gt; Install New Sofware －&gt; Work with。<br>粘贴 <a href="http://kurucz-grafika.de/fatjar" target="_blank" rel="external">http://kurucz-grafika.de/fatjar</a><br>然后回车，等待安装即可,时间较长</p>
 <hr>
 <h1 id="Fatjar手动安装">Fatjar手动安装</h1><p>在<a href="http://sourceforge.net/projects/fjep/" target="_blank" rel="external">sourceforge</a>上手动下载最新版本（目前0.31），解压，将.jar文件复制粘贴到<br>$eclipse_Home\plugins文件夹下，重启eclipse即可。</p>
+<a id="more"></a>
 <h1 id="使用方法">使用方法</h1><p>项目，右键，+Build Fat Jar.<br>勾选 use extern Jar-Name可以设定导出jar路径，否则生成在项目根目录<br>不要勾选select Manifest file<br>勾选One-JAR,next<br>选择要导入的jar包<br>finish</p>
 <hr>
 <h1 id="Fatjar安装失败的解决方法">Fatjar安装失败的解决方法</h1><p>1.清除缓存<br>新建eclipse的快捷方式，右键属性 -&gt; 目标 后添加 -clean 选项，eclipse将清除缓存重新加载插件。</p>

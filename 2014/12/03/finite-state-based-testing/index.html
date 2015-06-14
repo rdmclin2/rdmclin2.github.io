@@ -162,10 +162,11 @@
       
         <h2 id="前言">前言</h2><p>本篇为阅读ACM digital的论文Using Formal Specifications to Support Testing的第五章Finite State Based Testing的笔记。该论文在后文文献中给出了链接。</p>
 <hr>
-<h2 id="什么是基于有限状态机(FSM)的测试">什么是基于有限状态机(FSM)的测试</h2><p><strong>FSM</strong> 是<em>finite-state machine</em>的缩写，许多系统都可以自然地被描述成一个有限状态的结构，因此基于FSM的测试问题得到了极大的关注。基于FSM的很多测试方法都依赖于测试假设或者错误模型，这两种情况下测试集能够保证可以确定其正确性，通常情况下测试假设或错误模型会给<strong>SUT</strong>（<em>Software under test</em> )的状态数量设置一个范围。<br><a id="more"></a></p>
+<h2 id="什么是基于有限状态机(FSM)的测试">什么是基于有限状态机(FSM)的测试</h2><p><strong>FSM</strong> 是<em>finite-state machine</em>的缩写，许多系统都可以自然地被描述成一个有限状态的结构，因此基于FSM的测试问题得到了极大的关注。基于FSM的很多测试方法都依赖于测试假设或者错误模型，这两种情况下测试集能够保证可以确定其正确性，通常情况下测试假设或错误模型会给<strong>SUT</strong>（<em>Software under test</em> )的状态数量设置一个范围。</p>
 <p>在基于FSM <strong>F</strong>进行测试时，我们通常假设SUT 等价于一个未知的FSM <strong>I</strong>（这里I是最小的FSM，使用最小性假设），测试集就是用来检查I是否和F一致。如果F是确定性的，那么如果I等价于F即I和F一致。如果F是不确定性的，那么存在I和F一致的其他表示形式，包括F和I等价(equivalent)，I是F的归约(reduction)，或者I和F是<a href="http://www.chinabaike.com/article/baike/1002/2008/200806041507474.html" target="_blank" rel="external">拟等价</a>的。</p>
 <hr>
 <h3 id="一个简单的FSM规格(Specification)的例子">一个简单的FSM规格(Specification)的例子</h3><p><img src="http://icoco.qiniudn.com/image/test/FSM.PNG" alt="FSM F"></p>
+<a id="more"></a>
 <hr>
 <h2 id="测试标准">测试标准</h2><p>典型的测试策略致力于检测<strong>输出错误</strong>（转移产生了错误输出）和<strong>状态迁移错误</strong>（转到了错误的状态）。测试集通常称为<em>test suite</em>,是从规格模型F中产生的。在测试中我们通常期望确定是否一组行为能够造成内部状态错误（corrupt).如果有输入x让 h2(s,x) 和 h2(t,x)没有交集则称x将s和t<strong>区分</strong>(<em>distinguished</em>)，在例子中b能够将s2和s0与s1区分开来。在确定性FSM（DFSM）中我们通常用以下方法检查内部状态。<br><img src="http://icoco.qiniudn.com/image/test/检验内部状态.PNG" alt="检查内部状态"></p>
 <ul>

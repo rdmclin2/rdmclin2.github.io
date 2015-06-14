@@ -161,7 +161,6 @@
 
       
         <h2 id="前言">前言</h2><p>本文为NATA用户手册,为使用该工具的用户提供帮助</p>
-<a id="more"></a>
 <h2 id="环境配置">环境配置</h2><ul>
 <li>安装JDK 1.7及以上，<a href="http://www.oracle.com/technetwork/cn/java/javase/downloads/jdk7-downloads-1880260.html" target="_blank" rel="external">JDK下载网址</a></li>
 <li><p>安装Android SDK ,最新的即可，用SDK Manager下载platform-tools和tools，以及需要的platforms,参考下载地址:<br><a href="http://dl.google.com/android/adt/adt-bundle-windows-x86-20140702.zip" target="_blank" rel="external">Win32</a>，<br><a href="http://dl.google.com/android/adt/adt-bundle-windows-x86_64-20140702.zip" target="_blank" rel="external">Win64</a></p>
@@ -170,8 +169,9 @@
 </li>
 <li>将提供的android-21文件夹粘贴到sdk的platforms文件夹下（因为我们的测试apk的版本是21）</li>
 </ul>
+<a id="more"></a>
 <hr>
-<h2 id="设置系统环境变量：">设置系统环境变量：</h2><p>将tools和platform－tools，以及build－tools的某一个版本文件夹加入到path路径中,将ant的bin目录加入到path路径中<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">JAVA_HOME :</span> jdk安装地址 如&lt; <span class="string">C:</span>\Program Files\Java\jdk1.7.0_79 &gt;</span><br><span class="line"><span class="string">ANDROID_HOME :</span> SDK存放的文件夹如&lt; <span class="string">D:</span>\adt\sdk &gt;</span><br><span class="line"><span class="string">ANT_HOME:</span> ant解压后的地址如&lt; <span class="string">C:</span>\apache-ant-<span class="number">1.7</span>.1 &gt;</span><br><span class="line"><span class="string">PATH:</span> %JAVA_HOME%\bin;</span><br><span class="line"><span class="string">PATH:</span> %ANDROID_HOME%\tools;</span><br><span class="line"><span class="string">PATH:</span> %ANDROID_HOME%\platform－tools;</span><br><span class="line"><span class="string">PATH:</span> %ANDROID_HOME%\build-tools\<span class="number">19.0</span>.0;   </span><br><span class="line">      <span class="comment">//19.0.0是你的build－tools文件夹下的某个版本号。</span></span><br><span class="line"><span class="string">PATH:</span> %ANT_HOME%\bin;</span><br></pre></td></tr></table></figure></p>
+<h2 id="设置系统环境变量：">设置系统环境变量：</h2><p>将tools和platform－tools，以及build－tools的某一个版本文件夹加入到path路径中,将ant的bin目录加入到path路径中<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">JAVA_HOME :</span> jdk安装地址 如&lt; <span class="string">C:</span>\Program Files\Java\jdk1.7.0_79 &gt;</span><br><span class="line"><span class="string">ANDROID_HOME :</span> SDK存放的文件夹如&lt; <span class="string">D:</span>\adt\sdk &gt;</span><br><span class="line"><span class="string">ANT_HOME:</span> ant解压后的地址如&lt; <span class="string">C:</span>\apache-ant-<span class="number">1.7</span>.1 &gt;</span><br><span class="line"><span class="string">PATH:</span> %JAVA_HOME%\bin;</span><br><span class="line"><span class="string">PATH:</span> %ANDROID_HOME%\tools;</span><br><span class="line"><span class="string">PATH:</span> %ANDROID_HOME%\platform－tools;</span><br><span class="line"><span class="string">PATH:</span> %ANDROID_HOME%\build-tools\<span class="number">19.0</span>.0;</span><br><span class="line">      <span class="comment">//19.0.0是你的build－tools文件夹下的某个版本号。</span></span><br><span class="line"><span class="string">PATH:</span> %ANT_HOME%\bin;</span><br></pre></td></tr></table></figure></p>
 <p>在cmd中输入ant测试ant环境是否配置正确<br>输入adb查看是否有help提示<br>输入aapt查看是否有help提示</p>
 <hr>
 <h2 id="使用">使用</h2><p>NATA默认读取 $ANADROID_HOME$ 环境变量作为sdk目录，sdk目录中的platforms为插桩apk时所需要使用的平台库。<br>NATA默认不进行soot方法插桩，因为插桩对于大型apk不一定插桩成功。<br>注意：我们假设apk的目标平台在sdk的platforms文件夹中存在！如果不存在，请用SDK Manager下载，或者看下面的问题5。</p>
@@ -199,7 +199,7 @@
 <li>web 产生的树状遍历图。</li>
 </ul>
 <hr>
-<h2 id="常见错误处理">常见错误处理</h2><p>如果出现错误，请看下面的内容是否能够帮助您：<br>1.Unsupported major.minor version 51.0 error? </p>
+<h2 id="常见错误处理">常见错误处理</h2><p>如果出现错误，请看下面的内容是否能够帮助您：<br>1.Unsupported major.minor version 51.0 error?</p>
 <blockquote>
 <p>答：请检查你的jdk版本，至少需要jdk1.7,请下载1.7的最新版本。</p>
 </blockquote>
