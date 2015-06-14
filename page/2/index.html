@@ -226,6 +226,12 @@
         
           <h1 id="缘起[2月16号]">缘起[2月16号]</h1><p>最近在学50音，学了将近一个月了，还是有些不熟练，详细学习情况在<a href="http://mclspace.com/goals/">我的目标</a>里有记录。观察了市面上专门学习50音的app少而且品质很差，因此萌生起制作一款精美的50音学习软件的想法，现在学习的群里他们有高级课程不过需要付费购买，尝试能否通过该app换一个vip资格【美梦中】。于是今天正式开坑。</p>
 <hr>
+<h1 id="UI雏形[2月26号]">UI雏形[2月26号]</h1><p>UI暂时仿照东京萌的<a href="http://app.hotokyo.com/50/">app</a>进行模仿，进行四个Activity的原型设计：MainActivity，ExerciseActivity。</p>
+<h2 id="MainActivity_主界面">MainActivity 主界面</h2><p>MainActivity是测试开始的界面，功能为开始进行练习，与放弃练习。进行练习将跳转到练习界面，放弃练习将跳转到学习界面<br><img src="http://icoco.qiniudn.com/image/yin50/MainActivity.PNG" alt="MainActivity"></p>
+<h2 id="LearnActivity_学习界面">LearnActivity 学习界面</h2><p>LearnActivity可以继续进行练习，也可以去学习50音的视频。点击”成为大神”将跳转到练习界面，点击”马上去学习”将开启web界面，为网络视频。<br><img src="http://icoco.qiniudn.com/image/yin50/LearnActivity.PNG" alt="LearnActivity"></p>
+<h2 id="ExerciseActivity_练习界面">ExerciseActivity 练习界面</h2><p>ExerciseActivity是进行练习的界面，有一个进度条进行读秒，6秒钟内不进行选择将右滑开启一个50音，知道该关卡所有50音测试完成，调到结果界面<br><img src="http://icoco.qiniudn.com/image/yin50/ExerciseActivity.PNG" alt="ExerciseActivity"></p>
+<h2 id="ResultActivity_结果界面">ResultActivity 结果界面</h2><p>ResultActivity是对练习结果进行总结的界面，将显示练习的速度，并据此给出评语。如果测试通过，则按钮为到下一关，转到测试开始的界面，若失败，则可以选择再来一遍。<br><img src="http://icoco.qiniudn.com/image/yin50/ResultActivity.PNG" alt="ResultActivity"></p>
+<hr>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/02/16/50yin/#more">
               閱讀全文 &raquo;
