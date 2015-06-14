@@ -271,13 +271,22 @@
 
       
         
-          Docker 学习笔记,记录常见docker命令和使用方法
+          <h2 id="前言">前言</h2><p>本篇为学习使用docker过程中的一些记录，学习docker的原因是希望使用docker在服务器上自动化部署本地编写的服务端程序。本文为学习笔记型文章，方便快速查阅，关于docker的安装等内容请移步<a href="docker.com">官网</a>,想系统的学习docker可以看dockerpool出的<a href="http://dockerpool.com/static/books/docker_practice">书</a>。<br>PS:下文的使用环境为macos</p>
+<h2 id="常用命令">常用命令</h2><ul>
+<li>获取镜像<code>docker pull</code>,如<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ docker pull <span class="string">ubuntu:</span><span class="number">12.04</span></span><br><span class="line">Pulling repository ubuntu</span><br><span class="line"><span class="string">ab8e2728644c:</span> Pulling dependent layers</span><br><span class="line"><span class="number">511136</span><span class="string">ea3c5a:</span> Download complete</span><br><span class="line"><span class="number">5</span><span class="string">f0ffaa9455e:</span> Download complete</span><br><span class="line"><span class="string">a300658979be:</span> Download complete</span><br><span class="line"><span class="number">904483</span><span class="string">ae0c30:</span> Download complete</span><br><span class="line"><span class="string">ffdaafd1ca50:</span> Download complete</span><br><span class="line"><span class="string">d047ae21eeaf:</span> Download complete</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>从 Docker Hub 仓库下载一个 Ubuntu 12.04 操作系统的镜像</p>
+<ul>
+<li>列出本地镜像<code>docker images</code>,如<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ docker images</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             <span class="keyword">VIRTUAL</span> SIZE</span><br><span class="line">nginx               latest              a785ba7493fd        <span class="number">12</span> days ago         <span class="number">132.9</span> MB</span><br><span class="line">hello-world         latest              <span class="number">91</span>c95931e552        <span class="number">7</span> weeks ago         <span class="number">910</span> B</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/06/09/docker-note/">
+            <a class="btn" href="/2015/06/09/docker-note/#more">
               阅读全文 &raquo;
             </a>
           </div>
-          
+        
       
     </div>
 
@@ -352,13 +361,23 @@
 
       
         
-          ionic leancloud 项目初始化
+          <h1 id="前言">前言</h1><p>最近用ionic做hybrid app的开发，这篇文章用来记录探索过程中遇到的方方面面。<br>声明：在开始这个项目之前本屌没有接触过任何web开发相关的知识,所以下面的内容是从一个初学者的角度出发。</p>
+<hr>
+<h2 id="前端">前端</h2><h3 id="总体">总体</h3><p>首先对ionic有所了解，直接看<a href="http://ionicframework.com/">官网</a>即可，跟着例子走一遍，有个直观的感觉。<br>然后前端要学的东西很多，html5，css，js等，这些可以在<a href="http://www.w3schools.com/">w3school</a>上学习,另外可以看看知乎上的<a href="http://www.zhihu.com/question/19651401">这个回答</a><br>另外ionic的逻辑是用angularJS写的，因此必须要对其有比较好的理解</p>
+<h3 id="编写ionic代码时的一些坑">编写ionic代码时的一些坑</h3><ol>
+<li><p>模块记得填写依赖，如下面代码中如果你的controller放在zlyc.controllers模块中，记得填写</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">angular.<span class="function"><span class="title">module</span><span class="params">(<span class="string">'zlyc'</span>, [<span class="string">'ionic'</span>, <span class="string">'zlyc.controllers'</span>])</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在js文件夹中的js文件需要初始化，默认只有app.js会初始化，初始化的方法是在index.html的<head> tag 中用script加载，如下:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- your app's js --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/app.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/controllers.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/services.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/utils.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/05/28/ionic-steup/">
+            <a class="btn" href="/2015/05/28/ionic-steup/#more">
               阅读全文 &raquo;
             </a>
           </div>
-          
+        
       
     </div>
 
@@ -434,6 +453,7 @@
       
         
           <h2 id="前言">前言</h2><p>本文为NATA用户手册,为使用该工具的用户提供帮助</p>
+<hr>
 <h2 id="环境配置">环境配置</h2><ul>
 <li>安装JDK 1.7及以上，<a href="http://www.oracle.com/technetwork/cn/java/javase/downloads/jdk7-downloads-1880260.html">JDK下载网址</a></li>
 <li><p>安装Android SDK ,最新的即可，用SDK Manager下载platform-tools和tools，以及需要的platforms,参考下载地址:<br><a href="http://dl.google.com/android/adt/adt-bundle-windows-x86-20140702.zip">Win32</a>，<br><a href="http://dl.google.com/android/adt/adt-bundle-windows-x86_64-20140702.zip">Win64</a></p>
@@ -522,13 +542,17 @@
 
       
         
-          eclipse 如何安装 fatjar.jar,eclipse如何对工程进行打包成jar，eclipse安装fatjar失败
+          <h1 id="Fatjar简介">Fatjar简介</h1><p>Fatjar.jar是eclipse上很方便进行打包的插件，对于较小的项目使用eclipse内置的打包jar可能就够了，但是如果工程较大，需要引用资源之类的，用fatjar比较方便省心。不过笔者在安装的时候遇到不少困难，不管是在线方式，还是离线方式都无法安装成功，现在纪录一下。在Windows =&gt; prefernce =&gt; fat jar preference 看到他就说明已经安装成功。</p>
+<hr>
+<h1 id="Fatjar在线安装">Fatjar在线安装</h1><p>help －&gt; Install New Sofware －&gt; Work with。<br>粘贴 <a href="http://kurucz-grafika.de/fatjar">http://kurucz-grafika.de/fatjar</a><br>然后回车，等待安装即可,时间较长</p>
+<hr>
+<h1 id="Fatjar手动安装">Fatjar手动安装</h1><p>在<a href="http://sourceforge.net/projects/fjep/">sourceforge</a>上手动下载最新版本（目前0.31），解压，将.jar文件复制粘贴到<br>$eclipse_Home\plugins文件夹下，重启eclipse即可。</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/05/10/Fatjar-install/">
+            <a class="btn" href="/2015/05/10/Fatjar-install/#more">
               阅读全文 &raquo;
             </a>
           </div>
-          
+        
       
     </div>
 
@@ -712,13 +736,20 @@
 
       
         
-          如何用emma产生android程序的测试覆盖率报告
+          <h1 id="Emma是什么？">Emma是什么？</h1><p>Emma是用来生成java程序代码覆盖率报告的工具，具体的介绍和简单教程请看之前博客的链接<a href="http://mclspace.com/2014/12/25/emma-tutorial/">EMMA教程</a>。而EMMA这款工具怎么生成安卓测试程序运行安卓程序的代码覆盖率呢？上网查了很多教程，但大多冗余没有干货，抄来抄去没有新的内容，导致能解决我的问题的内容少之又少。于是整理一下今天使用Emma的一些难点和心得。</p>
+<hr>
+<h1 id="环境准备">环境准备</h1><ul>
+<li>Android SDK</li>
+<li>ANT</li>
+</ul>
+<p>没有的搜一下网上的教程就好，这里我们要用到ant进行插装编译，ant中集成了emma，所以emma也不用下了。这里的使用环境为Windows，SDK版本为Android-21.注意EMMA只能对有源码的工程进行覆盖率监测。</p>
+<hr>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/03/12/android-emma-coverage-md/">
+            <a class="btn" href="/2015/03/12/android-emma-coverage-md/#more">
               阅读全文 &raquo;
             </a>
           </div>
-          
+        
       
     </div>
 
@@ -793,13 +824,21 @@
 
       
         
-          mac 如何配置java_home环境变量
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/03/10/mac_java_home/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          
+          <h2 id="打开终端，新建-bash_profile文件">打开终端，新建.bash_profile文件</h2><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">cd</span> <span class="regexp">~</span><br><span class="line">vim</span> .bash_profile</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="输入java_home环境变量,并保存">输入java_home环境变量,并保存</h2><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export JAV<span class="built_in">A_HOME</span>=$(/usr/libexec/jav<span class="built_in">a_home</span> -v <span class="number">1.8</span>)</span><br></pre></td></tr></table></figure>
+<p>这种方法可以动态地获取这个环境变量，当自动升级了新版本的JAVA时，总能找到合适的JAVA_HOME目录，这里-v 可以指定java的版本，也可以不写使用默认的JAVA_HOME 路径</p>
+<hr>
+<h2 id="更新配置文件">更新配置文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> .bash_profile</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="查看java_home环境变量">查看java_home环境变量</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$JAVA_HOME</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="永久配置">永久配置</h2><p>上面的方法配置的用户环境变量，并不是永久的配置方法，要永久配置要设置/etc目录下地profile文件<br><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd /etc</span><br><span class="line">sudo vim profile</span><br><span class="line">在文件中添加</span><br><span class="line">JAV<span class="built_in">A_HOME</span>=$(/usr/libexec/jav<span class="built_in">a_home</span> -v <span class="number">1.8</span>)</span><br><span class="line">export JAV<span class="built_in">A_HOME</span></span><br></pre></td></tr></table></figure></p>
+<p>然后强制保存退出，重启或注销使环境变量配置起作用。</p>
+<hr>
+<h2 id="参考">参考</h2><p><a href="http://songzhan.iteye.com/blog/1893074" target="_blank" rel="external">http://songzhan.iteye.com/blog/1893074</a><br><a href="http://www.micmiu.com/lang/java/set-javahome-on-mac-os-x/" target="_blank" rel="external">http://www.micmiu.com/lang/java/set-javahome-on-mac-os-x/</a><br><a href="https://stackoverflow.com/questions/1348842/what-should-i-set-java-home-to-on-osx" target="_blank" rel="external">https://stackoverflow.com/questions/1348842/what-should-i-set-java-home-to-on-osx</a></p>
+
+        
       
     </div>
 
@@ -874,13 +913,11 @@
 
       
         
-          Android Studio 如何彻底删除Project
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/03/02/android_studio_remove_project/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          
+          <h1 id="缘起">缘起</h1><p>之前试用过Android Studio，但是因为要删除一个Project总是删除不掉，就算能delete掉内容，目录却怎么也删不掉，抓狂了，卸了。不过Android Studio毕竟是安卓开发的未来，现在出了正式版，所以又来试用了，这次这个问题在stackOverFlow上得到了解答。</p>
+<hr>
+<h1 id="方法">方法</h1><p>点击 File -&gt; Close Project。然后在文件目录中切到AndroidStudioProjects，在其中删除这个Project的文件夹即可，简单不？</p>
+
+        
       
     </div>
 
@@ -955,13 +992,19 @@
 
       
         
-          git将本地仓库推送到远程仓库
+          <h2 id="缘起">缘起</h2><p>想把原来PC上的项目上传到github上，以在新PC上clone下来继续开发，不过许久不用又忘记怎么把本地项目推送到github上去了，于是记录一下.</p>
+<hr>
+<h2 id="创建本地仓库">创建本地仓库</h2><p>创建本地仓库很简单，在要推送的项目文件夹下输入<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">git</span> init</span><br></pre></td></tr></table></figure></p>
+<p>初始化仓库就算创建好本地仓库了.</p>
+<hr>
+<h2 id="在github上创建远程仓库">在github上创建远程仓库</h2><p>在github上创建新的仓库，用来和本地仓库进行连接,例如我创建了一个新的仓库叫<a href="https://github.com/rdmclin2/yin50">yin50</a>.</p>
+<hr>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/03/02/git_local_to_remote_responsity/">
+            <a class="btn" href="/2015/03/02/git_local_to_remote_responsity/#more">
               阅读全文 &raquo;
             </a>
           </div>
-          
+        
       
     </div>
 
