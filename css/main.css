@@ -1201,7 +1201,7 @@ input.menu-search-input {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #1afedb;
+  background: #ffc6ff;
 }
 .sidebar-nav {
   margin: 0;
@@ -2062,7 +2062,7 @@ ul li {
 .logo-line-after i {
   position: relative;
   display: block;
-  height: 4px;
+  height: 2px;
   background: #222;
 }
 @media (max-width: 767px) {
