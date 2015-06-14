@@ -1,773 +1,1089 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html class="theme-next use-motion ">
 <head>
-  <meta charset="utf-8">
   
-  <title>Mcl&#39;s space</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="mclspace | java | blog | algorithm | bigdata">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Mcl's space">
-<meta property="og:url" content="http://www.mclspace.com/index.html">
-<meta property="og:site_name" content="Mcl's space">
-<meta property="og:description" content="mclspace | java | blog | algorithm | bigdata">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mcl's space">
-<meta name="twitter:description" content="mclspace | java | blog | algorithm | bigdata">
-  
-    <link rel="alternative" href="/atom.xml" title="Mcl&#39;s space" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.ico">
-  
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
-  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
-  
-<script type="text/javascript">
-var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F6b26d13232555e4d64b5a8c3567ccda9' type='text/javascript'%3E%3C/script%3E"));
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+
+
+    <meta name="description" content="mclspace | java | blog | algorithm | bigdata" />
+
+
+
+  <meta name="keywords" content="Hexo,next" />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.3" />
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    analytics: {
+      google: ''
+    },
+    sidebar: 'post'
+  };
 </script>
 
-  <!--%- partial('google-analytics') %-->
 
+
+
+  <title> Mcl's space </title>
 </head>
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Mcl&#39;s space</a>
-      </h1>
+<!--[if lte IE 8]> <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'> <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode"><img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari." style='margin-left:auto;margin-right:auto;display: block;'/></a></div> <![endif]-->
+  <div class="container one-column 
+   page-home 
+">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">Mcl's space</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+     
+    
       
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">Let’s Build Something Awesome!</a>
-        </h2>
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          首頁
+        </a>
+      </li>
+    
       
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">主页</a>
-        
-          <a class="main-nav-link" href="/archives">档案</a>
-        
-          <a class="main-nav-link" href="/about">关于</a>
-        
-          <a class="main-nav-link" href="/quotation">名言</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
-          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
-          <input type="submit" value="" class="search-form-submit">
-          <input name=tn type=hidden value="bds">
-          <input name=cl type=hidden value="3">
-          <input name=ct type=hidden value="2097152">
-          <input type="hidden" name="si" value="www.mclspace.com">
-        </form>
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          歸檔
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          標籤
+        </a>
+      </li>
+    
+  </ul>
+
+
       </div>
     </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-how-to-build-an-ionic-app-from-scratch" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/06/12/how-to-build-an-ionic-app-from-scratch/" class="article-date">
-  <time datetime="2015-06-12T06:18:55.000Z" itemprop="datePublished">6月 12 2015</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/dev/">dev</a>
-  </div>
 
-  </div>
-  <div class="article-inner">
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+  <div id="posts" class="posts-expand">
     
-    
-      <header class="article-header">
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2015/06/12/how-to-build-an-ionic-app-from-scratch/">
+                如何从零开始构建一个ionic应用[updating]
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2015-06-12
+        </span>
+
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/06/12/how-to-build-an-ionic-app-from-scratch/">如何从零开始构建一个ionic应用[updating]</a>
-    </h1>
-  
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/dev/">dev</a>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言">前言</h2><p>本文为从零创建ionic应用的教程，将会持续更新，直到完成。</p>
-<h1 id="#">#</h1>
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://www.mclspace.com/2015/06/12/how-to-build-an-ionic-app-from-scratch/" data-id="ciav47c8u000xy5bdsftjgy6p" class="article-share-link" data-share="baidu">分享到</a>
-      
+              
+              
 
-      
-        <a href="http://www.mclspace.com/2015/06/12/how-to-build-an-ionic-app-from-scratch/#ds-thread" class="article-comment-link">Comments</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dev/">dev</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ionic/">ionic</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-docker-note" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/06/09/docker-note/" class="article-date">
-  <time datetime="2015-06-09T12:20:10.000Z" itemprop="datePublished">6月 9 2015</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/dev/">dev</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+            
+          </span>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/06/09/docker-note/">Docker 学习笔记</a>
-    </h1>
-  
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言">前言</h2><p>本篇为学习使用docker过程中的一些记录，学习docker的原因是希望使用docker在服务器上自动化部署本地编写的服务端程序。本文为学习笔记型文章，方便快速查阅，关于docker的安装等内容请移步<a href="docker.com">官网</a>,想系统的学习docker可以看dockerpool出的<a href="http://dockerpool.com/static/books/docker_practice">书</a>。<br>PS:下文的使用环境为macos<br>
         
-          <p class="article-more-link">
-            <a href="/2015/06/09/docker-note/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://www.mclspace.com/2015/06/09/docker-note/" data-id="ciav47c9e001ny5bdtq0oqnpo" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="http://www.mclspace.com/2015/06/09/docker-note/#ds-thread" class="article-comment-link">Comments</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dev/">dev</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-ionic-steup" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/05/28/ionic-steup/" class="article-date">
-  <time datetime="2015-05-28T04:47:44.000Z" itemprop="datePublished">5月 28 2015</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/dev/">dev</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/28/ionic-steup/">ionic 项目记录</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言">前言</h1><p>最近用ionic做hybrid app的开发，这篇文章用来记录探索过程中遇到的方方面面。<br>声明：在开始这个项目之前本屌没有接触过任何web开发相关的知识,所以下面的内容是从一个初学者的角度出发。</p>
-        
-          <p class="article-more-link">
-            <a href="/2015/05/28/ionic-steup/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://www.mclspace.com/2015/05/28/ionic-steup/" data-id="ciav47c8r000qy5bd0wn09e38" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="http://www.mclspace.com/2015/05/28/ionic-steup/#ds-thread" class="article-comment-link">Comments</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dev/">dev</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-nata-user-manual" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/05/13/nata-user-manual/" class="article-date">
-  <time datetime="2015-05-13T08:31:52.000Z" itemprop="datePublished">5月 13 2015</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/test/">test</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/13/nata-user-manual/">NATA 用户手册</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言">前言</h2><p>本文为NATA用户手册,为使用该工具的用户提供帮助</p>
-        
-          <p class="article-more-link">
-            <a href="/2015/05/13/nata-user-manual/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://www.mclspace.com/2015/05/13/nata-user-manual/" data-id="ciav47c880007y5bd4b0ki78d" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="http://www.mclspace.com/2015/05/13/nata-user-manual/#ds-thread" class="article-comment-link">Comments</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/test/">test</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Fatjar-install" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/05/10/Fatjar-install/" class="article-date">
-  <time datetime="2015-05-10T14:53:51.000Z" itemprop="datePublished">5月 10 2015</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/dev/">dev</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/10/Fatjar-install/">Eclipse 安装 Fatjar.jar失败的解决方法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Fatjar简介">Fatjar简介</h1><p>Fatjar.jar是eclipse上很方便进行打包的插件，对于较小的项目使用eclipse内置的打包jar可能就够了，但是如果工程较大，需要引用资源之类的，用fatjar比较方便省心。不过笔者在安装的时候遇到不少困难，不管是在线方式，还是离线方式都无法安装成功，现在纪录一下。在Windows =&gt; prefernce =&gt; fat jar preference 看到他就说明已经安装成功。</p>
-        
-          <p class="article-more-link">
-            <a href="/2015/05/10/Fatjar-install/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://www.mclspace.com/2015/05/10/Fatjar-install/" data-id="ciav47c9u0029y5bddomendx1" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="http://www.mclspace.com/2015/05/10/Fatjar-install/#ds-thread" class="article-comment-link">Comments</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dev/">dev</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-MacThings" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/04/03/MacThings/" class="article-date">
-  <time datetime="2015-04-03T13:25:12.000Z" itemprop="datePublished">4月 3 2015</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/mac/">mac</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/04/03/MacThings/">Mac 那些事</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="纪录使用mac过程遇到的问题和好的实践">纪录使用mac过程遇到的问题和好的实践</h1>
-        
-          <p class="article-more-link">
-            <a href="/2015/04/03/MacThings/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://www.mclspace.com/2015/04/03/MacThings/" data-id="ciav47c9r0026y5bdjfrvgvu5" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="http://www.mclspace.com/2015/04/03/MacThings/#ds-thread" class="article-comment-link">Comments</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/">mac</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-android-emma-coverage-md" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/03/12/android-emma-coverage-md/" class="article-date">
-  <time datetime="2015-03-12T14:37:47.000Z" itemprop="datePublished">3月 12 2015</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/android/">android</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/03/12/android-emma-coverage-md/">如何用emma产生android程序的测试覆盖率报告</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Emma是什么？">Emma是什么？</h1><p>Emma是用来生成java程序代码覆盖率报告的工具，具体的介绍和简单教程请看之前博客的链接<a href="http://mclspace.com/2014/12/25/emma-tutorial/">EMMA教程</a>。而EMMA这款工具怎么生成安卓测试程序运行安卓程序的代码覆盖率呢？上网查了很多教程，但大多冗余没有干货，抄来抄去没有新的内容，导致能解决我的问题的内容少之又少。于是整理一下今天使用Emma的一些难点和心得。</p>
-        
-          <p class="article-more-link">
-            <a href="/2015/03/12/android-emma-coverage-md/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://www.mclspace.com/2015/03/12/android-emma-coverage-md/" data-id="ciav47c9m001zy5bdrq025j2z" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="http://www.mclspace.com/2015/03/12/android-emma-coverage-md/#ds-thread" class="article-comment-link">Comments</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/test/">test</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-mac_java_home" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/03/10/mac_java_home/" class="article-date">
-  <time datetime="2015-03-10T02:48:31.000Z" itemprop="datePublished">3月 10 2015</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/mac/">mac</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/03/10/mac_java_home/">mac 如何配置java_home环境变量</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="打开终端，新建-bash_profile文件">打开终端，新建.bash_profile文件</h2><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">cd</span> <span class="regexp">~</span><br><span class="line">vim</span> .bash_profile</span><br></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a href="/2015/03/10/mac_java_home/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://www.mclspace.com/2015/03/10/mac_java_home/" data-id="ciav47c8k000jy5bd03819amr" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="http://www.mclspace.com/2015/03/10/mac_java_home/#ds-thread" class="article-comment-link">Comments</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/">mac</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-android_studio_remove_project" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/03/02/android_studio_remove_project/" class="article-date">
-  <time datetime="2015-03-02T13:57:06.000Z" itemprop="datePublished">3月 2 2015</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/dev/">dev</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/03/02/android_studio_remove_project/">Android Studio 如何彻底删除Project</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="缘起">缘起</h1><p>之前试用过Android Studio，但是因为要删除一个Project总是删除不掉，就算能delete掉内容，目录却怎么也删不掉，抓狂了，卸了。不过Android Studio毕竟是安卓开发的未来，现在出了正式版，所以又来试用了，这次这个问题在stackOverFlow上得到了解答。</p>
-        
-          <p class="article-more-link">
-            <a href="/2015/03/02/android_studio_remove_project/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://www.mclspace.com/2015/03/02/android_studio_remove_project/" data-id="ciav47c9k001vy5bd6aqjzmha" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="http://www.mclspace.com/2015/03/02/android_studio_remove_project/#ds-thread" class="article-comment-link">Comments</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-git_local_to_remote_responsity" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/03/02/git_local_to_remote_responsity/" class="article-date">
-  <time datetime="2015-03-02T11:19:30.000Z" itemprop="datePublished">3月 2 2015</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/dev/">dev</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/03/02/git_local_to_remote_responsity/">git将本地仓库推送到远程仓库</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="缘起">缘起</h2><p>想把原来PC上的项目上传到github上，以在新PC上clone下来继续开发，不过许久不用又忘记怎么把本地项目推送到github上去了，于是记录一下.<br>
-        
-          <p class="article-more-link">
-            <a href="/2015/03/02/git_local_to_remote_responsity/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://www.mclspace.com/2015/03/02/git_local_to_remote_responsity/" data-id="ciav47c910015y5bd0l41id6w" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="http://www.mclspace.com/2015/03/02/git_local_to_remote_responsity/#ds-thread" class="article-comment-link">Comments</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
-  
-</section>
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/06/12/how-to-build-an-ionic-app-from-scratch/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/12/how-to-build-an-ionic-app-from-scratch/"></span>
+            </a>
+          </span>
+          
         
       </div>
-      <footer id="footer">
-  
-    <aside id="sidebar" class="outer">
-  
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          如何从零开始构建一个ionic应用
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/06/12/how-to-build-an-ionic-app-from-scratch/">
+              閱讀全文 &raquo;
+            </a>
+          </div>
+          
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/android/">android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/dev/">dev</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/internet/">internet</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/life/">life</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mac/">mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/test/">test</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/testing/">testing</a><span class="category-list-count">3</span></li></ul>
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2015/06/09/docker-note/">
+                Docker 学习笔记
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2015-06-09
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/dev/">dev</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/06/09/docker-note/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/09/docker-note/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          Docker 学习笔记,记录常见docker命令和使用方法
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/06/09/docker-note/">
+              閱讀全文 &raquo;
+            </a>
+          </div>
+          
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </div>
   </div>
 
-  
+
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/app/">app</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bug/">bug</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dev/">dev</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fsm/">fsm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/internet/">internet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ionic/">ionic</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a><span class="tag-list-count">5</span></li></ul>
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2015/05/28/ionic-steup/">
+                ionic 项目记录
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2015-05-28
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/dev/">dev</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/05/28/ionic-steup/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/05/28/ionic-steup/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          ionic leancloud 项目初始化
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/05/28/ionic-steup/">
+              閱讀全文 &raquo;
+            </a>
+          </div>
+          
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </div>
   </div>
 
-  
+
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/android/" style="font-size: 17.5px;">android</a><a href="/tags/app/" style="font-size: 10px;">app</a><a href="/tags/bug/" style="font-size: 10px;">bug</a><a href="/tags/dev/" style="font-size: 17.5px;">dev</a><a href="/tags/fsm/" style="font-size: 10px;">fsm</a><a href="/tags/git/" style="font-size: 10px;">git</a><a href="/tags/hexo/" style="font-size: 15px;">hexo</a><a href="/tags/internet/" style="font-size: 10px;">internet</a><a href="/tags/ionic/" style="font-size: 10px;">ionic</a><a href="/tags/java/" style="font-size: 12.5px;">java</a><a href="/tags/js/" style="font-size: 10px;">js</a><a href="/tags/mac/" style="font-size: 15px;">mac</a><a href="/tags/markdown/" style="font-size: 12.5px;">markdown</a><a href="/tags/test/" style="font-size: 20px;">test</a>
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2015/05/13/nata-user-manual/">
+                NATA 用户手册
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2015-05-13
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/test/">test</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/05/13/nata-user-manual/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/05/13/nata-user-manual/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <h2 id="前言">前言</h2><p>本文为NATA用户手册,为使用该工具的用户提供帮助</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/05/13/nata-user-manual/#more">
+              閱讀全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </div>
   </div>
 
-  
+
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a><span class="archive-list-count">2</span></li></ul>
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2015/05/10/Fatjar-install/">
+                Eclipse 安装 Fatjar.jar失败的解决方法
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2015-05-10
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/dev/">dev</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/05/10/Fatjar-install/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/05/10/Fatjar-install/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          eclipse 如何安装 fatjar.jar,eclipse如何对工程进行打包成jar，eclipse安装fatjar失败
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/05/10/Fatjar-install/">
+              閱讀全文 &raquo;
+            </a>
+          </div>
+          
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </div>
   </div>
 
-  
+
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">近期文章</h3>
-    <div class="widget">
-      <ul>
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2015/04/03/MacThings/">
+                Mac 那些事
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2015-04-03
+        </span>
+
         
-          <li>
-            <a href="/2015/06/12/how-to-build-an-ionic-app-from-scratch/">如何从零开始构建一个ionic应用[updating]</a>
-          </li>
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/mac/">mac</a>
+
+              
+              
+
+            
+          </span>
         
-          <li>
-            <a href="/2015/06/09/docker-note/">Docker 学习笔记</a>
-          </li>
+
         
-          <li>
-            <a href="/2015/05/28/ionic-steup/">ionic 项目记录</a>
-          </li>
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/04/03/MacThings/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/04/03/MacThings/"></span>
+            </a>
+          </span>
+          
         
-          <li>
-            <a href="/2015/05/13/nata-user-manual/">NATA 用户手册</a>
-          </li>
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
         
-          <li>
-            <a href="/2015/05/10/Fatjar-install/">Eclipse 安装 Fatjar.jar失败的解决方法</a>
-          </li>
+          <h1 id="纪录使用mac过程遇到的问题和好的实践">纪录使用mac过程遇到的问题和好的实践</h1>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/04/03/MacThings/#more">
+              閱讀全文 &raquo;
+            </a>
+          </div>
         
-      </ul>
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </div>
   </div>
 
-  
+
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">友情链接</h3>
-    <div class="widget">
-      <ul>
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2015/03/12/android-emma-coverage-md/">
+                如何用emma产生android程序的测试覆盖率报告
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2015-03-12
+        </span>
+
         
-          <li>
-            <a href="http://chuan92.com" target="_blank">真三</a>
-          </li>
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/android/">android</a>
+
+              
+              
+
+            
+          </span>
         
-          <li>
-            <a href="https://chepeatio.github.io" target="_blank">开大</a>
-          </li>
+
         
-      </ul>
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/03/12/android-emma-coverage-md/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/03/12/android-emma-coverage-md/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          如何用emma产生android程序的测试覆盖率报告
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/03/12/android-emma-coverage-md/">
+              閱讀全文 &raquo;
+            </a>
+          </div>
+          
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </div>
   </div>
 
-  
-</aside>
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2015 Calvin Meng<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-      .
-      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">主页</a>
-  
-    <a href="/archives" class="mobile-nav-link">档案</a>
-  
-    <a href="/about" class="mobile-nav-link">关于</a>
-  
-    <a href="/quotation" class="mobile-nav-link">名言</a>
-  
-</nav>
+
     
-<!-- 多说公共js代码 start -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"co-co"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] 
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-  </script>
-<!-- 多说公共js代码 end -->
+      
 
+  <div class="post post-type-normal ">
+    <div class="post-header">
 
-<!-- 百度分享 start -->
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2015/03/10/mac_java_home/">
+                mac 如何配置java_home环境变量
+              </a>
+            
+          
+        </h1>
+      
 
-<div id="article-share-box" class="article-share-box">
-  <div id="bdshare" class="bdsharebuttonbox article-share-links">
-    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
-    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
-    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
-    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
-    <a class="article-share-more" data-cmd="more" title="更多"></a> 
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2015-03-10
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/mac/">mac</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/03/10/mac_java_home/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/03/10/mac_java_home/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          mac 如何配置java_home环境变量
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/03/10/mac_java_home/">
+              閱讀全文 &raquo;
+            </a>
+          </div>
+          
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
   </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2015/03/02/android_studio_remove_project/">
+                Android Studio 如何彻底删除Project
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2015-03-02
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/dev/">dev</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/03/02/android_studio_remove_project/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/03/02/android_studio_remove_project/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          Android Studio 如何彻底删除Project
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/03/02/android_studio_remove_project/">
+              閱讀全文 &raquo;
+            </a>
+          </div>
+          
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2015/03/02/git_local_to_remote_responsity/">
+                git将本地仓库推送到远程仓库
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2015-03-02
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/dev/">dev</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/03/02/git_local_to_remote_responsity/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/03/02/git_local_to_remote_responsity/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          git将本地仓库推送到远程仓库
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/03/02/git_local_to_remote_responsity/">
+              閱讀全文 &raquo;
+            </a>
+          </div>
+          
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+  </div>
+
+  
+  <div class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
+  </div>
+
+
+        </div>
+
+        
+      </div>
+
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="Calvin Meng" />
+          <p class="site-author-name">Calvin Meng</p>
+        </div>
+        <p class="site-description motion-element">mclspace | java | blog | algorithm | bigdata</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">文章</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">分類</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-name">標籤</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+      </div>
+
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">Calvin Meng</span>
 </div>
-<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"nocss.css"}};with(document)0[(getElementsByTagName("head")[0]||body).appendChild(createElement("script")).src="http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion="+~(-new Date()/36e5)];</script>
 
-<!-- 百度分享 end -->
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 強力驅動
+</div>
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<div class="theme-info">
+  主題 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
 
+      </div>
+    </div>
 
-<script src="/js/script.js" type="text/javascript"></script>
+    <div class="back-to-top"></div>
   </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js" id="motion.global"></script>
+
+
+
+
+  
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"co-co"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+  
+  
+
 </body>
 </html>
