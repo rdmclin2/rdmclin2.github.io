@@ -217,7 +217,16 @@
 <li><p><ion-nav-view name="menuContent">  可以指定名字，然后在子状态中使用该名字，ionic就知道该把该状态的template渲染到哪边了。例如：</ion-nav-view></p>
 <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"> // signup page</span></span><br><span class="line"> .state(<span class="string">'auth.signup'</span>, &#123;</span><br><span class="line">   url: <span class="string">'/signup'</span>,</span><br><span class="line">   views: &#123;</span><br><span class="line">       <span class="string">'auth-signup'</span>: &#123;</span><br><span class="line">           templateUrl: <span class="string">'templates/auth-signup.html'</span>,</span><br><span class="line">           controller: <span class="string">'SignUpCtrl'</span></span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;)</span><br><span class="line"></span><br><span class="line"> 另有一个tabs中声明该auth-signup:</span><br><span class="line"> &lt;ion-<span class="constant">tab</span> title=<span class="string">"Sign Up"</span> icon-<span class="command"><span class="keyword">on</span>=<span class="string">"ion-ios-personadd"</span></span></span><br><span class="line">   icon-off=<span class="string">"ion-ios-personadd-outline"</span> href=<span class="string">"#/auth/signup"</span>&gt;</span><br><span class="line">   &lt;ion-nav-view name=<span class="string">"auth-signup"</span>&gt;&lt;/ion-nav-view&gt;</span><br><span class="line">&lt;/ion-<span class="constant">tab</span>&gt;</span><br></pre></td></tr></table></figure>
 </li>
+<li><p>按<code>ionic serve</code>命令时，ionic报错如下: </p>
+<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ionic $ An uncaught <span class="keyword">exception</span> occured <span class="keyword">and</span> has been reported <span class="keyword">to</span> Ionic</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
+<p>看看你是不还有一个终端在运行着serve呢？</p>
+<ol>
+<li>注意.state中的url中不能有url，否则定位不到,如<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.<span class="keyword">state</span>('sidemenu.<span class="keyword">user</span>Manage',&#123;</span><br><span class="line">  url: <span class="string">"/user_manage"</span>,</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>注意不要加下划线</p>
 <hr>
 <h2 id="后端">后端</h2><h3 id="Node">Node</h3><p>现在写后端比较火的是用<a href="http://nodejs.org/" target="_blank" rel="external">nodejs</a>编写，然后nodejs有个很好的应用开发框架叫<a href="http://expressjs.com/zh/" target="_blank" rel="external">Express</a>，这里<a href="http://cwbuecheler.com/web/tutorials/2013/node-express-mongo/" target="_blank" rel="external">有篇文章</a>是教你如何从零开始搭建node,express,monggodb服务器，<a href="http://www.unfish.net/archives/772-20131207.html" target="_blank" rel="external">这里</a>是国人翻译的版本.</p>
 <h3 id="NodeJs_后端开发记录">NodeJs 后端开发记录</h3><p>上面推荐的文章是webapp的方式，和我们的需求有些不同，这篇文章<a href="http://thejackalofjavascript.com/an-end-to-end-hybrid-app/" target="_blank" rel="external">an-end-to-end-hybrid-app</a>和ionic结合的更紧密，推荐阅读。</p>
@@ -354,7 +363,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -368,7 +377,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

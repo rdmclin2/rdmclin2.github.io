@@ -146,87 +146,6 @@
           
           
             
-              <a class="post-title-link" href="/2015/06/12/how-to-build-an-ionic-app-from-scratch/">
-                如何从零开始构建一个ionic应用[updating]
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于 2015-06-12
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; 分类于
-            
-              <a href="/categories/dev/">dev</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/06/12/how-to-build-an-ionic-app-from-scratch/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/12/how-to-build-an-ionic-app-from-scratch/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          如何从零开始构建一个ionic应用
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/06/12/how-to-build-an-ionic-app-from-scratch/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
               <a class="post-title-link" href="/2015/06/09/docker-note/">
                 Docker 学习笔记
               </a>
@@ -1024,6 +943,90 @@
 
 
     
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2015/02/28/hexo_from_windows_to_mac/">
+                hexo写作环境从windows转到mac
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-02-28
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/02/28/hexo_from_windows_to_mac/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/02/28/hexo_from_windows_to_mac/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <h2 id="前言">前言</h2><p>最近买了mac，但是博客还得写，于是需要把hexo的写作环境从windows迁移到mac上来.这里作一下纪录.</p>
+<hr>
+<h2 id="配置环境">配置环境</h2><p>在mac上安装nodejs和hexo,这里和window上安装的步骤差不多，可以看我之前的一篇文章<a href="http://mclspace.com/2014/10/19/about-hexo/" target="_blank" rel="external">hexo 简易教程 入门</a>,这里注意hexo初始化的时候要记得设定文件夹。<br>PS:安装hexo的时候如果出错，可以尝试加sudo.</p>
+<hr>
+<h2 id="设置git">设置git</h2><p>如果新机器没有安装git，可以在terminal中输入git，mac会提示你帮你装git的。然后为你的新机器产生ssh，添加到github上去，ssh key的产生命令为：<br><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"xxx<span class="variable">@xxx</span>.com"</span></span><br><span class="line">你也可以用：</span><br><span class="line">ssh git<span class="variable">@github</span>.com</span><br><span class="line">进行测试</span><br></pre></td></tr></table></figure></p>
+<p>生成的ssh key纪录在~/.ssh文件夹的id_rsa.pub中，把里面的内容粘贴到github设备key列表中就好。</p>
+<p><code>更新</code></p>
+<blockquote>
+<p>hexo 更新到3.0之后，需要把_config.yml中的github修改为git才能正常deploy。然后执行<code>npm install hexo-deployer-git --save</code></p>
+</blockquote>
+<hr>
+<h2 id="迁移">迁移</h2><p>迁移没有我想象的那么困难，把原博客的文件夹中的_config.yml,scaffolds,source,themes文件或文件夹整个搞过来对mac下的博客文件夹进行覆盖<br>然后<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">g</span></span><br><span class="line">hexo <span class="literal">d</span></span><br></pre></td></tr></table></figure></p>
+<p>ok,如果你还想再windows上和mac同时写文章，可以看看下面的参考。</p>
+<hr>
+<h2 id="参考">参考</h2><ul>
+<li><a href="https://hongbinzuo.github.io/2014/02/05/hexo-migration-from-ubuntu-linux-to-windows/" target="_blank" rel="external">Hexo写作环境从Ubuntu迁移到Windows</a></li>
+<li><a href="http://www.cnblogs.com/mjiayou/p/3791373.html" target="_blank" rel="external">Hexo-Mac下搭建hexo博客全过程</a></li>
+<li><a href="https://qichaochen.github.io/2014/10/07/082-Hexo-Windows-Deployment-Problem/" target="_blank" rel="external">如何在Mac和Windows下同时使用同一个Hexo项目</a></li>
+</ul>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
   </div>
 
   
@@ -1062,7 +1065,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1076,7 +1079,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
