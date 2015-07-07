@@ -17,6 +17,8 @@
   <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
 
 
+
+
 <link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
 
 
@@ -61,7 +63,16 @@
 </head>
 
 <body>
-<!--[if lte IE 8]> <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'> <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode"><img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari." style='margin-left:auto;margin-right:auto;display: block;'/></a></div> <![endif]-->
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+
   <div class="container one-column page-post-detail">
     <div class="headband"></div>
 
@@ -78,50 +89,67 @@
   <span class="logo-line-after"><i></i></span>
 </h1>
 
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
 
-  <ul id="menu" class="menu">
-     
-    <!--增加swiftype搜索功能-->
-    <form class="menu-item menu-item-search">
-      <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
-    </form>
-    
-    <script type="text/javascript">
-      (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
-      (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
-      e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
-      })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+<div class="site-nav">
+  
 
-      _st('install','1ypRdYxJz8SMZBUve9JB','2.0.0');
-    </script>
-    <!--增加swiftype搜索功能end-->
-    
-    
+  
+    <ul id="menu" class="menu menu-left">
       
-      <li class="menu-item menu-item-home">
-        <a href="/">
-          <i class="menu-item-icon icon-home"></i> <br />
-          首页
-        </a>
-      </li>
-    
+        
+        <li class="menu-item menu-item-home">
+          <a href="/">
+            <i class="menu-item-icon icon-home"></i> <br />
+            首页
+          </a>
+        </li>
       
-      <li class="menu-item menu-item-archives">
-        <a href="/archives">
-          <i class="menu-item-icon icon-archives"></i> <br />
-          归档
-        </a>
-      </li>
-    
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            <i class="menu-item-icon icon-archives"></i> <br />
+            归档
+          </a>
+        </li>
       
-      <li class="menu-item menu-item-tags">
-        <a href="/tags">
-          <i class="menu-item-icon icon-tags"></i> <br />
-          标签
-        </a>
-      </li>
-    
-  </ul>
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            <i class="menu-item-icon icon-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+<form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', '1ypRdYxJz8SMZBUve9JB','2.0.0');
+</script>
+
+<div class="site-search-toggle"></div>
+    </div>
+  
+</div>
 
 
       </div>
@@ -152,7 +180,7 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 2015-06-26
+          发表于 Jun 26 2015
         </span>
 
         
@@ -190,6 +218,12 @@
         <h2 id="为什么要学习前后端开发">为什么要学习前后端开发</h2><p>javascript目前是github上最火的语言，可以在<a href="http://githut.info/" target="_blank" rel="external">githut</a>上查看github的语言指数,也可以到<a href="http://githubranking.com/repositories" target="_blank" rel="external">githubranking</a>上看排名靠前的库的star数量，几乎都和js，前端有关。<br>在学习ionic的过程中接触到了非常多的前端后端开发的概念，每一次看到优秀的js库都让我心潮澎湃，不禁想记录下来自己的学习路线，接触到的开源项目等。因为<a href="https://nodejs.org/" target="_blank" rel="external">nodejs</a>的出现让js具备了进军后端的能力，而<a href="https://angularjs.org/" target="_blank" rel="external">angularjs</a>让web进入mobile developing的领域，另外<a href="http://electron.atom.io/" target="_blank" rel="external">electron</a>让web能够访问系统资源，催生了atom,slack等一批native web app的诞生。<br>因此本屌觉得javascript潜力无限，未来定是web的世界，是时候学习一波web开发了。</p>
 <p>PS:开始写这篇博文的时候刚接触前端开发1个月左右，言语多有不当之处请指出。<br><a id="more"></a></p>
 <hr>
+<h2 id="一些基础概念">一些基础概念</h2><p>简单了解即可</p>
+<ul>
+<li><a href="http://www.guokr.com/blog/787716/" target="_blank" rel="external">单页web应用</a>,又名[single page web application]，SPA</li>
+<li><a href="https://zh.wikipedia.org/zh/REST" target="_blank" rel="external">REST</a>,<a href="http://www.restapitutorial.com/lessons/whatisrest.html" target="_blank" rel="external">REST API</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete" target="_blank" rel="external">CURD</a> ,简单来说就是Create, read, update and delete</li>
+</ul>
 <h2 id="编辑器推荐">编辑器推荐</h2><p>写代码，没有一款适合自己的编辑器怎么行?</p>
 <ul>
 <li><strong><a href="https://atom.io/" target="_blank" rel="external">atom</a></strong><blockquote>
@@ -384,6 +418,38 @@
 <p>$ 听说内容很好</p>
 </blockquote>
 </li>
+<li><strong><a href="http://javascript.ruanyifeng.com/" target="_blank" rel="external">JavaScript 标准参考教程（alpha）</a></strong><blockquote>
+<p>$ by阮一峰老师</p>
+</blockquote>
+</li>
+<li><strong><a href="http://dailyjs.com/" target="_blank" rel="external">dailyjs</a></strong><blockquote>
+<p>$ daily js</p>
+</blockquote>
+</li>
+<li><strong><a href="http://www.javascript100.com/?p=394" target="_blank" rel="external">超毛的网站</a></strong><blockquote>
+<p>$ 看到这篇文章<a href="http://www.javascript100.com/?p=394" target="_blank" rel="external">如何学习javascript？</a>觉得作者很有趣:)</p>
+</blockquote>
+</li>
+<li><strong><a href="http://js.fgm.cc/learn/" target="_blank" rel="external">Ferris教程</a></strong><blockquote>
+<p>$ 来自超毛的推荐</p>
+</blockquote>
+</li>
+<li><strong><a href="http://bbs.blueidea.com/thread-3031823-1-1.html" target="_blank" rel="external">牛人前辈</a></strong><blockquote>
+<p>$ 热心人收集的国内一些牛人的博客</p>
+</blockquote>
+</li>
+<li><strong><a href="http://www.codecademy.com/en/tracks/javascript" target="_blank" rel="external">codecademy</a></strong><blockquote>
+<p>$ 网络学院</p>
+</blockquote>
+</li>
+<li><strong><a href="http://nodeschool.io/#workshopper-list" target="_blank" rel="external">nodeschool</a></strong><blockquote>
+<p>$ node的开源教程</p>
+</blockquote>
+</li>
+<li><strong><a href="https://github.com/jquery/jquery" target="_blank" rel="external">jquery</a></strong><blockquote>
+<p>$ 大名鼎鼎地jquery怎么能忘</p>
+</blockquote>
+</li>
 </ul>
 <hr>
 <h2 id="我的学习日志">我的学习日志</h2><p>之前学习的东西，已经不太记得清楚了，总体来说就是用ionic做了2个hybird app的框架，接触到<br>html,css,js,dom，nodejs,ionic,angularjs,mongodb,docker,atom,emmet等概念，买了几本书，<br>现在正在读《Javascript DOM编程艺术 》，因为书比较基础，读起来难度不大，快读完了。<br>下面的记录从6月26号开始，使用相对时间，记录学习过程和接触到的好的资源，打算做成log的形式。</p>
@@ -429,6 +495,33 @@
   </div>
 
 
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
 
     
       <div class="comments" id="comments">
@@ -495,7 +588,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -539,6 +632,21 @@
           </div>
         
 
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name"></p>
+            
+              <span class="links-of-author-item">
+              <a href="http://chuan92.com" target="_blank">真三</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://chepeatio.github.io" target="_blank">开大</a>
+              </span>
+            
+          
+        </div>
+        
       </div>
 
       
@@ -547,7 +655,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要学习前后端开发"><span class="nav-number">1.</span> <span class="nav-text">为什么要学习前后端开发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编辑器推荐"><span class="nav-number">2.</span> <span class="nav-text">编辑器推荐</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读书"><span class="nav-number">3.</span> <span class="nav-text">读书</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#社区"><span class="nav-number">4.</span> <span class="nav-text">社区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发者大会"><span class="nav-number">5.</span> <span class="nav-text">开发者大会</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优秀开源项目"><span class="nav-number">6.</span> <span class="nav-text">优秀开源项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#学习资源"><span class="nav-number">7.</span> <span class="nav-text">学习资源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我的学习日志"><span class="nav-number">8.</span> <span class="nav-text">我的学习日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">9.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要学习前后端开发"><span class="nav-number">1.</span> <span class="nav-text">为什么要学习前后端开发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些基础概念"><span class="nav-number">2.</span> <span class="nav-text">一些基础概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编辑器推荐"><span class="nav-number">3.</span> <span class="nav-text">编辑器推荐</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读书"><span class="nav-number">4.</span> <span class="nav-text">读书</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#社区"><span class="nav-number">5.</span> <span class="nav-text">社区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发者大会"><span class="nav-number">6.</span> <span class="nav-text">开发者大会</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优秀开源项目"><span class="nav-number">7.</span> <span class="nav-text">优秀开源项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#学习资源"><span class="nav-number">8.</span> <span class="nav-text">学习资源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我的学习日志"><span class="nav-number">9.</span> <span class="nav-text">我的学习日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">10.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -598,23 +706,24 @@
 
   
   <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
 
 
-  <script type="text/javascript" src="/js/helpers.js"></script>
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
   
 
   <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
   <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
 
-  <script type="text/javascript" src="/js/motion_global.js" id="motion.global"></script>
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
 
 
 
+  <script type="text/javascript" src="/js/search-toggle.js"></script>
 
   
   
-<script type="text/javascript" src="/js/bootstrap.scrollspy.js" id="bootstrap.scrollspy.custom"></script>
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.3" id="bootstrap.scrollspy.custom"></script>
 
 
 <script type="text/javascript" id="sidebar.toc.highlight">
