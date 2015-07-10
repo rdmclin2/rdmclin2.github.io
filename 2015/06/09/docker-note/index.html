@@ -295,6 +295,11 @@
 <li><p>重启一个停止的容器 <code>docker restart</code>，如:</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">sudo</span> docker restart containerName</span><br></pre></td></tr></table></figure>
 </li>
+<li><p>如何编写Dockerfile ?</p>
+<blockquote>
+<p>$ <a href="https://github.com/zhangpeihao/LearningDocker/blob/master/manuscript/04-WriteDockerfile.md" target="_blank" rel="external">看这个</a></p>
+</blockquote>
+</li>
 </ul>
 <hr>
 <!--
@@ -356,6 +361,7 @@
 <p>如果你的image不是用dockerfile生成的，没有build时候的CMD,可以先用交互窗口将端口暴露出来.<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="command">run</span> <span class="comment">--name nodejs_server -it -p 9804:9804 rdmclin2/server:v1 /bin/bash</span></span><br></pre></td></tr></table></figure></p>
 <p>然后再用docker attach 进入container，手动运行服务。再用ctrl+p+q退出。</p>
 <p>设置多个端口<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name ionic  -it -<span class="tag">p</span> <span class="number">35729</span>:<span class="number">35729</span> -<span class="tag">p</span> <span class="number">8100</span>:<span class="number">8100</span> rdmclin2/ionic:v2 /bin/bash</span><br></pre></td></tr></table></figure></p>
+<p>即使dockerfile中expose了端口，启动的时候还是要指定映射的端口</p>
 <p>—&gt;</p>
 -->
       
@@ -485,7 +491,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">21</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
