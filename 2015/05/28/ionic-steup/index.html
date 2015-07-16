@@ -216,6 +216,7 @@
 
       
         <h1 id="前言">前言</h1><p>最近用ionic做hybrid app的开发，这篇文章用来记录探索过程中遇到的方方面面。<br>声明：在开始这个项目之前本屌没有接触过任何web开发相关的知识,所以下面的内容是从一个初学者的角度出发。</p>
+<p>注：以下许多笔记为边开发边整理，没有调整格式，请见谅。</p>
 <hr>
 <h2 id="前端">前端</h2><h3 id="总体">总体</h3><p>首先对ionic有所了解，直接看<a href="http://ionicframework.com/" target="_blank" rel="external">官网</a>即可，跟着例子走一遍，有个直观的感觉。<br>然后前端要学的东西很多，html5，css，js等，这些可以在<a href="http://www.w3schools.com/" target="_blank" rel="external">w3school</a>上学习,另外可以看看知乎上的<a href="http://www.zhihu.com/question/19651401" target="_blank" rel="external">这个回答</a><br>另外ionic的逻辑是用angularJS写的，因此必须要对其有比较好的理解</p>
 <h3 id="编写ionic代码时的一些坑">编写ionic代码时的一些坑</h3><ol>
@@ -264,27 +265,62 @@
 </blockquote>
 </li>
 </ol>
-<p>ng-bind使用方式如下:<br><code>&lt;p ng-bind=&quot;greeting&quot;&gt;&lt;/p&gt;</code></p>
+<p>ng-bind使用方式如下: <code>&lt;p ng-bind=&quot;greeting&quot;&gt;&lt;/p&gt;</code></p>
 <ol>
 <li><p>如何更新列表？<br>下拉刷新，或者用广播</p>
 </li>
 <li><p>list 有延迟？<br>在ion-content处使用 overflow-scroll=”true”</p>
 </li>
+<li><p>在<i>上用ng-click上是没效果的</i></p>
+</li>
+<li><p><label>标签内的事件会在整个label内被触发，点哪都触发</label></p>
+</li>
+<li><p>直接在ion-list中的ion-item中并不能触发ng-click事件，可以在item中的元素上再套一层div</p>
+</li>
+<li><p>如何改背景色 ：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="setting">style=<span class="value"><span class="string">"background-color: #212326;"</span></span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>能用ng-if就用ng-if,ng-if的效率比ng-show和ng-hide高</p>
+</li>
+<li><p>如何实现card上面有一列分割线的效果?<br>在css里定义</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="id">#info-up</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">border-top</span>:<span class="value"> <span class="number">4px</span> solid <span class="hexcolor">#f06336</span></span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>所有的控制器不必都放在controllers.js这一个文件中，可以新建controllers文件夹，<br>然后把每个controller都建一个<controller>.js文件，同理services和utils等都是.但注意要在index.js中head部分声明.但是为了避免他们相互覆盖，第一个加载的js中模块中要加[…],其他都不需要。如：</controller></p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// File : /js/directives/mainDirective.js</span></span><br><span class="line">angular.module(<span class="string">'app.directives'</span>,[]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// File : /js/directives/myGreatDirective.js</span></span><br><span class="line">angular.module(<span class="string">'app.directives'</span>)  </span><br><span class="line">    .directive(<span class="string">'myGreatDirective'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="comment">//...</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// File : /js/directives/myBetterDirective.js</span></span><br><span class="line">angular.module(<span class="string">'app.directives'</span>)  </span><br><span class="line">    .directive(<span class="string">'myBetterDirective'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="comment">//...</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>看<a href="https://calendee.com/2013/12/29/angularjs-code-organization/" target="_blank" rel="external">这篇文章</a>了解更多</p>
+<ol>
+<li><p>话说ionic 的app似乎暂时无法进行代码混淆，至少ionic官方的ionic view没有进行代码混淆，下载他们的app，文件名改成zip，解压，所有的 www文件都在assets文件夹中，相当于开源了有木有，看看那些最优秀的practice，<br>看中哪些优秀的app，下下来</p>
+</li>
+<li><p>可以用<code>ng-class=&quot;{&#39;important&#39;: post.important}&quot;</code>配合css 根据列表元素显示不同的效果</p>
+</li>
+<li><p>js列表中的元素不能写成 id : 4，应写成 id : “4”</p>
+</li>
 </ol>
 <h3 id="ionic开发资料">ionic开发资料</h3><ul>
 <li><a href="http://learn.ionicframework.com/formulas/data-the-right-way/" target="_blank" rel="external">解析数据的正确方式</a></li>
-<li><a href="http://learn.ionicframework.com/formulas/data-the-right-way/" target="_blank" rel="external">views之间分享数据: list详情页面的处理方式</a></li>
+<li><a href="http://learn.ionicframework.com/formulas/sharing-data-between-views/" target="_blank" rel="external">views之间分享数据: list详情页面的处理方式</a></li>
 <li><a href="http://learn.ionicframework.com/formulas/navigation-and-routing-part-1/" target="_blank" rel="external">ionic导航和路由</a></li>
-<li><p><a href="http://blog.ionic.io/pull-to-refresh-directive/" target="_blank" rel="external">下拉刷新</a></p>
-</li>
-<li><p><a href="http://gonehybrid.com/build-your-first-mobile-app-with-the-ionic-framework-part-6/" target="_blank" rel="external">ionic view.io使用</a></p>
-</li>
+<li><a href="http://blog.ionic.io/pull-to-refresh-directive/" target="_blank" rel="external">下拉刷新</a></li>
+<li><a href="http://gonehybrid.com/build-your-first-mobile-app-with-the-ionic-framework-part-6/" target="_blank" rel="external">ionic view.io使用</a></li>
+<li><a href="http://learn.ionicframework.com/formulas/cordova-camera/" target="_blank" rel="external">ionic使用摄像头</a>,<a href="https://github.com/driftyco/ionic-example-cordova-camera" target="_blank" rel="external">github例子</a></li>
+<li><a href="http://ionicframework.com/docs/api/directive/ionInfiniteScroll/" target="_blank" rel="external">下拉获取更多数据</a></li>
+<li><a href="http://codepen.io/rdelafuente/pen/tJrik" target="_blank" rel="external">全屏显示imgae的例子</a></li>
+<li><a href="http://devdactic.com/images-videos-fullscreen-ionic/" target="_blank" rel="external">美观的显示图像和视频</a></li>
+<li><a href="http://www.binpress.com/tutorial/a-simple-weather-forecast-app-with-ionic-framework-and-forecastio/107" target="_blank" rel="external">一个天气应用构造教程</a></li>
+<li><a href="https://github.com/driftyco/ionic-weather" target="_blank" rel="external">官方github例子</a></li>
+<li><a href="http://devdactic.com/how-to-capture-and-store-images-with-ionic/" target="_blank" rel="external">使用ionic拍摄和存储图片</a></li>
+<li><a href="https://github.com/mgonto/restangular" target="_blank" rel="external">用restangular处理Rest API</a></li>
 </ul>
 <h3 id="ionic_服务">ionic 服务</h3><ul>
 <li><a href="http://view.ionic.io/" target="_blank" rel="external">ionicView</a><blockquote>
 <p>$将应用上传到ionic.io上，并在设备上浏览</p>
 </blockquote>
 </li>
+</ul>
+<h3 id="优质博客">优质博客</h3><ul>
+<li><a href="https://calendee.com/" target="_blank" rel="external">calendee</a></li>
 </ul>
 <h3 id="ionic_提升性能">ionic 提升性能</h3><ul>
 <li>使用<a href="http://blog.ionic.io/collection-repeat-iteration-two/" target="_blank" rel="external">Collection Repeat</a></li>
@@ -484,7 +520,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">21</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -498,7 +534,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -565,7 +601,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前端"><span class="nav-number">1.1.</span> <span class="nav-text">前端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#总体"><span class="nav-number">1.1.1.</span> <span class="nav-text">总体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编写ionic代码时的一些坑"><span class="nav-number">1.1.2.</span> <span class="nav-text">编写ionic代码时的一些坑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ionic开发资料"><span class="nav-number">1.1.3.</span> <span class="nav-text">ionic开发资料</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ionic_服务"><span class="nav-number">1.1.4.</span> <span class="nav-text">ionic 服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ionic_提升性能"><span class="nav-number">1.1.5.</span> <span class="nav-text">ionic 提升性能</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后端"><span class="nav-number">1.2.</span> <span class="nav-text">后端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Node"><span class="nav-number">1.2.1.</span> <span class="nav-text">Node</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NodeJs_后端开发记录"><span class="nav-number">1.2.2.</span> <span class="nav-text">NodeJs 后端开发记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Npm命令简介(转载自网络)"><span class="nav-number">1.2.3.</span> <span class="nav-text">Npm命令简介(转载自网络)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成的package-json文件中的dependencies前面的~,^符号的含义"><span class="nav-number">1.2.4.</span> <span class="nav-text">生成的package.json文件中的dependencies前面的~,^符号的含义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Http_Status_code"><span class="nav-number">1.2.5.</span> <span class="nav-text">Http Status code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LeanCloud"><span class="nav-number">1.2.6.</span> <span class="nav-text">LeanCloud</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些常用的工具网站"><span class="nav-number">1.3.</span> <span class="nav-text">一些常用的工具网站</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#学习资源"><span class="nav-number">1.4.</span> <span class="nav-text">学习资源</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前端"><span class="nav-number">1.1.</span> <span class="nav-text">前端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#总体"><span class="nav-number">1.1.1.</span> <span class="nav-text">总体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编写ionic代码时的一些坑"><span class="nav-number">1.1.2.</span> <span class="nav-text">编写ionic代码时的一些坑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ionic开发资料"><span class="nav-number">1.1.3.</span> <span class="nav-text">ionic开发资料</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ionic_服务"><span class="nav-number">1.1.4.</span> <span class="nav-text">ionic 服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优质博客"><span class="nav-number">1.1.5.</span> <span class="nav-text">优质博客</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ionic_提升性能"><span class="nav-number">1.1.6.</span> <span class="nav-text">ionic 提升性能</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后端"><span class="nav-number">1.2.</span> <span class="nav-text">后端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Node"><span class="nav-number">1.2.1.</span> <span class="nav-text">Node</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NodeJs_后端开发记录"><span class="nav-number">1.2.2.</span> <span class="nav-text">NodeJs 后端开发记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Npm命令简介(转载自网络)"><span class="nav-number">1.2.3.</span> <span class="nav-text">Npm命令简介(转载自网络)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成的package-json文件中的dependencies前面的~,^符号的含义"><span class="nav-number">1.2.4.</span> <span class="nav-text">生成的package.json文件中的dependencies前面的~,^符号的含义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Http_Status_code"><span class="nav-number">1.2.5.</span> <span class="nav-text">Http Status code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LeanCloud"><span class="nav-number">1.2.6.</span> <span class="nav-text">LeanCloud</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些常用的工具网站"><span class="nav-number">1.3.</span> <span class="nav-text">一些常用的工具网站</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#学习资源"><span class="nav-number">1.4.</span> <span class="nav-text">学习资源</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

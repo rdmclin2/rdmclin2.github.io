@@ -59,7 +59,7 @@
 
 
 
-  <title> 标签: mac // Mcl's space </title>
+  <title> Mcl's space </title>
 </head>
 
 <body>
@@ -73,7 +73,9 @@
   </div>
 <![endif]-->
 
-  <div class="container one-column ">
+  <div class="container one-column 
+   page-home 
+">
     <div class="headband"></div>
 
     <div id="header" class="header">
@@ -159,77 +161,90 @@
       <div class="main-inner">
         <div id="content" class="content">
           
-
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        mac
-        <small>标签</small>
-      </h2>
-    </div>
-
+  <div id="posts" class="posts-expand">
     
       
 
-  <div class="post post-type-normal">
+  <div class="post post-type-normal ">
     <div class="post-header">
 
-      <div class="post-title">
-        
-            <a class="post-title-link" href="/2015/04/03/MacThings/">
-              Mac 那些事
-            </a>
-        
-      </div>
-
-      <div class="post-meta">
-        <span class="post-time"> 04-03 </span>
-      </div>
-
-    </div>
-  </div>
-
-
-    
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2014/10/19/about-hexo/">
+                hexo 简易教程 入门
+              </a>
+            
+          
+        </h1>
       
 
-  <div class="post post-type-normal">
-    <div class="post-header">
-
-      <div class="post-title">
-        
-            <a class="post-title-link" href="/2015/03/10/mac_java_home/">
-              mac 如何配置java_home环境变量
-            </a>
-        
-      </div>
-
       <div class="post-meta">
-        <span class="post-time"> 03-10 </span>
+        <span class="post-time">
+          发表于 Oct 19 2014
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2014/10/19/about-hexo/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2014/10/19/about-hexo/"></span>
+            </a>
+          </span>
+          
+        
       </div>
-
     </div>
-  </div>
 
+    <div class="post-body">
 
-    
+      
       
 
-  <div class="post post-type-normal">
-    <div class="post-header">
-
-      <div class="post-title">
+      
         
-            <a class="post-title-link" href="/2015/02/28/hexo_from_windows_to_mac/">
-              hexo写作环境从windows转到mac
+          <h2 id="hexo_前世今生">hexo 前世今生</h2><p><a href="http://hexo.io">hexo</a>出自湾大学生<a href="https://github.com/hexojs/hexo">tommy351</a>之手，基于Node.js，自造轮子的初衷是因为受不了octopress等博客极慢的生成速度，因此hexo的一大特点就是快，编译上百篇文章只需几秒。<br>More info : <a href="http://zespia.tw/blog/2012/10/11/hexo-debut/">Hexo 颯爽登場！</a></p>
+<blockquote>
+<p>Update !: hexo 更新实在太快，今天写的东西，明天可能就不适用了，强烈建议按照<a href="https://github.com/hexojs/hexo">github</a>上的步骤进行安装.</p>
+</blockquote>
+<hr>
+<h2 id="hexo_环境搭建">hexo 环境搭建</h2><ul>
+<li><strong>node.js安装</strong></li>
+</ul>
+<p>下载对应操作系统下的最新版本即可<br>More info:<a href="http://nodejs.org/">NODE.JS官网地址</a></p>
+<ul>
+<li><strong>git客户端安装</strong></li>
+</ul>
+<p>使用github提供的pages功能，需要将博客内容上传到github上，因此使用git客户端是必须的。<br>More info:<a href="https://msysgit.github.io/">推荐使用msysgit</a></p>
+<ul>
+<li><strong>编辑器安装(optional)</strong></li>
+</ul>
+<p>推荐安装sublime或者notepad++，千万不要用windows自带的txt编辑器编辑代码或配置文件。<br>More info : <a href="http://www.sublimetext.com/">sublime</a>  <a href="http://notepad-plus-plus.org/">notpad++</a></p>
+<hr>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/10/19/about-hexo/#more">
+              阅读全文 &raquo;
             </a>
+          </div>
         
-      </div>
+      
+    </div>
 
-      <div class="post-meta">
-        <span class="post-time"> 02-28 </span>
-      </div>
+    <div class="post-footer">
+      
 
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </div>
   </div>
 
@@ -238,6 +253,10 @@
   </div>
 
   
+  <div class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo;</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </div>
+
 
         </div>
 
@@ -387,12 +406,6 @@
 
   
   
-  
-    <script type="text/javascript">
-      postMotionOptions = {stagger: 100, drag: true};
-    </script>
-  
-
 
   
   <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
@@ -424,6 +437,26 @@
   
 
   
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"co-co"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
 
   
   
