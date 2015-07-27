@@ -236,6 +236,8 @@
 </li>
 <li><p>看<a href="http://blog.ionic.io/automating-icons-and-splash-screens/" target="_blank" rel="external">这篇文章</a>生成各尺寸的图片.</p>
 </li>
+<li><p><a href="http://blog.ionic.io/automating-icons-and-splash-screens/" target="_blank" rel="external">app的icon和splash的处理</a></p>
+</li>
 <li><p>对于css文件夹中的样式文件中如果要调用本地的图片的话要加../ 否则在浏览器中可以正常显示，在设备上不行，结构如下所示：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.login-page</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">background</span>:<span class="value"><span class="function">url</span>(../img/signup_bg.png)</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">background-size</span>:<span class="value"> cover</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">background-repeat</span>:<span class="value"> no-repeat</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
 </li>
@@ -291,11 +293,19 @@
 </ol>
 <p>看<a href="https://calendee.com/2013/12/29/angularjs-code-organization/" target="_blank" rel="external">这篇文章</a>了解更多</p>
 <ol>
-<li><p>话说ionic 的app似乎暂时无法进行代码混淆，至少ionic官方的ionic view没有进行代码混淆，下载他们的app，文件名改成zip，解压，所有的 www文件都在assets文件夹中，相当于开源了有木有，看看那些最优秀的practice，<br>看中哪些优秀的app，下下来</p>
+<li><p>话说ionic 的app似乎暂时无法进行代码混淆，至少ionic官方的ionic view没有进行代码混淆，下载他们的app，文件名改成zip，解压，所有的 www文件都在assets文件夹中，相当于开源了有木有，看看那些最优秀的practice，<br>看中哪些优秀的app，下下来,如何在googleplay上下载？把googleplay应用的地址贴到<a href="https://apps.evozi.com/apk-downloader/" target="_blank" rel="external">这个网址</a>中</p>
 </li>
 <li><p>可以用<code>ng-class=&quot;{&#39;important&#39;: post.important}&quot;</code>配合css 根据列表元素显示不同的效果</p>
 </li>
-<li><p>js列表中的元素不能写成 id : 4，应写成 id : “4”</p>
+<li><p>js列表中的元素不能写成 id : 4，应写成 id : “4”,注意在创建id变量的时候也需要</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> id</span> = InfoListService.getListLength()+<span class="number">1</span>+<span class="string">""</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取日期用$filter</p>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">var</span> postdate <span class="subst">=</span> <span class="variable">$filter</span>(<span class="string">'date'</span>)(<span class="built_in">date</span>, <span class="string">'yyyy-MM-dd HH:mm:ss'</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>为什么用$log而不是console.log呢？可以看看<a href="https://stackoverflow.com/questions/24185847/why-use-angulars-log-instead-of-console-log" target="_blank" rel="external">这个</a></p>
+</li>
+<li><p>更新了数据，如何让界面更新呢？可以用广播，注意<a href="https://stackoverflow.com/questions/26752030/rootscope-broadcast-vs-scope-emit" target="_blank" rel="external">$broadcast 和 $emit 的区别</a></p>
 </li>
 </ol>
 <h3 id="ionic开发资料">ionic开发资料</h3><ul>
@@ -330,7 +340,8 @@
 </li>
 <li><p><a href="http://coenraets.org/blog/2013/10/top-10-performance-techniques-for-phonegap-and-hybrid-apps-slides-available/" target="_blank" rel="external">phonegap应用优化</a></p>
 </li>
-<li><a href="http://devdactic.com/optimize-tinder-cards/" target="_blank" rel="external">cards 优化</a></li>
+<li><p><a href="http://devdactic.com/optimize-tinder-cards/" target="_blank" rel="external">cards 优化</a></p>
+</li>
 </ul>
 <hr>
 <h2 id="后端">后端</h2><h3 id="Node">Node</h3><p>现在写后端比较火的是用<a href="http://nodejs.org/" target="_blank" rel="external">nodejs</a>编写，然后nodejs有个很好的应用开发框架叫<a href="http://expressjs.com/zh/" target="_blank" rel="external">Express</a>，这里<a href="http://cwbuecheler.com/web/tutorials/2013/node-express-mongo/" target="_blank" rel="external">有篇文章</a>是教你如何从零开始搭建node,express,monggodb服务器，<a href="http://www.unfish.net/archives/772-20131207.html" target="_blank" rel="external">这里</a>是国人翻译的版本.</p>
@@ -402,6 +413,11 @@
 <p>$ <a href="http://themeforest.net/item/ionic-responsive-template-v101/full_screen_preview/8498523" target="_blank" rel="external">这里</a>是它的live</p>
 </blockquote>
 </li>
+<li><a href="https://play.google.com/store/apps/details?id=com.chargemap_beta.android" target="_blank" rel="external">用到地图服务</a></li>
+<li><a href="https://ccoenraets.github.io/ionic-tutorial/ionic-facebook-integration.html" target="_blank" rel="external">facebook分享</a></li>
+<li><a href="https://hackhands.com/building-instagram-clone-angularjs-satellizer-nodejs-mongodb/" target="_blank" rel="external">牛逼！用angularjs－nodejs克隆instgram的网站</a></li>
+<li><a href="http://martinmicunda.com/2015/04/10/build-ionic-photo-gallery-app-I/" target="_blank" rel="external">用ionic和nodejs做的图片墙app</a></li>
+<li><a href="http://learn.ionicframework.com/formulas/localstorage/" target="_blank" rel="external">如何使用本地存储</a></li>
 </ul>
 <hr>
 
@@ -534,7 +550,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">23</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

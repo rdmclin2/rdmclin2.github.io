@@ -239,7 +239,9 @@
 <h2 id="可配置参数">可配置参数</h2><ul>
 <li><code>--apk</code> 对象apk的路径，或者工程源代码（源代码目前对有库函数的工程支持不好，最好不要使用）</li>
 <li><code>--output</code> 输出路径,默认路径为&lt; 当前目录/nata-output &gt;</li>
-<li><code>--sdk</code> ANDROID SDK的路径，默认读取 $ANADROID_HOME$ 环境变量</li>
+<li><code>--sdk</code> ANDROID SDK的路径，默认读取 $ANADROID_HOME 环境变量</li>
+<li><code>--platforms</code> android平台文件路径，soot使用，默认路径为$ANADROID_HOME/platfroms</li>
+<li><code>--debugkey</code> 重签名时的debugkey的路径,默认路径为$USER/.android/debugkey</li>
 <li><code>-h or --help</code> 显示帮助信息</li>
 <li><code>-s</code> 开启方法插桩，方法插桩有几率失败，默认不开启</li>
 </ul>
@@ -407,7 +409,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">23</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
