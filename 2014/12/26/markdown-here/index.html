@@ -190,7 +190,7 @@
             <span class="post-comments-count">
             &nbsp; | &nbsp;
             <a href="/2014/12/26/markdown-here/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2014/12/26/markdown-here/"></span>
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/12/26/markdown-here/"></span>
             </a>
           </span>
           
@@ -296,8 +296,8 @@
     
       <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2014/12/26/markdown-here/"
-               data-title="用markdown here在谷歌邮箱写邮件" data-url="http://www.mclspace.com/2014/12/26/markdown-here/">
+          <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
           </div>
         
       </div>
@@ -644,24 +644,32 @@
 
   
   
-
-  
-    
   
 
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"co-co"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
   
+
+    <script type="text/javascript">
+      var disqus_shortname = 'rdmclin2';
+      var disqus_identifier = '2014/12/26/markdown-here/';
+      var disqus_title = '用markdown here在谷歌邮箱写邮件';
+      var disqus_url = 'http://www.mclspace.com/2014/12/26/markdown-here/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
 
 
   

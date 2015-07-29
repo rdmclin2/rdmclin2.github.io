@@ -201,7 +201,7 @@
             <span class="post-comments-count">
             &nbsp; | &nbsp;
             <a href="/2015/06/26/my-front-end-learn-story-start/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/26/my-front-end-learn-story-start/"></span>
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/06/26/my-front-end-learn-story-start/"></span>
             </a>
           </span>
           
@@ -536,8 +536,8 @@
     
       <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2015/06/26/my-front-end-learn-story-start/"
-               data-title="我的前后端学习之旅[开端]" data-url="http://www.mclspace.com/2015/06/26/my-front-end-learn-story-start/">
+          <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
           </div>
         
       </div>
@@ -884,24 +884,32 @@
 
   
   
-
-  
-    
   
 
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"co-co"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
   
+
+    <script type="text/javascript">
+      var disqus_shortname = 'rdmclin2';
+      var disqus_identifier = '2015/06/26/my-front-end-learn-story-start/';
+      var disqus_title = '我的前后端学习之旅[开端]';
+      var disqus_url = 'http://www.mclspace.com/2015/06/26/my-front-end-learn-story-start/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
 
 
   
