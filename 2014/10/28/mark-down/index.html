@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="theme-next use-motion ">
+<html class="theme-next use-motion theme-next-mist">
 <head>
   
 
@@ -38,7 +38,7 @@
 
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
-    scheme: '',
+    scheme: 'Mist',
     analytics: {
       google: ''
     },
@@ -206,6 +206,7 @@
       
         <h2 id="什么是_MarkDown">什么是 MarkDown</h2><p>还记得用git的时候总要你写一个readme.md的文件么？这个.md文件是干嘛用的呢？其实.md格式就是markdwon文件的缩写。Mark Down 是一种[电子邮件]风格的[标记语言]，可以将文本转化为Html。通过markdown进行写作可以让我们专注于内容，而暂时忘记格式。<br>大家可以阅读下面的文章了解为什么要使用markdown。本篇只介绍常用的markdown工具和平常需要使用的语法。更多的内容请参看附录[参考文献]<br><a href="http://www.jianshu.com/p/qqGjLN" target="_blank" rel="external">为什么作家应该用 Markdown 保存自己的文稿</a><br><a href="http://www.jianshu.com/p/PpDNMG" target="_blank" rel="external">Markdown写作浅谈</a></p>
 <hr>
+<a id="more"></a>
 <h2 id="MarkDown_编辑器">MarkDown 编辑器</h2><ul>
 <li><p><strong>MarkdownPad</strong><br>MarkdowmPad 是一款可视化markdown编辑器，在左侧进行编辑，右侧可以看到转换成页面后的效果，如果对markdown不熟悉，可以用这个练练手<br>Moreinfo:<a href="http://markdownpad.com/" target="_blank" rel="external">[MarkdownPad下载]</a></p>
 </li>
@@ -215,7 +216,6 @@
 </li>
 </ul>
 <hr>
-<a id="more"></a>
 <h2 id="MarkDown_语法">MarkDown 语法</h2><h3 id="标题">标题</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--六级标题,和html语言是一样的,使用\#代表标题级数--&gt;</span></span><br><span class="line"> # 一级标题</span><br><span class="line"> ## 二级标题</span><br><span class="line"> ### 三级标题</span><br><span class="line"> #### 四级标题</span><br><span class="line"> ##### 五级标题</span><br><span class="line"> ###### 六级标题</span><br></pre></td></tr></table></figure>
 <h1 id="一级标题">一级标题</h1><h2 id="二级标题">二级标题</h2><h3 id="三级标题">三级标题</h3><h4 id="四级标题">四级标题</h4><h5 id="五级标题">五级标题</h5><h6 id="六级标题">六级标题</h6><hr>
 <h3 id="列表">列表</h3><p><strong>无序列表</strong><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- -*+都可以，但是空格不能缺 --&gt;</span></span><br><span class="line">- 无序列表项1</span><br><span class="line">- 无序列表项2</span><br><span class="line">- 无序列表项3</span><br></pre></td></tr></table></figure></p>
@@ -254,7 +254,7 @@
 <p><strong>索引链接</strong><br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="comment">&lt;!--索引超链接：如果网址中有括号可以这么用,1,2只要对应就好，可以使用任意字符--&gt;</span></span></span><br><span class="line">[<span class="link_label">mcl' space</span>][<span class="link_reference">*</span>]</span><br><span class="line">![<span class="link_label">Example</span>][<span class="link_reference">2</span>]</span><br><span class="line"></span><br><span class="line">[<span class="link_reference">*</span>]:<span class="link_url">www.mclspace.com</span></span><br><span class="line">[<span class="link_reference">2</span>]:<span class="link_url">http://icoco.qiniudn.com/image/hexo/m1.jpg</span></span><br></pre></td></tr></table></figure></p>
 <p><a href="www.mclspace.com">mcl’ space</a><br><img src="http://icoco.qiniudn.com/image/hexo/m1.jpg" alt="Example"></p>
 <p><strong>自动链接</strong><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--自动链接:加尖括号即可,实验结果表明 网址的话得在前面加http://,否则无法显示--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">www.mclspace.com</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">rdmclin2@gmail.com</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p><a href="http://www.mclspace.com" target="_blank" rel="external">http://www.mclspace.com</a><br><a href="&#x6d;&#x61;&#105;&#108;&#x74;&#111;&#x3a;&#114;&#x64;&#109;&#x63;&#x6c;&#x69;&#x6e;&#x32;&#x40;&#x67;&#109;&#97;&#x69;&#108;&#x2e;&#x63;&#x6f;&#x6d;">&#114;&#x64;&#109;&#x63;&#x6c;&#x69;&#x6e;&#x32;&#x40;&#x67;&#109;&#97;&#x69;&#108;&#x2e;&#x63;&#x6f;&#x6d;</a></p>
+<p><a href="http://www.mclspace.com" target="_blank" rel="external">http://www.mclspace.com</a><br><a href="&#109;&#x61;&#105;&#108;&#x74;&#111;&#x3a;&#x72;&#x64;&#x6d;&#99;&#108;&#x69;&#110;&#x32;&#x40;&#x67;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;">&#x72;&#x64;&#x6d;&#99;&#108;&#x69;&#110;&#x32;&#x40;&#x67;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;</a></p>
 <hr>
 <h3 id="引用">引用</h3><p><strong>引用</strong><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--翻译成html就是&lt;blockquote&gt;&lt;/blockquote&gt;，符号后的空格可不要--&gt;</span></span><br><span class="line">&gt; 引用</span><br></pre></td></tr></table></figure></p>
 <blockquote>
@@ -434,7 +434,7 @@ System.out.<span class="built_in">println</span>(helloworld);
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -547,7 +547,7 @@ System.out.<span class="built_in">println</span>(helloworld);
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT
+    NexT.Mist
   </a>
 </div>
 

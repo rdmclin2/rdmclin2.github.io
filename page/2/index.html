@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="theme-next use-motion ">
+<html class="theme-next use-motion theme-next-mist">
 <head>
   
 
@@ -38,7 +38,7 @@
 
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
-    scheme: '',
+    scheme: 'Mist',
     analytics: {
       google: ''
     },
@@ -174,90 +174,6 @@
           
           
             
-              <a class="post-title-link" href="/2015/02/28/hexo_from_windows_to_mac/">
-                hexo写作环境从windows转到mac
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于 Feb 28 2015
-        </span>
-
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/02/28/hexo_from_windows_to_mac/#comments" >
-              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/02/28/hexo_from_windows_to_mac/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <h2 id="前言">前言</h2><p>最近买了mac，但是博客还得写，于是需要把hexo的写作环境从windows迁移到mac上来.这里作一下纪录.</p>
-<hr>
-<h2 id="配置环境">配置环境</h2><p>在mac上安装nodejs和hexo,这里和window上安装的步骤差不多，可以看我之前的一篇文章<a href="http://mclspace.com/2014/10/19/about-hexo/" target="_blank" rel="external">hexo 简易教程 入门</a>,这里注意hexo初始化的时候要记得设定文件夹。<br>PS:安装hexo的时候如果出错，可以尝试加sudo.</p>
-<hr>
-<h2 id="设置git">设置git</h2><p>如果新机器没有安装git，可以在terminal中输入git，mac会提示你帮你装git的。然后为你的新机器产生ssh，添加到github上去，ssh key的产生命令为：<br><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"xxx<span class="variable">@xxx</span>.com"</span></span><br><span class="line">你也可以用：</span><br><span class="line">ssh git<span class="variable">@github</span>.com</span><br><span class="line">进行测试</span><br></pre></td></tr></table></figure></p>
-<p>生成的ssh key纪录在~/.ssh文件夹的id_rsa.pub中，把里面的内容粘贴到github设备key列表中就好。</p>
-<p><code>更新</code></p>
-<blockquote>
-<p>hexo 更新到3.0之后，需要把_config.yml中的github修改为git才能正常deploy。然后执行<code>npm install hexo-deployer-git --save</code></p>
-</blockquote>
-<hr>
-<h2 id="迁移">迁移</h2><p>迁移没有我想象的那么困难，把原博客的文件夹中的_config.yml,scaffolds,source,themes文件或文件夹整个搞过来对mac下的博客文件夹进行覆盖<br>然后<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">g</span></span><br><span class="line">hexo <span class="literal">d</span></span><br></pre></td></tr></table></figure></p>
-<p>ok,如果你还想再windows上和mac同时写文章，可以看看下面的参考。</p>
-<hr>
-<h2 id="参考">参考</h2><ul>
-<li><a href="https://hongbinzuo.github.io/2014/02/05/hexo-migration-from-ubuntu-linux-to-windows/" target="_blank" rel="external">Hexo写作环境从Ubuntu迁移到Windows</a></li>
-<li><a href="http://www.cnblogs.com/mjiayou/p/3791373.html" target="_blank" rel="external">Hexo-Mac下搭建hexo博客全过程</a></li>
-<li><a href="https://qichaochen.github.io/2014/10/07/082-Hexo-Windows-Deployment-Problem/" target="_blank" rel="external">如何在Mac和Windows下同时使用同一个Hexo项目</a></li>
-</ul>
-
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
               <a class="post-title-link" href="/2014/12/26/markdown-here/">
                 用markdown here在谷歌邮箱写邮件
               </a>
@@ -293,22 +209,10 @@
 
       
         
-          <h2 id="为什么要用markdown格式编写邮件？">为什么要用markdown格式编写邮件？</h2><ul>
+          <h1 id="为什么要用markdown格式编写邮件？">为什么要用markdown格式编写邮件？</h1><ul>
 <li>逼格</li>
 <li>对于习惯使用markdown的人群来说，markdown可能是写作的唯一方式。</li>
 </ul>
-<hr>
-<h2 id="什么是markdown_here？">什么是markdown here？</h2><p>markdown here是一款浏览器插件，支持chrome，firefox，safari，opera等浏览器，以及thunderbird，postbox和icedove等邮箱客户端（很遗憾在foxmail中还无法使用）。通过这个插件可以让你在邮件中使用markdown。【ps：markdown here也支持evernote的网页版】</p>
-<p>【More info】<a href="http://markdown-here.com/">插件官网</a></p>
-<hr>
-<h2 id="插件获取及安装">插件获取及安装</h2><p>以chrome插件为例。</p>
-<ul>
-<li>如果已经翻墙，从【<a href="http://markdown-here.com/get.html">官网下载地址</a>】直接在chrome应用商店中安装chrome插件。</li>
-<li>如果你被墙困住了，可以看看这篇文章：<a href="http://mclspace.com/2014/12/09/break-the-wall-down-with-hongxin/">红杏出墙</a>。</li>
-<li>如果被墙困住了也不想翻，可以直接<a href="http://www.chrome007.com/?p=1246">下载插件扩展</a>,如果在天朝你还不会在chrome中安装插件，可以看看<a href="http://www.chrome007.com/?p=67">这篇教程</a>。</li>
-</ul>
-<p>安装完成后在chrome的插件栏中可以看到紫色的蝴蝶图标。</p>
-<hr>
           <div class="post-more-link text-center">
             <a class="btn" href="/2014/12/26/markdown-here/#more">
               阅读全文 &raquo;
@@ -392,101 +296,12 @@
           <h2 id="什么是Emma？">什么是Emma？</h2><blockquote>
 <p>EMMA 是一个用于检测和报告 JAVA 代码覆盖率的开源工具。它不但能很好的用于小型项目，很方便得得出覆盖率报告，而且适用于大型企业级别的项目。</p>
 </blockquote>
-<p>本篇教程写给不愿意看emma userguide文档的兔子们，主要目标是给没有接触过emma的人一个可以成功运行的实例，傻瓜式教程，更多的知识请参考【参考文献】</p>
-<hr>
-<h2 id="准备工作">准备工作</h2><ul>
-<li>下载emma文件 【<a href="http://sourceforge.net/projects/emma/files/?source=navbar">下载地址</a>】</li>
-<li>解压下载下来的文件 将lib/文件夹下的emma.jar放到你电脑的jre文件夹的/lib/ext/文件夹下，也可能是jdk文件夹的jre/lib/ext文件夹下，取决于你的电脑使用的是jre还是jdk。也可以每次运行的时候把emma.jar的路径加到命令中，不过太繁琐了。</li>
-</ul>
-<hr>
-<h2 id="Emma_on-the-fly模式">Emma on-the-fly模式</h2><p>Emma 有两种运行模式，一种是on-the-fly模式，一种是offline模式。</p>
-<blockquote>
-<p>On the fly 模式往加载的类中加入字节码，相当于用 EMMA 实现的 application class loader 替代原来的 application class loader。<br>Offline 模式在类被加载前，加入字节码</p>
-</blockquote>
+<p>本篇教程写给不愿意看emma userguide文档的兔子们，主要目标是给没有接触过emma的人一个可以成功运行的实例，傻瓜式教程。</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2014/12/25/emma-tutorial/#more">
               阅读全文 &raquo;
             </a>
           </div>
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2014/12/18/douban-fm-offline/">
-                解决豆瓣FM客户端4.0无法离线的问题
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于 Dec 18 2014
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; 分类于
-            
-              <a href="/categories/life/">life</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2014/12/18/douban-fm-offline/#comments" >
-              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/12/18/douban-fm-offline/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <h2 id="提出问题">提出问题</h2><p>本屌(就借鉴某<a href="http://zh.lucida.me/about/" target="_blank" rel="external">大神</a>的称呼吧，大神自称屌丝，叫俺如何是好)是豆瓣FM的重度用户，豆瓣电台给了咱们这种选择困难症患者一个安然听歌的地方。但升级到豆瓣4.0之后，发现豆瓣的离线功能无法使用了，症状为打开豆瓣FM，提示开始离线下载，不一会提示离线下载失败，APP中没有任何可以查找离线下载歌曲状态的地方。咋办嘞？查百度，查谷歌，查…，结果发现好像大家都有这个问题，无奈之下只有提交bug，问客服了。</p>
-<hr>
-<h2 id="解决问题">解决问题</h2><p>以下是询问客服和客服的解释，原来是理解问题，打开豆瓣FM后确实开始离线了，但是它没让你看到，当你断开网络，离线收听的时候，可以发现自动播放红心曲目了。不得不吐槽App设计者的奇葩思维，难道不知道<a href="https://en.wikipedia.org/wiki/Principle_of_least_astonishment" target="_blank" rel="external">最小惊讶原则</a>么?<br><img src="http://7pun7p.com1.z0.glb.clouddn.com/Image/life/douban.PNG" alt="豆瓣客服">。</p>
-
         
       
     </div>
@@ -563,10 +378,6 @@
       
         
           <h2 id="前言">前言</h2><p>本篇为阅读<a href="https://dl.acm.org/citation.cfm?id=2635896">EvoDroid:Segmented Evolutionary Testing of Android Apps</a>的阅读总结，该论文是今年<a href="https://fse22.gatech.edu/program">FSE</a>上的一篇paper。关于进化测试原来的实现方法可以看百度文库上的一篇<a href="http://wenku.baidu.com/link?url=_3ozehVevOFK9ZG_pqcnDRbofQTSyKfjXAyJlqRjR0MsDE5Y3IYyulu9Eq2X5A33NQmmM9Rpx_biumxKT2b1RN93PHYn2k6xA5Elor5bZsG">ppt</a>，讲的挺详细的。</p>
-<hr>
-<h2 id="写作动机">写作动机</h2><p>写paper总会先提出原有方法不足的地方，然后在此基础上进行了何种改进。本篇paper解决的就是原有的进化测试局限于本地测试或者单元测试，而无法进行系统测试的问题，因为它无法将搜索中好的个体的基因组成传递下去。论文的平台为安卓，原有的自动系统测试方法为monkey，monkey是安卓框架中自带的能够随机产生事件的工具，但是这种暴力的方法的代码覆盖率不高。</p>
-<p>本文的方法主要解决的是代码覆盖率的问题，并没有解决测试oracle的问题，因此输出的结果一方面是代码覆盖率相关的信息，一方面它会将测试执行过程中的异常都输出出来。进化测试是基于搜索的方法，通常要进行多次迭代，每次将优秀的基因传递到下一代中，并进行变体，以期能够最大化覆盖率，因此基于搜索的方法一个关心的问题就是执行时间。本文的方法没有从算法入手削减时间，而是使用云端部署多台设备进行并行测试的方式解决，使时间减小了几个量级。下面贴一个进化测试的流程图以提供直观的理解：<br><img src="http://7pun7p.com1.z0.glb.clouddn.com/image/test/进化测试.PNG" alt="进化测试流程图"></p>
-<hr>
           <div class="post-more-link text-center">
             <a class="btn" href="/2014/12/18/EvoDroid/#more">
               阅读全文 &raquo;
@@ -647,19 +458,12 @@
 
       
         
-          <h2 id="如何下载红杏">如何下载红杏</h2><p><strong>请用【<a href="http://honx.in/i/VH8yjc6vDyi5KqVp" target="_blank" rel="external">这个链接</a>】安装红杏吧!</strong></p>
-<hr>
-<h2 id="为什么要翻墙">为什么要翻墙</h2><p>对于我来说，翻墙的理由很简单，想上的网站上不去。不翻墙？谷歌搜索没法使用，facebook上不了，twitter不能访问，甚至安卓的开发者网站都上不去，以前常用的是google的goagent，安装起来稍麻烦一些，ga是开源的，感兴趣的可以看他们的<a href="https://github.com/goagent/goagent" target="_blank" rel="external">github</a>，上面也有教程。虽然ga是免费的，但也存在很多问题，例如不太稳定，速度比较慢，操作比较繁琐等。</p>
-<hr>
-<h2 id="如何知道红杏的">如何知道红杏的</h2><p>最近在微信上抱怨各种网站上不去，ga又慢，一些好友提出了解决方法”红杏“，红杏是付费的，刚开始还比较犹豫，毕竟习惯互联网的服务免费了，但试用了一下，发现速度挺快，基本可以有个700-800k，在youtube上看视频基本不卡顿，而且几乎不要操作，十分的便捷。于是和室友合买了一年的VIP，一人55块钱，也不多，也就在外面吃一顿的钱就可以无障碍逸游互联网。好东西当然要分享，于是有了此文。当然写这篇文章也有私心，因为想把邀请链接分享出去，你购买了vip我也可以多出10天。直接在百度上搜红杏会搜出一个邀请链接,但在这个网站注册，邀请人真不知道是谁。。。</p>
-<h2 id="什么是红杏">什么是红杏</h2><p>就像<a href="http://honx.in/i/VH8yjc6vDyi5KqVp" target="_blank" rel="external">红杏官网</a>上所说的：</p>
-<blockquote>
-<p>红杏是专为 学者 、程序员、外贸工作者 打造的上网加速器,我们相信，上网本该如此简单！</p>
-</blockquote>
-<p>红杏能够帮助你访问原本无法访问的墙外的世界，每个月10块钱省了好多心，再也不用纠结网站上不去的问题了。当然市面上也有很多vpn，以前用过，客户端丑，线路不稳定，更不用谈免费的了。</p>
-<p>红杏也有缺点，它内置在chrome的插件中，因此翻墙也只有浏览器可以翻，应用内想要访问国外网站是不行的。因此我现在的解决方案是浏览器上用红杏，应用内要翻墙的时候开ga，也算是互相补足吧。</p>
-<hr>
-
+          <h2 id="如何下载红杏">如何下载红杏</h2><p><strong>请用【<a href="http://honx.in/i/VH8yjc6vDyi5KqVp">这个链接</a>】安装红杏吧!</strong></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/12/09/break-the-wall-down-with-hongxin/#more">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -736,11 +540,6 @@
       
         
           <h2 id="前言">前言</h2><p>本篇为阅读ACM digital的论文Using Formal Specifications to Support Testing的第五章Finite State Based Testing的笔记。该论文在后文文献中给出了链接。</p>
-<hr>
-<h2 id="什么是基于有限状态机(FSM)的测试">什么是基于有限状态机(FSM)的测试</h2><p><strong>FSM</strong> 是<em>finite-state machine</em>的缩写，许多系统都可以自然地被描述成一个有限状态的结构，因此基于FSM的测试问题得到了极大的关注。基于FSM的很多测试方法都依赖于测试假设或者错误模型，这两种情况下测试集能够保证可以确定其正确性，通常情况下测试假设或错误模型会给<strong>SUT</strong>（<em>Software under test</em> )的状态数量设置一个范围。</p>
-<p>在基于FSM <strong>F</strong>进行测试时，我们通常假设SUT 等价于一个未知的FSM <strong>I</strong>（这里I是最小的FSM，使用最小性假设），测试集就是用来检查I是否和F一致。如果F是确定性的，那么如果I等价于F即I和F一致。如果F是不确定性的，那么存在I和F一致的其他表示形式，包括F和I等价(equivalent)，I是F的归约(reduction)，或者I和F是<a href="http://www.chinabaike.com/article/baike/1002/2008/200806041507474.html">拟等价</a>的。</p>
-<hr>
-<h3 id="一个简单的FSM规格(Specification)的例子">一个简单的FSM规格(Specification)的例子</h3><p><img src="http://icoco.qiniudn.com/image/test/FSM.PNG" alt="FSM F"></p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2014/12/03/finite-state-based-testing/#more">
               阅读全文 &raquo;
@@ -811,15 +610,6 @@
       
         
           <h2 id="什么是_MarkDown">什么是 MarkDown</h2><p>还记得用git的时候总要你写一个readme.md的文件么？这个.md文件是干嘛用的呢？其实.md格式就是markdwon文件的缩写。Mark Down 是一种[电子邮件]风格的[标记语言]，可以将文本转化为Html。通过markdown进行写作可以让我们专注于内容，而暂时忘记格式。<br>大家可以阅读下面的文章了解为什么要使用markdown。本篇只介绍常用的markdown工具和平常需要使用的语法。更多的内容请参看附录[参考文献]<br><a href="http://www.jianshu.com/p/qqGjLN">为什么作家应该用 Markdown 保存自己的文稿</a><br><a href="http://www.jianshu.com/p/PpDNMG">Markdown写作浅谈</a></p>
-<hr>
-<h2 id="MarkDown_编辑器">MarkDown 编辑器</h2><ul>
-<li><p><strong>MarkdownPad</strong><br>MarkdowmPad 是一款可视化markdown编辑器，在左侧进行编辑，右侧可以看到转换成页面后的效果，如果对markdown不熟悉，可以用这个练练手<br>Moreinfo:<a href="http://markdownpad.com/">[MarkdownPad下载]</a></p>
-</li>
-<li><p><strong>Sublime</strong><br>Sublime 就不用多说了，markdown用熟了就不用对照着转换后的效果编辑了。sublime 是付费的，但是我一直用着免费版本，高频操作下差不多20分钟会提示你购买，已经很厚道了。<br>Moreinfo:<a href="http://www.sublimetext.com/">[Sublime下载]</a></p>
-</li>
-<li><p><strong>Cmd Markdown</strong><br>Cmd Markdown 是一款在线的markdown编辑器，和MarkdownPad一样是可以看到应用markdown的效果的，目前是最好的在线markdown编辑器，可以看看<a href="http://www.zhihu.com/question/19637157">知乎上的评论</a><br>MoreInfo:<a href="https://www.zybuluo.com">[Cmd Markdown]</a></p>
-</li>
-</ul>
 <hr>
           <div class="post-more-link text-center">
             <a class="btn" href="/2014/10/28/mark-down/#more">
@@ -895,19 +685,6 @@
 <p>Update !: hexo 更新实在太快，今天写的东西，明天可能就不适用了，强烈建议按照<a href="https://github.com/hexojs/hexo">github</a>上的步骤进行安装.</p>
 </blockquote>
 <hr>
-<h2 id="hexo_环境搭建">hexo 环境搭建</h2><ul>
-<li><strong>node.js安装</strong></li>
-</ul>
-<p>下载对应操作系统下的最新版本即可<br>More info:<a href="http://nodejs.org/">NODE.JS官网地址</a></p>
-<ul>
-<li><strong>git客户端安装</strong></li>
-</ul>
-<p>使用github提供的pages功能，需要将博客内容上传到github上，因此使用git客户端是必须的。<br>More info:<a href="https://msysgit.github.io/">推荐使用msysgit</a></p>
-<ul>
-<li><strong>编辑器安装(optional)</strong></li>
-</ul>
-<p>推荐安装sublime或者notepad++，千万不要用windows自带的txt编辑器编辑代码或配置文件。<br>More info : <a href="http://www.sublimetext.com/">sublime</a>  <a href="http://notepad-plus-plus.org/">notpad++</a></p>
-<hr>
           <div class="post-more-link text-center">
             <a class="btn" href="/2014/10/19/about-hexo/#more">
               阅读全文 &raquo;
@@ -969,7 +746,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1071,7 +848,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT
+    NexT.Mist
   </a>
 </div>
 

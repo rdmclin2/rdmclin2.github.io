@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="theme-next use-motion ">
+<html class="theme-next use-motion theme-next-mist">
 <head>
   
 
@@ -38,7 +38,7 @@
 
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
-    scheme: '',
+    scheme: 'Mist',
     analytics: {
       google: ''
     },
@@ -215,7 +215,8 @@
       
 
       
-        <h2 id="打开终端，新建-bash_profile文件">打开终端，新建.bash_profile文件</h2><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">cd</span> <span class="regexp">~</span><br><span class="line">vim</span> .bash_profile</span><br></pre></td></tr></table></figure>
+        <h1 id="前言">前言</h1><p>但凡mac重装系统总要设置java_home环境变量，这里做一下纪录,免去重复查询之苦。<br><a id="more"></a></p>
+<h1 id="基本步骤">基本步骤</h1><h2 id="打开终端，新建-bash_profile文件">打开终端，新建.bash_profile文件</h2><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">cd</span> <span class="regexp">~</span><br><span class="line">vim</span> .bash_profile</span><br></pre></td></tr></table></figure>
 <hr>
 <h2 id="输入java_home环境变量,并保存">输入java_home环境变量,并保存</h2><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export JAV<span class="built_in">A_HOME</span>=$(/usr/libexec/jav<span class="built_in">a_home</span> -v <span class="number">1.8</span>)</span><br></pre></td></tr></table></figure>
 <p>这种方法可以动态地获取这个环境变量，当自动升级了新版本的JAVA时，总能找到合适的JAVA_HOME目录，这里-v 可以指定java的版本，也可以不写使用默认的JAVA_HOME 路径</p>
@@ -227,7 +228,7 @@
 <h2 id="永久配置">永久配置</h2><p>上面的方法配置的用户环境变量，并不是永久的配置方法，要永久配置要设置/etc目录下地profile文件<br><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd /etc</span><br><span class="line">sudo vim profile</span><br><span class="line">在文件中添加</span><br><span class="line">JAV<span class="built_in">A_HOME</span>=$(/usr/libexec/jav<span class="built_in">a_home</span> -v <span class="number">1.8</span>)</span><br><span class="line">export JAV<span class="built_in">A_HOME</span></span><br></pre></td></tr></table></figure></p>
 <p>然后强制保存退出，重启或注销使环境变量配置起作用。</p>
 <hr>
-<h2 id="参考">参考</h2><p><a href="http://songzhan.iteye.com/blog/1893074" target="_blank" rel="external">http://songzhan.iteye.com/blog/1893074</a><br><a href="http://www.micmiu.com/lang/java/set-javahome-on-mac-os-x/" target="_blank" rel="external">http://www.micmiu.com/lang/java/set-javahome-on-mac-os-x/</a><br><a href="https://stackoverflow.com/questions/1348842/what-should-i-set-java-home-to-on-osx" target="_blank" rel="external">https://stackoverflow.com/questions/1348842/what-should-i-set-java-home-to-on-osx</a></p>
+<h1 id="参考">参考</h1><p><a href="http://songzhan.iteye.com/blog/1893074" target="_blank" rel="external">http://songzhan.iteye.com/blog/1893074</a><br><a href="http://www.micmiu.com/lang/java/set-javahome-on-mac-os-x/" target="_blank" rel="external">http://www.micmiu.com/lang/java/set-javahome-on-mac-os-x/</a><br><a href="https://stackoverflow.com/questions/1348842/what-should-i-set-java-home-to-on-osx" target="_blank" rel="external">https://stackoverflow.com/questions/1348842/what-should-i-set-java-home-to-on-osx</a></p>
 
       
     </div>
@@ -344,7 +345,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -425,7 +426,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#打开终端，新建-bash_profile文件"><span class="nav-number">1.</span> <span class="nav-text">打开终端，新建.bash_profile文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入java_home环境变量,并保存"><span class="nav-number">2.</span> <span class="nav-text">输入java_home环境变量,并保存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新配置文件"><span class="nav-number">3.</span> <span class="nav-text">更新配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看java_home环境变量"><span class="nav-number">4.</span> <span class="nav-text">查看java_home环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#永久配置"><span class="nav-number">5.</span> <span class="nav-text">永久配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本步骤"><span class="nav-number">2.</span> <span class="nav-text">基本步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#打开终端，新建-bash_profile文件"><span class="nav-number">2.1.</span> <span class="nav-text">打开终端，新建.bash_profile文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入java_home环境变量,并保存"><span class="nav-number">2.2.</span> <span class="nav-text">输入java_home环境变量,并保存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新配置文件"><span class="nav-number">2.3.</span> <span class="nav-text">更新配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看java_home环境变量"><span class="nav-number">2.4.</span> <span class="nav-text">查看java_home环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#永久配置"><span class="nav-number">2.5.</span> <span class="nav-text">永久配置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -457,7 +458,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT
+    NexT.Mist
   </a>
 </div>
 

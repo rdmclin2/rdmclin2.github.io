@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="theme-next use-motion ">
+<html class="theme-next use-motion theme-next-mist">
 <head>
   
 
@@ -38,7 +38,7 @@
 
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
-    scheme: '',
+    scheme: 'Mist',
     analytics: {
       google: ''
     },
@@ -216,6 +216,7 @@
 
       
         <h1 id="Emma是什么？">Emma是什么？</h1><p>Emma是用来生成java程序代码覆盖率报告的工具，具体的介绍和简单教程请看之前博客的链接<a href="http://mclspace.com/2014/12/25/emma-tutorial/" target="_blank" rel="external">EMMA教程</a>。而EMMA这款工具怎么生成安卓测试程序运行安卓程序的代码覆盖率呢？上网查了很多教程，但大多冗余没有干货，抄来抄去没有新的内容，导致能解决我的问题的内容少之又少。于是整理一下今天使用Emma的一些难点和心得。</p>
+<a id="more"></a>
 <hr>
 <h1 id="环境准备">环境准备</h1><ul>
 <li>Android SDK</li>
@@ -223,7 +224,6 @@
 </ul>
 <p>没有的搜一下网上的教程就好，这里我们要用到ant进行插装编译，ant中集成了emma，所以emma也不用下了。这里的使用环境为Windows，SDK版本为Android-21.注意EMMA只能对有源码的工程进行覆盖率监测。</p>
 <hr>
-<a id="more"></a>
 <h1 id="步骤">步骤</h1><p>假设待测APK的目录为\Lesson3,测试工程的目录为\Lesson3Test。\代表当前目录，步骤如下：</p>
 <ul>
 <li><p>首先cd到\Lesson3，输入android update project -p \ <code>Enter</code>,这一步将在Lesson3目录下生成ant的配置文件build.xml。</p>
@@ -359,7 +359,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -472,7 +472,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT
+    NexT.Mist
   </a>
 </div>
 

@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="theme-next use-motion ">
+<html class="theme-next use-motion theme-next-mist">
 <head>
   
 
@@ -38,7 +38,7 @@
 
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
-    scheme: '',
+    scheme: 'Mist',
     analytics: {
       google: ''
     },
@@ -216,11 +216,11 @@
 
       
         <h2 id="前言">前言</h2><p>本篇为阅读<a href="https://dl.acm.org/citation.cfm?id=2635896" target="_blank" rel="external">EvoDroid:Segmented Evolutionary Testing of Android Apps</a>的阅读总结，该论文是今年<a href="https://fse22.gatech.edu/program" target="_blank" rel="external">FSE</a>上的一篇paper。关于进化测试原来的实现方法可以看百度文库上的一篇<a href="http://wenku.baidu.com/link?url=_3ozehVevOFK9ZG_pqcnDRbofQTSyKfjXAyJlqRjR0MsDE5Y3IYyulu9Eq2X5A33NQmmM9Rpx_biumxKT2b1RN93PHYn2k6xA5Elor5bZsG" target="_blank" rel="external">ppt</a>，讲的挺详细的。</p>
+<a id="more"></a>
 <hr>
 <h2 id="写作动机">写作动机</h2><p>写paper总会先提出原有方法不足的地方，然后在此基础上进行了何种改进。本篇paper解决的就是原有的进化测试局限于本地测试或者单元测试，而无法进行系统测试的问题，因为它无法将搜索中好的个体的基因组成传递下去。论文的平台为安卓，原有的自动系统测试方法为monkey，monkey是安卓框架中自带的能够随机产生事件的工具，但是这种暴力的方法的代码覆盖率不高。</p>
 <p>本文的方法主要解决的是代码覆盖率的问题，并没有解决测试oracle的问题，因此输出的结果一方面是代码覆盖率相关的信息，一方面它会将测试执行过程中的异常都输出出来。进化测试是基于搜索的方法，通常要进行多次迭代，每次将优秀的基因传递到下一代中，并进行变体，以期能够最大化覆盖率，因此基于搜索的方法一个关心的问题就是执行时间。本文的方法没有从算法入手削减时间，而是使用云端部署多台设备进行并行测试的方式解决，使时间减小了几个量级。下面贴一个进化测试的流程图以提供直观的理解：<br><img src="http://7pun7p.com1.z0.glb.clouddn.com/image/test/进化测试.PNG" alt="进化测试流程图"></p>
 <hr>
-<a id="more"></a>
 <h2 id="背景知识介绍">背景知识介绍</h2><p>这里背景知识主要是关于安卓框架，安卓平台提供的开发框架叫做ADF(application development framework)。本篇文章利用App对ADF的依赖导致app的实现逻辑在某种程度上具有一致性来方便自动化的测试。安卓程序强制性的需要一份manifest文件，该文件记录了该app的组件信息和配置信息等。安卓四大组件为Activities,Services,Broadcast Receivers和Content Providers。<strong>Activity</strong>用于和用户进行操作，包括一组布局文件layout，layout中记录了用到的UI控制工具。<strong>Service</strong>可以提供在后台持续运行长时间任务，但和Activity不同，它没有界面。<strong>Content Provider</strong>管理系统中的结构化数据，例如通讯录等。<strong>Broadcast Receiver</strong> 可以响应在系统范围内的消息，例如屏幕关闭。这些组件可以通过一个intent进行激活，组件的生存期由ADF预定义的生存期事件管理器控制。</p>
 <hr>
 <h2 id="例子程序">例子程序</h2><p><img src="http://7pun7p.com1.z0.glb.clouddn.com/image/test/ERS.PNG" alt="ERS"><br>本文的例子为一个花费报告系统ERS(Expense Reporting System)。该系统有两种功能，一种是快速报告，输入项目和数目，然后点击提交或退出，另一种是物品报告，允许进行多个物品的提交.</p>
@@ -327,7 +327,7 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/12/18/douban-fm-offline/">解决豆瓣FM客户端4.0无法离线的问题</a>
+              <a href="/2014/12/25/emma-tutorial/">EMMA教程</a>
             
           </div>
 
@@ -424,7 +424,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -537,7 +537,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT
+    NexT.Mist
   </a>
 </div>
 
