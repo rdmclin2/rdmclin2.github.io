@@ -42,7 +42,7 @@
     analytics: {
       google: ''
     },
-    sidebar: 'hide'
+    sidebar: 'post'
   };
 </script>
 
@@ -291,7 +291,8 @@
 <figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// File : /js/directives/mainDirective.js</span></span><br><span class="line">angular.module(<span class="string">'app.directives'</span>,[]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// File : /js/directives/myGreatDirective.js</span></span><br><span class="line">angular.module(<span class="string">'app.directives'</span>)  </span><br><span class="line">    .directive(<span class="string">'myGreatDirective'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="comment">//...</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// File : /js/directives/myBetterDirective.js</span></span><br><span class="line">angular.module(<span class="string">'app.directives'</span>)  </span><br><span class="line">    .directive(<span class="string">'myBetterDirective'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="comment">//...</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>看<a href="https://calendee.com/2013/12/29/angularjs-code-organization/" target="_blank" rel="external">这篇文章</a>了解更多</p>
+<p>看<a href="https://calendee.com/2013/12/29/angularjs-code-organization/" target="_blank" rel="external">这篇文章</a>了解更多,<br>嗯这篇文章写的还不是best practice，因为你还得记着自己把[]写到那个模块里了，统一地写在app.js中即可，<br>在app.js最下面加上类似：<br><figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">angular.<span class="keyword">module</span>(<span class="symbol">'fcws</span>.controllers',[<span class="symbol">'ionic'</span>, <span class="symbol">'fcws</span>.services']);</span><br><span class="line">angular.<span class="keyword">module</span>(<span class="symbol">'fcws</span>.services', <span class="literal">[]</span>);</span><br></pre></td></tr></table></figure></p>
+<p>可以达到和上面一样的效果，而且可以统一管理.</p>
 <ol>
 <li><p>话说ionic 的app似乎暂时无法进行代码混淆，至少ionic官方的ionic view没有进行代码混淆，下载他们的app，文件名改成zip，解压，所有的 www文件都在assets文件夹中，相当于开源了有木有，看看那些最优秀的practice，<br>看中哪些优秀的app，下下来,如何在googleplay上下载？把googleplay应用的地址贴到<a href="https://apps.evozi.com/apk-downloader/" target="_blank" rel="external">这个网址</a>中</p>
 </li>
@@ -311,6 +312,8 @@
 </li>
 <li><p>如何显示相对时间？ <a href="https://github.com/moment/moment/" target="_blank" rel="external">可以用momentjs</a>，看<a href="https://scotch.io/tutorials/display-time-relatively-in-angular" target="_blank" rel="external">这篇教程</a></p>
 </li>
+<li>发布应用的时候如果遇到翻译错误，暂时的解决方法是，不进行翻译校正, 在 /platforms/android/build.gradle 中的android {}节中加入:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lintOptions &#123;</span><br><span class="line">						 <span class="built_in">disable</span> <span class="string">'MissingTranslation'</span></span><br><span class="line">							<span class="built_in">disable</span> <span class="string">'ExtraTranslation'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 <h3 id="ionic开发资料">ionic开发资料</h3><ul>
 <li><a href="http://learn.ionicframework.com/formulas/data-the-right-way/" target="_blank" rel="external">解析数据的正确方式</a></li>
@@ -326,6 +329,11 @@
 <li><a href="https://github.com/driftyco/ionic-weather" target="_blank" rel="external">官方github例子</a></li>
 <li><a href="http://devdactic.com/how-to-capture-and-store-images-with-ionic/" target="_blank" rel="external">使用ionic拍摄和存储图片</a></li>
 <li><a href="https://github.com/mgonto/restangular" target="_blank" rel="external">用restangular处理Rest API</a></li>
+<li><a href="http://www.haomou.net/categories/ionic-reapp/page/2/" target="_blank" rel="external">皓眸大前端</a><br>这个网易前端工程师的博客值得好好研究，上面还有网易的内推邀请码。</li>
+<li><a href="http://www.haomou.net/2015/01/07/2015_ionic_fileOP/" target="_blank" rel="external">如何本地选择图片</a><blockquote>
+<p>$ 不过这个功能在某些机型上面会出错，例如荣耀六，＝＝别提我调bug调得多心烦了</p>
+</blockquote>
+</li>
 </ul>
 <h3 id="ionic_服务">ionic 服务</h3><ul>
 <li><a href="http://view.ionic.io/" target="_blank" rel="external">ionicView</a><blockquote>
@@ -449,7 +457,7 @@
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/05/13/nata-user-manual/">NATA 用户手册</a>
+              <a href="/2015/05/10/Fatjar-install/">Eclipse 安装 Fatjar.jar失败的解决方法</a>
             
           </div>
         </div>
@@ -540,7 +548,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -554,7 +562,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-count">26</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

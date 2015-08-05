@@ -42,7 +42,7 @@
     analytics: {
       google: ''
     },
-    sidebar: 'hide'
+    sidebar: 'post'
   };
 </script>
 
@@ -59,7 +59,7 @@
 
 
 
-  <title> Mac 那些事 // Mcl's space </title>
+  <title> Mac 基本操作技巧 // Mcl's space </title>
 </head>
 
 <body>
@@ -172,7 +172,7 @@
           
           
             
-              Mac 那些事
+              Mac 基本操作技巧
             
           
         </h1>
@@ -215,66 +215,14 @@
       
 
       
-        <h1 id="纪录使用mac过程遇到的问题和好的实践">纪录使用mac过程遇到的问题和好的实践</h1><h2 id="重装系统">重装系统</h2><p>－ 网络，TimeMachine<br>1）关闭Mac系统<br>2）同时按下组合键 command +R<br>3）再按下开关键 ，command +R不能松开<br>ps：使用网络恢复系统由于网络原因时间较长，如果没有TimeMachine建议制作启动u盘,另强烈建议制作TimeMachine备份。</p>
-<ul>
-<li>制作启动u盘<br>教程<a href="http://bbs.feng.com/read-htm-tid-7057977.html" target="_blank" rel="external">这篇文章</a>说的比较详细了，不赘述。做完u盘，开机按住option键，选择制作的u盘即可，一般半小时内完成。</li>
-</ul>
-<h3 id="重装系统需要安装哪些软件，可以把安装包留下来以备将来用">重装系统需要安装哪些软件，可以把安装包留下来以备将来用</h3><ul>
-<li><a href="http://brew.sh/" target="_blank" rel="external">homebrew</a></li>
-<li><a href="http://www.oracle.com/technetwork/cn/java/javase/downloads/jdk8-downloads-2133151-zhs.html" target="_blank" rel="external">jdk</a></li>
-<li><a href="http://im.qq.com/download/" target="_blank" rel="external">qq</a></li>
-<li><a href="http://music.163.com/#/download" target="_blank" rel="external">网易云音乐</a></li>
-<li><a href="https://www.google.cn/intl/zh-cn/chrome/browser/desktop/index.html" target="_blank" rel="external">chrome</a></li>
-<li><a href="https://www.sublimetext.com/2" target="_blank" rel="external">sublime2</a></li>
-<li>thunterbird</li>
-<li><a href="https://developer.android.com/sdk/index.html" target="_blank" rel="external">androidstudio</a></li>
-<li><a href="http://dl.google.com/android/adt/adt-bundle-mac-x86_64-20140702.zip" target="_blank" rel="external">ADT</a></li>
-<li>dash</li>
-<li>Android File Transfer</li>
-<li><a href="http://www.utorrent.com/" target="_blank" rel="external">utorrent</a></li>
-<li><a href="http://bbs.feng.com/read-htm-tid-8507803.html" target="_blank" rel="external">SplayerX</a></li>
-<li><a href="http://25.io/mou/" target="_blank" rel="external">Mou</a></li>
-<li>Wunderlist</li>
-<li>FlashLight</li>
-<li>Goagentx</li>
-<li><a href="https://www.iterm2.com/" target="_blank" rel="external">iterm2</a></li>
-<li>FileZella</li>
-<li>oh my zsh~</li>
-<li>hexo</li>
-<li>安装<a href="http://pan.baidu.com/s/1jGGGs54" target="_blank" rel="external">网络转换器的驱动</a></li>
-</ul>
+        <h2 id="重装系统">重装系统</h2><h3 id="网络，TimeMachine">网络，TimeMachine</h3><p>1）关闭Mac系统<br>2）同时按下组合键 command +R<br>3）再按下开关键 ，command +R不能松开<br>ps：使用网络恢复系统由于网络原因时间较长，如果没有TimeMachine建议制作启动u盘,另强烈建议制作TimeMachine备份。</p>
+<h3 id="制作启动u盘">制作启动u盘</h3><p>教程<a href="http://bbs.feng.com/read-htm-tid-7057977.html" target="_blank" rel="external">这篇文章</a>说的比较详细了，不赘述。做完u盘，开机按住option键，选择制作的u盘即可，一般半小时内完成。</p>
 <hr>
 <a id="more"></a>
-<h3 id="oh_my_zsh~_安装配置">oh my zsh~ 安装配置</h3><ol>
-<li><p>切换zsh</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chsh <span class="operator">-s</span> /bin/zsh</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装git<br>命令行输入git，mac自动弹出安装界面提示你安装，不过速度有点慢,安装完成后设置自己的用户名和邮箱<br>git config —global user.name “xxx”<br>git config —global user.email xxx@example.com<br>git config —global http.postBuffer 524288000 //设置缓冲区为500M，防止下不下来<br>然后生成新的ssh－key。</p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -<span class="keyword">C</span> <span class="string">"your_email@example.com"</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>然后将~/.ssh/id_rsa.pub中的key粘贴到github账户的key列表中去。</p>
-<ol>
-<li><p>安装homebrew<br>终端输入：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby <span class="operator">-e</span> <span class="string">"<span class="variable">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)</span>"</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装wget<br>终端输入：</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew <span class="keyword">install</span> wget</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>自动安装<br>终端输入：</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http<span class="variable">s:</span>//github.<span class="keyword">com</span>/robbyrussell/oh-my-zsh/raw/master/tools/install.<span class="keyword">sh</span> -O - | <span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装插件<br>这里安装autojump：</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew <span class="keyword">install</span> autojump</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>在.zshrc文件中添加：<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]]</span> &amp;&amp; . $(brew <span class="comment">--prefix)/etc/profile.d/autojump.sh</span></span><br></pre></td></tr></table></figure></p>
-<p>按brew提示的为准，在.zshrc文件中找到plugins关键字，在括号里添加autojump，如：<br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plugins=<span class="list">(<span class="keyword">git</span> textmate ruby autojump osx mvn gradle)</span></span><br></pre></td></tr></table></figure></p>
-<p>7.更多关于oh my zsh的介绍可以看<a href="http://macshuo.com/?p=676" target="_blank" rel="external">mac君的说明</a></p>
-<h3 id="配置android环境变量">配置android环境变量</h3><p>vim ~/.zshrc 添加<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ANDROID_HOME=<span class="variable">$HOME</span>/Library/Android/sdk</span><br><span class="line"><span class="built_in">export</span> ANDROID_HOME</span><br><span class="line"></span><br><span class="line">PATH=<span class="variable">$PATH</span>:<span class="variable">$ANDROID_HOME</span>/tools</span><br><span class="line">PATH=<span class="variable">$PATH</span>:<span class="variable">$ANDROID_HOME</span>/platform-tools</span><br><span class="line">PATH=<span class="variable">$PATH</span>:<span class="variable">$ANDROID_HOME</span>/build-tools/<span class="number">19.0</span>.<span class="number">0</span>    <span class="comment"># installed version number</span></span><br><span class="line"><span class="built_in">export</span> PATH</span><br></pre></td></tr></table></figure></p>
+<h2 id="环境配置">环境配置</h2><h3 id="配置android环境变量">配置android环境变量</h3><p>vim ~/.zshrc 添加<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ANDROID_HOME=<span class="variable">$HOME</span>/Library/Android/sdk</span><br><span class="line"><span class="built_in">export</span> ANDROID_HOME</span><br><span class="line"></span><br><span class="line">PATH=<span class="variable">$PATH</span>:<span class="variable">$ANDROID_HOME</span>/tools</span><br><span class="line">PATH=<span class="variable">$PATH</span>:<span class="variable">$ANDROID_HOME</span>/platform-tools</span><br><span class="line">PATH=<span class="variable">$PATH</span>:<span class="variable">$ANDROID_HOME</span>/build-tools/<span class="number">19.0</span>.<span class="number">0</span>    <span class="comment"># installed version number</span></span><br><span class="line"><span class="built_in">export</span> PATH</span><br></pre></td></tr></table></figure></p>
 <hr>
 <h3 id="配置java_home_环境变量">配置java_home 环境变量</h3><p>vim ~/.zshrc 添加<br><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export JAV<span class="built_in">A_HOME</span>=$(/usr/libexec/jav<span class="built_in">a_home</span> -v <span class="number">1.8</span>)</span><br></pre></td></tr></table></figure></p>
-<p>然后source ~/.zshrc一下，可以用echo $JAVA_HOME$查看是否成功，其他终端下可以参考<a href="http://mclspace.com/2015/03/10/mac_java_home/" target="_blank" rel="external">我之前的文章</a></p>
+<p>然后source ~/.zshrc一下，用echo $JAVA_HOME$查看是否成功，其他终端下可以参考<a href="http://mclspace.com/2015/03/10/mac_java_home/" target="_blank" rel="external">我之前的文章</a></p>
 <hr>
 <h3 id="iTerm2配色">iTerm2配色</h3><p>安装完oh my zsh后你可能对iterm2默认的配色不太满意，可以到<a href="https://github.com/mbadolato/iTerm2-Color-Schemes" target="_blank" rel="external">iTerm2-Color-Schemes</a>将此工程克隆下来,然后在iterm2下用cmd+i呼出颜色配置，然后Colors -&gt; Load Presets -&gt; import 选项将schemes文件夹下面的配置都倒入进去，然后一个个试哪一款配色适合你，我选择的是kibble。</p>
 <hr>
@@ -286,48 +234,50 @@
 <li>在Preferences -&gt; Color Scheme -&gt; Monokai Extended中选择一款自己喜欢的配色</li>
 </ol>
 <p>开启vim模式<br>在Preferences -&gt; Settings - User中将”Vintage”去掉，变成<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"ignored_packages"</span><span class="symbol">:[]</span></span><br></pre></td></tr></table></figure></p>
-<p>安装前端神奇emmet,如上。</p>
+<p>安装前端神器emmet,如上。</p>
+<hr>
+<h3 id="alias_设置别名">alias 设置别名</h3><p>如在命令行中添加sublime<br>如果你也用zshrc，在～目录，vim .zshrc，添加以下alias（别名）可以快捷调用应用，如下所示：<br><figure class="highlight monkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alias</span> <span class="title">sublime</span>=<span class="comment">'open -a "Sublime Text 2"'</span></span><br><span class="line"><span class="keyword">alias</span> <span class="title">chrome</span>=<span class="comment">'open -a "Google Chrome"'</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="基本技巧">基本技巧</h2><h3 id="Mac下的截图技巧">Mac下的截图技巧</h3><ol>
+<li>Command＋shift＋3:全屏截图</li>
+<li>Command＋shift＋4:鼠标选定区域截图</li>
+<li>使用Command＋shift＋4后，按下空格键，鼠标会变成一个小相机，这时候你使用鼠标对一个窗口点击一下鼠标左键，你已经对一个窗口进行了截图。</li>
+<li>按Command＋shift＋4 后 ,画一个抓取的区域，不要松开鼠标，接着</li>
+</ol>
+<ul>
+<li>按住空格可以移动这个区域</li>
+<li>按住 Shift后，将锁定X 或者 Y轴进行拖动</li>
+<li>按住 Option后 将按照区域圆心进行放大.</li>
+</ul>
+<p>最后所有截图将直接显示在桌面上。</p>
+<p>另外ctrl+ cmd + shift + 4 可以将截图复制，方便粘贴,这种方式不会把截图显示在桌面上</p>
 <hr>
 <h3 id="通过wifi分享网络">通过wifi分享网络</h3><p>通过System Preferences -&gt; Sharing -&gt; Internet Sharing.<br>勾选Wi-Fi,并通过 Wi-Fi Options设置接入密码，然后在左侧勾选Internet Sharing。<br>可以看到menu bar上的wifi图标变成了向上的箭头。</p>
 <hr>
-<h3 id="alias_可以用来在命令行中添加sublime">alias 可以用来在命令行中添加sublime</h3><p>如果你也用zshrc，在～目录，vim .zshrc，添加以下alias（别名）可以快捷调用应用，如下所示：</p>
-<figure class="highlight monkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alias</span> <span class="title">sublime</span>=<span class="comment">'open -a "Sublime Text 2"'</span></span><br><span class="line"><span class="keyword">alias</span> <span class="title">chrome</span>=<span class="comment">'open -a "Google Chrome"'</span></span><br></pre></td></tr></table></figure>
+<h3 id="office解决方案">office解决方案</h3><p>chrome有<a href="https://chrome.google.com/webstore/detail/office-editing-for-docs-s/gbkeegbaiigmenfmjfclcdgdpimamgkj?hl=en" target="_blank" rel="external">office扩展</a>，安装扩展后，直接将文档拖到chrome中就能打开编辑，非常方便。当然没办法做到像windows上那样，不过至少可以查看和简单的编辑。</p>
+<p>另外我觉得mac下的keynote和pages也很好用，可以学习学习。</p>
 <hr>
-<h3 id="Mac下的截图技巧">Mac下的截图技巧</h3><p>1.Command＋shift＋3:全屏截图<br>2.Command＋shift＋4:鼠标选定区域截图<br>使用第二种截图，还有两个小技巧<br>第一个：<br>使用Command＋shift＋4后，按下空格键，鼠标会变成一个小相机，这时候你使用鼠标对一个窗口点击一下鼠标左键，你已经对一个窗口进行了截图。<br>第二个：<br>按Command＋shift＋4 后 ,画一个抓取的区域，不要松开鼠标，接着</p>
-<ol>
-<li>按住空格可以移动这个区域</li>
-<li>按住 Shift后，将锁定X 或者 Y轴进行拖动</li>
-<li>按住 Option后 将按照区域圆心进行放大.<br>最后所有截图将直接显示在桌面上。</li>
-</ol>
-<p>另外ctrl+ cmd + shift + 4 可以将截图复制，方便粘贴</p>
+<h3 id="修改电脑名称">修改电脑名称</h3><p>系统偏好设置 -&gt; 共享 －&gt; 电脑名称</p>
 <hr>
-<h3 id="Mac_下office软件解决方案">Mac 下office软件解决方案</h3><p>chrome有<a href="https://chrome.google.com/webstore/detail/office-editing-for-docs-s/gbkeegbaiigmenfmjfclcdgdpimamgkj?hl=en" target="_blank" rel="external">office扩展</a>，安装扩展后，直接将文档拖到chrome中就能打开编辑，非常方便。当然没办法做到像windows上那样，不过至少可以查看和简单的编辑。</p>
+<h3 id="为什么登录界面的大小写不灵？">为什么登录界面的大小写不灵？</h3><p>苹果为防止误触专门设计成这样。</p>
 <hr>
-<h3 id="其他">其他</h3><ul>
-<li>如何修改电脑名称？<br>  系统偏好设置 -&gt; 共享 －&gt; 电脑名称</li>
-<li>如何剪切？<br>  mac中没有剪切的概念，只有move，因此我们可以先cmd+C,然后用option+cmd+v的方式进行移动。</li>
-<li>为什么登录界面的大小写不灵？<br>  苹果为防止误触专门设计成这样。</li>
-<li>mac下如何剪切文件？<br>  先复制，然后到移动的文件夹下，按opt+cmd+v使用move to here功能。</li>
-<li><p>mac chrome 看视频 风扇狂转<br>  可以用<a href="https://github.com/feelinglucky/chrome-plugin-to-replace-fuck-flash-player" target="_blank" rel="external">chrome-plugin-to-replace-fuck-flash-player</a>,或者给safari安装ClickToFlash插件(<a href="https://extensions.apple.com/details/?id=com.hoyois.safari.clicktoflash-GY5KR7239Q),safari官方插件页都有了，作者当时还明令禁止传播的。" target="_blank" rel="external">https://extensions.apple.com/details/?id=com.hoyois.safari.clicktoflash-GY5KR7239Q),safari官方插件页都有了，作者当时还明令禁止传播的。</a></p>
-</li>
-<li><p>mac 如何显示隐藏文件?</p>
-</li>
-</ul>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">显示：defaults write com<span class="class">.apple</span><span class="class">.finder</span> AppleShowAllFiles -bool true</span><br><span class="line">隐藏：defaults write com<span class="class">.apple</span><span class="class">.finder</span> AppleShowAllFiles -bool false</span><br></pre></td></tr></table></figure>
-<ul>
-<li>chrome vimium插件.<br>   chrome应用市场下搜索vimium，可以像使用vim一样操作网页</li>
-<li>mac iterm2 主题配色<br>   <a href="https://github.com/mbadolato/iTerm2-Color-Schemes" target="_blank" rel="external">https://github.com/mbadolato/iTerm2-Color-Schemes</a></li>
-<li>用splotlight定位文件后可以按住command键单击打开文件所在位置的文件夹</li>
-<li>可以用smcFanCon进行夏天时候的风扇控制，3000-4000就够了</li>
-<li>命令行下用wget＋下载链接就可以进行下载</li>
-<li>命令行下如何远程登录linux服务器？<br>  ssh user@hostname,例如mcl@114.212.87.56</li>
-<li>一些翻墙软件推荐<br> shadowsocks  xx-net   goagent   hongxin（浏览器）</li>
-<li>我的google appid : yfefmdngzfhjjgbb</li>
-<li>Mac 下如何隐藏dock？<br>  快捷键 cmd + option + d</li>
-<li>Mac 下如何像windows下那样连续查看文件夹下的图片？<br>加载到iPhoto中或者空格预览按tab键切换。</li>
-<li>Mac下如何开启多个桌面？<br>三个手指向上滑，之后就看到上面有一个dashboard,另外一个就是你现在的桌面，鼠标滑到右上角就出现一个透明的加号，<br>点了就好了。想加几个加几个。</li>
-<li>Mac如何录制屏幕？<br>打开QuickTime player，点文件 -&gt; 新建屏幕录制 -&gt; 点击红点，开始录制 -&gt; 录制完成后停止按钮在顶栏右上方</li>
-</ul>
+<h3 id="剪切文件">剪切文件</h3><p>先复制，然后到移动的文件夹下，按opt+cmd+v使用move to here功能。</p>
+<hr>
+<h3 id="解决mac_chrome_看视频_风扇狂转">解决mac chrome 看视频 风扇狂转</h3><p>可以用<a href="https://github.com/feelinglucky/chrome-plugin-to-replace-fuck-flash-player" target="_blank" rel="external">chrome-plugin-to-replace-fuck-flash-player</a>,或者给safari安装ClickToFlash插件(<a href="https://extensions.apple.com/details/?id=com.hoyois.safari.clicktoflash-GY5KR7239Q),safari官方插件页都有了，作者当时还明令禁止传播的。" target="_blank" rel="external">https://extensions.apple.com/details/?id=com.hoyois.safari.clicktoflash-GY5KR7239Q),safari官方插件页都有了，作者当时还明令禁止传播的。</a></p>
+<hr>
+<h3 id="显示隐藏文件">显示隐藏文件</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">显示：defaults write com<span class="class">.apple</span><span class="class">.finder</span> AppleShowAllFiles -bool true</span><br><span class="line">隐藏：defaults write com<span class="class">.apple</span><span class="class">.finder</span> AppleShowAllFiles -bool false</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="chrome_vimium插件">chrome vimium插件</h3><p>chrome应用市场下搜索vimium，可以像使用vim一样操作网页</p>
+<hr>
+<h3 id="用splotlight定位文件后可以按住command键单击打开文件所在位置的文件夹">用splotlight定位文件后可以按住command键单击打开文件所在位置的文件夹</h3><hr>
+<h3 id="可以用smcFanCon进行夏天时候的风扇控制，3000-4000就够了">可以用smcFanCon进行夏天时候的风扇控制，3000-4000就够了</h3><hr>
+<h3 id="隐藏dock">隐藏dock</h3><p>快捷键 cmd + option + d,要显示的话再按一次即可</p>
+<hr>
+<h3 id="Mac_下如何像windows下那样连续查看文件夹下的图片？">Mac 下如何像windows下那样连续查看文件夹下的图片？</h3><p>加载到iPhoto中或者空格预览按tab键切换。</p>
+<hr>
+<h3 id="开启多个桌面">开启多个桌面</h3><p>三个手指向上滑，之后就看到上面有一个dashboard,另外一个就是你现在的桌面，鼠标滑到右上角就出现一个透明的加号，<br>点了就好了。想加几个加几个。</p>
+<hr>
+<h3 id="录制屏幕">录制屏幕</h3><p>打开QuickTime player，点文件 -&gt; 新建屏幕录制 -&gt; 点击红点，开始录制 -&gt; 录制完成后停止按钮在顶栏右上方</p>
 
       
     </div>
@@ -442,7 +392,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -456,7 +406,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-count">26</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -523,7 +473,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#纪录使用mac过程遇到的问题和好的实践"><span class="nav-number">1.</span> <span class="nav-text">纪录使用mac过程遇到的问题和好的实践</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#重装系统"><span class="nav-number">1.1.</span> <span class="nav-text">重装系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#重装系统需要安装哪些软件，可以把安装包留下来以备将来用"><span class="nav-number">1.1.1.</span> <span class="nav-text">重装系统需要安装哪些软件，可以把安装包留下来以备将来用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#oh_my_zsh~_安装配置"><span class="nav-number">1.1.2.</span> <span class="nav-text">oh my zsh~ 安装配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置android环境变量"><span class="nav-number">1.1.3.</span> <span class="nav-text">配置android环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置java_home_环境变量"><span class="nav-number">1.1.4.</span> <span class="nav-text">配置java_home 环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iTerm2配色"><span class="nav-number">1.1.5.</span> <span class="nav-text">iTerm2配色</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sublime2_配置"><span class="nav-number">1.1.6.</span> <span class="nav-text">sublime2 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过wifi分享网络"><span class="nav-number">1.1.7.</span> <span class="nav-text">通过wifi分享网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#alias_可以用来在命令行中添加sublime"><span class="nav-number">1.1.8.</span> <span class="nav-text">alias 可以用来在命令行中添加sublime</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mac下的截图技巧"><span class="nav-number">1.1.9.</span> <span class="nav-text">Mac下的截图技巧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mac_下office软件解决方案"><span class="nav-number">1.1.10.</span> <span class="nav-text">Mac 下office软件解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他"><span class="nav-number">1.1.11.</span> <span class="nav-text">其他</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#重装系统"><span class="nav-number">1.</span> <span class="nav-text">重装系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#网络，TimeMachine"><span class="nav-number">1.1.</span> <span class="nav-text">网络，TimeMachine</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#制作启动u盘"><span class="nav-number">1.2.</span> <span class="nav-text">制作启动u盘</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境配置"><span class="nav-number">2.</span> <span class="nav-text">环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置android环境变量"><span class="nav-number">2.1.</span> <span class="nav-text">配置android环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置java_home_环境变量"><span class="nav-number">2.2.</span> <span class="nav-text">配置java_home 环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iTerm2配色"><span class="nav-number">2.3.</span> <span class="nav-text">iTerm2配色</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sublime2_配置"><span class="nav-number">2.4.</span> <span class="nav-text">sublime2 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#alias_设置别名"><span class="nav-number">2.5.</span> <span class="nav-text">alias 设置别名</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本技巧"><span class="nav-number">3.</span> <span class="nav-text">基本技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Mac下的截图技巧"><span class="nav-number">3.1.</span> <span class="nav-text">Mac下的截图技巧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过wifi分享网络"><span class="nav-number">3.2.</span> <span class="nav-text">通过wifi分享网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#office解决方案"><span class="nav-number">3.3.</span> <span class="nav-text">office解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改电脑名称"><span class="nav-number">3.4.</span> <span class="nav-text">修改电脑名称</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么登录界面的大小写不灵？"><span class="nav-number">3.5.</span> <span class="nav-text">为什么登录界面的大小写不灵？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#剪切文件"><span class="nav-number">3.6.</span> <span class="nav-text">剪切文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决mac_chrome_看视频_风扇狂转"><span class="nav-number">3.7.</span> <span class="nav-text">解决mac chrome 看视频 风扇狂转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示隐藏文件"><span class="nav-number">3.8.</span> <span class="nav-text">显示隐藏文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chrome_vimium插件"><span class="nav-number">3.9.</span> <span class="nav-text">chrome vimium插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用splotlight定位文件后可以按住command键单击打开文件所在位置的文件夹"><span class="nav-number">3.10.</span> <span class="nav-text">用splotlight定位文件后可以按住command键单击打开文件所在位置的文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可以用smcFanCon进行夏天时候的风扇控制，3000-4000就够了"><span class="nav-number">3.11.</span> <span class="nav-text">可以用smcFanCon进行夏天时候的风扇控制，3000-4000就够了</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#隐藏dock"><span class="nav-number">3.12.</span> <span class="nav-text">隐藏dock</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mac_下如何像windows下那样连续查看文件夹下的图片？"><span class="nav-number">3.13.</span> <span class="nav-text">Mac 下如何像windows下那样连续查看文件夹下的图片？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开启多个桌面"><span class="nav-number">3.14.</span> <span class="nav-text">开启多个桌面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#录制屏幕"><span class="nav-number">3.15.</span> <span class="nav-text">录制屏幕</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -749,7 +699,7 @@
     <script type="text/javascript">
       var disqus_shortname = 'mcl';
       var disqus_identifier = '2015/04/03/MacThings/';
-      var disqus_title = 'Mac 那些事';
+      var disqus_title = 'Mac 基本操作技巧';
       var disqus_url = 'http://www.mclspace.com/2015/04/03/MacThings/';
 
       function run_disqus_script(disqus_script){

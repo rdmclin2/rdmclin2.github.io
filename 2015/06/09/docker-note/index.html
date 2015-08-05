@@ -42,7 +42,7 @@
     analytics: {
       google: ''
     },
-    sidebar: 'hide'
+    sidebar: 'post'
   };
 </script>
 
@@ -256,12 +256,11 @@
 </ul>
 <p>rm container name / container id</p>
 <ul>
-<li>从dockerfile中构建镜像<code>docker build</code> 如:<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t=<span class="string">"ouruser/sinatra:v2"</span> .</span><br></pre></td></tr></table></figure>
+<li><p>从dockerfile中构建镜像<code>docker build</code> 如:</p>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># -t 镜像的名称</span></span><br><span class="line"><span class="preprocessor"># --rm 构建成功后，删除临时镜像（每执行一行 Dockerfile 中的命令，就会创建一个临时镜像）</span></span><br><span class="line"><span class="preprocessor"># “.” 是 Dockerfile 所在的路径（当前目录）, 也可以替换为一个具体的 Dockerfile 的路径。</span></span><br><span class="line">docker build -t=<span class="string">"ouruser/sinatra:v2"</span> .</span><br><span class="line">或 docker build --rm -t ouruser/sinatra:v2 .</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<p>其中 -t 标记来添加 tag，指定新的镜像的用户信息。 “.” 是 Dockerfile 所在的路径（当前目录），也可以替换为一个具体的 Dockerfile 的路径。</p>
-<ul>
-<li>推送到dockerhub <code>docker push</code> 如:<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="keyword">push</span> user/sinatra</span><br></pre></td></tr></table></figure>
+<li><p>推送到dockerhub <code>docker push</code> 如:</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="keyword">push</span> user/sinatra</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>注意创建和推送时把user替换成自己的用户名</p>
@@ -289,9 +288,11 @@
 </ul>
 <p><code>-m</code>为信息，<code>－a</code>为用户信息。后面的id胃container的id</p>
 <ul>
-<li><p>指定端口运行image <code>-p</code>,如:</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="keyword">run</span> -p 49160:8080 -<span class="keyword">d</span> &lt;your username&gt;/centos-node-hello</span><br></pre></td></tr></table></figure>
+<li>指定端口运行image <code>-p</code>,如:<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="keyword">run</span> -p 49160:8080 -<span class="keyword">d</span> &lt;your username&gt;/centos-node-hello</span><br></pre></td></tr></table></figure>
 </li>
+</ul>
+<p>在docker run 后面追加-d=true或者-d，则containter将会运行在后台模式(Detached mode)</p>
+<ul>
 <li><p>重启一个停止的容器 <code>docker restart</code>，如:</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">sudo</span> docker restart containerName</span><br></pre></td></tr></table></figure>
 </li>
@@ -299,6 +300,12 @@
 <blockquote>
 <p>$ <a href="https://github.com/zhangpeihao/LearningDocker/blob/master/manuscript/04-WriteDockerfile.md" target="_blank" rel="external">看这个</a></p>
 </blockquote>
+</li>
+<li><p>停止并删除所有container</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker stop $<span class="comment">(docker ps -a -q)</span></span><br><span class="line">docker rm $<span class="comment">(docker ps -a -q)</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>批量删除所有<none>的镜像</none></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi $(docker images -<span class="tag">q</span> --<span class="attribute">filter</span> <span class="string">"dangling=true"</span>)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <hr>
@@ -358,10 +365,11 @@
 <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="keyword">run</span> -p 9804:9804 -<span class="keyword">d</span> username/server:v1</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>如果你的image不是用dockerfile生成的，没有build时候的CMD,可以先用交互窗口将端口暴露出来.<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="command">run</span> <span class="comment">--name nodejs_server -it -p 9804:9804 rdmclin2/server:v1 /bin/bash</span></span><br></pre></td></tr></table></figure></p>
+<p>172.17.0.10<br>如果你的image不是用dockerfile生成的，没有build时候的CMD,可以先用交互窗口将端口暴露出来.<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="command">run</span> <span class="comment">--name nodejs_server -it -p 9804:9804 rdmclin2/server:v1 /bin/bash</span></span><br></pre></td></tr></table></figure></p>
 <p>然后再用docker attach 进入container，手动运行服务。再用ctrl+p+q退出。</p>
 <p>设置多个端口<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name ionic  -it -<span class="tag">p</span> <span class="number">35729</span>:<span class="number">35729</span> -<span class="tag">p</span> <span class="number">8100</span>:<span class="number">8100</span> rdmclin2/ionic:v2 /bin/bash</span><br></pre></td></tr></table></figure></p>
 <p>即使dockerfile中expose了端口，启动的时候还是要指定映射的端口</p>
+<p><a href="http://nemoworks.info:9804/apks/fcws_debug.apk">http://nemoworks.info:9804/apks/fcws_debug.apk</a></p>
 <p>—&gt;</p>
 -->
       
@@ -477,7 +485,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -491,7 +499,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-count">26</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
