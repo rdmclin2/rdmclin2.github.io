@@ -225,12 +225,17 @@
 <li>注意将以下步骤中的<code>&lt;username&gt;</code>替换成自己的用户名</li>
 <li>注意将以下步骤中的<code>&lt;reponame&gt;</code>替换成自己的库名称</li>
 </ul>
+<hr>
 <h1 id="过程">过程</h1><h2 id="在github上创建新的仓库,如本文的test-">在github上创建新的仓库,如本文的test.</h2><p><img src="http://7pun7p.com1.z0.glb.clouddn.com/hexo/新建仓库.png" alt="新建仓库"></p>
+<hr>
 <h2 id="创建本地站点并将本地站点github化">创建本地站点并将本地站点github化</h2><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>echo <span class="string">"hello world"</span> &gt; index.html</span><br><span class="line"><span class="variable">$ </span>git init</span><br><span class="line"><span class="variable">$ </span>git add .</span><br><span class="line"><span class="variable">$ </span>git commit -m <span class="string">"first commit"</span></span><br><span class="line"><span class="variable">$ </span>git remote add origin  </span><br><span class="line"><span class="variable">$ </span>git<span class="variable">@github</span>.<span class="symbol">com:</span>&lt;username&gt;<span class="regexp">/&lt;reponame&gt;.git</span></span><br></pre></td></tr></table></figure>
+<hr>
 <h2 id="创建gh-pages分支并上传到远程">创建gh-pages分支并上传到远程</h2><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>git checkout -b gh-pages</span><br><span class="line"><span class="variable">$ </span>git push -u origin gh-pages</span><br></pre></td></tr></table></figure>
 <p>经过此步,过几分钟，通过<code>&lt;username&gt;.github.io/&lt;reponame&gt;</code>应该就能访问你的页面了,这里因为我已经把rdmclin2.github.io绑定到mclspace.com上了，所以默认为已经替换掉了。<br><img src="http://7pun7p.com1.z0.glb.clouddn.com/hexo/效果.png" alt="效果"></p>
+<hr>
 <h2 id="绑定子域名">绑定子域名</h2><p>在本地站点目录下新建<code>CNAME</code>(大写)文件,写入你准备绑定的子域名,并上传。<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>echo <span class="string">"test.mclspace.com"</span> &gt; <span class="constant">CNAME</span></span><br><span class="line"><span class="comment"># 注意换成你自己的子域名</span></span><br><span class="line"><span class="variable">$ </span>git add .</span><br><span class="line"><span class="variable">$ </span>git commit -m <span class="string">"add CNAME"</span></span><br><span class="line"><span class="variable">$ </span>git push origin gh-pages</span><br></pre></td></tr></table></figure></p>
 <p>进入DNSPOD设置页面设置<code>CNAME</code>,主机纪录填你自己设置的子域名（这里是test），纪录类型<code>CNAME</code>，纪录值为你的github.io地址(如我的是rdmclin2.github.io)<br><img src="http://7pun7p.com1.z0.glb.clouddn.com/hexo/添加CNAME.png" alt="添加CNAME"><br>过几分钟后，通过你绑定的子域名就能访问你的页面了，搞定收工.<br><img src="http://7pun7p.com1.z0.glb.clouddn.com/hexo/cname效果.png" alt="cname效果"></p>
+<hr>
 <h1 id="参考">参考</h1><ul>
 <li><a href="http://book.haoduoshipin.com/gitbeijing/pages" target="_blank" rel="external">gitbeijing</a></li>
 </ul>
