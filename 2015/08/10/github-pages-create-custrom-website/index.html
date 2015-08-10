@@ -26,7 +26,7 @@
 
 
 
-  <meta name="keywords" content="dev,java," />
+  <meta name="keywords" content="github,web," />
 
 
 
@@ -59,7 +59,7 @@
 
 
 
-  <title> Eclipse 安装 Fatjar.jar失败的解决方法 // Mcl's space </title>
+  <title> 用github pages创建自定义网站并绑定子域名 // Mcl's space </title>
 </head>
 
 <body>
@@ -172,7 +172,7 @@
           
           
             
-              Eclipse 安装 Fatjar.jar失败的解决方法
+              用github pages创建自定义网站并绑定子域名
             
           
         </h1>
@@ -180,14 +180,14 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 May 10 2015
+          发表于 Aug 10 2015
         </span>
 
         
           <span class="post-category">
             &nbsp; | &nbsp; 分类于
             
-              <a href="/categories/dev/">dev</a>
+              <a href="/categories/web/">web</a>
 
               
               
@@ -200,8 +200,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/05/10/Fatjar-install/#comments" >
-              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/05/10/Fatjar-install/"></span>
+            <a href="/2015/08/10/github-pages-create-custrom-website/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/08/10/github-pages-create-custrom-website/"></span>
             </a>
           </span>
           
@@ -215,19 +215,25 @@
       
 
       
-        <h1 id="Fatjar简介">Fatjar简介</h1><p>Fatjar.jar是eclipse上很方便进行打包的插件，对于较小的项目使用eclipse内置的打包jar可能就够了，但是如果工程较大，需要引用资源之类的，用fatjar比较方便省心。不过笔者在安装的时候遇到不少困难，不管是在线方式，还是离线方式都无法安装成功，现在纪录一下。在Windows =&gt; prefernce =&gt; fat jar preference 看到他就说明已经安装成功。</p>
-<a id="more"></a>
-<hr>
-<h1 id="Fatjar在线安装">Fatjar在线安装</h1><p>help －&gt; Install New Sofware －&gt; Work with。<br>粘贴 <a href="http://kurucz-grafika.de/fatjar" target="_blank" rel="external">http://kurucz-grafika.de/fatjar</a><br>然后回车，等待安装即可,时间较长</p>
-<hr>
-<h1 id="Fatjar手动安装">Fatjar手动安装</h1><p>在<a href="http://sourceforge.net/projects/fjep/" target="_blank" rel="external">sourceforge</a>上手动下载最新版本（目前0.31），解压，将.jar文件复制粘贴到<br>$eclipse_Home\plugins文件夹下，重启eclipse即可。</p>
-<h1 id="使用方法">使用方法</h1><p>项目，右键，+Build Fat Jar.<br>勾选 use extern Jar-Name可以设定导出jar路径，否则生成在项目根目录<br>不要勾选select Manifest file<br>勾选One-JAR,next<br>选择要导入的jar包<br>finish</p>
-<hr>
-<h1 id="Fatjar安装失败的解决方法">Fatjar安装失败的解决方法</h1><p>1.清除缓存<br>新建eclipse的快捷方式，右键属性 -&gt; 目标 后添加 -clean 选项，eclipse将清除缓存重新加载插件。</p>
-<ol>
-<li>手动清除配置<br>删除$eclipse_Home\configuration\org.eclipse.update\platform.xml<br>该文件会自动生成。</li>
-</ol>
-<p>3.对于版本较高的eclipse，可能需要安装较低版本的eclipse的框架（笔者遇到的情况）<br>通过Help -&gt; Install New Software… -&gt; Work with.<br>选择“The Eclipse Project Updates - <a href="http://download.eclipse.org/eclipse/updates/4.4”" target="_blank" rel="external">http://download.eclipse.org/eclipse/updates/4.4”</a><br>然后 勾选”Eclipse Tests, Examples, and Extras” 下的 “Eclipse 2.0 Style Plugin Support”<br>之后再安装fatjar.jar即可</p>
+        <h1 id="注意点">注意点</h1><ul>
+<li>github pages只支持静态文件</li>
+<li>每个github账户只能有一个用户站点或组织站点，但每个项目都可以有自己的项目站点,本文为创建项目站点</li>
+<li>本文假设你拥有自己的域名,并有一定的git基础,如果不熟悉git指令请看<a href="http://mclspace.com/2015/07/14/git-note/" target="_blank" rel="external">这篇博文</a><a id="more"></a></li>
+<li>作者的域名(mclsapce.com)的dns由DNSpod管理</li>
+<li>本文介绍的场景是将本地网站上传至github，当然你也可以用<a href="https://pages.github.com/" target="_blank" rel="external">git pages网站</a>进行创建,选择project site -&gt; Start from scratch，然后按照其教程一步步往下做即可。</li>
+<li>github pages的入口html的名字为index.html。</li>
+<li>注意将以下步骤中的<code>&lt;username&gt;</code>替换成自己的用户名</li>
+<li>注意将以下步骤中的<code>&lt;reponame&gt;</code>替换成自己的库名称</li>
+</ul>
+<h1 id="过程">过程</h1><h2 id="在github上创建新的仓库,如本文的test-">在github上创建新的仓库,如本文的test.</h2><p><img src="http://7pun7p.com1.z0.glb.clouddn.com/hexo/新建仓库.png" alt="新建仓库"></p>
+<h2 id="创建本地站点并将本地站点github化">创建本地站点并将本地站点github化</h2><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>echo <span class="string">"hello world"</span> &gt; index.html</span><br><span class="line"><span class="variable">$ </span>git init</span><br><span class="line"><span class="variable">$ </span>git add .</span><br><span class="line"><span class="variable">$ </span>git commit -m <span class="string">"first commit"</span></span><br><span class="line"><span class="variable">$ </span>git remote add origin  </span><br><span class="line"><span class="variable">$ </span>git<span class="variable">@github</span>.<span class="symbol">com:</span>&lt;username&gt;<span class="regexp">/&lt;reponame&gt;.git</span></span><br></pre></td></tr></table></figure>
+<h2 id="创建gh-pages分支并上传到远程">创建gh-pages分支并上传到远程</h2><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>git checkout -b gh-pages</span><br><span class="line"><span class="variable">$ </span>git push -u origin gh-pages</span><br></pre></td></tr></table></figure>
+<p>经过此步,过几分钟，通过<code>&lt;username&gt;.github.io/&lt;reponame&gt;</code>应该就能访问你的页面了,这里因为我已经把rdmclin2.github.io绑定到mclspace.com上了，所以默认为已经替换掉了。<br><img src="http://7pun7p.com1.z0.glb.clouddn.com/hexo/效果.png" alt="效果"></p>
+<h2 id="绑定子域名">绑定子域名</h2><p>在本地站点目录下新建<code>CNAME</code>(大写)文件,写入你准备绑定的子域名,并上传。<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>echo <span class="string">"test.mclspace.com"</span> &gt; <span class="constant">CNAME</span></span><br><span class="line"><span class="comment"># 注意换成你自己的子域名</span></span><br><span class="line"><span class="variable">$ </span>git add .</span><br><span class="line"><span class="variable">$ </span>git commit -m <span class="string">"add CNAME"</span></span><br><span class="line"><span class="variable">$ </span>git push origin gh-pages</span><br></pre></td></tr></table></figure></p>
+<p>进入DNSPOD设置页面设置<code>CNAME</code>,主机纪录填你自己设置的子域名（这里是test），纪录类型<code>CNAME</code>，纪录值为你的github.io地址(如我的是rdmclin2.github.io)<br><img src="http://7pun7p.com1.z0.glb.clouddn.com/hexo/添加CNAME.png" alt="添加CNAME"><br>过几分钟后，通过你绑定的子域名就能访问你的页面了，搞定收工.<br><img src="http://7pun7p.com1.z0.glb.clouddn.com/hexo/cname效果.png" alt="cname效果"></p>
+<h1 id="参考">参考</h1><ul>
+<li><a href="http://book.haoduoshipin.com/gitbeijing/pages" target="_blank" rel="external">gitbeijing</a></li>
+</ul>
 
       
     </div>
@@ -236,9 +242,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/dev/"> #dev </a>
+            <a href="/tags/github/"> #github </a>
           
-            <a href="/tags/java/"> #java </a>
+            <a href="/tags/web/"> #web </a>
           
         </div>
       
@@ -247,13 +253,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/05/28/ionic-steup/">ionic 项目记录</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/04/03/MacThings/">Mac 基本操作技巧</a>
+              <a href="/2015/08/05/oh-my-zsh-install/">oh my zsh~ mac 安装配置</a>
             
           </div>
         </div>
@@ -429,7 +433,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Fatjar简介"><span class="nav-number">1.</span> <span class="nav-text">Fatjar简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Fatjar在线安装"><span class="nav-number">2.</span> <span class="nav-text">Fatjar在线安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Fatjar手动安装"><span class="nav-number">3.</span> <span class="nav-text">Fatjar手动安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用方法"><span class="nav-number">4.</span> <span class="nav-text">使用方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Fatjar安装失败的解决方法"><span class="nav-number">5.</span> <span class="nav-text">Fatjar安装失败的解决方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#注意点"><span class="nav-number">1.</span> <span class="nav-text">注意点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#过程"><span class="nav-number">2.</span> <span class="nav-text">过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在github上创建新的仓库,如本文的test-"><span class="nav-number">2.1.</span> <span class="nav-text">在github上创建新的仓库,如本文的test.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建本地站点并将本地站点github化"><span class="nav-number">2.2.</span> <span class="nav-text">创建本地站点并将本地站点github化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建gh-pages分支并上传到远程"><span class="nav-number">2.3.</span> <span class="nav-text">创建gh-pages分支并上传到远程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绑定子域名"><span class="nav-number">2.4.</span> <span class="nav-text">绑定子域名</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -654,9 +658,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'mcl';
-      var disqus_identifier = '2015/05/10/Fatjar-install/';
-      var disqus_title = 'Eclipse 安装 Fatjar.jar失败的解决方法';
-      var disqus_url = 'http://www.mclspace.com/2015/05/10/Fatjar-install/';
+      var disqus_identifier = '2015/08/10/github-pages-create-custrom-website/';
+      var disqus_title = '用github pages创建自定义网站并绑定子域名';
+      var disqus_url = 'http://www.mclspace.com/2015/08/10/github-pages-create-custrom-website/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
