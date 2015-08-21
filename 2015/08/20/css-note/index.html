@@ -59,7 +59,7 @@
 
 
 
-  <title> 《Head First HTML 与 CSS》读书笔记之CSS篇 // Mcl's space </title>
+  <title> Head First HTML 与 CSS》读书笔记之CSS篇 // Mcl's space </title>
 </head>
 
 <body>
@@ -172,7 +172,7 @@
           
           
             
-              《Head First HTML 与 CSS》读书笔记之CSS篇
+              Head First HTML 与 CSS》读书笔记之CSS篇
             
           
         </h1>
@@ -187,7 +187,7 @@
           <span class="post-category">
             &nbsp; | &nbsp; 分类于
             
-              <a href="/categories/dev/">dev</a>
+              <a href="/categories/web/">web</a>
 
               
               
@@ -271,7 +271,7 @@
 <hr>
 <h2 id="类">类</h2><p>当我们用选择器选择元素使用一个规则时,会对所有该元素应用这个样式，所以如何单独地选择这些元素呢?这里就需要类class,class可以定义一类元素，对属于该类的所有元素应用样式.要将一个元素加入一个类，只需要增加属性”class”,并提供类名,如”greentea”:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"greentea"</span>&gt;</span></span><br><span class="line">...</span><br><span class="line"><span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="类元素选择器">类元素选择器</h3><p>先选择这个类中的元素,再用”.”指定一个类,最后是类名,如:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">p</span><span class="class">.greentea</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">color</span>:<span class="value"> green</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="添加类元素">添加类元素</h3><p>如果想对所有<blockquote>也做同样的处理，可以:<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">blockquote.greentea,p.greentea &#123;</span><br><span class="line">    color: green;</span><br><span class="line">&#125;</span><br><span class="line">&lt;blockquote <span class="keyword">class</span> = <span class="string">"greentea"</span></span><br></pre></td></tr></table></figure></blockquote></p>
+<h3 id="添加类元素">添加类元素</h3><p>如果想对所有<code>&lt;blockquote&gt;</code>也做同样的处理，可以:<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">blockquote.greentea,p.greentea &#123;</span><br><span class="line">    color: green;</span><br><span class="line">&#125;</span><br><span class="line">&lt;blockquote <span class="keyword">class</span> = <span class="string">"greentea"</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="类选择器">类选择器</h3><p>如果想把<code>&lt;h1&gt;</code>,<code>&lt;h2&gt;</code>,<code>&lt;h3&gt;</code>,<code>&lt;p&gt;</code>和<code>&lt;blockquote&gt;</code>都增加到greentea呢？要对类中的所有元素都用同一样式可以用:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.greentea</span><span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">color</span>:<span class="value"> green</span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="comment">/*省略所有元素名,只有一个点,则会应用到所有成员*/</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="多类元素">多类元素</h3><p>元素可以有多个类,例如:<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;p <span class="keyword">class</span>=<span class="string">"greentea raspberry blueberry"</span></span><br><span class="line"><span class="preprocessor">#各个类名用空格分隔</span></span><br><span class="line"><span class="preprocessor">#类中顺序不重要</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="特定元素选择器">特定元素选择器</h3><p>如果多个选择器都选择了一个元素呢？例如上面的3个类都与p元素匹配，并且都定义了color属性，那么那个会胜出?</p>
@@ -627,11 +627,13 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2015/08/21/7-days-nodejs/">[转载]7天学会nodejs</a>
+            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/08/19/html-note/">《Head First HTML 与 CSS》读书笔记之HTML篇</a>
+              <a href="/2015/08/19/html-note/">Head First HTML 与 CSS》读书笔记之HTML篇</a>
             
           </div>
         </div>
@@ -722,7 +724,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">23</span>
+              <span class="site-state-item-count">24</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -736,7 +738,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-count">32</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -1041,7 +1043,7 @@
     <script type="text/javascript">
       var disqus_shortname = 'mcl';
       var disqus_identifier = '2015/08/20/css-note/';
-      var disqus_title = '《Head First HTML 与 CSS》读书笔记之CSS篇';
+      var disqus_title = 'Head First HTML 与 CSS》读书笔记之CSS篇';
       var disqus_url = 'http://www.mclspace.com/2015/08/20/css-note/';
 
       function run_disqus_script(disqus_script){

@@ -265,7 +265,7 @@
 <p><strong>索引链接</strong><br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="comment">&lt;!--索引超链接：如果网址中有括号可以这么用,1,2只要对应就好，可以使用任意字符--&gt;</span></span></span><br><span class="line">[<span class="link_label">mcl' space</span>][<span class="link_reference">*</span>]</span><br><span class="line">![<span class="link_label">Example</span>][<span class="link_reference">2</span>]</span><br><span class="line"></span><br><span class="line">[<span class="link_reference">*</span>]:<span class="link_url">www.mclspace.com</span></span><br><span class="line">[<span class="link_reference">2</span>]:<span class="link_url">http://icoco.qiniudn.com/image/hexo/m1.jpg</span></span><br></pre></td></tr></table></figure></p>
 <p><a href="www.mclspace.com">mcl’ space</a><br><img src="http://icoco.qiniudn.com/image/hexo/m1.jpg" alt="Example"></p>
 <p><strong>自动链接</strong><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--自动链接:加尖括号即可,实验结果表明 网址的话得在前面加http://,否则无法显示--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">www.mclspace.com</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">rdmclin2@gmail.com</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p><a href="http://www.mclspace.com" target="_blank" rel="external">http://www.mclspace.com</a><br><a href="&#109;&#x61;&#105;&#x6c;&#x74;&#x6f;&#58;&#x72;&#x64;&#x6d;&#99;&#x6c;&#105;&#110;&#x32;&#64;&#103;&#109;&#x61;&#105;&#x6c;&#x2e;&#99;&#111;&#109;">&#x72;&#x64;&#x6d;&#99;&#x6c;&#105;&#110;&#x32;&#64;&#103;&#109;&#x61;&#105;&#x6c;&#x2e;&#99;&#111;&#109;</a></p>
+<p><a href="http://www.mclspace.com" target="_blank" rel="external">http://www.mclspace.com</a><br><a href="&#x6d;&#x61;&#105;&#108;&#x74;&#111;&#58;&#x72;&#100;&#109;&#x63;&#x6c;&#105;&#110;&#x32;&#x40;&#103;&#109;&#x61;&#105;&#108;&#46;&#x63;&#x6f;&#x6d;">&#x72;&#100;&#109;&#x63;&#x6c;&#105;&#110;&#x32;&#x40;&#103;&#109;&#x61;&#105;&#108;&#46;&#x63;&#x6f;&#x6d;</a></p>
 <hr>
 <h3 id="引用">引用</h3><p><strong>引用</strong><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--翻译成html就是&lt;blockquote&gt;&lt;/blockquote&gt;，符号后的空格可不要--&gt;</span></span><br><span class="line">&gt; 引用</span><br></pre></td></tr></table></figure></p>
 <blockquote>
@@ -310,7 +310,7 @@
 </tbody>
 </table>
 <hr>
-<h3 id="代码">代码</h3><p><strong>行内代码</strong><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--在第一行后指定编程语言，也可以不指定,用三个反引号--&gt;</span></span><br><span class="line">'''java</span><br><span class="line">  String helloworld = "Hello world!";</span><br><span class="line">  System.out.println(helloworld);</span><br><span class="line">'''</span><br></pre></td></tr></table></figure></p>
+<h3 id="代码">代码</h3><p><strong>行内代码</strong><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--在第一行后指定编程语言，也可以不指定,用三个反引号--&gt;</span></span><br><span class="line">\`\`\`java</span><br><span class="line">  String helloworld = "Hello world!";</span><br><span class="line">  System.out.println(helloworld);</span><br><span class="line">\`\`\`</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String helloworld = <span class="string">"Hello world!"</span>;</span><br><span class="line">System.out.println(helloworld);</span><br></pre></td></tr></table></figure>
 <p><strong>段落代码</strong><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--每行文字前加4个空格或者1个Tab --&gt;</span></span><br><span class="line">	String helloworld = "Hello world!";</span><br><span class="line">	System.out.println(helloworld);</span><br></pre></td></tr></table></figure></p>
 <pre><code><span class="keyword">String</span> helloworld = <span class="string">"Hello world!"</span>;
@@ -321,6 +321,7 @@ System.out.<span class="built_in">println</span>(helloworld);
 <h3 id="注释">注释</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 注释 --&gt;</span></span><br></pre></td></tr></table></figure>
 <hr>
 <h3 id="转义字符">转义字符</h3><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- Markdown中的转义字符为<span class="command">\，</span>转义的有 --&gt;</span><br><span class="line"></span><br><span class="line"><span class="command">\\</span> 反斜杠</span><br><span class="line"><span class="command">\`</span> 反引号</span><br><span class="line"><span class="command">\*</span> 星号</span><br><span class="line"><span class="command">\_</span> 下划线</span><br><span class="line"><span class="command">\&#123;</span><span class="command">\&#125;</span> 大括号</span><br><span class="line"><span class="command">\[</span><span class="command">\]</span> 中括号</span><br><span class="line"><span class="command">\(</span><span class="command">\)</span> 小括号</span><br><span class="line"><span class="command">\#</span> 井号</span><br><span class="line"><span class="command">\+</span> 加号</span><br><span class="line"><span class="command">\-</span> 减号</span><br><span class="line"><span class="command">\.</span> 英文句号</span><br><span class="line"><span class="command">\!</span> 感叹号</span><br></pre></td></tr></table></figure>
+<hr>
 <h3 id="更多">更多</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--more --&gt;</span></span><br></pre></td></tr></table></figure>
 <hr>
 <h2 id="参考文献">参考文献</h2><ul>
@@ -445,7 +446,7 @@ System.out.<span class="built_in">println</span>(helloworld);
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">23</span>
+              <span class="site-state-item-count">24</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -459,7 +460,7 @@ System.out.<span class="built_in">println</span>(helloworld);
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-count">32</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
