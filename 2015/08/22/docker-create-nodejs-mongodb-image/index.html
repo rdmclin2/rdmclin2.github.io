@@ -1,0 +1,757 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+  <meta name="google-site-verification" content="Bu7qMjAWOJ5dxHauDW_IGiKlJ8kSN5myZ3RxIIAb4Qw" />
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+
+
+    <meta name="description" content="操千曲而后晓声，观千剑而后识器" />
+
+
+
+  <meta name="keywords" content="docker,mongodb,nodejs," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.3" />
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    analytics: {
+      google: ''
+    },
+    sidebar: 'post'
+  };
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6b26d13232555e4d64b5a8c3567ccda9";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <title> [转载]用 Docker 构建 NodeJS 应用 // Mcl's space </title>
+</head>
+
+<body>
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">Mcl's space</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<div class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/">
+            <i class="menu-item-icon icon-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            <i class="menu-item-icon icon-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            <i class="menu-item-icon icon-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+<form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', '1ypRdYxJz8SMZBUve9JB','2.0.0');
+</script>
+
+<div class="site-search-toggle"></div>
+    </div>
+  
+</div>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              [转载]用 Docker 构建 NodeJS 应用
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 Aug 22 2015
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/dev/">dev</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/08/22/docker-create-nodejs-mongodb-image/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/08/22/docker-create-nodejs-mongodb-image/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <blockquote>
+<p>本篇为转载文章，转载自<a href="http://edwardchu.org/articles/docker-node-app.html" target="_blank" rel="external">用 Docker 构建 NodeJS 应用</a>,以备学习之用。</p>
+</blockquote>
+<p><a href="http://www.docker.com/" target="_blank" rel="external">Docker</a> 是个轻量级的虚拟化解决方案，可以将你的应用和所需的运行环境打包起来，部署至其他环境，保证开发或生产环境的统一。<br>对于开发人员来说，Docker 可以减少初次搭建开发环境的麻烦；<br>对于运维人员来说，Docker 使自动化、规模化部署变得更加简单。<br><a id="more"></a></p>
+<h2 id="Docker_入门">Docker 入门</h2><p>本文不涉及太多的入门知识，假若你未曾听过 Docker，请先浏览官方资源：</p>
+<ol>
+<li>观看 Docker <a href="https://www.docker.com/whatisdocker/" target="_blank" rel="external">介绍视频</a></li>
+<li>动手完成 10 分钟 <a href="https://www.docker.com/tryit/#" target="_blank" rel="external">在线交互教程</a></li>
+</ol>
+<h2 id="下载并更新_Ubuntu_镜像">下载并更新 Ubuntu 镜像</h2><p>本文中 NodeJS 应用是部署在 Ubuntu 下的，所以要先通过以下命令，下载 Ubuntu 镜像，并更新保存。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 从 Docker Hub 下载官方维护的 Ubuntu</span></span><br><span class="line">docker pull ubuntu:<span class="number">14.10</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 下载完毕后，先更新软件源</span></span><br><span class="line">docker run ubuntu:<span class="number">14.10</span> apt-get update</span><br><span class="line"></span><br><span class="line"><span class="comment"># 上面命令会生成一个container，先获得其 id</span></span><br><span class="line"><span class="comment"># -l：显示最新的 container</span></span><br><span class="line">doocker ps <span class="operator">-l</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 提交改动，并覆盖原有的 Ubuntu 镜像</span></span><br><span class="line">docker commit &lt;container_id&gt; ubuntu:<span class="number">14.10</span></span><br></pre></td></tr></table></figure>
+<h2 id="从创建简单的_NodeJS_应用镜像入手">从创建简单的 NodeJS 应用镜像入手</h2><p>我们先来创建一个基于 ExpressJS 的简单 NodeJS 应用，以下是文件目录结构和步骤。</p>
+<h3 id="目录结构">目录结构</h3><pre class="tree">
+├── docker-node-hello/
+│   ├── index.js
+│   ├── package.json
+│   ├── Dockerfile
+</pre>
+
+<h3 id="文件创建步骤">文件创建步骤</h3><ol>
+<li><p>创建文件夹</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/docker-node-hello &amp;&amp; <span class="built_in">cd</span> <span class="variable">$_</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建 index.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="keyword">var</span> app = express()</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(req, res)</span> </span>&#123;</span><br><span class="line">  res.send(<span class="string">'Hello World!'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> server = app.listen(<span class="number">3001</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> host = server.address().address</span><br><span class="line">  <span class="keyword">var</span> port = server.address().port</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Example app listening at http://%s:%s'</span>, host, port)</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建 package.json</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "<span class="attribute">name</span>": <span class="value"><span class="string">"docker-node-hello"</span></span>,</span><br><span class="line">  "<span class="attribute">private</span>": <span class="value"><span class="literal">true</span></span>,</span><br><span class="line">  "<span class="attribute">version</span>": <span class="value"><span class="string">"0.0.1"</span></span>,</span><br><span class="line">  "<span class="attribute">description</span>": <span class="value"><span class="string">"Node.js Hello world app on Ubuntu using docker"</span></span>,</span><br><span class="line">  "<span class="attribute">dependencies</span>": <span class="value">&#123;</span><br><span class="line">    "<span class="attribute">express</span>": <span class="value"><span class="string">"4.x.x"</span></span><br><span class="line">  </span>&#125;</span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建 Dockerfile 配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置基础镜像</span></span><br><span class="line">FROM ubuntu:<span class="number">14.10</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果上个步骤已经更新软件源，这步可以忽略</span></span><br><span class="line">RUN apt-get update</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装 NodeJS 和 npm</span></span><br><span class="line">RUN apt-get install -y nodejs npm</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将目录中的文件添加至镜像的 /srv/hello 目录中</span></span><br><span class="line">ADD . /srv/hello</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置工作目录</span></span><br><span class="line">WORKDIR /srv/hello</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装 Node 依赖库</span></span><br><span class="line">RUN npm install</span><br><span class="line"></span><br><span class="line"><span class="comment"># 暴露 3001 端口，便于访问</span></span><br><span class="line">EXPOSE <span class="number">3001</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置启动时默认运行命令</span></span><br><span class="line">CMD [<span class="string">"nodejs”, “/srv/hello/index"</span>]</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="构建镜像">构建镜像</h3>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 通过该命令，按照 Dockerfile 所配置的信息构建出镜像</span></span><br><span class="line"><span class="comment"># -t 镜像的名称</span></span><br><span class="line"><span class="comment"># --rm 构建成功后，删除临时镜像（每执行一行 Dockerfile 中的命令，就会创建一个临时镜像）</span></span><br><span class="line">docker build --rm -t node-hello .</span><br><span class="line"></span><br><span class="line"><span class="comment"># 检查镜像是否创建成功</span></span><br><span class="line">docker images</span><br></pre></td></tr></table></figure>
+<h3 id="运行镜像">运行镜像</h3>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对于 Mac 或 Windows 来说，要先查看 boot2docker 的 IP</span></span><br><span class="line">boot2docker ip</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行刚刚创建的镜像</span></span><br><span class="line"><span class="comment"># -p 设置端口，格式为「主机端口:容器端口」</span></span><br><span class="line">docker run -p <span class="number">3001</span>:<span class="number">3001</span> node-hello</span><br></pre></td></tr></table></figure>
+<h3 id="访问网页">访问网页</h3><p>若终端打印出 <code>Example app listening at http://...</code>，则部署成功。<br>可以用浏览器访问 <code>http://&lt;boot2docker ip&gt;:3001</code>，或运行 <code>curl -s &quot;$(boot2docker ip):3001&quot;</code>。</p>
+<h2 id="创建完整的_NodeJS_应用镜像（含_Mongodb_/_Git）">创建完整的 NodeJS 应用镜像（含 Mongodb / Git）</h2><p>通过上面的例子，我们知道了整个 Docker 镜像的基本创建过程。<br>但实际项目中，项目代码往往是通过 Git 来管理的，而且还会连接到一些数据库，如 Mongodb。<br>本例子中，我们将尝试部署一个 MEAN 架构的 NodeJS 应用。</p>
+<blockquote>
+<p>什么是 MEAN 架构？<br>MEAN 表示 Mongodb / ExpressJS / AngularJS / NodeJS，是目前流行的网站应用开发组合，涵盖前端至后台。由于这些框架用的语言都是 Javascript，所以又戏称 Javascript Fullstack。</p>
+</blockquote>
+<h3 id="目录结构-1">目录结构</h3><pre class="tree">
+├── docker-node-full/
+│   ├── start.sh
+│   ├── Dockerfile
+</pre>
+
+<h3 id="文件创建步骤-1">文件创建步骤</h3><ol>
+<li><p>创建文件夹</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/docker-node-full &amp;&amp; <span class="built_in">cd</span> <span class="variable">$_</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建 Dockerfile 配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置基础镜像</span></span><br><span class="line">FROM ubuntu:<span class="number">14.10</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装 NodeJS 和 npm</span></span><br><span class="line">RUN apt-get install -y nodejs npm</span><br><span class="line"></span><br><span class="line"><span class="comment"># 由于 apt-get 下载的 Node 实际上是 nodejs，所以要创建一个 node 的快捷方式</span></span><br><span class="line">RUN ln <span class="operator">-s</span> /usr/bin/nodejs /usr/bin/node</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装 Git</span></span><br><span class="line">RUN apt-get install -y git</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装 Mongodb（来自官方教程）</span></span><br><span class="line">RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:<span class="number">80</span> --recv <span class="number">7</span>F0CEB10</span><br><span class="line">RUN <span class="built_in">echo</span> <span class="string">'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen'</span> | tee /etc/apt/sources.list.d/mongodb.list</span><br><span class="line">RUN apt-get update</span><br><span class="line">RUN apt-get install -y mongodb-org</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置工作目录</span></span><br><span class="line">WORKDIR /srv/full</span><br><span class="line"></span><br><span class="line"><span class="comment"># 清空已存在的文件（如果有）</span></span><br><span class="line">RUN rm -rf /srv/full</span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过 Git 下载准备好的 MEAN 架构的网站代码</span></span><br><span class="line">RUN git <span class="built_in">clone</span> https://github.com/chuyik/fullstack-demo-dist.git .</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装 NodeJS 依赖库</span></span><br><span class="line">RUN npm install --production</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建 mongodb 数据文件夹</span></span><br><span class="line">RUN mkdir -p /data/db</span><br><span class="line"></span><br><span class="line"><span class="comment"># 暴露端口（分别是 NodeJS 应用和 Mongodb）</span></span><br><span class="line">EXPOSE <span class="number">5566</span> <span class="number">27017</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置 NodeJS 应用环境变量</span></span><br><span class="line">ENV NODE_ENV=production PORT=<span class="number">5566</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加启动脚本</span></span><br><span class="line">ADD start.sh /tmp/</span><br><span class="line">RUN chmod +x /tmp/start.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置启动时默认运行命令</span></span><br><span class="line">CMD [<span class="string">"bash"</span>, <span class="string">"/tmp/start.sh"</span>]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建 start.sh 启动脚本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 后台启动 Mongodb</span></span><br><span class="line">mongod --fork --logpath=/var/<span class="built_in">log</span>/mongo.log --logappend</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行 NodeJS 应用</span></span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="构建镜像-1">构建镜像</h3>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 通过该命令，按照 Dockerfile 所配置的信息构建出镜像</span></span><br><span class="line">docker build --rm -t node-full .</span><br><span class="line"></span><br><span class="line"><span class="comment"># 检查镜像是否创建成功</span></span><br><span class="line">docker images</span><br></pre></td></tr></table></figure>
+<h3 id="运行镜像-1">运行镜像</h3>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对于 Mac 或 Windows 来说，要先查看 boot2docker 的 IP</span></span><br><span class="line">boot2docker ip</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行刚刚创建的镜像</span></span><br><span class="line"><span class="comment"># -p 设置端口，格式为「主机端口:容器端口」</span></span><br><span class="line">docker run -p <span class="number">5566</span>:<span class="number">5566</span> node-full</span><br></pre></td></tr></table></figure>
+<h3 id="访问网页-1">访问网页</h3><p>若终端打印出以下命令，则部署成功。</p>
+<blockquote>
+<p> about to fork child process, waiting until server is ready for connections.<br>    forked process: 9<br>  child process started successfully, parent exiting<br> demo@0.0.0 start /srv<br> node server/app.js<br>  Express server listening on 5566, in production mode</p>
+</blockquote>
+<p>可以用浏览器访问 <code>http://&lt;boot2docker ip&gt;:5566</code>，或运行 <code>curl -s &quot;$(boot2docker ip):5566&quot;</code>。</p>
+<h2 id="保存_Mongodb_数据文件">保存 Mongodb 数据文件</h2><p>由于 Mongodb 服务运行在 Docker 容器 (container) 中，所以数据也在里面，但这并不利于数据管理和保存。因此，可以通过一些方法，将 Mongodb 数据文件保存在容器的外头。</p>
+<h3 id="磁盘映射">磁盘映射</h3><p>这个是最简单的方式，在 <code>docker run</code> 命令当中，就有磁盘映射的参数 <code>-v</code>。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -v 磁盘映射，格式为「主机目录:容器目录」</span></span><br><span class="line">docker run -p <span class="number">5566</span>:<span class="number">5566</span> -v /var/mongodata:/data/db node-full</span><br></pre></td></tr></table></figure></p>
+<p>但这个命令在 Mac 和 Windows 中执行失败，因为 boot2docker 的虚拟机不支持。<br>所以，可以将数据保存在 boot2docker 内，并设置共享文件夹便于 Mac 或 Windows 访问。</p>
+<h3 id="Mac_的磁盘映射方案">Mac 的磁盘映射方案</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在 boot2docker 中，运行该命令</span></span><br><span class="line">boot2docker ssh</span><br><span class="line"><span class="comment"># 进入 bash 后，创建存放 Mongodb 数据库文件的目录</span></span><br><span class="line">sudo mkdir -p /mnt/sda1/dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># Mac 用户通过 brew 安装 sshfs</span></span><br><span class="line">brew install sshfs</span><br><span class="line"><span class="comment"># 通过 sshfs，把 /mnt/sda1/dev 挂载到 Mac 中</span></span><br><span class="line"><span class="comment"># 注：boot2docker 的默认用户为 docker/tcuser</span></span><br><span class="line"><span class="built_in">echo</span> tcuser | sshfs docker@localhost:/mnt/sda1/dev /var/mongodata -p <span class="number">2022</span> -o password_stdin</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行镜像测试（映射 boot2docker 的目录）</span></span><br><span class="line">docker run -p <span class="number">5566</span>:<span class="number">5566</span> -v /mnt/sda1/dev:/data/db node-full</span><br></pre></td></tr></table></figure>
+<h2 id="优化建议">优化建议</h2><h3 id="将_NodeJS_和_Mongodb_分开">将 NodeJS 和 Mongodb 分开</h3><p>上个例子中，我们把 NodeJS 和 Mongodb 放进了同一个镜像中，但本着一次只做一件事的原则，将其放进不同的镜像可能会更好。但分开后，NodeJS 和 Mongodb 运行的容器该如何关联呢？这里不展开介绍，有兴趣可以查阅该<a href="http://www.luiselizondo.net/how-to-create-a-docker-node-js-mongodb-varnish-environment/" target="_blank" rel="external">博文</a>。</p>
+<h3 id="使用进程管理工具">使用进程管理工具</h3><p>上个例子中，我们通过 bash 脚本来运行多个命令，但也可以用一些进程管理工具来配置进程，如 <a href="http://supervisord.org/introduction.html" target="_blank" rel="external">Supervisor</a>。整合的方式可以查阅官方教程 <a href="https://docs.docker.com/articles/using_supervisord/" target="_blank" rel="external">Using Supervisor with Docker</a>。</p>
+<h2 id="一些有用的_Docker_命令">一些有用的 Docker 命令</h2><h3 id="查看后台运行容器的日志">查看后台运行容器的日志</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker ps <span class="operator">-l</span></span><br><span class="line">docker logs &lt;container_id&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="开始和关闭容器的运行">开始和关闭容器的运行</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker stop &lt;container_id&gt;</span><br><span class="line">docker start -i &lt;container_id&gt;</span><br><span class="line">docker restart -i &lt;container_id&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="运行镜像的bash">运行镜像的bash</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -i 将命令的输出信息重定向到 stdout</span></span><br><span class="line"><span class="comment"># -t 开启 tty 终端，这样就能够输入指令</span></span><br><span class="line">docker run -it ubuntu:<span class="number">14.10</span> bash</span><br></pre></td></tr></table></figure>
+<h3 id="导入和导出镜像">导入和导出镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker save ubuntu:<span class="number">14.10</span> &gt; ubuntu_14.<span class="number">10</span>.tar</span><br><span class="line">sudo docker ubuntu:<span class="number">14.10</span> &lt; ubuntu_14.<span class="number">10</span>.tar</span><br></pre></td></tr></table></figure>
+<h3 id="停止和删除所有容器">停止和删除所有容器</h3><blockquote>
+<p>来自 <a href="https://coderwall.com/p/ewk0mq/stop-remove-all-docker-containers" target="_blank" rel="external">Fabio Rehm</a></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker stop $(docker ps <span class="operator">-a</span> -q)</span><br><span class="line">docker rm $(docker ps <span class="operator">-a</span> -q)</span><br></pre></td></tr></table></figure>
+<h2 id="参考文章_Credits">参考文章 Credits</h2><p><a href="https://docs.docker.com/examples/nodejs_web_app/" target="_blank" rel="external">Dockerizing a Node.js Web App</a><br><a href="http://tech.uc.cn/?p=2726" target="_blank" rel="external">利用Docker构建开发环境 | UC技术博客</a><br><a href="http://docs.docker.com/reference/builder" target="_blank" rel="external">Dockerfile - Docker Documentation</a><br><a href="http://docs.docker.com/reference/commandline/cli/" target="_blank" rel="external">Command line - Docker Documentation</a><br><a href="https://docs.docker.com/articles/using_supervisord/" target="_blank" rel="external">Using Supervisor - Docker Documentation</a><br><a href="http://www.luiselizondo.net/how-to-create-a-docker-node-js-mongodb-varnish-environment/" target="_blank" rel="external">How to create a Docker + Node.js + MongoDB + Varnish environment</a><br><a href="https://gist.github.com/codeinthehole/7ea69f8a21c67cc07293" target="_blank" rel="external">How to share folders with docker containers on OSX</a></p>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/docker/"> #docker </a>
+          
+            <a href="/tags/mongodb/"> #mongodb </a>
+          
+            <a href="/tags/nodejs/"> #nodejs </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/08/21/7-days-nodejs/">[转载]7天学会nodejs</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+
+    
+      <div class="comments" id="comments">
+        
+          <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+
+        
+      </div>
+
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="https://avatars0.githubusercontent.com/u/4705237?v=3&u=cf53fa292cbafba8a53cfb1feda077c5abced98f&s=140" alt="LinChen" />
+          <p class="site-author-name">LinChen</p>
+        </div>
+        <p class="site-description motion-element">操千曲而后晓声，观千剑而后识器</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/rdmclin2" target="_blank">GitHub</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://twitter.com/rdmclin2" target="_blank">Twitter</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://weibo.com/1842914013/profile?topnav=1&wvr=6" target="_blank">Weibo</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.douban.com/people/50750460/" target="_blank">DouBan</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.zhihu.com/people/mengcl" target="_blank">ZhiHu</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name"></p>
+            
+              <span class="links-of-author-item">
+              <a href="http://chuan92.com" target="_blank">chuan92</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://chepeatio.github.io" target="_blank">chepeatio</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://andrewliu.in" target="_blank">andrewliu</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://http://liutianchi.com" target="_blank">liutianchi</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://cshuo.xyz/" target="_blank">cshuo</a>
+              </span>
+            
+          
+        </div>
+        
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker_入门"><span class="nav-number">1.</span> <span class="nav-text">Docker 入门</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载并更新_Ubuntu_镜像"><span class="nav-number">2.</span> <span class="nav-text">下载并更新 Ubuntu 镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从创建简单的_NodeJS_应用镜像入手"><span class="nav-number">3.</span> <span class="nav-text">从创建简单的 NodeJS 应用镜像入手</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#目录结构"><span class="nav-number">3.1.</span> <span class="nav-text">目录结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件创建步骤"><span class="nav-number">3.2.</span> <span class="nav-text">文件创建步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构建镜像"><span class="nav-number">3.3.</span> <span class="nav-text">构建镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行镜像"><span class="nav-number">3.4.</span> <span class="nav-text">运行镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问网页"><span class="nav-number">3.5.</span> <span class="nav-text">访问网页</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建完整的_NodeJS_应用镜像（含_Mongodb_/_Git）"><span class="nav-number">4.</span> <span class="nav-text">创建完整的 NodeJS 应用镜像（含 Mongodb / Git）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#目录结构-1"><span class="nav-number">4.1.</span> <span class="nav-text">目录结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件创建步骤-1"><span class="nav-number">4.2.</span> <span class="nav-text">文件创建步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构建镜像-1"><span class="nav-number">4.3.</span> <span class="nav-text">构建镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行镜像-1"><span class="nav-number">4.4.</span> <span class="nav-text">运行镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问网页-1"><span class="nav-number">4.5.</span> <span class="nav-text">访问网页</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#保存_Mongodb_数据文件"><span class="nav-number">5.</span> <span class="nav-text">保存 Mongodb 数据文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#磁盘映射"><span class="nav-number">5.1.</span> <span class="nav-text">磁盘映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mac_的磁盘映射方案"><span class="nav-number">5.2.</span> <span class="nav-text">Mac 的磁盘映射方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化建议"><span class="nav-number">6.</span> <span class="nav-text">优化建议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#将_NodeJS_和_Mongodb_分开"><span class="nav-number">6.1.</span> <span class="nav-text">将 NodeJS 和 Mongodb 分开</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用进程管理工具"><span class="nav-number">6.2.</span> <span class="nav-text">使用进程管理工具</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些有用的_Docker_命令"><span class="nav-number">7.</span> <span class="nav-text">一些有用的 Docker 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看后台运行容器的日志"><span class="nav-number">7.1.</span> <span class="nav-text">查看后台运行容器的日志</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开始和关闭容器的运行"><span class="nav-number">7.2.</span> <span class="nav-text">开始和关闭容器的运行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行镜像的bash"><span class="nav-number">7.3.</span> <span class="nav-text">运行镜像的bash</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导入和导出镜像"><span class="nav-number">7.4.</span> <span class="nav-text">导入和导出镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#停止和删除所有容器"><span class="nav-number">7.5.</span> <span class="nav-text">停止和删除所有容器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文章_Credits"><span class="nav-number">8.</span> <span class="nav-text">参考文章 Credits</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp;  2014 - 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">LinChen</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
+
+
+
+  <script type="text/javascript" src="/js/search-toggle.js"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.3" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if (isDesktop() && CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    });
+  </script>
+
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+
+  
+  
+  
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'mcl';
+      var disqus_identifier = '2015/08/22/docker-create-nodejs-mongodb-image/';
+      var disqus_title = '[转载]用 Docker 构建 NodeJS 应用';
+      var disqus_url = 'http://www.mclspace.com/2015/08/22/docker-create-nodejs-mongodb-image/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+
+</body>
+</html>
