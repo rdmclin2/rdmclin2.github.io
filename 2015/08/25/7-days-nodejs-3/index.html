@@ -220,6 +220,7 @@
 </blockquote>
 <h2 id="文件操作">文件操作</h2><hr>
 <p>让前端觉得如获神器的不是NodeJS能做网络编程，而是NodeJS能够操作文件。小至文件查找，大至代码编译，几乎没有一个前端工具不操作文件。换个角度讲，几乎也只需要一些数据处理逻辑，再加上一些文件操作，就能够编写出大多数前端工具。本章将介绍与之相关的NodeJS内置模块。</p>
+<a id="more"></a>
 <h3 id="开门红">开门红</h3><p>NodeJS提供了基本的文件操作API，但是像文件拷贝这种高级功能就没有提供，因此我们先拿文件拷贝程序练手。与<code>copy</code>命令类似，我们的程序需要能接受源文件路径与目标文件路径两个参数。</p>
 <h4 id="小文件拷贝">小文件拷贝</h4><p>我们使用NodeJS内置的<code>fs</code>模块简单实现这个程序如下。</p>
 <pre><code><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);

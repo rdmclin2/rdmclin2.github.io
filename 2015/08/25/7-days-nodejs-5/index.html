@@ -220,6 +220,7 @@
 </blockquote>
 <h2 id="进程管理">进程管理</h2><hr>
 <p>NodeJS可以感知和控制自身进程的运行环境和状态，也可以创建子进程并与其协同工作，这使得NodeJS可以把多个程序组合在一起共同完成某项工作，并在其中充当胶水和调度器的作用。本章除了介绍与之相关的NodeJS内置模块外，还会重点介绍典型的使用场景。</p>
+<a id="more"></a>
 <h3 id="开门红">开门红</h3><p>我们已经知道了NodeJS自带的<code>fs</code>模块比较基础，把一个目录里的所有文件和子目录都拷贝到另一个目录里需要写不少代码。另外我们也知道，终端下的<code>cp</code>命令比较好用，一条<code>cp -r source/* target</code>命令就能搞定目录拷贝。那我们首先看看如何使用NodeJS调用终端命令来简化目录拷贝，示例代码如下：</p>
 <pre><code><span class="keyword">var</span> child_process = <span class="built_in">require</span>(<span class="string">'child_process'</span>);
 <span class="keyword">var</span> util = <span class="built_in">require</span>(<span class="string">'util'</span>);
