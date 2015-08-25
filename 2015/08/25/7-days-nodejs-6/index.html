@@ -1,0 +1,943 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+  <meta name="google-site-verification" content="Bu7qMjAWOJ5dxHauDW_IGiKlJ8kSN5myZ3RxIIAb4Qw" />
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+
+
+    <meta name="description" content="操千曲而后晓声，观千剑而后识器" />
+
+
+
+  <meta name="keywords" content="js,node," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.3" />
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    analytics: {
+      google: ''
+    },
+    sidebar: 'post'
+  };
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6b26d13232555e4d64b5a8c3567ccda9";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <title> 7天学会nodejs(六) 异步编程 // Mcl's space </title>
+</head>
+
+<body>
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">Mcl's space</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<div class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/">
+            <i class="menu-item-icon icon-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            <i class="menu-item-icon icon-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            <i class="menu-item-icon icon-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+<form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', '1ypRdYxJz8SMZBUve9JB','2.0.0');
+</script>
+
+<div class="site-search-toggle"></div>
+    </div>
+  
+</div>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              7天学会nodejs(六) 异步编程
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 Aug 25 2015
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/web/">web</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/08/25/7-days-nodejs-6/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/08/25/7-days-nodejs-6/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <blockquote>
+<p>本文为转载文章，转载自<a href="https://nqdeng.github.io/7-days-nodejs/" target="_blank" rel="external">7天学会nodejs</a>。</p>
+</blockquote>
+<h2 id="异步编程">异步编程</h2><hr>
+<p>NodeJS最大的卖点——事件机制和异步IO，对开发者并不是透明的。开发者需要按异步方式编写代码才用得上这个卖点，而这一点也遭到了一些NodeJS反对者的抨击。但不管怎样，异步编程确实是NodeJS最大的特点，没有掌握异步编程就不能说是真正学会了NodeJS。本章将介绍与异步编程相关的各种知识。</p>
+<h3 id="回调">回调</h3><p>在代码中，异步编程的直接体现就是回调。异步编程依托于回调来实现，但不能说使用了回调后程序就异步化了。我们首先可以看看以下代码。<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">heavyCompute</span><span class="params">(n, callback)</span> &#123;</span></span><br><span class="line">	var count = <span class="number">0</span>,</span><br><span class="line">		<span class="built_in">i</span>, <span class="built_in">j</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="built_in">i</span> = n; <span class="built_in">i</span> &gt; <span class="number">0</span>; --<span class="built_in">i</span>) <span class="cell">&#123;</span><br><span class="line">		for (j = n; j &gt; <span class="number">0</span>; --j) &#123;</span><br><span class="line">			count += <span class="number">1</span>;</span><br><span class="line">		&#125;</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	callback(count);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">heavyCompute(<span class="number">10000</span>, <span class="function"><span class="keyword">function</span> <span class="params">(count)</span> &#123;</span></span><br><span class="line">	console.<span class="built_in">log</span>(count);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">console.<span class="built_in">log</span>(<span class="string">'hello'</span>);</span><br><span class="line"></span><br><span class="line">-- Console ------------------------------</span><br><span class="line"><span class="number">100000000</span></span><br><span class="line">hello</span><br></pre></td></tr></table></figure></p>
+<p>可以看到，以上代码中的回调函数仍然先于后续代码执行。JS本身是单线程运行的，不可能在一段代码还未结束运行时去运行别的代码，因此也就不存在异步执行的概念。</p>
+<p>但是，如果某个函数做的事情是创建一个别的线程或进程，并与JS主线程并行地做一些事情，并在事情做完后通知JS主线程，那情况又不一样了。我们接着看看以下代码。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'world'</span>);</span><br><span class="line">&#125;, <span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'hello'</span>);</span><br><span class="line"></span><br><span class="line">-- Console ------------------------------</span><br><span class="line">hello</span><br><span class="line">world</span><br></pre></td></tr></table></figure></p>
+<p>这次可以看到，回调函数后于后续代码执行了。如同上边所说，JS本身是单线程的，无法异步执行，因此我们可以认为<code>setTimeout</code>这类JS规范之外的由运行环境提供的特殊函数做的事情是创建一个平行线程后立即返回，让JS主进程可以接着执行后续代码，并在收到平行进程的通知后再执行回调函数。除了<code>setTimeout</code>、<code>setInterval</code>这些常见的，这类函数还包括NodeJS提供的诸如<code>fs.readFile</code>之类的异步API。</p>
+<p>另外，我们仍然回到JS是单线程运行的这个事实上，这决定了JS在执行完一段代码之前无法执行包括回调函数在内的别的代码。也就是说，即使平行线程完成工作了，通知JS主线程执行回调函数了，回调函数也要等到JS主线程空闲时才能开始执行。以下就是这么一个例子。</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">heavyCompute</span><span class="params">(n)</span> </span>{
+    <span class="keyword">var</span> count = <span class="number">0</span>,
+        i, j;
+
+    <span class="keyword">for</span> (i = n; i &gt; <span class="number">0</span>; --i) {
+        <span class="keyword">for</span> (j = n; j &gt; <span class="number">0</span>; --j) {
+            count += <span class="number">1</span>;
+        }
+    }
+}
+
+<span class="keyword">var</span> t = <span class="keyword">new</span> <span class="built_in">Date</span>();
+
+setTimeout(<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>{
+    <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>() - t);
+}, <span class="number">1000</span>);
+
+heavyCompute(<span class="number">50000</span>);
+
+-- Console ------------------------------
+<span class="number">8520</span>
+</code></pre><p>可以看到，本来应该在1秒后被调用的回调函数因为JS主线程忙于运行其它代码，实际执行时间被大幅延迟。</p>
+<h3 id="代码设计模式">代码设计模式</h3><p>异步编程有很多特有的代码设计模式，为了实现同样的功能，使用同步方式和异步方式编写的代码会有很大差异。以下分别介绍一些常见的模式。</p>
+<h4 id="函数返回值">函数返回值</h4><p>使用一个函数的输出作为另一个函数的输入是很常见的需求，在同步方式下一般按以下方式编写代码：</p>
+<pre><code><span class="keyword">var</span> output = fn1(fn2(<span class="string">'input'</span>));
+<span class="comment">// Do something.</span>
+</code></pre><p>而在异步方式下，由于函数执行结果不是通过返回值，而是通过回调函数传递，因此一般按以下方式编写代码：</p>
+<pre><code>fn2(<span class="string">'input'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(output2)</span> </span>{
+    fn1(output2, <span class="function"><span class="keyword">function</span> <span class="params">(output1)</span> </span>{
+        <span class="comment">// Do something.</span>
+    });
+});
+</code></pre><p>可以看到，这种方式就是一个回调函数套一个回调函多，套得太多了很容易写出<code>&gt;</code>形状的代码。</p>
+<h4 id="遍历数组">遍历数组</h4><p>在遍历数组时，使用某个函数依次对数据成员做一些处理也是常见的需求。如果函数是同步执行的，一般就会写出以下代码：</p>
+<pre><code>var len = arr.length,
+    i = 0;
+
+for<span class="function"> (</span>; i &lt; len; ++i<span class="function">)</span> {
+    arr<span class="keyword">[</span>i] =<span class="function"> sync(</span>arr<span class="keyword">[</span>i]<span class="function">)</span>;
+}
+
+// All<span class="instruction"> array </span>items have processed.
+</code></pre><p>如果函数是异步执行的，以上代码就无法保证循环结束后所有数组成员都处理完毕了。如果数组成员必须一个接一个串行处理，则一般按照以下方式编写异步代码：</p>
+<pre><code><span class="list">(<span class="keyword">function</span> next<span class="list">(<span class="keyword">i</span>, len, callback)</span> <span class="collection">{
+    if <span class="list">(<span class="keyword">i</span> &lt; len)</span> <span class="collection">{
+        async<span class="list">(<span class="keyword">arr</span><span class="collection">[i]</span>, function <span class="list">(<span class="keyword">value</span>)</span> <span class="collection">{
+            arr<span class="collection">[i]</span> = value;
+            next<span class="list">(<span class="keyword">i</span> + <span class="number">1</span>, len, callback)</span><span class="comment">;</span>
+        }</span>)</span><span class="comment">;</span>
+    }</span> else <span class="collection">{
+        callback<span class="list">()</span><span class="comment">;</span>
+    }</span>
+}</span><span class="list">(<span class="number">0</span>, arr.length, function <span class="list">()</span> <span class="collection">{
+    // All array items have processed.
+}</span>)</span>)</span><span class="comment">;</span>
+</code></pre><p>可以看到，以上代码在异步函数执行一次并返回执行结果后才传入下一个数组成员并开始下一轮执行，直到所有数组成员处理完毕后，通过回调的方式触发后续代码的执行。</p>
+<p>如果数组成员可以并行处理，但后续代码仍然需要所有数组成员处理完毕后才能执行的话，则异步代码会调整成以下形式：</p>
+<pre><code><span class="list">(<span class="keyword">function</span> <span class="list">(<span class="keyword">i</span>, len, count, callback)</span> <span class="collection">{
+    for <span class="list">(<span class="comment">; i &lt; len; ++i) {</span>
+        <span class="list">(<span class="keyword">function</span> <span class="list">(<span class="keyword">i</span>)</span> <span class="collection">{
+            async<span class="list">(<span class="keyword">arr</span><span class="collection">[i]</span>, function <span class="list">(<span class="keyword">value</span>)</span> <span class="collection">{
+                arr<span class="collection">[i]</span> = value;
+                if <span class="list">(<span class="keyword">++count</span> === len)</span> <span class="collection">{
+                    callback<span class="list">()</span><span class="comment">;</span>
+                }</span>
+            }</span>)</span><span class="comment">;</span>
+        }</span><span class="list">(<span class="keyword">i</span>)</span>)</span><span class="comment">;</span>
+    }
+}<span class="list">(<span class="number">0</span>, arr.length, <span class="number">0</span>, function <span class="list">()</span> <span class="collection">{
+    // All array items have processed.
+}</span>)</span>)</span><span class="comment">;</span></span></span>
+</code></pre><p>可以看到，与异步串行遍历的版本相比，以上代码并行处理所有数组成员，并通过计数器变量来判断什么时候所有数组成员都处理完毕了。</p>
+<h4 id="异常处理">异常处理</h4><p>JS自身提供的异常捕获和处理机制——<code>try..catch..</code>，只能用于同步执行的代码。以下是一个例子。</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">sync</span><span class="params">(fn)</span> </span>{
+    <span class="keyword">return</span> fn();
+}
+
+<span class="keyword">try</span> {
+    sync(<span class="literal">null</span>);
+    <span class="comment">// Do something.</span>
+} <span class="keyword">catch</span> (err) {
+    <span class="built_in">console</span>.log(<span class="string">'Error: %s'</span>, err.message);
+}
+
+-- Console ------------------------------
+<span class="built_in">Error</span>: object is not a <span class="function"><span class="keyword">function</span></span>
+</code></pre><p>可以看到，异常会沿着代码执行路径一直冒泡，直到遇到第一个<code>try</code>语句时被捕获住。但由于异步函数会打断代码执行路径，异步函数执行过程中以及执行之后产生的异常冒泡到执行路径被打断的位置时，如果一直没有遇到<code>try</code>语句，就作为一个全局异常抛出。以下是一个例子。<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">async</span><span class="params">(fn, callback)</span></span> &#123;</span><br><span class="line">	// Code execution path breaks here.</span><br><span class="line">	setTimeout(<span class="function"><span class="keyword">function</span> <span class="params">()</span></span>　&#123;</span><br><span class="line">		callback(fn());</span><br><span class="line">	&#125;, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">	async(null, <span class="function"><span class="keyword">function</span> <span class="params">(data)</span></span> &#123;</span><br><span class="line">		// Do something.</span><br><span class="line">	&#125;);</span><br><span class="line">&#125; catch (err) &#123;</span><br><span class="line">	console.log(<span class="string">'Error: %s'</span>, err.message);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- Console ------------------------------</span></span><br><span class="line">/home/user/test.js:<span class="number">4</span></span><br><span class="line">		callback(fn());</span><br><span class="line">                 ^</span><br><span class="line">TypeError: object is <span class="keyword">not</span> a <span class="function"><span class="keyword">function</span></span><br><span class="line">    <span class="title">at</span> <span class="title">null._onTimeout</span> <span class="params">(/home/user/test.js:4:13)</span></span></span><br><span class="line">    at Timer.listOnTimeout [as ontimeout] (timers.js:<span class="number">110</span>:<span class="number">15</span>)</span><br></pre></td></tr></table></figure></p>
+<p>因为代码执行路径被打断了，我们就需要在异常冒泡到断点之前用<code>try</code>语句把异常捕获住，并通过回调函数传递被捕获的异常。于是我们可以像下边这样改造上边的例子。</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">async</span><span class="params">(fn, callback)</span> </span>{
+    <span class="comment">// Code execution path breaks here.</span>
+    setTimeout(<span class="function"><span class="keyword">function</span> <span class="params">()</span>　</span>{
+        <span class="keyword">try</span> {
+            <span class="keyword">callback</span>(<span class="literal">null</span>, fn());
+        } <span class="keyword">catch</span> (err) {
+            <span class="keyword">callback</span>(err);
+        }
+    }, <span class="number">0</span>);
+}
+
+async(<span class="literal">null</span>, <span class="function"><span class="keyword">function</span> <span class="params">(err, data)</span> </span>{
+    <span class="keyword">if</span> (err) {
+        console.log(<span class="string">'Error: %s'</span>, err.message);
+    } <span class="keyword">else</span> {
+        <span class="comment">// Do something.</span>
+    }
+});
+
+-- Console ------------------------------
+Error: object is not a <span class="function"><span class="keyword">function</span></span>
+</code></pre><p>可以看到，异常再次被捕获住了。在NodeJS中，几乎所有异步API都按照以上方式设计，回调函数中第一个参数都是<code>err</code>。因此我们在编写自己的异步函数时，也可以按照这种方式来处理异常，与NodeJS的设计风格保持一致。</p>
+<p>有了异常处理方式后，我们接着可以想一想一般我们是怎么写代码的。基本上，我们的代码都是做一些事情，然后调用一个函数，然后再做一些事情，然后再调用一个函数，如此循环。如果我们写的是同步代码，只需要在代码入口点写一个<code>try</code>语句就能捕获所有冒泡上来的异常，示例如下。</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">main</span><span class="params">()</span> </span>{
+    <span class="comment">// Do something.</span>
+    syncA();
+    <span class="comment">// Do something.</span>
+    syncB();
+    <span class="comment">// Do something.</span>
+    syncC();
+}
+
+<span class="keyword">try</span> {
+    main();
+} <span class="keyword">catch</span> (err) {
+    <span class="comment">// Deal with exception.</span>
+}
+</code></pre><p>但是，如果我们写的是异步代码，就只有呵呵了。由于每次异步函数调用都会打断代码执行路径，只能通过回调函数来传递异常，于是我们就需要在每个回调函数里判断是否有异常发生，于是只用三次异步函数调用，就会产生下边这种代码。</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">main</span><span class="params">(callback)</span> </span>{
+    <span class="comment">// Do something.</span>
+    asyncA(<span class="function"><span class="keyword">function</span> <span class="params">(err, data)</span> </span>{
+        <span class="keyword">if</span> (err) {
+            <span class="keyword">callback</span>(err);
+        } <span class="keyword">else</span> {
+            <span class="comment">// Do something</span>
+            asyncB(<span class="function"><span class="keyword">function</span> <span class="params">(err, data)</span> </span>{
+                <span class="keyword">if</span> (err) {
+                    <span class="keyword">callback</span>(err);
+                } <span class="keyword">else</span> {
+                    <span class="comment">// Do something</span>
+                    asyncC(<span class="function"><span class="keyword">function</span> <span class="params">(err, data)</span> </span>{
+                        <span class="keyword">if</span> (err) {
+                            <span class="keyword">callback</span>(err);
+                        } <span class="keyword">else</span> {
+                            <span class="comment">// Do something</span>
+                            <span class="keyword">callback</span>(<span class="literal">null</span>);
+                        }
+                    });
+                }
+            });
+        }
+    });
+}
+
+main(<span class="function"><span class="keyword">function</span> <span class="params">(err)</span> </span>{
+    <span class="keyword">if</span> (err) {
+        <span class="comment">// Deal with exception.</span>
+    }
+});
+</code></pre><p>可以看到，回调函数已经让代码变得复杂了，而异步方式下对异常的处理更加剧了代码的复杂度。如果NodeJS的最大卖点最后变成这个样子，那就没人愿意用NodeJS了，因此接下来会介绍NodeJS提供的一些解决方案。</p>
+<h3 id="域（Domain）">域（Domain）</h3><blockquote>
+<p>   <strong>官方文档：</strong> <a href="http://nodejs.org/api/domain.html" target="_blank" rel="external">http://nodejs.org/api/domain.html</a></p>
+</blockquote>
+<p>NodeJS提供了<code>domain</code>模块，可以简化异步代码的异常处理。在介绍该模块之前，我们需要首先理解“域”的概念。简单的讲，一个域就是一个JS运行环境，在一个运行环境中，如果一个异常没有被捕获，将作为一个全局异常被抛出。NodeJS通过<code>process</code>对象提供了捕获全局异常的方法，示例代码如下</p>
+<pre><code>process.on(<span class="string">'uncaughtException'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(err)</span> </span>{
+    <span class="built_in">console</span>.log(<span class="string">'Error: %s'</span>, err.message);
+});
+
+setTimeout(<span class="function"><span class="keyword">function</span> <span class="params">(fn)</span> </span>{
+    fn();
+});
+
+-- Console ------------------------------
+<span class="built_in">Error</span>: <span class="literal">undefined</span> is not a <span class="function"><span class="keyword">function</span></span>
+</code></pre><p>虽然全局异常有个地方可以捕获了，但是对于大多数异常，我们希望尽早捕获，并根据结果决定代码的执行路径。我们用以下HTTP服务器代码作为例子：</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">async</span><span class="params">(request, callback)</span> </span>{
+    <span class="comment">// Do something.</span>
+    asyncA(request, <span class="function"><span class="keyword">function</span> <span class="params">(err, data)</span> </span>{
+        <span class="keyword">if</span> (err) {
+            <span class="keyword">callback</span>(err);
+        } <span class="keyword">else</span> {
+            <span class="comment">// Do something</span>
+            asyncB(request, <span class="function"><span class="keyword">function</span> <span class="params">(err, data)</span> </span>{
+                <span class="keyword">if</span> (err) {
+                    <span class="keyword">callback</span>(err);
+                } <span class="keyword">else</span> {
+                    <span class="comment">// Do something</span>
+                    asyncC(request, <span class="function"><span class="keyword">function</span> <span class="params">(err, data)</span> </span>{
+                        <span class="keyword">if</span> (err) {
+                            <span class="keyword">callback</span>(err);
+                        } <span class="keyword">else</span> {
+                            <span class="comment">// Do something</span>
+                            <span class="keyword">callback</span>(<span class="literal">null</span>, data);
+                        }
+                    });
+                }
+            });
+        }
+    });
+}
+
+http.createServer(<span class="function"><span class="keyword">function</span> <span class="params">(request, response)</span> </span>{
+    async(request, <span class="function"><span class="keyword">function</span> <span class="params">(err, data)</span> </span>{
+        <span class="keyword">if</span> (err) {
+            response.writeHead(<span class="number">500</span>);
+            response.end();
+        } <span class="keyword">else</span> {
+            response.writeHead(<span class="number">200</span>);
+            response.end(data);
+        }
+    });
+});
+</code></pre><p>以上代码将请求对象交给异步函数处理后，再根据处理结果返回响应。这里采用了使用回调函数传递异常的方案，因此<code>async</code>函数内部如果再多几个异步函数调用的话，代码就变成上边这副鬼样子了。为了让代码好看点，我们可以在每处理一个请求时，使用<code>domain</code>模块创建一个子域（JS子运行环境）。在子域内运行的代码可以随意抛出异常，而这些异常可以通过子域对象的<code>error</code>事件统一捕获。于是以上代码可以做如下改造：</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">async</span><span class="params">(request, callback)</span> </span>{
+    <span class="comment">// Do something.</span>
+    asyncA(request, <span class="function"><span class="keyword">function</span> <span class="params">(data)</span> </span>{
+        <span class="comment">// Do something</span>
+        asyncB(request, <span class="function"><span class="keyword">function</span> <span class="params">(data)</span> </span>{
+            <span class="comment">// Do something</span>
+            asyncC(request, <span class="function"><span class="keyword">function</span> <span class="params">(data)</span> </span>{
+                <span class="comment">// Do something</span>
+                <span class="keyword">callback</span>(data);
+            });
+        });
+    });
+}
+
+http.createServer(<span class="function"><span class="keyword">function</span> <span class="params">(request, response)</span> </span>{
+    <span class="keyword">var</span> d = domain.create();
+
+    d.on(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>{
+        response.writeHead(<span class="number">500</span>);
+        response.end();
+    });
+
+    d.run(<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>{
+        async(request, <span class="function"><span class="keyword">function</span> <span class="params">(data)</span> </span>{
+            response.writeHead(<span class="number">200</span>);
+            response.end(data);
+        });
+    });
+});
+</code></pre><p>可以看到，我们使用<code>.create</code>方法创建了一个子域对象，并通过<code>.run</code>方法进入需要在子域中运行的代码的入口点。而位于子域中的异步函数回调函数由于不再需要捕获异常，代码一下子瘦身很多。</p>
+<h4 id="陷阱">陷阱</h4><p>无论是通过<code>process</code>对象的<code>uncaughtException</code>事件捕获到全局异常，还是通过子域对象的<code>error</code>事件捕获到了子域异常，在NodeJS官方文档里都强烈建议处理完异常后立即重启程序，而不是让程序继续运行。按照官方文档的说法，发生异常后的程序处于一个不确定的运行状态，如果不立即退出的话，程序可能会发生严重内存泄漏，也可能表现得很奇怪。</p>
+<p>但这里需要澄清一些事实。JS本身的<code>throw..try..catch</code>异常处理机制并不会导致内存泄漏，也不会让程序的执行结果出乎意料，但NodeJS并不是存粹的JS。NodeJS里大量的API内部是用C/C++实现的，因此NodeJS程序的运行过程中，代码执行路径穿梭于JS引擎内部和外部，而JS的异常抛出机制可能会打断正常的代码执行流程，导致C/C++部分的代码表现异常，进而导致内存泄漏等问题。</p>
+<p>因此，使用<code>uncaughtException</code>或<code>domain</code>捕获异常，代码执行路径里涉及到了C/C++部分的代码时，如果不能确定是否会导致内存泄漏等问题，最好在处理完异常后重启程序比较妥当。而使用<code>try</code>语句捕获异常时一般捕获到的都是JS本身的异常，不用担心上诉问题。</p>
+<h3 id="小结">小结</h3><p>本章介绍了JS异步编程相关的知识，总结起来有以下几点：</p>
+<ul>
+<li><p>不掌握异步编程就不算学会NodeJS。</p>
+</li>
+<li><p>异步编程依托于回调来实现，而使用回调不一定就是异步编程。</p>
+</li>
+<li><p>异步编程下的函数间数据传递、数组遍历和异常处理与同步编程有很大差别。</p>
+</li>
+<li><p>使用<code>domain</code>模块简化异步代码的异常处理，并小心陷阱。</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/js/"> #js </a>
+          
+            <a href="/tags/node/"> #node </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/08/25/7-days-nodejs-5/">7天学会nodejs(五) 进程管理</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/08/25/7-days-nodejs-7/">7天学会nodejs(七) 大示例 </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+
+    
+      <div class="comments" id="comments">
+        
+          <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+
+        
+      </div>
+
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="https://avatars0.githubusercontent.com/u/4705237?v=3&u=cf53fa292cbafba8a53cfb1feda077c5abced98f&s=140" alt="LinChen" />
+          <p class="site-author-name">LinChen</p>
+        </div>
+        <p class="site-description motion-element">操千曲而后晓声，观千剑而后识器</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/rdmclin2" target="_blank">GitHub</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://twitter.com/rdmclin2" target="_blank">Twitter</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://weibo.com/1842914013/profile?topnav=1&wvr=6" target="_blank">Weibo</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.douban.com/people/50750460/" target="_blank">DouBan</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.zhihu.com/people/mengcl" target="_blank">ZhiHu</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name"></p>
+            
+              <span class="links-of-author-item">
+              <a href="http://chuan92.com" target="_blank">chuan92</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://chepeatio.github.io" target="_blank">chepeatio</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://andrewliu.in" target="_blank">andrewliu</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://http://liutianchi.com" target="_blank">liutianchi</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://cshuo.xyz/" target="_blank">cshuo</a>
+              </span>
+            
+          
+        </div>
+        
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#异步编程"><span class="nav-number">1.</span> <span class="nav-text">异步编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#回调"><span class="nav-number">1.1.</span> <span class="nav-text">回调</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码设计模式"><span class="nav-number">1.2.</span> <span class="nav-text">代码设计模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#函数返回值"><span class="nav-number">1.2.1.</span> <span class="nav-text">函数返回值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#遍历数组"><span class="nav-number">1.2.2.</span> <span class="nav-text">遍历数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异常处理"><span class="nav-number">1.2.3.</span> <span class="nav-text">异常处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#域（Domain）"><span class="nav-number">1.3.</span> <span class="nav-text">域（Domain）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#陷阱"><span class="nav-number">1.3.1.</span> <span class="nav-text">陷阱</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小结"><span class="nav-number">1.4.</span> <span class="nav-text">小结</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp;  2014 - 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">LinChen</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
+
+
+
+  <script type="text/javascript" src="/js/search-toggle.js"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.3" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if (isDesktop() && CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    });
+  </script>
+
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+
+  
+  
+  
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'mcl';
+      var disqus_identifier = '2015/08/25/7-days-nodejs-6/';
+      var disqus_title = '7天学会nodejs(六) 异步编程';
+      var disqus_url = 'http://www.mclspace.com/2015/08/25/7-days-nodejs-6/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+
+</body>
+</html>
