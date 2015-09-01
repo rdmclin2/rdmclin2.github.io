@@ -215,14 +215,13 @@
       
 
       
-        <h1 id="前言">前言</h1><p>因为上Mapreduce课需要写课程实验，课程实验需要数据，我们课题是关于我们学校的<a href="http://bbs.nju.edu.cn" target="_blank" rel="external">小百合论坛</a>的分类，所以爬取较大数量的帖子是自然的了,实现语言主要是java，爬取帖子的数量是共458个板块，每个板块1000个左右的帖子（有的板块并没有那么多帖子），主要借助的开源包是<a href="http://sourceforge.net/projects/htmlparser/files/Integration-Builds/2.0-20060923/" target="_blank" rel="external">htmlparser</a>,htmlparser可以帮助我们有效地分析源网页，有兴趣可以谷歌，下面上分析过程和代码(代码改的匆忙，没有好好调整格式，请见谅)。</p>
+        <h1 id="前言">前言</h1><p>本文关于<a href="http://bbs.nju.edu.cn" target="_blank" rel="external">小百合论坛</a>的爬取，共458个板块，每个板块1000个的帖子，主要借助开源包<a href="http://sourceforge.net/projects/htmlparser/files/Integration-Builds/2.0-20060923/" target="_blank" rel="external">htmlparser</a>,下面上分析过程和代码。注意本文在一篇<a href="http://www.ibm.com/developerworks/cn/opensource/os-cn-crawler/index.html" target="_blank" rel="external">ibm的文章</a>的基础上进行修改。</p>
+<h2 id="更新">更新</h2><p>我另外简单实现了一个MapReduce版本的，不过实现的不好，权当参考一下吧.奉上<a href="git@github.com:rdmclin2/MR_BBSCrawler.git">github地址</a>，上面有简单介绍.</p>
 <a id="more"></a>
 <hr>
-<h1 id="分析过程及代码">分析过程及代码</h1><h2 id="关于爬虫">关于爬虫</h2><p>爬虫大家都知道，由一个种子页(seed)出发，分析该页，获取页面链接，加入未访问的列表中，从未访问的表中取链接，访问，重复如上步骤即可，要注意的就是要维护一个已访问的网页列表，以避免重复访问。然而这种广义的爬虫并不符合特定的情况，例如我现在要爬的bbs板块帖子，so，遇到具体问题，还是得具体分析。</p>
+<h1 id="分析过程及代码">分析过程及代码</h1><h2 id="关于爬虫">关于爬虫</h2><p>爬虫大家都知道，由一个种子页(seed)出发，分析该页，获取页面链接，加入未访问的列表中，从未访问的表中取链接，访问，重复如上步骤即可，要注意的就是要维护一个已访问的网页列表，以避免重复访问。然而这种广义的爬虫并不符合特定的情况，例如我现在要爬的bbs板块帖子，遇到具体问题，还是得具体分析。</p>
 <hr>
-<h2 id="关于工具选择">关于工具选择</h2><p>因为Mapreduce实验课涉及hadoop，为了方便之后改写成mapreduce版本决定使用java,当然首先不想重复造轮子，一顿google发现一篇<a href="http://www.ibm.com/developerworks/cn/opensource/os-cn-crawler/index.html" target="_blank" rel="external">ibm的文章</a>比较靠谱,也有源代码,所以本篇代码建立在这篇文章之上，这让我半天就完成了这个实验课的数据爬取部分。<br>前些天还研究了一阵子apache的nutch，那玩意好像是hadoop的祖宗，后来演变成了网络爬虫。不过nutch的问题是配起来比较麻烦，要正确运行起来不简单，而且实现的也是上面讲的广义爬虫，这货配合solr可以做搜索引擎，不过用在我的实验课上似乎大才小用了。最后python有个很出名的爬虫库叫<a href="https://github.com/scrapy/scrapy" target="_blank" rel="external">scrapy</a>，好像很好用，后面再学。</p>
-<hr>
-<h2 id="小百合bbs爬取过程">小百合bbs爬取过程</h2><p>嗯，基本的爬取步骤如下：</p>
+<h2 id="小百合bbs爬取过程">小百合bbs爬取过程</h2><p>基本的爬取步骤如下：</p>
 <ul>
 <li>首先获得小百合bbs的所有板块链接</li>
 <li>对于每一个板块，获取至多1000条帖子的链接</li>
@@ -360,7 +359,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-count">32</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -453,7 +452,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分析过程及代码"><span class="nav-number">2.</span> <span class="nav-text">分析过程及代码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于爬虫"><span class="nav-number">2.1.</span> <span class="nav-text">关于爬虫</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于工具选择"><span class="nav-number">2.2.</span> <span class="nav-text">关于工具选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小百合bbs爬取过程"><span class="nav-number">2.3.</span> <span class="nav-text">小百合bbs爬取过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取所有板块链接"><span class="nav-number">2.3.1.</span> <span class="nav-text">获取所有板块链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对于每一个板块，获取至多1000条帖子的链接"><span class="nav-number">2.3.2.</span> <span class="nav-text">对于每一个板块，获取至多1000条帖子的链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对于每一条链接，获取帖子内容并存储"><span class="nav-number">2.3.3.</span> <span class="nav-text">对于每一条链接，获取帖子内容并存储</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#main文件"><span class="nav-number">2.3.4.</span> <span class="nav-text">main文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码上传到github"><span class="nav-number">2.4.</span> <span class="nav-text">代码上传到github</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#更新"><span class="nav-number">1.1.</span> <span class="nav-text">更新</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分析过程及代码"><span class="nav-number">2.</span> <span class="nav-text">分析过程及代码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于爬虫"><span class="nav-number">2.1.</span> <span class="nav-text">关于爬虫</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小百合bbs爬取过程"><span class="nav-number">2.2.</span> <span class="nav-text">小百合bbs爬取过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取所有板块链接"><span class="nav-number">2.2.1.</span> <span class="nav-text">获取所有板块链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对于每一个板块，获取至多1000条帖子的链接"><span class="nav-number">2.2.2.</span> <span class="nav-text">对于每一个板块，获取至多1000条帖子的链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对于每一条链接，获取帖子内容并存储"><span class="nav-number">2.2.3.</span> <span class="nav-text">对于每一条链接，获取帖子内容并存储</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#main文件"><span class="nav-number">2.2.4.</span> <span class="nav-text">main文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码上传到github"><span class="nav-number">2.3.</span> <span class="nav-text">代码上传到github</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

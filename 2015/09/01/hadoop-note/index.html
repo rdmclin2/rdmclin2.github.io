@@ -1,0 +1,721 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+  <meta name="google-site-verification" content="Bu7qMjAWOJ5dxHauDW_IGiKlJ8kSN5myZ3RxIIAb4Qw" />
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+
+
+    <meta name="description" content="操千曲而后晓声，观千剑而后识器" />
+
+
+
+  <meta name="keywords" content="hadoop," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.3" />
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    analytics: {
+      google: ''
+    },
+    sidebar: 'post'
+  };
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6b26d13232555e4d64b5a8c3567ccda9";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <title> Mac上Hadoop的安装及使用 // Mcl's space </title>
+</head>
+
+<body>
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">Mcl's space</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<div class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/">
+            <i class="menu-item-icon icon-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            <i class="menu-item-icon icon-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            <i class="menu-item-icon icon-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+<form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', '1ypRdYxJz8SMZBUve9JB','2.0.0');
+</script>
+
+<div class="site-search-toggle"></div>
+    </div>
+  
+</div>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Mac上Hadoop的安装及使用
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 Sep 1 2015
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/dev/">dev</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/09/01/hadoop-note/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/09/01/hadoop-note/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <blockquote>
+<p>本文在mac osx 上安装配置hadoop环境,配置eclipse开发环境，并打包jar文件在集群上运行.</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="Mac安装hadoop环境"><code>Mac安装hadoop环境</code></h2><p>参考 <a href="http://andrewliu.in/2015/03/05/%E5%9C%A8Mac-OSX-Yosemite%E4%B8%8A%E5%AE%89%E8%A3%85Hadoop/" target="_blank" rel="external">在Mac OSX Yosemite上安装Hadoop</a></p>
+<h3 id="设置alias">设置alias</h3><p>在zsh的.zshrc中配置打开和关闭hadoop的alias<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alias hstart="/usr/local/Cellar/hadoop/2.7.1/sbin/<span class="operator"><span class="keyword">start</span>-dfs.sh;</span>/usr/local/Cellar/hadoop/2.7.1/sbin/<span class="operator"><span class="keyword">start</span>-yarn.sh<span class="string">"</span><br><span class="line">alias hstop="</span>/usr/<span class="keyword">local</span>/Cellar/hadoop/<span class="number">2.7</span>.1/sbin/<span class="keyword">stop</span>-yarn.sh;</span>/usr/local/Cellar/hadoop/2.7.1/sbin/<span class="operator"><span class="keyword">stop</span>-dfs.sh<span class="string">"</span></span></span><br></pre></td></tr></table></figure></p>
+<p>然后还有hbase的<br><figure class="highlight monkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alias</span> <span class="title">hbstart</span>=<span class="string">"/usr/local/Cellar/hbase/1.0.1/libexec/bin/start-hbase.sh"</span></span><br><span class="line"><span class="keyword">alias</span> <span class="title">hbstop</span>=<span class="string">"/usr/local/Cellar/hbase/1.0.1/libexec/bin/stop-hbase.sh"</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="开启成功的标识">开启成功的标识</h3><p>使用<code>jps</code>命令，出现以下几项:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">2821 ResourceManager</span><br><span class="line">2582 DataNode</span><br><span class="line">2918 NodeManager</span><br><span class="line">2968 Jps</span><br><span class="line">2699 SecondaryNameNode</span><br><span class="line">2493 NameNode</span><br></pre></td></tr></table></figure></p>
+<p>使用如下命令测试是否能够正确执行hadoop程序:<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop jar <span class="regexp">/usr/</span>local<span class="regexp">/Cellar/</span>hadoop<span class="regexp">/2.7.1/</span>libexec<span class="regexp">/share/</span>hadoop<span class="regexp">/mapreduce/</span>hadoop-mapreduce-examples-<span class="number">2.7</span>.<span class="number">1</span>.jar pi <span class="number">2</span> <span class="number">5</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="查看web任务的接口">查看web任务的接口</h3><p>我们可以通过以下web接口查看mapreduce任务<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">http:</span><span class="comment">//localhost:8088 Cluster Status 这个接口非常有用,2.2之后,之前用50030端口</span></span><br><span class="line"><span class="string">http:</span><span class="comment">//localhost:50070/ HDFS status</span></span><br><span class="line"><span class="string">http:</span><span class="comment">//localhost:50090 secondaryNamenode</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<p><br></p>
+<h2 id="安装配置eclipse插件"><code>安装配置eclipse插件</code></h2><h3 id="下载地址(2-7-0)">下载地址(2.7.0)</h3><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">http:</span>/<span class="regexp">/download.csdn.net/detail</span><span class="regexp">/yew1eb/</span><span class="number">8716117</span></span><br></pre></td></tr></table></figure>
+<h3 id="插件设置">插件设置</h3><p>在偏好设置 -&gt; Hadoop Map/Reduce中配置Hadoop installation directory为:<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/Cellar/</span>hadoop<span class="regexp">/2.7.1/</span>libexec</span><br><span class="line">#因人而异,这里是用homebrew安装hadoop后的地址</span><br></pre></td></tr></table></figure></p>
+<h3 id="打开mapreduce工作空间">打开mapreduce工作空间</h3><p>Window -&gt; Open Perspective -&gt; Other -&gt; Map/Reduce</p>
+<h3 id="添加hadoop地址">添加hadoop地址</h3><p>在下面状态栏的Map/Reduce Locations中右击,选择New Hadoop location<br>配置 ：</p>
+<ul>
+<li>Location name : 随意,如<code>hadoop</code></li>
+<li><p>Map/Reduce Master的端口参考</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/Cellar/</span>hadoop<span class="regexp">/2.7.1/</span>libexec<span class="regexp">/etc/</span>hadoop<span class="regexp">/mapred-site.xml</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>DFS Master的端口参考</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/Cellar/</span>hadoop<span class="regexp">/2.7.1/</span>libexec<span class="regexp">/etc/</span>hadoop<span class="regexp">/core-site.xml</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="配置完成标志">配置完成标志</h3><p>点击左侧的DFSLocations—&gt;hadoop（上一步配置的location name)，如能看到user，表示安装成功（保证已经启动了hadoop)</p>
+<hr>
+<p><br></p>
+<h2 id="实战程序wordcount"><code>实战程序wordcount</code></h2><h3 id="新建WordCount项目">新建WordCount项目</h3><p>File—&gt;Project，选择Map/Reduce Project，输入项目名称WordCount等。</p>
+<p>在WordCount项目里新建class，名称为WordCount，代码如下:<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"><span class="keyword">import</span> java.io.IOException;</span></span><br><span class="line"><span class="preprocessor"><span class="keyword">import</span> java.util.StringTokenizer;</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor"><span class="keyword">import</span> org.apache.hadoop.conf.Configuration;</span></span><br><span class="line"><span class="preprocessor"><span class="keyword">import</span> org.apache.hadoop.fs.Path;</span></span><br><span class="line"><span class="preprocessor"><span class="keyword">import</span> org.apache.hadoop.io.IntWritable;</span></span><br><span class="line"><span class="preprocessor"><span class="keyword">import</span> org.apache.hadoop.io.Text;</span></span><br><span class="line"><span class="preprocessor"><span class="keyword">import</span> org.apache.hadoop.mapreduce.Job;</span></span><br><span class="line"><span class="preprocessor"><span class="keyword">import</span> org.apache.hadoop.mapreduce.Mapper;</span></span><br><span class="line"><span class="preprocessor"><span class="keyword">import</span> org.apache.hadoop.mapreduce.Reducer;</span></span><br><span class="line"><span class="preprocessor"><span class="keyword">import</span> org.apache.hadoop.mapreduce.lib.input.FileInputFormat;</span></span><br><span class="line"><span class="preprocessor"><span class="keyword">import</span> org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;</span></span><br><span class="line"><span class="preprocessor"><span class="keyword">import</span> org.apache.hadoop.util.GenericOptionsParser;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WordCount</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">TokenizerMapper</span> <span class="keyword">extends</span> <span class="title">Mapper</span>&lt;<span class="title">Object</span>, <span class="title">Text</span>, <span class="title">Text</span>, <span class="title">IntWritable</span>&gt;</span>&#123;</span><br><span class="line">　　<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> IntWritable one = <span class="keyword">new</span> IntWritable(<span class="number">1</span>);</span><br><span class="line">　　<span class="keyword">private</span> Text word = <span class="keyword">new</span> Text();</span><br><span class="line"></span><br><span class="line">　　<span class="keyword">public</span> <span class="keyword">void</span> map(Object key, Text value, Context context) throws IOException, InterruptedException &#123;</span><br><span class="line">　　　　StringTokenizer itr = <span class="keyword">new</span> StringTokenizer(value.toString());</span><br><span class="line">　　　　　　<span class="keyword">while</span> (itr.hasMoreTokens()) &#123;</span><br><span class="line">　　　　　　　　word.<span class="keyword">set</span>(itr.nextToken());</span><br><span class="line">　　　　　　　　context.write(word, one);</span><br><span class="line">　　　　　　&#125;</span><br><span class="line">　　&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">IntSumReducer</span> <span class="keyword">extends</span> <span class="title">Reducer</span>&lt;<span class="title">Text</span>,<span class="title">IntWritable</span>,<span class="title">Text</span>,<span class="title">IntWritable</span>&gt; </span>&#123;</span><br><span class="line">　　<span class="keyword">private</span> IntWritable result = <span class="keyword">new</span> IntWritable();</span><br><span class="line">　　<span class="keyword">public</span> <span class="keyword">void</span> reduce(Text key, Iterable&lt;IntWritable&gt; values,Context context) throws IOException, InterruptedException &#123;</span><br><span class="line">　　　　int sum = <span class="number">0</span>;</span><br><span class="line">　　　　<span class="keyword">for</span> (IntWritable val : values) &#123;</span><br><span class="line">　　　　　　sum += val.<span class="keyword">get</span>();</span><br><span class="line">　　　　&#125;</span><br><span class="line">　　　　result.<span class="keyword">set</span>(sum);</span><br><span class="line">　　　　context.write(key, result);</span><br><span class="line">　　&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) throws Exception &#123;</span><br><span class="line">　　Configuration conf = <span class="keyword">new</span> Configuration();</span><br><span class="line">　　String[] otherArgs = <span class="keyword">new</span> GenericOptionsParser(conf, args).getRemainingArgs();</span><br><span class="line">　　<span class="keyword">if</span> (otherArgs.length != <span class="number">2</span>) &#123;</span><br><span class="line">　　　　System.err.println(<span class="string">"Usage: wordcount &lt;in&gt; &lt;out&gt;"</span>);</span><br><span class="line">　　　　System.exit(<span class="number">2</span>);</span><br><span class="line">　　&#125;</span><br><span class="line">　　Job job = <span class="keyword">new</span> Job(conf, <span class="string">"word count"</span>);</span><br><span class="line">　　job.setJarByClass(WordCount.<span class="keyword">class</span>);</span><br><span class="line">　　job.setMapperClass(TokenizerMapper.<span class="keyword">class</span>);</span><br><span class="line">　　job.setCombinerClass(IntSumReducer.<span class="keyword">class</span>);</span><br><span class="line">　　job.setReducerClass(IntSumReducer.<span class="keyword">class</span>);</span><br><span class="line">　　job.setOutputKeyClass(Text.<span class="keyword">class</span>);</span><br><span class="line">　　job.setOutputValueClass(IntWritable.<span class="keyword">class</span>);</span><br><span class="line">　　FileInputFormat.addInputPath(job, <span class="keyword">new</span> Path(otherArgs[<span class="number">0</span>]));</span><br><span class="line">　　FileOutputFormat.setOutputPath(job, <span class="keyword">new</span> Path(otherArgs[<span class="number">1</span>]));</span><br><span class="line">　　System.exit(job.waitForCompletion(<span class="literal">true</span>) ? <span class="number">0</span> : <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="创建输入input目录">创建输入input目录</h3><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hadoop <span class="built_in">fs</span> -<span class="built_in">mkdir</span> /user</span><br><span class="line">hadoop <span class="built_in">fs</span> -<span class="built_in">mkdir</span> /user/input</span><br></pre></td></tr></table></figure>
+<h3 id="拷贝本地README-txt到HDFS的input里">拷贝本地README.txt到HDFS的input里</h3><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -copyFromLocal <span class="regexp">/opt/</span>hadoop<span class="regexp">/README.txt /u</span>ser<span class="regexp">/input</span></span><br></pre></td></tr></table></figure>
+<h3 id="参数配置">参数配置</h3><p>点击WordCount.java，右键，点击Run As—&gt;Run Configurations，配置运行参数Arguments，即输入和输出文件夹(事先不能存在)<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">　　hdf<span class="variable">s:</span>//localhos<span class="variable">t:9000</span>/user/<span class="built_in">input</span>    hdf<span class="variable">s:</span>//localhos<span class="variable">t:9000</span>/user/output</span><br></pre></td></tr></table></figure></p>
+<p>然后点击运行</p>
+<h3 id="查看结果">查看结果</h3><p><code>hadoop fs -ls output</code>,可以看到有两个输出结果<code>_SUCCESS</code>和<code>part-r-00000</code><br>执行<code>hadoop fs -cat output/*</code></p>
+<p>或者也可以展开DFS Locations，双击打开part-r00000查看结果</p>
+<hr>
+<p><br></p>
+<h2 id="打包eclipse程序在集群上运行"><code>打包eclipse程序在集群上运行</code></h2><p>直接运行eclipse程序，访问localhost:8088窗口并不会显示正在运行的job，因为在eclipse上并没有配置集群环境，而是本地环境。</p>
+<h3 id="打包jar">打包jar</h3><p>右击工程 -&gt; export… -&gt; java -&gt; jar file -&gt; next -&gt; 填写jar包位置 -&gt; finish</p>
+<h3 id="运行">运行</h3><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hadoop jar crawler.jar MR_Crawler hdf<span class="variable">s:</span>//localhos<span class="variable">t:9000</span>/user/<span class="built_in">input</span>/urls hdf<span class="variable">s:</span>//localhos<span class="variable">t:9000</span>/user/output</span><br><span class="line"># 注意用MR_Crawler是因为没有配置具体的package，如果有包要加上包名.</span><br></pre></td></tr></table></figure>
+<hr>
+<p><br></p>
+<h2 id="注意点"><code>注意点</code></h2><ul>
+<li>运行后台程序前, 必须格式化新安装的HDFS, 并通过创建存储目录和初始化元数据创新空的文件系统, 执行下面命令<code>hdfs namenode -format</code></li>
+<li>输出文件默认不能存在</li>
+</ul>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/hadoop/"> #hadoop </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/08/25/7-days-nodejs-7/">7天学会nodejs(七) 大示例 </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+
+    
+      <div class="comments" id="comments">
+        
+          <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+
+        
+      </div>
+
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="https://avatars0.githubusercontent.com/u/4705237?v=3&u=cf53fa292cbafba8a53cfb1feda077c5abced98f&s=140" alt="LinChen" />
+          <p class="site-author-name">LinChen</p>
+        </div>
+        <p class="site-description motion-element">操千曲而后晓声，观千剑而后识器</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/rdmclin2" target="_blank">GitHub</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://twitter.com/rdmclin2" target="_blank">Twitter</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://weibo.com/1842914013/profile?topnav=1&wvr=6" target="_blank">Weibo</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.douban.com/people/50750460/" target="_blank">DouBan</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.zhihu.com/people/mengcl" target="_blank">ZhiHu</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name"></p>
+            
+              <span class="links-of-author-item">
+              <a href="http://chuan92.com" target="_blank">chuan92</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://chepeatio.github.io" target="_blank">chepeatio</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://andrewliu.in" target="_blank">andrewliu</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://http://liutianchi.com" target="_blank">liutianchi</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://cshuo.xyz/" target="_blank">cshuo</a>
+              </span>
+            
+          
+        </div>
+        
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Mac安装hadoop环境"><span class="nav-number">1.</span> <span class="nav-text">Mac安装hadoop环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置alias"><span class="nav-number">1.1.</span> <span class="nav-text">设置alias</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开启成功的标识"><span class="nav-number">1.2.</span> <span class="nav-text">开启成功的标识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看web任务的接口"><span class="nav-number">1.3.</span> <span class="nav-text">查看web任务的接口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装配置eclipse插件"><span class="nav-number">2.</span> <span class="nav-text">安装配置eclipse插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载地址(2-7-0)"><span class="nav-number">2.1.</span> <span class="nav-text">下载地址(2.7.0)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插件设置"><span class="nav-number">2.2.</span> <span class="nav-text">插件设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#打开mapreduce工作空间"><span class="nav-number">2.3.</span> <span class="nav-text">打开mapreduce工作空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加hadoop地址"><span class="nav-number">2.4.</span> <span class="nav-text">添加hadoop地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置完成标志"><span class="nav-number">2.5.</span> <span class="nav-text">配置完成标志</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实战程序wordcount"><span class="nav-number">3.</span> <span class="nav-text">实战程序wordcount</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#新建WordCount项目"><span class="nav-number">3.1.</span> <span class="nav-text">新建WordCount项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建输入input目录"><span class="nav-number">3.2.</span> <span class="nav-text">创建输入input目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拷贝本地README-txt到HDFS的input里"><span class="nav-number">3.3.</span> <span class="nav-text">拷贝本地README.txt到HDFS的input里</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数配置"><span class="nav-number">3.4.</span> <span class="nav-text">参数配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看结果"><span class="nav-number">3.5.</span> <span class="nav-text">查看结果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打包eclipse程序在集群上运行"><span class="nav-number">4.</span> <span class="nav-text">打包eclipse程序在集群上运行</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#打包jar"><span class="nav-number">4.1.</span> <span class="nav-text">打包jar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行"><span class="nav-number">4.2.</span> <span class="nav-text">运行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意点"><span class="nav-number">5.</span> <span class="nav-text">注意点</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp;  2014 - 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">LinChen</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
+
+
+
+  <script type="text/javascript" src="/js/search-toggle.js"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.3" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if (isDesktop() && CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    });
+  </script>
+
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+
+  
+  
+  
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'mcl';
+      var disqus_identifier = '2015/09/01/hadoop-note/';
+      var disqus_title = 'Mac上Hadoop的安装及使用';
+      var disqus_url = 'http://www.mclspace.com/2015/09/01/hadoop-note/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+
+</body>
+</html>

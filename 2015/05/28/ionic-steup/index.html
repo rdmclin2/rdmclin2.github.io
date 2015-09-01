@@ -219,7 +219,8 @@
 <p>注：以下许多笔记为边开发边整理，没有调整格式，请见谅。</p>
 <a id="more"></a>
 <hr>
-<h2 id="前端">前端</h2><h3 id="总体">总体</h3><p>首先对ionic有所了解，直接看<a href="http://ionicframework.com/" target="_blank" rel="external">官网</a>即可，跟着例子走一遍，有个直观的感觉。<br>然后前端要学的东西很多，html5，css，js等，这些可以在<a href="http://www.w3schools.com/" target="_blank" rel="external">w3school</a>上学习,另外可以看看知乎上的<a href="http://www.zhihu.com/question/19651401" target="_blank" rel="external">这个回答</a><br>另外ionic的逻辑是用angularJS写的，因此必须要对其有比较好的理解</p>
+<h2 id="前端">前端</h2><h3 id="总体">总体</h3><p>首先对ionic有所了解，直接看<a href="http://ionicframework.com/" target="_blank" rel="external">官网</a>即可，跟着例子走一遍，有个直观的感觉。<br>然后前端要学的东西很多，html5，css，js等，这些可以在<a href="http://www.w3schools.com/" target="_blank" rel="external">w3school</a>上学习,另外可以看看知乎上的<a href="http://www.zhihu.com/question/19651401" target="_blank" rel="external">这个回答</a><br>另外ionic的逻辑是用angularJS写的，因此必须要对其有比较好的理解:</p>
+<p>更新(2015-8-31)：w3school只能用作参考，实际学习知识请阅读书籍，参看教程，推荐<a href="http://product.dangdang.com/23348110.html" target="_blank" rel="external">《Head First Html &amp; Css》</a>和<a href="http://product.dangdang.com/22872884.html" target="_blank" rel="external">《javascript语言精粹》</a>和<br><a href="http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000" target="_blank" rel="external">廖大大的javascript教程</a></p>
 <h3 id="编写ionic代码时的一些坑">编写ionic代码时的一些坑</h3><ol>
 <li><p>模块记得填写依赖，如下面代码中如果你的controller放在zlyc.controllers模块中，记得填写</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">angular.<span class="function"><span class="title">module</span><span class="params">(<span class="string">'zlyc'</span>, [<span class="string">'ionic'</span>, <span class="string">'zlyc.controllers'</span>])</span></span></span><br></pre></td></tr></table></figure>
@@ -310,7 +311,13 @@
 </li>
 <li><p>如何显示相对时间？ <a href="https://github.com/moment/moment/" target="_blank" rel="external">可以用momentjs</a>，看<a href="https://scotch.io/tutorials/display-time-relatively-in-angular" target="_blank" rel="external">这篇教程</a></p>
 </li>
-<li>发布应用的时候如果遇到翻译错误，暂时的解决方法是，不进行翻译校正, 在 /platforms/android/build.gradle 中的android {}节中加入:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lintOptions &#123;</span><br><span class="line">						 <span class="built_in">disable</span> <span class="string">'MissingTranslation'</span></span><br><span class="line">							<span class="built_in">disable</span> <span class="string">'ExtraTranslation'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><p>发布应用的时候如果遇到翻译错误，暂时的解决方法是，不进行翻译校正, 在 /platforms/android/build.gradle 中的android {}节中加入:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lintOptions &#123;</span><br><span class="line">						 <span class="built_in">disable</span> <span class="string">'MissingTranslation'</span></span><br><span class="line">							<span class="built_in">disable</span> <span class="string">'ExtraTranslation'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>span 可以用来将时间之类的附加信息显示到列表右边,如下面会将创建时间显示在name的右边:</p>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">ion-item</span> <span class="attribute">class</span>=<span class="value">"item item-avatar-left "</span> <span class="attribute">ng-repeat</span>=<span class="value">"message in messages"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"../../img/commander.jpg"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"item-note"</span>&gt;</span></span><span class="expression">&#123;&#123;<span class="variable">message.create</span>_<span class="variable">at</span>&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="title">span</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">h2</span> &gt;</span></span><span class="expression">&#123;&#123;<span class="variable">message.name</span>&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="title">h2</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">p</span> &gt;</span>  </span><span class="expression">&#123;&#123;<span class="variable">message.content</span>&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">ion-item</span> &gt;</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>controllers 和services 的文件名可能会重合，但是他们意义差不多，<br>可以将controllers中的文件名小写，对应的services中的文件名大写进行区分.</p>
 </li>
 </ol>
 <h3 id="ionic开发资料">ionic开发资料</h3><ul>
@@ -546,7 +553,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-count">32</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
