@@ -319,6 +319,21 @@
 </li>
 <li><p>controllers 和services 的文件名可能会重合，但是他们意义差不多，<br>可以将controllers中的文件名小写，对应的services中的文件名大写进行区分.</p>
 </li>
+<li><p>ng-bind-html这个类可能会过滤原始html的标签，我们可以引入$sce模块，用$sce.trustAsHtml()方法信任我们获取的网页</p>
+</li>
+<li><p>如何完成邮箱修改重设密码的流程?<br>整个流程：</p>
+</li>
+</ol>
+<ul>
+<li>注册时要求每个用户使用唯一的邮箱，注册后向用户的邮箱发一封邮件</li>
+<li>找回密码时要求用户填写邮箱地址，提示用户如果不记得地址请在邮箱中搜索</li>
+<li>找回密码功能限制每帐号每天只能使用三次(只能发三次邮件), 使用缓存来完成这个计数</li>
+<li>找回密码时向缓存中写入一个随机的字符串作为 Token, 有效期为一天，向用户的邮箱发送包含 Token 的链接</li>
+<li>用户从链接点回来先验证 Token 的有效性，然后提示填写新密码，然后将新密码和 Token 一起提交给后端完成修改密码的操作</li>
+<li>删除掉 Token 的缓存</li>
+</ul>
+<ol>
+<li>如何回到上一页面?<br>用<code>$ionicHistory</code>这个模块,引入该模块后使用<code>goBack([backCount])</code>，backCount指定回去多少个页面（-1代表回去一个页面），默认为-1</li>
 </ol>
 <h3 id="ionic开发资料">ionic开发资料</h3><ul>
 <li><a href="http://learn.ionicframework.com/formulas/data-the-right-way/" target="_blank" rel="external">解析数据的正确方式</a></li>
