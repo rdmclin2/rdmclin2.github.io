@@ -1,0 +1,692 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+  <meta name="google-site-verification" content="Bu7qMjAWOJ5dxHauDW_IGiKlJ8kSN5myZ3RxIIAb4Qw" />
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+
+
+    <meta name="description" content="操千曲而后晓声，观千剑而后识器" />
+
+
+
+  <meta name="keywords" content="docker," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.3" />
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    analytics: {
+      google: ''
+    },
+    sidebar: 'post'
+  };
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6b26d13232555e4d64b5a8c3567ccda9";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <title> 创建Dockerfile // Mcl's space </title>
+</head>
+
+<body>
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">Mcl's space</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<div class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/">
+            <i class="menu-item-icon icon-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            <i class="menu-item-icon icon-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            <i class="menu-item-icon icon-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+<form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', '1ypRdYxJz8SMZBUve9JB','2.0.0');
+</script>
+
+<div class="site-search-toggle"></div>
+    </div>
+  
+</div>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              创建Dockerfile
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 Sep 16 2015
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/dev/">dev</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/09/16/docker-file-note/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/09/16/docker-file-note/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <blockquote>
+<p>本篇收集整理关于创建Dockerfile的相关知识</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="Dockerfile命令">Dockerfile命令</h2><h3 id="FROM">FROM</h3><p>设置基础镜像<br><code>FROM ubuntu:14.10</code></p>
+<h3 id="MAINTAINER">MAINTAINER</h3><p>设置维护者信息<br><code>MAINTAINER rdmclin2 &quot;rdmclin2@gmail.com&quot;</code></p>
+<h3 id="ENV">ENV</h3><p>指定环境变量<br><code>ENV NODE_VERSION 1.20.1</code></p>
+<h3 id="WORKDIR">WORKDIR</h3><p>设置工作目录<br><code>WORKDIR /srv/hello</code></p>
+<h3 id="RUN">RUN</h3><p>运行命令<br><code>RUN apt-get update</code></p>
+<h3 id="ADD_COPY">ADD COPY</h3><p>将Dockerfile所在目录中的文件添加至镜像的目录中<br><code>ADD . /srv/hello</code></p>
+<p>和COPY相比ADD 多了2个功能, 下载URL和解压.  其他都一样.<br>如果你不希望压缩文件拷贝到container后会被解压的话, 那么使用COPY.<br>如果需要自动下载URL并拷贝到container的话, 请使用ADD.</p>
+<h3 id="EXPOSE">EXPOSE</h3><p>暴露端口<br><code>EXPOSE 3001</code></p>
+<h3 id="CMD">CMD</h3><p>设置启动时默认运行命令<br><code>CMD [&quot;nodejs”, “/srv/hello/index&quot;]</code></p>
+<h3 id="VOLUME">VOLUME</h3><p>VOLUME指令用于在容器内创建一个或多个卷<br><code>VOLUME [&quot;路径&quot;]</code></p>
+<h3 id="USER">USER</h3><p>USER指令用于容器内运行RUN指令或CMD指令的用户。例如，在构建一个nginx镜像时，你希望最后运行nginx的用户为nginx，就可以在CMD [“nginx”]之前将用户设置为nginx。<br>如果在运行docker run命令时设置了-u 用户名参数，那么将覆盖USER指令设置的用户。</p>
+<h3 id="ONBUILD">ONBUILD</h3><p>ONBUILD指令用于设置一些指令，当本镜像作为基础镜像被其他Dockerfile用FROM指令引用时，在所有其他指令执行之前先执行这些指令。</p>
+<h2 id="技巧">技巧</h2><h3 id="用bash替换默认的sh，避免不支持source等指令">用bash替换默认的sh，避免不支持source等指令</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">RUN</span> <span class="keyword">rm</span> /bin/<span class="keyword">sh</span> &amp;&amp; ln -s /bin/bash /bin/<span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
+<h2 id="示例Dockerfile_,boot2docker">示例Dockerfile ,boot2docker</h2><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">FROM</span> debian:wheezy</span><br><span class="line"><span class="built_in">MAINTAINER</span> Steeve Morin <span class="string">"steeve.morin@gmail.com"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">RUN</span> <span class="bash">apt-get update &amp;&amp; apt-get -y install  unzip \</span><br><span class="line">                    xz-utils \</span><br><span class="line">                    curl \</span><br><span class="line">                    bc \</span><br><span class="line">                    git \</span><br><span class="line">                    build-essential \</span><br><span class="line">                    cpio \</span><br><span class="line">                    gcc-multilib libc6-i386 libc6-dev-i386 \</span><br><span class="line">                    kmod \</span><br><span class="line">                    squashfs-tools \</span><br><span class="line">                    genisoimage \</span><br><span class="line">                    xorriso \</span><br><span class="line">                    syslinux \</span><br><span class="line">                    automake \</span><br><span class="line">                    pkg-config</span><br><span class="line"></span></span><br><span class="line"><span class="built_in">ENV</span> KERNEL_VERSION  <span class="number">3.16</span>.<span class="number">1</span></span><br><span class="line"><span class="built_in">ENV</span> AUFS_BRANCH     aufs3.<span class="number">16</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Fetch the kernel sources</span></span><br><span class="line"><span class="built_in">RUN</span> <span class="bash">curl --retry <span class="number">10</span> https://www.kernel.org/pub/linux/kernel/v3.x/linux-<span class="variable">$KERNEL_VERSION</span>.tar.xz | tar -C / -xJ &amp;&amp; \</span><br><span class="line">mv /linux-<span class="variable">$KERNEL_VERSION</span> /linux-kernel</span><br><span class="line"></span></span><br><span class="line"><span class="comment"># Download AUFS and apply patches and files, then remove it</span></span><br><span class="line"><span class="built_in">RUN</span> <span class="bash">git <span class="built_in">clone</span> -b <span class="variable">$AUFS_BRANCH</span> --depth <span class="number">1</span> git://git.code.sf.net/p/aufs/aufs3-standalone &amp;&amp; \</span><br><span class="line"><span class="built_in">cd</span> aufs3-standalone &amp;&amp; \</span><br><span class="line"><span class="built_in">cd</span> /linux-kernel &amp;&amp; \</span><br><span class="line">cp -r /aufs3-standalone/Documentation /linux-kernel &amp;&amp; \</span><br><span class="line">cp -r /aufs3-standalone/fs /linux-kernel &amp;&amp; \</span><br><span class="line">cp -r /aufs3-standalone/include/uapi/linux/aufs_type.h /linux-kernel/include/uapi/linux/ &amp;&amp;\</span><br><span class="line"><span class="keyword">for</span> patch <span class="keyword">in</span> aufs3-kbuild aufs3-base aufs3-mmap aufs3-standalone aufs3-loopback; <span class="keyword">do</span> \</span><br><span class="line">    patch -p1 &lt; /aufs3-standalone/<span class="variable">$patch</span>.patch; \</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span></span><br><span class="line"><span class="built_in">COPY</span> <span class="bash">kernel_config /linux-kernel/.config</span><br><span class="line"></span></span><br><span class="line"><span class="built_in">RUN</span> <span class="bash"><span class="built_in">jobs</span>=$(nproc); \</span><br><span class="line"><span class="built_in">cd</span> /linux-kernel &amp;&amp; \</span><br><span class="line">make -j <span class="variable">$&#123;jobs&#125;</span> oldconfig &amp;&amp; \</span><br><span class="line">make -j <span class="variable">$&#123;jobs&#125;</span> bzImage &amp;&amp; \</span><br><span class="line">make -j <span class="variable">$&#123;jobs&#125;</span> modules</span><br><span class="line"></span></span><br><span class="line"><span class="comment"># The post kernel build process</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">ENV</span> ROOTFS          /rootfs</span><br><span class="line"><span class="built_in">ENV</span> TCL_REPO_BASE   http://tinycorelinux.net/<span class="number">5</span>.x/x8<span class="number">6</span><br><span class="line"></span><span class="built_in">ENV</span> TCZ_DEPS        iptables \</span><br><span class="line">                iproute2 \</span><br><span class="line">                openssh openssl-<span class="number">1.0</span>.<span class="number">0</span> \</span><br><span class="line">                tar \</span><br><span class="line">                gcc_libs \</span><br><span class="line">                acpid \</span><br><span class="line">                xz liblzma \</span><br><span class="line">                git expat2 libiconv libidn libgpg-error libgcrypt libssh2 \</span><br><span class="line">                nfs-utils tcp_wrappers portmap rpcbind libtirpc \</span><br><span class="line">                curl ntpclient</span><br><span class="line"></span><br><span class="line"><span class="comment"># Make the ROOTFS</span></span><br><span class="line"><span class="built_in">RUN</span> <span class="bash">mkdir -p <span class="variable">$ROOTFS</span></span><br><span class="line"></span></span><br><span class="line"><span class="comment"># Install the kernel modules in $ROOTFS</span></span><br><span class="line"><span class="built_in">RUN</span> <span class="bash"><span class="built_in">cd</span> /linux-kernel &amp;&amp; \</span><br><span class="line">make INSTALL_MOD_PATH=<span class="variable">$ROOTFS</span> modules_install firmware_install</span><br><span class="line"></span></span><br><span class="line"><span class="comment"># Remove useless kernel modules, based on unclejack/debian2docker</span></span><br><span class="line"><span class="built_in">RUN</span> <span class="bash"><span class="built_in">cd</span> <span class="variable">$ROOTFS</span>/lib/modules &amp;&amp; \</span><br><span class="line">rm -rf ./*/kernel/sound/* &amp;&amp; \</span><br><span class="line">rm -rf ./*/kernel/drivers/gpu/* &amp;&amp; \</span><br><span class="line">rm -rf ./*/kernel/drivers/infiniband/* &amp;&amp; \</span><br><span class="line">rm -rf ./*/kernel/drivers/isdn/* &amp;&amp; \</span><br><span class="line">rm -rf ./*/kernel/drivers/media/* &amp;&amp; \</span><br><span class="line">rm -rf ./*/kernel/drivers/staging/lustre/* &amp;&amp; \</span><br><span class="line">rm -rf ./*/kernel/drivers/staging/comedi/* &amp;&amp; \</span><br><span class="line">rm -rf ./*/kernel/fs/ocfs2/* &amp;&amp; \</span><br><span class="line">rm -rf ./*/kernel/net/bluetooth/* &amp;&amp; \</span><br><span class="line">rm -rf ./*/kernel/net/mac80211/* &amp;&amp; \</span><br><span class="line">rm -rf ./*/kernel/net/wireless/*</span><br><span class="line"></span></span><br><span class="line"><span class="comment"># Install libcap</span></span><br><span class="line"><span class="built_in">RUN</span> <span class="bash">curl -L ftp://ftp.de.debian.org/debian/pool/main/libc/libcap2/libcap2_2.<span class="number">22</span>.orig.tar.gz | tar -C / -xz &amp;&amp; \</span><br><span class="line"><span class="built_in">cd</span> /libcap-<span class="number">2.22</span> &amp;&amp; \</span><br><span class="line">sed -i <span class="string">'s/LIBATTR := yes/LIBATTR := no/'</span> Make.Rules &amp;&amp; \</span><br><span class="line">sed -i <span class="string">'s/\(^CFLAGS := .*\)/\1 -m32/'</span> Make.Rules &amp;&amp; \</span><br><span class="line">make &amp;&amp; \</span><br><span class="line">mkdir -p output &amp;&amp; \</span><br><span class="line">make prefix=`<span class="built_in">pwd</span>`/output install &amp;&amp; \</span><br><span class="line">mkdir -p <span class="variable">$ROOTFS</span>/usr/<span class="built_in">local</span>/lib &amp;&amp; \</span><br><span class="line">cp -av `<span class="built_in">pwd</span>`/output/lib64/* <span class="variable">$ROOTFS</span>/usr/<span class="built_in">local</span>/lib</span><br><span class="line"></span></span><br><span class="line"><span class="comment"># Make sure the kernel headers are installed for aufs-util, and then build it</span></span><br><span class="line"><span class="built_in">RUN</span> <span class="bash"><span class="built_in">cd</span> /linux-kernel &amp;&amp; \</span><br><span class="line">make INSTALL_HDR_PATH=/tmp/kheaders headers_install &amp;&amp; \</span><br><span class="line"><span class="built_in">cd</span> / &amp;&amp; \</span><br><span class="line">git <span class="built_in">clone</span> git://git.code.sf.net/p/aufs/aufs-util &amp;&amp; \</span><br><span class="line"><span class="built_in">cd</span> /aufs-util &amp;&amp; \</span><br><span class="line">git checkout aufs3.<span class="number">9</span> &amp;&amp; \</span><br><span class="line">CPPFLAGS=<span class="string">"-m32 -I/tmp/kheaders/include"</span> CLFAGS=<span class="variable">$CPPFLAGS</span> LDFLAGS=<span class="variable">$CPPFLAGS</span> make &amp;&amp; \</span><br><span class="line">DESTDIR=<span class="variable">$ROOTFS</span> make install &amp;&amp; \</span><br><span class="line">rm -rf /tmp/kheaders</span><br><span class="line"></span></span><br><span class="line"><span class="comment"># Download the rootfs, don't unpack it though:</span></span><br><span class="line"><span class="built_in">RUN</span> <span class="bash">curl -L -o /tcl_rootfs.gz <span class="variable">$TCL_REPO_BASE</span>/release/distribution_files/rootfs.gz</span><br><span class="line"></span></span><br><span class="line"><span class="comment"># Install the TCZ dependencies</span></span><br><span class="line"><span class="built_in">RUN</span> <span class="bash"><span class="keyword">for</span> dep <span class="keyword">in</span> <span class="variable">$TCZ_DEPS</span>; <span class="keyword">do</span> \</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Download <span class="variable">$TCL_REPO_BASE</span>/tcz/<span class="variable">$dep</span>.tcz"</span> &amp;&amp;\</span><br><span class="line">    curl -L -o /tmp/<span class="variable">$dep</span>.tcz <span class="variable">$TCL_REPO_BASE</span>/tcz/<span class="variable">$dep</span>.tcz &amp;&amp; \</span><br><span class="line">    unsquashfs <span class="operator">-f</span> <span class="operator">-d</span> <span class="variable">$ROOTFS</span> /tmp/<span class="variable">$dep</span>.tcz &amp;&amp; \</span><br><span class="line">    rm <span class="operator">-f</span> /tmp/<span class="variable">$dep</span>.tcz ;\</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span></span><br><span class="line"><span class="built_in">COPY</span> <span class="bash">VERSION <span class="variable">$ROOTFS</span>/etc/version</span><br><span class="line"></span></span><br><span class="line"><span class="comment"># Get the Docker version that matches our boot2docker version</span></span><br><span class="line"><span class="comment"># Note: `docker version` returns non-true when there is no server to ask</span></span><br><span class="line"><span class="built_in">RUN</span> <span class="bash">curl -L -o <span class="variable">$ROOTFS</span>/usr/<span class="built_in">local</span>/bin/docker https://get.docker.io/builds/Linux/x86_64/docker-$(cat <span class="variable">$ROOTFS</span>/etc/version) &amp;&amp; \</span><br><span class="line">chmod +x <span class="variable">$ROOTFS</span>/usr/<span class="built_in">local</span>/bin/docker &amp;&amp; \</span><br><span class="line">&#123; <span class="variable">$ROOTFS</span>/usr/<span class="built_in">local</span>/bin/docker version || <span class="literal">true</span>; &#125;</span><br><span class="line"></span></span><br><span class="line"><span class="comment"># get generate_cert</span></span><br><span class="line"><span class="built_in">RUN</span> <span class="bash">curl -L -o <span class="variable">$ROOTFS</span>/usr/<span class="built_in">local</span>/bin/generate_cert https://github.com/SvenDowideit/generate_cert/releases/download/<span class="number">0.1</span>/generate_cert-<span class="number">0.1</span>-linux-<span class="number">386</span>/ &amp;&amp; \</span><br><span class="line">chmod +x <span class="variable">$ROOTFS</span>/usr/<span class="built_in">local</span>/bin/generate_cert</span><br><span class="line"></span></span><br><span class="line"><span class="comment"># Get the git versioning info</span></span><br><span class="line"><span class="built_in">COPY</span> <span class="bash">.git /git/.git</span><br><span class="line"></span><span class="built_in">RUN</span> <span class="bash"><span class="built_in">cd</span> /git &amp;&amp; \</span><br><span class="line">GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD) &amp;&amp; \</span><br><span class="line">GITSHA1=$(git rev-parse --short HEAD) &amp;&amp; \</span><br><span class="line">DATE=$(date) &amp;&amp; \</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"<span class="variable">$&#123;GIT_BRANCH&#125;</span> : <span class="variable">$&#123;GITSHA1&#125;</span> - <span class="variable">$&#123;DATE&#125;</span>"</span> &gt; <span class="variable">$ROOTFS</span>/etc/boot2docker</span><br><span class="line"></span></span><br><span class="line"><span class="built_in">COPY</span> <span class="bash">rootfs/isolinux /isolinux</span><br><span class="line"></span></span><br><span class="line"><span class="comment"># Copy our custom rootfs</span></span><br><span class="line"><span class="built_in">COPY</span> <span class="bash">rootfs/rootfs <span class="variable">$ROOTFS</span></span><br><span class="line"></span></span><br><span class="line"><span class="comment"># These steps can only be run once, so can't be in make_iso.sh (which can be run in chained Dockerfiles)</span></span><br><span class="line"><span class="comment"># see https://github.com/boot2docker/boot2docker/blob/master/doc/BUILD.md</span></span><br><span class="line"><span class="built_in">RUN</span>    <span class="bash">\</span><br><span class="line"><span class="comment"># Make sure init scripts are executable &amp;&amp; \</span></span><br><span class="line">find <span class="variable">$ROOTFS</span>/etc/rc.d/ <span class="variable">$ROOTFS</span>/usr/<span class="built_in">local</span>/etc/init.d/ -exec chmod +x <span class="string">'&#123;&#125;'</span> <span class="string">';'</span> &amp;&amp; \</span><br><span class="line"><span class="comment"># Download Tiny Core Linux rootfs  &amp;&amp; \</span></span><br><span class="line">( <span class="built_in">cd</span> <span class="variable">$ROOTFS</span> &amp;&amp; zcat /tcl_rootfs.gz | cpio <span class="operator">-f</span> -i -H newc <span class="operator">-d</span> --no-absolute-filenames ) &amp;&amp; \</span><br><span class="line"><span class="comment"># Change MOTD &amp;&amp; \</span></span><br><span class="line">mv <span class="variable">$ROOTFS</span>/usr/<span class="built_in">local</span>/etc/motd <span class="variable">$ROOTFS</span>/etc/motd &amp;&amp; \</span><br><span class="line"><span class="comment"># Make sure we have the correct bootsync &amp;&amp; \</span></span><br><span class="line">mv <span class="variable">$ROOTFS</span>/boot*.sh <span class="variable">$ROOTFS</span>/opt/ &amp;&amp; \</span><br><span class="line">chmod +x <span class="variable">$ROOTFS</span>/opt/*.sh &amp;&amp; \</span><br><span class="line"><span class="comment"># Make sure we have the correct shutdown &amp;&amp; \</span></span><br><span class="line">mv <span class="variable">$ROOTFS</span>/shutdown.sh <span class="variable">$ROOTFS</span>/opt/shutdown.sh &amp;&amp; \</span><br><span class="line">chmod +x <span class="variable">$ROOTFS</span>/opt/shutdown.sh &amp;&amp; \</span><br><span class="line"><span class="comment"># Add serial console &amp;&amp; \</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"#!/bin/sh"</span> &gt; <span class="variable">$ROOTFS</span>/usr/<span class="built_in">local</span>/bin/autologin &amp;&amp; \</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"/bin/login -f docker"</span> &gt;&gt; <span class="variable">$ROOTFS</span>/usr/<span class="built_in">local</span>/bin/autologin &amp;&amp; \</span><br><span class="line">chmod <span class="number">755</span> <span class="variable">$ROOTFS</span>/usr/<span class="built_in">local</span>/bin/autologin &amp;&amp; \</span><br><span class="line"><span class="built_in">echo</span> <span class="string">'ttyS0:2345:respawn:/sbin/getty -l /usr/local/bin/autologin 9600 ttyS0 vt100'</span> &gt;&gt; <span class="variable">$ROOTFS</span>/etc/inittab &amp;&amp; \</span><br><span class="line"><span class="comment"># fix su - &amp;&amp; \</span></span><br><span class="line"><span class="built_in">echo</span> root &gt; <span class="variable">$ROOTFS</span>/etc/sysconfig/superuser</span><br><span class="line"></span></span><br><span class="line"></span><br><span class="line"><span class="built_in">COPY</span> <span class="bash">rootfs/make_iso.sh /</span><br><span class="line"></span><span class="built_in">RUN</span> <span class="bash">/make_iso.sh</span><br><span class="line"></span><span class="built_in">CMD</span> <span class="bash">[<span class="string">"cat"</span>, <span class="string">"boot2docker.iso"</span>]</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/docker/"> #docker </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/09/01/hadoop-note/">Mac上Hadoop的安装及使用</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+
+    
+      <div class="comments" id="comments">
+        
+          <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+
+        
+      </div>
+
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="https://avatars0.githubusercontent.com/u/4705237?v=3&u=cf53fa292cbafba8a53cfb1feda077c5abced98f&s=140" alt="LinChen" />
+          <p class="site-author-name">LinChen</p>
+        </div>
+        <p class="site-description motion-element">操千曲而后晓声，观千剑而后识器</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/rdmclin2" target="_blank">GitHub</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://twitter.com/rdmclin2" target="_blank">Twitter</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://weibo.com/1842914013/profile?topnav=1&wvr=6" target="_blank">Weibo</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.douban.com/people/50750460/" target="_blank">DouBan</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.zhihu.com/people/mengcl" target="_blank">ZhiHu</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name"></p>
+            
+              <span class="links-of-author-item">
+              <a href="http://chuan92.com" target="_blank">chuan92</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://chepeatio.github.io" target="_blank">chepeatio</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://andrewliu.in" target="_blank">andrewliu</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://liutianchi.com" target="_blank">liutianchi</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://cshuo.xyz/" target="_blank">cshuo</a>
+              </span>
+            
+          
+        </div>
+        
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Dockerfile命令"><span class="nav-number">1.</span> <span class="nav-text">Dockerfile命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#FROM"><span class="nav-number">1.1.</span> <span class="nav-text">FROM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MAINTAINER"><span class="nav-number">1.2.</span> <span class="nav-text">MAINTAINER</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ENV"><span class="nav-number">1.3.</span> <span class="nav-text">ENV</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WORKDIR"><span class="nav-number">1.4.</span> <span class="nav-text">WORKDIR</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RUN"><span class="nav-number">1.5.</span> <span class="nav-text">RUN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ADD_COPY"><span class="nav-number">1.6.</span> <span class="nav-text">ADD COPY</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EXPOSE"><span class="nav-number">1.7.</span> <span class="nav-text">EXPOSE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CMD"><span class="nav-number">1.8.</span> <span class="nav-text">CMD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VOLUME"><span class="nav-number">1.9.</span> <span class="nav-text">VOLUME</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#USER"><span class="nav-number">1.10.</span> <span class="nav-text">USER</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ONBUILD"><span class="nav-number">1.11.</span> <span class="nav-text">ONBUILD</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#技巧"><span class="nav-number">2.</span> <span class="nav-text">技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用bash替换默认的sh，避免不支持source等指令"><span class="nav-number">2.1.</span> <span class="nav-text">用bash替换默认的sh，避免不支持source等指令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例Dockerfile_,boot2docker"><span class="nav-number">3.</span> <span class="nav-text">示例Dockerfile ,boot2docker</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp;  2014 - 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">LinChen</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
+
+
+
+  <script type="text/javascript" src="/js/search-toggle.js"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.3" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if (isDesktop() && CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    });
+  </script>
+
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+
+  
+  
+  
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'mcl';
+      var disqus_identifier = '2015/09/16/docker-file-note/';
+      var disqus_title = '创建Dockerfile';
+      var disqus_url = 'http://www.mclspace.com/2015/09/16/docker-file-note/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+
+</body>
+</html>
