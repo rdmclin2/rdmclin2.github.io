@@ -112,6 +112,14 @@
         </li>
       
         
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            <i class="menu-item-icon icon-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives">
             <i class="menu-item-icon icon-archives"></i> <br />
@@ -341,8 +349,14 @@
 <li><p>如何关闭应用?</p>
 <figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ionic.<span class="type">Platform</span>.exitApp<span class="literal">()</span>;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>在安卓设备上如何让title居中? 在headerbar中添加<code>align-title=&quot;center&quot;</code>,如</p>
+<li><p>在安卓设备上如何让title居中(安卓设计规范上推荐title居左)? 在headerbar中添加<code>align-title=&quot;center&quot;</code>,如</p>
 <figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">ion-header-bar</span> <span class="attribute">class</span>=<span class="value">"bar-positive"</span> <span class="attribute">align-title</span>=<span class="value">"center"</span>&gt;</span></span><br><span class="line">	 <span class="tag">&lt;<span class="title">h1</span> <span class="attribute">class</span>=<span class="value">"title"</span>&gt;</span></span><span class="expression">&#123;&#123;<span class="variable">username</span>&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="title">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">ion-header-bar</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>不过这个设置对ion-view无效，亲测，如果要统一让所有navbar上的title居中(包括上面的headerbar)，可以在config里设置,如:<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.config(<span class="function"><span class="keyword">function</span><span class="params">(<span class="variable">$stateProvider</span>, <span class="variable">$urlRouterProvider</span>,<span class="variable">$ionicConfigProvider</span>)</span> </span>&#123;</span><br><span class="line">  <span class="variable">$ionicConfigProvider</span>.navBar.alignTitle(<span class="string">'center'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>如果要让某一个view title居中，可以用<code>$ionicNavBarDelegate</code>，参考<a href="http://ionicframework.com/docs/api/service/%24ionicNavBarDelegate/" target="_blank" rel="external">ionic官方文档</a></p>
+<ol>
+<li>如何让在sidemenu中的headerbar能够显示头像等其他信息? 解决方案是去掉headerbar,添加一个avatar到sidemenu content中，如:<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">ion-side-menu</span> <span class="attribute">side</span>=<span class="value">"left"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">ion-content</span> <span class="attribute">class</span>=<span class="value">"bar-positive"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">ion-list</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">ion-item</span> <span class="attribute">class</span>=<span class="value">"item item-avatar item-positive"</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/commander.jpg"</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="title">h2</span> <span class="attribute">class</span>=<span class="value">" light"</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="title">i</span> <span class="attribute">class</span>=<span class="value">"icon ion-ios-star"</span>&gt;</span><span class="tag">&lt;/<span class="title">i</span>&gt;</span></span><span class="expression">&#123;&#123;<span class="variable">title</span>&#125;&#125;</span><span class="xml"></span><br><span class="line">				<span class="tag">&lt;/<span class="title">h2</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="title">a</span>&gt;</span></span><span class="expression">&#123;&#123;<span class="variable">username</span>&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="title">ion-item</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <h3 id="ionic开发资料">ionic开发资料</h3><ul>
