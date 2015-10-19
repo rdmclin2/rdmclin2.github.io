@@ -182,6 +182,101 @@
           
           
             
+              <a class="post-title-link" href="/2015/10/19/ionic-icon-and-splash/">
+                ionic为不同平台自动生成icon和splash
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 Oct 19 2015
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/ionic/">ionic</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/10/19/ionic-icon-and-splash/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/10/19/ionic-icon-and-splash/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>Icon（图标）和Splash（启动画面）是应用的门面，好的Icon和Splash能让用户对这款App产生良好的第一印象，不过我们这里不讲怎么设计他们，而是如何在Ionic应用中定制自己的icon和splash，在这里ionic为我们提供了非常方便的自动化生成工具。</p>
+</blockquote>
+<h1 id="准备资源">准备资源</h1><p>Ionic能帮你自动生成各个平台中各个不同尺寸的图片，但巧妇难为无米之炊，首先你得提供给他合适的图片资源。资源要求如下：</p>
+<ul>
+<li>格式: .png, .psd, .ai</li>
+<li>命名: 例如icon.png, splash.png</li>
+<li>大小: icon-192x192无圆角，splash-2208x2208居中</li>
+</ul>
+<h1 id="生成资源">生成资源</h1><p>准备好图片后将他们放到资源目录 <code>./resources</code>,然后输入命令:<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ ionic resources</span><br><span class="line">Ionic <span class="attribute">icon</span> and splash screen resources generator</span><br><span class="line"> uploading <span class="attribute">icon</span><span class="class">.png</span>...</span><br><span class="line"> uploading splash<span class="class">.png</span>...</span><br><span class="line"> ✓ <span class="attribute">icon</span><span class="class">.png</span> (<span class="number">192</span>x192) upload complete</span><br><span class="line"> ✓ splash<span class="class">.png</span> (<span class="number">2208</span>x2208) upload complete</span><br><span class="line"> generating splash ios Default~iphone<span class="class">.png</span> (<span class="number">320</span>x480)...</span><br><span class="line"> generating splash ios Default@<span class="number">2</span>x~iphone<span class="class">.png</span> (<span class="number">640</span>x960)...</span><br><span class="line"> generating splash ios Default-Portrait~ipad<span class="class">.png</span> (<span class="number">768</span>x1024)...</span><br></pre></td></tr></table></figure></p>
+<p>如果只希望生成一种资源，可以<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ionic resources <span class="comment">--icon</span></span><br><span class="line">$ ionic resources <span class="comment">--splash</span></span><br></pre></td></tr></table></figure></p>
+<p>如果想为不同平台准备不同的图标，那么需要修改路径<br><figure class="highlight puppet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">resources</span>/android/icon.png</span><br><span class="line"><span class="keyword">resources</span>/ios/icon.png</span><br><span class="line"><span class="comment"># splash 同理</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="测试验证">测试验证</h1><p>生成成功后在手机上验证一下吧<br><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ionic platform <span class="built_ins">add</span> android</span><br><span class="line">$ ionic <span class="built_ins">run</span> android</span><br></pre></td></tr></table></figure></p>
+<p>看看效果怎么样</p>
+<h1 id="资源">资源</h1><ul>
+<li><a href="http://blog.ionic.io/automating-icons-and-splash-screens/" target="_blank" rel="external">官方博客</a></li>
+<li><a href="http://ionicframework.com/docs/cli/icon-splashscreen.html" target="_blank" rel="external">官方网页</a></li>
+<li><a href="http://ionichina.com/topic/54e455ab2be672f1111c01e2" target="_blank" rel="external">Ionic中国的翻译</a></li>
+</ul>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2015/10/17/my-practices-websites/">
                 我的练习网页设计
               </a>
@@ -924,91 +1019,6 @@
 
 
     
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2015/08/25/7-days-nodejs-4/">
-                7天学会nodejs(四) 网络操作
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于 Aug 25 2015
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; 分类于
-            
-              <a href="/categories/web/">web</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/08/25/7-days-nodejs-4/#comments" >
-              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/08/25/7-days-nodejs-4/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>本文为转载文章，转载自<a href="https://nqdeng.github.io/7-days-nodejs/">7天学会nodejs</a>。</p>
-</blockquote>
-<h2 id="网络操作">网络操作</h2><hr>
-<p>不了解网络编程的程序员不是好前端，而NodeJS恰好提供了一扇了解网络编程的窗口。通过NodeJS，除了可以编写一些服务端程序来协助前端开发和测试外，还能够学习一些HTTP协议与Socket协议的相关知识，这些知识在优化前端性能和排查前端故障时说不定能派上用场。本章将介绍与之相关的NodeJS内置模块。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/25/7-days-nodejs-4/#more">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
   </div>
 
   
@@ -1047,7 +1057,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">37</span>
+              <span class="site-state-item-count">38</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1061,7 +1071,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">32</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
