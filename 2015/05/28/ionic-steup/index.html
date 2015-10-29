@@ -227,9 +227,9 @@
 <p>注：以下许多笔记为边开发边整理，没有调整格式，请见谅。</p>
 <a id="more"></a>
 <hr>
-<h2 id="前端">前端</h2><h3 id="总体">总体</h3><p>首先对ionic有所了解，直接看<a href="http://ionicframework.com/" target="_blank" rel="external">官网</a>即可，跟着例子走一遍，有个直观的感觉。<br>然后前端要学的东西很多，html5，css，js等，这些可以在<a href="http://www.w3schools.com/" target="_blank" rel="external">w3school</a>上学习,另外可以看看知乎上的<a href="http://www.zhihu.com/question/19651401" target="_blank" rel="external">这个回答</a><br>另外ionic的逻辑是用angularJS写的，因此必须要对其有比较好的理解:</p>
+<h2 id="前端">前端</h2><h3 id="总体">总体</h3><p>首先对ionic有所了解，直接看<a href="http://ionicframework.com/" target="_blank" rel="external">官网</a>即可，跟着例子走一遍，有个直观的感觉。然后前端要学的东西很多，html5，css，js等，这些可以在<a href="http://www.w3schools.com/" target="_blank" rel="external">w3school</a>上学习,另外可以看看知乎上的<a href="http://www.zhihu.com/question/19651401" target="_blank" rel="external">这个回答</a><br>另外ionic的逻辑是用angularJS写的，因此必须要对其有比较好的理解:</p>
 <p>更新(2015-8-31)：w3school只能用作参考，实际学习知识请阅读书籍，参看教程，推荐<a href="http://product.dangdang.com/23348110.html" target="_blank" rel="external">《Head First Html &amp; Css》</a>和<a href="http://product.dangdang.com/22872884.html" target="_blank" rel="external">《javascript语言精粹》</a>和<br><a href="http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000" target="_blank" rel="external">廖大大的javascript教程</a></p>
-<h3 id="编写ionic代码时的一些坑">编写ionic代码时的一些坑</h3><ol>
+<h3 id="编写ionic代码时的一些坑">编写ionic代码时的一些坑</h3><ul>
 <li><p>模块记得填写依赖，如下面代码中如果你的controller放在zlyc.controllers模块中，记得填写</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">angular.<span class="function"><span class="title">module</span><span class="params">(<span class="string">'zlyc'</span>, [<span class="string">'ionic'</span>, <span class="string">'zlyc.controllers'</span>])</span></span></span><br></pre></td></tr></table></figure>
 </li>
@@ -243,32 +243,33 @@
 </li>
 <li><p>看<a href="http://blog.ionic.io/automating-icons-and-splash-screens/" target="_blank" rel="external">这篇文章</a>生成各尺寸的图片.</p>
 </li>
-<li><p><a href="http://blog.ionic.io/automating-icons-and-splash-screens/" target="_blank" rel="external">app的icon和splash的处理</a></p>
-</li>
-<li><p>对于css文件夹中的样式文件中如果要调用本地的图片的话要加../ 否则在浏览器中可以正常显示，在设备上不行，结构如下所示：</p>
+</ul>
+<ul>
+<li>对于css文件夹中的样式文件中如果要调用本地的图片的话要加../ 否则在浏览器中可以正常显示，在设备上不行，结构如下所示：</li>
+</ul>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.login-page</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">background</span>:<span class="value"><span class="function">url</span>(../img/signup_bg.png)</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">background-size</span>:<span class="value"> cover</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">background-repeat</span>:<span class="value"> no-repeat</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>但是对于在页面中定义的图片路径，从www路径开始算,否则浏览器中可显示，但设备上不行,如<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="tag">img</span> src=<span class="string">"img/commander.jpg"</span>&gt;</span><br></pre></td></tr></table></figure></p>
-<ol>
+<p>但是对于在页面中定义的图片路径，从www路径开始算,否则浏览器中可显示，但设备上不行,如：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="tag">img</span> src=<span class="string">"img/commander.jpg"</span>&gt;</span><br></pre></td></tr></table></figure>
+<ul>
 <li><p>如果要使用ionic的图标，可以到<a href="http://ionicons.com/" target="_blank" rel="external">ionicons</a>上查找名字，然后通过icon=”<name>“使用</name></p>
 </li>
 <li><p>angularJS 的router功能的state中的abstrcat变量设为true是指其自身不能被调用，但可以有自己的子状态。</p>
 </li>
-<li><p><ion-nav-view name="menuContent">  可以指定名字，然后在子状态中使用该名字，ionic就知道该把该状态的template渲染到哪边了。例如：</ion-nav-view></p>
+<li><p><code>&lt;ion-nav-view name=&quot;menuContent&quot;&gt;</code>  可以指定名字，然后在子状态中使用该名字，ionic就知道该把该状态的template渲染到哪边了。例如：</p>
+</li>
+</ul>
 <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"> // signup page</span></span><br><span class="line"> .state(<span class="string">'auth.signup'</span>, &#123;</span><br><span class="line">   url: <span class="string">'/signup'</span>,</span><br><span class="line">   views: &#123;</span><br><span class="line">       <span class="string">'auth-signup'</span>: &#123;</span><br><span class="line">           templateUrl: <span class="string">'templates/auth-signup.html'</span>,</span><br><span class="line">           controller: <span class="string">'SignUpCtrl'</span></span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;)</span><br><span class="line"></span><br><span class="line"> 另有一个tabs中声明该auth-signup:</span><br><span class="line"> &lt;ion-<span class="constant">tab</span> title=<span class="string">"Sign Up"</span> icon-<span class="command"><span class="keyword">on</span>=<span class="string">"ion-ios-personadd"</span></span></span><br><span class="line">   icon-off=<span class="string">"ion-ios-personadd-outline"</span> href=<span class="string">"#/auth/signup"</span>&gt;</span><br><span class="line">   &lt;ion-nav-view name=<span class="string">"auth-signup"</span>&gt;&lt;/ion-nav-view&gt;</span><br><span class="line">&lt;/ion-<span class="constant">tab</span>&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>按<code>ionic serve</code>命令时，ionic报错如下:</p>
+<ul>
+<li>按<code>ionic serve</code>命令时，ionic报错如下:</li>
+</ul>
 <figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ionic $ An uncaught <span class="keyword">exception</span> occured <span class="keyword">and</span> has been reported <span class="keyword">to</span> Ionic</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
 <p>看看你是不还有一个终端在运行着serve呢？</p>
-<ol>
-<li>注意.state中的url中不能有url，否则定位不到,如<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.<span class="keyword">state</span>('sidemenu.<span class="keyword">user</span>Manage',&#123;</span><br><span class="line">  url: <span class="string">"/user_manage"</span>,</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
+<ul>
+<li>注意.state中的url中不能有url，否则定位不到,如</li>
+</ul>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.<span class="keyword">state</span>('sidemenu.<span class="keyword">user</span>Manage',&#123;</span><br><span class="line">  url: <span class="string">"/user_manage"</span>,</span><br></pre></td></tr></table></figure>
 <p>注意不要加下划线</p>
-<ol>
+<ul>
 <li><p>ionic 在用docker跑的时候，因为暂时不能把地址绑定到0.0.0.0，可以用<code>ionic serve -all</code>的方法解决</p>
 </li>
 <li><p>加载页面的时候会看到双括号一闪而过？</p>
@@ -276,9 +277,9 @@
 <p>angularjs 在使用双括号的时候，第一个加载的页面，也就是应用中的index.html,其未被渲染好的模版可能会被用户看到。<br>用ng-bind就不会遇到这个问题。造成这种现象的原因是，浏览器需要首先加载HTML页面，渲染它，然后Angular才有机会把它解释成<br>你期望看到的内容。不过好消息是，在大多数的模版中你依然可以使用双括号.但是对于index.html页面中的数据绑定操作，建议使用<br>ng-bind。</p>
 </blockquote>
 </li>
-</ol>
+</ul>
 <p>ng-bind使用方式如下: <code>&lt;p ng-bind=&quot;greeting&quot;&gt;&lt;/p&gt;</code></p>
-<ol>
+<ul>
 <li><p>如何更新列表？<br>下拉刷新，或者用广播</p>
 </li>
 <li><p>list 有延迟？<br>在ion-content处使用 overflow-scroll=”true”</p>
@@ -298,22 +299,26 @@
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="id">#info-up</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">border-top</span>:<span class="value"> <span class="number">4px</span> solid <span class="hexcolor">#f06336</span></span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>所有的控制器不必都放在controllers.js这一个文件中，可以新建controllers文件夹，<br>然后把每个controller都建一个<controller>.js文件，同理services和utils等都是.但注意要在index.js中head部分声明.但是为了避免他们相互覆盖，第一个加载的js中模块中要加[…],其他都不需要。如：</controller></p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// File : /js/directives/mainDirective.js</span></span><br><span class="line">angular.module(<span class="string">'app.directives'</span>,[]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// File : /js/directives/myGreatDirective.js</span></span><br><span class="line">angular.module(<span class="string">'app.directives'</span>)  </span><br><span class="line">    .directive(<span class="string">'myGreatDirective'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="comment">//...</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// File : /js/directives/myBetterDirective.js</span></span><br><span class="line">angular.module(<span class="string">'app.directives'</span>)  </span><br><span class="line">    .directive(<span class="string">'myBetterDirective'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="comment">//...</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 </li>
-</ol>
-<p>看<a href="https://calendee.com/2013/12/29/angularjs-code-organization/" target="_blank" rel="external">这篇文章</a>了解更多,<br>嗯这篇文章写的还不是best practice，因为你还得记着自己把[]写到那个模块里了，统一地写在app.js中即可，<br>在app.js最下面加上类似：<br><figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">angular.<span class="keyword">module</span>(<span class="symbol">'fcws</span>.controllers',[<span class="symbol">'ionic'</span>, <span class="symbol">'fcws</span>.services']);</span><br><span class="line">angular.<span class="keyword">module</span>(<span class="symbol">'fcws</span>.services', <span class="literal">[]</span>);</span><br></pre></td></tr></table></figure></p>
+</ul>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// File : /js/directives/mainDirective.js</span></span><br><span class="line">angular.module(<span class="string">'app.directives'</span>,[]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// File : /js/directives/myGreatDirective.js</span></span><br><span class="line">angular.module(<span class="string">'app.directives'</span>)  </span><br><span class="line">    .directive(<span class="string">'myGreatDirective'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="comment">//...</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// File : /js/directives/myBetterDirective.js</span></span><br><span class="line">angular.module(<span class="string">'app.directives'</span>)  </span><br><span class="line">    .directive(<span class="string">'myBetterDirective'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="comment">//...</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>看<a href="https://calendee.com/2013/12/29/angularjs-code-organization/" target="_blank" rel="external">这篇文章</a>了解更多,嗯这篇文章写的还不是best practice，因为你还得记着自己把[]写到那个模块里了，统一地写在app.js中即可，在app.js最下面加上类似：</p>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">angular.<span class="keyword">module</span>(<span class="symbol">'fcws</span>.controllers',[<span class="symbol">'ionic'</span>, <span class="symbol">'fcws</span>.services']);</span><br><span class="line">angular.<span class="keyword">module</span>(<span class="symbol">'fcws</span>.services', <span class="literal">[]</span>);</span><br></pre></td></tr></table></figure>
 <p>可以达到和上面一样的效果，而且可以统一管理.</p>
-<ol>
-<li><p>话说ionic 的app似乎暂时无法进行代码混淆，至少ionic官方的ionic view没有进行代码混淆，下载他们的app，文件名改成zip，解压，所有的 www文件都在assets文件夹中，相当于开源了有木有，看看那些最优秀的practice，<br>看中哪些优秀的app，下下来,如何在googleplay上下载？把googleplay应用的地址贴到<a href="https://apps.evozi.com/apk-downloader/" target="_blank" rel="external">这个网址</a>中</p>
+<ul>
+<li><p>目前有些ionic 的app没有进行代码混淆，至少ionic官方的ionic view没有进行代码混淆，下载他们的app，文件名改成zip，解压，所有的 www文件都在assets文件夹中，相当于开源了有木有，看看那些最优秀的practice，看中哪些优秀的app，下下来,如何在googleplay上下载？把googleplay应用的地址贴到<a href="https://apps.evozi.com/apk-downloader/" target="_blank" rel="external">这个网址</a>中</p>
 </li>
 <li><p>可以用<code>ng-class=&quot;{&#39;important&#39;: post.important}&quot;</code>配合css 根据列表元素显示不同的效果</p>
 </li>
 <li><p>js列表中的元素不能写成 id : 4，应写成 id : “4”,注意在创建id变量的时候也需要</p>
+</li>
+</ul>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> id</span> = InfoListService.getListLength()+<span class="number">1</span>+<span class="string">""</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>获取日期用$filter</p>
+<ul>
+<li>获取日期用$filter</li>
+</ul>
 <figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">var</span> postdate <span class="subst">=</span> <span class="variable">$filter</span>(<span class="string">'date'</span>)(<span class="built_in">date</span>, <span class="string">'yyyy-MM-dd HH:mm:ss'</span>);</span><br></pre></td></tr></table></figure>
-</li>
+<ul>
 <li><p>为什么用$log而不是console.log呢？可以看看<a href="https://stackoverflow.com/questions/24185847/why-use-angulars-log-instead-of-console-log" target="_blank" rel="external">这个</a></p>
 </li>
 <li><p>更新了数据，如何让界面更新呢？可以用广播，注意<a href="https://stackoverflow.com/questions/26752030/rootscope-broadcast-vs-scope-emit" target="_blank" rel="external">$broadcast 和 $emit的区别</a></p>
@@ -334,31 +339,33 @@
 </li>
 <li><p>如何完成邮箱修改重设密码的流程?<br>整个流程：</p>
 </li>
-</ol>
-<ul>
-<li>注册时要求每个用户使用唯一的邮箱，注册后向用户的邮箱发一封邮件</li>
-<li>找回密码时要求用户填写邮箱地址，提示用户如果不记得地址请在邮箱中搜索</li>
-<li>找回密码功能限制每帐号每天只能使用三次(只能发三次邮件), 使用缓存来完成这个计数</li>
-<li>找回密码时向缓存中写入一个随机的字符串作为 Token, 有效期为一天，向用户的邮箱发送包含 Token 的链接</li>
-<li>用户从链接点回来先验证 Token 的有效性，然后提示填写新密码，然后将新密码和 Token 一起提交给后端完成修改密码的操作</li>
-<li>删除掉 Token 的缓存</li>
 </ul>
-<ol>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby"> 注册时要求每个用户使用唯一的邮箱，注册后向用户的邮箱发一封邮件</span><br><span class="line"></span>-<span class="ruby"> 找回密码时要求用户填写邮箱地址，提示用户如果不记得地址请在邮箱中搜索</span><br><span class="line"></span>-<span class="ruby"> 找回密码功能限制每帐号每天只能使用三次(只能发三次邮件), 使用缓存来完成这个计数</span><br><span class="line"></span>-<span class="ruby"> 找回密码时向缓存中写入一个随机的字符串作为 <span class="constant">Token</span>, 有效期为一天，向用户的邮箱发送包含 <span class="constant">Token</span> 的链接</span><br><span class="line"></span>-<span class="ruby"> 用户从链接点回来先验证 <span class="constant">Token</span> 的有效性，然后提示填写新密码，然后将新密码和 <span class="constant">Token</span> 一起提交给后端完成修改密码的操作</span><br><span class="line"></span>-<span class="ruby"> 删除掉 <span class="constant">Token</span> 的缓存</span></span><br></pre></td></tr></table></figure>
+<ul>
 <li><p>如何回到上一页面?<br>用<code>$ionicHistory</code>这个模块,引入该模块后使用<code>goBack([backCount])</code>，backCount指定回去多少个页面（-1代表回去一个页面），默认为-1</p>
 </li>
 <li><p>如何关闭应用?</p>
+</li>
+</ul>
 <figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ionic.<span class="type">Platform</span>.exitApp<span class="literal">()</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在安卓设备上如何让title居中(安卓设计规范上推荐title居左)? 在headerbar中添加<code>align-title=&quot;center&quot;</code>,如</p>
+<ul>
+<li>在安卓设备上如何让title居中(安卓设计规范上推荐title居左)? 在headerbar中添加<code>align-title=&quot;center&quot;</code>,如:</li>
+</ul>
 <figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">ion-header-bar</span> <span class="attribute">class</span>=<span class="value">"bar-positive"</span> <span class="attribute">align-title</span>=<span class="value">"center"</span>&gt;</span></span><br><span class="line">	 <span class="tag">&lt;<span class="title">h1</span> <span class="attribute">class</span>=<span class="value">"title"</span>&gt;</span></span><span class="expression">&#123;&#123;<span class="variable">username</span>&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="title">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">ion-header-bar</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>不过这个设置对ion-view无效，亲测，如果要统一让所有navbar上的title居中(包括上面的headerbar)，可以在config里设置,如:<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.config(<span class="function"><span class="keyword">function</span><span class="params">(<span class="variable">$stateProvider</span>, <span class="variable">$urlRouterProvider</span>,<span class="variable">$ionicConfigProvider</span>)</span> </span>&#123;</span><br><span class="line">  <span class="variable">$ionicConfigProvider</span>.navBar.alignTitle(<span class="string">'center'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>不过这个设置对ion-view无效，亲测，如果要统一让所有navbar上的title居中(包括上面的headerbar)，可以在config里设置,如:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.config(<span class="function"><span class="keyword">function</span><span class="params">(<span class="variable">$stateProvider</span>, <span class="variable">$urlRouterProvider</span>,<span class="variable">$ionicConfigProvider</span>)</span> </span>&#123;</span><br><span class="line">  <span class="variable">$ionicConfigProvider</span>.navBar.alignTitle(<span class="string">'center'</span>);</span><br></pre></td></tr></table></figure>
 <p>如果要让某一个view title居中，可以用<code>$ionicNavBarDelegate</code>，参考<a href="http://ionicframework.com/docs/api/service/%24ionicNavBarDelegate/" target="_blank" rel="external">ionic官方文档</a></p>
-<ol>
-<li>如何让在sidemenu中的headerbar能够显示头像等其他信息? 解决方案是去掉headerbar,添加一个avatar到sidemenu content中，如:<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">ion-side-menu</span> <span class="attribute">side</span>=<span class="value">"left"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">ion-content</span> <span class="attribute">class</span>=<span class="value">"bar-positive"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">ion-list</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">ion-item</span> <span class="attribute">class</span>=<span class="value">"item item-avatar item-positive"</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/commander.jpg"</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="title">h2</span> <span class="attribute">class</span>=<span class="value">" light"</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="title">i</span> <span class="attribute">class</span>=<span class="value">"icon ion-ios-star"</span>&gt;</span><span class="tag">&lt;/<span class="title">i</span>&gt;</span></span><span class="expression">&#123;&#123;<span class="variable">title</span>&#125;&#125;</span><span class="xml"></span><br><span class="line">				<span class="tag">&lt;/<span class="title">h2</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="title">a</span>&gt;</span></span><span class="expression">&#123;&#123;<span class="variable">username</span>&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="title">ion-item</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>如何让在sidemenu中的headerbar能够显示头像等其他信息? 解决方案是去掉headerbar,添加一个avatar到sidemenu content中，如:</p>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">ion-side-menu</span> <span class="attribute">side</span>=<span class="value">"left"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">ion-content</span> <span class="attribute">class</span>=<span class="value">"bar-positive"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">ion-list</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">ion-item</span> <span class="attribute">class</span>=<span class="value">"item item-avatar item-positive"</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/commander.jpg"</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="title">h2</span> <span class="attribute">class</span>=<span class="value">" light"</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="title">i</span> <span class="attribute">class</span>=<span class="value">"icon ion-ios-star"</span>&gt;</span><span class="tag">&lt;/<span class="title">i</span>&gt;</span></span><span class="expression">&#123;&#123;<span class="variable">title</span>&#125;&#125;</span><span class="xml"></span><br><span class="line">				<span class="tag">&lt;/<span class="title">h2</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="title">a</span>&gt;</span></span><span class="expression">&#123;&#123;<span class="variable">username</span>&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="title">ion-item</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 </li>
-</ol>
+<li><p>ionic的subheader挡住了内容区域怎么办?解决方案是给<ion-content>加类has-subheader,同理也可以加has-header。如下:</ion-content></p>
+</li>
+</ul>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;ion-content <span class="keyword">class</span>=<span class="string">"has-header has-subheader"</span>&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="http://blog.ionic.io/automating-icons-and-splash-screens/" target="_blank" rel="external">app的icon和splash的处理</a></li>
+</ul>
 <h3 id="ionic开发资料">ionic开发资料</h3><ul>
 <li><a href="http://learn.ionicframework.com/formulas/data-the-right-way/" target="_blank" rel="external">解析数据的正确方式</a></li>
 <li><a href="http://learn.ionicframework.com/formulas/sharing-data-between-views/" target="_blank" rel="external">views之间分享数据: list详情页面的处理方式</a></li>
