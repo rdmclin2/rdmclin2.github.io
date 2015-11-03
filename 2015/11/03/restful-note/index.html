@@ -1,0 +1,797 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+  <meta name="google-site-verification" content="Bu7qMjAWOJ5dxHauDW_IGiKlJ8kSN5myZ3RxIIAb4Qw" />
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+
+
+    <meta name="description" content="操千曲而后晓声，观千剑而后识器" />
+
+
+
+  <meta name="keywords" content="rest," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.3" />
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    analytics: {
+      google: ''
+    },
+    sidebar: 'post'
+  };
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6b26d13232555e4d64b5a8c3567ccda9";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <title> Restful API浅析 之设计原则与案例修正 // Mcl's space </title>
+</head>
+
+<body>
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">Mcl's space</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<div class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/">
+            <i class="menu-item-icon icon-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            <i class="menu-item-icon icon-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            <i class="menu-item-icon icon-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            <i class="menu-item-icon icon-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+<form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', '1ypRdYxJz8SMZBUve9JB','2.0.0');
+</script>
+
+<div class="site-search-toggle"></div>
+    </div>
+  
+</div>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Restful API浅析 之设计原则与案例修正
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 Nov 3 2015
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/web/">web</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/11/03/restful-note/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/11/03/restful-note/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <blockquote>
+<p>之前写Restful的服务器端API，写的不好，痛定思痛，决心好好搞懂Restful。在这一篇中我们首先搞懂Rest的含义，然后以我编写的失败的api为例，讲解如何编写出符合Rest风格的API。注意本篇指导原则一节大部分来自阮一峰老师的<a href="http://www.ruanyifeng.com/blog/2014/05/restful_api.html" target="_blank" rel="external">RESTful API 设计指南</a></p>
+</blockquote>
+<a id="more"></a>
+<h1 id="Restful浅析">Restful浅析</h1><p>REST是”REpresentational State Transfer”，一种翻译是”表现层状态转移”,首先看看wiki百科的介绍:</p>
+<blockquote>
+<p>REST - 表征状态转移是Roy Fielding博士在2000年他的博士论文中提出来的一种软件架构风格。 目前在三种主流的Web服务实现方案中，因为REST模式的Web服务与复杂的SOAP和XML-RPC对比来讲明显的更加简洁，越来越多的web服务开始采用REST风格设计和实现。例如，Amazon.com提供接近REST风格的Web服务进行图书查找；雅虎提供的Web服务也是REST风格的。 — wiki</p>
+</blockquote>
+<p>从以上的介绍中我们知道REST是一种web软件架构风格，不过我还是不知道REST是个什么鬼，再查查看，有人这么解释REST:</p>
+<ul>
+<li>REST 是一套用来创建Web Service的方法。</li>
+<li>REST式的Web Service的主旨是让事情尽量的简单化。</li>
+<li>REST式的Web Service使用HTTP里的方法：GET， POST， DELETE， PUT。你不需要使用URL或请求的内容来指定这个方法。</li>
+<li>REST式的Web Service使用URL来指明你将要操作什么对象。</li>
+<li>REST式的Web Service使用HTTP状态码作为返回值。</li>
+<li>REST式的Web Service调用产生的HTTP请求内容只是用于服务数据——不是用来指明调用方法，目标对象或返回值的。</li>
+</ul>
+<p>简单来说，REST是所有web应用都应该遵守的架构设计指导原则，每一个URL代表一种资源，客户端通过四个HTTP动词，对服务器端资源进行操作，实现”表现层状态转化”。查看以下几篇文章深入地了解REST：</p>
+<ul>
+<li><a href="http://www.ruanyifeng.com/blog/2011/09/restful.html" target="_blank" rel="external">理解RESTful架构</a> - 阮一峰老师11年的文章,浅显易懂</li>
+<li><a href="http://www.infoq.com/cn/articles/understanding-restful-style" target="_blank" rel="external">理解本真的REST架构风格</a>  -infoq上一篇翻译的文章，非常细致地解释了REST</li>
+<li><a href="http://martinfowler.com/articles/richardsonMaturityModel.html" target="_blank" rel="external">Richardson Maturity Model steps toward the glory of REST</a> - Martin fowler解释Richardson的REST3层成熟度模型</li>
+<li><a href="http://hippoom.github.io/blogs/value-of-hypermedia-from-client-perspective.html" target="_blank" rel="external">从消费者的角度评估REST的价值</a> -以举例的方式解释Richardson成熟度模型的第三个级别：Hypermedia，很有意思的一篇文章。</li>
+</ul>
+<p>也许最快的学习方式是学习业界成熟的REST api设计,可以看看github是如何设计的:</p>
+<ul>
+<li><a href="https://developer.github.com/v3/" target="_blank" rel="external">github</a></li>
+</ul>
+<p>另外也许你想看看提出REST的<a href="http://www.ics.uci.edu/~fielding/pubs/webarch_icse2000.pdf" target="_blank" rel="external">那篇论文</a>，TL;DR</p>
+<h1 id="设计原则">设计原则</h1><p>本来想写个REST API设计指南的，不过阮一峰老师在14年已经干了<a href="http://www.ruanyifeng.com/blog/2014/05/restful_api.html" target="_blank" rel="external">这事</a>，这里我们转载该文章的原则，然后重新修改我们的api。另外一些好的指南:</p>
+<ul>
+<li><a href="https://bourgeois.me/rest/" target="_blank" rel="external">Some REST best practices</a></li>
+<li><a href="http://codeplanet.io/principles-good-restful-api-design/" target="_blank" rel="external">Principles of good RESTful API Design</a></li>
+</ul>
+<h2 id="指导原则">指导原则</h2><h3 id="域名">域名</h3><p>应该尽量将API部署在专用域名之下,如:<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">https:</span><span class="comment">//api.example.com</span></span><br></pre></td></tr></table></figure></p>
+<p>如果确定API很简单，不会有进一步扩展，可以考虑放在主域名下:<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">https:</span>//example<span class="preprocessor">.org</span>/api/</span><br></pre></td></tr></table></figure></p>
+<h3 id="版本">版本</h3><p>应该将API的版本号放入URL。<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">https:</span><span class="comment">//api.example.com/v1/</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="路径">路径</h3><p>在RESTful架构中，每个网址代表一种资源（resource），所以网址中不能有动词，只能有名词，而且所用的名词往往与数据库的表格名对应。一般来说，数据库中的表都是同种记录的”集合”（collection），所以API中的名词也应该使用复数。<br>举例来说，有一个API提供动物园（zoo）的信息，还包括各种动物和雇员的信息，则它的路径应该设计成下面这样。<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">https:</span><span class="comment">//api.example.com/v1/zoos</span></span><br><span class="line"><span class="string">https:</span><span class="comment">//api.example.com/v1/animals</span></span><br><span class="line"><span class="string">https:</span><span class="comment">//api.example.com/v1/employees</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="HTTP动词">HTTP动词</h3><p>对于资源的具体操作类型，由HTTP动词表示。<br>常用的HTTP动词有下面五个（括号里是对应的SQL命令）：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">GET（<span class="operator"><span class="keyword">SELECT</span>）：从服务器取出资源（一项或多项）。</span><br><span class="line">POST（<span class="keyword">CREATE</span>）：在服务器新建一个资源。</span><br><span class="line">PUT（<span class="keyword">UPDATE</span>）：在服务器更新资源（客户端提供改变后的完整资源）。</span><br><span class="line">PATCH（<span class="keyword">UPDATE</span>）：在服务器更新资源（客户端提供改变的属性）。</span><br><span class="line"><span class="keyword">DELETE</span>（<span class="keyword">DELETE</span>）：从服务器删除资源。</span></span><br></pre></td></tr></table></figure>
+<p>一些例子：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">GET /zoos：列出所有动物园</span><br><span class="line">POST /zoos：新建一个动物园</span><br><span class="line">GET <span class="regexp">/zoos/</span>ID：获取某个指定动物园的信息</span><br><span class="line">PUT <span class="regexp">/zoos/</span>ID：更新某个指定动物园的信息（提供该动物园的全部信息）</span><br><span class="line">PATCH <span class="regexp">/zoos/</span>ID：更新某个指定动物园的信息（提供该动物园的部分信息）</span><br><span class="line">DELETE <span class="regexp">/zoos/</span>ID：删除某个动物园</span><br><span class="line">GET <span class="regexp">/zoos/</span>ID/animals：列出某个指定动物园的所有动物</span><br><span class="line">DELETE <span class="regexp">/zoos/</span>ID<span class="regexp">/animals/</span>ID：删除某个指定动物园的指定动物</span><br></pre></td></tr></table></figure>
+<h3 id="过滤信息（Filtering）">过滤信息（Filtering）</h3><p>如果记录数量很多，服务器不可能都将它们返回给用户。API应该提供参数，过滤返回结果。<br>下面是一些常见的参数:</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">?<span class="variable">limit=</span><span class="number">10</span>：指定返回记录的数量</span><br><span class="line">?<span class="variable">offset=</span><span class="number">10</span>：指定返回记录的开始位置。</span><br><span class="line">?<span class="variable">page=</span><span class="number">2</span>&amp;<span class="variable">per_page=</span><span class="number">100</span>：指定第几页，以及每页的记录数。</span><br><span class="line">?<span class="variable">sortby=</span>name&amp;<span class="variable">order=</span>asc：指定返回结果按照哪个属性排序，以及排序顺序。</span><br><span class="line">?<span class="variable">animal_type_id=</span><span class="number">1</span>：指定筛选条件</span><br></pre></td></tr></table></figure>
+<p>参数的设计允许存在冗余，即允许API路径和URL参数偶尔有重复。比如，GET /zoo/ID/animals 与 GET /animals?zoo_id=ID 的含义是相同的。</p>
+<h3 id="状态码（Status_Codes）">状态码（Status Codes）</h3><p>服务器向用户返回的状态码和提示信息，常见的有以下一些（方括号中是该状态码对应的HTTP动词）:</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">200 OK - <span class="attr_selector">[GET]</span>：服务器成功返回用户请求的数据，该操作是幂等的（Idempotent）。</span><br><span class="line">201 CREATED - <span class="attr_selector">[POST/PUT/PATCH]</span>：用户新建或修改数据成功。</span><br><span class="line">202 Accepted - <span class="attr_selector">[*]</span>：表示一个请求已经进入后台排队（异步任务）</span><br><span class="line">204 NO <span class="attribute">CONTENT</span> - <span class="attr_selector">[DELETE]</span>：用户删除数据成功。</span><br><span class="line">400 INVALID REQUEST - <span class="attr_selector">[POST/PUT/PATCH]</span>：用户发出的请求有错误，服务器没有进行新建或修改数据的操作，该操作是幂等的。</span><br><span class="line">401 Unauthorized - <span class="attr_selector">[*]</span>：表示用户没有权限（令牌、用户名、密码错误）。</span><br><span class="line">403 Forbidden - <span class="attr_selector">[*]</span> 表示用户得到授权（与401错误相对），但是访问是被禁止的。</span><br><span class="line">404 NOT FOUND - <span class="attr_selector">[*]</span>：用户发出的请求针对的是不存在的记录，服务器没有进行操作，该操作是幂等的。</span><br><span class="line">406 Not Acceptable - <span class="attr_selector">[GET]</span>：用户请求的格式不可得（比如用户请求JSON格式，但是只有XML格式）。</span><br><span class="line">410 Gone -<span class="attr_selector">[GET]</span>：用户请求的资源被永久删除，且不会再得到的。</span><br><span class="line">422 Unprocesable entity - <span class="attr_selector">[POST/PUT/PATCH]</span> 当创建一个对象时，发生一个验证错误。</span><br><span class="line">500 INTERNAL SERVER ERROR - <span class="attr_selector">[*]</span>：服务器发生错误，用户将无法判断发出的请求是否成功。</span><br></pre></td></tr></table></figure>
+<h3 id="错误处理（Error_handling）">错误处理（Error handling）</h3><p>如果状态码是4xx，就应该向用户返回出错信息。一般来说，返回的信息中将error作为键名，出错信息作为键值即可。<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attribute">error</span>: <span class="string">"Invalid API key"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="返回结果">返回结果</h3><p>针对不同操作，服务器向用户返回的结果应该符合以下规范。<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">GET /collection：返回资源对象的列表（数组）</span><br><span class="line">GET <span class="regexp">/collection/</span>resource：返回单个资源对象</span><br><span class="line">POST /collection：返回新生成的资源对象</span><br><span class="line">PUT <span class="regexp">/collection/</span>resource：返回完整的资源对象</span><br><span class="line">PATCH <span class="regexp">/collection/</span>resource：返回完整的资源对象</span><br><span class="line">DELETE <span class="regexp">/collection/</span>resource：返回一个空文档</span><br></pre></td></tr></table></figure></p>
+<h3 id="Hypermedia_API">Hypermedia API</h3><p>RESTful API最好做到Hypermedia，即返回结果中提供链接，连向其他API方法，使得用户不查文档，也知道下一步应该做什么。<br>比如，当用户向api.example.com的根目录发出请求，会得到这样一个文档。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;"<span class="attribute">link</span>": <span class="value">&#123;</span><br><span class="line">  "<span class="attribute">rel</span>":   <span class="value"><span class="string">"collection https://www.example.com/zoos"</span></span>,</span><br><span class="line">  "<span class="attribute">href</span>":  <span class="value"><span class="string">"https://api.example.com/zoos"</span></span>,</span><br><span class="line">  "<span class="attribute">title</span>": <span class="value"><span class="string">"List of zoos"</span></span>,</span><br><span class="line">  "<span class="attribute">type</span>":  <span class="value"><span class="string">"application/vnd.yourformat+json"</span></span><br><span class="line"></span>&#125;</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码表示，文档中有一个link属性，用户读取这个属性就知道下一步该调用什么API了。rel表示这个API与当前网址的关系（collection关系，并给出该collection的网址），href表示API的路径，title表示API的标题，type表示返回类型。<br>Hypermedia API的设计被称为HATEOAS。Github的API就是这种设计，访问api.github.com会得到一个所有可用API的网址列表。</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"current_user_url"</span>: <span class="string">"https://api.github.com/user"</span>,</span><br><span class="line">  <span class="string">"authorizations_url"</span>: <span class="string">"https://api.github.com/authorizations"</span>,</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从上面可以看到，如果想获取当前用户的信息，应该去访问api.github.com/user，然后就得到了下面结果。<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "<span class="attribute">message</span>": <span class="value"><span class="string">"Requires authentication"</span></span>,</span><br><span class="line">  "<span class="attribute">documentation_url</span>": <span class="value"><span class="string">"https://developer.github.com/v3"</span></span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上面代码表示，服务器给出了提示信息，以及文档的网址。</p>
+<h3 id="其他">其他</h3><ul>
+<li>API的身份认证应该使用OAuth 2.0框架。</li>
+<li>服务器返回的数据格式，应该尽量使用JSON，避免使用XML。</li>
+</ul>
+<h1 id="案例修正">案例修正</h1><p>下面我们使用上面的准则进行api的整理修改，注意我们目前没有做到Hypermedia</p>
+<h2 id="用户API_:_USERS">用户API : USERS</h2><h3 id="修改前">修改前</h3><ul>
+<li><code>/api/v1/user/:user_id</code> GET 获取用户信息</li>
+<li><code>/api/v1/auth/register</code> POST 用户注册</li>
+<li><code>/api/v1/auth/login</code> POST 用户登录</li>
+<li><code>/api/v1/auth/confirmpw</code> POST 确认密码</li>
+<li><code>/api/v1/auth/changepw</code> POST 修改密码</li>
+</ul>
+<h3 id="诊断">诊断</h3><ul>
+<li>资源没有使用复数形式，如user</li>
+<li>:user_id和users冗余，使用:id即可</li>
+<li>存在动词如register,login等</li>
+<li>confirmpw和changepw冗余,应该在改变密码的时候对密码进行确认。</li>
+</ul>
+<h3 id="修改后">修改后</h3><p>由于本项目的用户数据从后台导入，因此删除register功能，另外因为此项目为隐私项目进行授权后所有的请求需要附带token这里省略access_token参数。这里省略<code>/api/v1</code>的前缀: </p>
+<ul>
+<li><code>/authentication</code> GET 验证用户名密码，并重新生成token，返回基本的用户信息</li>
+<li><code>/users/changePassword</code> POST 重置用户密码，重新生成盐值和hash存储到数据库中，返回修改后的用户基本信息(这个暂时不知道怎么改,是使用users UPDATE方法，或者将改变密码变成一个名词的服务)</li>
+<li><code>/users/details</code> GET 获取用户详细信息,如最近的主题以及最近的回复</li>
+</ul>
+<h2 id="帖子API_:_POSTS">帖子API : POSTS</h2><ul>
+<li><code>/api/v1/recent</code> GET 获取最近帖子</li>
+<li><code>/api/v1/posts?limit=xx&amp;page=xx</code> GET 获取帖子列表</li>
+<li><code>/api/v1/post/:post_id</code> GET 获取某个帖子内容</li>
+<li><code>/api/v1/post</code> POST 新建一个帖子</li>
+<li><code>/api/v1/post/:post_id/likes</code> POST 为某个帖子点赞</li>
+<li><code>/api/v1/post/:id</code> PUT 更新某个帖子</li>
+<li><code>/api/v1/post/:id</code> DELETE 删除某个帖子</li>
+</ul>
+<h3 id="诊断-1">诊断</h3><ul>
+<li>资源没有使用复数形式</li>
+<li>post_id冗余</li>
+<li>recent的api和获取帖子列表冗余，设置limit为某值,page为1即可获得最近的帖子</li>
+<li>点赞功能并不在需求里，这里删除掉</li>
+</ul>
+<h3 id="修改后-1">修改后</h3><ul>
+<li><code>/posts?limit=xx&amp;page=xx</code> GET 获取帖子列表</li>
+<li><code>/posts/:id</code> GET 获取某个帖子的具体内容</li>
+<li><code>/posts</code> POST 创建帖子，返回帖子基本内容。</li>
+<li><code>/posts/:id</code> DELETE 删除帖子，返回空文档。</li>
+</ul>
+<h2 id="回复API_：_REPLYS">回复API ： REPLYS</h2><ul>
+<li><code>/api/v1/reply</code> POST 创建一个回复</li>
+<li><code>/api/v1/reply/:reply_id</code> DELETE 删除某个回复</li>
+</ul>
+<h3 id="诊断-2">诊断</h3><ul>
+<li>资源没有使用复数形式</li>
+<li>reply_id冗余</li>
+</ul>
+<h3 id="修改后-2">修改后</h3><ul>
+<li><code>replys</code> POST 创建一个回复，返回该回复(这里应该增加帖子的回复数目)</li>
+<li><code>replys/:id</code> DELETE 删除某个回复,返回空文档(这里应该减少帖子的回复数目)</li>
+</ul>
+<!--`/posts/:id/likes` POST 为某个帖子点赞，返回该帖子的点赞列表
+
+- `/posts/:id/likes` DELETE 取消对某个帖子点赞,返回空文档-->
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/rest/"> #rest </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/10/25/mac_latex_note/">Nju-thesis latex模板食用指南</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+
+    
+      <div class="comments" id="comments">
+        
+          <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+
+        
+      </div>
+
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="https://avatars0.githubusercontent.com/u/4705237?v=3&u=cf53fa292cbafba8a53cfb1feda077c5abced98f&s=140" alt="LinChen" />
+          <p class="site-author-name">LinChen</p>
+        </div>
+        <p class="site-description motion-element">操千曲而后晓声，观千剑而后识器</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">40</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">34</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/rdmclin2" target="_blank">GitHub</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://twitter.com/rdmclin2" target="_blank">Twitter</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://weibo.com/1842914013/profile?topnav=1&wvr=6" target="_blank">Weibo</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.douban.com/people/50750460/" target="_blank">DouBan</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.zhihu.com/people/mengcl" target="_blank">ZhiHu</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name"></p>
+            
+              <span class="links-of-author-item">
+              <a href="http://chuan92.com" target="_blank">chuan92</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://chepeatio.github.io" target="_blank">chepeatio</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://andrewliu.in" target="_blank">andrewliu</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://liutianchi.com" target="_blank">liutianchi</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://cshuo.xyz/" target="_blank">cshuo</a>
+              </span>
+            
+          
+        </div>
+        
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Restful浅析"><span class="nav-number">1.</span> <span class="nav-text">Restful浅析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设计原则"><span class="nav-number">2.</span> <span class="nav-text">设计原则</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#指导原则"><span class="nav-number">2.1.</span> <span class="nav-text">指导原则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#域名"><span class="nav-number">2.1.1.</span> <span class="nav-text">域名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#版本"><span class="nav-number">2.1.2.</span> <span class="nav-text">版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路径"><span class="nav-number">2.1.3.</span> <span class="nav-text">路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP动词"><span class="nav-number">2.1.4.</span> <span class="nav-text">HTTP动词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过滤信息（Filtering）"><span class="nav-number">2.1.5.</span> <span class="nav-text">过滤信息（Filtering）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#状态码（Status_Codes）"><span class="nav-number">2.1.6.</span> <span class="nav-text">状态码（Status Codes）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#错误处理（Error_handling）"><span class="nav-number">2.1.7.</span> <span class="nav-text">错误处理（Error handling）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回结果"><span class="nav-number">2.1.8.</span> <span class="nav-text">返回结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hypermedia_API"><span class="nav-number">2.1.9.</span> <span class="nav-text">Hypermedia API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他"><span class="nav-number">2.1.10.</span> <span class="nav-text">其他</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#案例修正"><span class="nav-number">3.</span> <span class="nav-text">案例修正</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#用户API_:_USERS"><span class="nav-number">3.1.</span> <span class="nav-text">用户API : USERS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修改前"><span class="nav-number">3.1.1.</span> <span class="nav-text">修改前</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#诊断"><span class="nav-number">3.1.2.</span> <span class="nav-text">诊断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改后"><span class="nav-number">3.1.3.</span> <span class="nav-text">修改后</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#帖子API_:_POSTS"><span class="nav-number">3.2.</span> <span class="nav-text">帖子API : POSTS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#诊断-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">诊断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改后-1"><span class="nav-number">3.2.2.</span> <span class="nav-text">修改后</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回复API_：_REPLYS"><span class="nav-number">3.3.</span> <span class="nav-text">回复API ： REPLYS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#诊断-2"><span class="nav-number">3.3.1.</span> <span class="nav-text">诊断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改后-2"><span class="nav-number">3.3.2.</span> <span class="nav-text">修改后</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp;  2014 - 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">LinChen</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
+
+
+
+  <script type="text/javascript" src="/js/search-toggle.js"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.3" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if (isDesktop() && CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    });
+  </script>
+
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+
+  
+  
+  
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'mcl';
+      var disqus_identifier = '2015/11/03/restful-note/';
+      var disqus_title = 'Restful API浅析 之设计原则与案例修正';
+      var disqus_url = 'http://www.mclspace.com/2015/11/03/restful-note/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+
+</body>
+</html>
