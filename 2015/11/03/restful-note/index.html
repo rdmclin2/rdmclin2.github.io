@@ -232,26 +232,8 @@
 <p>REST - 表征状态转移是Roy Fielding博士在2000年他的博士论文中提出来的一种软件架构风格。 目前在三种主流的Web服务实现方案中，因为REST模式的Web服务与复杂的SOAP和XML-RPC对比来讲明显的更加简洁，越来越多的web服务开始采用REST风格设计和实现。例如，Amazon.com提供接近REST风格的Web服务进行图书查找；雅虎提供的Web服务也是REST风格的。 — wiki</p>
 </blockquote>
 <p>从以上的介绍中我们知道REST是一种web软件架构风格，不过我还是不知道REST是个什么鬼，再查查看，有人这么解释REST:</p>
-<ul>
-<li>REST 是一套用来创建Web Service的方法。</li>
-<li>REST式的Web Service的主旨是让事情尽量的简单化。</li>
-<li>REST式的Web Service使用HTTP里的方法：GET， POST， DELETE， PUT。你不需要使用URL或请求的内容来指定这个方法。</li>
-<li>REST式的Web Service使用URL来指明你将要操作什么对象。</li>
-<li>REST式的Web Service使用HTTP状态码作为返回值。</li>
-<li>REST式的Web Service调用产生的HTTP请求内容只是用于服务数据——不是用来指明调用方法，目标对象或返回值的。</li>
-</ul>
-<p>简单来说，REST是所有web应用都应该遵守的架构设计指导原则，每一个URL代表一种资源，客户端通过四个HTTP动词，对服务器端资源进行操作，实现”表现层状态转化”。查看以下几篇文章深入地了解REST：</p>
-<ul>
-<li><a href="http://www.ruanyifeng.com/blog/2011/09/restful.html" target="_blank" rel="external">理解RESTful架构</a> - 阮一峰老师11年的文章,浅显易懂</li>
-<li><a href="http://www.infoq.com/cn/articles/understanding-restful-style" target="_blank" rel="external">理解本真的REST架构风格</a>  -infoq上一篇翻译的文章，非常细致地解释了REST</li>
-<li><a href="http://martinfowler.com/articles/richardsonMaturityModel.html" target="_blank" rel="external">Richardson Maturity Model steps toward the glory of REST</a> - Martin fowler解释Richardson的REST3层成熟度模型</li>
-<li><a href="http://hippoom.github.io/blogs/value-of-hypermedia-from-client-perspective.html" target="_blank" rel="external">从消费者的角度评估REST的价值</a> -以举例的方式解释Richardson成熟度模型的第三个级别：Hypermedia，很有意思的一篇文章。</li>
-</ul>
-<p>也许最快的学习方式是学习业界成熟的REST api设计,可以看看github是如何设计的:</p>
-<ul>
-<li><a href="https://developer.github.com/v3/" target="_blank" rel="external">github</a></li>
-</ul>
-<p>另外也许你想看看提出REST的<a href="http://www.ics.uci.edu/~fielding/pubs/webarch_icse2000.pdf" target="_blank" rel="external">那篇论文</a>，TL;DR</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby"> <span class="constant">REST</span> 是一套用来创建<span class="constant">Web</span> <span class="constant">Service</span>的方法。</span><br><span class="line"></span>-<span class="ruby"> <span class="constant">REST</span>式的<span class="constant">Web</span> <span class="constant">Service</span>的主旨是让事情尽量的简单化。</span><br><span class="line"></span>-<span class="ruby"> <span class="constant">REST</span>式的<span class="constant">Web</span> <span class="constant">Service</span>使用<span class="constant">HTTP</span>里的方法：<span class="constant">GET</span>， <span class="constant">POST</span>， <span class="constant">DELETE</span>， <span class="constant">PUT</span>。你不需要使用<span class="constant">URL</span>或请求的内容来指定这个方法。</span><br><span class="line"></span>-<span class="ruby"> <span class="constant">REST</span>式的<span class="constant">Web</span> <span class="constant">Service</span>使用<span class="constant">URL</span>来指明你将要操作什么对象。</span><br><span class="line"></span>-<span class="ruby"> <span class="constant">REST</span>式的<span class="constant">Web</span> <span class="constant">Service</span>使用<span class="constant">HTTP</span>状态码作为返回值。</span><br><span class="line"></span>-<span class="ruby"> <span class="constant">REST</span>式的<span class="constant">Web</span> <span class="constant">Service</span>调用产生的<span class="constant">HTTP</span>请求内容只是用于服务数据——不是用来指明调用方法，目标对象或返回值的。</span></span><br></pre></td></tr></table></figure>
+<p>简单来说，REST是所有web应用都应该遵守的架构设计指导原则，每一个URL代表一种资源，客户端通过四个HTTP动词，对服务器端资源进行操作，实现”表现层状态转化”。</p>
 <h1 id="设计原则">设计原则</h1><p>本来想写个REST API设计指南的，不过阮一峰老师在14年已经干了<a href="http://www.ruanyifeng.com/blog/2014/05/restful_api.html" target="_blank" rel="external">这事</a>，这里我们转载该文章的原则，然后重新修改我们的api。另外一些好的指南:</p>
 <ul>
 <li><a href="https://bourgeois.me/rest/" target="_blank" rel="external">Some REST best practices</a></li>
@@ -298,7 +280,10 @@
 </ul>
 <h3 id="修改后">修改后</h3><p>由于本项目的用户数据从后台导入，因此删除register功能，另外因为此项目为隐私项目进行授权后所有的请求需要附带token这里省略access_token参数。这里省略<code>/api/v1</code>的前缀: </p>
 <ul>
-<li><code>/authentication</code> GET 验证用户名密码，并重新生成token，返回基本的用户信息</li>
+<li><code>/auth/local</code> GET 验证用户名密码，并重新生成token，返回基本的用户信息</li>
+</ul>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">参数: [</span><br><span class="line"><span class="property">id</span> : 用户<span class="property">id</span></span><br><span class="line">password : 用户密码</span><br><span class="line">]</span><br><span class="line">GET /api/v1/auth/<span class="keyword">local</span>?<span class="property">id</span>=<span class="number">3250</span>&amp;password=<span class="number">3250</span> <span class="number">200</span> <span class="number">475.378</span> ms - <span class="number">130</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"id"</span>: <span class="string">"3250"</span>,</span><br><span class="line">    <span class="string">"role"</span>: <span class="string">"low-level"</span>,</span><br><span class="line">    <span class="string">"description"</span>: <span class="string">"test-user"</span>,</span><br><span class="line">    <span class="string">"name"</span>: <span class="string">"test_3250"</span>,</span><br><span class="line">    <span class="string">"accessToken"</span>: <span class="string">"cd683cd7-7672-4344-848d-46c2b58b8519"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
 <li><code>/users/changePassword</code> POST 重置用户密码，重新生成盐值和hash存储到数据库中，返回修改后的用户基本信息(这个暂时不知道怎么改,是使用users UPDATE方法，或者将改变密码变成一个名词的服务)</li>
 <li><code>/users/details</code> GET 获取用户详细信息,如最近的主题以及最近的回复</li>
 </ul>
@@ -335,6 +320,15 @@
 <li><code>replys</code> POST 创建一个回复，返回该回复(这里应该增加帖子的回复数目)</li>
 <li><code>replys/:id</code> DELETE 删除某个回复,返回空文档(这里应该减少帖子的回复数目)</li>
 </ul>
+<h1 id="学习资料">学习资料</h1><p>查看以下几篇文章深入地了解REST：</p>
+<ul>
+<li><a href="http://www.ruanyifeng.com/blog/2011/09/restful.html" target="_blank" rel="external">理解RESTful架构</a> - 阮一峰老师11年的文章,浅显易懂</li>
+<li><a href="http://www.infoq.com/cn/articles/understanding-restful-style" target="_blank" rel="external">理解本真的REST架构风格</a>  -infoq上一篇翻译的文章，非常细致地解释了REST</li>
+<li><a href="http://martinfowler.com/articles/richardsonMaturityModel.html" target="_blank" rel="external">Richardson Maturity Model steps toward the glory of REST</a> - Martin fowler解释Richardson的REST3层成熟度模型</li>
+<li><a href="http://hippoom.github.io/blogs/value-of-hypermedia-from-client-perspective.html" target="_blank" rel="external">从消费者的角度评估REST的价值</a> -以举例的方式解释Richardson成熟度模型的第三个级别：Hypermedia，很有意思的一篇文章。</li>
+<li><a href="http://arccode.net/2015/04/18/前后端完全分离之API设计/" target="_blank" rel="external">前后端完全分离之API设计</a> 从业务角度出发</li>
+</ul>
+<p>也许最快的学习方式是学习业界成熟的REST api设计,可以看看github是如何设计的:<a href="https://developer.github.com/v3/" target="_blank" rel="external">github API</a>,另外也许你想看看提出REST的<a href="http://www.ics.uci.edu/~fielding/pubs/webarch_icse2000.pdf" target="_blank" rel="external">那篇论文</a>，TL;DR</p>
 <!--`/posts/:id/likes` POST 为某个帖子点赞，返回该帖子的点赞列表
 
 - `/posts/:id/likes` DELETE 取消对某个帖子点赞,返回空文档-->
@@ -354,6 +348,8 @@
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/11/14/bash-note/">Bash 学习笔记</a>
             
           </div>
 
@@ -450,21 +446,21 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">40</span>
+              <span class="site-state-item-count">41</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">分类</span>
               
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">34</span>
+              <span class="site-state-item-count">36</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -543,7 +539,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Restful浅析"><span class="nav-number">1.</span> <span class="nav-text">Restful浅析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设计原则"><span class="nav-number">2.</span> <span class="nav-text">设计原则</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#指导原则"><span class="nav-number">2.1.</span> <span class="nav-text">指导原则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#域名"><span class="nav-number">2.1.1.</span> <span class="nav-text">域名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#版本"><span class="nav-number">2.1.2.</span> <span class="nav-text">版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路径"><span class="nav-number">2.1.3.</span> <span class="nav-text">路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP动词"><span class="nav-number">2.1.4.</span> <span class="nav-text">HTTP动词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过滤信息（Filtering）"><span class="nav-number">2.1.5.</span> <span class="nav-text">过滤信息（Filtering）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#状态码（Status_Codes）"><span class="nav-number">2.1.6.</span> <span class="nav-text">状态码（Status Codes）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#错误处理（Error_handling）"><span class="nav-number">2.1.7.</span> <span class="nav-text">错误处理（Error handling）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回结果"><span class="nav-number">2.1.8.</span> <span class="nav-text">返回结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hypermedia_API"><span class="nav-number">2.1.9.</span> <span class="nav-text">Hypermedia API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他"><span class="nav-number">2.1.10.</span> <span class="nav-text">其他</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#案例修正"><span class="nav-number">3.</span> <span class="nav-text">案例修正</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#用户API_:_USERS"><span class="nav-number">3.1.</span> <span class="nav-text">用户API : USERS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修改前"><span class="nav-number">3.1.1.</span> <span class="nav-text">修改前</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#诊断"><span class="nav-number">3.1.2.</span> <span class="nav-text">诊断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改后"><span class="nav-number">3.1.3.</span> <span class="nav-text">修改后</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#帖子API_:_POSTS"><span class="nav-number">3.2.</span> <span class="nav-text">帖子API : POSTS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#诊断-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">诊断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改后-1"><span class="nav-number">3.2.2.</span> <span class="nav-text">修改后</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回复API_：_REPLYS"><span class="nav-number">3.3.</span> <span class="nav-text">回复API ： REPLYS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#诊断-2"><span class="nav-number">3.3.1.</span> <span class="nav-text">诊断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改后-2"><span class="nav-number">3.3.2.</span> <span class="nav-text">修改后</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Restful浅析"><span class="nav-number">1.</span> <span class="nav-text">Restful浅析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设计原则"><span class="nav-number">2.</span> <span class="nav-text">设计原则</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#指导原则"><span class="nav-number">2.1.</span> <span class="nav-text">指导原则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#域名"><span class="nav-number">2.1.1.</span> <span class="nav-text">域名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#版本"><span class="nav-number">2.1.2.</span> <span class="nav-text">版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路径"><span class="nav-number">2.1.3.</span> <span class="nav-text">路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP动词"><span class="nav-number">2.1.4.</span> <span class="nav-text">HTTP动词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过滤信息（Filtering）"><span class="nav-number">2.1.5.</span> <span class="nav-text">过滤信息（Filtering）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#状态码（Status_Codes）"><span class="nav-number">2.1.6.</span> <span class="nav-text">状态码（Status Codes）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#错误处理（Error_handling）"><span class="nav-number">2.1.7.</span> <span class="nav-text">错误处理（Error handling）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回结果"><span class="nav-number">2.1.8.</span> <span class="nav-text">返回结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hypermedia_API"><span class="nav-number">2.1.9.</span> <span class="nav-text">Hypermedia API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他"><span class="nav-number">2.1.10.</span> <span class="nav-text">其他</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#案例修正"><span class="nav-number">3.</span> <span class="nav-text">案例修正</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#用户API_:_USERS"><span class="nav-number">3.1.</span> <span class="nav-text">用户API : USERS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修改前"><span class="nav-number">3.1.1.</span> <span class="nav-text">修改前</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#诊断"><span class="nav-number">3.1.2.</span> <span class="nav-text">诊断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改后"><span class="nav-number">3.1.3.</span> <span class="nav-text">修改后</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#帖子API_:_POSTS"><span class="nav-number">3.2.</span> <span class="nav-text">帖子API : POSTS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#诊断-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">诊断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改后-1"><span class="nav-number">3.2.2.</span> <span class="nav-text">修改后</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回复API_：_REPLYS"><span class="nav-number">3.3.</span> <span class="nav-text">回复API ： REPLYS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#诊断-2"><span class="nav-number">3.3.1.</span> <span class="nav-text">诊断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改后-2"><span class="nav-number">3.3.2.</span> <span class="nav-text">修改后</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#学习资料"><span class="nav-number">4.</span> <span class="nav-text">学习资料</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

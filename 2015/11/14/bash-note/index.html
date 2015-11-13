@@ -1,0 +1,861 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+  <meta name="google-site-verification" content="Bu7qMjAWOJ5dxHauDW_IGiKlJ8kSN5myZ3RxIIAb4Qw" />
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+
+
+    <meta name="description" content="操千曲而后晓声，观千剑而后识器" />
+
+
+
+  <meta name="keywords" content="bash,shell," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.3" />
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    analytics: {
+      google: ''
+    },
+    sidebar: 'post'
+  };
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6b26d13232555e4d64b5a8c3567ccda9";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <title> Bash 学习笔记 // Mcl's space </title>
+</head>
+
+<body>
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">Mcl's space</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<div class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/">
+            <i class="menu-item-icon icon-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            <i class="menu-item-icon icon-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            <i class="menu-item-icon icon-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            <i class="menu-item-icon icon-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+<form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', '1ypRdYxJz8SMZBUve9JB','2.0.0');
+</script>
+
+<div class="site-search-toggle"></div>
+    </div>
+  
+</div>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Bash 学习笔记
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 Nov 14 2015
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/shell/">shell</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/11/14/bash-note/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/11/14/bash-note/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <blockquote>
+<p>本篇为学习bash命令时候的学习笔记，记录常用的bash命令和关于bash的常识 </p>
+</blockquote>
+<a id="more"></a>
+<h2 id="常识">常识</h2><ul>
+<li>kengen 的缩写是Key Generator, 所以读的时候是key gen（坚),不要问我是怎么知道的！</li>
+<li>cd的含义是“change directory”，它会改变当前目录到你指定的目录。<em>如果你不指定，则会返回你的 home folder</em>。</li>
+<li>mac中系统卷是由开始的一个正斜杠(/)表示的,目录分隔符也是正斜杠(/),如何分辨正斜杠和反斜杠？向前倾的是正斜杠，向后倾的是反斜杠，除法用正斜杠表示</li>
+<li>~是你的用户目录</li>
+<li>如果由于你忘了使用sudo而导致命令行返回一个错误，只需输入sudo !!就可以用sudo来执行上一条指令</li>
+<li>sudo -s 临时切换整个命令行 shell 来取得 root 级别的访问权限</li>
+<li>输入 open . 可以用finder打开当前位置</li>
+<li>输入<code>clear</code>或’ctrl’+ ‘l’ 清屏</li>
+<li><p>$_ Gives the last argument to the previous command. 表示歉意个指令的最后一个参数，所以我们创建文件并cd该文件可以写成</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mkdir</span> ~/<span class="keyword">test</span> &amp;&amp; <span class="keyword">cd</span> <span class="label">$_</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在apt-get install 后加上-y参数可以防止终端询问你是否允许</p>
+</li>
+<li>用wget＋下载链接 下载文件</li>
+<li>ssh user@hostname,例如mcl@114.212.87.56 进行ssh远程登录</li>
+<li>whoami 查看当前系统的用户名</li>
+<li>who 可以查看当前登录的用户</li>
+<li>wc 可以统计数目,如: <code>who | wc -l</code> ，显示当前登录的用户的数量</li>
+<li>为什么zsh中没换行会出百分号？zsh里会有%，bash里不会有，因为输出的结果没有换行，在bash里命令提示符会直接跟在输出的结果后面也就是[]$…这种效果，而zsh里强制换行了，怕你自己不知道其实你没换行，就加了%</li>
+<li>执行一个脚本时，会先开启一个子shell环境（不知道执行其它程序是不是这样），然后将父shell中的所有系统环境变量复制过来，这个脚本中的语句就在子shell中执行。（也就是说父shell的环境变量在子shell中可以调用，但反过来就不行，如果在子 shell中定义了环境变量，只对该shell或者它的子shell有效，当该子shell结束时，也可以理解为脚本执行完时，变量消失。） <strong>因此如果想要在当前shell中设置环境变量需要用source命令而不是sh,source会在当前shell中执行</strong></li>
+</ul>
+<!-- ## [learn bash the hard way](http://cli.learncodethehardway.org/)
+- hostname 显示本机的网络名
+- pushd push directory
+> $ push一个文件路径,左边是栈顶,如果只输入pushd会在你的当前目录和你pushd的上个目录切换
+The pushd command takes your current directory and "pushes" it into a list for later, then it changes to another directory. It's like saying, "Save where I am, then go here."
+
+- popd pop directory
+> $ pop刚刚输入的文件路径
+The popd command takes the last directory you pushed and "pops" it off, taking you back there.
+
+- xargs execute arguments
+- grep find things inside files
+- apropos find what man page is appropriate
+- env look at your environment
+- echo print some arguments
+- export export/set a new environment variable
+- exit exit the shell
+- chmod change permission modifiers
+- chown change ownership
+- touch 创建新文件 -->
+<h2 id="管道和重定向">管道和重定向</h2><ul>
+<li><p>| 如 <code>cat ex12.txt ex13.txt | less</code></p>
+<blockquote>
+<p>将前一个命令(|之前)的输出作为下一个命令的输入，如上面的命令将ex12.txt和ex13.txt文件的内容合起来作为less的输入</p>
+</blockquote>
+</li>
+<li><p>&lt; 如 <code>cat &lt; ex13.txt</code></p>
+<blockquote>
+<p>将右边文件作为输入给左边的命令</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>如 <code>cat ex13.txt &gt; ex15.txt</code></p>
+</blockquote>
+</li>
+</ul>
+<h2 id="命令行">命令行</h2><p>纪录mac命令行使用过程中的经验技巧</p>
+<ul>
+<li><a href="">mac terminal 入门教程</a>,这篇文章对入门很有帮助</li>
+<li>如果目录中有特殊字符（空格，括号，引号，[]，!，$，&amp;，*，;，|，\），那么直接输入空格会造成系统识别困难，必须使用特殊的语法来表示这些字符。例如上例中，空格前添加反斜杠“\”（back slash）即可：<code>cd Punlic/Drop\ Box/</code>。除了反斜杠，也可以用引号的方法：cd “Public/Drop Box”。</li>
+<li>ls <code>-a</code>选项显示以.开头的文件,即显示隐藏文件。<code>-A</code>选项显示除了.和..以外的其他文件。</li>
+<li>远程文件复制 scp</li>
+<li>将本地文件上传到服务器上 如 <code>scp -P 2222 /home/lnmp0.4.tar.gz root@www.vpser.net:/root/lnmp0.4.tar.gz</code></li>
+<li>获取远程服务器上的文件 如 <code>scp -P 2222 root@www.vpser.net:/root/lnmp0.4.tar.gz /home/lnmp0.4.tar.gz</code></li>
+</ul>
+<h3 id="检视文件和文件夹">检视文件和文件夹</h3><ul>
+<li><p><code>cat</code> 如 <code>cat test.file</code> <code>cat test1.txt &gt;&gt; test2.txt</code></p>
+<blockquote>
+<p>$ concatenate 按顺序读取文件并输出到 Terminal 窗口,<code>cat</code>命令也可以用<code>&gt;&gt;</code>来增加文本文件的内容,例如命令<code>cat ../textOne.txt &gt;&gt; textTwo.txt</code>会把 textOne.txt 的内容添加到 textTwo.txt 的结尾</p>
+</blockquote>
+</li>
+<li><p>‘less’ 如 ‘less test.file’</p>
+<blockquote>
+<p>$ 适合用来查看长文本文件,和用man时候一样，打开了一个查看器,用 v 使用<code>vi</code>编辑器</p>
+</blockquote>
+</li>
+<li><p>‘more’ 如 ‘more test.file’</p>
+<blockquote>
+<p>$ 和less一样，不过让画面在显示满一页时暂停，此时可按空格健继续显示下一个画面，或按Q键停止显示。</p>
+</blockquote>
+</li>
+<li><p>‘which’ 如 ‘which man’</p>
+<blockquote>
+<p>$ 这个命令会定位某个命令的文件路径,which后接某个命令</p>
+</blockquote>
+</li>
+<li><p>‘head’ 如 ‘head -n 50’</p>
+<blockquote>
+<p>$ 显示</p>
+</blockquote>
+</li>
+<li><p>‘file’ 如 ‘file test.png’</p>
+<blockquote>
+<p>$ 这个命令会尝试根据文件的内容输出文件类型。如果一个文件缺失了扩展名，那么这个命令可能会非常有用,语法为file后接文件路径，例如图片还会给出尺寸，颜色等数值</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>通配符 星号（＊，Asterisk）如<code>*.tiff</code></p>
+<blockquote>
+<p>$ ——代表任何长度的任何字符。例如<code>*.tiff</code>代表所有格式为tiff的文件。</p>
+</blockquote>
+</li>
+<li><p>通配符 问号（?，Question mark）如 <code>b?ok</code></p>
+<blockquote>
+<p>$ ——代表任何单个字符。例如<code>b?ok</code>匹配 book 但是不匹配 brook。</p>
+</blockquote>
+</li>
+<li><p>通配符 方括号（[]，Square brackets) 如<code>[Dd]ocument</code></p>
+<blockquote>
+<p>$ ——定义一定范围的字符，例如<code>[Dd]ocument</code>匹配 Document 以及 document；<code>doc[1-9]</code>匹配doc1, doc2, …, doc9。实验下来似乎是一位一位的匹配</p>
+</blockquote>
+</li>
+<li><p><code>-r</code>或者<code>-R</code>选项,如 <code>ls -R Desktop</code> <code>rm -r test</code></p>
+<blockquote>
+<p>$ 递归，递归命令可以允许命令不执行于一个特定文件，而是指定的路径下的所有文件，大多数命令包含一个</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="编辑文件和文件夹">编辑文件和文件夹</h3><ul>
+<li><p><code>mkdir</code> 如 <code>mkdir test</code> <code>mkdir -p test/test1/test2</code></p>
+<blockquote>
+<p>$ 创建目录，可以用<code>-p</code>选项，来一起创建路径中不存在的文件夹（这样你就不用挨层创建了）</p>
+</blockquote>
+</li>
+<li><p><code>cp</code> 如<code>cp test1.txt test2.txt</code> <code>cp test1.txt test/</code> <code>cp test1.txt test/test2.txt</code></p>
+<blockquote>
+<p>$ 用来把文件从一处复制到另一处,语法为cp后接原始路径，后接目标路径。如果你想复制整个文件夹和所有内容，需要添加<code>-R</code>选项<br>如果指定的目标路径不含文件名，则 cp 命令会按原名复制,如果指定的目标路径包括文件名，则会复制为你指定的文件名。如果仅指定新文件名，则会在原处以新名称创建文件副本。<em>注意，系统会自动替换同名文件而不出现提示。</em></p>
+</blockquote>
+</li>
+<li><p><code>mv</code> 如’mv test1.txt test2.txt’</p>
+<blockquote>
+<p>$ 用来移动文件,语法为mv后接原路径，后接新路径,没错，如果仅指定新文件名，它就成了重命名命令,路径规则和cp同</p>
+</blockquote>
+</li>
+<li><p><code>rm</code> 如<code>rm test1.txt</code></p>
+<blockquote>
+<p>$ 永久删除文件，语法为rm后接文件路径,使用 rm 命令删除的文件有可能可以通过数据恢复工具恢复,安全删除文件，可以使用srm命令,这可以防止其他人利用命令恢复或复原文件</p>
+</blockquote>
+</li>
+<li><p><code>rmdir</code> 如 ‘rmdir test’ ‘rm -R test’</p>
+<blockquote>
+<p>$ 永久删除文件夹，rmdir 命令无法删除含有任何其他文件的文件夹，所以大多数情形下rmdir命令是不适用的。不过，你可以利用rm添加-R选项来删除文件夹及包含的所有文件。</p>
+</blockquote>
+</li>
+<li><p><code>find</code> 如 ‘find . -name “*.png”‘</p>
+<blockquote>
+<p>$ 这个命令根据搜索关键词定位文件路径,语法为find后接搜索的起始路径，后接定义搜索的选项，后接搜索内容（包含在引号里),注意如果你要搜索根目录，也许你想使用-x选项来避免搜索 /Volumes 文件夹。如果想使用 Soptlight 搜索服务，使用mdfind命令后接搜索关键词即可。<br>进阶:</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="preprocessor"># -o 搜索条件 并</span></span><br><span class="line"><span class="title">find</span> . \\( -name <span class="string">"\*.txt"</span> -o -name <span class="string">"\*.pdf"</span> \\)</span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># !表示否则, 查找所有不是以.txt为后缀的文件</span></span><br><span class="line">$ find . ! -name <span class="string">"*.txt"</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># -type 按类型搜索, 只所有目录(f表示文件 l表示符号链接(软链接) d表示目录)</span></span><br><span class="line">$ find . -<span class="typedef"><span class="keyword">type</span> d</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># 按用户搜索 找到所有Calvin的用户文件</span></span><br><span class="line"><span class="title">find</span> . -<span class="typedef"><span class="keyword">type</span> f -user <span class="type">Calvin</span></span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># 按照时间搜索 -atime -30m  搜索30分钟内被访问的文件</span></span><br><span class="line">$ find . -atime -<span class="number">30</span>m -<span class="typedef"><span class="keyword">type</span> f -print</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># -atime +30m  搜索超过30分钟被访问的文件</span></span><br><span class="line">$ find . -atime +<span class="number">30</span>m -<span class="typedef"><span class="keyword">type</span> f -print</span></span><br><span class="line"></span><br><span class="line"><span class="title">atime</span> 访问时间 (单位有一周w, 一天d, 一小时h, 一分钟m, 一秒s, 以下类似）</span><br><span class="line"><span class="title">mtime</span> 修改时间 （内容被修改）</span><br><span class="line"><span class="title">ctime</span> 变化时间 （元数据或权限变化）</span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># 找到以.txt为后缀的文件后删除</span></span><br><span class="line">$ find . -<span class="typedef"><span class="keyword">type</span> f -name "*.txt" -delete</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p><code>grep</code> 如 <code>$ grep &#39;hello&#39; test.doc</code> 匹配test.doc文件中所有存在hello的行</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># 匹配<span class="keyword">test</span>.doc文件中所有存在hello的行</span><br><span class="line">$ grep 'hello' <span class="keyword">test</span>.doc</span><br><span class="line"></span><br><span class="line"># 匹配<span class="keyword">test</span>.doc文件中所有存在hello的行, 并打印行号</span><br><span class="line">$ grep -<span class="keyword">n</span> 'hello' <span class="keyword">test</span>.doc</span><br><span class="line"></span><br><span class="line"># 找到所有行不匹配<span class="keyword">hel</span>或者how, -<span class="keyword">e</span>匹配多个模式</span><br><span class="line">$ grep -v -<span class="keyword">e</span> '<span class="keyword">hel</span>' -<span class="keyword">e</span> 'how' <span class="keyword">test</span>.doc</span><br><span class="line"></span><br><span class="line"># 在多级目录中对文本递归搜索</span><br><span class="line">$ grep <span class="string">"class"</span> . -R -<span class="keyword">n</span></span><br><span class="line"></span><br><span class="line">#输出结果:</span><br><span class="line">./<span class="keyword">test</span>/<span class="keyword">class</span>.c:1:<span class="keyword">class</span></span><br><span class="line">./<span class="keyword">test</span>/<span class="keyword">class</span>.c:2:<span class="keyword">class</span> yes</span><br><span class="line">./<span class="keyword">test</span>/<span class="keyword">class</span>.c:4:<span class="keyword">class</span> fuck</span><br><span class="line">./<span class="keyword">test</span>.doc:5:<span class="keyword">class</span></span><br><span class="line">./<span class="keyword">test</span>.pdf:1:<span class="keyword">class</span></span><br><span class="line"></span><br><span class="line"># 找到所有以.<span class="keyword">hel</span>开头的行, 并使用管道命令</span><br><span class="line">$ <span class="keyword">cat</span> <span class="keyword">test</span>.doc | grep '^\.<span class="keyword">hel</span>'</span><br><span class="line"></span><br><span class="line"># 找到所有包含<span class="keyword">hel</span>行的行数(只输出行数, 没有内容)</span><br><span class="line"><span class="keyword">cat</span> <span class="keyword">test</span>.doc | grep -c '<span class="keyword">hel</span>'</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>grep命令是强大的文本搜索命令</p>
+</blockquote>
+<h3 id="awk">awk</h3><p>TODO</p>
+<h3 id="sed">sed</h3><p>TODO</p>
+<h2 id="常用工具">常用工具</h2><h3 id="mtr_可以用来诊断路由节点问题">mtr 可以用来诊断路由节点问题</h3><blockquote>
+<p>MTR 是一款强大的网络诊断工具，网络管理员使用 MTR 可以诊断和隔离网络问题，并且为上游 ISP 提供有用的网络状态报告</p>
+</blockquote>
+<p>直接用homebrew安装: <code>brew install mtr</code>, 执行文件在’/usr/local/sbin/mtr’<br>如果出现<code>command not found</code>,在.zshrc中添加alias,为 <code>alias mtr=&quot;/usr/local/sbin/mtr&quot;</code>。<br>如果出现<code>mtr: unable to get raw sockets</code>,改变owner和执行权限<br><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="keyword">chown</span> root mtr</span><br><span class="line">sudo <span class="keyword">chmod</span> u+<span class="keyword">s</span> mtr</span><br></pre></td></tr></table></figure></p>
+<h3 id="tree_命令可以用来打印文件结构">tree 命令可以用来打印文件结构</h3><p>tree 命令在mac下默认不存在，在ubuntu下可以用apt-get 安装，在mac下可以直接用homebrew安装: <code>brew install tree</code></p>
+<p>通常使用 -L 参数控制层级,如 <code>tree -L 2</code><br>或使用 -d 参数只打印目录,如 <code>tree -d</code></p>
+<h2 id="参考资料">参考资料</h2><ul>
+<li><a href="http://www.renfei.org/blog/mac-os-x-terminal-101.html#comment-2159038737" target="_blank" rel="external">入门</a></li>
+<li><a href="http://cli.learncodethehardway.org/" target="_blank" rel="external">进阶</a></li>
+<li><a href="">bash cheat sheet</a></li>
+</ul>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/bash/"> #bash </a>
+          
+            <a href="/tags/shell/"> #shell </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/11/03/restful-note/">Restful API浅析 之设计原则与案例修正</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+
+    
+      <div class="comments" id="comments">
+        
+          <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+
+        
+      </div>
+
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="https://avatars0.githubusercontent.com/u/4705237?v=3&u=cf53fa292cbafba8a53cfb1feda077c5abced98f&s=140" alt="LinChen" />
+          <p class="site-author-name">LinChen</p>
+        </div>
+        <p class="site-description motion-element">操千曲而后晓声，观千剑而后识器</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">41</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/rdmclin2" target="_blank">GitHub</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://twitter.com/rdmclin2" target="_blank">Twitter</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://weibo.com/1842914013/profile?topnav=1&wvr=6" target="_blank">Weibo</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.douban.com/people/50750460/" target="_blank">DouBan</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.zhihu.com/people/mengcl" target="_blank">ZhiHu</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name"></p>
+            
+              <span class="links-of-author-item">
+              <a href="http://chuan92.com" target="_blank">chuan92</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://chepeatio.github.io" target="_blank">chepeatio</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://andrewliu.in" target="_blank">andrewliu</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://liutianchi.com" target="_blank">liutianchi</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://cshuo.xyz/" target="_blank">cshuo</a>
+              </span>
+            
+          
+        </div>
+        
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#常识"><span class="nav-number">1.</span> <span class="nav-text">常识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#管道和重定向"><span class="nav-number">2.</span> <span class="nav-text">管道和重定向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令行"><span class="nav-number">3.</span> <span class="nav-text">命令行</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#检视文件和文件夹"><span class="nav-number">3.1.</span> <span class="nav-text">检视文件和文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编辑文件和文件夹"><span class="nav-number">3.2.</span> <span class="nav-text">编辑文件和文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#awk"><span class="nav-number">3.3.</span> <span class="nav-text">awk</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sed"><span class="nav-number">3.4.</span> <span class="nav-text">sed</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用工具"><span class="nav-number">4.</span> <span class="nav-text">常用工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mtr_可以用来诊断路由节点问题"><span class="nav-number">4.1.</span> <span class="nav-text">mtr 可以用来诊断路由节点问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tree_命令可以用来打印文件结构"><span class="nav-number">4.2.</span> <span class="nav-text">tree 命令可以用来打印文件结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp;  2014 - 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">LinChen</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
+
+
+
+  <script type="text/javascript" src="/js/search-toggle.js"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.3" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if (isDesktop() && CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    });
+  </script>
+
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+
+  
+  
+  
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'mcl';
+      var disqus_identifier = '2015/11/14/bash-note/';
+      var disqus_title = 'Bash 学习笔记';
+      var disqus_url = 'http://www.mclspace.com/2015/11/14/bash-note/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+
+</body>
+</html>
