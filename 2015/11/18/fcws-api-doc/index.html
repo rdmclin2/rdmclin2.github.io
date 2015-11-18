@@ -1,0 +1,762 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+  <meta name="google-site-verification" content="Bu7qMjAWOJ5dxHauDW_IGiKlJ8kSN5myZ3RxIIAb4Qw" />
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+
+
+    <meta name="description" content="操千曲而后晓声，观千剑而后识器" />
+
+
+
+  <meta name="keywords" content="api,web," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.3" />
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    analytics: {
+      google: ''
+    },
+    sidebar: 'post'
+  };
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6b26d13232555e4d64b5a8c3567ccda9";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <title> 凤城卫士API文档 // Mcl's space </title>
+</head>
+
+<body>
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">Mcl's space</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<div class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/">
+            <i class="menu-item-icon icon-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            <i class="menu-item-icon icon-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            <i class="menu-item-icon icon-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            <i class="menu-item-icon icon-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+<form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', '1ypRdYxJz8SMZBUve9JB','2.0.0');
+</script>
+
+<div class="site-search-toggle"></div>
+    </div>
+  
+</div>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              凤城卫士API文档
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 Nov 18 2015
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/web/">web</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/11/18/fcws-api-doc/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/11/18/fcws-api-doc/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <blockquote>
+<p>本篇为凤城卫士的API文档，包括其url,接受的参数，示例url以及返回值示例。对于REST API的 设计感兴趣的可以移步<a href="http://mclspace.com/2015/11/03/restful-note/" target="_blank" rel="external">这篇文章</a></p>
+</blockquote>
+<p>注: 本篇中的url均具有前缀 <em>/api/v1</em> ,这里为简便起见，进行了省略.</p>
+<a id="more"></a>
+<h1 id="用户信息">用户信息</h1><h2 id="授权验证_<!-这边应该POST,因为重新生成了token_->">授权验证 <!--这边应该POST,因为重新生成了token --></h2><p><code>/auth/local</code> GET 验证用户名密码，并重新生成token，返回基本的用户信息<br>接受参数:</p>
+<ul>
+<li>id     String 用户id</li>
+<li>password         String 用户密码</li>
+</ul>
+<p>示例 : <code>GET localhost:3000/api/v1/auth/local?id=44220&amp;password=44220</code></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "<span class="attribute">id</span>": <span class="value"><span class="string">"44220"</span></span>,</span><br><span class="line">  "<span class="attribute">role</span>": <span class="value"><span class="string">"high-level"</span></span>,</span><br><span class="line">  "<span class="attribute">description</span>": <span class="value"><span class="string">"干事1"</span></span>,</span><br><span class="line">  "<span class="attribute">name</span>": <span class="value"><span class="string">""</span></span>,</span><br><span class="line">  "<span class="attribute">accessToken</span>": <span class="value"><span class="string">"d827b0ef-4e21-4cb7-b89f-c0b601fbe4b1"</span></span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="重置密码_<!-这边应该用PUT_,因为用户更新了密码_->">重置密码 <!--这边应该用PUT ,因为用户更新了密码 --></h2><p> <code>/users/changePassword</code> POST 重置用户密码，重新生成盐值和hash存储到数据库中，返回修改后的用户基本信息<br>接受参数:</p>
+<ul>
+<li>id     String 用户id</li>
+<li>password         String 用户密码</li>
+<li>new_password         String 新的用户密码</li>
+</ul>
+<p>示例 : <code>POST localhost:3000/api/v1/users/changePassword</code></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "<span class="attribute">id</span>": <span class="value"><span class="string">"44220"</span></span>,</span><br><span class="line">  "<span class="attribute">role</span>": <span class="value"><span class="string">"high-level"</span></span>,</span><br><span class="line">  "<span class="attribute">description</span>": <span class="value"><span class="string">"干事1"</span></span>,</span><br><span class="line">  "<span class="attribute">name</span>": <span class="value"><span class="string">""</span></span>,</span><br><span class="line">  "<span class="attribute">accessToken</span>": <span class="value"><span class="string">"d827b0ef-4e21-4cb7-b89f-c0b601fbe4b1"</span></span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="获得用户信息_//这边应该用/users/:id">获得用户信息 //这边应该用/users/:id</h2><p><code>/users/details</code> GET 获取用户详细信息,如最近的主题以及最近的回复</p>
+<p>接受参数:</p>
+<ul>
+<li>access_token         String 用户的token</li>
+</ul>
+<p>示例 :  <code>GET localhost:3000/api/v1/users/details?access_token=e25be7a2-0553-4104-a210-bde3873bfdb6</code></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "<span class="attribute">id</span>": <span class="value"><span class="string">"13852862738"</span></span>,</span><br><span class="line">  "<span class="attribute">role</span>": <span class="value"><span class="string">"low-level"</span></span>,</span><br><span class="line">  "<span class="attribute">description</span>": <span class="value"><span class="string">"海陵区城西街道情报员"</span></span>,</span><br><span class="line">  "<span class="attribute">name</span>": <span class="value"><span class="string">"高月"</span></span>,</span><br><span class="line">  "<span class="attribute">recent_posts</span>": <span class="value">[</span><br><span class="line">    &#123;</span><br><span class="line">      "<span class="attribute">_id</span>": <span class="value"><span class="string">"564aef7bd443b5243c7e826b"</span></span>,</span><br><span class="line">      "<span class="attribute">author_id</span>": <span class="value"><span class="string">"13852862738"</span></span>,</span><br><span class="line">      "<span class="attribute">content</span>": <span class="value"><span class="string">"测试情报"</span></span>,</span><br><span class="line">      "<span class="attribute">important</span>": <span class="value"><span class="literal">false</span></span>,</span><br><span class="line">      "<span class="attribute">create_at</span>": <span class="value"><span class="string">"2015-11-17T09:12:27.217Z"</span></span><br><span class="line">    </span>&#125;</span><br><span class="line">  ]</span>,</span><br><span class="line">  "<span class="attribute">recent_replies</span>": <span class="value">[</span><br><span class="line">    &#123;</span><br><span class="line">      "<span class="attribute">_id</span>": <span class="value"><span class="string">"564aef8fd443b5243c7e826d"</span></span>,</span><br><span class="line">      "<span class="attribute">author_id</span>": <span class="value"><span class="string">"13852862738"</span></span>,</span><br><span class="line">      "<span class="attribute">content</span>": <span class="value"><span class="string">"呵呵"</span></span>,</span><br><span class="line">      "<span class="attribute">create_at</span>": <span class="value"><span class="string">"2015-11-17T09:12:47.664Z"</span></span><br><span class="line">    </span>&#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      "<span class="attribute">_id</span>": <span class="value"><span class="string">"564aef85d443b5243c7e826c"</span></span>,</span><br><span class="line">      "<span class="attribute">author_id</span>": <span class="value"><span class="string">"13852862738"</span></span>,</span><br><span class="line">      "<span class="attribute">content</span>": <span class="value"><span class="string">"评论一个"</span></span>,</span><br><span class="line">      "<span class="attribute">create_at</span>": <span class="value"><span class="string">"2015-11-17T09:12:37.741Z"</span></span><br><span class="line">    </span>&#125;</span><br><span class="line">  ]</span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="情报信息">情报信息</h1><h2 id="获取情报列表">获取情报列表</h2><p><code>/posts</code> GET 获取帖子列表</p>
+<p>接受参数:</p>
+<ul>
+<li>limit     Number 每页的情报数量</li>
+<li>page         Number 页数</li>
+<li>access_token         String 用户的token</li>
+</ul>
+<p>示例: <code>GET localhost:3000/api/v1/posts?access_token=e25be7a2-0553-4104-a210-bde3873bfdb6&amp;limit=5&amp;page=1</code></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    "<span class="attribute">_id</span>": <span class="value"><span class="string">"564aef7bd443b5243c7e826b"</span></span>,</span><br><span class="line">    "<span class="attribute">author_id</span>": <span class="value"><span class="string">"13852862738"</span></span>,</span><br><span class="line">    "<span class="attribute">content</span>": <span class="value"><span class="string">"测试情报"</span></span>,</span><br><span class="line">    "<span class="attribute">important</span>": <span class="value"><span class="literal">false</span></span>,</span><br><span class="line">    "<span class="attribute">create_at</span>": <span class="value"><span class="string">"2015-11-17T09:12:27.217Z"</span></span>,</span><br><span class="line">    "<span class="attribute">author</span>": <span class="value">&#123;</span><br><span class="line">      "<span class="attribute">name</span>": <span class="value"><span class="string">"高月"</span></span><br><span class="line">    </span>&#125;</span><br><span class="line">  </span>&#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    "<span class="attribute">_id</span>": <span class="value"><span class="string">"564ae2c08bb772bf39386e2b"</span></span>,</span><br><span class="line">    "<span class="attribute">author_id</span>": <span class="value"><span class="string">"44121"</span></span>,</span><br><span class="line">    "<span class="attribute">content</span>": <span class="value"><span class="string">"hello"</span></span>,</span><br><span class="line">    "<span class="attribute">important</span>": <span class="value"><span class="literal">true</span></span>,</span><br><span class="line">    "<span class="attribute">create_at</span>": <span class="value"><span class="string">"2015-11-17T08:18:08.800Z"</span></span>,</span><br><span class="line">    "<span class="attribute">author</span>": <span class="value">&#123;</span><br><span class="line">      "<span class="attribute">name</span>": <span class="value"><span class="string">""</span></span><br><span class="line">    </span>&#125;</span><br><span class="line">  </span>&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h2 id="获取某个帖子的具体内容">获取某个帖子的具体内容</h2><p><code>/posts/:id</code> GET 获取某个帖子的具体内容</p>
+<p>接受参数:</p>
+<ul>
+<li>id    String 帖子的id</li>
+<li>access_token         String 用户的token</li>
+</ul>
+<p>示例: <code>GET localhost:3000/api/v1/posts/564aef7bd443b5243c7e826b?access_token=e25be7a2-0553-4104-a210-bde3873bfdb6</code></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "<span class="attribute">_id</span>": <span class="value"><span class="string">"564aef7bd443b5243c7e826b"</span></span>,</span><br><span class="line">  "<span class="attribute">author_id</span>": <span class="value"><span class="string">"13852862738"</span></span>,</span><br><span class="line">  "<span class="attribute">content</span>": <span class="value"><span class="string">"测试情报"</span></span>,</span><br><span class="line">  "<span class="attribute">important</span>": <span class="value"><span class="literal">false</span></span>,</span><br><span class="line">  "<span class="attribute">photos</span>": <span class="value">[]</span>,</span><br><span class="line">  "<span class="attribute">create_at</span>": <span class="value"><span class="string">"2015-11-17T09:12:27.217Z"</span></span>,</span><br><span class="line">  "<span class="attribute">author</span>": <span class="value">&#123;</span><br><span class="line">    "<span class="attribute">name</span>": <span class="value"><span class="string">"高月"</span></span><br><span class="line">  </span>&#125;</span>,</span><br><span class="line">  "<span class="attribute">replies</span>": <span class="value">[</span><br><span class="line">    &#123;</span><br><span class="line">      "<span class="attribute">_id</span>": <span class="value"><span class="string">"564aef85d443b5243c7e826c"</span></span>,</span><br><span class="line">      "<span class="attribute">author_id</span>": <span class="value"><span class="string">"13852862738"</span></span>,</span><br><span class="line">      "<span class="attribute">post_id</span>": <span class="value"><span class="string">"564aef7bd443b5243c7e826b"</span></span>,</span><br><span class="line">      "<span class="attribute">content</span>": <span class="value"><span class="string">"评论一个"</span></span>,</span><br><span class="line">      "<span class="attribute">create_at</span>": <span class="value"><span class="string">"2015-11-17T09:12:37.741Z"</span></span>,</span><br><span class="line">      "<span class="attribute">author</span>": <span class="value">&#123;</span><br><span class="line">        "<span class="attribute">name</span>": <span class="value"><span class="string">"高月"</span></span><br><span class="line">      </span>&#125;</span><br><span class="line">    </span>&#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      "<span class="attribute">_id</span>": <span class="value"><span class="string">"564aef8fd443b5243c7e826d"</span></span>,</span><br><span class="line">      "<span class="attribute">author_id</span>": <span class="value"><span class="string">"13852862738"</span></span>,</span><br><span class="line">      "<span class="attribute">post_id</span>": <span class="value"><span class="string">"564aef7bd443b5243c7e826b"</span></span>,</span><br><span class="line">      "<span class="attribute">content</span>": <span class="value"><span class="string">"呵呵"</span></span>,</span><br><span class="line">      "<span class="attribute">create_at</span>": <span class="value"><span class="string">"2015-11-17T09:12:47.664Z"</span></span>,</span><br><span class="line">      "<span class="attribute">author</span>": <span class="value">&#123;</span><br><span class="line">        "<span class="attribute">name</span>": <span class="value"><span class="string">"高月"</span></span><br><span class="line">      </span>&#125;</span><br><span class="line">    </span>&#125;</span><br><span class="line">  ]</span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="创建情报">创建情报</h2><p><code>/posts</code> POST 创建情报，返回情报基本内容</p>
+<p>参数: </p>
+<ul>
+<li>content    String 帖子的内容,不能为空</li>
+<li>important     Boolean 是否为紧急情报，默认为false</li>
+<li>photos     [String] 情报的配图，目前默认只能上传一张</li>
+<li>access_token        String 用户的token</li>
+</ul>
+<p>示例: <code>POST localhost:3000/api/v1/posts?access_token=e25be7a2-0553-4104-a210-bde3873bfdb6</code></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "<span class="attribute">_id</span>": <span class="value"><span class="string">"564c34da38cad35f288846c9"</span></span>,</span><br><span class="line">  "<span class="attribute">author_id</span>": <span class="value"><span class="string">"13852862738"</span></span>,</span><br><span class="line">  "<span class="attribute">content</span>": <span class="value"><span class="string">"测试消息 from postman"</span></span>,</span><br><span class="line">  "<span class="attribute">important</span>": <span class="value"><span class="literal">true</span></span>,</span><br><span class="line">  "<span class="attribute">create_at</span>": <span class="value"><span class="string">"2015-11-18T08:20:42.379Z"</span></span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="删除情报">删除情报</h2><p><code>/posts/:id</code> DELETE 删除情报，返回空文档。</p>
+<p>接受参数:</p>
+<ul>
+<li>id     String 待删除的情报的id</li>
+<li>access_token         String 用户的token</li>
+</ul>
+<p>示例: <code>DELETE localhost:3000/api/v1/posts/564c34da38cad35f288846c9?access_token=e25be7a2-0553-4104-a210-bde3873bfdb6</code></p>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="collection">&#123;&#125;</span></span><br></pre></td></tr></table></figure>
+<h1 id="回复">回复</h1><h2 id="创建回复">创建回复</h2><p><code>replys</code> POST 创建一个回复，返回该回复</p>
+<p>接受参数:</p>
+<ul>
+<li>post_id         String  回复的情报的id</li>
+<li>content         String  回复内容</li>
+<li>access_token     String  用户的token</li>
+</ul>
+<p>示例: <code>POST localhost:3000/api/v1/replys?access_token=e25be7a2-0553-4104-a210-bde3873bfdb6</code></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "<span class="attribute">_id</span>": <span class="value"><span class="string">"564c7234d1739e4f0b056796"</span></span>,</span><br><span class="line">  "<span class="attribute">post_id</span>": <span class="value"><span class="string">" 564c65c34086d9a105d78243"</span></span>,</span><br><span class="line">  "<span class="attribute">content</span>": <span class="value"><span class="string">"添加一条回复"</span></span>,</span><br><span class="line">  "<span class="attribute">author_id</span>": <span class="value"><span class="string">"13852862738"</span></span>,</span><br><span class="line">  "<span class="attribute">create_at</span>": <span class="value"><span class="string">"2015-11-18T12:42:28.692Z"</span></span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="删除回复">删除回复</h2><p><code>replys/:id</code> DELETE 删除某个回复,返回空文档</p>
+<p>接受参数:</p>
+<ul>
+<li>id String 该回复的id</li>
+<li>access_token String 用户的token</li>
+</ul>
+<p>示例: <code>DELETE localhost:3000/api/v1/replys/564c7234d1739e4f0b056796?access_token=e25be7a2-0553-4104-a210-bde3873bfdb6</code></p>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="collection">&#123;&#125;</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/api/"> #api </a>
+          
+            <a href="/tags/web/"> #web </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/11/14/bash-note/">Bash 学习笔记</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+
+    
+      <div class="comments" id="comments">
+        
+          <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+
+        
+      </div>
+
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="https://avatars0.githubusercontent.com/u/4705237?v=3&u=cf53fa292cbafba8a53cfb1feda077c5abced98f&s=140" alt="LinChen" />
+          <p class="site-author-name">LinChen</p>
+        </div>
+        <p class="site-description motion-element">操千曲而后晓声，观千剑而后识器</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">37</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/rdmclin2" target="_blank">GitHub</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://twitter.com/rdmclin2" target="_blank">Twitter</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://weibo.com/1842914013/profile?topnav=1&wvr=6" target="_blank">Weibo</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.douban.com/people/50750460/" target="_blank">DouBan</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.zhihu.com/people/mengcl" target="_blank">ZhiHu</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name"></p>
+            
+              <span class="links-of-author-item">
+              <a href="http://chuan92.com" target="_blank">chuan92</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://chepeatio.github.io" target="_blank">chepeatio</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://andrewliu.in" target="_blank">andrewliu</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://liutianchi.com" target="_blank">liutianchi</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://cshuo.xyz/" target="_blank">cshuo</a>
+              </span>
+            
+          
+        </div>
+        
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#用户信息"><span class="nav-number">1.</span> <span class="nav-text">用户信息</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#授权验证_<!-这边应该POST,因为重新生成了token_->"><span class="nav-number">1.1.</span> <span class="nav-text">授权验证 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重置密码_<!-这边应该用PUT_,因为用户更新了密码_->"><span class="nav-number">1.2.</span> <span class="nav-text">重置密码 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获得用户信息_//这边应该用/users/:id"><span class="nav-number">1.3.</span> <span class="nav-text">获得用户信息 //这边应该用/users/:id</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#情报信息"><span class="nav-number">2.</span> <span class="nav-text">情报信息</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#获取情报列表"><span class="nav-number">2.1.</span> <span class="nav-text">获取情报列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取某个帖子的具体内容"><span class="nav-number">2.2.</span> <span class="nav-text">获取某个帖子的具体内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建情报"><span class="nav-number">2.3.</span> <span class="nav-text">创建情报</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除情报"><span class="nav-number">2.4.</span> <span class="nav-text">删除情报</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#回复"><span class="nav-number">3.</span> <span class="nav-text">回复</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建回复"><span class="nav-number">3.1.</span> <span class="nav-text">创建回复</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除回复"><span class="nav-number">3.2.</span> <span class="nav-text">删除回复</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp;  2014 - 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">LinChen</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
+
+
+
+  <script type="text/javascript" src="/js/search-toggle.js"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.3" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if (isDesktop() && CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    });
+  </script>
+
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+
+  
+  
+  
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'mcl';
+      var disqus_identifier = '2015/11/18/fcws-api-doc/';
+      var disqus_title = '凤城卫士API文档';
+      var disqus_url = 'http://www.mclspace.com/2015/11/18/fcws-api-doc/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+
+</body>
+</html>
