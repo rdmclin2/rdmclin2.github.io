@@ -1,0 +1,806 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+  <meta name="google-site-verification" content="Bu7qMjAWOJ5dxHauDW_IGiKlJ8kSN5myZ3RxIIAb4Qw" />
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+
+
+    <meta name="description" content="操千曲而后晓声，观千剑而后识器" />
+
+
+
+  <meta name="keywords" content="ionic,mongodb,nodejs," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.3" />
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    analytics: {
+      google: ''
+    },
+    sidebar: 'post'
+  };
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6b26d13232555e4d64b5a8c3567ccda9";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <title> Ionic+Nodejs+Mongod开发端到端混合应用系列教程五 - 服务器端实现 // Mcl's space </title>
+</head>
+
+<body>
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">Mcl's space</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<div class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/">
+            <i class="menu-item-icon icon-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            <i class="menu-item-icon icon-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            <i class="menu-item-icon icon-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            <i class="menu-item-icon icon-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+<form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', '1ypRdYxJz8SMZBUve9JB','2.0.0');
+</script>
+
+<div class="site-search-toggle"></div>
+    </div>
+  
+</div>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Ionic+Nodejs+Mongod开发端到端混合应用系列教程五 - 服务器端实现
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 Nov 28 2015
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/nodejs/">nodejs</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/11/28/ionic-app-4/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/11/28/ionic-app-4/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <blockquote>
+<p>我们使用Restify这个框架实现我们的REST风格的后端服务器,使用Mongodb作为我们的后端服务器,使用Mongojs作为连接数据库的操作接口.以下我们分开描述创建一个web服务器的各个方面。</p>
+<p>我已经把项目文件整理起来放到<a href="https://github.com/rdmclin2/fcws" target="_blank" rel="external">github</a>上了，供大家参考。</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="工程文件结构">工程文件结构</h1><p>首先我们讲解服务器的代码结构，代码结构如下图所示<br><img src="http://7pun7p.com1.z0.glb.clouddn.com/hexo/files.png" alt=""></p>
+<p>工程文件包括以下文件:</p>
+<ul>
+<li>api 该文件夹存放和暴露给客户端使用的接口,包括信息,组织，情报，回复，用户等api接口</li>
+<li>assets 该文件存放资源文件，包括生成的apk，静态的文档，组织关系图等</li>
+<li>bin 该文件夹存放一次性执行脚本，用于导入组织关系和用户数据</li>
+<li>middlewares 该文件夹存放需要用到的中间价工具</li>
+<li>node_modules 该文件夹存放我们调用的node模块</li>
+<li>Dockerfile 该文件为docker生成镜像时使用的构建文件</li>
+<li>package.json 该文件为工程的描述文件，记录了该工程的基本信息</li>
+<li>README.md 用于存放一些注意事项和使用方法的readme文件</li>
+<li>server.js 工程的入口文件，我们通过<code>node server.js</code>启动服务器</li>
+<li>settings.js 工程的设置文件，配置工程需要用到的参数。</li>
+</ul>
+<h1 id="使用npm命令创建package-json文件">使用npm命令创建package.json文件</h1><p>创建文件夹,在命令行中输入:</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>mkdir server &amp;&amp; cd <span class="variable">$_</span></span><br><span class="line"><span class="variable">$ </span>npm init</span><br></pre></td></tr></table></figure>
+<p>该命令会询问一系列有关你创建的项目的问题，按照实际情况回答之后会在server文件夹下生成一个package.json的文件，例如:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "<span class="attribute">name</span>": <span class="value"><span class="string">"restify_server"</span></span>,</span><br><span class="line">  "<span class="attribute">version</span>": <span class="value"><span class="string">"0.1.0"</span></span>,</span><br><span class="line">  "<span class="attribute">description</span>": <span class="value"><span class="string">"Restful Web Server for FCWS project"</span></span>,</span><br><span class="line">  "<span class="attribute">main</span>": <span class="value"><span class="string">"server.js"</span></span>,</span><br><span class="line">  "<span class="attribute">scripts</span>": <span class="value">&#123;</span><br><span class="line">    "<span class="attribute">test</span>": <span class="value"><span class="string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span></span><br><span class="line">  </span>&#125;</span>,</span><br><span class="line">  "<span class="attribute">keywords</span>": <span class="value">[</span><br><span class="line">    <span class="string">"rest"</span>,</span><br><span class="line">    <span class="string">"webserver"</span></span><br><span class="line">  ]</span>,</span><br><span class="line">  "<span class="attribute">author</span>": <span class="value"><span class="string">"author"</span></span>,</span><br><span class="line">  "<span class="attribute">license</span>": <span class="value"><span class="string">"MIT"</span></span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="使用Restify创建服务器">使用Restify创建服务器</h1><p>首先使用npm命令安装restify模块</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="operator"><span class="keyword">install</span> <span class="comment">--save restify</span></span></span><br></pre></td></tr></table></figure>
+<p>安装完成后会在server文件夹下面生成一个node_modules文件夹,加上—save参数会将restify模块加入到你的package.json文件的dependencies条目下。然后我们创建一个server.js文件作为node的入口文件,以及一个settings.js文件作为我们的配置文件<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ touch server<span class="class">.js</span> settings.js</span><br></pre></td></tr></table></figure></p>
+<p>将下面的代码复制到setting.js文件中</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="module"><span class="keyword">module</span>.exports = </span>&#123;</span><br><span class="line">  db: <span class="string">'test'</span>,    <span class="comment">//db name</span></span><br><span class="line">  host: <span class="string">'localhost'</span>, <span class="comment">//host name</span></span><br><span class="line">  port: <span class="number">9804</span> <span class="comment">//default port</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>该文件配置了服务器的数据库名称,IP地址,以及端口并将其导出，我们将在server.js中用到这个文件。</p>
+<p>下一步我们创建一个简单的服务器,首先引入restify模块和settings模块(Node下一个js文件可以作为一个模块)</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="reserved">var</span> restify     =   <span class="built_in">require</span>(<span class="string">'restify'</span>);</span><br><span class="line"><span class="reserved">var</span> settings    =   <span class="built_in">require</span>(<span class="string">'./settings'</span>);</span><br></pre></td></tr></table></figure>
+<p>然后使用restify模块生成server对象:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> server</span>      =   restify.createServer(&#123;</span><br><span class="line">  name: <span class="string">"fcws_server"</span> <span class="comment">// set the name of server</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>然后监听默认端口</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">server.listen(process.env.PORT || settings.port, settings.host, <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'%s listening at %s'</span>,server.name,server.url);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>在命令行中输入命令</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ node server<span class="class">.js</span></span><br><span class="line">fcws_server listening at http:<span class="comment">//127.0.0.1:9804</span></span><br></pre></td></tr></table></figure>
+<p>这样这个服务器就开起来了。如果提示缺少模块安装restify的时候加上<code>--no-optional</code>选项</p>
+<h1 id="配置插件">配置插件</h1><p>restify模块有很多内置的插件，把下面内容复制并粘贴到app.js，应该加在server.listen() 函数前面。请参阅这份文档以了解所有被支持的插件。<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">server.<span class="keyword">use</span>(restify.queryParser());</span><br><span class="line">server.<span class="keyword">use</span>(restify.bodyParser());</span><br><span class="line">server.<span class="keyword">use</span>(restify.CORS());</span><br></pre></td></tr></table></figure></p>
+<p>上述代码表示：</p>
+<ul>
+<li>restify.queryParser() 插件是用来解析HTTP查询字符串（如 /jobs?skills=java,mysql），解析后的内容将会在req.query里可用。</li>
+<li>restify.bodyParser() 会在服务器上自动将请求数据转换为JavaScript对象。</li>
+<li>restify.CORS() 配置应用程序中的CORS支持。<blockquote>
+<p>CORS定义一种跨域访问的机制，可以让AJAX实现跨域访问。CORS 允许一个域上的网络应用向另一个域提交跨域 AJAX 请求。实现此功能非常简单，只需由服务器发送一个响应标头即可。<br>restify中的CORS遵照<a href="http://www.w3.org/TR/cors/" target="_blank" rel="external">w3c</a>的标准</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="连接Mongodb">连接Mongodb</h1><p>首先打开Mongodb数据库,<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mongod <span class="comment">--dbpath Data/db</span></span><br></pre></td></tr></table></figure></p>
+<p>使用npm命令安装mongojs模块<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="operator"><span class="keyword">install</span> <span class="comment">--save mongojs</span></span></span><br></pre></td></tr></table></figure></p>
+<p>然后引入mongojs模块<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="reserved">var</span> mongojs     =   <span class="built_in">require</span>(<span class="string">'mongojs'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>连接数据库<br><figure class="highlight puppet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var url         =   <span class="keyword">settings</span>.<span class="keyword">host</span> + <span class="string">"/"</span> + <span class="keyword">settings</span>.db;</span><br><span class="line">var db          =   mongojs(url, [<span class="string">'userList'</span>,<span class="string">'postList'</span>,<span class="string">'replyList'</span>,<span class="string">'messageList'</span>,<span class="string">'orgList'</span>,<span class="string">'broadcastList'</span>]);</span><br></pre></td></tr></table></figure></p>
+<p>url指定我们要连接的机器的地址和相应的数据库名称，<code>userList</code>等为数据库中的集合,每当我们需要使用新的集合的时候需要在这个参数中添加。</p>
+<p>接下来我们添加一些数据库的事件处理,当数据库准备就绪的时候，会在控制台打印”数据库已连接”,如果发生错误会打印”数据库错误”<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">db.on(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(err)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'database error'</span>, err);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">db.on(<span class="string">'ready'</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'database connected'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h1 id="中间件">中间件</h1><p>这里中间件是我们用来完成请求的工具,目前实现了密码的加密与解密以及验证用户请求的功能</p>
+<h2 id="密码管理">密码管理</h2><p>用户注册时对于明文的密码我们需要将其进行加密后存储到数据库中,而当用户发送密码到服务器时我们需要对密码进行解密并与存储在数据库中的密码进行比较。<br>所以我们编写managePasswords.js模块完成这一功能。代码引入<code>bcrypt</code>模块,该模块是一个跨平台的文件加密工具,首先安装该模块</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm <span class="operator"><span class="keyword">install</span> <span class="comment">--save bcrypt</span></span></span><br></pre></td></tr></table></figure>
+<p>然后编写加密方法和比较密码函数:</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> bcrypt = require(<span class="string">'bcrypt'</span>);</span><br><span class="line"></span><br><span class="line">module.exports.cryptPassword = <span class="function"><span class="keyword">function</span> <span class="params">(password, callback)</span> </span>&#123;</span><br><span class="line">    bcrypt.genSalt(<span class="number">10</span>, <span class="function"><span class="keyword">function</span> <span class="params">(err, salt)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (err)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">callback</span>(err);</span><br><span class="line">        bcrypt.hash(password, salt, <span class="function"><span class="keyword">function</span> <span class="params">(err, hash)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">callback</span>(err, hash);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">module.exports.comparePassword = <span class="function"><span class="keyword">function</span> <span class="params">(password, userPassword, callback)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(password === userPassword)&#123;</span><br><span class="line">      <span class="keyword">callback</span>(<span class="literal">null</span>,<span class="literal">true</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">callback</span>(<span class="literal">null</span>,<span class="literal">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="验证请求">验证请求</h2><p>当用户进行某些特定操作如发布一条情报的时候，我们需要对用户的身份进行验证，验证的过程如下：<br>如果请求中没有token参数，则拒绝该请求，如果有token参数，但无法根据该token找到相应的用户则返回错误，如果找到了相应的用户，则将用户的信息返回。<br>该部分的代码如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> isTokenValid = <span class="function"><span class="keyword">function</span> <span class="params">(db, id, callback)</span> </span>&#123;</span><br><span class="line">    db.userList.findOne(&#123;</span><br><span class="line">        id: id</span><br><span class="line">    &#125;, <span class="function"><span class="keyword">function</span> <span class="params">(err, user)</span> </span>&#123;</span><br><span class="line">        callback(user);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports.validate = <span class="function"><span class="keyword">function</span> <span class="params">(req, res, db, callback)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// if the request dosent have a header with email, reject the request</span></span><br><span class="line">    <span class="keyword">if</span> (!req.params.token) &#123;</span><br><span class="line">        res.writeHead(<span class="number">403</span>, &#123;</span><br><span class="line">            <span class="string">'Content-Type'</span>: <span class="string">'application/json; charset=utf-8'</span></span><br><span class="line">        &#125;);</span><br><span class="line">        res.end(<span class="built_in">JSON</span>.stringify(&#123;</span><br><span class="line">            error: <span class="string">"You are not authorized to access this application"</span>,</span><br><span class="line">            message: <span class="string">"An Token is required as part of the header"</span></span><br><span class="line">        &#125;));</span><br><span class="line">    &#125;</span><br><span class="line">    isTokenValid(db, req.params.token, <span class="function"><span class="keyword">function</span> <span class="params">(user)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!user) &#123;</span><br><span class="line">            res.writeHead(<span class="number">403</span>, &#123;</span><br><span class="line">                <span class="string">'Content-Type'</span>: <span class="string">'application/json; charset=utf-8'</span></span><br><span class="line">            &#125;);</span><br><span class="line">            res.end(<span class="built_in">JSON</span>.stringify(&#123;</span><br><span class="line">                error: <span class="string">"You are not authorized to access this application"</span>,</span><br><span class="line">                message: <span class="string">"Invalid User Toekn"</span></span><br><span class="line">            &#125;));</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            callback(user);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h1 id="路由请求">路由请求</h1><p>路由请求是服务器端最重要的一块，用户根据路由的url获取相应的资源或进行对应的操作。</p>
+<h2 id="用户数据">用户数据</h2><p>有关用户信息的操作如注册,登录，获取用户详细信息，验证密码，修改密码等操作都在user.js中完成</p>
+<h2 id="用户注册">用户注册</h2><p>用户通过路由<code>/api/v1/auth/register</code>用post请求进行注册。注册过程如下：首先我们用中间价managePasswords加密用户的密码，替换原先请求中的密码，然后将该用户的数据存储到数据库的用户列表中，如果已经存在该用户的id，则返回”拥有该id的用户已经存在”的错误消息,如果正确，我们将返回的用户对象的密码置为空（防止密码泄露),然后返回给用户，该部分的代码如下:</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">server.post(<span class="string">'/api/v1/auth/register'</span>, <span class="function"><span class="keyword">function</span><span class="params">(req, res, next)</span></span> &#123;</span><br><span class="line">  var user = req.params;</span><br><span class="line">  pwdMgr.cryptPassword(user.password, <span class="function"><span class="keyword">function</span><span class="params">(err, hash)</span></span> &#123;</span><br><span class="line">    user.password = hash;</span><br><span class="line">    db.userList.insert(user,</span><br><span class="line">      <span class="function"><span class="keyword">function</span><span class="params">(err, dbUser)</span></span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (err) &#123; // duplicate key <span class="built_in">error</span></span><br><span class="line">          <span class="keyword">if</span> (err.code == <span class="number">11000</span>) /* http://www.mongodb.org/about/contributors/<span class="built_in">error</span>-codes/*/ &#123;</span><br><span class="line">            res.writeHead(<span class="number">400</span>, &#123;</span><br><span class="line">              <span class="string">'Content-Type'</span>: <span class="string">'application/json; charset=utf-8'</span></span><br><span class="line">            &#125;);</span><br><span class="line">            res.<span class="keyword">end</span>(JSON.stringify(&#123;</span><br><span class="line">              <span class="built_in">error</span>: err,</span><br><span class="line">              message: <span class="string">"A user with this id already exists"</span></span><br><span class="line">            &#125;));</span><br><span class="line">          &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          res.writeHead(<span class="number">200</span>, &#123;</span><br><span class="line">            <span class="string">'Content-Type'</span>: <span class="string">'application/json; charset=utf-8'</span></span><br><span class="line">          &#125;);</span><br><span class="line">          dbUser.password = <span class="string">""</span>;</span><br><span class="line">          res.<span class="keyword">end</span>(JSON.stringify(dbUser));</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">next</span>();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="用户登录">用户登录</h2><p>用户通过路由<code>/api/v1/auth/login</code>用post请求进行登录。我们首先验证用户的id和密码是否为空，如果有空值，则返回403，告知用户其输入的用户名或密码有误.如果无误，则到数据库中寻找该用户，如果未找到该用户或者该用户的密码和输入的密码不一致，则返回错误消息。如果密码一致，则将密码置空，并返回该用户的信息。代码如下:</p>
+<figure class="highlight scilab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="transposed_variable">server.</span>post(<span class="string">'/api/v1/auth/login'</span>, <span class="function"><span class="keyword">function</span><span class="params">(req, res, next)</span> &#123;</span></span><br><span class="line">    var user = <span class="transposed_variable">req.</span>params;</span><br><span class="line">    <span class="keyword">if</span> (<span class="transposed_variable">user.</span><span class="transposed_variable">id.</span>trim().<span class="built_in">length</span> === <span class="number">0</span> || <span class="transposed_variable">user.</span><span class="transposed_variable">password.</span>trim().<span class="built_in">length</span> === <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="transposed_variable">res.</span>writeHead(<span class="number">403</span>, &#123;</span><br><span class="line">        <span class="string">'Content-Type'</span>: <span class="string">'application/json; charset=utf-8'</span></span><br><span class="line">      &#125;);</span><br><span class="line">      <span class="transposed_variable">res.</span><span class="keyword">end</span>(<span class="transposed_variable">JSON.</span>stringify(&#123;</span><br><span class="line">        error: <span class="string">"Invalid Credentials"</span></span><br><span class="line">      &#125;));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="transposed_variable">db.</span><span class="transposed_variable">userList.</span>findOne(&#123;    </span><br><span class="line">      id: <span class="transposed_variable">req.</span><span class="transposed_variable">params.</span>id</span><br><span class="line">    &#125;, <span class="function"><span class="keyword">function</span><span class="params">(err, dbUser)</span> &#123;</span></span><br><span class="line">      <span class="transposed_variable">pwdMgr.</span>comparePassword(<span class="transposed_variable">user.</span>password, <span class="transposed_variable">dbUser.</span>password, <span class="function"><span class="keyword">function</span><span class="params">(err, isPasswordMatch)</span> &#123;</span></span><br><span class="line">        <span class="keyword">if</span> (isPasswordMatch) &#123;</span><br><span class="line">          <span class="transposed_variable">res.</span>writeHead(<span class="number">200</span>, &#123;</span><br><span class="line">            <span class="string">'Content-Type'</span>: <span class="string">'application/json; charset=utf-8'</span></span><br><span class="line">          &#125;);</span><br><span class="line">          <span class="comment">// remove password hash before sending to the client</span></span><br><span class="line">          <span class="transposed_variable">dbUser.</span>password = <span class="string">""</span>;</span><br><span class="line">          <span class="transposed_variable">res.</span><span class="keyword">end</span>(<span class="transposed_variable">JSON.</span>stringify(dbUser));</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="transposed_variable">res.</span>writeHead(<span class="number">403</span>, &#123;</span><br><span class="line">            <span class="string">'Content-Type'</span>: <span class="string">'application/json; charset=utf-8'</span></span><br><span class="line">          &#125;);</span><br><span class="line">          <span class="transposed_variable">res.</span><span class="keyword">end</span>(<span class="transposed_variable">JSON.</span>stringify(&#123;</span><br><span class="line">            error: <span class="string">"Invalid User"</span></span><br><span class="line">          &#125;));</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> next();</span><br><span class="line">    </span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="获取用户详细信息">获取用户详细信息</h2><p>用户通过路由<code>/api/v1/user/:user_id</code>用get请求获取用户的详细信息。当用户进入主页的时候需要返回用户的基本信息，最近发的帖子和最近的回复，因此整个请求分为3部分：</p>
+<ul>
+<li>到用户列表中查找用户信息</li>
+<li>到情报列表中查找用户最近发的情报</li>
+<li>到回复列表中查找用户最近的回复<br>该3部分互相没有数据的重叠，可以进行并行操作以提高操作效率.首先我们通过user_id参数获取用户的id，然后用eventproxy模块来帮助我们实现数据的并行获取，获取到所有信息后再将数据打包发送给客户端.代码如下:</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">server.get(<span class="string">'/api/v1/user/:user_id'</span>, <span class="function"><span class="keyword">function</span><span class="params">(req, res, next)</span> </span>&#123;</span><br><span class="line">  validateRequest.validate(req, res, db, <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> userid = req.params.user_id;</span><br><span class="line">    <span class="built_in">console</span>.log(userid);</span><br><span class="line">    <span class="keyword">var</span> ep = <span class="keyword">new</span> eventproxy();</span><br><span class="line">    ep.all(<span class="string">"user"</span>,<span class="string">"recent_posts"</span>,<span class="string">"recent_replies"</span>, <span class="function"><span class="keyword">function</span> <span class="params">(user,recent_posts,recent_replies)</span> </span>&#123;</span><br><span class="line">        user.password = <span class="literal">undefined</span>;</span><br><span class="line">        user.recent_posts = recent_posts;</span><br><span class="line">        user.recent_replies = recent_replies;</span><br><span class="line">        res.writeHead(<span class="number">200</span>, &#123;</span><br><span class="line">          <span class="string">'Content-Type'</span>: <span class="string">'application/json; charset=utf-8'</span></span><br><span class="line">        &#125;);</span><br><span class="line">        res.end(<span class="built_in">JSON</span>.stringify(user));</span><br><span class="line">    &#125;);</span><br><span class="line">    ep.fail(next);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//get user info</span></span><br><span class="line">    db.userList.findOne(&#123;id: userid&#125;,ep.done(<span class="string">"user"</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">//get posts of this user; limited to 5 posts</span></span><br><span class="line">    db.postList.find(&#123;userId: userid&#125;).sort(&#123;createDate:-<span class="number">1</span>&#125;).limit(recentCount,ep.done(<span class="string">"recent_posts"</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">//get replies of this user; limited to 5 replies</span></span><br><span class="line">    db.replyList.find(&#123;userId: userid&#125;).sort(&#123;createDate:-<span class="number">1</span>&#125;).limit(recentCount,ep.done(<span class="string">"recent_replies"</span>));</span><br><span class="line"></span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> next();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="验证密码">验证密码</h2><p>通过路由<code>/api/v1/auth/confirmpw</code>用post请求验证用户的密码。用户在修改密码之前需要先验证密码以证明是否是本人在操作。验证密码的过程和用户登录类似，这里不再赘述。</p>
+<h2 id="修改密码">修改密码</h2><p>通过路由<code>/api/v1/auth/changepw</code>用post请求修改用户的密码。首先验证用户的原密码是否正确，如果正确将密码改为现在设置的密码，然后将更新的数据存到数据库中，向客户端发送成功消息。这里我们主要使用了<code>db.userList.save(dbUser, function(err, data) {}</code> 进行数据的更新。</p>
+<h1 id="情报信息">情报信息</h1><p>情报部分包括获取最近情报，获取所有情报，获取单个情报，增加情报，更新情报，删除情报等Api。情报信息有关的api放在post.js文件中</p>
+<h2 id="增加情报">增加情报</h2><p>通过路由<code>/api/v1/post</code>的post请求增加一条情报。首先我们验证用户的身份，成功后向数据库的情报列表中增加一条情报，返回成功消息。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//add a post</span></span><br><span class="line">server.post(<span class="string">'/api/v1/post'</span>, <span class="function"><span class="keyword">function</span><span class="params">(req, res, next)</span> </span>&#123;</span><br><span class="line">  validateRequest.validate(req, res, db, <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> item = req.params;</span><br><span class="line">    db.postList.save(item,</span><br><span class="line">      <span class="function"><span class="keyword">function</span><span class="params">(err, data)</span> </span>&#123;</span><br><span class="line">        res.writeHead(<span class="number">200</span>, &#123;</span><br><span class="line">          <span class="string">'Content-Type'</span>: <span class="string">'application/json; charset=utf-8'</span></span><br><span class="line">        &#125;);</span><br><span class="line">        res.end(<span class="built_in">JSON</span>.stringify(data));</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> next();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="获取最近情报">获取最近情报</h2><p>通过路由<code>/api/v1/recent</code>的post请求获取最近的情报。我们限制从数据库读取的情报不超过5条，并且按发布时间进行选取最新的消息，值得注意的是我们在发送之前将likes数组置为了空，并增加了likeCount属性，避免占用过多的带宽。</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//get recent posts</span></span><br><span class="line">server.<span class="literal">get</span>(<span class="string">"/api/v1/recent"</span>, function(req, res, next) &#123;</span><br><span class="line">  validateRequest.validate(req, res, <span class="keyword">db</span>, function() &#123;</span><br><span class="line">    <span class="keyword">db</span>.postList.find(&#123;&#125;).<span class="keyword">sort</span>(&#123;createDate:-1&#125;).limit(5, function(<span class="keyword">err</span>, <span class="keyword">list</span>) &#123;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">var</span> i=0,<span class="keyword">l</span>=<span class="keyword">list</span>.length;i&lt;<span class="keyword">l</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">var</span> <span class="keyword">post</span> = <span class="keyword">list</span>[i];</span><br><span class="line">        <span class="keyword">post</span>.likesCount = <span class="keyword">post</span>.likes.length;</span><br><span class="line">        <span class="comment">//remove likes to make small package size</span></span><br><span class="line">        <span class="keyword">post</span>.likes = undefined;</span><br><span class="line">      &#125;</span><br><span class="line">      res.writeHead(200, &#123;</span><br><span class="line">        'Content-<span class="keyword">Type</span>': 'application/json; charset=utf-8'</span><br><span class="line">      &#125;);</span><br><span class="line">      res.end(JSON.stringify(<span class="keyword">list</span>));</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> next();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="获取所有情报">获取所有情报</h2><p>通过路由<code>/api/v1/posts</code>的post请求获取所有情报。所有情报的情况和最近情报类似。</p>
+<h2 id="获取单个情报">获取单个情报</h2><p>通过路由<code>/api/v1/post/:post_id</code>的get请求获取单个情报，单个请求特殊的地方在于，单个请求有回复列表和点赞列表，因此我们首先验证用户权限获取情报信息，然后获取该情报的回复列表，然后将数据合并发包。</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//get a post</span></span><br><span class="line">server.<span class="literal">get</span>('/api/v1/<span class="keyword">post</span>/:post_id', function(req, res, next) &#123;</span><br><span class="line">  validateRequest.validate(req, res, <span class="keyword">db</span>, function() &#123;</span><br><span class="line">    <span class="keyword">var</span> postId = req.params.post_id;</span><br><span class="line">    <span class="keyword">db</span>.postList.findOne(&#123;</span><br><span class="line">      _id: <span class="keyword">db</span>.ObjectId(postId)</span><br><span class="line">    &#125;, function(<span class="keyword">err</span>, <span class="keyword">post</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span>(<span class="keyword">err</span>)&#123;</span><br><span class="line">        next(<span class="keyword">err</span>);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">db</span>.replyList.find(&#123;</span><br><span class="line">        postId: postId</span><br><span class="line">      &#125;,function(<span class="keyword">err</span>,<span class="keyword">list</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">err</span>)&#123;</span><br><span class="line">          next(<span class="keyword">err</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//console.log(list);</span></span><br><span class="line">        <span class="keyword">post</span>.replies = <span class="keyword">list</span>;</span><br><span class="line"></span><br><span class="line">      <span class="comment">//  console.log(post);</span></span><br><span class="line">        res.writeHead(200, &#123;</span><br><span class="line">          'Content-<span class="keyword">Type</span>': 'application/json; charset=utf-8'</span><br><span class="line">        &#125;);</span><br><span class="line">        res.end(JSON.stringify(<span class="keyword">post</span>));</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> next();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="情报点赞">情报点赞</h2><p>通过路由<code>/api/v1/post/:post_id/likes</code>的post请求给情报点赞。为了标示情报的受欢迎程度，我们增加了点赞功能，首先验证用户权限，然后通过post_id参数获取情报,如果情报不存在，返回错误消息，然后在情报的likes列表中寻找用户id，如果未找到用户id则为点赞，将id加入到likes列表，返回up动作,如果找到用户id则说明为取消点赞，将用户id从likes列表中移除，返回down动作。代码如下:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//like a post</span></span><br><span class="line"> server.<span class="keyword">post</span>('/api/v1/<span class="keyword">post</span>/:post_id/likes', function(req, res, next) &#123;</span><br><span class="line">   validateRequest.validate(req, res, <span class="keyword">db</span>, function(user) &#123;</span><br><span class="line">     <span class="keyword">var</span> postId = req.params.post_id;</span><br><span class="line">     <span class="keyword">var</span> userId = user.id;</span><br><span class="line">     <span class="keyword">db</span>.postList.findOne(&#123;</span><br><span class="line">       _id: <span class="keyword">db</span>.ObjectId(postId)</span><br><span class="line">     &#125;, function(<span class="keyword">err</span>, <span class="keyword">post</span>) &#123;</span><br><span class="line">       <span class="keyword">if</span> (<span class="keyword">err</span>) &#123;</span><br><span class="line">         <span class="keyword">return</span> next(<span class="keyword">err</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span> (!<span class="keyword">post</span>) &#123;</span><br><span class="line">           res.status(404);</span><br><span class="line">           <span class="keyword">return</span> res.send(&#123;error_msg: '<span class="keyword">post</span> `' + postId + '` not found'&#125;);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">var</span> action;</span><br><span class="line">       <span class="keyword">post</span>.likes = <span class="keyword">post</span>.likes || [];</span><br><span class="line">       <span class="keyword">var</span> likeIndex = <span class="keyword">post</span>.likes.indexOf(userId+<span class="string">""</span>);</span><br><span class="line">       <span class="keyword">if</span> (likeIndex === -1) &#123;</span><br><span class="line">         <span class="keyword">post</span>.likes.push(userId+<span class="string">""</span>);</span><br><span class="line">         action = 'up';</span><br><span class="line">       &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">         <span class="keyword">post</span>.likes.splice(likeIndex, 1);</span><br><span class="line">         action = 'down';</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">db</span>.postList.<span class="keyword">save</span>(<span class="keyword">post</span>, function(<span class="keyword">err</span>, data) &#123;</span><br><span class="line">         <span class="keyword">if</span>(<span class="keyword">err</span>)&#123;</span><br><span class="line">           next(<span class="keyword">err</span>);</span><br><span class="line">         &#125;</span><br><span class="line">         res.writeHead(200, &#123;</span><br><span class="line">           'Content-<span class="keyword">Type</span>': 'application/json; charset=utf-8'</span><br><span class="line">         &#125;);</span><br><span class="line">         <span class="comment">//res.status(200);</span></span><br><span class="line">         res.end(JSON.stringify(&#123;</span><br><span class="line">           action: action</span><br><span class="line">         &#125;));</span><br><span class="line">       &#125;);</span><br><span class="line">     &#125;);</span><br><span class="line">   &#125;);</span><br><span class="line">   <span class="keyword">return</span> next();</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="删除情报">删除情报</h2><p>通过路由<code>/api/v1/post/:id</code>的del消息删除一条消息，首先我们验证用户权限，然后从情报列表中删除该情报并发送成功消息。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//delete a post</span></span><br><span class="line">server.del(<span class="string">'/api/v1/post/:id'</span>, <span class="function"><span class="keyword">function</span><span class="params">(req, res, next)</span> </span>&#123;</span><br><span class="line">  validateRequest.validate(req, res, db, <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    db.postList.remove(&#123;</span><br><span class="line">      _id: db.ObjectId(req.params.id)</span><br><span class="line">    &#125;, <span class="function"><span class="keyword">function</span><span class="params">(err, data)</span> </span>&#123;</span><br><span class="line">      res.writeHead(<span class="number">200</span>, &#123;</span><br><span class="line">        <span class="string">'Content-Type'</span>: <span class="string">'application/json; charset=utf-8'</span></span><br><span class="line">      &#125;);</span><br><span class="line">      res.end(<span class="built_in">JSON</span>.stringify(data));</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> next();</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="指挥控制">指挥控制</h1><p>指挥控制包括两块，一块是给自己的直属部队长官发送直接命令，一块是给自己的直属部队发送广播消息。这一块的api放在orgnization.js和message.js文件中。</p>
+<h2 id="获取下属">获取下属</h2><p>通过路由<code>/api/v1/leaders/:groupId</code>的get消息获取。要给自己的直属部队长官发送直接命令首先要获得属于自己管理的人员列表，客户端向我们发送用户所在的组织的id，我们通过该id在组织列表中获得属于该组织的所有下属组织，然后分别查找这些下属组织的领导人，形成列表发送回来,注意将领导人的密码要置为空。代码如下：</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// get the commanders of the troops you can give an order</span></span><br><span class="line">  server.<span class="keyword">get</span>(<span class="string">"/api/v1/leaders/:groupId"</span>, <span class="function"><span class="keyword">function</span><span class="params">(req, res, next)</span> </span>&#123;</span><br><span class="line">    validateRequest.validate(req, res, db, <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">var</span> groupId = req.params.groupId;</span><br><span class="line"></span><br><span class="line">      db.orgList.find(&#123;</span><br><span class="line">        belong: groupId</span><br><span class="line">      &#125;, <span class="function"><span class="keyword">function</span><span class="params">(err, orgs)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (err) &#123;</span><br><span class="line">          next(err);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> ep = <span class="keyword">new</span> eventproxy();</span><br><span class="line"></span><br><span class="line">        ep.after(<span class="string">'getBelong'</span>, orgs.length, <span class="function"><span class="keyword">function</span><span class="params">(users)</span> </span>&#123;</span><br><span class="line">          res.writeHead(<span class="number">200</span>, &#123;</span><br><span class="line">            <span class="string">'Content-Type'</span>: <span class="string">'application/json; charset=utf-8'</span></span><br><span class="line">          &#125;);</span><br><span class="line"></span><br><span class="line">          res.end(JSON.stringify(users));</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        orgs.forEach(<span class="function"><span class="keyword">function</span><span class="params">(org)</span> </span>&#123;</span><br><span class="line">          db.userList.findOne(&#123;</span><br><span class="line">            id: org.leader</span><br><span class="line">          &#125;, <span class="function"><span class="keyword">function</span><span class="params">(err, user)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (err) &#123;</span><br><span class="line">              next(err);</span><br><span class="line">            &#125;</span><br><span class="line">            user.password = <span class="literal">undefined</span>;</span><br><span class="line">            ep.emit(<span class="string">'getBelong'</span>, user);</span><br><span class="line">          &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> next();</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="单发消息">单发消息</h2><p>通过路由<code>/api/v1/message</code>的post消息发送消息给个人。获取到下属的列表后，我们需要向他们发送消息，将发送人信息和接受者信息以及内容封装到消息对象中然后添加到消息列表中即可。代码如下:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//add a message</span></span><br><span class="line"> server.post(<span class="string">'/api/v1/message'</span>, <span class="function"><span class="keyword">function</span><span class="params">(req, res, next)</span> </span>&#123;</span><br><span class="line">   validateRequest.validate(req, res, db, <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">     <span class="keyword">var</span> message = req.params;</span><br><span class="line">     db.messageList.save(message,</span><br><span class="line">       <span class="function"><span class="keyword">function</span><span class="params">(err, data)</span> </span>&#123;</span><br><span class="line">         res.writeHead(<span class="number">200</span>, &#123;</span><br><span class="line">           <span class="string">'Content-Type'</span>: <span class="string">'application/json; charset=utf-8'</span></span><br><span class="line">         &#125;);</span><br><span class="line">         res.end(<span class="built_in">JSON</span>.stringify(data));</span><br><span class="line">       &#125;);</span><br><span class="line">   &#125;);</span><br><span class="line">   <span class="keyword">return</span> next();</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="获取下属部队">获取下属部队</h2><p>通过路由<code>/api/v1/troops/:groupId</code>的get请求获取下属部队,根据groupId查找直接属于该部队的下属部队返回即可。</p>
+<h2 id="群发消息">群发消息</h2><p>通过路由<code>/api/v1/messages</code>的post消息群发消息给下属部队。我们根据post请求中的部队id，获取所有从属于该部队的人员的列表，然后对每个人员向消息队列中插入一条信息,等所有发送完成后向客户端发送一条成功消息。代码如下:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//send messages</span></span><br><span class="line">    server.post(<span class="string">'/api/v1/messages'</span>, <span class="function"><span class="keyword">function</span><span class="params">(req, res, next)</span> </span>&#123;</span><br><span class="line">      validateRequest.validate(req, res, db, <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> message = req.params;</span><br><span class="line">        <span class="keyword">var</span> orgId = message.groupId;</span><br><span class="line">        message.groupId = <span class="literal">undefined</span>;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"get messages"</span>);</span><br><span class="line">        db.userList.find(&#123;orgs:orgId&#125;,<span class="function"><span class="keyword">function</span> <span class="params">(err,users)</span> </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(users);</span><br><span class="line">            <span class="keyword">var</span> ep = <span class="keyword">new</span> eventproxy();</span><br><span class="line"></span><br><span class="line">            ep.after(<span class="string">"message"</span>, users.length,<span class="function"><span class="keyword">function</span> <span class="params">(messages)</span> </span>&#123;</span><br><span class="line">              res.writeHead(<span class="number">200</span>, &#123;</span><br><span class="line">                <span class="string">'Content-Type'</span>: <span class="string">'application/json; charset=utf-8'</span></span><br><span class="line">              &#125;);</span><br><span class="line">              res.end(<span class="built_in">JSON</span>.stringify(&#123;success:<span class="literal">true</span>&#125;));</span><br><span class="line">            &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            users.forEach(<span class="function"><span class="keyword">function</span> <span class="params">(user)</span> </span>&#123;</span><br><span class="line">                <span class="built_in">console</span>.log(user.id);</span><br><span class="line">                <span class="keyword">var</span> singleMessage = <span class="keyword">new</span> <span class="built_in">Object</span>(&#123;&#125;);</span><br><span class="line">                singleMessage.senderName = message.senderName;</span><br><span class="line">                singleMessage.senderTitle = message.senderTitle;</span><br><span class="line">                singleMessage.senderId = message.senderId;</span><br><span class="line">                singleMessage.receiver_id = user.id;</span><br><span class="line">                singleMessage.content= message.content;</span><br><span class="line">                singleMessage.has_read= message.has_read;</span><br><span class="line">                singleMessage.createDate= message.createDate;</span><br><span class="line">                db.messageList.save(singleMessage,</span><br><span class="line">                  <span class="function"><span class="keyword">function</span><span class="params">(err, data)</span> </span>&#123;</span><br><span class="line">                    <span class="keyword">if</span>(err)&#123;</span><br><span class="line">                      <span class="built_in">console</span>.log(err);</span><br><span class="line">                      next(err);</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="built_in">console</span>.log(data);</span><br><span class="line">                    ep.emit(<span class="string">'message'</span>,data);</span><br><span class="line">                  &#125;);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">      &#125;);</span><br><span class="line">      <span class="keyword">return</span> next();</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="获取未读消息数目">获取未读消息数目</h2><p>通过路由<code>/api/v1/:user_id/messages/count</code>的get消息获取用户的未读消息数目，作为是否提示用户查看信箱的一句。我们获取参数user_id，然后根据该id从数据库的信息列表中查找接受者为该用户id并且未读的信息的数目，并将该数目返回。代码如下:</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//get count of messages unread</span></span><br><span class="line">    server.<span class="keyword">get</span>(<span class="string">"/api/v1/:user_id/messages/count"</span>, <span class="function"><span class="keyword">function</span><span class="params">(req, res, next)</span> </span>&#123;</span><br><span class="line">      validateRequest.validate(req, res, db, <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> user_id = req.params.user_id;</span><br><span class="line">        db.messageList.find(&#123;receiver_id:user_id,has_read:<span class="literal">false</span>&#125;, <span class="function"><span class="keyword">function</span><span class="params">(err, list)</span> </span>&#123;</span><br><span class="line">          <span class="keyword">var</span> count = list.length;</span><br><span class="line">          <span class="comment">// console.log(list);</span></span><br><span class="line">          res.writeHead(<span class="number">200</span>, &#123;</span><br><span class="line">            <span class="string">'Content-Type'</span>: <span class="string">'application/json; charset=utf-8'</span></span><br><span class="line">          &#125;);</span><br><span class="line">          res.end(JSON.stringify(&#123;count:count&#125;));</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;);</span><br><span class="line">      <span class="keyword">return</span> next();</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="获取所有消息">获取所有消息</h2><p>通过路由<code>/api/v1/:user_id/messages</code>的get消息获取用户所有的消息，包括已读消息和未读消息，首先根据用户user_id从信息列表中查找所有用户收到的消息,然后根据消息的已读还是未读的属性将消息区分为已读消息和未读消息，然后打包发送给客户端。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//get messages of a user</span></span><br><span class="line">    server.get(<span class="string">"/api/v1/:user_id/messages"</span>, <span class="function"><span class="keyword">function</span><span class="params">(req, res, next)</span> </span>&#123;</span><br><span class="line">      validateRequest.validate(req, res, db, <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> user_id = req.params.user_id;</span><br><span class="line">        db.messageList.find(&#123;receiver_id:user_id&#125;).sort(&#123;createDate:-<span class="number">1</span>&#125;, <span class="function"><span class="keyword">function</span><span class="params">(err, list)</span> </span>&#123;</span><br><span class="line">          <span class="keyword">if</span>(err)&#123;</span><br><span class="line">            next(err);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">var</span> messages = &#123;</span><br><span class="line">            has_read_messages: [],</span><br><span class="line">            hasnot_read_messages: []</span><br><span class="line">          &#125;;</span><br><span class="line"></span><br><span class="line">          <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>,l=<span class="keyword">list</span>.length; i&lt;l; i++)&#123;</span><br><span class="line">              <span class="keyword">var</span> message = <span class="keyword">list</span>[i];</span><br><span class="line">              <span class="keyword">if</span>(message.has_read)&#123;</span><br><span class="line">                messages.has_read_messages.push(message);</span><br><span class="line">              &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                messages.hasnot_read_messages.push(message);</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="comment">// console.log(list);</span></span><br><span class="line">          res.writeHead(<span class="number">200</span>, &#123;</span><br><span class="line">            <span class="string">'Content-Type'</span>: <span class="string">'application/json; charset=utf-8'</span></span><br><span class="line">          &#125;);</span><br><span class="line">          res.end(JSON.stringify(messages));</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;);</span><br><span class="line">      <span class="keyword">return</span> next();</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="标记所有未读消息">标记所有未读消息</h2><p>通过路由<code>/api/v1/:user_id/messages/mark</code>的post消息将所有的未读消息标记为已读。通过user_id获取所有属于该用户的未读消息，然后将所有消息的已读属性标记为true，再存入到消息列表中去。过程和获取消息类似。</p>
+<h1 id="生成静态文件">生成静态文件</h1><p>本应用的静态文件主要是将markdown文件转成HTML文件。在军事训练，教育管理，国防动员的内容中几乎都是静态文件，但我们需要让这些静态文件有一定的格式表示出来，因此我们用markdown文档格式化文件，然后将他们编译成HTML文件，在客户端显示。于是我们需要一个可以帮助我们编译markdown的工具，在github上找到markx这个nodejs命令行工具，该工具能够在命令行中将markdown文件转成html文件，但一次只能转换一篇，于是我们利用bash命令首先寻找文件夹下的所有markdown文件然后将他们用markx转换成html文件，然后将他们以原文件命名。最终的命令如下:</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find . -name <span class="string">"*.md"</span> -<span class="typedef"><span class="keyword">type</span> f -exec sh -c 'mclmarkx "$<span class="container">&#123;0&#125;</span>" &gt; "$<span class="container">&#123;0%.<span class="title">md</span>&#125;</span>.html"' <span class="container">&#123;&#125;</span> \;</span></span><br></pre></td></tr></table></figure>
+<h1 id="文档标题居中">文档标题居中</h1><p>另外还有一个需求是所有html列表的标题必须居中，markdown的作用是生成html页面结构，并没有效果选项，因此默认是无法进行居中的，一个简单的方式是用手工方式为每个标题添加<code>style=&quot;text-align:center&quot;</code>属性，但耗时耗力，遇到新的文档还得继续手动加，不是好的解决方案，最后我们通过修改markx的源码解决该问题。<br>markx也是一个nodejs包,基本的想法是找到markx中对<code># ## ### #### ##### #######</code>即标题标记的解析代码，然后在解析代码的时候添加文本居中属性。通过阅读markx的源码，我们发现它依赖一个marked的nodejs包，这个包专门用来解析markdown文件，而在marked的lib文件夹下的marked.js文件具体负责解析。在该文件中找到heading这一项，在解析时加入style属性,如下面的代码所示:</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> <span class="string">'heading'</span>: &#123;</span><br><span class="line">     <span class="keyword">return</span> <span class="string">'&lt;h'</span></span><br><span class="line">       + token.depth</span><br><span class="line">       + <span class="string">' style="text-align:center"'</span></span><br><span class="line">       + <span class="string">'&gt;'</span></span><br><span class="line">       + <span class="keyword">inline</span>.lexer(token.text)</span><br><span class="line">       + <span class="string">'&lt;/h'</span></span><br><span class="line">       + token.depth</span><br><span class="line">       + <span class="string">'&gt;\n'</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>保存后，再调用markx就能够进行标题居中了。</p>
+<h1 id="添加静态文件支持">添加静态文件支持</h1><p>在restify中添加静态文件的支持十分方便。</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">server</span><span class="class">.get</span>(/\/docs\/?.*/, restify.<span class="function">serveStatic</span>(&#123;</span><br><span class="line">  <span class="attribute">directory</span>: <span class="string">'./assets/v1'</span>,</span><br><span class="line">  <span class="attribute">default</span>: <span class="string">'index.html'</span></span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line"><span class="tag">server</span><span class="class">.get</span>(/\/apks\/?.*/, restify.<span class="function">serveStatic</span>(&#123;</span><br><span class="line">  <span class="attribute">directory</span>: <span class="string">'./assets/v1'</span>,</span><br><span class="line">  <span class="attribute">default</span>: <span class="string">'index.html'</span></span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
+<p>通过该设置后我们就能通过url下载相应的文档了。例如我们想获得assets-&gt;v1-&gt;docs-&gt;train-&gt;notifications-&gt;train-notice.html文件，那么相应的url路径为localhost:3000/docs/train/notifications/train-notice.html。</p>
+<h1 id="数据生成">数据生成</h1><p>本APP因为和部队相关，因此不开放用户注册功能，因此需要编写脚本产生用户的数据。需要生成的数据包括用户的个人信息，以及组织的信息。</p>
+<h2 id="个人信息">个人信息</h2><p>个人信息包括id号，姓名，官职，组织列表，密码等信息.一个模拟的人员列表如下:</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var userList= [</span><br><span class="line">  &#123;<span class="string">id:</span> <span class="string">"00000000"</span>, <span class="string">name :</span> <span class="string">"A"</span>, <span class="string">title:</span> <span class="string">"营长"</span>, <span class="string">isLeader:</span> <span class="literal">true</span>,  <span class="string">belong:</span> <span class="string">"1"</span>, <span class="string">password:</span> <span class="string">"123"</span>,<span class="string">orgs:</span> []&#125;,</span><br><span class="line">  &#123;<span class="string">id:</span> <span class="string">"00000001"</span>, <span class="string">name :</span> <span class="string">"B"</span>, <span class="string">title:</span> <span class="string">"连长"</span>, <span class="string">isLeader:</span> <span class="literal">true</span>,  <span class="string">belong:</span> <span class="string">"2"</span>, <span class="string">password:</span> <span class="string">"123"</span>,<span class="string">orgs:</span> []&#125;,</span><br><span class="line">  &#123;<span class="string">id:</span> <span class="string">"00000002"</span>, <span class="string">name :</span> <span class="string">"C"</span>, <span class="string">title:</span> <span class="string">"排长"</span>, <span class="string">isLeader:</span> <span class="literal">true</span>,  <span class="string">belong:</span> <span class="string">"3"</span>, <span class="string">password:</span> <span class="string">"123"</span>,<span class="string">orgs:</span> []&#125;,</span><br><span class="line">  &#123;<span class="string">id:</span> <span class="string">"00000003"</span>, <span class="string">name :</span> <span class="string">"D"</span>, <span class="string">title:</span> <span class="string">"班长"</span>, <span class="string">isLeader:</span> <span class="literal">true</span>,  <span class="string">belong:</span> <span class="string">"4"</span>, <span class="string">password:</span> <span class="string">"123"</span>,<span class="string">orgs:</span> []&#125;,</span><br><span class="line">  &#123;<span class="string">id:</span> <span class="string">"00000004"</span>, <span class="string">name :</span> <span class="string">"E"</span>, <span class="string">title:</span> <span class="string">"士兵"</span>, <span class="string">isLeader:</span> <span class="literal">false</span>, <span class="string">belong:</span> <span class="string">"4"</span>, <span class="string">password:</span> <span class="string">"123"</span>,<span class="string">orgs:</span> []&#125;,</span><br><span class="line">  &#123;<span class="string">id:</span> <span class="string">"00000005"</span>, <span class="string">name :</span> <span class="string">"F"</span>, <span class="string">title:</span> <span class="string">"士兵"</span>, <span class="string">isLeader:</span> <span class="literal">false</span>, <span class="string">belong:</span> <span class="string">"4"</span>, <span class="string">password:</span> <span class="string">"123"</span>,<span class="string">orgs:</span> []&#125;,</span><br><span class="line">  &#123;<span class="string">id:</span> <span class="string">"00000006"</span>, <span class="string">name :</span> <span class="string">"G"</span>, <span class="string">title:</span> <span class="string">"士兵"</span>, <span class="string">isLeader:</span> <span class="literal">false</span>, <span class="string">belong:</span> <span class="string">"4"</span>, <span class="string">password:</span> <span class="string">"123"</span>,<span class="string">orgs:</span> []&#125;,</span><br><span class="line">  &#123;<span class="string">id:</span> <span class="string">"00000007"</span>, <span class="string">name :</span> <span class="string">"H"</span>, <span class="string">title:</span> <span class="string">"连长"</span>, <span class="string">isLeader:</span> <span class="literal">true</span>,  <span class="string">belong:</span> <span class="string">"5"</span>, <span class="string">password:</span> <span class="string">"123"</span>,<span class="string">orgs:</span> []&#125;,</span><br><span class="line">  &#123;<span class="string">id:</span> <span class="string">"00000008"</span>, <span class="string">name :</span> <span class="string">"I"</span>, <span class="string">title:</span> <span class="string">"排长"</span>, <span class="string">isLeader:</span> <span class="literal">true</span>,  <span class="string">belong:</span> <span class="string">"6"</span>, <span class="string">password:</span> <span class="string">"123"</span>,<span class="string">orgs:</span> []&#125;,</span><br><span class="line">  &#123;<span class="string">id:</span> <span class="string">"00000009"</span>, <span class="string">name :</span> <span class="string">"J"</span>, <span class="string">title:</span> <span class="string">"班长"</span>, <span class="string">isLeader:</span> <span class="literal">true</span>,  <span class="string">belong:</span> <span class="string">"7"</span>, <span class="string">password:</span> <span class="string">"123"</span>,<span class="string">orgs:</span> []&#125;,</span><br><span class="line">  &#123;<span class="string">id:</span> <span class="string">"00000010"</span>, <span class="string">name :</span> <span class="string">"K"</span>, <span class="string">title:</span> <span class="string">"士兵"</span>, <span class="string">isLeader:</span> <span class="literal">false</span>, <span class="string">belong:</span> <span class="string">"7"</span>, <span class="string">password:</span> <span class="string">"123"</span>,<span class="string">orgs:</span> []&#125;,</span><br><span class="line">  &#123;<span class="string">id:</span> <span class="string">"00000011"</span>, <span class="string">name :</span> <span class="string">"L"</span>, <span class="string">title:</span> <span class="string">"士兵"</span>, <span class="string">isLeader:</span> <span class="literal">false</span>, <span class="string">belong:</span> <span class="string">"7"</span>, <span class="string">password:</span> <span class="string">"123"</span>,<span class="string">orgs:</span> []&#125;,</span><br><span class="line">  &#123;<span class="string">id:</span> <span class="string">"00000012"</span>, <span class="string">name :</span> <span class="string">"M"</span>, <span class="string">title:</span> <span class="string">"士兵"</span>, <span class="string">isLeader:</span> <span class="literal">false</span>, <span class="string">belong:</span> <span class="string">"7"</span>, <span class="string">password:</span> <span class="string">"123"</span>,<span class="string">orgs:</span> []&#125;,</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<p>脚本主要逻辑如下:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span><br><span class="line"> insert people to orgnizations</span><br><span class="line">*/</span></span><br><span class="line">  db.userList.remove(&#123;&#125;, <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">      db.userList.insert(userList,<span class="function"><span class="keyword">function</span><span class="params">(err,results)</span></span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(results);</span><br><span class="line">        db.close();</span><br><span class="line">      &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="组织信息">组织信息</h2><p>组织的信息包括组织id，名称，直接组织，组织列表等，一个模拟的组织关系如下:</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var orgsList = [</span><br><span class="line">  &#123;<span class="string">id:</span> <span class="string">"1"</span>, <span class="string">name:</span> <span class="string">"2营"</span>,   <span class="string">belong:</span> <span class="literal">null</span>, <span class="string">leader:</span> <span class="string">"00000000"</span>,<span class="string">orgs:</span>[<span class="string">"1"</span>]&#125;,</span><br><span class="line">  &#123;<span class="string">id:</span> <span class="string">"2"</span>, <span class="string">name:</span> <span class="string">"172连"</span>, <span class="string">belong:</span> <span class="string">"1"</span>,  <span class="string">leader:</span> <span class="string">"00000001"</span>,<span class="string">orgs:</span>[<span class="string">"2"</span>,<span class="string">"1"</span>]&#125;,</span><br><span class="line">  &#123;<span class="string">id:</span> <span class="string">"3"</span>, <span class="string">name:</span> <span class="string">"112排"</span>, <span class="string">belong:</span> <span class="string">"2"</span>,  <span class="string">leader:</span> <span class="string">"00000002"</span>,<span class="string">orgs:</span>[<span class="string">"3"</span>,<span class="string">"2"</span>,<span class="string">"1"</span>]&#125;,</span><br><span class="line">  &#123;<span class="string">id:</span> <span class="string">"4"</span>, <span class="string">name:</span> <span class="string">"12班"</span>,  <span class="string">belong:</span> <span class="string">"3"</span>,  <span class="string">leader:</span> <span class="string">"00000003"</span>,<span class="string">orgs:</span>[<span class="string">"4"</span>,<span class="string">"3"</span>,<span class="string">"2"</span>,<span class="string">"1"</span>]&#125;,</span><br><span class="line">  &#123;<span class="string">id:</span> <span class="string">"5"</span>, <span class="string">name:</span> <span class="string">"177连"</span>, <span class="string">belong:</span> <span class="string">"1"</span>,  <span class="string">leader:</span> <span class="string">"00000007"</span>,<span class="string">orgs:</span>[<span class="string">"5"</span>,<span class="string">"1"</span>]&#125;,</span><br><span class="line">  &#123;<span class="string">id:</span> <span class="string">"6"</span>, <span class="string">name:</span> <span class="string">"107排"</span>, <span class="string">belong:</span> <span class="string">"5"</span>,  <span class="string">leader:</span> <span class="string">"00000008"</span>,<span class="string">orgs:</span>[<span class="string">"6"</span>,<span class="string">"5"</span>,<span class="string">"1"</span>]&#125;,</span><br><span class="line">  &#123;<span class="string">id:</span> <span class="string">"7"</span>, <span class="string">name:</span> <span class="string">"19班"</span>,  <span class="string">belong:</span> <span class="string">"6"</span>,  <span class="string">leader:</span> <span class="string">"00000009"</span>,<span class="string">orgs:</span>[<span class="string">"7"</span>,<span class="string">"6"</span>,<span class="string">"5"</span>,<span class="string">"1"</span>]&#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<p>相应的插入组织的代码如下:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span><br><span class="line"> insert  orgnizations</span><br><span class="line">*/</span></span><br><span class="line">  db.orgList.remove(&#123;&#125;, <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">      db.orgList.insert(orgsList,<span class="function"><span class="keyword">function</span><span class="params">(err,results)</span></span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(results);</span><br><span class="line">        db.close();</span><br><span class="line">      &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="个人和组织的连接操作">个人和组织的连接操作</h2><p>为了防止过多的查表操作，我们将个人和组织的信息进行联接操作，扩充用户的个人信息。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ep  = <span class="keyword">new</span> eventproxy();</span><br><span class="line">db.userList.find(&#123;&#125;,<span class="function"><span class="keyword">function</span> <span class="params">(err,list)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  ep.after(<span class="string">'insert'</span>,<span class="keyword">list</span>.length, <span class="function"><span class="keyword">function</span> <span class="params">(results)</span> </span>&#123;</span><br><span class="line">      console.log(results);</span><br><span class="line">      db.close();</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">list</span>.<span class="keyword">forEach</span>(<span class="function"><span class="keyword">function</span> <span class="params">(user)</span> </span>&#123;</span><br><span class="line">      db.orgList.findOne(&#123;id:user.belong&#125;,<span class="function"><span class="keyword">function</span> <span class="params">(err,org)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">          db.userList.findAndModify(&#123;</span><br><span class="line">              query: &#123; id:user.id &#125;,</span><br><span class="line">              update: &#123; <span class="variable">$set</span>: &#123; orgs:org.orgs&#125; &#125;,</span><br><span class="line">              <span class="keyword">new</span>: <span class="keyword">true</span></span><br><span class="line">          &#125;, <span class="function"><span class="keyword">function</span> <span class="params">(err, doc)</span> </span>&#123;</span><br><span class="line">              console.log(doc);</span><br><span class="line">              ep.emit(<span class="string">'insert'</span>,doc);</span><br><span class="line">          &#125;);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ionic/"> #ionic </a>
+          
+            <a href="/tags/mongodb/"> #mongodb </a>
+          
+            <a href="/tags/nodejs/"> #nodejs </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/11/28/ionic-app-3/">Ionic+Nodejs+Mongod开发端到端混合应用系列教程四 - 客户端实现</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+
+    
+      <div class="comments" id="comments">
+        
+          <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+
+        
+      </div>
+
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="https://avatars0.githubusercontent.com/u/4705237?v=3&u=cf53fa292cbafba8a53cfb1feda077c5abced98f&s=140" alt="LinChen" />
+          <p class="site-author-name">LinChen</p>
+        </div>
+        <p class="site-description motion-element">操千曲而后晓声，观千剑而后识器</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">47</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">37</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/rdmclin2" target="_blank">GitHub</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://twitter.com/rdmclin2" target="_blank">Twitter</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://weibo.com/1842914013/profile?topnav=1&wvr=6" target="_blank">Weibo</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.douban.com/people/50750460/" target="_blank">DouBan</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.zhihu.com/people/mengcl" target="_blank">ZhiHu</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name"></p>
+            
+              <span class="links-of-author-item">
+              <a href="http://chuan92.com" target="_blank">chuan92</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://chepeatio.github.io" target="_blank">chepeatio</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://andrewliu.in" target="_blank">andrewliu</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://liutianchi.com" target="_blank">liutianchi</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://cshuo.xyz/" target="_blank">cshuo</a>
+              </span>
+            
+          
+        </div>
+        
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#工程文件结构"><span class="nav-number">1.</span> <span class="nav-text">工程文件结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用npm命令创建package-json文件"><span class="nav-number">2.</span> <span class="nav-text">使用npm命令创建package.json文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用Restify创建服务器"><span class="nav-number">3.</span> <span class="nav-text">使用Restify创建服务器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置插件"><span class="nav-number">4.</span> <span class="nav-text">配置插件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#连接Mongodb"><span class="nav-number">5.</span> <span class="nav-text">连接Mongodb</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#中间件"><span class="nav-number">6.</span> <span class="nav-text">中间件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#密码管理"><span class="nav-number">6.1.</span> <span class="nav-text">密码管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证请求"><span class="nav-number">6.2.</span> <span class="nav-text">验证请求</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#路由请求"><span class="nav-number">7.</span> <span class="nav-text">路由请求</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#用户数据"><span class="nav-number">7.1.</span> <span class="nav-text">用户数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户注册"><span class="nav-number">7.2.</span> <span class="nav-text">用户注册</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户登录"><span class="nav-number">7.3.</span> <span class="nav-text">用户登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取用户详细信息"><span class="nav-number">7.4.</span> <span class="nav-text">获取用户详细信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证密码"><span class="nav-number">7.5.</span> <span class="nav-text">验证密码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改密码"><span class="nav-number">7.6.</span> <span class="nav-text">修改密码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#情报信息"><span class="nav-number">8.</span> <span class="nav-text">情报信息</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#增加情报"><span class="nav-number">8.1.</span> <span class="nav-text">增加情报</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取最近情报"><span class="nav-number">8.2.</span> <span class="nav-text">获取最近情报</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取所有情报"><span class="nav-number">8.3.</span> <span class="nav-text">获取所有情报</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取单个情报"><span class="nav-number">8.4.</span> <span class="nav-text">获取单个情报</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#情报点赞"><span class="nav-number">8.5.</span> <span class="nav-text">情报点赞</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除情报"><span class="nav-number">8.6.</span> <span class="nav-text">删除情报</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#指挥控制"><span class="nav-number">9.</span> <span class="nav-text">指挥控制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#获取下属"><span class="nav-number">9.1.</span> <span class="nav-text">获取下属</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单发消息"><span class="nav-number">9.2.</span> <span class="nav-text">单发消息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取下属部队"><span class="nav-number">9.3.</span> <span class="nav-text">获取下属部队</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#群发消息"><span class="nav-number">9.4.</span> <span class="nav-text">群发消息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取未读消息数目"><span class="nav-number">9.5.</span> <span class="nav-text">获取未读消息数目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取所有消息"><span class="nav-number">9.6.</span> <span class="nav-text">获取所有消息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标记所有未读消息"><span class="nav-number">9.7.</span> <span class="nav-text">标记所有未读消息</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生成静态文件"><span class="nav-number">10.</span> <span class="nav-text">生成静态文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文档标题居中"><span class="nav-number">11.</span> <span class="nav-text">文档标题居中</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#添加静态文件支持"><span class="nav-number">12.</span> <span class="nav-text">添加静态文件支持</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据生成"><span class="nav-number">13.</span> <span class="nav-text">数据生成</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#个人信息"><span class="nav-number">13.1.</span> <span class="nav-text">个人信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组织信息"><span class="nav-number">13.2.</span> <span class="nav-text">组织信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#个人和组织的连接操作"><span class="nav-number">13.3.</span> <span class="nav-text">个人和组织的连接操作</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp;  2014 - 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">LinChen</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
+
+
+
+  <script type="text/javascript" src="/js/search-toggle.js"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.3" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if (isDesktop() && CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    });
+  </script>
+
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+
+  
+  
+  
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'mcl';
+      var disqus_identifier = '2015/11/28/ionic-app-4/';
+      var disqus_title = 'Ionic+Nodejs+Mongod开发端到端混合应用系列教程五 - 服务器端实现';
+      var disqus_url = 'http://www.mclspace.com/2015/11/28/ionic-app-4/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+
+</body>
+</html>

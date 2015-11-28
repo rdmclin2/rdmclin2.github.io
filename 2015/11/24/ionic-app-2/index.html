@@ -59,7 +59,7 @@
 
 
 
-  <title> Ionic App系列教程一 - 整体架构 // Mcl's space </title>
+  <title> Ionic+Nodejs+Mongod开发端到端混合应用系列教程三 - 整体架构 // Mcl's space </title>
 </head>
 
 <body>
@@ -180,7 +180,7 @@
           
           
             
-              Ionic App系列教程一 - 整体架构
+              Ionic+Nodejs+Mongod开发端到端混合应用系列教程三 - 整体架构
             
           
         </h1>
@@ -225,6 +225,8 @@
       
         <blockquote>
 <p>本篇为Ionic App 系列教程的整体架构部分，描述该应用的整体运行流程以及功能设计。</p>
+<p>我已经把项目文件整理起来放到<a href="https://github.com/rdmclin2/fcws" target="_blank" rel="external">github</a>上了，供大家参考。</p>
+<p>注意该教程还使用的老的rest api设计，新的api设计参考<a href="http://mclspace.com/2015/11/18/fcws-api-doc/" target="_blank" rel="external">凤城卫士API文档</a>以及<a href="http://mclspace.com/2015/11/03/restful-note/" target="_blank" rel="external">Restful API浅析 之设计原则与案例修正</a></p>
 </blockquote>
 <a id="more"></a>
 <h2 id="软件整体架构">软件整体架构</h2><p><img src="http://7pun7p.com1.z0.glb.clouddn.com/hexo/structure.png" alt=""><br>软件的整体架构如上图所示，客户端部分我们使用Ionic框架，用HTML+CSS编写界面部分，用JS编写交互。<br>服务器端我们使用Nodejs框架，使用Restify模块编写REST服务器，为每一个业务层编写相应的CRUD(Creat,Read,Update,Delete)接口。并使用Mongodb作为数据库存储非结构化数据，mongojs为服务器与数据库交互的驱动。</p>
@@ -279,11 +281,13 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2015/11/28/ionic-app-3/">Ionic+Nodejs+Mongod开发端到端混合应用系列教程四 - 客户端实现</a>
+            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/11/23/ionic-app-1/">Ionic App系列教程二 - Nodejs+Ionic+Mongodb+Docker技术综述</a>
+              <a href="/2015/11/23/ionic-app-1/">Ionic+Nodejs+Mongod开发端到端混合应用系列教程二 - Nodejs+Ionic+Mongodb+Docker技术综述</a>
             
           </div>
         </div>
@@ -374,14 +378,14 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">45</span>
+              <span class="site-state-item-count">47</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">分类</span>
               
           </div>
@@ -693,7 +697,7 @@
     <script type="text/javascript">
       var disqus_shortname = 'mcl';
       var disqus_identifier = '2015/11/24/ionic-app-2/';
-      var disqus_title = 'Ionic App系列教程一 - 整体架构';
+      var disqus_title = 'Ionic+Nodejs+Mongod开发端到端混合应用系列教程三 - 整体架构';
       var disqus_url = 'http://www.mclspace.com/2015/11/24/ionic-app-2/';
 
       function run_disqus_script(disqus_script){
