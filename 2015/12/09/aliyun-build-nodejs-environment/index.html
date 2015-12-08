@@ -26,7 +26,7 @@
 
 
 
-  <meta name="keywords" content="ionic,sass," />
+  <meta name="keywords" content="nodejs,vps," />
 
 
 
@@ -59,7 +59,7 @@
 
 
 
-  <title> ionic开发之使用sass // Mcl's space </title>
+  <title> 在阿里云上搭建Nodejs开发环境 // Mcl's space </title>
 </head>
 
 <body>
@@ -180,7 +180,7 @@
           
           
             
-              ionic开发之使用sass
+              在阿里云上搭建Nodejs开发环境
             
           
         </h1>
@@ -188,14 +188,14 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 Sep 28 2015
+          发表于 Dec 9 2015
         </span>
 
         
           <span class="post-category">
             &nbsp; | &nbsp; 分类于
             
-              <a href="/categories/ionic/">ionic</a>
+              <a href="/categories/nodejs/">nodejs</a>
 
               
               
@@ -208,8 +208,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/09/28/ionic-develop-sass/#comments" >
-              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/09/28/ionic-develop-sass/"></span>
+            <a href="/2015/12/09/aliyun-build-nodejs-environment/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/12/09/aliyun-build-nodejs-environment/"></span>
             </a>
           </span>
           
@@ -224,23 +224,38 @@
 
       
         <blockquote>
-<p>sass 是一个css的预编译器，常见的预编译器有less,sass,stylus等，目前sass似乎更受青睐一些，bootstrap的最新版本以及ionic 都是用sass来构建页面效果的。这篇文章讲解如何在ionic工程使用sass，以及浅层次的分析一下ionic是如何构建sass代码的。</p>
+<p>本机环境为ubuntu 14.04,搭建过程包括安装Nvm &amp; Nodejs，安装Mongodb，配置git以及导入工程并启动服务器。</p>
 </blockquote>
 <a id="more"></a>
-<h2 id="使用Sass">使用Sass</h2><p>在工程文件夹中输入如下命令<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>ionic setup sass</span><br></pre></td></tr></table></figure></p>
-<p>这一步为我们的工程添加sass支持,之后我们可以在<code>./scss/ionic.app.scss</code>编写css代码。如果安装有问题，尝试调整node 版本，我使用4.1版本的node出错，切回0.12.7成功.</p>
-<p>下面尝试使用sass改变页面效果,下面改变默认的positive颜色效果,以及增加$big-bg变量，代表背景，然后添加.scroll-bg类，为滚动页面添加背景图片,以下为<code>./scss/ionic.app.scss</code>中的代码，注意，自定义的效果添加在最后一行加载ionic库之前。<br><figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">To customize the look and feel of Ionic, you can override the variables</span><br><span class="line"><span class="keyword">in</span> ionic's _variables.scss file.</span><br><span class="line"></span><br><span class="line">For example, you might change some of the <span class="keyword">default</span> colors:</span><br><span class="line"></span><br><span class="line"><span class="variable">$light</span>:                           <span class="comment">#fff !default;</span></span><br><span class="line"><span class="variable">$stable</span>:                          <span class="comment">#f8f8f8 !default;</span></span><br><span class="line"><span class="variable">$positive</span>:                        <span class="comment">#387ef5 !default;</span></span><br><span class="line"><span class="variable">$calm</span>:                            <span class="comment">#11c1f3 !default;</span></span><br><span class="line"><span class="variable">$balanced</span>:                        <span class="comment">#33cd5f !default;</span></span><br><span class="line"><span class="variable">$energized</span>:                       <span class="comment">#ffc900 !default;</span></span><br><span class="line"><span class="variable">$assertive</span>:                       <span class="comment">#ef473a !default;</span></span><br><span class="line"><span class="variable">$royal</span>:                           <span class="comment">#886aea !default;</span></span><br><span class="line"><span class="variable">$dark</span>:                            <span class="comment">#444 !default;</span></span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">// The path <span class="keyword">for</span> our ionicons font files, relative <span class="keyword">to</span> the built CSS <span class="keyword">in</span> www/css</span><br><span class="line"><span class="variable">$ionicons</span>-font-path: <span class="string">"../lib/ionic/fonts"</span> !<span class="keyword">default</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$positive</span>:    <span class="comment">#057b6c !default;</span></span><br><span class="line"><span class="variable">$big</span>-bg:      'http://ioniconf.com/img/bg.jpg';</span><br><span class="line"></span><br><span class="line">.scroll-bg &#123;</span><br><span class="line">  background: url(<span class="variable">$big</span>-bg) no-repeat center center fixed;</span><br><span class="line">  background-size: cover;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Include <span class="literal">all</span> of Ionic</span><br><span class="line">@import <span class="string">"www/lib/ionic/scss/ionic"</span>;</span><br></pre></td></tr></table></figure></p>
-<p>然后对应的html代码:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">ion-view</span> <span class="attribute">view-title</span>=<span class="value">"Search"</span> &gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">ion-content</span> <span class="attribute">class</span>=<span class="value">"padding scroll-bg"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">h1</span> <span class="attribute">class</span>=<span class="value">"positive"</span>&gt;</span>Search<span class="tag">&lt;/<span class="title">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">ion-content</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">ion-view</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>效果如下:<br><img src="http://7pun7p.com1.z0.glb.clouddn.com/hexo/Slice%201.png" alt=""></p>
-<h2 id="sass代码构建过程">sass代码构建过程</h2><p>ionic 使用<a href="http://gulpjs.com" target="_blank" rel="external">gulp</a>这个构建工具来预编译sass，我们输入setup sass命令的时候ionic会添加gulp-sass等gulp插件，然后在ionic.project文件中添加”gulpStartupTasks”项,在启动的时候增加gulp任务,sass和watch。<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "<span class="attribute">name</span>": <span class="value"><span class="string">"express_client"</span></span>,</span><br><span class="line">  "<span class="attribute">app_id</span>": <span class="value"><span class="string">""</span></span>,</span><br><span class="line">  "<span class="attribute">gulpStartupTasks</span>": <span class="value">[</span><br><span class="line">    <span class="string">"sass"</span>,</span><br><span class="line">    <span class="string">"watch"</span></span><br><span class="line">  ]</span>,</span><br><span class="line">  "<span class="attribute">watchPatterns</span>": <span class="value">[</span><br><span class="line">    <span class="string">"www/**/*"</span>,</span><br><span class="line">    <span class="string">"!www/lib/**/*"</span></span><br><span class="line">  ]</span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure></p>
-<p>这两个任务一个是用来编译sass文件，一个是用来监控sass文件，一有改动就重新编译，以适配liveload，下面是gulpfile.js的有关配置<br><figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> paths = <span class="comment">&#123;</span><br><span class="line">  sass: ['./scss/**/*.scss']</span><br><span class="line">&#125;</span>;</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'default'</span>, [<span class="string">'sass'</span>]);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'sass'</span>, <span class="function"><span class="keyword">function</span><span class="params">(done)</span> <span class="comment">&#123;</span><br><span class="line">  gulp.src('./scss/ionic.app.scss')</span><br><span class="line">    .pipe(sass(&#123;</span><br><span class="line">      errLogToConsole: true</span><br><span class="line">    &#125;</span>))</span><br><span class="line">    .<span class="title">pipe</span><span class="params">(gulp.dest(<span class="string">'./www/css/'</span>)</span>)</span><br><span class="line">    .<span class="title">pipe</span><span class="params">(minifyCss(&#123;</span><br><span class="line">      keepSpecialComments: 0</span><br><span class="line">    &#125;)</span>)</span><br><span class="line">    .<span class="title">pipe</span><span class="params">(rename(&#123; extname: <span class="string">'.min.css'</span> &#125;)</span>)</span><br><span class="line">    .<span class="title">pipe</span><span class="params">(gulp.dest(<span class="string">'./www/css/'</span>)</span>)</span><br><span class="line">    .<span class="title">on</span><span class="params">(<span class="string">'end'</span>, done)</span>;</span></span><br><span class="line">&#125;);</span><br><span class="line">gulp.task(<span class="string">'watch'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> <span class="comment">&#123;</span><br><span class="line">  gulp.watch(paths.sass, ['sass']);</span><br><span class="line">&#125;</span>);</span></span><br></pre></td></tr></table></figure></p>
-<p>可以看到sass任务会将源文件为’./scss/ionic.app.scss’的代码用sass插件编译之后写入到’./www/css/‘文件夹中(ionic.app.css)，然后再将该文件用minifyCss插件进行最小化,重命名为ionic.app.min.css,然后写入到<code>./www/css/</code>中。<br>最后，在www/index.html会加载该css:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- compiled css output --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">link</span> <span class="attribute">href</span>=<span class="value">"css/ionic.app.css"</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>在我们输入ionic serve 命令的时候也会开启gulp任务，修改ionic.app.scss文件会实时编译，然后体现到浏览器中。</p>
-<h2 id="参考">参考</h2><ul>
-<li><a href="http://ionicframework.com/docs/cli/sass.html" target="_blank" rel="external">官网</a></li>
-<li><a href="http://learn.ionicframework.com/formulas/working-with-sass/" target="_blank" rel="external">learnsite</a></li>
-</ul>
-
+<h1 id="安装Nvm_&amp;_Nodejs">安装Nvm &amp; Nodejs</h1><p>首先更新阿里云的apt-get库<br><figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ apt-<span class="built_in">get</span> <span class="keyword">update</span></span><br></pre></td></tr></table></figure></p>
+<p>然后安装curl工具<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ apt-<span class="keyword">get</span> insrall curl</span><br></pre></td></tr></table></figure></p>
+<p>安装<a href="https://github.com/creationix/nvm" target="_blank" rel="external">nvm</a>包管理工具<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>curl -o- <span class="symbol">https:</span>/<span class="regexp">/raw.githubusercontent.com/creationix</span><span class="regexp">/nvm/v</span><span class="number">0</span>.<span class="number">29.0</span>/install.sh | bash</span><br></pre></td></tr></table></figure></p>
+<p>退出该终端重新进入让环境变量起作用,或者使用source命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">source</span> .bashrc</span><br></pre></td></tr></table></figure></p>
+<p>安装4.2(LTS)版本的Nodejs<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nvm <span class="keyword">install</span> <span class="number">4.2</span></span><br></pre></td></tr></table></figure></p>
+<p>使用4.2版本<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>nvm <span class="keyword">use</span> <span class="number">4.2</span></span><br></pre></td></tr></table></figure></p>
+<p>设置默认node版本为4.2<br><figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$nvm</span> <span class="keyword">alias</span> <span class="keyword">default</span> <span class="number">4.2</span></span><br></pre></td></tr></table></figure></p>
+<p>安装nodejs的时候会自动将npm安装好，设置npm源为国内淘宝源,国外源太慢<br><figure class="highlight tcl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm config <span class="keyword">set</span> <span class="keyword">registry</span> https://<span class="keyword">registry</span>.npm.taobao.org</span><br></pre></td></tr></table></figure></p>
+<p>安装pm2，pm2可以监控我们的服务器在后台运行，并让我们的服务器在crash掉的时候重启。（非最佳方案，后续修改）<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm <span class="keyword">install</span> pm2 -g</span><br></pre></td></tr></table></figure></p>
+<p>到这里nodejs环境就搭好了。<br>附<a href="http://pm2.keymetrics.io" target="_blank" rel="external">pm2使用命令</a><br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>pm2 start ./bin/www 启动</span><br><span class="line"><span class="variable">$ </span>pm2 monit 监控</span><br><span class="line"><span class="variable">$ </span>pm2 stop 关闭</span><br><span class="line"><span class="variable">$ </span>pm2 restart 重启</span><br><span class="line"><span class="variable">$ </span>pm2 delete 删除</span><br></pre></td></tr></table></figure></p>
+<h1 id="安装Mongodb"><a href="https://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/" target="_blank" rel="external">安装Mongodb</a></h1><p>导入mongodb公钥<br><figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">sudo</span> <span class="comment">apt</span><span class="literal">-</span><span class="comment">key</span> <span class="comment">adv</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">keyserver</span> <span class="comment">hkp://keyserver</span><span class="string">.</span><span class="comment">ubuntu</span><span class="string">.</span><span class="comment">com:80</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">recv</span> <span class="comment">7F0CEB10</span></span><br></pre></td></tr></table></figure></p>
+<p>生成mongodb列表<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> <span class="string">"deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.0 multiverse"</span> | sudo tee /etc/apt/sources.<span class="keyword">list</span>.d/mongodb-org-<span class="number">3.0</span>.<span class="keyword">list</span></span><br></pre></td></tr></table></figure></p>
+<p>更新包<br><figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> <span class="keyword">update</span></span><br></pre></td></tr></table></figure></p>
+<p>安装最新稳定版<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="keyword">get</span> install -y mongodb-org</span><br></pre></td></tr></table></figure></p>
+<p>安装完成.</p>
+<p>附启动关闭命令<br><figure class="highlight puppet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sudo <span class="keyword">service</span> mongod <span class="literal">start</span></span><br><span class="line">$ sudo <span class="keyword">service</span> mongod <span class="literal">stop</span></span><br><span class="line">$ cat /var/log/mongodb/mongod.log</span><br><span class="line">$ sudo <span class="keyword">service</span> mongod <span class="literal">restart</span></span><br></pre></td></tr></table></figure></p>
+<p>附卸载步骤<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sudo service mongod <span class="operator"><span class="keyword">stop</span></span><br><span class="line">$ sudo apt-<span class="keyword">get</span> <span class="keyword">purge</span> mongodb-org*</span><br><span class="line">$ sudo rm -r /<span class="keyword">var</span>/<span class="keyword">log</span>/mongodb</span><br><span class="line">$ sudo rm -r /<span class="keyword">var</span>/lib/mongodb</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="配置git">配置git</h1><p>安装git<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ apt-<span class="keyword">get</span> install git</span><br></pre></td></tr></table></figure></p>
+<p>产生<code>.ssh</code>文件<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>ssh-keygen</span><br></pre></td></tr></table></figure></p>
+<p>将.ssh文件夹中的id_rsa.pub中的公钥放到你的github或gitlab的key列表中。</p>
+<p>如果有gitlab配置文件参考以下步骤:<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ vim config</span><br><span class="line"><span class="preprocessor"># 写入如下信息,具体情况而定</span></span><br><span class="line">host lab.artemisprojects<span class="preprocessor">.org</span></span><br><span class="line">hostname lab.artemisprojects<span class="preprocessor">.org</span></span><br><span class="line">port <span class="number">2222</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="导入工程并启动服务器">导入工程并启动服务器</h1><p>从github或gitlab中导入工程，并切换到server目录下<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>git clone xxxx<span class="variable">@xxx</span>.git</span><br><span class="line"><span class="variable">$ </span>cd server</span><br></pre></td></tr></table></figure></p>
+<p>安装node_modules依赖<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm <span class="keyword">install</span></span><br></pre></td></tr></table></figure></p>
+<p>使用pm2启动服务器<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 <span class="operator"><span class="keyword">start</span> ./<span class="keyword">bin</span>/www</span></span><br></pre></td></tr></table></figure></p>
+<p>完成。</p>
+<!--运行初始化脚本
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>node ./bin/init_users.js</span><br><span class="line"><span class="variable">$ </span>node ./bin/init_contacts.js</span><br></pre></td></tr></table></figure>
+<p>—&gt;</p>
+-->
       
     </div>
 
@@ -248,9 +263,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ionic/"> #ionic </a>
+            <a href="/tags/nodejs/"> #nodejs </a>
           
-            <a href="/tags/sass/"> #sass </a>
+            <a href="/tags/vps/"> #vps </a>
           
         </div>
       
@@ -259,13 +274,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/15/gulp-note/">gulp 笔记</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/09/23/c-note1/">编程珠玑课后习题 第一章</a>
+              <a href="/2015/12/03/flash-note/">Express中connect-flash的使用</a>
             
           </div>
         </div>
@@ -449,7 +462,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Sass"><span class="nav-number">1.</span> <span class="nav-text">使用Sass</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sass代码构建过程"><span class="nav-number">2.</span> <span class="nav-text">sass代码构建过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装Nvm_&_Nodejs"><span class="nav-number">1.</span> <span class="nav-text">安装Nvm & Nodejs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装Mongodb"><span class="nav-number">2.</span> <span class="nav-text">安装Mongodb</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置git"><span class="nav-number">3.</span> <span class="nav-text">配置git</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#导入工程并启动服务器"><span class="nav-number">4.</span> <span class="nav-text">导入工程并启动服务器</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -674,9 +687,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'mcl';
-      var disqus_identifier = '2015/09/28/ionic-develop-sass/';
-      var disqus_title = 'ionic开发之使用sass';
-      var disqus_url = 'http://www.mclspace.com/2015/09/28/ionic-develop-sass/';
+      var disqus_identifier = '2015/12/09/aliyun-build-nodejs-environment/';
+      var disqus_title = '在阿里云上搭建Nodejs开发环境';
+      var disqus_url = 'http://www.mclspace.com/2015/12/09/aliyun-build-nodejs-environment/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');

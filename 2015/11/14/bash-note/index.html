@@ -248,6 +248,7 @@
 <li>wc 可以统计数目,如: <code>who | wc -l</code> ，显示当前登录的用户的数量</li>
 <li>为什么zsh中没换行会出百分号？zsh里会有%，bash里不会有，因为输出的结果没有换行，在bash里命令提示符会直接跟在输出的结果后面也就是[]$…这种效果，而zsh里强制换行了，怕你自己不知道其实你没换行，就加了%</li>
 <li>执行一个脚本时，会先开启一个子shell环境（不知道执行其它程序是不是这样），然后将父shell中的所有系统环境变量复制过来，这个脚本中的语句就在子shell中执行。（也就是说父shell的环境变量在子shell中可以调用，但反过来就不行，如果在子 shell中定义了环境变量，只对该shell或者它的子shell有效，当该子shell结束时，也可以理解为脚本执行完时，变量消失。） <strong>因此如果想要在当前shell中设置环境变量需要用source命令而不是sh,source会在当前shell中执行</strong></li>
+<li>du -sh 文件或目录名 可以插卡磁盘用量</li>
 </ul>
 <!-- ## [learn bash the hard way](http://cli.learncodethehardway.org/)
 - hostname 显示本机的网络名
@@ -394,7 +395,7 @@ The popd command takes the last directory you pushed and "pops" it off, taking y
 </blockquote>
 <p>直接用homebrew安装: <code>brew install mtr</code>, 执行文件在’/usr/local/sbin/mtr’<br>如果出现<code>command not found</code>,在.zshrc中添加alias,为 <code>alias mtr=&quot;/usr/local/sbin/mtr&quot;</code>。<br>如果出现<code>mtr: unable to get raw sockets</code>,改变owner和执行权限<br><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="keyword">chown</span> root mtr</span><br><span class="line">sudo <span class="keyword">chmod</span> u+<span class="keyword">s</span> mtr</span><br></pre></td></tr></table></figure></p>
 <h3 id="tree_命令可以用来打印文件结构">tree 命令可以用来打印文件结构</h3><p>tree 命令在mac下默认不存在，在ubuntu下可以用apt-get 安装，在mac下可以直接用homebrew安装: <code>brew install tree</code></p>
-<p>通常使用 -L 参数控制层级,如 <code>tree -L 2</code><br>或使用 -d 参数只打印目录,如 <code>tree -d</code></p>
+<p>通常使用 -L 参数控制层级,如 <code>tree -L 2</code><br>或使用 -d 参数只打印目录,如 <code>tree -d</code><br> -N 参数可以用来打印中文，避免转义</p>
 <h2 id="参考资料">参考资料</h2><ul>
 <li><a href="http://www.renfei.org/blog/mac-os-x-terminal-101.html#comment-2159038737" target="_blank" rel="external">入门</a></li>
 <li><a href="http://cli.learncodethehardway.org/" target="_blank" rel="external">进阶</a></li>
@@ -516,7 +517,7 @@ The popd command takes the last directory you pushed and "pops" it off, taking y
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">48</span>
+              <span class="site-state-item-count">49</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -530,7 +531,7 @@ The popd command takes the last directory you pushed and "pops" it off, taking y
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-count">39</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
