@@ -249,7 +249,7 @@
 <p>将.ssh文件夹中的id_rsa.pub中的公钥放到你的github或gitlab的key列表中。</p>
 <p>如果有gitlab配置文件参考以下步骤:<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ vim config</span><br><span class="line"><span class="preprocessor"># 写入如下信息,具体情况而定</span></span><br><span class="line">host lab.artemisprojects<span class="preprocessor">.org</span></span><br><span class="line">hostname lab.artemisprojects<span class="preprocessor">.org</span></span><br><span class="line">port <span class="number">2222</span></span><br></pre></td></tr></table></figure></p>
 <h1 id="导入工程并启动服务器">导入工程并启动服务器</h1><p>从github或gitlab中导入工程，并切换到server目录下<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>git clone xxxx<span class="variable">@xxx</span>.git</span><br><span class="line"><span class="variable">$ </span>cd server</span><br></pre></td></tr></table></figure></p>
-<p>安装node_modules依赖<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm <span class="keyword">install</span></span><br></pre></td></tr></table></figure></p>
+<p>安装node_modules生产环境依赖<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm <span class="operator"><span class="keyword">install</span> <span class="comment">--production</span></span></span><br></pre></td></tr></table></figure></p>
 <p>使用pm2启动服务器<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 <span class="operator"><span class="keyword">start</span> ./<span class="keyword">bin</span>/www</span></span><br></pre></td></tr></table></figure></p>
 <p>完成。</p>
 <!--运行初始化脚本
@@ -273,6 +273,8 @@
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/12/11/nodejs-weixin-server/">Nodejs微信公众平台服务器接入指南</a>
             
           </div>
 
@@ -369,7 +371,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">49</span>
+              <span class="site-state-item-count">50</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -383,7 +385,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">39</span>
+              <span class="site-state-item-count">40</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

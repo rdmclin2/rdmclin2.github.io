@@ -249,6 +249,8 @@
 <li>为什么zsh中没换行会出百分号？zsh里会有%，bash里不会有，因为输出的结果没有换行，在bash里命令提示符会直接跟在输出的结果后面也就是[]$…这种效果，而zsh里强制换行了，怕你自己不知道其实你没换行，就加了%</li>
 <li>执行一个脚本时，会先开启一个子shell环境（不知道执行其它程序是不是这样），然后将父shell中的所有系统环境变量复制过来，这个脚本中的语句就在子shell中执行。（也就是说父shell的环境变量在子shell中可以调用，但反过来就不行，如果在子 shell中定义了环境变量，只对该shell或者它的子shell有效，当该子shell结束时，也可以理解为脚本执行完时，变量消失。） <strong>因此如果想要在当前shell中设置环境变量需要用source命令而不是sh,source会在当前shell中执行</strong></li>
 <li>du -sh 文件或目录名 可以插卡磁盘用量</li>
+<li>ps -A 显示所有进程 -a显示终端中的所有进程 配合grep可以搜索某一进程</li>
+<li>top 可以查看动态进程</li>
 </ul>
 <!-- ## [learn bash the hard way](http://cli.learncodethehardway.org/)
 - hostname 显示本机的网络名
@@ -517,7 +519,7 @@ The popd command takes the last directory you pushed and "pops" it off, taking y
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">49</span>
+              <span class="site-state-item-count">50</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -531,7 +533,7 @@ The popd command takes the last directory you pushed and "pops" it off, taking y
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">39</span>
+              <span class="site-state-item-count">40</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
