@@ -26,7 +26,7 @@
 
 
 
-  <meta name="keywords" content="design,web," />
+  <meta name="keywords" content="nodejs," />
 
 
 
@@ -59,7 +59,7 @@
 
 
 
-  <title> 我的练习网页设计 // Mcl's space </title>
+  <title> 深入浅出Node.js笔记 // Mcl's space </title>
 </head>
 
 <body>
@@ -180,7 +180,7 @@
           
           
             
-              我的练习网页设计
+              深入浅出Node.js笔记
             
           
         </h1>
@@ -188,14 +188,14 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 Oct 17 2015
+          发表于 Dec 16 2015
         </span>
 
         
           <span class="post-category">
             &nbsp; | &nbsp; 分类于
             
-              <a href="/categories/web/">web</a>
+              <a href="/categories/nodejs/">nodejs</a>
 
               
               
@@ -208,8 +208,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/10/17/my-practices-websites/#comments" >
-              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/10/17/my-practices-websites/"></span>
+            <a href="/2015/12/16/srqc-nodejs/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/12/16/srqc-nodejs/"></span>
             </a>
           </span>
           
@@ -224,28 +224,77 @@
 
       
         <blockquote>
-<p>最近对网页设计颇有兴趣，闲暇的时候便多练练手。不过如果仅仅在本地开发，设计，很难发现自己的问题，难以得到真正的提升，因此希望读者看到，帮助进行改进.以下是我进行练习的网站设计,大多都是按照教程来得,先借鉴临摹别人的作品,后面才能有自己的设计。</p>
+<p>本篇为阅读深入浅出Node.js这本书时做的笔记,学而时习之，才能有进步!</p>
 </blockquote>
 <a id="more"></a>
-<h1 id="Starbuzz_Coffee">Starbuzz Coffee</h1><ul>
-<li>访问地址 : <a href="http://webstudy.mclspace.com" target="_blank" rel="external">http://webstudy.mclspace.com</a></li>
-<li>项目地址 : <a href="https://github.com/rdmclin2/webStudy" target="_blank" rel="external">https://github.com/rdmclin2/webStudy</a></li>
-<li>项目来源 : 《Head First HTML 与 CSS》的练习页面<br><img src="http://7pun7p.com1.z0.glb.clouddn.com/blog/starbuzz.png" alt=""></li>
+<h1 id="第一章_Node简介">第一章 Node简介</h1><ul>
+<li>Don’t call me,I will call you 原则</li>
+<li>事件,回调,异步</li>
+<li>单线程 -&gt; 子进程 -&gt; 将大计算量分发到各个子进程，通过进程事件消息传递结果</li>
+<li>适合处理I/O密集型应用场景，根本没有I/O的场景（纯计算）更适合使用多线程的方式。 -&gt;开子线程，用C/C++扩展 </li>
 </ul>
-<h1 id="HeadFirst_Lounge">HeadFirst Lounge</h1><ul>
-<li>访问地址 : <a href="http://test.mclspace.com" target="_blank" rel="external">http://test.mclspace.com</a></li>
-<li>项目地址 : <a href="https://github.com/rdmclin2/test" target="_blank" rel="external">https://github.com/rdmclin2/test</a></li>
-<li>项目来源 : 《Head First HTML 与 CSS》的练习页面<br><img src="http://7pun7p.com1.z0.glb.clouddn.com/blog/lounge.png" alt=""></li>
+<h1 id="第二章_模块机制">第二章 模块机制</h1><ul>
+<li>commonJS -&gt;让JS能够在任何地方运行  </li>
+<li>require - &gt; module代表模块自身，exports对象是唯一导出的出口，一个文件就是一个模块。 </li>
+<li>require(‘模块’),这里模块可以是一个小驼峰(如:strLength)命名的字符串，可以是相对路径，可以是绝对路径，可以没有文件名后缀.js</li>
+<li>模块分为核心模块和文件模块，核心模块引入要优先与文件模块</li>
+<li>Node引入的模块都会缓存，减少二次引用的开销。</li>
+<li>自定义模块指的是非核心模块，其查找规则基于模块路径。如果标示符中不包括扩展名，那么node会按.js,.json,.node的次序补足进行尝试。这里用了fs模块同步阻塞判断文件是否存在，存在性能问题。因此如果是.node和.json文件,带上扩展名会加快一点速度。</li>
+<li>每个模块都有require,exports,module这3个变量，在编译过程中，Node对获取到的JS文件内容进行了头尾包装,如:<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> <span class="params">(exports, require, module, __filename, __dirname)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> math = <span class="built_in">require</span>(<span class="string">'math'</span>);</span><br><span class="line">    exports.area = <span class="function"><span class="keyword">function</span><span class="params">(radius)</span></span>&#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="built_in">Math</span>.PI * radius * radius; </span><br><span class="line">    &#125;;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<h1 id="Find_An_Agent">Find An Agent</h1><ul>
-<li>访问地址 : <a href="http://mclspace.com/webDesign-1/" target="_blank" rel="external">http://mclspace.com/webDesign-1/</a></li>
-<li>项目地址 : <a href="https://github.com/rdmclin2/webDesign-1" target="_blank" rel="external">https://github.com/rdmclin2/webDesign-1</a></li>
-<li>项目来源 : <a href="https://juntao.gitbooks.io/3-web-designs-in-3-weeks/content/find_an_agent/index.html" target="_blank" rel="external">《3周3页面》第一周</a><br><img src="http://7pun7p.com1.z0.glb.clouddn.com/blog/design1.png" alt=""></li>
+<h1 id="第三章_异步I/O">第三章 异步I/O</h1><ul>
+<li>Node中自行实现了线程池来实现异步I/O</li>
+<li>Nodejs的单线程仅仅是JS执行在单线程中，内部完成I/O任务的另有线程池</li>
+<li>每执行一次事件循环称为Tick，每个事件循环中有一个或多个观察者，每个观察者可能有多个事件，并将事件进行分类,是典型的生产消费模型.(饭馆小妹)</li>
+<li>setTimeout()和setInterval()用于执行定时任务，插入观察者内部的红黑树中，是非I/O的异步API，但定时任务的问题在于，它并非精确，如果上次事件循环占用较长事件，则可能导致下次循环过期很久了。</li>
+<li>process.nextTick可以用来立即执行一个异步任务(O(1)),比setTimeout(f(){},0)要轻量(O(lgn))。</li>
+<li>setImmediate()也能实现类似效果,不过其优先级比nextTick低，idle观察者优先级最高(nextTick)，其次是I/O观察者,其次是check观察者(setImmediate）。而且setImmediate在每轮执行中执行链表中一个回调函数，而nextTick执行数组中所有.</li>
+<li>Nginx后来也采用了Nodejs一样的事件驱动机制,用纯c编写,性能较高，在服务器方面很专业，但仅适合做web服务器,用于反向代理，负载均衡等服务，在业务上较弱.应结合这两者达到最优性能。</li>
 </ul>
-<h1 id="MicroBlog">MicroBlog</h1><ul>
-<li>项目地址 : <a href="https://github.com/rdmclin2/Mircoblog" target="_blank" rel="external">https://github.com/rdmclin2/Mircoblog</a></li>
-<li>项目来源 : 《Node.js开发指南》<br><img src="http://7pun7p.com1.z0.glb.clouddn.com/blog/microblog.png" alt=""></li>
+<h1 id="第四章_异步编程">第四章 异步编程</h1><ul>
+<li>函数式编程 -&gt; 源自lisp，高阶函数可以把函数作为参数，或将函数作为返回值</li>
+<li>偏函数：通过指定部分参数来产生一个新的定制参数的形式 。可以用来批量创建一些类似的函数</li>
+<li>需要防止任何计算耗费过多的时间片，只要计算不影响异步I/O的调度，就不构成问题。可以将大量计算分解为诸多小计算，通过setImmediate进行调度.</li>
+<li>难点：异常处理。trycatch处理异常在异步编程中不适用，异步调用通常立即返回,异常可能发生在callback阶段，Node在异常上形成一种约定，将异常作为回调函数的第一个实参返回，如果为空值则代表没有异常。我们自行编写的异步方法需要遵循:(1)必须执行调用者传入的回调函数(2)正确传递回异常供调用者判断。</li>
+<li>难点：函数嵌套过深</li>
+<li>难点：阻塞代码。node中没有sleep。</li>
+<li>难点：多线程编程。借鉴web workers -&gt; childprocess,cluster</li>
 </ul>
+<h4 id="事件发布/订阅模式">事件发布/订阅模式</h4><ul>
+<li>emitter.on(‘event’,f(data){}),emitter.emit(‘event’,data)</li>
+<li>继承events模块中的EventEmitter</li>
+<li>雪崩问题就是在高访问量，大并发量的情况下缓存失效的情况。用事件的once方法可以将所有请求压入事件队列中，对于相同的sql语句，保证在同一查询开始到结束的过程中永远只有一次，一旦查询结束，结果可以被这些调用公用，如果侦听器发出过多引用的警告，可以用setMaxListeners(0)移除或增加阈值。</li>
+<li>利用哨兵变量检测次数</li>
+<li>eventproxy,done,fail,all,after…</li>
+</ul>
+<h4 id="Promise/Deferred模式">Promise/Deferred模式</h4><ul>
+<li><p>defer用于维护异步模型状态，如defer.reject,defer.resolve等。promise用于通过then方法暴露外部以添加自定义逻辑,then(success(){},error(){},complete(){})</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$.<span class="function"><span class="title">get</span><span class="params">(<span class="string">'/api'</span>)</span></span></span><br><span class="line">.<span class="function"><span class="title">success</span><span class="params">(onSuccess)</span></span></span><br><span class="line">.<span class="function"><span class="title">error</span><span class="params">(onError)</span></span></span><br><span class="line">.<span class="function"><span class="title">complete</span><span class="params">(onComplete)</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>q为Promise/A规范的一个实现</p>
+</li>
+<li>序列执行promise,链式调用<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">promise()</span><br><span class="line">	.<span class="keyword">then</span>(obj.api1)</span><br><span class="line">	.<span class="keyword">then</span>(obj.api2)</span><br><span class="line">	.<span class="keyword">then</span>(obj.api3)</span><br><span class="line">	.<span class="keyword">then</span>(obj.api4)</span><br><span class="line">	.<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span><span class="params">(value4)</span></span>&#123;&#125;,</span><br><span class="line">		<span class="function"><span class="keyword">function</span><span class="params">(err)</span></span>&#123;&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="流程控制库">流程控制库</h4><ul>
+<li>Connect next尾触发<code>function(req,res,next){}</code>,每个中间件传递请求对象，响应对象和尾触发函数.通过use方法将中间件放到队列中,通过next方法取出队列中的中间件并执行,同时传入当前方法以实现递归调用。</li>
+<li>Async:</li>
+</ul>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- <span class="function"><span class="title">series</span><span class="params">()</span></span>方法实现一组任务的串行执行,无依赖</span><br><span class="line">- <span class="function"><span class="title">parallel</span><span class="params">()</span></span>方法实现一组任务的并行</span><br><span class="line">- <span class="function"><span class="title">waterfall</span><span class="params">()</span></span>方法实现串行有依赖关系的一组任务，即前一个任务的结果是下一个任务的输入</span><br><span class="line">- <span class="function"><span class="title">auto</span><span class="params">()</span></span>自动依赖处理,用于处理混杂的业务逻辑依赖</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Step:</li>
+<li>wind</li>
+</ul>
+<h4 id="异步并发控制">异步并发控制</h4><ul>
+<li>异步I/O在Node中很容易实现，因为太容易实现，所以需要控制，需要给予其一定的过载保护。例如调用大量文件操作会瞬间将文件描述符消耗光。</li>
+<li>bagpipe</li>
+</ul>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby"> 最大并发量控制</span><br><span class="line"></span>-<span class="ruby"> 拒绝模式,快速失败,实时需求</span><br><span class="line"></span>-<span class="ruby"> 超时控制,踢出异步耗时太久的调用</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>async</li>
+</ul>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby"> parallelLimit</span><br><span class="line"></span>-<span class="ruby"> queue 实时添加任务</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -254,9 +303,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/design/"> #design </a>
-          
-            <a href="/tags/web/"> #web </a>
+            <a href="/tags/nodejs/"> #nodejs </a>
           
         </div>
       
@@ -265,13 +312,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/19/ionic-icon-and-splash/">ionic开发之自动生成icon和splash</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/15/gulp-note/">gulp 笔记</a>
+              <a href="/2015/12/11/nodejs-weixin-server/">Nodejs微信公众平台服务器接入指南</a>
             
           </div>
         </div>
@@ -455,7 +500,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Starbuzz_Coffee"><span class="nav-number">1.</span> <span class="nav-text">Starbuzz Coffee</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HeadFirst_Lounge"><span class="nav-number">2.</span> <span class="nav-text">HeadFirst Lounge</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Find_An_Agent"><span class="nav-number">3.</span> <span class="nav-text">Find An Agent</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MicroBlog"><span class="nav-number">4.</span> <span class="nav-text">MicroBlog</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一章_Node简介"><span class="nav-number">1.</span> <span class="nav-text">第一章 Node简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第二章_模块机制"><span class="nav-number">2.</span> <span class="nav-text">第二章 模块机制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第三章_异步I/O"><span class="nav-number">3.</span> <span class="nav-text">第三章 异步I/O</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第四章_异步编程"><span class="nav-number">4.</span> <span class="nav-text">第四章 异步编程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#事件发布/订阅模式"><span class="nav-number">4.0.0.1.</span> <span class="nav-text">事件发布/订阅模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Promise/Deferred模式"><span class="nav-number">4.0.0.2.</span> <span class="nav-text">Promise/Deferred模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流程控制库"><span class="nav-number">4.0.0.3.</span> <span class="nav-text">流程控制库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异步并发控制"><span class="nav-number">4.0.0.4.</span> <span class="nav-text">异步并发控制</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -680,9 +725,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'mcl';
-      var disqus_identifier = '2015/10/17/my-practices-websites/';
-      var disqus_title = '我的练习网页设计';
-      var disqus_url = 'http://www.mclspace.com/2015/10/17/my-practices-websites/';
+      var disqus_identifier = '2015/12/16/srqc-nodejs/';
+      var disqus_title = '深入浅出Node.js笔记';
+      var disqus_url = 'http://www.mclspace.com/2015/12/16/srqc-nodejs/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');

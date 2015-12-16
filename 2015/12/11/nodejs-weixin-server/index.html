@@ -247,6 +247,9 @@
 <p>ok,我们继续到微信公众平台 -&gt; 开发 -&gt; 基本配置,填入<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">URL : <span class="tag">&lt;<span class="title">your</span> <span class="attribute">ip</span>&gt;</span>/wechat</span><br><span class="line">Token : <span class="tag">&lt;<span class="title">your</span> <span class="attribute">token</span>&gt;</span></span><br><span class="line">EncodingAESKey: <span class="tag">&lt;<span class="title">your</span> <span class="attribute">EncodingAESKey</span>&gt;</span></span><br><span class="line">消息加解密方式 : 安全模式</span><br></pre></td></tr></table></figure></p>
 <p>点击提交,完成接入。</p>
 <h1 id="github">github</h1><p>本篇示例代码已经上传到github<a href="https://github.com/rdmclin2/weixin_server" target="_blank" rel="external">weixin_server</a>，欢迎各种拍砖提issue。</p>
+<h1 id="本地调试">本地调试</h1><p>微信消息不能发到内网ip上，这给本地调试带来了很多困难，要在本地接受微信服务器的消息需要用拥有公网IP的主机转发来实现内网穿透。现在很多方案总的来说就是使用ngrok，不过这玩意不幸被墙，不过它是开源的，提供了1.0的源码。</p>
+<p>一种方案就是自己在vps配置上配置ngrok,适合喜欢折腾的人,可以参考<a href="https://imququ.com/post/self-hosted-ngrokd.html" target="_blank" rel="external">搭建 ngrok 服务实现内网穿透</a></p>
+<p>另一种方案就是别人在自己的vps上已经配置好了，用的时候它给你分配一个子域名给你使用。国内有<a href="http://natapp.cn" target="_blank" rel="external">natapp</a>,更接腾讯地气的是用QQ浏览器的微信本地调试插件详见<a href="http://blog.qqbrowser.cc/wei-xin-gong-zhong-hao-ben-di-diao-shi/" target="_blank" rel="external">http://blog.qqbrowser.cc/wei-xin-gong-zhong-hao-ben-di-diao-shi/</a></p>
 
       
     </div>
@@ -265,6 +268,8 @@
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/12/16/srqc-nodejs/">深入浅出Node.js笔记</a>
             
           </div>
 
@@ -361,7 +366,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-count">51</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -454,7 +459,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#搭建环境"><span class="nav-number">1.</span> <span class="nav-text">搭建环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#接入过程"><span class="nav-number">2.</span> <span class="nav-text">接入过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#github"><span class="nav-number">3.</span> <span class="nav-text">github</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#搭建环境"><span class="nav-number">1.</span> <span class="nav-text">搭建环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#接入过程"><span class="nav-number">2.</span> <span class="nav-text">接入过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#github"><span class="nav-number">3.</span> <span class="nav-text">github</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#本地调试"><span class="nav-number">4.</span> <span class="nav-text">本地调试</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
