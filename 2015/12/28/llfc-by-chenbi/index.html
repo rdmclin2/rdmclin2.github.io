@@ -22,11 +22,11 @@
 <link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
 
 
-    <meta name="description" content="操千曲而后晓声，观千剑而后识器" />
+    <meta name="description" content="人生不只眼前的苟且，还有音乐和远方。" />
 
 
 
-  <meta name="keywords" content="nodejs," />
+  <meta name="keywords" content="随感," />
 
 
 
@@ -59,7 +59,7 @@
 
 
 
-  <title> 深入浅出Node.js笔记 // Mcl's space </title>
+  <title> 《恋恋风尘》 by 陈壁 // Mcl's space </title>
 </head>
 
 <body>
@@ -180,7 +180,7 @@
           
           
             
-              深入浅出Node.js笔记
+              《恋恋风尘》 by 陈壁
             
           
         </h1>
@@ -188,14 +188,14 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 Dec 16 2015
+          发表于 Dec 28 2015
         </span>
 
         
           <span class="post-category">
             &nbsp; | &nbsp; 分类于
             
-              <a href="/categories/nodejs/">nodejs</a>
+              <a href="/categories/随感/">随感</a>
 
               
               
@@ -208,8 +208,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/12/16/srqc-nodejs/#comments" >
-              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/12/16/srqc-nodejs/"></span>
+            <a href="/2015/12/28/llfc-by-chenbi/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/12/28/llfc-by-chenbi/"></span>
             </a>
           </span>
           
@@ -224,78 +224,21 @@
 
       
         <blockquote>
-<p>本篇为阅读深入浅出Node.js这本书时做的笔记,学而时习之，才能有进步!</p>
+<p>人生不只眼前的苟且，还有音乐和远方。  —高晓松</p>
 </blockquote>
 <a id="more"></a>
-<h1 id="第一章_Node简介">第一章 Node简介</h1><ul>
-<li>Don’t call me,I will call you 原则</li>
-<li>事件,回调,异步</li>
-<li>单线程 -&gt; 子进程 -&gt; 将大计算量分发到各个子进程，通过进程事件消息传递结果</li>
-<li>适合处理I/O密集型应用场景，根本没有I/O的场景（纯计算）更适合使用多线程的方式。 -&gt;开子线程，用C/C++扩展 </li>
-</ul>
-<h1 id="第二章_模块机制">第二章 模块机制</h1><ul>
-<li>commonJS -&gt;让JS能够在任何地方运行  </li>
-<li>require - &gt; module代表模块自身，exports对象是唯一导出的出口，一个文件就是一个模块。 </li>
-<li>require(‘模块’),这里模块可以是一个小驼峰(如:strLength)命名的字符串，可以是相对路径，可以是绝对路径，可以没有文件名后缀.js</li>
-<li>模块分为核心模块和文件模块，核心模块引入要优先与文件模块</li>
-<li>Node引入的模块都会缓存，减少二次引用的开销。</li>
-<li>自定义模块指的是非核心模块，其查找规则基于模块路径。如果标示符中不包括扩展名，那么node会按.js,.json,.node的次序补足进行尝试。这里用了fs模块同步阻塞判断文件是否存在，存在性能问题。因此如果是.node和.json文件,带上扩展名会加快一点速度。</li>
-<li>每个模块都有require,exports,module这3个变量，在编译过程中，Node对获取到的JS文件内容进行了头尾包装,如:<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> <span class="params">(exports, require, module, __filename, __dirname)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> math = <span class="built_in">require</span>(<span class="string">'math'</span>);</span><br><span class="line">    exports.area = <span class="function"><span class="keyword">function</span><span class="params">(radius)</span></span>&#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="built_in">Math</span>.PI * radius * radius; </span><br><span class="line">    &#125;;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h1 id="第三章_异步I/O">第三章 异步I/O</h1><ul>
-<li>Node中自行实现了线程池来实现异步I/O</li>
-<li>Nodejs的单线程仅仅是JS执行在单线程中，内部完成I/O任务的另有线程池</li>
-<li>每执行一次事件循环称为Tick，每个事件循环中有一个或多个观察者，每个观察者可能有多个事件，并将事件进行分类,是典型的生产消费模型.(饭馆小妹)</li>
-<li>setTimeout()和setInterval()用于执行定时任务，插入观察者内部的红黑树中，是非I/O的异步API，但定时任务的问题在于，它并非精确，如果上次事件循环占用较长事件，则可能导致下次循环过期很久了。</li>
-<li>process.nextTick可以用来立即执行一个异步任务(O(1)),比setTimeout(f(){},0)要轻量(O(lgn))。</li>
-<li>setImmediate()也能实现类似效果,不过其优先级比nextTick低，idle观察者优先级最高(nextTick)，其次是I/O观察者,其次是check观察者(setImmediate）。而且setImmediate在每轮执行中执行链表中一个回调函数，而nextTick执行数组中所有.</li>
-<li>Nginx后来也采用了Nodejs一样的事件驱动机制,用纯c编写,性能较高，在服务器方面很专业，但仅适合做web服务器,用于反向代理，负载均衡等服务，在业务上较弱.应结合这两者达到最优性能。</li>
-</ul>
-<h1 id="第四章_异步编程">第四章 异步编程</h1><ul>
-<li>函数式编程 -&gt; 源自lisp，高阶函数可以把函数作为参数，或将函数作为返回值</li>
-<li>偏函数：通过指定部分参数来产生一个新的定制参数的形式 。可以用来批量创建一些类似的函数</li>
-<li>需要防止任何计算耗费过多的时间片，只要计算不影响异步I/O的调度，就不构成问题。可以将大量计算分解为诸多小计算，通过setImmediate进行调度.</li>
-<li>难点：异常处理。trycatch处理异常在异步编程中不适用，异步调用通常立即返回,异常可能发生在callback阶段，Node在异常上形成一种约定，将异常作为回调函数的第一个实参返回，如果为空值则代表没有异常。我们自行编写的异步方法需要遵循:(1)必须执行调用者传入的回调函数(2)正确传递回异常供调用者判断。</li>
-<li>难点：函数嵌套过深</li>
-<li>难点：阻塞代码。node中没有sleep。</li>
-<li>难点：多线程编程。借鉴web workers -&gt; childprocess,cluster</li>
-</ul>
-<h4 id="事件发布/订阅模式">事件发布/订阅模式</h4><ul>
-<li>emitter.on(‘event’,f(data){}),emitter.emit(‘event’,data)</li>
-<li>继承events模块中的EventEmitter</li>
-<li>雪崩问题就是在高访问量，大并发量的情况下缓存失效的情况。用事件的once方法可以将所有请求压入事件队列中，对于相同的sql语句，保证在同一查询开始到结束的过程中永远只有一次，一旦查询结束，结果可以被这些调用公用，如果侦听器发出过多引用的警告，可以用setMaxListeners(0)移除或增加阈值。</li>
-<li>利用哨兵变量检测次数</li>
-<li>eventproxy,done,fail,all,after…</li>
-</ul>
-<h4 id="Promise/Deferred模式">Promise/Deferred模式</h4><ul>
-<li><p>defer用于维护异步模型状态，如defer.reject,defer.resolve等。promise用于通过then方法暴露外部以添加自定义逻辑,then(success(){},error(){},complete(){})</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$.<span class="function"><span class="title">get</span><span class="params">(<span class="string">'/api'</span>)</span></span></span><br><span class="line">.<span class="function"><span class="title">success</span><span class="params">(onSuccess)</span></span></span><br><span class="line">.<span class="function"><span class="title">error</span><span class="params">(onError)</span></span></span><br><span class="line">.<span class="function"><span class="title">complete</span><span class="params">(onComplete)</span></span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>q为Promise/A规范的一个实现</p>
-</li>
-<li>序列执行promise,链式调用<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">promise()</span><br><span class="line">	.<span class="keyword">then</span>(obj.api1)</span><br><span class="line">	.<span class="keyword">then</span>(obj.api2)</span><br><span class="line">	.<span class="keyword">then</span>(obj.api3)</span><br><span class="line">	.<span class="keyword">then</span>(obj.api4)</span><br><span class="line">	.<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span><span class="params">(value4)</span></span>&#123;&#125;,</span><br><span class="line">		<span class="function"><span class="keyword">function</span><span class="params">(err)</span></span>&#123;&#125;)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="流程控制库">流程控制库</h4><ul>
-<li>Connect next尾触发<code>function(req,res,next){}</code>,每个中间件传递请求对象，响应对象和尾触发函数.通过use方法将中间件放到队列中,通过next方法取出队列中的中间件并执行,同时传入当前方法以实现递归调用。</li>
-<li>Async:</li>
-</ul>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- <span class="function"><span class="title">series</span><span class="params">()</span></span>方法实现一组任务的串行执行,无依赖</span><br><span class="line">- <span class="function"><span class="title">parallel</span><span class="params">()</span></span>方法实现一组任务的并行</span><br><span class="line">- <span class="function"><span class="title">waterfall</span><span class="params">()</span></span>方法实现串行有依赖关系的一组任务，即前一个任务的结果是下一个任务的输入</span><br><span class="line">- <span class="function"><span class="title">auto</span><span class="params">()</span></span>自动依赖处理,用于处理混杂的业务逻辑依赖</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Step:</li>
-<li>wind</li>
-</ul>
-<h4 id="异步并发控制">异步并发控制</h4><ul>
-<li>异步I/O在Node中很容易实现，因为太容易实现，所以需要控制，需要给予其一定的过载保护。例如调用大量文件操作会瞬间将文件描述符消耗光。</li>
-<li>bagpipe</li>
-</ul>
-<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby"> 最大并发量控制</span><br><span class="line"></span>-<span class="ruby"> 拒绝模式,快速失败,实时需求</span><br><span class="line"></span>-<span class="ruby"> 超时控制,踢出异步耗时太久的调用</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>async</li>
-</ul>
-<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby"> parallelLimit</span><br><span class="line"></span>-<span class="ruby"> queue 实时添加任务</span></span><br></pre></td></tr></table></figure>
+<embed src="http://www.xiami.com/widget/95324254_1774062304/singlePlayer.swf" type="application/x-shockwave-flash" width="257" height="33" wmode="transparent">
 
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">恋恋风尘</span><br><span class="line">那天黄昏</span><br><span class="line">开始飘起了白雪</span><br><span class="line">忧伤开满山冈</span><br><span class="line">等青春散场</span><br><span class="line">午夜的电影</span><br><span class="line">写满古老的恋情</span><br><span class="line">在黑暗中为年轻歌唱</span><br><span class="line">走吧女孩</span><br><span class="line">去看红色的朝霞</span><br><span class="line">带上我的恋歌</span><br><span class="line">你迎风吟唱</span><br><span class="line">露水挂在发梢</span><br><span class="line">结满透明的惆怅</span><br><span class="line">是我一生最初的迷惘</span><br><span class="line">当岁月和美丽已成风尘中的叹息</span><br><span class="line">你感伤的眼里有旧时泪滴</span><br><span class="line">相信爱的年纪</span><br><span class="line">没能唱给你的歌曲</span><br><span class="line">让我一生常常追忆</span><br><span class="line">相信爱的年纪</span><br><span class="line">没能唱给你的歌曲</span><br><span class="line">让我一生常常追忆</span><br><span class="line">啦……</span><br></pre></td></tr></table></figure>
+<!-- 
+http://www.iqiyi.com/v_19rro04pmg.html?share_sTime=0-share_eTime=259-src=sharemodclk131212
+
+<video id="video" controls="" preload="none" poster="http://media.w3.org/2010/05/sintel/poster.png">
+      <source id="mp4" src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4">
+      <source id="webm" src="http://media.w3.org/2010/05/sintel/trailer.webm" type="video/webm">
+      <source id="ogv" src="http://media.w3.org/2010/05/sintel/trailer.ogv" type="video/ogg">
+      <p>Your user agent does not support the HTML5 Video element.</p>
+    </video> -->
       
     </div>
 
@@ -303,7 +246,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/nodejs/"> #nodejs </a>
+            <a href="/tags/随感/"> #随感 </a>
           
         </div>
       
@@ -403,7 +346,7 @@
           <img class="site-author-image" src="https://avatars0.githubusercontent.com/u/4705237?v=3&u=cf53fa292cbafba8a53cfb1feda077c5abced98f&s=140" alt="LinChen" />
           <p class="site-author-name">LinChen</p>
         </div>
-        <p class="site-description motion-element">操千曲而后晓声，观千剑而后识器</p>
+        <p class="site-description motion-element">人生不只眼前的苟且，还有音乐和远方。</p>
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
@@ -414,14 +357,14 @@
 
           <div class="site-state-item site-state-categories">
             
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">分类</span>
               
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">40</span>
+              <span class="site-state-item-count">41</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -500,7 +443,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一章_Node简介"><span class="nav-number">1.</span> <span class="nav-text">第一章 Node简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第二章_模块机制"><span class="nav-number">2.</span> <span class="nav-text">第二章 模块机制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第三章_异步I/O"><span class="nav-number">3.</span> <span class="nav-text">第三章 异步I/O</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第四章_异步编程"><span class="nav-number">4.</span> <span class="nav-text">第四章 异步编程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#事件发布/订阅模式"><span class="nav-number">4.0.0.1.</span> <span class="nav-text">事件发布/订阅模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Promise/Deferred模式"><span class="nav-number">4.0.0.2.</span> <span class="nav-text">Promise/Deferred模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流程控制库"><span class="nav-number">4.0.0.3.</span> <span class="nav-text">流程控制库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异步并发控制"><span class="nav-number">4.0.0.4.</span> <span class="nav-text">异步并发控制</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -725,9 +668,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'mcl';
-      var disqus_identifier = '2015/12/16/srqc-nodejs/';
-      var disqus_title = '深入浅出Node.js笔记';
-      var disqus_url = 'http://www.mclspace.com/2015/12/16/srqc-nodejs/';
+      var disqus_identifier = '2015/12/28/llfc-by-chenbi/';
+      var disqus_title = '《恋恋风尘》 by 陈壁';
+      var disqus_url = 'http://www.mclspace.com/2015/12/28/llfc-by-chenbi/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
