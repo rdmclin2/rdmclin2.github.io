@@ -42,7 +42,7 @@
     analytics: {
       google: ''
     },
-    sidebar: 'post'
+    sidebar: 'hide'
   };
 </script>
 
@@ -59,7 +59,7 @@
 
 
 
-  <title> ionic 项目记录 // Mcl's space </title>
+  <title> Ionic 项目记录 // Mcl's space </title>
 </head>
 
 <body>
@@ -180,7 +180,7 @@
           
           
             
-              ionic 项目记录
+              Ionic 项目记录
             
           
         </h1>
@@ -224,194 +224,140 @@
 
       
         <h1 id="前言">前言</h1><p>最近用ionic做hybrid app的开发，这篇文章用来记录探索过程中遇到的方方面面。<br>声明：在开始这个项目之前没有接触过任何web开发相关的知识,所以下面的内容是从一个初学者的角度出发。</p>
-<p>注：以下许多笔记为边开发边整理，没有调整格式，请见谅。</p>
 <a id="more"></a>
 <hr>
-<h2 id="前端">前端</h2><h3 id="总体">总体</h3><p>首先对ionic有所了解，直接看<a href="http://ionicframework.com/" target="_blank" rel="external">官网</a>即可，跟着例子走一遍，有个直观的感觉。然后前端要学的东西很多，html5，css，js等，这些可以在<a href="http://www.w3schools.com/" target="_blank" rel="external">w3school</a>上学习,另外可以看看知乎上的<a href="http://www.zhihu.com/question/19651401" target="_blank" rel="external">这个回答</a><br>另外ionic的逻辑是用angularJS写的，因此必须要对其有比较好的理解:</p>
+<p>首先对ionic有所了解，直接看<a href="http://ionicframework.com/" target="_blank" rel="external">官网</a>即可，跟着例子走一遍，有个直观的感觉。然后前端要学的东西很多，html5，css，js等，这些可以在<a href="http://www.w3schools.com/" target="_blank" rel="external">w3school</a>上学习,另外可以看看知乎上的<a href="http://www.zhihu.com/question/19651401" target="_blank" rel="external">这个回答</a><br>另外ionic的逻辑是用angularJS写的，因此必须要对其有比较好的理解:</p>
 <p>更新(2015-8-31)：w3school只能用作参考，实际学习知识请阅读书籍，参看教程，推荐<a href="http://product.dangdang.com/23348110.html" target="_blank" rel="external">《Head First Html &amp; Css》</a>和<a href="http://product.dangdang.com/22872884.html" target="_blank" rel="external">《javascript语言精粹》</a>和<br><a href="http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000" target="_blank" rel="external">廖大大的javascript教程</a></p>
-<h3 id="编写ionic代码时的一些坑">编写ionic代码时的一些坑</h3><ul>
-<li><p>模块记得填写依赖，如下面代码中如果你的controller放在zlyc.controllers模块中，记得填写</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">angular.<span class="function"><span class="title">module</span><span class="params">(<span class="string">'zlyc'</span>, [<span class="string">'ionic'</span>, <span class="string">'zlyc.controllers'</span>])</span></span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在js文件夹中的js文件需要初始化，默认只有app.js会初始化，初始化的方法是在index.html的<head> tag 中用script加载，如下:</head></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- your app's js --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/app.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/controllers.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/services.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/utils.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果某个界面上不想要导航栏，可以简单地在最顶端的标签中添加hide-nav-bar=”true”</p>
-</li>
-<li><p>onclick方法后面调用函数要加括号，如:</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"padding signup-opt"</span> ng-click=<span class="string">"goToSign()"</span>&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>看<a href="http://blog.ionic.io/automating-icons-and-splash-screens/" target="_blank" rel="external">这篇文章</a>生成各尺寸的图片.</p>
-</li>
+<h1 id="Ionic相关博文">Ionic相关博文</h1><ul>
+<li><a href="http://mclspace.com/2015/10/19/ionic-icon-and-splash/" target="_blank" rel="external">ionic开发之自动生成icon和splash</a></li>
+<li><a href="http://mclspace.com/2015/09/28/ionic-develop-sass/" target="_blank" rel="external">ionic开发之使用sass</a></li>
 </ul>
-<ul>
-<li>对于css文件夹中的样式文件中如果要调用本地的图片的话要加../ 否则在浏览器中可以正常显示，在设备上不行，结构如下所示：</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.login-page</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">background</span>:<span class="value"><span class="function">url</span>(../img/signup_bg.png)</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">background-size</span>:<span class="value"> cover</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">background-repeat</span>:<span class="value"> no-repeat</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
-<p>但是对于在页面中定义的图片路径，从www路径开始算,否则浏览器中可显示，但设备上不行,如：</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="tag">img</span> src=<span class="string">"img/commander.jpg"</span>&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>如果要使用ionic的图标，可以到<a href="http://ionicons.com/" target="_blank" rel="external">ionicons</a>上查找名字，然后通过icon=”<name>“使用</name></p>
+<h1 id="ionic开发资料">ionic开发资料</h1><ul>
+<li><a href="http://learn.ionicframework.com/formulas/data-the-right-way/" target="_blank" rel="external">解析数据的正确方式</a></li>
+<li><a href="http://learn.ionicframework.com/formulas/sharing-data-between-views/" target="_blank" rel="external">views之间分享数据: list详情页面的处理方式</a></li>
+<li><a href="http://learn.ionicframework.com/formulas/navigation-and-routing-part-1/" target="_blank" rel="external">ionic导航和路由</a></li>
+<li><a href="http://blog.ionic.io/pull-to-refresh-directive/" target="_blank" rel="external">下拉刷新</a></li>
+<li><a href="http://gonehybrid.com/build-your-first-mobile-app-with-the-ionic-framework-part-6/" target="_blank" rel="external">ionic view.io使用</a></li>
+<li><a href="http://learn.ionicframework.com/formulas/cordova-camera/" target="_blank" rel="external">ionic使用摄像头</a>,<a href="https://github.com/driftyco/ionic-example-cordova-camera" target="_blank" rel="external">github例子</a></li>
+<li><a href="http://ionicframework.com/docs/api/directive/ionInfiniteScroll/" target="_blank" rel="external">下拉获取更多数据</a></li>
+<li><a href="http://codepen.io/rdelafuente/pen/tJrik" target="_blank" rel="external">全屏显示imgae的例子</a></li>
+<li><a href="http://devdactic.com/images-videos-fullscreen-ionic/" target="_blank" rel="external">美观的显示图像和视频</a></li>
+<li><a href="http://www.binpress.com/tutorial/a-simple-weather-forecast-app-with-ionic-framework-and-forecastio/107" target="_blank" rel="external">一个天气应用构造教程</a></li>
+<li><a href="https://github.com/driftyco/ionic-weather" target="_blank" rel="external">官方github例子</a></li>
+<li><a href="http://devdactic.com/how-to-capture-and-store-images-with-ionic/" target="_blank" rel="external">使用ionic拍摄和存储图片</a></li>
+<li><a href="https://github.com/mgonto/restangular" target="_blank" rel="external">用restangular处理Rest API</a></li>
+<li><a href="http://www.haomou.net/categories/ionic-reapp/page/2/" target="_blank" rel="external">皓眸大前端</a><br>这个网易前端工程师的博客值得好好研究，上面还有网易的内推邀请码。</li>
+<li><a href="http://www.haomou.net/2015/01/07/2015_ionic_fileOP/" target="_blank" rel="external">如何本地选择图片</a><blockquote>
+<p>$ 不过这个功能在某些机型上面会出错，例如荣耀六，＝＝别提我调bug调得多心烦了</p>
+</blockquote>
 </li>
-<li><p>angularJS 的router功能的state中的abstrcat变量设为true是指其自身不能被调用，但可以有自己的子状态。</p>
-</li>
-<li><p><code>&lt;ion-nav-view name=&quot;menuContent&quot;&gt;</code>  可以指定名字，然后在子状态中使用该名字，ionic就知道该把该状态的template渲染到哪边了。例如：</p>
-</li>
+<li><a href="http://www.neilberry.com/blog/2015-08-24-how-to-run-your-ionic-app-on-real-devices" target="_blank" rel="external">ionic 在ios设备上运行</a></li>
+<li><a href="http://blog.ionic.io/automating-icons-and-splash-screens/" target="_blank" rel="external">app的icon和splash的处理</a></li>
 </ul>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"> // signup page</span></span><br><span class="line"> .state(<span class="string">'auth.signup'</span>, &#123;</span><br><span class="line">   url: <span class="string">'/signup'</span>,</span><br><span class="line">   views: &#123;</span><br><span class="line">       <span class="string">'auth-signup'</span>: &#123;</span><br><span class="line">           templateUrl: <span class="string">'templates/auth-signup.html'</span>,</span><br><span class="line">           controller: <span class="string">'SignUpCtrl'</span></span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;)</span><br><span class="line"></span><br><span class="line"> 另有一个tabs中声明该auth-signup:</span><br><span class="line"> &lt;ion-<span class="constant">tab</span> title=<span class="string">"Sign Up"</span> icon-<span class="command"><span class="keyword">on</span>=<span class="string">"ion-ios-personadd"</span></span></span><br><span class="line">   icon-off=<span class="string">"ion-ios-personadd-outline"</span> href=<span class="string">"#/auth/signup"</span>&gt;</span><br><span class="line">   &lt;ion-nav-view name=<span class="string">"auth-signup"</span>&gt;&lt;/ion-nav-view&gt;</span><br><span class="line">&lt;/ion-<span class="constant">tab</span>&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>按<code>ionic serve</code>命令时，ionic报错如下:</li>
-</ul>
-<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ionic $ An uncaught <span class="keyword">exception</span> occured <span class="keyword">and</span> has been reported <span class="keyword">to</span> Ionic</span><br></pre></td></tr></table></figure>
-<p>看看你是不还有一个终端在运行着serve呢？</p>
-<ul>
-<li>注意.state中的url中不能有url，否则定位不到,如</li>
-</ul>
-<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.<span class="keyword">state</span>('sidemenu.<span class="keyword">user</span>Manage',&#123;</span><br><span class="line">  url: <span class="string">"/user_manage"</span>,</span><br></pre></td></tr></table></figure>
-<p>注意不要加下划线</p>
-<ul>
-<li><p>ionic 在用docker跑的时候，因为暂时不能把地址绑定到0.0.0.0，可以用<code>ionic serve -all</code>的方法解决</p>
-</li>
-<li><p>加载页面的时候会看到双括号一闪而过？</p>
+<h3 id="ionic_服务">ionic 服务</h3><ul>
+<li><p><a href="http://view.ionic.io/" target="_blank" rel="external">ionicView</a></p>
 <blockquote>
-<p>angularjs 在使用双括号的时候，第一个加载的页面，也就是应用中的index.html,其未被渲染好的模版可能会被用户看到。<br>用ng-bind就不会遇到这个问题。造成这种现象的原因是，浏览器需要首先加载HTML页面，渲染它，然后Angular才有机会把它解释成<br>你期望看到的内容。不过好消息是，在大多数的模版中你依然可以使用双括号.但是对于index.html页面中的数据绑定操作，建议使用<br>ng-bind。</p>
+<p>$ 将应用上传到ionic.io上，并在设备上浏览</p>
+</blockquote>
+</li>
+<li><p><a href="http://ionicons.com/" target="_blank" rel="external">ionic图标</a></p>
+<blockquote>
+<p>$ 如果要使用Ionic提供的图标，可以到该网站上查找名字，然后通过icon=”<name>“使用</name></p>
 </blockquote>
 </li>
 </ul>
-<p>ng-bind使用方式如下: <code>&lt;p ng-bind=&quot;greeting&quot;&gt;&lt;/p&gt;</code></p>
-<ul>
-<li><p>如何更新列表？<br>下拉刷新，或者用广播</p>
+<h3 id="优质博客">优质博客</h3><ul>
+<li><a href="https://calendee.com/" target="_blank" rel="external">calendee</a></li>
+</ul>
+<h3 id="ionic_提升性能">ionic 提升性能</h3><ul>
+<li>使用<a href="http://blog.ionic.io/collection-repeat-iteration-two/" target="_blank" rel="external">Collection Repeat</a></li>
+<li><p>使用<a href="https://blog.nraboy.com/2014/10/use-crosswalk-ionic-framework-android-apps/" target="_blank" rel="external">crosswalk</a>,<a href="http://blog.appgyver.com/heartbeat/steroids/android-chromium/" target="_blank" rel="external">还有这个</a></p>
 </li>
-<li><p>list 有延迟？<br>在ion-content处使用 overflow-scroll=”true”</p>
+<li><p><a href="https://www.binpress.com/tutorial/speeding-up-angular-js-with-simple-optimizations/135" target="_blank" rel="external">angularjs优化技巧</a></p>
 </li>
-<li><p>在<i>上用ng-click上是没效果的</i></p>
+<li><p><a href="http://coenraets.org/blog/2013/10/top-10-performance-techniques-for-phonegap-and-hybrid-apps-slides-available/" target="_blank" rel="external">phonegap应用优化</a></p>
 </li>
-<li><p><label>标签内的事件会在整个label内被触发，点哪都触发</label></p>
-</li>
-<li><p>直接在ion-list中的ion-item中并不能触发ng-click事件，可以在item中的元素上再套一层div</p>
-</li>
-<li><p>如何改背景色 ：</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="setting">style=<span class="value"><span class="string">"background-color: #212326;"</span></span></span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>能用ng-if就用ng-if,ng-if的效率比ng-show和ng-hide高</p>
-</li>
-<li><p>如何实现card上面有一列分割线的效果?<br>在css里定义</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="id">#info-up</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">border-top</span>:<span class="value"> <span class="number">4px</span> solid <span class="hexcolor">#f06336</span></span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>所有的控制器不必都放在controllers.js这一个文件中，可以新建controllers文件夹，<br>然后把每个controller都建一个<controller>.js文件，同理services和utils等都是.但注意要在index.js中head部分声明.但是为了避免他们相互覆盖，第一个加载的js中模块中要加[…],其他都不需要。如：</controller></p>
+<li><p><a href="http://devdactic.com/optimize-tinder-cards/" target="_blank" rel="external">cards 优化</a></p>
 </li>
 </ul>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// File : /js/directives/mainDirective.js</span></span><br><span class="line">angular.module(<span class="string">'app.directives'</span>,[]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// File : /js/directives/myGreatDirective.js</span></span><br><span class="line">angular.module(<span class="string">'app.directives'</span>)  </span><br><span class="line">    .directive(<span class="string">'myGreatDirective'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="comment">//...</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// File : /js/directives/myBetterDirective.js</span></span><br><span class="line">angular.module(<span class="string">'app.directives'</span>)  </span><br><span class="line">    .directive(<span class="string">'myBetterDirective'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="comment">//...</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<p>看<a href="https://calendee.com/2013/12/29/angularjs-code-organization/" target="_blank" rel="external">这篇文章</a>了解更多,嗯这篇文章写的还不是best practice，因为你还得记着自己把[]写到那个模块里了，统一地写在app.js中即可，在app.js最下面加上类似：</p>
-<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">angular.<span class="keyword">module</span>(<span class="symbol">'fcws</span>.controllers',[<span class="symbol">'ionic'</span>, <span class="symbol">'fcws</span>.services']);</span><br><span class="line">angular.<span class="keyword">module</span>(<span class="symbol">'fcws</span>.services', <span class="literal">[]</span>);</span><br></pre></td></tr></table></figure>
-<p>可以达到和上面一样的效果，而且可以统一管理.</p>
+<hr>
+<h2 id="后端">后端</h2><h3 id="Node">Node</h3><p>现在写后端比较火的是用<a href="http://nodejs.org/" target="_blank" rel="external">nodejs</a>编写，然后nodejs有个很好的应用开发框架叫<a href="http://expressjs.com/zh/" target="_blank" rel="external">Express</a>，这里<a href="http://cwbuecheler.com/web/tutorials/2013/node-express-mongo/" target="_blank" rel="external">有篇文章</a>是教你如何从零开始搭建node,express,monggodb服务器，<a href="http://www.unfish.net/archives/772-20131207.html" target="_blank" rel="external">这里</a>是国人翻译的版本.</p>
+<h3 id="NodeJs_后端开发记录">NodeJs 后端开发记录</h3><p>上面推荐的文章是webapp的方式，和我们的需求有些不同，这篇文章<a href="http://thejackalofjavascript.com/an-end-to-end-hybrid-app/" target="_blank" rel="external">an-end-to-end-hybrid-app</a>和ionic结合的更紧密，推荐阅读。</p>
+<h3 id="Npm命令简介(转载自网络)">Npm命令简介(转载自网络)</h3><ul>
+<li>npm install <name>安装nodejs的依赖包</name></li>
+</ul>
+<p>例如npm install express 就会默认安装express的最新版本，也可以通过在后面加版本号的方式安装指定版本，如npm install express@3.0.6</p>
 <ul>
-<li><p>目前有些ionic 的app没有进行代码混淆，至少ionic官方的ionic view没有进行代码混淆，下载他们的app，文件名改成zip，解压，所有的 www文件都在assets文件夹中，相当于开源了有木有，看看那些最优秀的practice，看中哪些优秀的app，下下来,如何在googleplay上下载？把googleplay应用的地址贴到<a href="https://apps.evozi.com/apk-downloader/" target="_blank" rel="external">这个网址</a>中</p>
+<li>npm install <name> -g  将包安装到全局环境中</name></li>
+</ul>
+<p>但是代码中，直接通过require()的方式是没有办法调用全局安装的包的。全局的安装是供命令行使用的，就好像全局安装了vmarket后，就可以在命令行中直接运行vm命令</p>
+<ul>
+<li>npm install <name> —save  安装的同时，将信息写入package.json中<br>项目路径中如果有package.json文件时，直接使用npm install方法就可以根据dependencies配置安装所有的依赖包</name></li>
+</ul>
+<p>这样代码提交到github时，就不用提交node_modules这个文件夹了。</p>
+<ul>
+<li><p>npm init  会引导你创建一个package.json文件，包括名称、版本、作者这些信息等</p>
 </li>
-<li><p>可以用<code>ng-class=&quot;{&#39;important&#39;: post.important}&quot;</code>配合css 根据列表元素显示不同的效果</p>
+<li><p>npm remove <name>移除</name></p>
 </li>
-<li><p>js列表中的元素不能写成 id : 4，应写成 id : “4”,注意在创建id变量的时候也需要</p>
+<li><p>npm update <name>更新</name></p>
+</li>
+<li><p>npm ls 列出当前安装的了所有包</p>
+</li>
+<li><p>npm root 查看当前包的安装路径</p>
+</li>
+<li><p>npm root -g  查看全局的包的安装路径</p>
+</li>
+<li><p>npm help  帮助，如果要单独查看install命令的帮助，可以使用的npm help install</p>
 </li>
 </ul>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> id</span> = InfoListService.getListLength()+<span class="number">1</span>+<span class="string">""</span>;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>获取日期用$filter</li>
-</ul>
-<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">var</span> postdate <span class="subst">=</span> <span class="variable">$filter</span>(<span class="string">'date'</span>)(<span class="built_in">date</span>, <span class="string">'yyyy-MM-dd HH:mm:ss'</span>);</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>为什么用$log而不是console.log呢？可以看看<a href="https://stackoverflow.com/questions/24185847/why-use-angulars-log-instead-of-console-log" target="_blank" rel="external">这个</a></p>
+<p>官网文档：<a href="https://npmjs.org/doc/" target="_blank" rel="external">https://npmjs.org/doc/</a></p>
+<h3 id="生成的package-json文件中的dependencies前面的~,^符号的含义">生成的package.json文件中的dependencies前面的~,^符号的含义</h3><p>典型的文件形式是,其中的～和^ 是什么含义呢<br><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"dependencies"</span>: &#123;</span><br><span class="line">  <span class="string">"express"</span>: <span class="string">"~4.2.0"</span>,</span><br><span class="line">  <span class="string">"body-parser"</span>: <span class="string">"~1.0.0"</span>,</span><br><span class="line">  <span class="string">"mongoose"</span>: <span class="string">"~3.8.11"</span>,</span><br><span class="line">  <span class="string">"bcrypt"</span>: <span class="string">"^0.8.3"</span>,</span><br><span class="line">  <span class="string">"mongojs"</span>: <span class="string">"^0.18.2"</span>,</span><br><span class="line">  <span class="string">"morgan"</span>: <span class="string">"^1.5.3"</span>,</span><br><span class="line">  <span class="string">"restify"</span>: <span class="string">"^3.0.3"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>借用stackoverflow上的<a href="https://stackoverflow.com/questions/22343224/difference-between-tilde-and-caret-in-package-json" target="_blank" rel="external">回答</a>:</p>
+<blockquote>
+<p>In the simplest terms, the tilde matches the most recent minor version (the middle number). ~1.2.3 will match all 1.2.x versions but will miss 1.3.0.<br>The caret, on the other hand, is more relaxed. It will update you to the most recent major version (the first number). ^1.2.3 will match any 1.x.x release including 1.3.0, but will hold off on 2.0.0.</p>
+</blockquote>
+<h3 id="Http_Status_code">Http Status code</h3><p>服务器发送响应时需要指定状态编码，如404，203等，看<a href="http://www.restapitutorial.com/httpstatuscodes.html" target="_blank" rel="external">这里</a></p>
+<hr>
+<h3 id="LeanCloud">LeanCloud</h3><p>如果不想自己租用服务器，编写后端代码，国外有<a href="https://www.parse.com/" target="_blank" rel="external">parse</a>，国内有<a href="https://leancloud.cn/" target="_blank" rel="external">LeanCloud</a>都提供后端云服务。尝试使用了，感觉不错，不过本app的数据比较敏感，所以还是得自己搭服务器。</p>
+<p>一些坑:</p>
+<ol>
+<li>对于javascript版本的leancloud api ，官方文档给出的方法是直接将<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"https://cdn1.lncld.net/static/js/av-mini-0.5.4.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>更新了数据，如何让界面更新呢？可以用广播，注意<a href="https://stackoverflow.com/questions/26752030/rootscope-broadcast-vs-scope-emit" target="_blank" rel="external">$broadcast 和 $emit的区别</a></p>
-</li>
-<li><p>在安卓上的体验比较差，动画有延迟？可以试试<a href="http://blog.ionic.io/crosswalk-comes-to-ionic/" target="_blank" rel="external">ionic集成的crosswalk</a></p>
-</li>
-<li><p>如何显示相对时间？ <a href="https://github.com/moment/moment/" target="_blank" rel="external">可以用momentjs</a>，看<a href="https://scotch.io/tutorials/display-time-relatively-in-angular" target="_blank" rel="external">这篇教程</a></p>
-</li>
-<li><p>发布应用的时候如果遇到翻译错误，暂时的解决方法是，不进行翻译校正, 在 /platforms/android/build.gradle 中的android {}节中加入:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lintOptions &#123;</span><br><span class="line">						 <span class="built_in">disable</span> <span class="string">'MissingTranslation'</span></span><br><span class="line">							<span class="built_in">disable</span> <span class="string">'ExtraTranslation'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>span 可以用来将时间之类的附加信息显示到列表右边,如下面会将创建时间显示在name的右边:</p>
-<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">ion-item</span> <span class="attribute">class</span>=<span class="value">"item item-avatar-left "</span> <span class="attribute">ng-repeat</span>=<span class="value">"message in messages"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"../../img/commander.jpg"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"item-note"</span>&gt;</span></span><span class="expression">&#123;&#123;<span class="variable">message.create</span>_<span class="variable">at</span>&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="title">span</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">h2</span> &gt;</span></span><span class="expression">&#123;&#123;<span class="variable">message.name</span>&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="title">h2</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">p</span> &gt;</span>  </span><span class="expression">&#123;&#123;<span class="variable">message.content</span>&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">ion-item</span> &gt;</span></span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>controllers 和services 的文件名可能会重合，但是他们意义差不多，<br>可以将controllers中的文件名小写，对应的services中的文件名大写进行区分.</p>
-</li>
-<li><p>ng-bind-html这个类可能会过滤原始html的标签，我们可以引入$sce模块，用$sce.trustAsHtml()方法信任我们获取的网页</p>
-</li>
-<li><p>如何完成邮箱修改重设密码的流程?<br>整个流程：</p>
-</li>
-</ul>
-<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby"> 注册时要求每个用户使用唯一的邮箱，注册后向用户的邮箱发一封邮件</span><br><span class="line"></span>-<span class="ruby"> 找回密码时要求用户填写邮箱地址，提示用户如果不记得地址请在邮箱中搜索</span><br><span class="line"></span>-<span class="ruby"> 找回密码功能限制每帐号每天只能使用三次(只能发三次邮件), 使用缓存来完成这个计数</span><br><span class="line"></span>-<span class="ruby"> 找回密码时向缓存中写入一个随机的字符串作为 <span class="constant">Token</span>, 有效期为一天，向用户的邮箱发送包含 <span class="constant">Token</span> 的链接</span><br><span class="line"></span>-<span class="ruby"> 用户从链接点回来先验证 <span class="constant">Token</span> 的有效性，然后提示填写新密码，然后将新密码和 <span class="constant">Token</span> 一起提交给后端完成修改密码的操作</span><br><span class="line"></span>-<span class="ruby"> 删除掉 <span class="constant">Token</span> 的缓存</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>如何回到上一页面?<br>用<code>$ionicHistory</code>这个模块,引入该模块后使用<code>goBack([backCount])</code>，backCount指定回去多少个页面（-1代表回去一个页面），默认为-1</p>
-</li>
-<li><p>如何关闭应用?</p>
-</li>
-</ul>
-<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ionic.<span class="type">Platform</span>.exitApp<span class="literal">()</span>;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>在安卓设备上如何让title居中(安卓设计规范上推荐title居左)? 在headerbar中添加<code>align-title=&quot;center&quot;</code>,如:</li>
-</ul>
-<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">ion-header-bar</span> <span class="attribute">class</span>=<span class="value">"bar-positive"</span> <span class="attribute">align-title</span>=<span class="value">"center"</span>&gt;</span></span><br><span class="line">	 <span class="tag">&lt;<span class="title">h1</span> <span class="attribute">class</span>=<span class="value">"title"</span>&gt;</span></span><span class="expression">&#123;&#123;<span class="variable">username</span>&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="title">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">ion-header-bar</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-<p>不过这个设置对ion-view无效，亲测，如果要统一让所有navbar上的title居中(包括上面的headerbar)，可以在config里设置,如:</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.config(<span class="function"><span class="keyword">function</span><span class="params">(<span class="variable">$stateProvider</span>, <span class="variable">$urlRouterProvider</span>,<span class="variable">$ionicConfigProvider</span>)</span> </span>&#123;</span><br><span class="line">  <span class="variable">$ionicConfigProvider</span>.navBar.alignTitle(<span class="string">'center'</span>);</span><br></pre></td></tr></table></figure>
-<p>如果要让某一个view title居中，可以用<code>$ionicNavBarDelegate</code>，参考<a href="http://ionicframework.com/docs/api/service/%24ionicNavBarDelegate/" target="_blank" rel="external">ionic官方文档</a></p>
-<ul>
-<li><p>如何让在sidemenu中的headerbar能够显示头像等其他信息? 解决方案是去掉headerbar,添加一个avatar到sidemenu content中，如:</p>
-<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">ion-side-menu</span> <span class="attribute">side</span>=<span class="value">"left"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">ion-content</span> <span class="attribute">class</span>=<span class="value">"bar-positive"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">ion-list</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">ion-item</span> <span class="attribute">class</span>=<span class="value">"item item-avatar item-positive"</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/commander.jpg"</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="title">h2</span> <span class="attribute">class</span>=<span class="value">" light"</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="title">i</span> <span class="attribute">class</span>=<span class="value">"icon ion-ios-star"</span>&gt;</span><span class="tag">&lt;/<span class="title">i</span>&gt;</span></span><span class="expression">&#123;&#123;<span class="variable">title</span>&#125;&#125;</span><span class="xml"></span><br><span class="line">				<span class="tag">&lt;/<span class="title">h2</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="title">a</span>&gt;</span></span><span class="expression">&#123;&#123;<span class="variable">username</span>&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="title">ion-item</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>ionic的subheader挡住了内容区域怎么办?解决方案是给<ion-content>加类has-subheader,同理也可以加has-header。如下:</ion-content></p>
-</li>
-</ul>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;ion-content <span class="keyword">class</span>=<span class="string">"has-header has-subheader"</span>&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>对于需要添加数据的list，在添加数据后页面不能及时刷新造成卡顿，可以使用<code>$ionicScrollDelegate.resize();</code>在添加数据后手动进行重新刷新。</p>
-</li>
-<li><p>ionic 处理回退按钮，可以在app.js的.run方法中增加对硬件回退按钮的注册处理,这里我在大部分页面都想注册该事件，除去有二级历史页面的我单独判断了下，注意增加依赖。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ionicPlatform</span>.registerBackButtonAction(<span class="function"><span class="keyword">function</span><span class="params">(e)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> current_state_name = <span class="variable">$state</span>.current.name;</span><br><span class="line">    <span class="keyword">if</span>(current_state_name !== <span class="string">'sidemenu.post'</span></span><br><span class="line">     &amp;&amp; current_state_name !== <span class="string">'sidemenu.contact_town'</span> &amp;&amp;</span><br><span class="line">    current_state_name !== <span class="string">'sidemenu.contact_people'</span>)&#123;</span><br><span class="line">        <span class="variable">$ionicPopup</span>.confirm(&#123;</span><br><span class="line">            title: <span class="string">'退出应用'</span>,</span><br><span class="line">            template: <span class="string">'您确定要退出xxxx吗?'</span></span><br><span class="line">        &#125;).then(<span class="function"><span class="keyword">function</span> <span class="params">(res)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (res) &#123;</span><br><span class="line">                <span class="comment">//ionic.Platform.exitApp();</span></span><br><span class="line">                navigator.app.exitApp();</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                console.log(<span class="string">'You are not sure'</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        e.preventDefault();</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        navigator.app.backHistory();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,<span class="number">100</span>);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<!-- - ionic如何在每个页面进行登录状态的判断?
-可以在每个需要进行授权的页面中添加一个参数如allowAnonymous表示是否允许匿名,如下:
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.state</span>(<span class="string">'signin'</span>, &#123;</span><br><span class="line">               <span class="attribute">url</span>: <span class="string">"/signin"</span>,</span><br><span class="line">               <span class="attribute">templateUrl</span>: <span class="string">'templates/auth/signin.html'</span>,</span><br><span class="line">               <span class="attribute">controller</span>: <span class="string">'LogInCtrl'</span>,</span><br><span class="line">               <span class="attribute">allowAnonymous</span>: true</span><br><span class="line">           &#125;)</span><br></pre></td></tr></table></figure>
-<p>ionic在每次页面状态切换的时候会广播<code>$routeChangeStart</code>事件 ，我们在app.js的run方法中注册该事件，如果下一个路由不允许匿名， 并且没有认证， 则重定向到 login 页面<br><figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">        // 监听 <span class="variable">$rootScope</span> 的 <span class="variable">$routeChangeStart</span> 事件</span><br><span class="line">        <span class="variable">$rootScope</span>.<span class="variable">$on</span>('<span class="variable">$stateChangeStart</span>', function(event, <span class="keyword">to</span>State, <span class="keyword">to</span>Params, <span class="keyword">from</span>State, <span class="keyword">from</span>Params)&#123;</span><br><span class="line">            // 如果下一个路由不允许匿名， 并且没有认证， 则重定向到 login 页面</span><br><span class="line">            if (! <span class="keyword">to</span>State.allowAnonymous &amp;&amp; !User.isAuthenticated()) &#123;</span><br><span class="line">                <span class="variable">$log</span>.<span class="keyword">log</span>('Authentication required, redirect <span class="keyword">to</span> login.');</span><br><span class="line">                <span class="variable">$window</span>.location.href=('<span class="comment">#/signin');</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">``` --&gt;</span><br><span class="line"></span><br><span class="line">- 使用原生滚动</span><br><span class="line">使用原生滚动这个技巧可能会给你最明显的流畅性加成。除了默认的Javascript的滚动，ionic也提供了使用原生滚动的选择。</span><br></pre></td></tr></table></figure></p>
-<p>我们可以选择在每个view中开启它，在ion-content标签中放置这样的属性：<br>overflow-scroll=”true”<br>或者可以对所有view开启它：<br>$ionicConfigProvider.scrolling.jsScrolling(false);<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 在应用的注册或者登录部分，不记名 <span class="keyword">token</span> 响应了这个请求并且这个 <span class="keyword">token</span> 被存储到本地存储中。当你向后端请求一个服务时，你需要把这个 <span class="keyword">token</span> 放在头部中。你可以使用 AngularJS 的拦截器实现这个。每次请求都会被拦截并且会把认证头部和值放到头部中。</span><br></pre></td></tr></table></figure></p>
-<p>$httpProvider.interceptors.push([‘$q’, ‘$location’, ‘$localStorage’, function($q, $location, $localStorage) {<br>            return {<br>                ‘request’: function (config) {<br>                    config.headers = config.headers || {};<br>                    if ($localStorage.token) {<br>                        config.headers.Authorization = ‘Bearer ‘ + $localStorage.token;<br>                    }<br>                    return config;<br>                },<br>                ‘responseError’: function(response) {<br>                    if(response.status === 401 || response.status === 403) {<br>                        $location.path(‘/signin’);<br>                    }<br>                    return $q.reject(response);<br>                }<br>            };<br>        }]);<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="header">### ionic开发资料</span></span><br><span class="line"><span class="bullet">- </span>[<span class="link_label">解析数据的正确方式</span>](<span class="link_url">http://learn.ionicframework.com/formulas/data-the-right-way/</span>)</span><br><span class="line"><span class="bullet">- </span>[<span class="link_label">views之间分享数据: list详情页面的处理方式</span>](<span class="link_url">http://learn.ionicframework.com/formulas/sharing-data-between-views/</span>)</span><br><span class="line"><span class="bullet">- </span>[<span class="link_label">ionic导航和路由</span>](<span class="link_url">http://learn.ionicframework.com/formulas/navigation-and-routing-part-1/</span>)</span><br><span class="line"><span class="bullet">- </span>[<span class="link_label">下拉刷新</span>](<span class="link_url">http://blog.ionic.io/pull-to-refresh-directive/</span>)</span><br><span class="line"><span class="bullet">- </span>[<span class="link_label">ionic view.io使用</span>](<span class="link_url">http://gonehybrid.com/build-your-first-mobile-app-with-the-ionic-framework-part-6/</span>)</span><br><span class="line"><span class="bullet">- </span>[<span class="link_label">ionic使用摄像头</span>](<span class="link_url">http://learn.ionicframework.com/formulas/cordova-camera/</span>),[<span class="link_label">github例子</span>](<span class="link_url">https://github.com/driftyco/ionic-example-cordova-camera</span>)</span><br><span class="line"><span class="bullet">- </span>[<span class="link_label">下拉获取更多数据</span>](<span class="link_url">http://ionicframework.com/docs/api/directive/ionInfiniteScroll/</span>)</span><br><span class="line"><span class="bullet">- </span>[<span class="link_label">全屏显示imgae的例子</span>](<span class="link_url">http://codepen.io/rdelafuente/pen/tJrik</span>)</span><br><span class="line"><span class="bullet">- </span>[<span class="link_label">美观的显示图像和视频</span>](<span class="link_url">http://devdactic.com/images-videos-fullscreen-ionic/</span>)</span><br><span class="line"><span class="bullet">- </span>[<span class="link_label">一个天气应用构造教程</span>](<span class="link_url">http://www.binpress.com/tutorial/a-simple-weather-forecast-app-with-ionic-framework-and-forecastio/107</span>)</span><br><span class="line"><span class="bullet">- </span>[<span class="link_label">官方github例子</span>](<span class="link_url">https://github.com/driftyco/ionic-weather</span>)</span><br><span class="line"><span class="bullet">- </span>[<span class="link_label">使用ionic拍摄和存储图片</span>](<span class="link_url">http://devdactic.com/how-to-capture-and-store-images-with-ionic/</span>)</span><br><span class="line"><span class="bullet">- </span>[<span class="link_label">用restangular处理Rest API</span>](<span class="link_url">https://github.com/mgonto/restangular</span>)</span><br><span class="line"><span class="bullet">- </span>[<span class="link_label">皓眸大前端</span>](<span class="link_url">http://www.haomou.net/categories/ionic-reapp/page/2/</span>)</span><br><span class="line">这个网易前端工程师的博客值得好好研究，上面还有网易的内推邀请码。</span><br><span class="line"><span class="bullet">- </span>[<span class="link_label">如何本地选择图片</span>](<span class="link_url">http://www.haomou.net/2015/01/07/2015_ionic_fileOP/</span>)</span><br><span class="line"><span class="blockquote">&gt; $ 不过这个功能在某些机型上面会出错，例如荣耀六，＝＝别提我调bug调得多心烦了</span></span><br><span class="line"><span class="bullet">- </span>[<span class="link_label">ionic 在ios设备上运行</span>](<span class="link_url">http://www.neilberry.com/blog/2015-08-24-how-to-run-your-ionic-app-on-real-devices</span>)</span><br><span class="line"><span class="bullet">- </span>[<span class="link_label">app的icon和splash的处理</span>](<span class="link_url">http://blog.ionic.io/automating-icons-and-splash-screens/</span>)</span><br><span class="line"></span><br><span class="line"><span class="header">###ionic 服务</span></span><br><span class="line"><span class="bullet">- </span>[<span class="link_label">ionicView</span>](<span class="link_url">http://view.ionic.io/</span>)</span><br><span class="line"><span class="blockquote">&gt; $将应用上传到ionic.io上，并在设备上浏览</span></span><br><span class="line"></span><br><span class="line"><span class="header">###优质博客</span></span><br><span class="line"><span class="bullet">- </span>[<span class="link_label">calendee</span>](<span class="link_url">https://calendee.com/</span>)</span><br><span class="line"></span><br><span class="line"><span class="header">###ionic 提升性能</span></span><br><span class="line"><span class="bullet">- </span>使用[<span class="link_label">Collection Repeat</span>](<span class="link_url">http://blog.ionic.io/collection-repeat-iteration-two/</span>)</span><br><span class="line"><span class="bullet">- </span>使用[<span class="link_label">crosswalk</span>](<span class="link_url">https://blog.nraboy.com/2014/10/use-crosswalk-ionic-framework-android-apps/</span>),[<span class="link_label">还有这个</span>](<span class="link_url">http://blog.appgyver.com/heartbeat/steroids/android-chromium/</span>)</span><br><span class="line"></span><br><span class="line"><span class="bullet">- </span>[<span class="link_label">angularjs优化技巧</span>](<span class="link_url">https://www.binpress.com/tutorial/speeding-up-angular-js-with-simple-optimizations/135</span>)</span><br><span class="line"></span><br><span class="line"><span class="bullet">- </span>[<span class="link_label">phonegap应用优化</span>](<span class="link_url">http://coenraets.org/blog/2013/10/top-10-performance-techniques-for-phonegap-and-hybrid-apps-slides-available/</span>)</span><br><span class="line"></span><br><span class="line"><span class="bullet">- </span>[<span class="link_label">cards 优化</span>](<span class="link_url">http://devdactic.com/optimize-tinder-cards/</span>)</span><br><span class="line"></span><br><span class="line"><span class="horizontal_rule">---</span></span><br><span class="line"></span><br><span class="line"><span class="header">##后端</span></span><br><span class="line"></span><br><span class="line"><span class="header">###Node</span></span><br><span class="line">现在写后端比较火的是用[<span class="link_label">nodejs</span>](<span class="link_url">http://nodejs.org/</span>)编写，然后nodejs有个很好的应用开发框架叫[<span class="link_label">Express</span>](<span class="link_url">http://expressjs.com/zh/</span>)，这里[<span class="link_label">有篇文章</span>](<span class="link_url">http://cwbuecheler.com/web/tutorials/2013/node-express-mongo/</span>)是教你如何从零开始搭建node,express,monggodb服务器，[<span class="link_label">这里</span>](<span class="link_url">http://www.unfish.net/archives/772-20131207.html</span>)是国人翻译的版本.</span><br><span class="line"></span><br><span class="line"><span class="header">###NodeJs 后端开发记录</span></span><br><span class="line">上面推荐的文章是webapp的方式，和我们的需求有些不同，这篇文章[<span class="link_label">an-end-to-end-hybrid-app</span>](<span class="link_url">http://thejackalofjavascript.com/an-end-to-end-hybrid-app/</span>)和ionic结合的更紧密，推荐阅读。</span><br><span class="line"></span><br><span class="line"><span class="header">### Npm命令简介(转载自网络)</span></span><br><span class="line"><span class="bullet">- </span>npm install <span class="xml"><span class="tag">&lt;<span class="title">name</span>&gt;</span></span>安装nodejs的依赖包</span><br><span class="line"></span><br><span class="line">例如npm install express 就会默认安装express的最新版本，也可以通过在后面加版本号的方式安装指定版本，如npm install express@3.0.6</span><br><span class="line"></span><br><span class="line"><span class="bullet">- </span>npm install <span class="xml"><span class="tag">&lt;<span class="title">name</span>&gt;</span></span> -g  将包安装到全局环境中</span><br><span class="line"></span><br><span class="line">但是代码中，直接通过require()的方式是没有办法调用全局安装的包的。全局的安装是供命令行使用的，就好像全局安装了vmarket后，就可以在命令行中直接运行vm命令</span><br><span class="line"></span><br><span class="line"><span class="bullet">- </span>npm install <span class="xml"><span class="tag">&lt;<span class="title">name</span>&gt;</span></span> --save  安装的同时，将信息写入package.json中</span><br><span class="line">项目路径中如果有package.json文件时，直接使用npm install方法就可以根据dependencies配置安装所有的依赖包</span><br><span class="line"></span><br><span class="line">这样代码提交到github时，就不用提交node_modules这个文件夹了。</span><br><span class="line"></span><br><span class="line"><span class="bullet">- </span>npm init  会引导你创建一个package.json文件，包括名称、版本、作者这些信息等</span><br><span class="line"></span><br><span class="line"><span class="bullet">- </span>npm remove <span class="xml"><span class="tag">&lt;<span class="title">name</span>&gt;</span></span>移除</span><br><span class="line"></span><br><span class="line"><span class="bullet">- </span>npm update <span class="xml"><span class="tag">&lt;<span class="title">name</span>&gt;</span></span>更新</span><br><span class="line"></span><br><span class="line"><span class="bullet">- </span>npm ls 列出当前安装的了所有包</span><br><span class="line"></span><br><span class="line"><span class="bullet">- </span>npm root 查看当前包的安装路径</span><br><span class="line"></span><br><span class="line"><span class="bullet">- </span>npm root -g  查看全局的包的安装路径</span><br><span class="line"></span><br><span class="line"><span class="bullet">- </span>npm help  帮助，如果要单独查看install命令的帮助，可以使用的npm help install</span><br><span class="line"></span><br><span class="line">官网文档：https://npmjs.org/doc/</span><br><span class="line"></span><br><span class="line"><span class="header">###生成的package.json文件中的dependencies前面的~,^符号的含义</span></span><br><span class="line">典型的文件形式是,其中的～和^ 是什么含义呢</span><br></pre></td></tr></table></figure></p>
-<p>  “dependencies”: {<br>    “express”: “~4.2.0”,<br>    “body-parser”: “~1.0.0”,<br>    “mongoose”: “~3.8.11”,<br>    “bcrypt”: “^0.8.3”,<br>    “mongojs”: “^0.18.2”,<br>    “morgan”: “^1.5.3”,<br>    “restify”: “^3.0.3”<br>  }</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">借用stackoverflow上的[<span class="link_label">回答</span>](<span class="link_url">https://stackoverflow.com/questions/22343224/difference-between-tilde-and-caret-in-package-json</span>):</span><br><span class="line"></span><br><span class="line"><span class="blockquote">&gt; In the simplest terms, the tilde matches the most recent minor version (the middle number). ~1.2.3 will match all 1.2.x versions but will miss 1.3.0.</span></span><br><span class="line">The caret, on the other hand, is more relaxed. It will update you to the most recent major version (the first number). ^1.2.3 will match any 1.x.x release including 1.3.0, but will hold off on 2.0.0.</span><br><span class="line"></span><br><span class="line"><span class="header">###Http Status code</span></span><br><span class="line">服务器发送响应时需要指定状态编码，如404，203等，看[<span class="link_label">这里</span>](<span class="link_url">http://www.restapitutorial.com/httpstatuscodes.html</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="horizontal_rule">---</span></span><br><span class="line"></span><br><span class="line"><span class="header">###LeanCloud</span></span><br><span class="line">如果不想自己租用服务器，编写后端代码，国外有[<span class="link_label">parse</span>](<span class="link_url">https://www.parse.com/</span>)，国内有[<span class="link_label">LeanCloud</span>](<span class="link_url">https://leancloud.cn/</span>)都提供后端云服务。尝试使用了，感觉不错，不过本app的数据比较敏感，所以还是得自己搭服务器。</span><br><span class="line"></span><br><span class="line">一些坑:</span><br><span class="line"></span><br><span class="line"><span class="bullet">1. </span>对于javascript版本的leancloud api ，官方文档给出的方法是直接将</span><br></pre></td></tr></table></figure>
-<pre><code><span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"https://cdn1.lncld.net/static/js/av-mini-0.5.4.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
-</code></pre><p>```<br>这样一段代码插入到页面中，但我们这个hybird app，每次都要去网上下载太费时间，可以先将它下载到本地，在本地载入。</p>
+</ol>
+<p>这样一段代码插入到页面中，但我们这个hybird app，每次都要去网上下载太费时间，可以先将它下载到本地，在本地载入。</p>
 <h2 id="一些常用的工具网站">一些常用的工具网站</h2><ul>
-<li><a href="https://apiary.io/#">apiary</a> 创建优美的api文档</li>
-<li><a href="https://www.heroku.com/">heroku</a> 强大的App 部署云平台</li>
-<li><a href="https://mongolab.com/">mongolab</a> 提供mongodb数据库服务</li>
+<li><a href="https://apiary.io/#" target="_blank" rel="external">apiary</a> 创建优美的api文档</li>
+<li><a href="https://www.heroku.com/" target="_blank" rel="external">heroku</a> 强大的App 部署云平台</li>
+<li><a href="https://mongolab.com/" target="_blank" rel="external">mongolab</a> 提供mongodb数据库服务</li>
 </ul>
 <h2 id="学习资源">学习资源</h2><ul>
-<li><a href="https://github.com/darcyliu/google-styleguide/blob/master/JSONStyleGuide.md">JSON风格指南</a></li>
-<li><a href="http://www.w3schools.com/json/default.asp">w3school的json教程</a></li>
-<li><a href="http://ionicmaterial.com/">ionicmaterial</a><blockquote>
+<li><a href="https://github.com/darcyliu/google-styleguide/blob/master/JSONStyleGuide.md" target="_blank" rel="external">JSON风格指南</a></li>
+<li><a href="http://www.w3schools.com/json/default.asp" target="_blank" rel="external">w3school的json教程</a></li>
+<li><a href="http://ionicmaterial.com/" target="_blank" rel="external">ionicmaterial</a><blockquote>
 <p>$ Ionic + Material Design,非常推荐<img src="https://github.com/zachsoft/Ionic-Material" alt="github地址"></p>
 </blockquote>
 </li>
-<li><a href="https://www.meteor.com/">meteor</a><blockquote>
+<li><a href="https://www.meteor.com/" target="_blank" rel="external">meteor</a><blockquote>
 <p>$ JavaScript App Platform</p>
 </blockquote>
 </li>
-<li><a href="https://github.com/meteoric/meteor-ionic">meteor-ionic</a><blockquote>
+<li><a href="https://github.com/meteoric/meteor-ionic" target="_blank" rel="external">meteor-ionic</a><blockquote>
 <p>$ meteor + ionic</p>
 </blockquote>
 </li>
-<li><a href="http://themeforest.net/item/ionic-responsive-template-v101/8498523">某商业模版</a><blockquote>
-<p>$ <a href="http://themeforest.net/item/ionic-responsive-template-v101/full_screen_preview/8498523">这里</a>是它的live</p>
+<li><a href="http://themeforest.net/item/ionic-responsive-template-v101/8498523" target="_blank" rel="external">某商业模版</a><blockquote>
+<p>$ <a href="http://themeforest.net/item/ionic-responsive-template-v101/full_screen_preview/8498523" target="_blank" rel="external">这里</a>是它的live</p>
 </blockquote>
 </li>
-<li><a href="https://play.google.com/store/apps/details?id=com.chargemap_beta.android">用到地图服务</a></li>
-<li><a href="https://ccoenraets.github.io/ionic-tutorial/ionic-facebook-integration.html">facebook分享</a></li>
-<li><a href="https://hackhands.com/building-instagram-clone-angularjs-satellizer-nodejs-mongodb/">牛逼！用angularjs－nodejs克隆instgram的网站</a></li>
-<li><a href="http://martinmicunda.com/2015/04/10/build-ionic-photo-gallery-app-I/">用ionic和nodejs做的图片墙app</a></li>
-<li><a href="http://learn.ionicframework.com/formulas/localstorage/">如何使用本地存储</a></li>
+<li><a href="https://play.google.com/store/apps/details?id=com.chargemap_beta.android" target="_blank" rel="external">用到地图服务</a></li>
+<li><a href="https://ccoenraets.github.io/ionic-tutorial/ionic-facebook-integration.html" target="_blank" rel="external">facebook分享</a></li>
+<li><a href="https://hackhands.com/building-instagram-clone-angularjs-satellizer-nodejs-mongodb/" target="_blank" rel="external">牛逼！用angularjs－nodejs克隆instgram的网站</a></li>
+<li><a href="http://martinmicunda.com/2015/04/10/build-ionic-photo-gallery-app-I/" target="_blank" rel="external">用ionic和nodejs做的图片墙app</a></li>
+<li><a href="http://learn.ionicframework.com/formulas/localstorage/" target="_blank" rel="external">如何使用本地存储</a></li>
 </ul>
 <hr>
--->
+
       
     </div>
 
@@ -527,7 +473,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">51</span>
+              <span class="site-state-item-count">52</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -620,7 +566,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前端"><span class="nav-number">1.1.</span> <span class="nav-text">前端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#总体"><span class="nav-number">1.1.1.</span> <span class="nav-text">总体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编写ionic代码时的一些坑"><span class="nav-number">1.1.2.</span> <span class="nav-text">编写ionic代码时的一些坑</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ionic相关博文"><span class="nav-number">2.</span> <span class="nav-text">Ionic相关博文</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ionic开发资料"><span class="nav-number">3.</span> <span class="nav-text">ionic开发资料</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ionic_服务"><span class="nav-number">3.0.1.</span> <span class="nav-text">ionic 服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优质博客"><span class="nav-number">3.0.2.</span> <span class="nav-text">优质博客</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ionic_提升性能"><span class="nav-number">3.0.3.</span> <span class="nav-text">ionic 提升性能</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后端"><span class="nav-number">3.1.</span> <span class="nav-text">后端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Node"><span class="nav-number">3.1.1.</span> <span class="nav-text">Node</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NodeJs_后端开发记录"><span class="nav-number">3.1.2.</span> <span class="nav-text">NodeJs 后端开发记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Npm命令简介(转载自网络)"><span class="nav-number">3.1.3.</span> <span class="nav-text">Npm命令简介(转载自网络)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成的package-json文件中的dependencies前面的~,^符号的含义"><span class="nav-number">3.1.4.</span> <span class="nav-text">生成的package.json文件中的dependencies前面的~,^符号的含义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Http_Status_code"><span class="nav-number">3.1.5.</span> <span class="nav-text">Http Status code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LeanCloud"><span class="nav-number">3.1.6.</span> <span class="nav-text">LeanCloud</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些常用的工具网站"><span class="nav-number">3.2.</span> <span class="nav-text">一些常用的工具网站</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#学习资源"><span class="nav-number">3.3.</span> <span class="nav-text">学习资源</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -638,7 +584,7 @@
         <div class="copyright">
   
   &copy; &nbsp;  2014 - 
-  2015
+  2016
   <span class="with-love">
     <i class="icon-heart"></i>
   </span>
@@ -846,7 +792,7 @@
     <script type="text/javascript">
       var disqus_shortname = 'mcl';
       var disqus_identifier = '2015/05/28/ionic-steup/';
-      var disqus_title = 'ionic 项目记录';
+      var disqus_title = 'Ionic 项目记录';
       var disqus_url = 'http://www.mclspace.com/2015/05/28/ionic-steup/';
 
       function run_disqus_script(disqus_script){
