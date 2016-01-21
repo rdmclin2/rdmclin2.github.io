@@ -182,8 +182,89 @@
           
           
             
+              <a class="post-title-link" href="/2016/01/20/java-shell-toolkit-using-processBuilder/">
+                Java使用ProcessBuilder类编写shell工具类
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 Jan 20 2016
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/java/">java</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2016/01/20/java-shell-toolkit-using-processBuilder/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/01/20/java-shell-toolkit-using-processBuilder/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <h1 id="前言">前言</h1><p>最近使用Java编写用于测试平台的工具类，有个需求是在java中调用命令行语句并获取输出，在Java中有两种方式可以完成这个任务。一个是<code>Runtime.getRuntime().exec()</code>（java1.5之前），java1.5之后提供了<a href="https://docs.oracle.com/javase/7/docs/api/java/lang/ProcessBuilder.html">ProcessBuilder</a>类来构建进程。由于Runtime的方法不够灵活，而且我们项目不需要兼容老版本java，这里用ProcessBuilder来构建这个工具类。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/01/20/java-shell-toolkit-using-processBuilder/#more">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2016/01/18/nodejs-tutorials-1/">
-                使用Nodejs快速创建web项目
+                使用Express快速创建web项目
               </a>
             
           
@@ -228,8 +309,9 @@
 
       
         
-          <h1 id="前言">前言</h1><p>从很早开始就想通过Nodejs编写一个属于自己的网站，同时也想分享一些Nodejs开发过程中的一些感悟和经验，不过一直没有实施，再拖下去估计没有下文了=。=。准备从本篇开始，使用Nodejs的Express框架,配合Mongoose数据库构建一个用于展示Nodejs相关教程的网站,探索基于Nodejs的web应用的快速构建方法,并记录开发过程。</p>
+          <h1 id="前言">前言</h1><p>从很早开始就想通过Nodejs编写一个属于自己的网站，同时也想分享一些Nodejs开发过程中的一些感悟和经验，不过一直没有实施，再拖下去估计没有下文了=。=。准备从本篇开始，使用Nodejs的Express框架,配合Mongoose数据库构建一个类似知乎的网站（特点为限制答题字数，并且启用markdown回答题目）,取名简言,探索基于Nodejs的web应用的快速构建方法,并记录开发过程。</p>
 <p>网站文件放在<a href="https://github.com/rdmclin2/NodeTurtorials">github</a>上，欢迎拍砖点赞 :)</p>
+<p>PS: 本篇内容相关源码可以通过tag:v0.0.1进行查看</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/01/18/nodejs-tutorials-1/#more">
               阅读全文 &raquo;
@@ -919,90 +1001,6 @@
 
 
     
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2015/11/23/ionic-app-1/">
-                Ionic+Nodejs+Mongod开发端到端混合应用系列教程二 - Nodejs+Ionic+Mongodb+Docker技术综述
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于 Nov 23 2015
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; 分类于
-            
-              <a href="/categories/ionic/">ionic</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/11/23/ionic-app-1/#comments" >
-              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/11/23/ionic-app-1/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>本篇介绍以Nodejs和Mongodb为后端，以Ionic为前端，以Docker作为服务器容器为基础架构的混合App开发方式的技术综述。</p>
-<p>我已经把项目文件整理起来放到<a href="https://github.com/rdmclin2/fcws">github</a>上了，供大家参考。</p>
-</blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/11/23/ionic-app-1/#more">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
   </div>
 
   
@@ -1041,21 +1039,21 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">46</span>
+              <span class="site-state-item-count">47</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">分类</span>
               
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">41</span>
+              <span class="site-state-item-count">42</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

@@ -59,7 +59,7 @@
 
 
 
-  <title> 使用Nodejs快速创建web项目 // Mcl's space </title>
+  <title> 使用Express快速创建web项目 // Mcl's space </title>
 </head>
 
 <body>
@@ -180,7 +180,7 @@
           
           
             
-              使用Nodejs快速创建web项目
+              使用Express快速创建web项目
             
           
         </h1>
@@ -223,13 +223,15 @@
       
 
       
-        <h1 id="前言">前言</h1><p>从很早开始就想通过Nodejs编写一个属于自己的网站，同时也想分享一些Nodejs开发过程中的一些感悟和经验，不过一直没有实施，再拖下去估计没有下文了=。=。准备从本篇开始，使用Nodejs的Express框架,配合Mongoose数据库构建一个用于展示Nodejs相关教程的网站,探索基于Nodejs的web应用的快速构建方法,并记录开发过程。</p>
+        <h1 id="前言">前言</h1><p>从很早开始就想通过Nodejs编写一个属于自己的网站，同时也想分享一些Nodejs开发过程中的一些感悟和经验，不过一直没有实施，再拖下去估计没有下文了=。=。准备从本篇开始，使用Nodejs的Express框架,配合Mongoose数据库构建一个类似知乎的网站（特点为限制答题字数，并且启用markdown回答题目）,取名简言,探索基于Nodejs的web应用的快速构建方法,并记录开发过程。</p>
 <p>网站文件放在<a href="https://github.com/rdmclin2/NodeTurtorials" target="_blank" rel="external">github</a>上，欢迎拍砖点赞 :)</p>
+<p>PS: 本篇内容相关源码可以通过tag:v0.0.1进行查看</p>
 <a id="more"></a>
 <hr>
-<h3 id="创建过程">创建过程</h3><p><a href="http://expressjs.com" target="_blank" rel="external">Express</a>是基于<a href="https://nodejs.org" target="_blank" rel="external">Nodejs</a>的一个快速web开发框架,它提供了一个<code>Express application generator</code>可以帮助我们快速创建应用的骨架。<br>使用如下命令安装generator:<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm <span class="keyword">install</span> express-generator -g</span><br></pre></td></tr></table></figure></p>
-<p>安装完成后用以下命令生成骨架:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ express <span class="operator">-e</span> myapp</span><br></pre></td></tr></table></figure></p>
-<p><code>-e</code>选项代表使用EJS模板引擎。<br>生成后的应用文件结构如下:<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── LICENSE</span><br><span class="line">├── README<span class="class">.md</span></span><br><span class="line">├── app<span class="class">.js</span></span><br><span class="line">├── bin</span><br><span class="line">│   └── www</span><br><span class="line">├── package<span class="class">.json</span></span><br><span class="line">├── public</span><br><span class="line">│   ├── images</span><br><span class="line">│   ├── javascripts</span><br><span class="line">│   └── stylesheets</span><br><span class="line">│       └── style<span class="class">.css</span></span><br><span class="line">├── routes</span><br><span class="line">│   ├── index<span class="class">.js</span></span><br><span class="line">│   └── users<span class="class">.js</span></span><br><span class="line">└── views</span><br><span class="line">    ├── error<span class="class">.ejs</span></span><br><span class="line">    └── index<span class="class">.ejs</span></span><br><span class="line"></span><br><span class="line"><span class="number">7</span> directories, <span class="number">10</span> files</span><br></pre></td></tr></table></figure></p>
+<h3 id="创建过程">创建过程</h3><p><a href="http://expressjs.com" target="_blank" rel="external">Express</a>是基于<a href="https://nodejs.org" target="_blank" rel="external">Nodejs</a>的一个快速web开发框架,它提供了一个<code>Express application generator</code>可以帮助我们快速创建应用的骨架。</p>
+<p>使用如下命令安装generator:<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm <span class="keyword">install</span> express-generator -g</span><br></pre></td></tr></table></figure></p>
+<p>安装完成后用以下命令生成骨架,<code>-e</code>选项代表使用EJS模板引擎:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ express <span class="operator">-e</span> myapp</span><br></pre></td></tr></table></figure></p>
+<p>生成后的应用文件结构如下:<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── LICENSE</span><br><span class="line">├── README<span class="class">.md</span></span><br><span class="line">├── app<span class="class">.js</span></span><br><span class="line">├── bin</span><br><span class="line">│   └── www</span><br><span class="line">├── package<span class="class">.json</span></span><br><span class="line">├── public</span><br><span class="line">│   ├── images</span><br><span class="line">│   ├── javascripts</span><br><span class="line">│   └── stylesheets</span><br><span class="line">│       └── style<span class="class">.css</span></span><br><span class="line">├── routes</span><br><span class="line">│   ├── index<span class="class">.js</span></span><br><span class="line">│   └── users<span class="class">.js</span></span><br><span class="line">└── views</span><br><span class="line">    ├── error<span class="class">.ejs</span></span><br><span class="line">    └── index<span class="class">.ejs</span></span><br><span class="line"></span><br><span class="line"><span class="number">7</span> directories, <span class="number">10</span> files</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li><code>app.js</code>是express的设置文件</li>
 <li><code>bin/www</code>是express执行文件</li>
@@ -239,7 +241,8 @@
 <li><code>views</code>保存网站的ejs视图代码</li>
 </ul>
 <p>然后执行<code>$ npm install</code>安装项目依赖,该命令根据<code>package.json</code>文件中描述的<code>dependencies</code>安装依赖，默认安装到<code>node_modules</code>文件夹下。例如自动生成的<code>package.json</code>文件如下:<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "<span class="attribute">name</span>": <span class="value"><span class="string">"NodeTurtorials"</span></span>,</span><br><span class="line">  "<span class="attribute">version</span>": <span class="value"><span class="string">"0.0.0"</span></span>,</span><br><span class="line">  "<span class="attribute">private</span>": <span class="value"><span class="literal">true</span></span>,</span><br><span class="line">  "<span class="attribute">scripts</span>": <span class="value">&#123;</span><br><span class="line">    "<span class="attribute">start</span>": <span class="value"><span class="string">"node ./bin/www"</span></span><br><span class="line">  </span>&#125;</span>,</span><br><span class="line">  "<span class="attribute">dependencies</span>": <span class="value">&#123;</span><br><span class="line">    "<span class="attribute">body-parser</span>": <span class="value"><span class="string">"~1.13.2"</span></span>,</span><br><span class="line">    "<span class="attribute">cookie-parser</span>": <span class="value"><span class="string">"~1.3.5"</span></span>,</span><br><span class="line">    "<span class="attribute">debug</span>": <span class="value"><span class="string">"~2.2.0"</span></span>,</span><br><span class="line">    "<span class="attribute">ejs</span>": <span class="value"><span class="string">"~2.3.3"</span></span>,</span><br><span class="line">    "<span class="attribute">express</span>": <span class="value"><span class="string">"~4.13.1"</span></span>,</span><br><span class="line">    "<span class="attribute">morgan</span>": <span class="value"><span class="string">"~1.6.1"</span></span>,</span><br><span class="line">    "<span class="attribute">serve-favicon</span>": <span class="value"><span class="string">"~2.3.0"</span></span><br><span class="line">  </span>&#125;</span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure></p>
-<p>通过<code>$ npm start</code> 或者直接<code>$ node ./bin/www</code>启动项目,打开浏览器输入<code>localhost:3000</code>查看效果。</p>
+<p>通过<code>$ npm start</code> 或者直接<code>$ node ./bin/www</code>启动项目。</p>
+<p>打开浏览器输入<code>localhost:3000</code>查看效果。</p>
 
       
     </div>
@@ -258,6 +261,8 @@
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/01/20/java-shell-toolkit-using-processBuilder/">Java使用ProcessBuilder类编写shell工具类</a>
             
           </div>
 
@@ -354,21 +359,21 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">46</span>
+              <span class="site-state-item-count">47</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">分类</span>
               
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">41</span>
+              <span class="site-state-item-count">42</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -673,7 +678,7 @@
     <script type="text/javascript">
       var disqus_shortname = 'mcl';
       var disqus_identifier = '2016/01/18/nodejs-tutorials-1/';
-      var disqus_title = '使用Nodejs快速创建web项目';
+      var disqus_title = '使用Express快速创建web项目';
       var disqus_url = 'http://www.mclspace.com/2016/01/18/nodejs-tutorials-1/';
 
       function run_disqus_script(disqus_script){
