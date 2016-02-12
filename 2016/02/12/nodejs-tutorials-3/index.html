@@ -26,7 +26,7 @@
 
 
 
-  <meta name="keywords" content="java,mac," />
+  <meta name="keywords" content="jieyuan,nodejs," />
 
 
 
@@ -59,7 +59,7 @@
 
 
 
-  <title> mac 如何配置java_home环境变量 // Mcl's space </title>
+  <title> Nodejs 配置文件管理 // Mcl's space </title>
 </head>
 
 <body>
@@ -180,7 +180,7 @@
           
           
             
-              mac 如何配置java_home环境变量
+              Nodejs 配置文件管理
             
           
         </h1>
@@ -188,14 +188,14 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 Mar 10 2015
+          发表于 Feb 12 2016
         </span>
 
         
           <span class="post-category">
             &nbsp; | &nbsp; 分类于
             
-              <a href="/categories/mac/">mac</a>
+              <a href="/categories/nodejs/">nodejs</a>
 
               
               
@@ -208,8 +208,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/03/10/mac_java_home/#comments" >
-              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/03/10/mac_java_home/"></span>
+            <a href="/2016/02/12/nodejs-tutorials-3/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/02/12/nodejs-tutorials-3/"></span>
             </a>
           </span>
           
@@ -223,21 +223,21 @@
       
 
       
-        <h1 id="前言">前言</h1><p>但凡mac重装系统总要设置java_home环境变量，这里做一下纪录,免去重复查询之苦。<br><a id="more"></a></p>
-<h1 id="如何在多个java版本间切换">如何在多个java版本间切换</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># Mac&#40664;&#35748; JDK 6&#65288;Mac&#40664;&#35748;&#33258;&#24102;&#20102;&#19968;&#20010;jdk6&#29256;&#26412;&#65289;&#10;export JAVA_6_HOME=`/usr/libexec/java_home -v 1.6`&#10;# &#35774;&#32622; JDK 7&#10;export JAVA_7_HOME=`/usr/libexec/java_home -v 1.7`&#10;# &#35774;&#32622; JDK 8&#10;export JAVA_8_HOME=`/usr/libexec/java_home -v 1.8`&#10;&#10;#&#40664;&#35748;JDK 6&#10;export JAVA_HOME=$JAVA_6_HOME&#10;&#10;#alias&#21629;&#20196;&#21160;&#24577;&#20999;&#25442;JDK&#29256;&#26412;&#10;alias jdk6=&#34;export JAVA_HOME=$JAVA_6_HOME&#34;&#10;alias jdk7=&#34;export JAVA_HOME=$JAVA_7_HOME&#34;&#10;alias jdk8=&#34;export JAVA_HOME=$JAVA_8_HOME&#34;</span><br></pre></td></tr></table></figure>
-<h1 id="基本步骤">基本步骤</h1><h2 id="打开终端，新建-bash_profile文件">打开终端，新建.bash_profile文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ~&#10;vim .bash_profile</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="输入java_home环境变量,并保存">输入java_home环境变量,并保存</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)</span><br></pre></td></tr></table></figure>
-<p>这种方法可以动态地获取这个环境变量，当自动升级了新版本的JAVA时，总能找到合适的JAVA_HOME目录，这里-v 可以指定java的版本，也可以不写使用默认的JAVA_HOME 路径</p>
-<hr>
-<h2 id="更新配置文件">更新配置文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source .bash_profile</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="查看java_home环境变量">查看java_home环境变量</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $JAVA_HOME</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="永久配置">永久配置</h2><p>上面的方法配置的用户环境变量，并不是永久的配置方法，要永久配置要设置/etc目录下地profile文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /etc&#10;sudo vim profile&#10;&#22312;&#25991;&#20214;&#20013;&#28155;&#21152;&#10;JAVA_HOME=$(/usr/libexec/java_home -v 1.8)&#10;export JAVA_HOME</span><br></pre></td></tr></table></figure></p>
-<p>然后强制保存退出，重启或注销使环境变量配置起作用。</p>
-<hr>
-<h1 id="参考">参考</h1><p><a href="http://songzhan.iteye.com/blog/1893074" target="_blank" rel="external">http://songzhan.iteye.com/blog/1893074</a><br><a href="http://www.micmiu.com/lang/java/set-javahome-on-mac-os-x/" target="_blank" rel="external">http://www.micmiu.com/lang/java/set-javahome-on-mac-os-x/</a><br><a href="https://stackoverflow.com/questions/1348842/what-should-i-set-java-home-to-on-osx" target="_blank" rel="external">https://stackoverflow.com/questions/1348842/what-should-i-set-java-home-to-on-osx</a></p>
+        <blockquote class="blockquote-center"><br>本文使用的配置管理方案来自于<a href="http://www.amazon.cn/MEAN-Web开发-哈维夫/dp/B012R5A30C/ref=sr_1_1?ie=UTF8&amp;qid=1455266935&amp;sr=8-1&amp;keywords=MEAN" target="_blank" rel="external">MEAN Web开发</a>一书<br></blockquote>
+
+<a id="more"></a>
+<p>我们开发的程序往往会运行在不同的环境中，例如开发，测试，生产等,比如开发时连接到的数据库里面的数据是模拟出来的，而生产环境要连接到实际的数据库上，测试的时候可能需要另一个数据库,因此我们需要让程序能根据不同的运行环境来载入不同的配置文件。另外，我们使用的第三方模块也很可能需要配置文件，将这些配置文件集中起来进行管理，这样在环境变化或模块配置变化的时候我们就不需要改动源代码，配置与使用分离。</p>
+<p>本文使用js文件作为配置文件格式，其他常见的格式还有json,yaml等,另外也可以使用<a href="https://www.npmjs.com/package/config" target="_blank" rel="external">config</a>模块进行配置管理,详细的请查阅<a href="https://cnodejs.org/topic/55fac7eced1da72438e33a7d" target="_blank" rel="external">Node.js 项目的配置文件</a></p>
+<p>使用本文的配置管理方案后<a href="https://github.com/rdmclin2/jieyuan" target="_blank" rel="external">结缘</a>的config文件结构类似如下所示:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tree config&#10;config&#10;&#9500;&#9472;&#9472; config.js&#10;&#9500;&#9472;&#9472; env&#10;&#9474;&#160;&#160; &#9500;&#9472;&#9472; development.js&#10;&#9474;&#160;&#160; &#9500;&#9472;&#9472; production.js&#10;&#9474;&#160;&#160; &#9492;&#9472;&#9472; test.js&#10;&#9500;&#9472;&#9472; mongoose.js&#10;&#9500;&#9472;&#9472; passport.js&#10;&#9492;&#9472;&#9472; strategies&#10;    &#9500;&#9472;&#9472; bearer.js&#10;    &#9492;&#9472;&#9472; local.js</span><br></pre></td></tr></table></figure></p>
+<h1 id="环境配置">环境配置</h1><p>首先在config文件夹下创建<code>env</code>文件夹以及<code>development.js</code>，<code>test.js</code>和<code>production.js</code>，分别用于开发，测试，生产环境下.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir env &#38;&#38; cd $_ &#38;&#38; touch development.js test.js production.js</span><br></pre></td></tr></table></figure></p>
+<p>写入部分配置项，如<code>development.js</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">module.exports  = &#123;&#10;    sessionSecret : &#39;developmentSessionSecret&#39;,&#10;    db: &#39;mongodb://localhost/test&#39;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在test.js和production.js中可以写入不同的db.然后创建<code>config.js</code>文件,写入以下代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">module.exports = require(&#39;./env/&#39; + process.env.NODE_ENV + &#39;.js&#39;);</span><br></pre></td></tr></table></figure></p>
+<p>这句代码会根据当前的<code>NODE_ENV</code>加载合适的配置文件,node默认情况下为<code>development</code>模式,我们可以设置NODE_ENV环境变量或在运行node前指定环境变量。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ NODE_ENV=test PORT=9807 node ...</span><br></pre></td></tr></table></figure></p>
+<p>在需要用到环境设置的时候引入<code>config.js</code>文件即可,如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var config = require(&#39;./config&#39;)</span><br></pre></td></tr></table></figure></p>
+<h1 id="模块配置">模块配置</h1><p>可以将第三方模块的配置也放到<code>config</code>中来统一管理，以<code>mongoose</code>为例,在config文件夹下创建<code>mongoose.js</code>文件,写入如下代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var config = require(&#39;./config&#39;),&#10;    mongoose = require(&#39;mongoose&#39;);&#10;&#10;&#10;module.exports = function()&#123;&#10;    var db = mongoose.connect(config.db,function(err) &#123;&#10;        if(err) &#123;&#10;            console.log(&#39;connection error&#39;, err);&#10;        &#125; else &#123;&#10;            console.log(&#39;connection successful : &#39; + config.db);&#10;        &#125;&#10;    &#125;);&#10;    return db;&#10;&#125;;</span><br></pre></td></tr></table></figure>
+<p>引入配置信息，读取db，然后使用mongoose连接,导出该函数,然后在需要链接数据库的时候使用:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var Mongoose = require(&#39;../config/mongoose&#39;);&#10;var db =  Mongoose();</span><br></pre></td></tr></table></figure></p>
+<p>进行数据库连接.</p>
 
       
     </div>
@@ -246,9 +246,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/java/"> #java </a>
+            <a href="/tags/jieyuan/"> #jieyuan </a>
           
-            <a href="/tags/mac/"> #mac </a>
+            <a href="/tags/nodejs/"> #nodejs </a>
           
         </div>
       
@@ -257,13 +257,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/03/12/android-emma-coverage-md/">如何用emma产生android程序的测试覆盖率报告</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/03/02/android_studio_remove_project/">Android Studio 如何彻底删除Project</a>
+              <a href="/2016/02/12/jieyuan-functions-initial/">结缘的功能设想-初步</a>
             
           </div>
         </div>
@@ -447,7 +445,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何在多个java版本间切换"><span class="nav-number">2.</span> <span class="nav-text">如何在多个java版本间切换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本步骤"><span class="nav-number">3.</span> <span class="nav-text">基本步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#打开终端，新建-bash_profile文件"><span class="nav-number">3.1.</span> <span class="nav-text">打开终端，新建.bash_profile文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入java_home环境变量,并保存"><span class="nav-number">3.2.</span> <span class="nav-text">输入java_home环境变量,并保存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新配置文件"><span class="nav-number">3.3.</span> <span class="nav-text">更新配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看java_home环境变量"><span class="nav-number">3.4.</span> <span class="nav-text">查看java_home环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#永久配置"><span class="nav-number">3.5.</span> <span class="nav-text">永久配置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#环境配置"><span class="nav-number">1.</span> <span class="nav-text">环境配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模块配置"><span class="nav-number">2.</span> <span class="nav-text">模块配置</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -672,9 +670,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'mcl';
-      var disqus_identifier = '2015/03/10/mac_java_home/';
-      var disqus_title = 'mac 如何配置java_home环境变量';
-      var disqus_url = 'http://www.mclspace.com/2015/03/10/mac_java_home/';
+      var disqus_identifier = '2016/02/12/nodejs-tutorials-3/';
+      var disqus_title = 'Nodejs 配置文件管理';
+      var disqus_url = 'http://www.mclspace.com/2016/02/12/nodejs-tutorials-3/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
