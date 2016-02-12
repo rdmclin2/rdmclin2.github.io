@@ -233,10 +233,10 @@
 <li>命名: 例如icon.png, splash.png</li>
 <li>大小: icon-192x192无圆角，splash-2208x2208居中</li>
 </ul>
-<h1 id="生成资源">生成资源</h1><p>准备好图片后将他们放到资源目录 <code>./resources</code>,然后输入命令:<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ ionic resources</span><br><span class="line">Ionic <span class="attribute">icon</span> and splash screen resources generator</span><br><span class="line"> uploading <span class="attribute">icon</span><span class="class">.png</span>...</span><br><span class="line"> uploading splash<span class="class">.png</span>...</span><br><span class="line"> ✓ <span class="attribute">icon</span><span class="class">.png</span> (<span class="number">192</span>x192) upload complete</span><br><span class="line"> ✓ splash<span class="class">.png</span> (<span class="number">2208</span>x2208) upload complete</span><br><span class="line"> generating splash ios Default~iphone<span class="class">.png</span> (<span class="number">320</span>x480)...</span><br><span class="line"> generating splash ios Default@<span class="number">2</span>x~iphone<span class="class">.png</span> (<span class="number">640</span>x960)...</span><br><span class="line"> generating splash ios Default-Portrait~ipad<span class="class">.png</span> (<span class="number">768</span>x1024)...</span><br></pre></td></tr></table></figure></p>
-<p>如果只希望生成一种资源，可以<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ionic resources <span class="comment">--icon</span></span><br><span class="line">$ ionic resources <span class="comment">--splash</span></span><br></pre></td></tr></table></figure></p>
-<p>如果想为不同平台准备不同的图标，那么需要修改路径<br><figure class="highlight puppet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">resources</span>/android/icon.png</span><br><span class="line"><span class="keyword">resources</span>/ios/icon.png</span><br><span class="line"><span class="comment"># splash 同理</span></span><br></pre></td></tr></table></figure></p>
-<h1 id="测试验证">测试验证</h1><p>生成成功后在手机上验证一下吧<br><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ionic platform <span class="built_ins">add</span> android</span><br><span class="line">$ ionic <span class="built_ins">run</span> android</span><br></pre></td></tr></table></figure></p>
+<h1 id="生成资源">生成资源</h1><p>准备好图片后将他们放到资源目录 <code>./resources</code>,然后输入命令:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ionic resources&#10;Ionic icon and splash screen resources generator&#10; uploading icon.png...&#10; uploading splash.png...&#10; &#10003; icon.png (192x192) upload complete&#10; &#10003; splash.png (2208x2208) upload complete&#10; generating splash ios Default~iphone.png (320x480)...&#10; generating splash ios Default@2x~iphone.png (640x960)...&#10; generating splash ios Default-Portrait~ipad.png (768x1024)...</span><br></pre></td></tr></table></figure></p>
+<p>如果只希望生成一种资源，可以<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ionic resources --icon&#10;$ ionic resources --splash</span><br></pre></td></tr></table></figure></p>
+<p>如果想为不同平台准备不同的图标，那么需要修改路径<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">resources/android/icon.png&#10;resources/ios/icon.png&#10;# splash &#21516;&#29702;</span><br></pre></td></tr></table></figure></p>
+<h1 id="测试验证">测试验证</h1><p>生成成功后在手机上验证一下吧<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ionic platform add android&#10;$ ionic run android</span><br></pre></td></tr></table></figure></p>
 <p>看看效果怎么样,在我手机上的截图如下:<br><img src="http://7pun7p.com1.z0.glb.clouddn.com/blog/splash.jpeg" alt=""></p>
 <h1 id="遇到的问题">遇到的问题</h1><p>一个很恼人的问题是，ionic在生成资源的时候，他会对上传的图片做一个checksum，如果一致则不会重新生成图标，而是从cache中取。这就导致它如果生成资源的时候出现错误会导致应用崩溃，然而重新运行命令还是从cache中取。要重新生成可以重新编辑图片以产生不同的checksum，然而这真是个nc的问题，为什么它不提供一个’clean-cache’选项！更多内容可以查看github上的<a href="https://github.com/driftyco/ionic-cli/issues/420" target="_blank" rel="external">issue</a></p>
 <h1 id="资源">资源</h1><ul>
@@ -362,7 +362,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">48</span>
+              <span class="site-state-item-count">49</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -376,7 +376,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">43</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

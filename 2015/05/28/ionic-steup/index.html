@@ -313,7 +313,7 @@
 </li>
 </ul>
 <p>官网文档：<a href="https://npmjs.org/doc/" target="_blank" rel="external">https://npmjs.org/doc/</a></p>
-<h3 id="生成的package-json文件中的dependencies前面的~,^符号的含义">生成的package.json文件中的dependencies前面的~,^符号的含义</h3><p>典型的文件形式是,其中的～和^ 是什么含义呢<br><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"dependencies"</span>: &#123;</span><br><span class="line">  <span class="string">"express"</span>: <span class="string">"~4.2.0"</span>,</span><br><span class="line">  <span class="string">"body-parser"</span>: <span class="string">"~1.0.0"</span>,</span><br><span class="line">  <span class="string">"mongoose"</span>: <span class="string">"~3.8.11"</span>,</span><br><span class="line">  <span class="string">"bcrypt"</span>: <span class="string">"^0.8.3"</span>,</span><br><span class="line">  <span class="string">"mongojs"</span>: <span class="string">"^0.18.2"</span>,</span><br><span class="line">  <span class="string">"morgan"</span>: <span class="string">"^1.5.3"</span>,</span><br><span class="line">  <span class="string">"restify"</span>: <span class="string">"^3.0.3"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="生成的package-json文件中的dependencies前面的~,^符号的含义">生成的package.json文件中的dependencies前面的~,^符号的含义</h3><p>典型的文件形式是,其中的～和^ 是什么含义呢<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#34;dependencies&#34;: &#123;&#10;  &#34;express&#34;: &#34;~4.2.0&#34;,&#10;  &#34;body-parser&#34;: &#34;~1.0.0&#34;,&#10;  &#34;mongoose&#34;: &#34;~3.8.11&#34;,&#10;  &#34;bcrypt&#34;: &#34;^0.8.3&#34;,&#10;  &#34;mongojs&#34;: &#34;^0.18.2&#34;,&#10;  &#34;morgan&#34;: &#34;^1.5.3&#34;,&#10;  &#34;restify&#34;: &#34;^3.0.3&#34;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
 <p>借用stackoverflow上的<a href="https://stackoverflow.com/questions/22343224/difference-between-tilde-and-caret-in-package-json" target="_blank" rel="external">回答</a>:</p>
 <blockquote>
 <p>In the simplest terms, the tilde matches the most recent minor version (the middle number). ~1.2.3 will match all 1.2.x versions but will miss 1.3.0.<br>The caret, on the other hand, is more relaxed. It will update you to the most recent major version (the first number). ^1.2.3 will match any 1.x.x release including 1.3.0, but will hold off on 2.0.0.</p>
@@ -323,7 +323,7 @@
 <h3 id="LeanCloud">LeanCloud</h3><p>如果不想自己租用服务器，编写后端代码，国外有<a href="https://www.parse.com/" target="_blank" rel="external">parse</a>，国内有<a href="https://leancloud.cn/" target="_blank" rel="external">LeanCloud</a>都提供后端云服务。尝试使用了，感觉不错，不过本app的数据比较敏感，所以还是得自己搭服务器。</p>
 <p>一些坑:</p>
 <ol>
-<li>对于javascript版本的leancloud api ，官方文档给出的方法是直接将<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"https://cdn1.lncld.net/static/js/av-mini-0.5.4.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<li>对于javascript版本的leancloud api ，官方文档给出的方法是直接将<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;script src=&#34;https://cdn1.lncld.net/static/js/av-mini-0.5.4.js&#34;&#62;&#60;/script&#62;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>这样一段代码插入到页面中，但我们这个hybird app，每次都要去网上下载太费时间，可以先将它下载到本地，在本地载入。</p>
@@ -474,7 +474,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">48</span>
+              <span class="site-state-item-count">49</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -488,7 +488,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">43</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

@@ -228,14 +228,14 @@
 <hr>
 <h2 id="配置环境">配置环境</h2><p>在mac上安装nodejs和hexo,这里和window上安装的步骤差不多，可以看我之前的一篇文章<a href="http://mclspace.com/2014/10/19/about-hexo/" target="_blank" rel="external">hexo 简易教程 入门</a>,这里注意hexo初始化的时候要记得设定文件夹。<br>PS:安装hexo的时候如果出错，可以尝试加sudo.</p>
 <hr>
-<h2 id="设置git">设置git</h2><p>如果新机器没有安装git，可以在terminal中输入git，mac会提示你帮你装git的。然后为你的新机器产生ssh，添加到github上去，ssh key的产生命令为：<br><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"xxx<span class="variable">@xxx</span>.com"</span></span><br><span class="line">你也可以用：</span><br><span class="line">ssh git<span class="variable">@github</span>.com</span><br><span class="line">进行测试</span><br></pre></td></tr></table></figure></p>
+<h2 id="设置git">设置git</h2><p>如果新机器没有安装git，可以在terminal中输入git，mac会提示你帮你装git的。然后为你的新机器产生ssh，添加到github上去，ssh key的产生命令为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &#34;xxx@xxx.com&#34;&#10;&#20320;&#20063;&#21487;&#20197;&#29992;&#65306;&#10;ssh git@github.com&#10;&#36827;&#34892;&#27979;&#35797;</span><br></pre></td></tr></table></figure></p>
 <p>生成的ssh key纪录在~/.ssh文件夹的id_rsa.pub中，把里面的内容粘贴到github设备key列表中就好。</p>
 <p><code>更新</code></p>
 <blockquote>
 <p>hexo 更新到3.0之后，需要把_config.yml中的github修改为git才能正常deploy。然后执行<code>npm install hexo-deployer-git --save</code></p>
 </blockquote>
 <hr>
-<h2 id="迁移">迁移</h2><p>迁移没有我想象的那么困难，把原博客的文件夹中的_config.yml,scaffolds,source,themes文件或文件夹整个搞过来对mac下的博客文件夹进行覆盖<br>然后<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">g</span></span><br><span class="line">hexo <span class="literal">d</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="迁移">迁移</h2><p>迁移没有我想象的那么困难，把原博客的文件夹中的_config.yml,scaffolds,source,themes文件或文件夹整个搞过来对mac下的博客文件夹进行覆盖<br>然后<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g&#10;hexo d</span><br></pre></td></tr></table></figure></p>
 <p>ok,如果你还想再windows上和mac同时写文章，可以看看下面的参考。</p>
 <hr>
 <h2 id="参考">参考</h2><ul>
@@ -359,7 +359,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">48</span>
+              <span class="site-state-item-count">49</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -373,7 +373,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">43</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

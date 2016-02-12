@@ -230,20 +230,20 @@
 <a id="more"></a>
 <hr>
 <h1 id="oh_my_zsh~_安装配置">oh my zsh~ 安装配置</h1><p>这里介绍mac下如何进行oh my zsh~的安装配置</p>
-<h2 id="切换zsh">切换zsh</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chsh <span class="operator">-s</span> /bin/zsh</span><br></pre></td></tr></table></figure>
+<h2 id="切换zsh">切换zsh</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chsh -s /bin/zsh</span><br></pre></td></tr></table></figure>
 <hr>
-<h2 id="安装git">安装git</h2><p>命令行输入git，mac自动弹出安装界面提示你安装，不过速度有点慢,安装完成后设置自己的用户名和邮箱<br>git config —global user.name “xxx”<br>git config —global user.email xxx@example.com<br>git config —global http.postBuffer 524288000 //设置缓冲区为500M，防止下不下来<br>然后生成新的ssh－key。<br><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -<span class="keyword">C</span> <span class="string">"your_email@example.com"</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="安装git">安装git</h2><p>命令行输入git，mac自动弹出安装界面提示你安装，不过速度有点慢,安装完成后设置自己的用户名和邮箱<br>git config —global user.name “xxx”<br>git config —global user.email xxx@example.com<br>git config —global http.postBuffer 524288000 //设置缓冲区为500M，防止下不下来<br>然后生成新的ssh－key。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &#34;your_email@example.com&#34;</span><br></pre></td></tr></table></figure></p>
 <p>然后将~/.ssh/id_rsa.pub中的key粘贴到github账户的key列表中去。</p>
 <hr>
-<h2 id="安装homebrew">安装homebrew</h2><p>终端输入：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby <span class="operator">-e</span> <span class="string">"<span class="variable">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)</span>"</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="安装homebrew">安装homebrew</h2><p>终端输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby -e &#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&#34;</span><br></pre></td></tr></table></figure></p>
 <hr>
-<h2 id="安装wget">安装wget</h2><p>终端输入：<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew <span class="keyword">install</span> wget</span><br></pre></td></tr></table></figure></p>
+<h2 id="安装wget">安装wget</h2><p>终端输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install wget</span><br></pre></td></tr></table></figure></p>
 <hr>
-<h2 id="自动安装">自动安装</h2><p>终端输入：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http<span class="variable">s:</span>//github.<span class="keyword">com</span>/robbyrussell/oh-my-zsh/raw/master/tools/install.<span class="keyword">sh</span> -O - | <span class="keyword">sh</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="自动安装">自动安装</h2><p>终端输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh</span><br></pre></td></tr></table></figure></p>
 <hr>
-<h2 id="安装插件">安装插件</h2><p>这里安装<a href="https://github.com/wting/autojump" target="_blank" rel="external">autojump</a>神器：<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew <span class="keyword">install</span> autojump</span><br></pre></td></tr></table></figure></p>
-<p>在.zshrc文件中添加：<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]]</span> &amp;&amp; . $(brew <span class="comment">--prefix)/etc/profile.d/autojump.sh</span></span><br></pre></td></tr></table></figure></p>
-<p>按brew提示的为准，在.zshrc文件中找到plugins关键字，在括号里添加autojump，如：<br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plugins=<span class="list">(<span class="keyword">git</span> textmate ruby autojump osx mvn gradle)</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="安装插件">安装插件</h2><p>这里安装<a href="https://github.com/wting/autojump" target="_blank" rel="external">autojump</a>神器：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install autojump</span><br></pre></td></tr></table></figure></p>
+<p>在.zshrc文件中添加：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] &#38;&#38; . $(brew --prefix)/etc/profile.d/autojump.sh</span><br></pre></td></tr></table></figure></p>
+<p>按brew提示的为准，在.zshrc文件中找到plugins关键字，在括号里添加autojump，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plugins=(git textmate ruby autojump osx mvn gradle)</span><br></pre></td></tr></table></figure></p>
 <p>安装完成后就可以在终端中 用<code>j &lt;directory_shortcut&gt;</code>, 如你有一个经常访问的文件夹叫server,那么输入’j serv’基本就能匹配到这个文件夹。</p>
 <hr>
 <h1 id="参考文献">参考文献</h1><ul>
@@ -363,7 +363,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">48</span>
+              <span class="site-state-item-count">49</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -377,7 +377,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">43</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

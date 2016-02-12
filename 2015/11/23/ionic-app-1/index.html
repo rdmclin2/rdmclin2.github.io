@@ -256,7 +256,7 @@
 <h2 id="JS功能部件">JS功能部件</h2><p>JS功能部件能够提供各种动态效果以及交互功能，图二中1为Ionic为我们提供的JS功能列表，提供了例如导航，弹出菜单，滑动窗口等基本页面交互功能，通过使用图2中的JS代码能够很方便的使用这些功能，让我们的APP能够与用户进行交互，图中3所示为弹出窗口的效果。</p>
 <p><img src="http://7pun7p.com1.z0.glb.clouddn.com/blog/ionic_js.png" alt=""></p>
 <h1 id="Nodejs技术简述">Nodejs技术简述</h1><p>Nodejs是一个基于Chrome V8引擎的js运行时环境，它采用基于事件的非阻塞I/O模型，V8是Google创造出来的高性能JS引擎，得益于V8的高性能，Nodejs能够既轻量级又具备高性能。Nodejs很适合用来搭建高性能的web服务器,而且因为Node内置了服务器，我们不需要像PHP或Django一样用Ngnix之类的代理服务器，例如使用下面的代码就可以简单地创建一个Nodejs服务器：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"></span><br><span class="line">http.createServer(<span class="function"><span class="keyword">function</span> <span class="params">(req, res)</span> </span>&#123;</span><br><span class="line">  res.writeHead(<span class="number">200</span>, &#123;<span class="string">'Content-Type'</span>: <span class="string">'text/plain'</span>&#125;);</span><br><span class="line">  res.end(<span class="string">'Hello World\n'</span>);</span><br><span class="line">&#125;).listen(<span class="number">1337</span>, <span class="string">"127.0.0.1"</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Server running at http://127.0.0.1:1337/'</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var http = require(&#39;http&#39;);&#10;&#10;http.createServer(function (req, res) &#123;&#10;  res.writeHead(200, &#123;&#39;Content-Type&#39;: &#39;text/plain&#39;&#125;);&#10;  res.end(&#39;Hello World\n&#39;);&#10;&#125;).listen(1337, &#34;127.0.0.1&#34;);&#10;&#10;console.log(&#39;Server running at http://127.0.0.1:1337/&#39;);</span><br></pre></td></tr></table></figure>
 <p>这段代码使用Nodejs内置的http模块，监听本地1337端口，并将所有访问该地址的请求返回一个Hello World的回应。</p>
 <p><img src="http://7pun7p.com1.z0.glb.clouddn.com/blog/nodejs_logo.png" alt=""></p>
 <p>Node.js是一个为实时Web（Real-time Web)应用开发而诞生的平台，它从诞生之初就充分考虑了在实时响应,超大规模数据要求下架构的可扩展性。这使得它摈弃了传统平台依靠多线程来实现高并发的设计思路，而采用了单线程，异步式I/O,事件驱动的程序设计模型，这些特性不仅带来了巨大的性能提升，还减少了多线程程序设计的复杂性，进而提高了开发效率。Nodejs是一个让Javascript运行在浏览器之外的平台。它实现了诸如文件系统，模块，包，操作系统API，网络通信等Core JavaScript没有或者不完善的功能。Node.js的Javascript引擎是V8,来自Google Chrome项目。V8号称是目前世界上最快的Javascript引擎，经历了数次引擎革命，它的JIT(Just-in-time Compilation,即时编译)的执行速度已经快到了接近本地代码的执行速度。Node.js不运行在浏览器中，所以也就不存在JavaScript的浏览器兼容性问题，可以放心地使用JavaScript语言的所有特性。</p>
@@ -264,9 +264,9 @@
 <p>NodeJS开发指南</p>
 </blockquote>
 <h2 id="mongojs_模块">mongojs 模块</h2><p>Mongojs是一个小巧的Node.js模块，它的功能就是用来连接Mongodb数据库，并提供Mongodb操作的封装，让我们在Node下面能够对数据库进行操作，Mongojs很容易使用，例如:</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">var</span> mongojs = <span class="function"><span class="title">require</span><span class="params">(<span class="string">'mongojs'</span>)</span></span></span><br><span class="line"><span class="tag">var</span> db = <span class="function"><span class="title">mongojs</span><span class="params">(connectionString, [collections])</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var mongojs = require(&#39;mongojs&#39;)&#10;var db = mongojs(connectionString, [collections])</span><br></pre></td></tr></table></figure>
 <p>上面的代码的功能是引入mongojs模块，并根据连接信息打开数据库，并返回具有特定集合的db接口，有了db这个对象，我们就能对数据库进行各种增删改查的操作。例如查找所有性别为female的用户:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.js</span></span><br><span class="line">db.users.find(&#123;sex: <span class="string">"female"</span>&#125;, <span class="function"><span class="keyword">function</span><span class="params">(err, users)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>( err || !users) <span class="built_in">console</span>.log(<span class="string">"No female users found"</span>);</span><br><span class="line">  <span class="keyword">else</span> users.forEach( <span class="function"><span class="keyword">function</span><span class="params">(femaleUser)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(femaleUser);</span><br><span class="line">  &#125; );</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// app.js&#10;db.users.find(&#123;sex: &#34;female&#34;&#125;, function(err, users) &#123;&#10;  if( err || !users) console.log(&#34;No female users found&#34;);&#10;  else users.forEach( function(femaleUser) &#123;&#10;    console.log(femaleUser);&#10;  &#125; );&#10;&#125;);</span><br></pre></td></tr></table></figure>
 <h2 id="restify_模块">restify 模块</h2><p>要介绍Restify模块，首先得理解REST风格的开发方式，REST(Representational State Transfer 表述性状态转移)是一种针对网络应用的设计和开发方式，可以降低开发的复杂性，提高系统的可伸缩性。REST 指的是一组架构约束条件和原则。满足这些约束条件和原则的应用程序或设计就是 RESTful。Web 应用程序最重要的 REST 原则是，客户端和服务器之间的交互在请求之间是无状态的。从客户端到服务器的每个请求都必须包含理解请求所必需的信息。</p>
 <p>在服务器端，应用程序状态和功能可以分为各种资源。资源是一个有趣的概念实体，它向客户端公开。资源的例子有：应用程序对象、数据库记录、算法等等。每个资源都使用 URI (Universal Resource Identifier) 得到一个惟一的地址。所有资源都共享统一的界面，以便在客户端和服务器之间传输状态。使用的是标准的 HTTP 方法，比如 GET、PUT、POST 和 DELETE。</p>
 <p>非常简单适用的解释:</p>
@@ -427,7 +427,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">48</span>
+              <span class="site-state-item-count">49</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -441,7 +441,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">43</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

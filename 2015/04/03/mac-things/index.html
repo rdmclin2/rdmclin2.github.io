@@ -227,9 +227,9 @@
 <h3 id="制作启动u盘">制作启动u盘</h3><p>教程<a href="http://bbs.feng.com/read-htm-tid-7057977.html" target="_blank" rel="external">这篇文章</a>说的比较详细了，不赘述。做完u盘，开机按住option键，选择制作的u盘即可，一般半小时内完成。</p>
 <hr>
 <a id="more"></a>
-<h2 id="环境配置">环境配置</h2><h3 id="配置android环境变量">配置android环境变量</h3><p>vim ~/.zshrc 添加<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ANDROID_HOME=<span class="variable">$HOME</span>/Library/Android/sdk</span><br><span class="line"><span class="built_in">export</span> ANDROID_HOME</span><br><span class="line"></span><br><span class="line">PATH=<span class="variable">$PATH</span>:<span class="variable">$ANDROID_HOME</span>/tools</span><br><span class="line">PATH=<span class="variable">$PATH</span>:<span class="variable">$ANDROID_HOME</span>/platform-tools</span><br><span class="line">PATH=<span class="variable">$PATH</span>:<span class="variable">$ANDROID_HOME</span>/build-tools/<span class="number">19.0</span>.<span class="number">0</span>    <span class="comment"># installed version number</span></span><br><span class="line"><span class="built_in">export</span> PATH</span><br></pre></td></tr></table></figure></p>
+<h2 id="环境配置">环境配置</h2><h3 id="配置android环境变量">配置android环境变量</h3><p>vim ~/.zshrc 添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ANDROID_HOME=$HOME/Library/Android/sdk&#10;export ANDROID_HOME&#10;&#10;PATH=$PATH:$ANDROID_HOME/tools&#10;PATH=$PATH:$ANDROID_HOME/platform-tools&#10;PATH=$PATH:$ANDROID_HOME/build-tools/19.0.0    # installed version number&#10;export PATH</span><br></pre></td></tr></table></figure></p>
 <hr>
-<h3 id="配置java_home_环境变量">配置java_home 环境变量</h3><p>vim ~/.zshrc 添加<br><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export JAV<span class="built_in">A_HOME</span>=$(/usr/libexec/jav<span class="built_in">a_home</span> -v <span class="number">1.8</span>)</span><br></pre></td></tr></table></figure></p>
+<h3 id="配置java_home_环境变量">配置java_home 环境变量</h3><p>vim ~/.zshrc 添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)</span><br></pre></td></tr></table></figure></p>
 <p>然后source ~/.zshrc一下，用echo $JAVA_HOME$查看是否成功，其他终端下可以参考<a href="http://mclspace.com/2015/03/10/mac_java_home/" target="_blank" rel="external">我之前的文章</a></p>
 <hr>
 <h3 id="iTerm2配色">iTerm2配色</h3><p>安装完oh my zsh后你可能对iterm2默认的配色不太满意，可以到<a href="https://github.com/mbadolato/iTerm2-Color-Schemes" target="_blank" rel="external">iTerm2-Color-Schemes</a>将此工程克隆下来,然后在iterm2下用cmd+i呼出颜色配置，然后Colors -&gt; Load Presets -&gt; import 选项将schemes文件夹下面的配置都倒入进去，然后一个个试哪一款配色适合你，我选择的是kibble。</p>
@@ -241,10 +241,10 @@
 <li>输入Monokai Extended，回车，安装完成</li>
 <li>在Preferences -&gt; Color Scheme -&gt; Monokai Extended中选择一款自己喜欢的配色</li>
 </ol>
-<p>开启vim模式<br>在Preferences -&gt; Settings - User中将”Vintage”去掉，变成<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"ignored_packages"</span><span class="symbol">:[]</span></span><br></pre></td></tr></table></figure></p>
+<p>开启vim模式<br>在Preferences -&gt; Settings - User中将”Vintage”去掉，变成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#34;ignored_packages&#34;:[]</span><br></pre></td></tr></table></figure></p>
 <p>安装前端神器emmet,如上。</p>
 <hr>
-<h3 id="alias_设置别名">alias 设置别名</h3><p>如在命令行中添加sublime<br>如果你也用zshrc，在～目录，vim .zshrc，添加以下alias（别名）可以快捷调用应用，如下所示：<br><figure class="highlight monkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alias</span> <span class="title">sublime</span>=<span class="comment">'open -a "Sublime Text 2"'</span></span><br><span class="line"><span class="keyword">alias</span> <span class="title">chrome</span>=<span class="comment">'open -a "Google Chrome"'</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="alias_设置别名">alias 设置别名</h3><p>如在命令行中添加sublime<br>如果你也用zshrc，在～目录，vim .zshrc，添加以下alias（别名）可以快捷调用应用，如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alias sublime=&#39;open -a &#34;Sublime Text 2&#34;&#39;&#10;alias chrome=&#39;open -a &#34;Google Chrome&#34;&#39;</span><br></pre></td></tr></table></figure></p>
 <hr>
 <h2 id="基本技巧">基本技巧</h2><h3 id="Mac下的截图技巧">Mac下的截图技巧</h3><ol>
 <li>Command＋shift＋3:全屏截图</li>
@@ -283,7 +283,7 @@
 <hr>
 <h3 id="解决mac_chrome_看视频_风扇狂转">解决mac chrome 看视频 风扇狂转</h3><p>可以用<a href="https://github.com/feelinglucky/chrome-plugin-to-replace-fuck-flash-player" target="_blank" rel="external">chrome-plugin-to-replace-fuck-flash-player</a>,或者给safari安装ClickToFlash插件(<a href="https://extensions.apple.com/details/?id=com.hoyois.safari.clicktoflash-GY5KR7239Q),safari官方插件页都有了，作者当时还明令禁止传播的。" target="_blank" rel="external">https://extensions.apple.com/details/?id=com.hoyois.safari.clicktoflash-GY5KR7239Q),safari官方插件页都有了，作者当时还明令禁止传播的。</a></p>
 <hr>
-<h3 id="显示隐藏文件">显示隐藏文件</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">显示：defaults write com<span class="class">.apple</span><span class="class">.finder</span> AppleShowAllFiles -bool true</span><br><span class="line">隐藏：defaults write com<span class="class">.apple</span><span class="class">.finder</span> AppleShowAllFiles -bool false</span><br></pre></td></tr></table></figure>
+<h3 id="显示隐藏文件">显示隐藏文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#26174;&#31034;&#65306;defaults write com.apple.finder AppleShowAllFiles -bool true&#10;&#38544;&#34255;&#65306;defaults write com.apple.finder AppleShowAllFiles -bool false</span><br></pre></td></tr></table></figure>
 <hr>
 <h3 id="打开文件">打开文件</h3><p>在mac下选中一个文件夹回车是重命名，打开一个文件夹的快捷键是<code>cmd + o</code>或者<code>cmd + down</code>，回到上一个文件夹是<code>cmd+up</code></p>
 <hr>
@@ -423,7 +423,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">48</span>
+              <span class="site-state-item-count">49</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -437,7 +437,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">43</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

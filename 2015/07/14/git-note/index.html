@@ -245,166 +245,172 @@
 <li>第二种，本地创建分支如dev，用<code>git push -u origin dev</code>，将本地分支上传到远程仓库，并关联起来，如果远程没有dev分支，会自动创建。</li>
 <li>第三种，抓取远程分支并在本地建立关联的分支,用<code>git checkout -b local-branchname origin/remote_branchname</code></li>
 </ul>
-<h1 id="如何在现有工程中删除讨厌的-DS_Store">如何在现有工程中删除讨厌的.DS_Store</h1><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find . -<span class="property">name</span> .DS_Store -print0 | xargs -<span class="number">0</span> git rm -f <span class="comment">--ignore-unmatch</span></span><br></pre></td></tr></table></figure>
+<h1 id="如何在现有工程中删除讨厌的-DS_Store">如何在现有工程中删除讨厌的.DS_Store</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find . -name .DS_Store -print0 | xargs -0 git rm -f --ignore-unmatch</span><br></pre></td></tr></table></figure>
 <p>向顶层的.gitignore文件中增加行<code>.DS_Store</code>,然后</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>git add .gitignore</span><br><span class="line"><span class="variable">$ </span>git commit -m <span class="string">'.DS_Store banished!'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git add .gitignore&#10;$ git commit -m &#39;.DS_Store banished!&#39;</span><br></pre></td></tr></table></figure>
 <h1 id="如何下载github上的单个文件夹">如何下载github上的单个文件夹</h1><p>将/tree/master/换成/trunk/，然后用svn checkout，例如:</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn checkout <span class="string">https:</span><span class="comment">//github.com/Mooophy/Cpp-Primer/trunk/ch03</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn checkout https://github.com/Mooophy/Cpp-Primer/trunk/ch03</span><br></pre></td></tr></table></figure>
 <h1 id="指令集合">指令集合</h1><h2 id="设置">设置</h2><ul>
 <li><p><code>git config --global user.name &quot;Your Name&quot;</code></p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>全局设置用户名 <span class="string">"--global"</span> 代表所有仓库使用这一配置</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#20840;&#23616;&#35774;&#32622;&#29992;&#25143;&#21517; &#34;--global&#34; &#20195;&#34920;&#25152;&#26377;&#20179;&#24211;&#20351;&#29992;&#36825;&#19968;&#37197;&#32622;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git config --global user.email &quot;email@example.com&quot;</code></p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>全局设置你的邮箱</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#20840;&#23616;&#35774;&#32622;&#20320;&#30340;&#37038;&#31665;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git config --global color.ui true</code> 让Git显示颜色</p>
 </li>
 <li><p><a href="https://github.com/github/gitignore" target="_blank" rel="external">.gitignore 编写</a></p>
 </li>
 <li><p><code>git config --global alias.&lt;new order&gt; order</code> 为命令设置别名</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="variable">$ </span>git config --global <span class="keyword">alias</span>.st status 告诉<span class="constant">Git，</span>以后st就表示status,下面列一些常用设置</span><br><span class="line"> <span class="variable">$ </span>git config --global <span class="keyword">alias</span>.co checkout</span><br><span class="line"> <span class="variable">$ </span>git config --global <span class="keyword">alias</span>.ci commit</span><br><span class="line"> <span class="variable">$ </span>git config --global <span class="keyword">alias</span>.br branch</span><br><span class="line"> <span class="variable">$ </span>git config --global <span class="keyword">alias</span>.unstage <span class="string">'reset HEAD'</span> 撤销暂存区修改</span><br><span class="line"> <span class="variable">$ </span>git config --global <span class="keyword">alias</span>.last <span class="string">'log -1'</span> 显示最近一次提交</span><br><span class="line"> <span class="variable">$ </span>git config --global <span class="keyword">alias</span>.lg <span class="string">"log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset' --abbrev-commit"</span>  简直丧心病狂!</span><br><span class="line">如果要修改别名，当前用户的<span class="constant">Git配</span>置文件放在用户主目录下的一个隐藏文件.gitconfig中，可以直接修改</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> $ git config --global alias.st status &#21578;&#35785;Git&#65292;&#20197;&#21518;st&#23601;&#34920;&#31034;status,&#19979;&#38754;&#21015;&#19968;&#20123;&#24120;&#29992;&#35774;&#32622;&#10; $ git config --global alias.co checkout&#10; $ git config --global alias.ci commit&#10; $ git config --global alias.br branch&#10; $ git config --global alias.unstage &#39;reset HEAD&#39; &#25764;&#38144;&#26242;&#23384;&#21306;&#20462;&#25913;&#10; $ git config --global alias.last &#39;log -1&#39; &#26174;&#31034;&#26368;&#36817;&#19968;&#27425;&#25552;&#20132;&#10; $ git config --global alias.lg &#34;log --color --graph --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&#60;%an&#62;%Creset&#39; --abbrev-commit&#34;  &#31616;&#30452;&#20007;&#24515;&#30149;&#29378;!&#10;&#22914;&#26524;&#35201;&#20462;&#25913;&#21035;&#21517;&#65292;&#24403;&#21069;&#29992;&#25143;&#30340;Git&#37197;&#32622;&#25991;&#20214;&#25918;&#22312;&#29992;&#25143;&#20027;&#30446;&#24405;&#19979;&#30340;&#19968;&#20010;&#38544;&#34255;&#25991;&#20214;.gitconfig&#20013;&#65292;&#21487;&#20197;&#30452;&#25509;&#20462;&#25913;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="基本操作">基本操作</h2><ul>
 <li><p><code>git init</code></p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>初始化一个git仓库</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#21021;&#22987;&#21270;&#19968;&#20010;git&#20179;&#24211;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git add &lt;file&gt;</code></p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ 添加文件到仓库中</span><br><span class="line">$ 如 git <span class="keyword">add</span> readme.txt ，可多次<span class="keyword">add</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#28155;&#21152;&#25991;&#20214;&#21040;&#20179;&#24211;&#20013;&#10;$ &#22914; git add readme.txt &#65292;&#21487;&#22810;&#27425;add</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git reset HEAD &lt;file&gt;</code></p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>从暂存区撤销一个add</span><br><span class="line"><span class="variable">$ </span>如 git reset <span class="constant">HEAD </span><span class="number">1</span>.py</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#20174;&#26242;&#23384;&#21306;&#25764;&#38144;&#19968;&#20010;add&#10;$ &#22914; git reset HEAD 1.py</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git commit -m &lt;message&gt;</code></p>
-<figure class="highlight smalltalk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="char">$ </span>快速提交代码</span><br><span class="line"><span class="char">$ </span>如 git commit -m <span class="comment">"this is a commit"</span>，多次add，一次commit</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#24555;&#36895;&#25552;&#20132;&#20195;&#30721;&#10;$ &#22914; git commit -m &#34;this is a commit&#34;&#65292;&#22810;&#27425;add&#65292;&#19968;&#27425;commit</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git checkout -- &lt;file&gt;</code></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ 丢弃工作区的修改</span><br><span class="line">$ 如 git checkout <span class="comment">-- readme.txt</span></span><br><span class="line">$ 如果已经add，可以用git <span class="operator"><span class="keyword">reset</span> HEAD &lt;file&gt;先撤销<span class="keyword">add</span>，再丢弃更改</span><br><span class="line">$ 如果你已经<span class="keyword">commit</span>了，可以用 git <span class="keyword">reset</span> <span class="comment">--hard HEAD^ 进行回退到上一版本</span></span><br><span class="line">$ 如果你还推送到了远程分支,那就gg了...</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#20002;&#24323;&#24037;&#20316;&#21306;&#30340;&#20462;&#25913;&#10;$ &#22914; git checkout -- readme.txt&#10;$ &#22914;&#26524;&#24050;&#32463;add&#65292;&#21487;&#20197;&#29992;git reset HEAD &#60;file&#62;&#20808;&#25764;&#38144;add&#65292;&#20877;&#20002;&#24323;&#26356;&#25913;&#10;$ &#22914;&#26524;&#20320;&#24050;&#32463;commit&#20102;&#65292;&#21487;&#20197;&#29992; git reset --hard HEAD^ &#36827;&#34892;&#22238;&#36864;&#21040;&#19978;&#19968;&#29256;&#26412;&#10;$ &#22914;&#26524;&#20320;&#36824;&#25512;&#36865;&#21040;&#20102;&#36828;&#31243;&#20998;&#25903;,&#37027;&#23601;gg&#20102;...</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git rm  &lt;file&gt;</code></p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>从版本库中删除某文件</span><br><span class="line"><span class="variable">$ </span>如 git rm test.txt</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#20174;&#29256;&#26412;&#24211;&#20013;&#21024;&#38500;&#26576;&#25991;&#20214;&#10;$ &#22914; git rm test.txt</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="仓库状态">仓库状态</h2><ul>
 <li><p><code>git status</code></p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>查看仓库当前状态</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#26597;&#30475;&#20179;&#24211;&#24403;&#21069;&#29366;&#24577;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git diff &lt;file&gt;</code></p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>查看仓库中的文件和现在的文件的改动</span><br><span class="line"><span class="variable">$ </span>如 git diff readme.txt ，如果输入git diff会列出所有文件的改动。</span><br><span class="line"><span class="variable">$ </span>注意git diff 会比较仓库中的文件和不在仓库中的同一文件间的差异，即git add 的文件<span class="constant">A,</span>以及git add后改动的文件<span class="constant">A，</span></span><br><span class="line"><span class="variable">$ </span>如果没有改动，git diff 甚至智能地不自动匹配文件</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#26597;&#30475;&#20179;&#24211;&#20013;&#30340;&#25991;&#20214;&#21644;&#29616;&#22312;&#30340;&#25991;&#20214;&#30340;&#25913;&#21160;&#10;$ &#22914; git diff readme.txt &#65292;&#22914;&#26524;&#36755;&#20837;git diff&#20250;&#21015;&#20986;&#25152;&#26377;&#25991;&#20214;&#30340;&#25913;&#21160;&#12290;&#10;$ &#27880;&#24847;git diff &#20250;&#27604;&#36739;&#20179;&#24211;&#20013;&#30340;&#25991;&#20214;&#21644;&#19981;&#22312;&#20179;&#24211;&#20013;&#30340;&#21516;&#19968;&#25991;&#20214;&#38388;&#30340;&#24046;&#24322;&#65292;&#21363;git add &#30340;&#25991;&#20214;A,&#20197;&#21450;git add&#21518;&#25913;&#21160;&#30340;&#25991;&#20214;A&#65292;&#10;$ &#22914;&#26524;&#27809;&#26377;&#25913;&#21160;&#65292;git diff &#29978;&#33267;&#26234;&#33021;&#22320;&#19981;&#33258;&#21160;&#21305;&#37197;&#25991;&#20214;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git log</code></p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ 查看提交历史</span><br><span class="line">$ 从最近到最远 可以加 <span class="comment">--pretty=oneline 让git 显示得更清楚些</span></span><br><span class="line">$ git <span class="command">log</span> <span class="comment">--graph --pretty=oneline --abbrev-commit  用--graph查看分支合并图</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#26597;&#30475;&#25552;&#20132;&#21382;&#21490;&#10;$ &#20174;&#26368;&#36817;&#21040;&#26368;&#36828; &#21487;&#20197;&#21152; --pretty=oneline &#35753;git &#26174;&#31034;&#24471;&#26356;&#28165;&#26970;&#20123;&#10;$ git log --graph --pretty=oneline --abbrev-commit  &#29992;--graph&#26597;&#30475;&#20998;&#25903;&#21512;&#24182;&#22270;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git reset --hard &lt;commit id&gt;</code></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ 版本回退</span><br><span class="line">$ 如 git <span class="operator"><span class="keyword">reset</span> <span class="comment">--hard HEAD^, HEAD代表当前版本，HEAD^代表上个版本,Head^^代表上上版本，HEAD-100代表往上100个版本</span></span><br><span class="line">$ 不过过去了回不来怎么办, 只要命令行窗口没关闭，就可以找到你要回去的<span class="keyword">commit</span> id，然后再用如 git <span class="keyword">reset</span> <span class="comment">--hard 3628164 回到该版本.</span></span><br><span class="line">$ 如果第二天后悔了怎么办？用 git reflog 查看所有命令，再找到相应的<span class="keyword">commit</span> id即可</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#29256;&#26412;&#22238;&#36864;&#10;$ &#22914; git reset --hard HEAD^, HEAD&#20195;&#34920;&#24403;&#21069;&#29256;&#26412;&#65292;HEAD^&#20195;&#34920;&#19978;&#20010;&#29256;&#26412;,Head^^&#20195;&#34920;&#19978;&#19978;&#29256;&#26412;&#65292;HEAD-100&#20195;&#34920;&#24448;&#19978;100&#20010;&#29256;&#26412;&#10;$ &#19981;&#36807;&#36807;&#21435;&#20102;&#22238;&#19981;&#26469;&#24590;&#20040;&#21150;, &#21482;&#35201;&#21629;&#20196;&#34892;&#31383;&#21475;&#27809;&#20851;&#38381;&#65292;&#23601;&#21487;&#20197;&#25214;&#21040;&#20320;&#35201;&#22238;&#21435;&#30340;commit id&#65292;&#28982;&#21518;&#20877;&#29992;&#22914; git reset --hard 3628164 &#22238;&#21040;&#35813;&#29256;&#26412;.&#10;$ &#22914;&#26524;&#31532;&#20108;&#22825;&#21518;&#24724;&#20102;&#24590;&#20040;&#21150;&#65311;&#29992; git reflog &#26597;&#30475;&#25152;&#26377;&#21629;&#20196;&#65292;&#20877;&#25214;&#21040;&#30456;&#24212;&#30340;commit id&#21363;&#21487;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git reflog</code></p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>查看命令历史</span><br><span class="line"><span class="variable">$ </span>配合git rest 使用</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#26597;&#30475;&#21629;&#20196;&#21382;&#21490;&#10;$ &#37197;&#21512;git rest &#20351;&#29992;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="分支管理">分支管理</h2><ul>
 <li><p><code>git branch</code></p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>查看分支</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#26597;&#30475;&#20998;&#25903;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git branch &lt;branch name&gt;</code></p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>创建分支</span><br><span class="line"><span class="variable">$ </span>如 git branch dev</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#21019;&#24314;&#20998;&#25903;&#10;$ &#22914; git branch dev</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git branch -d &lt;branch name&gt;</code></p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>删除分支</span><br><span class="line"><span class="variable">$ </span>如  git branch -d dev</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#21024;&#38500;&#20998;&#25903;&#10;$ &#22914;  git branch -d dev</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git push origin :&lt;branch name&gt;</code></p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>删除远程分支</span><br><span class="line"><span class="variable">$ </span>如 git push origin <span class="symbol">:dev</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#21024;&#38500;&#36828;&#31243;&#20998;&#25903;&#10;$ &#22914; git push origin :dev</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git branch -D &lt;branch name&gt;</code></p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>强行删除分支</span><br><span class="line"><span class="variable">$ </span>如 git branch -<span class="constant">D </span>feature-vulcan 没有进行合并的分支用-d参数会销毁失败，</span><br><span class="line"><span class="variable">$ </span>如果实在要丢弃一个没有合并过的分支,用-<span class="constant">D参</span>数强行销毁</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#24378;&#34892;&#21024;&#38500;&#20998;&#25903;&#10;$ &#22914; git branch -D feature-vulcan &#27809;&#26377;&#36827;&#34892;&#21512;&#24182;&#30340;&#20998;&#25903;&#29992;-d&#21442;&#25968;&#20250;&#38144;&#27585;&#22833;&#36133;&#65292;&#10;$ &#22914;&#26524;&#23454;&#22312;&#35201;&#20002;&#24323;&#19968;&#20010;&#27809;&#26377;&#21512;&#24182;&#36807;&#30340;&#20998;&#25903;,&#29992;-D&#21442;&#25968;&#24378;&#34892;&#38144;&#27585;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git checkout &lt;branch name&gt;</code></p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>切换分支</span><br><span class="line"><span class="variable">$ </span>如 git checkout dev</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#20999;&#25442;&#20998;&#25903;&#10;$ &#22914; git checkout dev</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git checkout -b &lt;branch name&gt;</code></p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>创建新分支并切换</span><br><span class="line"><span class="variable">$ </span>如 git checkout -b issue-<span class="number">101</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#21019;&#24314;&#26032;&#20998;&#25903;&#24182;&#20999;&#25442;&#10;$ &#22914; git checkout -b issue-101</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git merge &lt;branch name&gt;</code></p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>合并分支</span><br><span class="line"><span class="variable">$ </span>如 git merge dev</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#21512;&#24182;&#20998;&#25903;&#10;$ &#22914; git merge dev</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git merge --no-ff -m &lt;message&gt; &lt;branch name&gt;</code></p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ 禁用fast forward</span><br><span class="line">$ 如 git <span class="keyword">merge</span> --<span class="keyword">no</span>-ff -<span class="keyword">m</span> <span class="string">"merge with no-ff"</span> dev</span><br><span class="line">$ --<span class="keyword">no</span>-ff表示禁用fast forward,在ff模式下删除分支后会丢掉分支信息，所以用--<span class="keyword">no</span>-ff后</span><br><span class="line">$ git就会在<span class="keyword">merge</span>的时候生成一个新的commit，因为要有一个新的commit所以要加上－<span class="keyword">m</span>参数</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#31105;&#29992;fast forward&#10;$ &#22914; git merge --no-ff -m &#34;merge with no-ff&#34; dev&#10;$ --no-ff&#34920;&#31034;&#31105;&#29992;fast forward,&#22312;ff&#27169;&#24335;&#19979;&#21024;&#38500;&#20998;&#25903;&#21518;&#20250;&#20002;&#25481;&#20998;&#25903;&#20449;&#24687;&#65292;&#25152;&#20197;&#29992;--no-ff&#21518;&#10;$ git&#23601;&#20250;&#22312;merge&#30340;&#26102;&#20505;&#29983;&#25104;&#19968;&#20010;&#26032;&#30340;commit&#65292;&#22240;&#20026;&#35201;&#26377;&#19968;&#20010;&#26032;&#30340;commit&#25152;&#20197;&#35201;&#21152;&#19978;&#65293;m&#21442;&#25968;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git stash</code>  </p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>储藏工作现场</span><br><span class="line"><span class="variable">$ </span>可以把当前工作现场“储藏”起来，等以后恢复现场后继续工作</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#20648;&#34255;&#24037;&#20316;&#29616;&#22330;&#10;$ &#21487;&#20197;&#25226;&#24403;&#21069;&#24037;&#20316;&#29616;&#22330;&#8220;&#20648;&#34255;&#8221;&#36215;&#26469;&#65292;&#31561;&#20197;&#21518;&#24674;&#22797;&#29616;&#22330;&#21518;&#32487;&#32493;&#24037;&#20316;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git stash list</code></p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>列出储藏的工作现场</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#21015;&#20986;&#20648;&#34255;&#30340;&#24037;&#20316;&#29616;&#22330;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git stash apply</code></p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>恢复现场，但stash内容不删除</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#24674;&#22797;&#29616;&#22330;&#65292;&#20294;stash&#20869;&#23481;&#19981;&#21024;&#38500;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git stash drop</code></p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>删除现场</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#21024;&#38500;&#29616;&#22330;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git stash pop</code></p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>恢复现场的同时删除现场</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#24674;&#22797;&#29616;&#22330;&#30340;&#21516;&#26102;&#21024;&#38500;&#29616;&#22330;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git stash apply &lt;stash id&gt;</code></p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>多个现场时指定恢复某一现场</span><br><span class="line"><span class="variable">$ </span>先用 git stash list 查看</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#22810;&#20010;&#29616;&#22330;&#26102;&#25351;&#23450;&#24674;&#22797;&#26576;&#19968;&#29616;&#22330;&#10;$ &#20808;&#29992; git stash list &#26597;&#30475;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="远程仓库">远程仓库</h2><ul>
 <li><p><code>ssh-keygen -t rsa -C &quot;youremail@example.com&quot;</code></p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>创建ssh-key</span><br><span class="line"><span class="variable">$ </span>将公钥添加到github等网站上</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#21019;&#24314;ssh-key&#10;$ &#23558;&#20844;&#38053;&#28155;&#21152;&#21040;github&#31561;&#32593;&#31449;&#19978;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git remote add origin &lt;remote git repo&gt;</code></p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ 将本地仓库和远程仓库相关联，在本地仓库执行</span><br><span class="line">$ 如 git remote add origin git@github<span class="class">.com</span>:rdmclin2/learngit<span class="class">.git</span>, 远程库的名字叫origin</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#23558;&#26412;&#22320;&#20179;&#24211;&#21644;&#36828;&#31243;&#20179;&#24211;&#30456;&#20851;&#32852;&#65292;&#22312;&#26412;&#22320;&#20179;&#24211;&#25191;&#34892;&#10;$ &#22914; git remote add origin git@github.com:rdmclin2/learngit.git, &#36828;&#31243;&#24211;&#30340;&#21517;&#23383;&#21483;origin</span><br></pre></td></tr></table></figure>
 </li>
+</ul>
+<p>可以添加多个远程仓库如<code>git remote add rdmclin2 git@....</code> origin rdmclin2都是我们为远程仓库取的别名。</p>
+<ul>
 <li><p><code>git remote set-url origin &lt;remote git repo&gt;</code>,</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>修改origin的地址</span><br><span class="line"><span class="variable">$ </span>如git remote set-url origin git<span class="variable">@lab</span>.artemisprojects.<span class="symbol">org:</span>menchenglin/fcws.git</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#20462;&#25913;origin&#30340;&#22320;&#22336;&#10;$ &#22914;git remote set-url origin git@lab.artemisprojects.org:menchenglin/fcws.git</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git push origin &lt;branch name&gt;</code></p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>将本地内容推送到远程</span><br><span class="line"><span class="variable">$ </span>如 git push origin master , 第一次推送时加上-u参数，可以把本地分支和远程分支关联起来，以后就不要添加了</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#23558;&#26412;&#22320;&#20869;&#23481;&#25512;&#36865;&#21040;&#36828;&#31243;&#10;$ &#22914; git push origin master , &#31532;&#19968;&#27425;&#25512;&#36865;&#26102;&#21152;&#19978;-u&#21442;&#25968;&#65292;&#21487;&#20197;&#25226;&#26412;&#22320;&#20998;&#25903;&#21644;&#36828;&#31243;&#20998;&#25903;&#20851;&#32852;&#36215;&#26469;&#65292;&#20197;&#21518;&#23601;&#19981;&#35201;&#28155;&#21152;&#20102;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git clone &lt;remote git repo&gt;</code></p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>从远程仓库克隆</span><br><span class="line"><span class="variable">$ </span>如 git clone git<span class="variable">@github</span>.<span class="symbol">com:</span>michaelliao/gitskills.git，非常常用的操作</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#20174;&#36828;&#31243;&#20179;&#24211;&#20811;&#38534;&#10;$ &#22914; git clone git@github.com:michaelliao/gitskills.git&#65292;&#38750;&#24120;&#24120;&#29992;&#30340;&#25805;&#20316;</span><br></pre></td></tr></table></figure>
 </li>
+</ul>
+<p>clone时可以指定深度,<code>git clone git://xxoo --depth 1</code></p>
+<ul>
 <li><p><code>git remote</code></p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>查看远程库信息</span><br><span class="line"><span class="variable">$ </span>加-v参数显示更详细的信息</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#26597;&#30475;&#36828;&#31243;&#24211;&#20449;&#24687;&#10;$ &#21152;-v&#21442;&#25968;&#26174;&#31034;&#26356;&#35814;&#32454;&#30340;&#20449;&#24687;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git pull</code></p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ 抓取远程分支最新提交</span><br><span class="line">$ 如 git tag v0.9 <span class="number">6224937</span>, 可以先用git <span class="command">log</span> <span class="comment">--pretty=oneline --abbrev-commit 查看历史提交</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#25235;&#21462;&#36828;&#31243;&#20998;&#25903;&#26368;&#26032;&#25552;&#20132;&#10;$ &#22914; git tag v0.9 6224937, &#21487;&#20197;&#20808;&#29992;git log --pretty=oneline --abbrev-commit &#26597;&#30475;&#21382;&#21490;&#25552;&#20132;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git branch --set-upstream &lt;local branch&gt; &lt;remote branch&gt;</code></p>
-<figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ 指定本地分支和远程分支的链接</span><br><span class="line">$ 如 git branch --<span class="built_in">set</span>-upstream <span class="built_in">dev</span> origin/<span class="built_in">dev</span> 指定本地<span class="built_in">dev</span>分支与远程origin/<span class="built_in">dev</span>分支的链接</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#25351;&#23450;&#26412;&#22320;&#20998;&#25903;&#21644;&#36828;&#31243;&#20998;&#25903;&#30340;&#38142;&#25509;&#10;$ &#22914; git branch --set-upstream dev origin/dev &#25351;&#23450;&#26412;&#22320;dev&#20998;&#25903;&#19982;&#36828;&#31243;origin/dev&#20998;&#25903;&#30340;&#38142;&#25509;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="标签管理">标签管理</h2><ul>
 <li><p><code>git tag &lt;name&gt;</code></p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>打标签</span><br><span class="line"><span class="variable">$ </span>如 git tag v1.<span class="number">0</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#25171;&#26631;&#31614;&#10;$ &#22914; git tag v1.0</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git tag</code></p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>查看所有标签</span><br><span class="line"><span class="variable">$ </span>按字母排序</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#26597;&#30475;&#25152;&#26377;&#26631;&#31614;&#10;$ &#25353;&#23383;&#27597;&#25490;&#24207;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git show &lt;tagname&gt;</code></p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>查看标签信息</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#26597;&#30475;&#26631;&#31614;&#20449;&#24687;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git tag &lt;name&gt; &lt;commit id&gt;</code></p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ 给某次提交打上标签</span><br><span class="line">$ 如 git tag v0.9 <span class="number">6224937</span>, 可以先用git <span class="command">log</span> <span class="comment">--pretty=oneline --abbrev-commit 查看历史提交</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#32473;&#26576;&#27425;&#25552;&#20132;&#25171;&#19978;&#26631;&#31614;&#10;$ &#22914; git tag v0.9 6224937, &#21487;&#20197;&#20808;&#29992;git log --pretty=oneline --abbrev-commit &#26597;&#30475;&#21382;&#21490;&#25552;&#20132;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git tag -a &lt;tagname&gt; -m &lt;message&gt; &lt;commit id&gt;</code></p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ 创建带有说明的标签</span><br><span class="line">$ 如 git tag -<span class="tag">a</span> v0.<span class="number">1</span> -m <span class="string">"version 0.1 released"</span> <span class="number">3628164</span>  ,-<span class="tag">a</span> 指定标签名, -m 指定说明文字</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#21019;&#24314;&#24102;&#26377;&#35828;&#26126;&#30340;&#26631;&#31614;&#10;$ &#22914; git tag -a v0.1 -m &#34;version 0.1 released&#34; 3628164  ,-a &#25351;&#23450;&#26631;&#31614;&#21517;, -m &#25351;&#23450;&#35828;&#26126;&#25991;&#23383;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git tag -s &lt;tagname&gt; -m  &lt;message&gt; &lt;commit id&gt;</code></p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ 采用PGP签名一个标签</span><br><span class="line">$ 如 git tag -s v0.2 -m "signed version 0.2 released" fec145a, -s用私钥签名一个标签</span><br><span class="line">$ 看[<span class="link_label">这篇文章</span>](<span class="link_url">http://www.ruanyifeng.com/blog/2013/07/gpg.html</span>)了解如何安装gnupg</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#37319;&#29992;PGP&#31614;&#21517;&#19968;&#20010;&#26631;&#31614;&#10;$ &#22914; git tag -s v0.2 -m &#34;signed version 0.2 released&#34; fec145a, -s&#29992;&#31169;&#38053;&#31614;&#21517;&#19968;&#20010;&#26631;&#31614;&#10;$ &#30475;[&#36825;&#31687;&#25991;&#31456;](http://www.ruanyifeng.com/blog/2013/07/gpg.html)&#20102;&#35299;&#22914;&#20309;&#23433;&#35013;gnupg</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git tag -d &lt;tagname&gt;</code></p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>删除标签</span><br><span class="line"><span class="variable">$ </span>如 git tag -d v<span class="number">0</span>.<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#21024;&#38500;&#26631;&#31614;&#10;$ &#22914; git tag -d v0.1</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git push origin &lt;tagname&gt;</code></p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>推送标签到远程</span><br><span class="line"><span class="variable">$ </span>如 git push origin v1.<span class="number">0</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#25512;&#36865;&#26631;&#31614;&#21040;&#36828;&#31243;&#10;$ &#22914; git push origin v1.0</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git push origin --tags</code></p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span> 一次性推送全部尚未推送到远程的本地标签</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$  &#19968;&#27425;&#24615;&#25512;&#36865;&#20840;&#37096;&#23578;&#26410;&#25512;&#36865;&#21040;&#36828;&#31243;&#30340;&#26412;&#22320;&#26631;&#31614;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git push origin :refs/tags/&lt;tagname&gt;</code></p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>如 git push origin <span class="symbol">:refs/tags/v0</span>.<span class="number">9</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#22914; git push origin :refs/tags/v0.9</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h1 id="参考资料">参考资料</h1><ul>
@@ -524,7 +530,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">48</span>
+              <span class="site-state-item-count">49</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -538,7 +544,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">43</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

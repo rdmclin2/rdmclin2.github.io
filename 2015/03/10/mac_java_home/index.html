@@ -224,17 +224,17 @@
 
       
         <h1 id="前言">前言</h1><p>但凡mac重装系统总要设置java_home环境变量，这里做一下纪录,免去重复查询之苦。<br><a id="more"></a></p>
-<h1 id="如何在多个java版本间切换">如何在多个java版本间切换</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Mac默认 JDK 6（Mac默认自带了一个jdk6版本）</span></span><br><span class="line"><span class="built_in">export</span> JAVA_6_HOME=`/usr/libexec/java_home -v <span class="number">1.6</span>`</span><br><span class="line"><span class="comment"># 设置 JDK 7</span></span><br><span class="line"><span class="built_in">export</span> JAVA_7_HOME=`/usr/libexec/java_home -v <span class="number">1.7</span>`</span><br><span class="line"><span class="comment"># 设置 JDK 8</span></span><br><span class="line"><span class="built_in">export</span> JAVA_8_HOME=`/usr/libexec/java_home -v <span class="number">1.8</span>`</span><br><span class="line"></span><br><span class="line"><span class="comment">#默认JDK 6</span></span><br><span class="line"><span class="built_in">export</span> JAVA_HOME=<span class="variable">$JAVA_6_HOME</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#alias命令动态切换JDK版本</span></span><br><span class="line"><span class="built_in">alias</span> jdk6=<span class="string">"export JAVA_HOME=<span class="variable">$JAVA_6_HOME</span>"</span></span><br><span class="line"><span class="built_in">alias</span> jdk7=<span class="string">"export JAVA_HOME=<span class="variable">$JAVA_7_HOME</span>"</span></span><br><span class="line"><span class="built_in">alias</span> jdk8=<span class="string">"export JAVA_HOME=<span class="variable">$JAVA_8_HOME</span>"</span></span><br></pre></td></tr></table></figure>
-<h1 id="基本步骤">基本步骤</h1><h2 id="打开终端，新建-bash_profile文件">打开终端，新建.bash_profile文件</h2><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">cd</span> <span class="regexp">~</span><br><span class="line">vim</span> .bash_profile</span><br></pre></td></tr></table></figure>
+<h1 id="如何在多个java版本间切换">如何在多个java版本间切换</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># Mac&#40664;&#35748; JDK 6&#65288;Mac&#40664;&#35748;&#33258;&#24102;&#20102;&#19968;&#20010;jdk6&#29256;&#26412;&#65289;&#10;export JAVA_6_HOME=`/usr/libexec/java_home -v 1.6`&#10;# &#35774;&#32622; JDK 7&#10;export JAVA_7_HOME=`/usr/libexec/java_home -v 1.7`&#10;# &#35774;&#32622; JDK 8&#10;export JAVA_8_HOME=`/usr/libexec/java_home -v 1.8`&#10;&#10;#&#40664;&#35748;JDK 6&#10;export JAVA_HOME=$JAVA_6_HOME&#10;&#10;#alias&#21629;&#20196;&#21160;&#24577;&#20999;&#25442;JDK&#29256;&#26412;&#10;alias jdk6=&#34;export JAVA_HOME=$JAVA_6_HOME&#34;&#10;alias jdk7=&#34;export JAVA_HOME=$JAVA_7_HOME&#34;&#10;alias jdk8=&#34;export JAVA_HOME=$JAVA_8_HOME&#34;</span><br></pre></td></tr></table></figure>
+<h1 id="基本步骤">基本步骤</h1><h2 id="打开终端，新建-bash_profile文件">打开终端，新建.bash_profile文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ~&#10;vim .bash_profile</span><br></pre></td></tr></table></figure>
 <hr>
-<h2 id="输入java_home环境变量,并保存">输入java_home环境变量,并保存</h2><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export JAV<span class="built_in">A_HOME</span>=$(/usr/libexec/jav<span class="built_in">a_home</span> -v <span class="number">1.8</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="输入java_home环境变量,并保存">输入java_home环境变量,并保存</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)</span><br></pre></td></tr></table></figure>
 <p>这种方法可以动态地获取这个环境变量，当自动升级了新版本的JAVA时，总能找到合适的JAVA_HOME目录，这里-v 可以指定java的版本，也可以不写使用默认的JAVA_HOME 路径</p>
 <hr>
-<h2 id="更新配置文件">更新配置文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> .bash_profile</span><br></pre></td></tr></table></figure>
+<h2 id="更新配置文件">更新配置文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source .bash_profile</span><br></pre></td></tr></table></figure>
 <hr>
-<h2 id="查看java_home环境变量">查看java_home环境变量</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$JAVA_HOME</span></span><br></pre></td></tr></table></figure>
+<h2 id="查看java_home环境变量">查看java_home环境变量</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $JAVA_HOME</span><br></pre></td></tr></table></figure>
 <hr>
-<h2 id="永久配置">永久配置</h2><p>上面的方法配置的用户环境变量，并不是永久的配置方法，要永久配置要设置/etc目录下地profile文件<br><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd /etc</span><br><span class="line">sudo vim profile</span><br><span class="line">在文件中添加</span><br><span class="line">JAV<span class="built_in">A_HOME</span>=$(/usr/libexec/jav<span class="built_in">a_home</span> -v <span class="number">1.8</span>)</span><br><span class="line">export JAV<span class="built_in">A_HOME</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="永久配置">永久配置</h2><p>上面的方法配置的用户环境变量，并不是永久的配置方法，要永久配置要设置/etc目录下地profile文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /etc&#10;sudo vim profile&#10;&#22312;&#25991;&#20214;&#20013;&#28155;&#21152;&#10;JAVA_HOME=$(/usr/libexec/java_home -v 1.8)&#10;export JAVA_HOME</span><br></pre></td></tr></table></figure></p>
 <p>然后强制保存退出，重启或注销使环境变量配置起作用。</p>
 <hr>
 <h1 id="参考">参考</h1><p><a href="http://songzhan.iteye.com/blog/1893074" target="_blank" rel="external">http://songzhan.iteye.com/blog/1893074</a><br><a href="http://www.micmiu.com/lang/java/set-javahome-on-mac-os-x/" target="_blank" rel="external">http://www.micmiu.com/lang/java/set-javahome-on-mac-os-x/</a><br><a href="https://stackoverflow.com/questions/1348842/what-should-i-set-java-home-to-on-osx" target="_blank" rel="external">https://stackoverflow.com/questions/1348842/what-should-i-set-java-home-to-on-osx</a></p>
@@ -354,7 +354,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">48</span>
+              <span class="site-state-item-count">49</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -368,7 +368,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">43</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
