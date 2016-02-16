@@ -700,164 +700,15 @@ http://www.iqiyi.com/v_19rro04pmg.html?share_sTime=0-share_eTime=259-src=sharemo
   </entry>
   
   <entry>
-    <title>Ionic+Nodejs+Mongod开发端到端混合应用系列教程五 - 服务器端实现</title>
-    <link href="http://www.mclspace.com/2015/11/28/ionic-app-4/"/>
-    <id>http://www.mclspace.com/2015/11/28/ionic-app-4/</id>
-    <published>2015-11-28T06:21:10.000Z</published>
-    <updated>2015-11-28T07:19:26.000Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;我们使用Restify这个框架实现我们的REST风格的后端服务器,使用Mongodb作为我们的后端服务器,使用Mongojs作为连接数据库的操作接口.以下我们分开描述创建一个web服务器的各个方面。&lt;/p&gt;
-&lt;p&gt;我已经把项目文件整理起来放到&lt;a href=&quot;https://github.com/rdmclin2/fcws&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github&lt;/a&gt;上了，供大家参考。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h1 id=&quot;工程文件结构&quot;&gt;工程文件结构&lt;/h1&gt;&lt;p&gt;首先我们讲解服务器的代码结构，代码结构如下图所示&lt;br&gt;&lt;img src=&quot;http://7pun7p.com1.z0.glb.clouddn.com/hexo/files.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;工程文件包括以下文件:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;api 该文件夹存放和暴露给客户端使用的接口,包括信息,组织，情报，回复，用户等api接口&lt;/li&gt;
-&lt;li&gt;assets 该文件存放资源文件，包括生成的apk，静态的文档，组织关系图等&lt;/li&gt;
-&lt;li&gt;bin 该文件夹存放一次性执行脚本，用于导入组织关系和用户数据&lt;/li&gt;
-&lt;li&gt;middlewares 该文件夹存放需要用到的中间价工具&lt;/li&gt;
-&lt;li&gt;node_modules 该文件夹存放我们调用的node模块&lt;/li&gt;
-&lt;li&gt;Dockerfile 该文件为docker生成镜像时使用的构建文件&lt;/li&gt;
-&lt;li&gt;package.json 该文件为工程的描述文件，记录了该工程的基本信息&lt;/li&gt;
-&lt;li&gt;README.md 用于存放一些注意事项和使用方法的readme文件&lt;/li&gt;
-&lt;li&gt;server.js 工程的入口文件，我们通过&lt;code&gt;node server.js&lt;/code&gt;启动服务器&lt;/li&gt;
-&lt;li&gt;settings.js 工程的设置文件，配置工程需要用到的参数。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;使用npm命令创建package-json文件&quot;&gt;使用npm命令创建package.json文件&lt;/h1&gt;&lt;p&gt;创建文件夹,在命令行中输入:&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ mkdir server &amp;#38;&amp;#38; cd $_&amp;#10;$ npm init&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;该命令会询问一系列有关你创建的项目的问题，按照实际情况回答之后会在server文件夹下生成一个package.json的文件，例如:&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&amp;#10;  &amp;#34;name&amp;#34;: &amp;#34;restify_server&amp;#34;,&amp;#10;  &amp;#34;version&amp;#34;: &amp;#34;0.1.0&amp;#34;,&amp;#10;  &amp;#34;description&amp;#34;: &amp;#34;Restful Web Server for FCWS project&amp;#34;,&amp;#10;  &amp;#34;main&amp;#34;: &amp;#34;server.js&amp;#34;,&amp;#10;  &amp;#34;scripts&amp;#34;: &amp;#123;&amp;#10;    &amp;#34;test&amp;#34;: &amp;#34;echo \&amp;#34;Error: no test specified\&amp;#34; &amp;#38;&amp;#38; exit 1&amp;#34;&amp;#10;  &amp;#125;,&amp;#10;  &amp;#34;keywords&amp;#34;: [&amp;#10;    &amp;#34;rest&amp;#34;,&amp;#10;    &amp;#34;webserver&amp;#34;&amp;#10;  ],&amp;#10;  &amp;#34;author&amp;#34;: &amp;#34;author&amp;#34;,&amp;#10;  &amp;#34;license&amp;#34;: &amp;#34;MIT&amp;#34;&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h1 id=&quot;使用Restify创建服务器&quot;&gt;使用Restify创建服务器&lt;/h1&gt;&lt;p&gt;首先使用npm命令安装restify模块&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;npm install --save restify&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;安装完成后会在server文件夹下面生成一个node_modules文件夹,加上—save参数会将restify模块加入到你的package.json文件的dependencies条目下。然后我们创建一个server.js文件作为node的入口文件,以及一个settings.js文件作为我们的配置文件&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ touch server.js settings.js&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;将下面的代码复制到setting.js文件中&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;module.exports = &amp;#123;&amp;#10;  db: &amp;#39;test&amp;#39;,    //db name&amp;#10;  host: &amp;#39;localhost&amp;#39;, //host name&amp;#10;  port: 9804 //default port&amp;#10;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;该文件配置了服务器的数据库名称,IP地址,以及端口并将其导出，我们将在server.js中用到这个文件。&lt;/p&gt;
-&lt;p&gt;下一步我们创建一个简单的服务器,首先引入restify模块和settings模块(Node下一个js文件可以作为一个模块)&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var restify     =   require(&amp;#39;restify&amp;#39;);&amp;#10;var settings    =   require(&amp;#39;./settings&amp;#39;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;然后使用restify模块生成server对象:&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var server      =   restify.createServer(&amp;#123;&amp;#10;  name: &amp;#34;fcws_server&amp;#34; // set the name of server&amp;#10;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;然后监听默认端口&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;server.listen(process.env.PORT || settings.port, settings.host, function () &amp;#123;&amp;#10;    console.log(&amp;#39;%s listening at %s&amp;#39;,server.name,server.url);&amp;#10;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;在命令行中输入命令&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ node server.js&amp;#10;fcws_server listening at http://127.0.0.1:9804&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;这样这个服务器就开起来了。如果提示缺少模块安装restify的时候加上&lt;code&gt;--no-optional&lt;/code&gt;选项&lt;/p&gt;
-&lt;h1 id=&quot;配置插件&quot;&gt;配置插件&lt;/h1&gt;&lt;p&gt;restify模块有很多内置的插件，把下面内容复制并粘贴到app.js，应该加在server.listen() 函数前面。请参阅这份文档以了解所有被支持的插件。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;server.use(restify.queryParser());&amp;#10;server.use(restify.bodyParser());&amp;#10;server.use(restify.CORS());&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;上述代码表示：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;restify.queryParser() 插件是用来解析HTTP查询字符串（如 /jobs?skills=java,mysql），解析后的内容将会在req.query里可用。&lt;/li&gt;
-&lt;li&gt;restify.bodyParser() 会在服务器上自动将请求数据转换为JavaScript对象。&lt;/li&gt;
-&lt;li&gt;restify.CORS() 配置应用程序中的CORS支持。&lt;blockquote&gt;
-&lt;p&gt;CORS定义一种跨域访问的机制，可以让AJAX实现跨域访问。CORS 允许一个域上的网络应用向另一个域提交跨域 AJAX 请求。实现此功能非常简单，只需由服务器发送一个响应标头即可。&lt;br&gt;restify中的CORS遵照&lt;a href=&quot;http://www.w3.org/TR/cors/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;w3c&lt;/a&gt;的标准&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;连接Mongodb&quot;&gt;连接Mongodb&lt;/h1&gt;&lt;p&gt;首先打开Mongodb数据库,&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ mongod --dbpath Data/db&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;使用npm命令安装mongojs模块&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;npm install --save mongojs&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;然后引入mongojs模块&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var mongojs     =   require(&amp;#39;mongojs&amp;#39;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;连接数据库&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var url         =   settings.host + &amp;#34;/&amp;#34; + settings.db;&amp;#10;var db          =   mongojs(url, [&amp;#39;userList&amp;#39;,&amp;#39;postList&amp;#39;,&amp;#39;replyList&amp;#39;,&amp;#39;messageList&amp;#39;,&amp;#39;orgList&amp;#39;,&amp;#39;broadcastList&amp;#39;]);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;url指定我们要连接的机器的地址和相应的数据库名称，&lt;code&gt;userList&lt;/code&gt;等为数据库中的集合,每当我们需要使用新的集合的时候需要在这个参数中添加。&lt;/p&gt;
-&lt;p&gt;接下来我们添加一些数据库的事件处理,当数据库准备就绪的时候，会在控制台打印”数据库已连接”,如果发生错误会打印”数据库错误”&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;db.on(&amp;#39;error&amp;#39;, function (err) &amp;#123;&amp;#10;    console.log(&amp;#39;database error&amp;#39;, err);&amp;#10;&amp;#125;);&amp;#10;&amp;#10;db.on(&amp;#39;ready&amp;#39;, function () &amp;#123;&amp;#10;    console.log(&amp;#39;database connected&amp;#39;);&amp;#10;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h1 id=&quot;中间件&quot;&gt;中间件&lt;/h1&gt;&lt;p&gt;这里中间件是我们用来完成请求的工具,目前实现了密码的加密与解密以及验证用户请求的功能&lt;/p&gt;
-&lt;h2 id=&quot;密码管理&quot;&gt;密码管理&lt;/h2&gt;&lt;p&gt;用户注册时对于明文的密码我们需要将其进行加密后存储到数据库中,而当用户发送密码到服务器时我们需要对密码进行解密并与存储在数据库中的密码进行比较。&lt;br&gt;所以我们编写managePasswords.js模块完成这一功能。代码引入&lt;code&gt;bcrypt&lt;/code&gt;模块,该模块是一个跨平台的文件加密工具,首先安装该模块&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ npm install --save bcrypt&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;然后编写加密方法和比较密码函数:&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var bcrypt = require(&amp;#39;bcrypt&amp;#39;);&amp;#10;&amp;#10;module.exports.cryptPassword = function (password, callback) &amp;#123;&amp;#10;    bcrypt.genSalt(10, function (err, salt) &amp;#123;&amp;#10;        if (err)&amp;#10;            return callback(err);&amp;#10;        bcrypt.hash(password, salt, function (err, hash) &amp;#123;&amp;#10;            return callback(err, hash);&amp;#10;        &amp;#125;);&amp;#10;    &amp;#125;);&amp;#10;&amp;#125;;&amp;#10;&amp;#10;module.exports.comparePassword = function (password, userPassword, callback) &amp;#123;&amp;#10;    if(password === userPassword)&amp;#123;&amp;#10;      callback(null,true);&amp;#10;    &amp;#125;else &amp;#123;&amp;#10;      callback(null,false);&amp;#10;    &amp;#125;&amp;#10;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;验证请求&quot;&gt;验证请求&lt;/h2&gt;&lt;p&gt;当用户进行某些特定操作如发布一条情报的时候，我们需要对用户的身份进行验证，验证的过程如下：&lt;br&gt;如果请求中没有token参数，则拒绝该请求，如果有token参数，但无法根据该token找到相应的用户则返回错误，如果找到了相应的用户，则将用户的信息返回。&lt;br&gt;该部分的代码如下：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var isTokenValid = function (db, id, callback) &amp;#123;&amp;#10;    db.userList.findOne(&amp;#123;&amp;#10;        id: id&amp;#10;    &amp;#125;, function (err, user) &amp;#123;&amp;#10;        callback(user);&amp;#10;    &amp;#125;);&amp;#10;&amp;#125;;&amp;#10;&amp;#10;module.exports.validate = function (req, res, db, callback) &amp;#123;&amp;#10;    // if the request dosent have a header with email, reject the request&amp;#10;    if (!req.params.token) &amp;#123;&amp;#10;        res.writeHead(403, &amp;#123;&amp;#10;            &amp;#39;Content-Type&amp;#39;: &amp;#39;application/json; charset=utf-8&amp;#39;&amp;#10;        &amp;#125;);&amp;#10;        res.end(JSON.stringify(&amp;#123;&amp;#10;            error: &amp;#34;You are not authorized to access this application&amp;#34;,&amp;#10;            message: &amp;#34;An Token is required as part of the header&amp;#34;&amp;#10;        &amp;#125;));&amp;#10;    &amp;#125;&amp;#10;    isTokenValid(db, req.params.token, function (user) &amp;#123;&amp;#10;        if (!user) &amp;#123;&amp;#10;            res.writeHead(403, &amp;#123;&amp;#10;                &amp;#39;Content-Type&amp;#39;: &amp;#39;application/json; charset=utf-8&amp;#39;&amp;#10;            &amp;#125;);&amp;#10;            res.end(JSON.stringify(&amp;#123;&amp;#10;                error: &amp;#34;You are not authorized to access this application&amp;#34;,&amp;#10;                message: &amp;#34;Invalid User Toekn&amp;#34;&amp;#10;            &amp;#125;));&amp;#10;        &amp;#125; else &amp;#123;&amp;#10;            callback(user);&amp;#10;        &amp;#125;&amp;#10;    &amp;#125;);&amp;#10;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h1 id=&quot;路由请求&quot;&gt;路由请求&lt;/h1&gt;&lt;p&gt;路由请求是服务器端最重要的一块，用户根据路由的url获取相应的资源或进行对应的操作。&lt;/p&gt;
-&lt;h2 id=&quot;用户数据&quot;&gt;用户数据&lt;/h2&gt;&lt;p&gt;有关用户信息的操作如注册,登录，获取用户详细信息，验证密码，修改密码等操作都在user.js中完成&lt;/p&gt;
-&lt;h2 id=&quot;用户注册&quot;&gt;用户注册&lt;/h2&gt;&lt;p&gt;用户通过路由&lt;code&gt;/api/v1/auth/register&lt;/code&gt;用post请求进行注册。注册过程如下：首先我们用中间价managePasswords加密用户的密码，替换原先请求中的密码，然后将该用户的数据存储到数据库的用户列表中，如果已经存在该用户的id，则返回”拥有该id的用户已经存在”的错误消息,如果正确，我们将返回的用户对象的密码置为空（防止密码泄露),然后返回给用户，该部分的代码如下:&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;server.post(&amp;#39;/api/v1/auth/register&amp;#39;, function(req, res, next) &amp;#123;&amp;#10;  var user = req.params;&amp;#10;  pwdMgr.cryptPassword(user.password, function(err, hash) &amp;#123;&amp;#10;    user.password = hash;&amp;#10;    db.userList.insert(user,&amp;#10;      function(err, dbUser) &amp;#123;&amp;#10;        if (err) &amp;#123; // duplicate key error&amp;#10;          if (err.code == 11000) /* http://www.mongodb.org/about/contributors/error-codes/*/ &amp;#123;&amp;#10;            res.writeHead(400, &amp;#123;&amp;#10;              &amp;#39;Content-Type&amp;#39;: &amp;#39;application/json; charset=utf-8&amp;#39;&amp;#10;            &amp;#125;);&amp;#10;            res.end(JSON.stringify(&amp;#123;&amp;#10;              error: err,&amp;#10;              message: &amp;#34;A user with this id already exists&amp;#34;&amp;#10;            &amp;#125;));&amp;#10;          &amp;#125;&amp;#10;        &amp;#125; else &amp;#123;&amp;#10;          res.writeHead(200, &amp;#123;&amp;#10;            &amp;#39;Content-Type&amp;#39;: &amp;#39;application/json; charset=utf-8&amp;#39;&amp;#10;          &amp;#125;);&amp;#10;          dbUser.password = &amp;#34;&amp;#34;;&amp;#10;          res.end(JSON.stringify(dbUser));&amp;#10;        &amp;#125;&amp;#10;      &amp;#125;);&amp;#10;  &amp;#125;);&amp;#10;  return next();&amp;#10;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;用户登录&quot;&gt;用户登录&lt;/h2&gt;&lt;p&gt;用户通过路由&lt;code&gt;/api/v1/auth/login&lt;/code&gt;用post请求进行登录。我们首先验证用户的id和密码是否为空，如果有空值，则返回403，告知用户其输入的用户名或密码有误.如果无误，则到数据库中寻找该用户，如果未找到该用户或者该用户的密码和输入的密码不一致，则返回错误消息。如果密码一致，则将密码置空，并返回该用户的信息。代码如下:&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;server.post(&amp;#39;/api/v1/auth/login&amp;#39;, function(req, res, next) &amp;#123;&amp;#10;    var user = req.params;&amp;#10;    if (user.id.trim().length === 0 || user.password.trim().length === 0) &amp;#123;&amp;#10;      res.writeHead(403, &amp;#123;&amp;#10;        &amp;#39;Content-Type&amp;#39;: &amp;#39;application/json; charset=utf-8&amp;#39;&amp;#10;      &amp;#125;);&amp;#10;      res.end(JSON.stringify(&amp;#123;&amp;#10;        error: &amp;#34;Invalid Credentials&amp;#34;&amp;#10;      &amp;#125;));&amp;#10;    &amp;#125;&amp;#10;    db.userList.findOne(&amp;#123;    &amp;#10;      id: req.params.id&amp;#10;    &amp;#125;, function(err, dbUser) &amp;#123;&amp;#10;      pwdMgr.comparePassword(user.password, dbUser.password, function(err, isPasswordMatch) &amp;#123;&amp;#10;        if (isPasswordMatch) &amp;#123;&amp;#10;          res.writeHead(200, &amp;#123;&amp;#10;            &amp;#39;Content-Type&amp;#39;: &amp;#39;application/json; charset=utf-8&amp;#39;&amp;#10;          &amp;#125;);&amp;#10;          // remove password hash before sending to the client&amp;#10;          dbUser.password = &amp;#34;&amp;#34;;&amp;#10;          res.end(JSON.stringify(dbUser));&amp;#10;        &amp;#125; else &amp;#123;&amp;#10;          res.writeHead(403, &amp;#123;&amp;#10;            &amp;#39;Content-Type&amp;#39;: &amp;#39;application/json; charset=utf-8&amp;#39;&amp;#10;          &amp;#125;);&amp;#10;          res.end(JSON.stringify(&amp;#123;&amp;#10;            error: &amp;#34;Invalid User&amp;#34;&amp;#10;          &amp;#125;));&amp;#10;        &amp;#125;&amp;#10;      &amp;#125;);&amp;#10;    &amp;#125;);&amp;#10;    return next();&amp;#10;    &amp;#10;  &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;获取用户详细信息&quot;&gt;获取用户详细信息&lt;/h2&gt;&lt;p&gt;用户通过路由&lt;code&gt;/api/v1/user/:user_id&lt;/code&gt;用get请求获取用户的详细信息。当用户进入主页的时候需要返回用户的基本信息，最近发的帖子和最近的回复，因此整个请求分为3部分：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;到用户列表中查找用户信息&lt;/li&gt;
-&lt;li&gt;到情报列表中查找用户最近发的情报&lt;/li&gt;
-&lt;li&gt;到回复列表中查找用户最近的回复&lt;br&gt;该3部分互相没有数据的重叠，可以进行并行操作以提高操作效率.首先我们通过user_id参数获取用户的id，然后用eventproxy模块来帮助我们实现数据的并行获取，获取到所有信息后再将数据打包发送给客户端.代码如下:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;server.get(&amp;#39;/api/v1/user/:user_id&amp;#39;, function(req, res, next) &amp;#123;&amp;#10;  validateRequest.validate(req, res, db, function() &amp;#123;&amp;#10;    var userid = req.params.user_id;&amp;#10;    console.log(userid);&amp;#10;    var ep = new eventproxy();&amp;#10;    ep.all(&amp;#34;user&amp;#34;,&amp;#34;recent_posts&amp;#34;,&amp;#34;recent_replies&amp;#34;, function (user,recent_posts,recent_replies) &amp;#123;&amp;#10;        user.password = undefined;&amp;#10;        user.recent_posts = recent_posts;&amp;#10;        user.recent_replies = recent_replies;&amp;#10;        res.writeHead(200, &amp;#123;&amp;#10;          &amp;#39;Content-Type&amp;#39;: &amp;#39;application/json; charset=utf-8&amp;#39;&amp;#10;        &amp;#125;);&amp;#10;        res.end(JSON.stringify(user));&amp;#10;    &amp;#125;);&amp;#10;    ep.fail(next);&amp;#10;&amp;#10;    //get user info&amp;#10;    db.userList.findOne(&amp;#123;id: userid&amp;#125;,ep.done(&amp;#34;user&amp;#34;));&amp;#10;&amp;#10;    //get posts of this user; limited to 5 posts&amp;#10;    db.postList.find(&amp;#123;userId: userid&amp;#125;).sort(&amp;#123;createDate:-1&amp;#125;).limit(recentCount,ep.done(&amp;#34;recent_posts&amp;#34;));&amp;#10;&amp;#10;    //get replies of this user; limited to 5 replies&amp;#10;    db.replyList.find(&amp;#123;userId: userid&amp;#125;).sort(&amp;#123;createDate:-1&amp;#125;).limit(recentCount,ep.done(&amp;#34;recent_replies&amp;#34;));&amp;#10;&amp;#10;  &amp;#125;);&amp;#10;  return next();&amp;#10;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;验证密码&quot;&gt;验证密码&lt;/h2&gt;&lt;p&gt;通过路由&lt;code&gt;/api/v1/auth/confirmpw&lt;/code&gt;用post请求验证用户的密码。用户在修改密码之前需要先验证密码以证明是否是本人在操作。验证密码的过程和用户登录类似，这里不再赘述。&lt;/p&gt;
-&lt;h2 id=&quot;修改密码&quot;&gt;修改密码&lt;/h2&gt;&lt;p&gt;通过路由&lt;code&gt;/api/v1/auth/changepw&lt;/code&gt;用post请求修改用户的密码。首先验证用户的原密码是否正确，如果正确将密码改为现在设置的密码，然后将更新的数据存到数据库中，向客户端发送成功消息。这里我们主要使用了&lt;code&gt;db.userList.save(dbUser, function(err, data) {}&lt;/code&gt; 进行数据的更新。&lt;/p&gt;
-&lt;h1 id=&quot;情报信息&quot;&gt;情报信息&lt;/h1&gt;&lt;p&gt;情报部分包括获取最近情报，获取所有情报，获取单个情报，增加情报，更新情报，删除情报等Api。情报信息有关的api放在post.js文件中&lt;/p&gt;
-&lt;h2 id=&quot;增加情报&quot;&gt;增加情报&lt;/h2&gt;&lt;p&gt;通过路由&lt;code&gt;/api/v1/post&lt;/code&gt;的post请求增加一条情报。首先我们验证用户的身份，成功后向数据库的情报列表中增加一条情报，返回成功消息。&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;//add a post&amp;#10;server.post(&amp;#39;/api/v1/post&amp;#39;, function(req, res, next) &amp;#123;&amp;#10;  validateRequest.validate(req, res, db, function() &amp;#123;&amp;#10;    var item = req.params;&amp;#10;    db.postList.save(item,&amp;#10;      function(err, data) &amp;#123;&amp;#10;        res.writeHead(200, &amp;#123;&amp;#10;          &amp;#39;Content-Type&amp;#39;: &amp;#39;application/json; charset=utf-8&amp;#39;&amp;#10;        &amp;#125;);&amp;#10;        res.end(JSON.stringify(data));&amp;#10;      &amp;#125;);&amp;#10;  &amp;#125;);&amp;#10;  return next();&amp;#10;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;获取最近情报&quot;&gt;获取最近情报&lt;/h2&gt;&lt;p&gt;通过路由&lt;code&gt;/api/v1/recent&lt;/code&gt;的post请求获取最近的情报。我们限制从数据库读取的情报不超过5条，并且按发布时间进行选取最新的消息，值得注意的是我们在发送之前将likes数组置为了空，并增加了likeCount属性，避免占用过多的带宽。&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;//get recent posts&amp;#10;server.get(&amp;#34;/api/v1/recent&amp;#34;, function(req, res, next) &amp;#123;&amp;#10;  validateRequest.validate(req, res, db, function() &amp;#123;&amp;#10;    db.postList.find(&amp;#123;&amp;#125;).sort(&amp;#123;createDate:-1&amp;#125;).limit(5, function(err, list) &amp;#123;&amp;#10;&amp;#10;      for(var i=0,l=list.length;i&amp;#60;l;i++)&amp;#123;&amp;#10;        var post = list[i];&amp;#10;        post.likesCount = post.likes.length;&amp;#10;        //remove likes to make small package size&amp;#10;        post.likes = undefined;&amp;#10;      &amp;#125;&amp;#10;      res.writeHead(200, &amp;#123;&amp;#10;        &amp;#39;Content-Type&amp;#39;: &amp;#39;application/json; charset=utf-8&amp;#39;&amp;#10;      &amp;#125;);&amp;#10;      res.end(JSON.stringify(list));&amp;#10;    &amp;#125;);&amp;#10;  &amp;#125;);&amp;#10;  return next();&amp;#10;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;获取所有情报&quot;&gt;获取所有情报&lt;/h2&gt;&lt;p&gt;通过路由&lt;code&gt;/api/v1/posts&lt;/code&gt;的post请求获取所有情报。所有情报的情况和最近情报类似。&lt;/p&gt;
-&lt;h2 id=&quot;获取单个情报&quot;&gt;获取单个情报&lt;/h2&gt;&lt;p&gt;通过路由&lt;code&gt;/api/v1/post/:post_id&lt;/code&gt;的get请求获取单个情报，单个请求特殊的地方在于，单个请求有回复列表和点赞列表，因此我们首先验证用户权限获取情报信息，然后获取该情报的回复列表，然后将数据合并发包。&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;//get a post&amp;#10;server.get(&amp;#39;/api/v1/post/:post_id&amp;#39;, function(req, res, next) &amp;#123;&amp;#10;  validateRequest.validate(req, res, db, function() &amp;#123;&amp;#10;    var postId = req.params.post_id;&amp;#10;    db.postList.findOne(&amp;#123;&amp;#10;      _id: db.ObjectId(postId)&amp;#10;    &amp;#125;, function(err, post) &amp;#123;&amp;#10;      if(err)&amp;#123;&amp;#10;        next(err);&amp;#10;      &amp;#125;&amp;#10;&amp;#10;      db.replyList.find(&amp;#123;&amp;#10;        postId: postId&amp;#10;      &amp;#125;,function(err,list)&amp;#123;&amp;#10;        if(err)&amp;#123;&amp;#10;          next(err);&amp;#10;        &amp;#125;&amp;#10;        //console.log(list);&amp;#10;        post.replies = list;&amp;#10;&amp;#10;      //  console.log(post);&amp;#10;        res.writeHead(200, &amp;#123;&amp;#10;          &amp;#39;Content-Type&amp;#39;: &amp;#39;application/json; charset=utf-8&amp;#39;&amp;#10;        &amp;#125;);&amp;#10;        res.end(JSON.stringify(post));&amp;#10;      &amp;#125;);&amp;#10;    &amp;#125;);&amp;#10;  &amp;#125;);&amp;#10;  return next();&amp;#10;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;情报点赞&quot;&gt;情报点赞&lt;/h2&gt;&lt;p&gt;通过路由&lt;code&gt;/api/v1/post/:post_id/likes&lt;/code&gt;的post请求给情报点赞。为了标示情报的受欢迎程度，我们增加了点赞功能，首先验证用户权限，然后通过post_id参数获取情报,如果情报不存在，返回错误消息，然后在情报的likes列表中寻找用户id，如果未找到用户id则为点赞，将id加入到likes列表，返回up动作,如果找到用户id则说明为取消点赞，将用户id从likes列表中移除，返回down动作。代码如下:&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;//like a post&amp;#10; server.post(&amp;#39;/api/v1/post/:post_id/likes&amp;#39;, function(req, res, next) &amp;#123;&amp;#10;   validateRequest.validate(req, res, db, function(user) &amp;#123;&amp;#10;     var postId = req.params.post_id;&amp;#10;     var userId = user.id;&amp;#10;     db.postList.findOne(&amp;#123;&amp;#10;       _id: db.ObjectId(postId)&amp;#10;     &amp;#125;, function(err, post) &amp;#123;&amp;#10;       if (err) &amp;#123;&amp;#10;         return next(err);&amp;#10;       &amp;#125;&amp;#10;       if (!post) &amp;#123;&amp;#10;           res.status(404);&amp;#10;           return res.send(&amp;#123;error_msg: &amp;#39;post `&amp;#39; + postId + &amp;#39;` not found&amp;#39;&amp;#125;);&amp;#10;       &amp;#125;&amp;#10;&amp;#10;       var action;&amp;#10;       post.likes = post.likes || [];&amp;#10;       var likeIndex = post.likes.indexOf(userId+&amp;#34;&amp;#34;);&amp;#10;       if (likeIndex === -1) &amp;#123;&amp;#10;         post.likes.push(userId+&amp;#34;&amp;#34;);&amp;#10;         action = &amp;#39;up&amp;#39;;&amp;#10;       &amp;#125; else &amp;#123;&amp;#10;         post.likes.splice(likeIndex, 1);&amp;#10;         action = &amp;#39;down&amp;#39;;&amp;#10;       &amp;#125;&amp;#10;       db.postList.save(post, function(err, data) &amp;#123;&amp;#10;         if(err)&amp;#123;&amp;#10;           next(err);&amp;#10;         &amp;#125;&amp;#10;         res.writeHead(200, &amp;#123;&amp;#10;           &amp;#39;Content-Type&amp;#39;: &amp;#39;application/json; charset=utf-8&amp;#39;&amp;#10;         &amp;#125;);&amp;#10;         //res.status(200);&amp;#10;         res.end(JSON.stringify(&amp;#123;&amp;#10;           action: action&amp;#10;         &amp;#125;));&amp;#10;       &amp;#125;);&amp;#10;     &amp;#125;);&amp;#10;   &amp;#125;);&amp;#10;   return next();&amp;#10; &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;删除情报&quot;&gt;删除情报&lt;/h2&gt;&lt;p&gt;通过路由&lt;code&gt;/api/v1/post/:id&lt;/code&gt;的del消息删除一条消息，首先我们验证用户权限，然后从情报列表中删除该情报并发送成功消息。&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;//delete a post&amp;#10;server.del(&amp;#39;/api/v1/post/:id&amp;#39;, function(req, res, next) &amp;#123;&amp;#10;  validateRequest.validate(req, res, db, function() &amp;#123;&amp;#10;    db.postList.remove(&amp;#123;&amp;#10;      _id: db.ObjectId(req.params.id)&amp;#10;    &amp;#125;, function(err, data) &amp;#123;&amp;#10;      res.writeHead(200, &amp;#123;&amp;#10;        &amp;#39;Content-Type&amp;#39;: &amp;#39;application/json; charset=utf-8&amp;#39;&amp;#10;      &amp;#125;);&amp;#10;      res.end(JSON.stringify(data));&amp;#10;    &amp;#125;);&amp;#10;    return next();&amp;#10;  &amp;#125;);&amp;#10;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;hr&gt;
-&lt;h1 id=&quot;指挥控制&quot;&gt;指挥控制&lt;/h1&gt;&lt;p&gt;指挥控制包括两块，一块是给自己的直属部队长官发送直接命令，一块是给自己的直属部队发送广播消息。这一块的api放在orgnization.js和message.js文件中。&lt;/p&gt;
-&lt;h2 id=&quot;获取下属&quot;&gt;获取下属&lt;/h2&gt;&lt;p&gt;通过路由&lt;code&gt;/api/v1/leaders/:groupId&lt;/code&gt;的get消息获取。要给自己的直属部队长官发送直接命令首先要获得属于自己管理的人员列表，客户端向我们发送用户所在的组织的id，我们通过该id在组织列表中获得属于该组织的所有下属组织，然后分别查找这些下属组织的领导人，形成列表发送回来,注意将领导人的密码要置为空。代码如下：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;// get the commanders of the troops you can give an order&amp;#10;  server.get(&amp;#34;/api/v1/leaders/:groupId&amp;#34;, function(req, res, next) &amp;#123;&amp;#10;    validateRequest.validate(req, res, db, function() &amp;#123;&amp;#10;&amp;#10;      var groupId = req.params.groupId;&amp;#10;&amp;#10;      db.orgList.find(&amp;#123;&amp;#10;        belong: groupId&amp;#10;      &amp;#125;, function(err, orgs) &amp;#123;&amp;#10;&amp;#10;        if (err) &amp;#123;&amp;#10;          next(err);&amp;#10;        &amp;#125;&amp;#10;&amp;#10;        var ep = new eventproxy();&amp;#10;&amp;#10;        ep.after(&amp;#39;getBelong&amp;#39;, orgs.length, function(users) &amp;#123;&amp;#10;          res.writeHead(200, &amp;#123;&amp;#10;            &amp;#39;Content-Type&amp;#39;: &amp;#39;application/json; charset=utf-8&amp;#39;&amp;#10;          &amp;#125;);&amp;#10;&amp;#10;          res.end(JSON.stringify(users));&amp;#10;        &amp;#125;);&amp;#10;&amp;#10;        orgs.forEach(function(org) &amp;#123;&amp;#10;          db.userList.findOne(&amp;#123;&amp;#10;            id: org.leader&amp;#10;          &amp;#125;, function(err, user) &amp;#123;&amp;#10;            if (err) &amp;#123;&amp;#10;              next(err);&amp;#10;            &amp;#125;&amp;#10;            user.password = undefined;&amp;#10;            ep.emit(&amp;#39;getBelong&amp;#39;, user);&amp;#10;          &amp;#125;);&amp;#10;        &amp;#125;);&amp;#10;&amp;#10;      &amp;#125;);&amp;#10;    &amp;#125;);&amp;#10;    return next();&amp;#10;  &amp;#125;);&amp;#10;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;单发消息&quot;&gt;单发消息&lt;/h2&gt;&lt;p&gt;通过路由&lt;code&gt;/api/v1/message&lt;/code&gt;的post消息发送消息给个人。获取到下属的列表后，我们需要向他们发送消息，将发送人信息和接受者信息以及内容封装到消息对象中然后添加到消息列表中即可。代码如下:&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;//add a message&amp;#10; server.post(&amp;#39;/api/v1/message&amp;#39;, function(req, res, next) &amp;#123;&amp;#10;   validateRequest.validate(req, res, db, function() &amp;#123;&amp;#10;     var message = req.params;&amp;#10;     db.messageList.save(message,&amp;#10;       function(err, data) &amp;#123;&amp;#10;         res.writeHead(200, &amp;#123;&amp;#10;           &amp;#39;Content-Type&amp;#39;: &amp;#39;application/json; charset=utf-8&amp;#39;&amp;#10;         &amp;#125;);&amp;#10;         res.end(JSON.stringify(data));&amp;#10;       &amp;#125;);&amp;#10;   &amp;#125;);&amp;#10;   return next();&amp;#10; &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;获取下属部队&quot;&gt;获取下属部队&lt;/h2&gt;&lt;p&gt;通过路由&lt;code&gt;/api/v1/troops/:groupId&lt;/code&gt;的get请求获取下属部队,根据groupId查找直接属于该部队的下属部队返回即可。&lt;/p&gt;
-&lt;h2 id=&quot;群发消息&quot;&gt;群发消息&lt;/h2&gt;&lt;p&gt;通过路由&lt;code&gt;/api/v1/messages&lt;/code&gt;的post消息群发消息给下属部队。我们根据post请求中的部队id，获取所有从属于该部队的人员的列表，然后对每个人员向消息队列中插入一条信息,等所有发送完成后向客户端发送一条成功消息。代码如下:&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;//send messages&amp;#10;    server.post(&amp;#39;/api/v1/messages&amp;#39;, function(req, res, next) &amp;#123;&amp;#10;      validateRequest.validate(req, res, db, function() &amp;#123;&amp;#10;        var message = req.params;&amp;#10;        var orgId = message.groupId;&amp;#10;        message.groupId = undefined;&amp;#10;        console.log(&amp;#34;get messages&amp;#34;);&amp;#10;        db.userList.find(&amp;#123;orgs:orgId&amp;#125;,function (err,users) &amp;#123;&amp;#10;            console.log(users);&amp;#10;            var ep = new eventproxy();&amp;#10;&amp;#10;            ep.after(&amp;#34;message&amp;#34;, users.length,function (messages) &amp;#123;&amp;#10;              res.writeHead(200, &amp;#123;&amp;#10;                &amp;#39;Content-Type&amp;#39;: &amp;#39;application/json; charset=utf-8&amp;#39;&amp;#10;              &amp;#125;);&amp;#10;              res.end(JSON.stringify(&amp;#123;success:true&amp;#125;));&amp;#10;            &amp;#125;);&amp;#10;&amp;#10;&amp;#10;            users.forEach(function (user) &amp;#123;&amp;#10;                console.log(user.id);&amp;#10;                var singleMessage = new Object(&amp;#123;&amp;#125;);&amp;#10;                singleMessage.senderName = message.senderName;&amp;#10;                singleMessage.senderTitle = message.senderTitle;&amp;#10;                singleMessage.senderId = message.senderId;&amp;#10;                singleMessage.receiver_id = user.id;&amp;#10;                singleMessage.content= message.content;&amp;#10;                singleMessage.has_read= message.has_read;&amp;#10;                singleMessage.createDate= message.createDate;&amp;#10;                db.messageList.save(singleMessage,&amp;#10;                  function(err, data) &amp;#123;&amp;#10;                    if(err)&amp;#123;&amp;#10;                      console.log(err);&amp;#10;                      next(err);&amp;#10;                    &amp;#125;&amp;#10;                    console.log(data);&amp;#10;                    ep.emit(&amp;#39;message&amp;#39;,data);&amp;#10;                  &amp;#125;);&amp;#10;            &amp;#125;);&amp;#10;        &amp;#125;);&amp;#10;&amp;#10;      &amp;#125;);&amp;#10;      return next();&amp;#10;    &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;获取未读消息数目&quot;&gt;获取未读消息数目&lt;/h2&gt;&lt;p&gt;通过路由&lt;code&gt;/api/v1/:user_id/messages/count&lt;/code&gt;的get消息获取用户的未读消息数目，作为是否提示用户查看信箱的一句。我们获取参数user_id，然后根据该id从数据库的信息列表中查找接受者为该用户id并且未读的信息的数目，并将该数目返回。代码如下:&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;//get count of messages unread&amp;#10;    server.get(&amp;#34;/api/v1/:user_id/messages/count&amp;#34;, function(req, res, next) &amp;#123;&amp;#10;      validateRequest.validate(req, res, db, function() &amp;#123;&amp;#10;        var user_id = req.params.user_id;&amp;#10;        db.messageList.find(&amp;#123;receiver_id:user_id,has_read:false&amp;#125;, function(err, list) &amp;#123;&amp;#10;          var count = list.length;&amp;#10;          // console.log(list);&amp;#10;          res.writeHead(200, &amp;#123;&amp;#10;            &amp;#39;Content-Type&amp;#39;: &amp;#39;application/json; charset=utf-8&amp;#39;&amp;#10;          &amp;#125;);&amp;#10;          res.end(JSON.stringify(&amp;#123;count:count&amp;#125;));&amp;#10;        &amp;#125;);&amp;#10;      &amp;#125;);&amp;#10;      return next();&amp;#10;    &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;获取所有消息&quot;&gt;获取所有消息&lt;/h2&gt;&lt;p&gt;通过路由&lt;code&gt;/api/v1/:user_id/messages&lt;/code&gt;的get消息获取用户所有的消息，包括已读消息和未读消息，首先根据用户user_id从信息列表中查找所有用户收到的消息,然后根据消息的已读还是未读的属性将消息区分为已读消息和未读消息，然后打包发送给客户端。&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;//get messages of a user&amp;#10;    server.get(&amp;#34;/api/v1/:user_id/messages&amp;#34;, function(req, res, next) &amp;#123;&amp;#10;      validateRequest.validate(req, res, db, function() &amp;#123;&amp;#10;        var user_id = req.params.user_id;&amp;#10;        db.messageList.find(&amp;#123;receiver_id:user_id&amp;#125;).sort(&amp;#123;createDate:-1&amp;#125;, function(err, list) &amp;#123;&amp;#10;          if(err)&amp;#123;&amp;#10;            next(err);&amp;#10;          &amp;#125;&amp;#10;          var messages = &amp;#123;&amp;#10;            has_read_messages: [],&amp;#10;            hasnot_read_messages: []&amp;#10;          &amp;#125;;&amp;#10;&amp;#10;          for(var i=0,l=list.length; i&amp;#60;l; i++)&amp;#123;&amp;#10;              var message = list[i];&amp;#10;              if(message.has_read)&amp;#123;&amp;#10;                messages.has_read_messages.push(message);&amp;#10;              &amp;#125;else&amp;#123;&amp;#10;                messages.hasnot_read_messages.push(message);&amp;#10;              &amp;#125;&amp;#10;          &amp;#125;&amp;#10;          // console.log(list);&amp;#10;          res.writeHead(200, &amp;#123;&amp;#10;            &amp;#39;Content-Type&amp;#39;: &amp;#39;application/json; charset=utf-8&amp;#39;&amp;#10;          &amp;#125;);&amp;#10;          res.end(JSON.stringify(messages));&amp;#10;        &amp;#125;);&amp;#10;      &amp;#125;);&amp;#10;      return next();&amp;#10;    &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;标记所有未读消息&quot;&gt;标记所有未读消息&lt;/h2&gt;&lt;p&gt;通过路由&lt;code&gt;/api/v1/:user_id/messages/mark&lt;/code&gt;的post消息将所有的未读消息标记为已读。通过user_id获取所有属于该用户的未读消息，然后将所有消息的已读属性标记为true，再存入到消息列表中去。过程和获取消息类似。&lt;/p&gt;
-&lt;h1 id=&quot;生成静态文件&quot;&gt;生成静态文件&lt;/h1&gt;&lt;p&gt;本应用的静态文件主要是将markdown文件转成HTML文件。在军事训练，教育管理，国防动员的内容中几乎都是静态文件，但我们需要让这些静态文件有一定的格式表示出来，因此我们用markdown文档格式化文件，然后将他们编译成HTML文件，在客户端显示。于是我们需要一个可以帮助我们编译markdown的工具，在github上找到markx这个nodejs命令行工具，该工具能够在命令行中将markdown文件转成html文件，但一次只能转换一篇，于是我们利用bash命令首先寻找文件夹下的所有markdown文件然后将他们用markx转换成html文件，然后将他们以原文件命名。最终的命令如下:&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ find . -name &amp;#34;*.md&amp;#34; -type f -exec sh -c &amp;#39;mclmarkx &amp;#34;$&amp;#123;0&amp;#125;&amp;#34; &amp;#62; &amp;#34;$&amp;#123;0%.md&amp;#125;.html&amp;#34;&amp;#39; &amp;#123;&amp;#125; \;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h1 id=&quot;文档标题居中&quot;&gt;文档标题居中&lt;/h1&gt;&lt;p&gt;另外还有一个需求是所有html列表的标题必须居中，markdown的作用是生成html页面结构，并没有效果选项，因此默认是无法进行居中的，一个简单的方式是用手工方式为每个标题添加&lt;code&gt;style=&amp;quot;text-align:center&amp;quot;&lt;/code&gt;属性，但耗时耗力，遇到新的文档还得继续手动加，不是好的解决方案，最后我们通过修改markx的源码解决该问题。&lt;br&gt;markx也是一个nodejs包,基本的想法是找到markx中对&lt;code&gt;# ## ### #### ##### #######&lt;/code&gt;即标题标记的解析代码，然后在解析代码的时候添加文本居中属性。通过阅读markx的源码，我们发现它依赖一个marked的nodejs包，这个包专门用来解析markdown文件，而在marked的lib文件夹下的marked.js文件具体负责解析。在该文件中找到heading这一项，在解析时加入style属性,如下面的代码所示:&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;case &amp;#39;heading&amp;#39;: &amp;#123;&amp;#10;     return &amp;#39;&amp;#60;h&amp;#39;&amp;#10;       + token.depth&amp;#10;       + &amp;#39; style=&amp;#34;text-align:center&amp;#34;&amp;#39;&amp;#10;       + &amp;#39;&amp;#62;&amp;#39;&amp;#10;       + inline.lexer(token.text)&amp;#10;       + &amp;#39;&amp;#60;/h&amp;#39;&amp;#10;       + token.depth&amp;#10;       + &amp;#39;&amp;#62;\n&amp;#39;;&amp;#10;   &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;保存后，再调用markx就能够进行标题居中了。&lt;/p&gt;
-&lt;h1 id=&quot;添加静态文件支持&quot;&gt;添加静态文件支持&lt;/h1&gt;&lt;p&gt;在restify中添加静态文件的支持十分方便。&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;server.get(/\/docs\/?.*/, restify.serveStatic(&amp;#123;&amp;#10;  directory: &amp;#39;./assets/v1&amp;#39;,&amp;#10;  default: &amp;#39;index.html&amp;#39;&amp;#10;&amp;#125;));&amp;#10;&amp;#10;server.get(/\/apks\/?.*/, restify.serveStatic(&amp;#123;&amp;#10;  directory: &amp;#39;./assets/v1&amp;#39;,&amp;#10;  default: &amp;#39;index.html&amp;#39;&amp;#10;&amp;#125;));&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;通过该设置后我们就能通过url下载相应的文档了。例如我们想获得assets-&amp;gt;v1-&amp;gt;docs-&amp;gt;train-&amp;gt;notifications-&amp;gt;train-notice.html文件，那么相应的url路径为localhost:3000/docs/train/notifications/train-notice.html。&lt;/p&gt;
-&lt;h1 id=&quot;数据生成&quot;&gt;数据生成&lt;/h1&gt;&lt;p&gt;本APP因为和部队相关，因此不开放用户注册功能，因此需要编写脚本产生用户的数据。需要生成的数据包括用户的个人信息，以及组织的信息。&lt;/p&gt;
-&lt;h2 id=&quot;个人信息&quot;&gt;个人信息&lt;/h2&gt;&lt;p&gt;个人信息包括id号，姓名，官职，组织列表，密码等信息.一个模拟的人员列表如下:&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var userList= [&amp;#10;  &amp;#123;id: &amp;#34;00000000&amp;#34;, name : &amp;#34;A&amp;#34;, title: &amp;#34;&amp;#33829;&amp;#38271;&amp;#34;, isLeader: true,  belong: &amp;#34;1&amp;#34;, password: &amp;#34;123&amp;#34;,orgs: []&amp;#125;,&amp;#10;  &amp;#123;id: &amp;#34;00000001&amp;#34;, name : &amp;#34;B&amp;#34;, title: &amp;#34;&amp;#36830;&amp;#38271;&amp;#34;, isLeader: true,  belong: &amp;#34;2&amp;#34;, password: &amp;#34;123&amp;#34;,orgs: []&amp;#125;,&amp;#10;  &amp;#123;id: &amp;#34;00000002&amp;#34;, name : &amp;#34;C&amp;#34;, title: &amp;#34;&amp;#25490;&amp;#38271;&amp;#34;, isLeader: true,  belong: &amp;#34;3&amp;#34;, password: &amp;#34;123&amp;#34;,orgs: []&amp;#125;,&amp;#10;  &amp;#123;id: &amp;#34;00000003&amp;#34;, name : &amp;#34;D&amp;#34;, title: &amp;#34;&amp;#29677;&amp;#38271;&amp;#34;, isLeader: true,  belong: &amp;#34;4&amp;#34;, password: &amp;#34;123&amp;#34;,orgs: []&amp;#125;,&amp;#10;  &amp;#123;id: &amp;#34;00000004&amp;#34;, name : &amp;#34;E&amp;#34;, title: &amp;#34;&amp;#22763;&amp;#20853;&amp;#34;, isLeader: false, belong: &amp;#34;4&amp;#34;, password: &amp;#34;123&amp;#34;,orgs: []&amp;#125;,&amp;#10;  &amp;#123;id: &amp;#34;00000005&amp;#34;, name : &amp;#34;F&amp;#34;, title: &amp;#34;&amp;#22763;&amp;#20853;&amp;#34;, isLeader: false, belong: &amp;#34;4&amp;#34;, password: &amp;#34;123&amp;#34;,orgs: []&amp;#125;,&amp;#10;  &amp;#123;id: &amp;#34;00000006&amp;#34;, name : &amp;#34;G&amp;#34;, title: &amp;#34;&amp;#22763;&amp;#20853;&amp;#34;, isLeader: false, belong: &amp;#34;4&amp;#34;, password: &amp;#34;123&amp;#34;,orgs: []&amp;#125;,&amp;#10;  &amp;#123;id: &amp;#34;00000007&amp;#34;, name : &amp;#34;H&amp;#34;, title: &amp;#34;&amp;#36830;&amp;#38271;&amp;#34;, isLeader: true,  belong: &amp;#34;5&amp;#34;, password: &amp;#34;123&amp;#34;,orgs: []&amp;#125;,&amp;#10;  &amp;#123;id: &amp;#34;00000008&amp;#34;, name : &amp;#34;I&amp;#34;, title: &amp;#34;&amp;#25490;&amp;#38271;&amp;#34;, isLeader: true,  belong: &amp;#34;6&amp;#34;, password: &amp;#34;123&amp;#34;,orgs: []&amp;#125;,&amp;#10;  &amp;#123;id: &amp;#34;00000009&amp;#34;, name : &amp;#34;J&amp;#34;, title: &amp;#34;&amp;#29677;&amp;#38271;&amp;#34;, isLeader: true,  belong: &amp;#34;7&amp;#34;, password: &amp;#34;123&amp;#34;,orgs: []&amp;#125;,&amp;#10;  &amp;#123;id: &amp;#34;00000010&amp;#34;, name : &amp;#34;K&amp;#34;, title: &amp;#34;&amp;#22763;&amp;#20853;&amp;#34;, isLeader: false, belong: &amp;#34;7&amp;#34;, password: &amp;#34;123&amp;#34;,orgs: []&amp;#125;,&amp;#10;  &amp;#123;id: &amp;#34;00000011&amp;#34;, name : &amp;#34;L&amp;#34;, title: &amp;#34;&amp;#22763;&amp;#20853;&amp;#34;, isLeader: false, belong: &amp;#34;7&amp;#34;, password: &amp;#34;123&amp;#34;,orgs: []&amp;#125;,&amp;#10;  &amp;#123;id: &amp;#34;00000012&amp;#34;, name : &amp;#34;M&amp;#34;, title: &amp;#34;&amp;#22763;&amp;#20853;&amp;#34;, isLeader: false, belong: &amp;#34;7&amp;#34;, password: &amp;#34;123&amp;#34;,orgs: []&amp;#125;,&amp;#10;];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;脚本主要逻辑如下:&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;/*&amp;#10; insert people to orgnizations&amp;#10;*/&amp;#10;  db.userList.remove(&amp;#123;&amp;#125;, function () &amp;#123;&amp;#10;      db.userList.insert(userList,function(err,results)&amp;#123;&amp;#10;        console.log(results);&amp;#10;        db.close();&amp;#10;      &amp;#125;);&amp;#10;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;组织信息&quot;&gt;组织信息&lt;/h2&gt;&lt;p&gt;组织的信息包括组织id，名称，直接组织，组织列表等，一个模拟的组织关系如下:&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var orgsList = [&amp;#10;  &amp;#123;id: &amp;#34;1&amp;#34;, name: &amp;#34;2&amp;#33829;&amp;#34;,   belong: null, leader: &amp;#34;00000000&amp;#34;,orgs:[&amp;#34;1&amp;#34;]&amp;#125;,&amp;#10;  &amp;#123;id: &amp;#34;2&amp;#34;, name: &amp;#34;172&amp;#36830;&amp;#34;, belong: &amp;#34;1&amp;#34;,  leader: &amp;#34;00000001&amp;#34;,orgs:[&amp;#34;2&amp;#34;,&amp;#34;1&amp;#34;]&amp;#125;,&amp;#10;  &amp;#123;id: &amp;#34;3&amp;#34;, name: &amp;#34;112&amp;#25490;&amp;#34;, belong: &amp;#34;2&amp;#34;,  leader: &amp;#34;00000002&amp;#34;,orgs:[&amp;#34;3&amp;#34;,&amp;#34;2&amp;#34;,&amp;#34;1&amp;#34;]&amp;#125;,&amp;#10;  &amp;#123;id: &amp;#34;4&amp;#34;, name: &amp;#34;12&amp;#29677;&amp;#34;,  belong: &amp;#34;3&amp;#34;,  leader: &amp;#34;00000003&amp;#34;,orgs:[&amp;#34;4&amp;#34;,&amp;#34;3&amp;#34;,&amp;#34;2&amp;#34;,&amp;#34;1&amp;#34;]&amp;#125;,&amp;#10;  &amp;#123;id: &amp;#34;5&amp;#34;, name: &amp;#34;177&amp;#36830;&amp;#34;, belong: &amp;#34;1&amp;#34;,  leader: &amp;#34;00000007&amp;#34;,orgs:[&amp;#34;5&amp;#34;,&amp;#34;1&amp;#34;]&amp;#125;,&amp;#10;  &amp;#123;id: &amp;#34;6&amp;#34;, name: &amp;#34;107&amp;#25490;&amp;#34;, belong: &amp;#34;5&amp;#34;,  leader: &amp;#34;00000008&amp;#34;,orgs:[&amp;#34;6&amp;#34;,&amp;#34;5&amp;#34;,&amp;#34;1&amp;#34;]&amp;#125;,&amp;#10;  &amp;#123;id: &amp;#34;7&amp;#34;, name: &amp;#34;19&amp;#29677;&amp;#34;,  belong: &amp;#34;6&amp;#34;,  leader: &amp;#34;00000009&amp;#34;,orgs:[&amp;#34;7&amp;#34;,&amp;#34;6&amp;#34;,&amp;#34;5&amp;#34;,&amp;#34;1&amp;#34;]&amp;#125;&amp;#10;];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;相应的插入组织的代码如下:&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;/*&amp;#10; insert  orgnizations&amp;#10;*/&amp;#10;  db.orgList.remove(&amp;#123;&amp;#125;, function () &amp;#123;&amp;#10;      db.orgList.insert(orgsList,function(err,results)&amp;#123;&amp;#10;        console.log(results);&amp;#10;        db.close();&amp;#10;      &amp;#125;);&amp;#10;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;个人和组织的连接操作&quot;&gt;个人和组织的连接操作&lt;/h2&gt;&lt;p&gt;为了防止过多的查表操作，我们将个人和组织的信息进行联接操作，扩充用户的个人信息。&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var ep  = new eventproxy();&amp;#10;db.userList.find(&amp;#123;&amp;#125;,function (err,list) &amp;#123;&amp;#10;&amp;#10;  ep.after(&amp;#39;insert&amp;#39;,list.length, function (results) &amp;#123;&amp;#10;      console.log(results);&amp;#10;      db.close();&amp;#10;    &amp;#125;);&amp;#10;&amp;#10;    list.forEach(function (user) &amp;#123;&amp;#10;      db.orgList.findOne(&amp;#123;id:user.belong&amp;#125;,function (err,org) &amp;#123;&amp;#10;&amp;#10;          db.userList.findAndModify(&amp;#123;&amp;#10;              query: &amp;#123; id:user.id &amp;#125;,&amp;#10;              update: &amp;#123; $set: &amp;#123; orgs:org.orgs&amp;#125; &amp;#125;,&amp;#10;              new: true&amp;#10;          &amp;#125;, function (err, doc) &amp;#123;&amp;#10;              console.log(doc);&amp;#10;              ep.emit(&amp;#39;insert&amp;#39;,doc);&amp;#10;          &amp;#125;);&amp;#10;      &amp;#125;);&amp;#10;    &amp;#125;);&amp;#10;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;我们使用Restify这个框架实现我们的REST风格的后端服务器,使用Mongodb作为我们的后端服务器,使用Mongojs作为连接数据库的操作接口.以下我们分开描述创建一个web服务器的各个方面。&lt;/p&gt;
-&lt;p&gt;我已经把项目文件整理起来放到&lt;a href=&quot;https://github.com/rdmclin2/fcws&quot;&gt;github&lt;/a&gt;上了，供大家参考。&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="nodejs" scheme="http://www.mclspace.com/categories/nodejs/"/>
-    
-    
-      <category term="ionic" scheme="http://www.mclspace.com/tags/ionic/"/>
-    
-      <category term="mongodb" scheme="http://www.mclspace.com/tags/mongodb/"/>
-    
-      <category term="nodejs" scheme="http://www.mclspace.com/tags/nodejs/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Ionic+Nodejs+Mongod开发端到端混合应用系列教程四 - 客户端实现</title>
-    <link href="http://www.mclspace.com/2015/11/28/ionic-app-3/"/>
-    <id>http://www.mclspace.com/2015/11/28/ionic-app-3/</id>
+    <title>凤城卫士Ionic客户端实现</title>
+    <link href="http://www.mclspace.com/2015/11/28/fcws-ionic-implementation/"/>
+    <id>http://www.mclspace.com/2015/11/28/fcws-ionic-implementation/</id>
     <published>2015-11-28T06:09:10.000Z</published>
-    <updated>2015-11-28T07:19:30.000Z</updated>
+    <updated>2016-02-16T17:01:48.000Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;本篇为Ionic App 系列教程的客户端实现部分,我们使用Ionic框架进行客户端实现，Ionic本身依赖Ionic和AngularJS。&lt;/p&gt;
-&lt;p&gt;我已经把项目文件整理起来放到&lt;a href=&quot;https://github.com/rdmclin2/fcws&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github&lt;/a&gt;上了，供大家参考。&lt;/p&gt;
+&lt;p&gt;我已经把项目文件整理起来放到github仓库&lt;a href=&quot;git@github.com:rdmclin2/fcws-ionic.git&quot;&gt;fcws-ionic&lt;/a&gt;上了，供大家参考。&lt;br&gt;本文的后端实现为Nodejs+Mongoose+Express,放在github仓库&lt;a href=&quot;git@github.com:rdmclin2/fcws-backend.git&quot;&gt;fcws-backend&lt;/a&gt;中。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h1 id=&quot;工程文件结构&quot;&gt;工程文件结构&lt;/h1&gt;&lt;p&gt;首先我们来讲解客户端的代码结构，代码结构如下所示:&lt;br&gt;&lt;img src=&quot;http://7pun7p.com1.z0.glb.clouddn.com/hexo/client.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;图中工程结构部分大部分为ionic框架自动生成的部分，我们编写代码主要是在www文件夹中，因此下面我们解析www的文件结构，如下:&lt;/p&gt;
@@ -996,7 +847,7 @@ http://www.iqiyi.com/v_19rro04pmg.html?share_sTime=0-share_eTime=259-src=sharemo
     
       &lt;blockquote&gt;
 &lt;p&gt;本篇为Ionic App 系列教程的客户端实现部分,我们使用Ionic框架进行客户端实现，Ionic本身依赖Ionic和AngularJS。&lt;/p&gt;
-&lt;p&gt;我已经把项目文件整理起来放到&lt;a href=&quot;https://github.com/rdmclin2/fcws&quot;&gt;github&lt;/a&gt;上了，供大家参考。&lt;/p&gt;
+&lt;p&gt;我已经把项目文件整理起来放到github仓库&lt;a href=&quot;git@github.com:rdmclin2/fcws-ionic.git&quot;&gt;fcws-ionic&lt;/a&gt;上了，供大家参考。&lt;br&gt;本文的后端实现为Nodejs+Mongoose+Express,放在github仓库&lt;a href=&quot;git@github.com:rdmclin2/fcws-backend.git&quot;&gt;fcws-backend&lt;/a&gt;中。&lt;/p&gt;
 &lt;/blockquote&gt;
     
     </summary>
@@ -1013,78 +864,11 @@ http://www.iqiyi.com/v_19rro04pmg.html?share_sTime=0-share_eTime=259-src=sharemo
   </entry>
   
   <entry>
-    <title>Ionic+Nodejs+Mongod开发端到端混合应用系列教程三 - 整体架构</title>
-    <link href="http://www.mclspace.com/2015/11/24/ionic-app-2/"/>
-    <id>http://www.mclspace.com/2015/11/24/ionic-app-2/</id>
-    <published>2015-11-23T16:57:10.000Z</published>
-    <updated>2015-11-28T07:22:52.000Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;本篇为Ionic App 系列教程的整体架构部分，描述该应用的整体运行流程以及功能设计。&lt;/p&gt;
-&lt;p&gt;我已经把项目文件整理起来放到&lt;a href=&quot;https://github.com/rdmclin2/fcws&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github&lt;/a&gt;上了，供大家参考。&lt;/p&gt;
-&lt;p&gt;注意该教程还使用的老的rest api设计，新的api设计参考&lt;a href=&quot;http://mclspace.com/2015/11/18/fcws-api-doc/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;凤城卫士API文档&lt;/a&gt;以及&lt;a href=&quot;http://mclspace.com/2015/11/03/restful-note/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Restful API浅析 之设计原则与案例修正&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h2 id=&quot;软件整体架构&quot;&gt;软件整体架构&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://7pun7p.com1.z0.glb.clouddn.com/hexo/structure.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;软件的整体架构如上图所示，客户端部分我们使用Ionic框架，用HTML+CSS编写界面部分，用JS编写交互。&lt;br&gt;服务器端我们使用Nodejs框架，使用Restify模块编写REST服务器，为每一个业务层编写相应的CRUD(Creat,Read,Update,Delete)接口。并使用Mongodb作为数据库存储非结构化数据，mongojs为服务器与数据库交互的驱动。&lt;/p&gt;
-&lt;p&gt;我们用用户登录的过程详细讲解整个过程。当用户点开应用，输入用户名和密码，应用后台获取用户的信息，将该信息封装成Http post请求发送给服务器，服务器收到请求后，首先对请求url进行解析获取客户端传来的数据，根据设定的路由找到相应的处理函数，该函数获取用户的用户名和密码，然后在数据库中通过用户名查找该用户，如果找到此用户并且用户的密码和传过来的密码一致，则认为登录成功，服务器会向客户端发送200响应码代表请求成功，返回用户数据,客户端获取到用户数据后存储用户信息到本地并路由到应用的首页并加载用户相关的信息进行展示。&lt;/p&gt;
-&lt;h2 id=&quot;系统功能设计&quot;&gt;系统功能设计&lt;/h2&gt;&lt;p&gt;系统设计对原型设计进一步分析，抽离出具体每个页面元素的功能，以及功能设计的流程。&lt;/p&gt;
-&lt;h3 id=&quot;登录&quot;&gt;登录&lt;/h3&gt;&lt;p&gt;登录过程交互功能的流程图如下所示，因为我们的用户信息是服务器端录入的，因此这里没有提供注册流程。在登录界面中，用户首先输入自己的用户名和密码，然后点击登录按钮，系统后台验证是否输入是否合法，如果合法，向服务器发送登录请求，服务器收到请求后进行校验后应答，如果用户名和密码存在且一致，则登录成功，跳转到系统首页，如果出现错误，则提示用户重新输入用户名和密码重试，重新进行上述流程。&lt;br&gt;&lt;img src=&quot;http://7pun7p.com1.z0.glb.clouddn.com/hexo/login_pro.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;首页&quot;&gt;首页&lt;/h3&gt;&lt;p&gt;首页交互的流程图如下所示，首页显示的是用户最近的活动的汇总，用户可以点击查看最新的情报，点击某条通知查看最新的通知。特别地，我们将信箱放在页面右上角，方便用户及时的查看自己收到的消息。信箱页面显示未读消息和已读消息，点击某一条消息后能弹出对话框显示详细信息。&lt;br&gt;&lt;img src=&quot;http://7pun7p.com1.z0.glb.clouddn.com/hexo/dashboard_pro.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;情报信息&quot;&gt;情报信息&lt;/h3&gt;&lt;p&gt;情报信息的流程图如下所示，情报信息用户获取他人发布情报的页面，点击某一个情报会跳转到情报详情，在情报详情页面你可以对该情报进行回复，或者进行点赞，通过返回按钮回到情报信息的主页面。在主页面上可以点击发布一条情报，输入内容和紧急情况之后点击发送可以发送一条情报到主页面上。或者点击取消放弃发布该情报。&lt;br&gt;&lt;img src=&quot;http://7pun7p.com1.z0.glb.clouddn.com/hexo/posts_pro.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;指挥控制&quot;&gt;指挥控制&lt;/h3&gt;&lt;p&gt;指挥控制的流程图如下图所示，指挥控制包括对下属下达命令以及对所属部队下达命令，点击下属或者部队会跳转到发布情报页面，在发布情报页面输入文本点击发送按钮会发送消息给下属或所属部队，然后返回上一级，点击取消回到上一级&lt;br&gt;&lt;img src=&quot;http://7pun7p.com1.z0.glb.clouddn.com/hexo/controls_pro.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;军事训练_&amp;amp;_教育管理_&amp;amp;_国防动员&quot;&gt;军事训练 &amp;amp; 教育管理 &amp;amp; 国防动员&lt;/h3&gt;&lt;p&gt;军事训练，教育管理，国防动员的流程图如下图所示，每一项下面都有4个tab界面，每个tab界面都有一个文档列表，点击列表中的某一项，会向服务器请求该文档的内容，获取内容后展示在页面上，通过点击右上方的关闭按钮关闭展示页面回到文档列表。&lt;br&gt;&lt;img src=&quot;http://7pun7p.com1.z0.glb.clouddn.com/hexo/docs_pro.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;通讯录&quot;&gt;通讯录&lt;/h3&gt;&lt;p&gt;通讯录包括单位通讯录，任务通讯录和用户自定义通讯录，点击具体的某个用户会弹出该用户的详细信息.&lt;br&gt;&lt;img src=&quot;http://7pun7p.com1.z0.glb.clouddn.com/hexo/contacts_pro.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;用户主页&quot;&gt;用户主页&lt;/h3&gt;&lt;p&gt;用户主页的流程图如下图所示，点击某个最近发布的情报或者最近回复的消息都会加载情报的详情界面。&lt;br&gt;&lt;img src=&quot;http://7pun7p.com1.z0.glb.clouddn.com/hexo/homepage_pro.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;设置&quot;&gt;设置&lt;/h3&gt;&lt;p&gt;设置界面的流程图如下图所示，点击修改密码后跳转到修改密码界面，输入原密码，新密码和重复新密码，点击修改，如果成功修改则返回到设置界面，如果失败提示用户重新输入，点击取消返回到设置界面。点击注销用户按钮会跳转到登录界面，点击退出应用按钮会关闭应用。&lt;br&gt;&lt;img src=&quot;http://7pun7p.com1.z0.glb.clouddn.com/hexo/config_pro.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;性能设计&quot;&gt;性能设计&lt;/h2&gt;&lt;h3 id=&quot;利用多核提高性能&quot;&gt;利用多核提高性能&lt;/h3&gt;&lt;p&gt;由于Node.js是单线程的，一个进程只能利用一个核心CPU，因此当大量的请求到来，单核心就无法满足那么高的吞吐量，再者多核时代来临如果无法充分利用机器多核心的优势带来的浪费是非常严重的，因此我们要用多进程来提高系统的性能。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Nodejs 开发指南&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;反向代理&quot;&gt;反向代理&lt;/h3&gt;&lt;p&gt;通常为了充分利用服务器的资源，我们会在服务器上部署多个网站，可能是ROR的，PHP的，或者Nodejs的，默认的http请求的请求端口是80，但这么多网站不能都使用80端口，因此需要使用反向代理来根据请求的网站url自动将请求转发到网站对应的端口上。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Nodejs 开发指南&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;自动启动&quot;&gt;自动启动&lt;/h3&gt;&lt;p&gt;先前我们启动我们的服务器都是用手动的方式打开数据库，打开服务器，但在产品环境中，无法全部由手动完成，因此需要制作启动服务器的脚本，通过该脚本实现服务器的开启和关闭&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Nodejs 开发指南&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;故障恢复&quot;&gt;故障恢复&lt;/h3&gt;&lt;p&gt;对于一个后端服务器来说，稳定性是生命，不能一遇到错误服务器就停止，需要支持故障恢复。在调试过程中，当遇到错误的时候，服务器就会结束运行，需要在终端中重新开启，这在我们开发调试的过程没有多大的问题，但是在生产环境中如果用户的操作触发了某个隐藏的bug，服务器就结束运行，无法继续提供服务，这对产品来说是毁灭性，因此我们需要提供故障恢复机制来保证服务器的稳定运行。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Nodejs 开发指南&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;日志功能&quot;&gt;日志功能&lt;/h3&gt;&lt;p&gt;在产品开发的过程中，服务器日志尤其是错误日志会给开发者调试错误带来很大的好处，通过查看错误日志能够提高系统的可靠性，在发现问题的时候也能很快定位到出现问题的位置。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Nodejs 开发指南&lt;/p&gt;
-&lt;/blockquote&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;本篇为Ionic App 系列教程的整体架构部分，描述该应用的整体运行流程以及功能设计。&lt;/p&gt;
-&lt;p&gt;我已经把项目文件整理起来放到&lt;a href=&quot;https://github.com/rdmclin2/fcws&quot;&gt;github&lt;/a&gt;上了，供大家参考。&lt;/p&gt;
-&lt;p&gt;注意该教程还使用的老的rest api设计，新的api设计参考&lt;a href=&quot;http://mclspace.com/2015/11/18/fcws-api-doc/&quot;&gt;凤城卫士API文档&lt;/a&gt;以及&lt;a href=&quot;http://mclspace.com/2015/11/03/restful-note/&quot;&gt;Restful API浅析 之设计原则与案例修正&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="ionic" scheme="http://www.mclspace.com/categories/ionic/"/>
-    
-    
-      <category term="ionic" scheme="http://www.mclspace.com/tags/ionic/"/>
-    
-      <category term="mongodb" scheme="http://www.mclspace.com/tags/mongodb/"/>
-    
-      <category term="nodejs" scheme="http://www.mclspace.com/tags/nodejs/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Ionic+Nodejs+Mongod开发端到端混合应用系列教程二 - Nodejs+Ionic+Mongodb+Docker技术综述</title>
-    <link href="http://www.mclspace.com/2015/11/23/ionic-app-1/"/>
-    <id>http://www.mclspace.com/2015/11/23/ionic-app-1/</id>
+    <title>Nodejs+Ionic+Mongodb+Docker技术综述</title>
+    <link href="http://www.mclspace.com/2015/11/23/nodejs-ionic-mongodb-docker-summary/"/>
+    <id>http://www.mclspace.com/2015/11/23/nodejs-ionic-mongodb-docker-summary/</id>
     <published>2015-11-23T06:26:10.000Z</published>
-    <updated>2015-11-28T07:19:38.000Z</updated>
+    <updated>2016-02-16T16:50:07.000Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;本篇介绍以Nodejs和Mongodb为后端，以Ionic为前端，以Docker作为服务器容器为基础架构的混合App开发方式的技术综述。&lt;/p&gt;
@@ -1178,63 +962,6 @@ http://www.iqiyi.com/v_19rro04pmg.html?share_sTime=0-share_eTime=259-src=sharemo
     
       &lt;blockquote&gt;
 &lt;p&gt;本篇介绍以Nodejs和Mongodb为后端，以Ionic为前端，以Docker作为服务器容器为基础架构的混合App开发方式的技术综述。&lt;/p&gt;
-&lt;p&gt;我已经把项目文件整理起来放到&lt;a href=&quot;https://github.com/rdmclin2/fcws&quot;&gt;github&lt;/a&gt;上了，供大家参考。&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="ionic" scheme="http://www.mclspace.com/categories/ionic/"/>
-    
-    
-      <category term="ionic" scheme="http://www.mclspace.com/tags/ionic/"/>
-    
-      <category term="mongodb" scheme="http://www.mclspace.com/tags/mongodb/"/>
-    
-      <category term="nodejs" scheme="http://www.mclspace.com/tags/nodejs/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Ionic+Nodejs+Mongod开发端到端混合应用系列教程一 - 目录</title>
-    <link href="http://www.mclspace.com/2015/11/21/ionic-app-0/"/>
-    <id>http://www.mclspace.com/2015/11/21/ionic-app-0/</id>
-    <published>2015-11-21T04:57:10.000Z</published>
-    <updated>2015-11-28T07:30:58.000Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;从本篇开始我将把之前做的一个混合App的功能实现共享出来，称为《Ionic App系列教程》，意在给予从未接触过Hybird开发方式的初学者一些参考，老鸟就飞过吧。&lt;/p&gt;
-&lt;p&gt;2015-11-28 更新：注意这里讲解的是本项目的第一个版本，服务器端使用的是Restify+Mongojs的实现方式，更好的实践是Express+Mongoose，在目前开发的版本中已经全面使用该架构,有机会分享出来。注意该教程还使用的老的rest api设计，新的api设计参考&lt;a href=&quot;http://mclspace.com/2015/11/18/fcws-api-doc/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;凤城卫士API文档&lt;/a&gt;以及&lt;a href=&quot;http://mclspace.com/2015/11/03/restful-note/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Restful API浅析 之设计原则与案例修正&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;我已经把项目文件整理起来放到&lt;a href=&quot;https://github.com/rdmclin2/fcws&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github&lt;/a&gt;上了，供大家参考。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;本教程目录如下:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://mclspace.com/2015/11/21/ionic-app-0/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;目录&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://mclspace.com/2015/11/23/ionic-app-1/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;技术综述&lt;/a&gt;：该项目中所用到的技术知识&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://mclspace.com/2015/11/24/ionic-app-2/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;软件总体架构&lt;/a&gt;：前后端通信的一个整体框架&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://mclspace.com/2015/11/28/ionic-app-3/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;客户端实现&lt;/a&gt;：使用Ionic实现客户端 &lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://mclspace.com/2015/11/28/ionic-app-4/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;服务器端实现&lt;/a&gt;: 使用Nodejs与Mongodb实现服务器端 &lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;p&gt;注意: 这是博主编写的第一个app，目前接触前后端开发的知识也才3-4个月，本系列教程仍然是以一个初学者的角度介绍Ionic app开发过程中的一些方面&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;本教程会涉及到以下的基础知识:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;js基础,能够看懂并编写简单的js代码&lt;/li&gt;
-&lt;li&gt;html与css基础,知道html页面结构以及css样式&lt;/li&gt;
-&lt;li&gt;angular基础,ionic主要借助angularjs实现，因此需要了解angularjs的基本概念&lt;/li&gt;
-&lt;li&gt;mongodb基础,了解nosql数据库的基本知识&lt;/li&gt;
-&lt;li&gt;nodejs基础，本教程的后端由node编写，因此需要对node有基本的了解&lt;/li&gt;
-&lt;li&gt;附带一句博主在开始写这个app之前没有以上任何基础（=。=)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;效果图如下所示:&lt;br&gt;&lt;img src=&quot;http://7pun7p.com1.z0.glb.clouddn.com/hexo/product%20show.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;从本篇开始我将把之前做的一个混合App的功能实现共享出来，称为《Ionic App系列教程》，意在给予从未接触过Hybird开发方式的初学者一些参考，老鸟就飞过吧。&lt;/p&gt;
-&lt;p&gt;2015-11-28 更新：注意这里讲解的是本项目的第一个版本，服务器端使用的是Restify+Mongojs的实现方式，更好的实践是Express+Mongoose，在目前开发的版本中已经全面使用该架构,有机会分享出来。注意该教程还使用的老的rest api设计，新的api设计参考&lt;a href=&quot;http://mclspace.com/2015/11/18/fcws-api-doc/&quot;&gt;凤城卫士API文档&lt;/a&gt;以及&lt;a href=&quot;http://mclspace.com/2015/11/03/restful-note/&quot;&gt;Restful API浅析 之设计原则与案例修正&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;我已经把项目文件整理起来放到&lt;a href=&quot;https://github.com/rdmclin2/fcws&quot;&gt;github&lt;/a&gt;上了，供大家参考。&lt;/p&gt;
 &lt;/blockquote&gt;
     
@@ -1696,6 +1423,167 @@ The popd command takes the last directory you pushed and &quot;pops&quot; it off
     
     
       <category term="rest" scheme="http://www.mclspace.com/tags/rest/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Nju-thesis latex模板食用指南</title>
+    <link href="http://www.mclspace.com/2015/10/25/mac_latex_note/"/>
+    <id>http://www.mclspace.com/2015/10/25/mac_latex_note/</id>
+    <published>2015-10-25T03:14:12.000Z</published>
+    <updated>2015-10-27T08:14:24.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;Nju-thesis 是南京大学学位论文XeLaTeX模板，由本校优秀博士胡海星制作分享，该模板严格遵循南京大学学术委员会对学位论文的排版格式要求以及相应的国家标准规范，可帮助南京大学的同学们方便地排版出漂亮的学位论文。目前该模板支持排版博士、硕士和学士的学位论文。虽然该模板主要用于排版南京大学的学位论文，但亦可经过简单的设置或修改用于排版国内其他大学的学位论文。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h1 id=&quot;安装Texlive2015&quot;&gt;安装Texlive2015&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;http://tug.org/mactex/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://tug.org/mactex/&lt;/a&gt;&lt;br&gt;如果你用basic版本参考&lt;a href=&quot;http://www.readern.com/sublime-text-latex-chinese-under-mac.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这篇教程&lt;/a&gt;进行设置即可，注意里面的&lt;code&gt;subprocess.Popen([‘open’] + [pdffile])&lt;/code&gt;用的单引号有问题,注意替换。不过basic版本中很多宏包不存在之后还是会有问题，需要自己安装宏包。所以初学者还是建议安装完全版。&lt;/p&gt;
+&lt;h1 id=&quot;设置环境变量&quot;&gt;设置环境变量&lt;/h1&gt;&lt;p&gt;在.zshrc中添加环境变量如下(其他版本注意替换路径):&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;LATEX_HOME=/usr/local/texlive/2015/bin/x86_64-darwin&amp;#10;PATH=$PATH:$LATEX_HOME&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h1 id=&quot;下载配置_Nju-thesis&quot;&gt;下载配置 Nju-thesis&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/Haixing-Hu/nju-thesis&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github地址&lt;/a&gt;，下载完成后需要一定的配置才能编译成功,在该文件目录下修改&lt;code&gt;sample.tex&lt;/code&gt;文件，将第一行的代码进行如下修改:&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;\documentclass[macfonts,master]&amp;#123;njuthesis&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;添加macfonts代表使用mac下的字体，在其他系统下请参照手册fonts相关部分，master代表生成硕士论文,相应的也可以设置其他的如&lt;code&gt;phd/master/bachelor 选择博士/硕士/学士论文&lt;/code&gt;&lt;br&gt;然后&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ make clean&amp;#10;$ make sample&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;即可成功编译该文档&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;模板基本使用&quot;&gt;模板基本使用&lt;/h1&gt;&lt;h2 id=&quot;注意点&quot;&gt;注意点&lt;/h2&gt;&lt;p&gt;特殊字符如$,_等需要转义&lt;/p&gt;
+&lt;h2 id=&quot;标题组织&quot;&gt;标题组织&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;\chapter&amp;#123;&amp;#24341;&amp;#35328;&amp;#125;\label&amp;#123;chapter_introduction&amp;#125;   # &amp;#31456;&amp;#10;\section&amp;#123;&amp;#39033;&amp;#30446;&amp;#32972;&amp;#26223;&amp;#125;  # &amp;#33410;&amp;#10;\subsection&amp;#123;IaaS&amp;#20113;&amp;#20013;&amp;#24515;&amp;#125;  # &amp;#23376;&amp;#23567;&amp;#33410;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h1 id=&quot;代码&quot;&gt;代码&lt;/h1&gt;&lt;p&gt;使用listings宏包，在文档前添加宏包,fontspec 选字体,Menlo是Mac下的一种字体格式，可以不添加这两个包&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;\usepackage&amp;#123;listings&amp;#125;&amp;#10;&amp;#10;\usepackage&amp;#123;fontspec&amp;#125;&amp;#10;&amp;#10;\newfontfamily\menlo&amp;#123;Menlo&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;如果要设置代码格式（要定制化可以google）,在&lt;code&gt;\begin{document}&lt;/code&gt;前添加&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;  \lstset&amp;#123; %&amp;#10;  backgroundcolor=\color&amp;#123;white&amp;#125;,   % choose the background color&amp;#10;  basicstyle=\small\menlo,  % size of fonts used for the code&amp;#10;  columns=fullflexible,&amp;#10;  breaklines=true,                 % automatic line breaking only at whitespace&amp;#10;  captionpos=b,                    % sets the caption-position to bottom&amp;#10;  tabsize=4,&amp;#10;  escapeinside=&amp;#123;\%*&amp;#125;&amp;#123;*)&amp;#125;,          % if you want to add LaTeX within your code&amp;#10;  keywordstyle=\color&amp;#123;blue&amp;#125;,       % keyword style&amp;#10;  frame=single,&amp;#10;  rulesepcolor=\color&amp;#123;red!20!green!20!blue!20&amp;#125;,&amp;#10;  % identifierstyle=\color&amp;#123;red&amp;#125;,&amp;#10;  language=JavaScript,&amp;#10;  numberstyle=\tiny\menlo&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;然后通过以下代码的格式进行调用&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;\begin&amp;#123;lstlisting&amp;#125;[language=JavaScript]&amp;#10;var http = require(&amp;#39;http&amp;#39;);&amp;#10;&amp;#10;http.createServer(function (req, res) &amp;#123;&amp;#10;  res.writeHead(200, &amp;#123;&amp;#39;Content-Type&amp;#39;: &amp;#39;text/plain&amp;#39;&amp;#125;);&amp;#10;  res.end(&amp;#39;Hello World\n&amp;#39;);&amp;#10;&amp;#125;).listen(1337, &amp;#34;127.0.0.1&amp;#34;);&amp;#10;&amp;#10;console.log(&amp;#39;Server running at http://127.0.0.1:1337/&amp;#39;);&amp;#10;\end&amp;#123;lstlisting&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;如果listings中没有你想要得代码格式（例如我想用Javascript）,你可以在listings的包中进行设置,以texlive2015为例,路径为&lt;code&gt;/usr/local/texlive/2015/texmf-dist/tex/latex/listings&lt;/code&gt;中修改&lt;code&gt;listlang1.sty&lt;/code&gt;文件，添加如下代码&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;\lst@definelanguage&amp;#123;JavaScript&amp;#125;%&amp;#10;  &amp;#123;morekeywords=&amp;#123;typeof,new,true,false,catch,function,return,null,catch,switch,var,if,in,while,do,else,case,break&amp;#125;,%&amp;#10;  morecomment=[l]//,%&amp;#10;  morecomment=[s]&amp;#123;/*&amp;#125;&amp;#123;*/&amp;#125;,%&amp;#10;  morestring=[b]&amp;#34;,%&amp;#10;  morestring=[b]&amp;#39;,%&amp;#10;  &amp;#125;[keywords,comments,strings]%&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;参考文献&quot;&gt;参考文献&lt;/h2&gt;&lt;h3 id=&quot;列表枚举&quot;&gt;列表枚举&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;\begin&amp;#123;enumerate&amp;#125;&amp;#10;\item &amp;#20998;&amp;#31867;&amp;#21495;  &amp;#22312;&amp;#24038;&amp;#19978;&amp;#35282;&amp;#27880;&amp;#26126;&amp;#20998;&amp;#31867;&amp;#21495;&amp;#65292;&amp;#20415;&amp;#20110;&amp;#20449;&amp;#24687;&amp;#20132;&amp;#25442;&amp;#21644;&amp;#22788;&amp;#29702;&amp;#12290;&amp;#19968;&amp;#33324;&amp;#24212;&amp;#27880;&amp;#26126;&amp;#12298;&amp;#20013;&amp;#22269;&amp;#22270;&amp;#20070;&amp;#36164;&amp;#10;  &amp;#26009;&amp;#20998;&amp;#31867;&amp;#27861;&amp;#12299;&amp;#30340;&amp;#31867;&amp;#21495;&amp;#65292;&amp;#21516;&amp;#26102;&amp;#24212;&amp;#27880;&amp;#26126;&amp;#12298;&amp;#22269;&amp;#38469;&amp;#21313;&amp;#36827;&amp;#20998;&amp;#31867;&amp;#27861;UDC&amp;#12299;&amp;#30340;&amp;#31867;&amp;#21495;&amp;#65307;&amp;#10;\item &amp;#23494;&amp;#32423;  &amp;#22312;&amp;#21491;&amp;#19978;&amp;#35282;&amp;#27880;&amp;#26126;&amp;#23494;&amp;#32423;&amp;#65307;&amp;#10;\item &amp;#8220;&amp;#21338;&amp;#22763;&amp;#23398;&amp;#20301;&amp;#35770;&amp;#25991;&amp;#8221;&amp;#29992;&amp;#22823;&amp;#21495;&amp;#23383;&amp;#26631;&amp;#26126;&amp;#65307;&amp;#10;\item &amp;#39064;&amp;#21517;&amp;#21644;&amp;#21103;&amp;#39064;&amp;#21517;   &amp;#29992;&amp;#22823;&amp;#21495;&amp;#23383;&amp;#26631;&amp;#26126;&amp;#65307;&amp;#10;\item &amp;#20316;&amp;#32773;&amp;#22995;&amp;#21517;&amp;#65307;&amp;#10;\item &amp;#23398;&amp;#31185;&amp;#19987;&amp;#19994;&amp;#21517;&amp;#31216;&amp;#65307;&amp;#10;\item &amp;#30740;&amp;#31350;&amp;#26041;&amp;#21521;&amp;#65307;&amp;#10;\item &amp;#23548;&amp;#24072;&amp;#22995;&amp;#21517;&amp;#65292;&amp;#32844;&amp;#31216;&amp;#65307;&amp;#10;\item &amp;#26085;&amp;#26399;&amp;#21253;&amp;#25324;&amp;#35770;&amp;#25991;&amp;#25552;&amp;#20132;&amp;#26085;&amp;#26399;&amp;#21644;&amp;#31572;&amp;#36777;&amp;#26085;&amp;#26399;&amp;#65307;&amp;#10;\item &amp;#23398;&amp;#20301;&amp;#25480;&amp;#20104;&amp;#21333;&amp;#20301;&amp;#12290;&amp;#10;\end&amp;#123;enumerate&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;引用&quot;&gt;引用&lt;/h3&gt;&lt;p&gt;例如&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;\cite&amp;#123;baike1&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&quot;书籍&quot;&gt;书籍&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;@book&amp;#123;book1,&amp;#10;  title=&amp;#123;Google&amp;#160;Android&amp;#160;&amp;#24320;&amp;#21457;&amp;#20837;&amp;#38376;&amp;#19982;&amp;#23454;&amp;#25112;&amp;#125;,&amp;#10;  author=&amp;#123;&amp;#38771;&amp;#23721;,&amp;#23002;&amp;#23578;&amp;#26391;&amp;#125;,&amp;#10;  year=&amp;#123;2009&amp;#125;,&amp;#10;  publisher=&amp;#123;&amp;#20154;&amp;#27665;&amp;#37038;&amp;#30005;&amp;#20986;&amp;#29256;&amp;#31038;&amp;#125;,&amp;#10;  address=&amp;#123;&amp;#21271;&amp;#20140;&amp;#125;,&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;网页&quot;&gt;网页&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;@webpage&amp;#123;baike1,&amp;#10;  title = &amp;#123;&amp;#123;hybrid app&amp;#125;&amp;#125;,&amp;#10;  author = &amp;#123;&amp;#123;&amp;#30334;&amp;#24230;&amp;#30334;&amp;#31185;&amp;#36129;&amp;#29486;&amp;#32773;&amp;#125;&amp;#125;,&amp;#10;  publisher = &amp;#123;&amp;#30334;&amp;#24230;&amp;#30334;&amp;#31185;&amp;#125;,&amp;#10;  year = &amp;#123;2015&amp;#125;,&amp;#10;  url = &amp;#123;http://baike.baidu.com/link?url=D2o0b8jhdREb7o4cysYKmU-oH9BZVTWAp1LxI9-zK_CNly3A7RQgEPIF-ptnGpdjrgvUVz_HE1UOscnSsdNbFa&amp;#125;,&amp;#10;  modifydate = &amp;#123;2015/09/23&amp;#125;,&amp;#10;  citedate = &amp;#123;2015/10/21&amp;#125;&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;插图&quot;&gt;插图&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;\begin&amp;#123;figure&amp;#125;[htbp]&amp;#10;  \centering&amp;#10;  \includegraphics[width= 0.5\textwidth]&amp;#123;njuname.eps&amp;#125;\\&amp;#10;  \caption&amp;#123;&amp;#27979;&amp;#35797;&amp;#25554;&amp;#22270;&amp;#125;\label&amp;#123;fig:test1&amp;#125;&amp;#10;\end&amp;#123;figure&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;引用插图&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#22270;\ref&amp;#123;fig:test1&amp;#125;&amp;#25152;&amp;#31034;&amp;#20026;&amp;#20256;&amp;#32479;IaaS&amp;#20113;&amp;#20013;&amp;#24515;&amp;#32593;&amp;#32476;&amp;#32467;&amp;#26500;&amp;#30340;&amp;#19968;&amp;#37096;&amp;#20998;&amp;#12290;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&quot;表格&quot;&gt;表格&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;\begin&amp;#123;table&amp;#125;&amp;#10;  \centering&amp;#10;  \begin&amp;#123;tabular&amp;#125;&amp;#123;cccp&amp;#123;38mm&amp;#125;&amp;#125;&amp;#10;    \toprule&amp;#10;    \textbf&amp;#123;&amp;#25991;&amp;#26723;&amp;#22495;&amp;#31867;&amp;#22411;&amp;#125; &amp;#38; \textbf&amp;#123;Java&amp;#31867;&amp;#22411;&amp;#125; &amp;#38; \textbf&amp;#123;&amp;#23485;&amp;#24230;(&amp;#23383;&amp;#33410;)&amp;#125; &amp;#38; \textbf&amp;#123;&amp;#35828;&amp;#26126;&amp;#125; \\&amp;#10;    \midrule&amp;#10;    BOOLEAN  &amp;#38; boolean &amp;#38;  1  &amp;#38; \\&amp;#10;    CHAR     &amp;#38; char    &amp;#38;  2  &amp;#38; UTF-16&amp;#23383;&amp;#31526; \\&amp;#10;    BYTE     &amp;#38; byte    &amp;#38;  1  &amp;#38; &amp;#26377;&amp;#31526;&amp;#21495;8&amp;#20301;&amp;#25972;&amp;#25968; \\&amp;#10;    SHORT    &amp;#38; short   &amp;#38;  2  &amp;#38; &amp;#26377;&amp;#31526;&amp;#21495;16&amp;#20301;&amp;#25972;&amp;#25968; \\&amp;#10;    INT      &amp;#38; int     &amp;#38;  4  &amp;#38; &amp;#26377;&amp;#31526;&amp;#21495;32&amp;#20301;&amp;#25972;&amp;#25968; \\&amp;#10;    LONG     &amp;#38; long    &amp;#38;  8  &amp;#38; &amp;#26377;&amp;#31526;&amp;#21495;64&amp;#20301;&amp;#25972;&amp;#25968; \\&amp;#10;    STRING   &amp;#38; String  &amp;#38;  &amp;#23383;&amp;#31526;&amp;#20018;&amp;#38271;&amp;#24230;  &amp;#38; &amp;#20197;UTF-8&amp;#32534;&amp;#30721;&amp;#23384;&amp;#20648; \\&amp;#10;    DATE     &amp;#38; java.util.Date &amp;#38; 8 &amp;#38; &amp;#36317;&amp;#31163;GMT&amp;#26102;&amp;#38388;1970&amp;#24180;1&amp;#26376;1&amp;#26085;0&amp;#28857;0&amp;#20998;0&amp;#31186;&amp;#30340;&amp;#27627;&amp;#31186;&amp;#25968; \\&amp;#10;    BYTE\_ARRAY &amp;#38; byte$[]$ &amp;#38; &amp;#25968;&amp;#32452;&amp;#38271;&amp;#24230; &amp;#38; &amp;#29992;&amp;#20110;&amp;#23384;&amp;#20648;&amp;#20108;&amp;#36827;&amp;#21046;&amp;#20540; \\&amp;#10;    BIG\_INTEGER &amp;#38; java.math.BigInteger &amp;#38; &amp;#21644;&amp;#20855;&amp;#20307;&amp;#20540;&amp;#26377;&amp;#20851; &amp;#38; &amp;#20219;&amp;#24847;&amp;#31934;&amp;#24230;&amp;#30340;&amp;#38271;&amp;#25972;&amp;#25968; \\&amp;#10;    BIG\_DECIMAL &amp;#38; java.math.BigDecimal &amp;#38; &amp;#21644;&amp;#20855;&amp;#20307;&amp;#20540;&amp;#26377;&amp;#20851; &amp;#38; &amp;#20219;&amp;#24847;&amp;#31934;&amp;#24230;&amp;#30340;&amp;#21313;&amp;#36827;&amp;#21046;&amp;#23454;&amp;#25968; \\&amp;#10;    \bottomrule&amp;#10;  \end&amp;#123;tabular&amp;#125;&amp;#10;  \caption&amp;#123;&amp;#27979;&amp;#35797;&amp;#34920;&amp;#26684;&amp;#125;\label&amp;#123;table:test2&amp;#125;&amp;#10;\end&amp;#123;table&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;定义&quot;&gt;定义&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;\begin&amp;#123;definition&amp;#125;[&amp;#33410;&amp;#28857;&amp;#20043;&amp;#38388;&amp;#30340;&amp;#36317;&amp;#31163;]&amp;#10;&amp;#32593;&amp;#32476;&amp;#20013;&amp;#20004;&amp;#20010;&amp;#33410;&amp;#28857;$i$&amp;#21644;$j$&amp;#20043;&amp;#38388;&amp;#30340;&amp;#36317;&amp;#31163;(distance)$d_&amp;#123;ij&amp;#125;$&amp;#23450;&amp;#20041;&amp;#20026;&amp;#36830;&amp;#25509;&amp;#36825;&amp;#20004;&amp;#20010;&amp;#33410;&amp;#28857;&amp;#10;&amp;#30340;&amp;#26368;&amp;#30701;&amp;#36335;&amp;#24452;&amp;#19978;&amp;#30340;&amp;#36793;&amp;#25968;&amp;#12290;&amp;#10;\end&amp;#123;definition&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;等式&quot;&gt;等式&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;\begin&amp;#123;equation&amp;#125;\label&amp;#123;eq:dimension&amp;#125;&amp;#10;    D = \max_&amp;#123;i,j&amp;#125; d_&amp;#123;ij&amp;#125;&amp;#10;\end&amp;#123;equation&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;png/jpg_-&amp;gt;_eps_在线转换工具&quot;&gt;png/jpg -&amp;gt; eps 在线转换工具&lt;/h1&gt;&lt;p&gt;论文中使用图片需要使用eps格式的图片，不过我们的图片格式一般是jpg/png格式的，转换格式有多重方式，推荐在线转换工具:&lt;br&gt;&lt;a href=&quot;http://www.tlhiv.org/cgi-bin/rast2vec/index.cgi&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.tlhiv.org/cgi-bin/rast2vec/index.cgi&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;其他latex模板&quot;&gt;其他latex模板&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;http://www.ieee.org/conferences_events/conferences/publishing/templates.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Ieee模板&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;参考文献-1&quot;&gt;参考文献&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.zhihu.com/question/30957600&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;知乎&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.sina.com.cn/s/blog_5e16f1770100fw83.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;LaTeX技巧32：LaTeX程序代码排版，Listings宏包&lt;/a&gt;&lt;br&gt;-&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Nju-thesis 是南京大学学位论文XeLaTeX模板，由本校优秀博士胡海星制作分享，该模板严格遵循南京大学学术委员会对学位论文的排版格式要求以及相应的国家标准规范，可帮助南京大学的同学们方便地排版出漂亮的学位论文。目前该模板支持排版博士、硕士和学士的学位论文。虽然该模板主要用于排版南京大学的学位论文，但亦可经过简单的设置或修改用于排版国内其他大学的学位论文。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="mac" scheme="http://www.mclspace.com/categories/mac/"/>
+    
+    
+      <category term="latex" scheme="http://www.mclspace.com/tags/latex/"/>
+    
+      <category term="mac" scheme="http://www.mclspace.com/tags/mac/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ionic开发之自动生成icon和splash</title>
+    <link href="http://www.mclspace.com/2015/10/19/ionic-icon-and-splash/"/>
+    <id>http://www.mclspace.com/2015/10/19/ionic-icon-and-splash/</id>
+    <published>2015-10-19T03:30:28.000Z</published>
+    <updated>2015-10-19T14:06:15.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;Icon（图标）和Splash（启动画面）是应用的门面，好的Icon和Splash能让用户对这款App产生良好的第一印象，不过我们这里不讲怎么设计他们，而是如何在Ionic应用中定制自己的icon和splash，在这里ionic为我们提供了非常方便的自动化生成工具。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h1 id=&quot;准备资源&quot;&gt;准备资源&lt;/h1&gt;&lt;p&gt;Ionic能帮你自动生成各个平台中各个不同尺寸的图片，但巧妇难为无米之炊，首先你得提供给他合适的图片资源。资源要求如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;格式: .png, .psd, .ai&lt;/li&gt;
+&lt;li&gt;命名: 例如icon.png, splash.png&lt;/li&gt;
+&lt;li&gt;大小: icon-192x192无圆角，splash-2208x2208居中&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;生成资源&quot;&gt;生成资源&lt;/h1&gt;&lt;p&gt;准备好图片后将他们放到资源目录 &lt;code&gt;./resources&lt;/code&gt;,然后输入命令:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ ionic resources&amp;#10;Ionic icon and splash screen resources generator&amp;#10; uploading icon.png...&amp;#10; uploading splash.png...&amp;#10; &amp;#10003; icon.png (192x192) upload complete&amp;#10; &amp;#10003; splash.png (2208x2208) upload complete&amp;#10; generating splash ios Default~iphone.png (320x480)...&amp;#10; generating splash ios Default@2x~iphone.png (640x960)...&amp;#10; generating splash ios Default-Portrait~ipad.png (768x1024)...&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;如果只希望生成一种资源，可以&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ ionic resources --icon&amp;#10;$ ionic resources --splash&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;如果想为不同平台准备不同的图标，那么需要修改路径&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;resources/android/icon.png&amp;#10;resources/ios/icon.png&amp;#10;# splash &amp;#21516;&amp;#29702;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h1 id=&quot;测试验证&quot;&gt;测试验证&lt;/h1&gt;&lt;p&gt;生成成功后在手机上验证一下吧&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ ionic platform add android&amp;#10;$ ionic run android&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;看看效果怎么样,在我手机上的截图如下:&lt;br&gt;&lt;img src=&quot;http://7pun7p.com1.z0.glb.clouddn.com/blog/splash.jpeg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;遇到的问题&quot;&gt;遇到的问题&lt;/h1&gt;&lt;p&gt;一个很恼人的问题是，ionic在生成资源的时候，他会对上传的图片做一个checksum，如果一致则不会重新生成图标，而是从cache中取。这就导致它如果生成资源的时候出现错误会导致应用崩溃，然而重新运行命令还是从cache中取。要重新生成可以重新编辑图片以产生不同的checksum，然而这真是个nc的问题，为什么它不提供一个’clean-cache’选项！更多内容可以查看github上的&lt;a href=&quot;https://github.com/driftyco/ionic-cli/issues/420&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;issue&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;资源&quot;&gt;资源&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.ionic.io/automating-icons-and-splash-screens/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官方博客&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://ionicframework.com/docs/cli/icon-splashscreen.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官方网页&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://ionichina.com/topic/54e455ab2be672f1111c01e2&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Ionic中国的翻译&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Icon（图标）和Splash（启动画面）是应用的门面，好的Icon和Splash能让用户对这款App产生良好的第一印象，不过我们这里不讲怎么设计他们，而是如何在Ionic应用中定制自己的icon和splash，在这里ionic为我们提供了非常方便的自动化生成工具。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="ionic" scheme="http://www.mclspace.com/categories/ionic/"/>
+    
+    
+      <category term="icon" scheme="http://www.mclspace.com/tags/icon/"/>
+    
+      <category term="ionic" scheme="http://www.mclspace.com/tags/ionic/"/>
+    
+      <category term="splash" scheme="http://www.mclspace.com/tags/splash/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我的练习网页设计</title>
+    <link href="http://www.mclspace.com/2015/10/17/my-practices-websites/"/>
+    <id>http://www.mclspace.com/2015/10/17/my-practices-websites/</id>
+    <published>2015-10-17T07:20:55.000Z</published>
+    <updated>2015-10-18T03:48:27.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;最近对网页设计颇有兴趣，闲暇的时候便多练练手。不过如果仅仅在本地开发，设计，很难发现自己的问题，难以得到真正的提升，因此希望读者看到，帮助进行改进.以下是我进行练习的网站设计,大多都是按照教程来得,先借鉴临摹别人的作品,后面才能有自己的设计。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h1 id=&quot;Starbuzz_Coffee&quot;&gt;Starbuzz Coffee&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;访问地址 : &lt;a href=&quot;http://webstudy.mclspace.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://webstudy.mclspace.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;项目地址 : &lt;a href=&quot;https://github.com/rdmclin2/webStudy&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/rdmclin2/webStudy&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;项目来源 : 《Head First HTML 与 CSS》的练习页面&lt;br&gt;&lt;img src=&quot;http://7pun7p.com1.z0.glb.clouddn.com/blog/starbuzz.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;HeadFirst_Lounge&quot;&gt;HeadFirst Lounge&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;访问地址 : &lt;a href=&quot;http://test.mclspace.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://test.mclspace.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;项目地址 : &lt;a href=&quot;https://github.com/rdmclin2/test&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/rdmclin2/test&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;项目来源 : 《Head First HTML 与 CSS》的练习页面&lt;br&gt;&lt;img src=&quot;http://7pun7p.com1.z0.glb.clouddn.com/blog/lounge.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;Find_An_Agent&quot;&gt;Find An Agent&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;访问地址 : &lt;a href=&quot;http://mclspace.com/webDesign-1/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://mclspace.com/webDesign-1/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;项目地址 : &lt;a href=&quot;https://github.com/rdmclin2/webDesign-1&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/rdmclin2/webDesign-1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;项目来源 : &lt;a href=&quot;https://juntao.gitbooks.io/3-web-designs-in-3-weeks/content/find_an_agent/index.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《3周3页面》第一周&lt;/a&gt;&lt;br&gt;&lt;img src=&quot;http://7pun7p.com1.z0.glb.clouddn.com/blog/design1.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;MicroBlog&quot;&gt;MicroBlog&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;项目地址 : &lt;a href=&quot;https://github.com/rdmclin2/Mircoblog&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/rdmclin2/Mircoblog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;项目来源 : 《Node.js开发指南》&lt;br&gt;&lt;img src=&quot;http://7pun7p.com1.z0.glb.clouddn.com/blog/microblog.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;最近对网页设计颇有兴趣，闲暇的时候便多练练手。不过如果仅仅在本地开发，设计，很难发现自己的问题，难以得到真正的提升，因此希望读者看到，帮助进行改进.以下是我进行练习的网站设计,大多都是按照教程来得,先借鉴临摹别人的作品,后面才能有自己的设计。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="web" scheme="http://www.mclspace.com/categories/web/"/>
+    
+    
+      <category term="design" scheme="http://www.mclspace.com/tags/design/"/>
+    
+      <category term="web" scheme="http://www.mclspace.com/tags/web/"/>
     
   </entry>
   
