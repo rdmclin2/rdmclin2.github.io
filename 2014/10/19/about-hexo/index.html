@@ -1,0 +1,79 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> hexo 简易教程 入门 · Mcl's space</title><meta name="description" content="hexo 简易教程 入门 - LinChen"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" type="text/css"></head><body><header><a href="/" class="logo-link"><img src="/favicon.ico"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/rdmclin2" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/rdmclin2" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">hexo 简易教程 入门</h1><div class="post-time">Oct 19, 2014</div><div class="post-content"><h2 id="hexo_前世今生">hexo 前世今生</h2><p><a href="http://hexo.io" target="_blank" rel="external">hexo</a>出自湾大学生<a href="https://github.com/hexojs/hexo" target="_blank" rel="external">tommy351</a>之手，基于Node.js，自造轮子的初衷是因为受不了octopress等博客极慢的生成速度，因此hexo的一大特点就是快，编译上百篇文章只需几秒。<br>More info : <a href="http://zespia.tw/blog/2012/10/11/hexo-debut/" target="_blank" rel="external">Hexo 颯爽登場！</a></p>
+<blockquote>
+<p>Update !: hexo 更新实在太快，今天写的东西，明天可能就不适用了，强烈建议按照<a href="https://github.com/hexojs/hexo" target="_blank" rel="external">github</a>上的步骤进行安装.</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h2 id="hexo_环境搭建">hexo 环境搭建</h2><ul>
+<li><strong>node.js安装</strong></li>
+</ul>
+<p>下载对应操作系统下的最新版本即可<br>More info:<a href="http://nodejs.org/" target="_blank" rel="external">NODE.JS官网地址</a></p>
+<ul>
+<li><strong>git客户端安装</strong></li>
+</ul>
+<p>使用github提供的pages功能，需要将博客内容上传到github上，因此使用git客户端是必须的。<br>More info:<a href="https://msysgit.github.io/" target="_blank" rel="external">推荐使用msysgit</a></p>
+<ul>
+<li><strong>编辑器安装(optional)</strong></li>
+</ul>
+<p>推荐安装sublime或者notepad++，千万不要用windows自带的txt编辑器编辑代码或配置文件。<br>More info : <a href="http://www.sublimetext.com/" target="_blank" rel="external">sublime</a>  <a href="http://notepad-plus-plus.org/" target="_blank" rel="external">notpad++</a></p>
+<hr>
+<h2 id="hexo_初始化">hexo 初始化</h2><ul>
+<li><strong>安装hexo</strong><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>如果提示找不到npm命令，可以将node.js文件安装路径加入到环境变量path中试试。</p>
+</blockquote>
+<ul>
+<li><strong>初始化博客目录</strong><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init folder</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>folder 为存放你的博客的文件夹的路径，你也可以cd到文件夹后执行hexo init</p>
+</blockquote>
+<ul>
+<li><strong>生成静态页面</strong></li>
+</ul>
+<p>cd到博客目录执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>本地启动</strong><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>浏览器中输入<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a> 查看效果</p>
+<hr>
+<h2 id="hexo_上传至github">hexo 上传至github</h2><ul>
+<li><strong>建立仓库</strong></li>
+</ul>
+<p>在github上建立名为your_user_name.github.io的仓库。例如我的github的账户为<a href="https://github.com/rdmclin2" target="_blank" rel="external">rdmclin2</a>，那么创建的repository的名字为rdmclin2.github.io。<br><img src="http://icoco.qiniudn.com/image%2Fhexo%2Fcreate_github_repo.PNG" alt="git_repository_create"></p>
+<ul>
+<li><strong>上传博客</strong></li>
+</ul>
+<p>编辑博客所在文件夹下的_config.yml。添加deploy选项<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deploy:&#10;  type: github  &#10;  repository: git@github.com:rdmclin2/rdmclin2.github.io.git&#10;  branch: master</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>记得换成自己的仓库地址，推荐使用ssh地址，https需要每次输入用户名和密码。github需要上传本机对应的ssh，详细教程请百度。不要忘记前面的空格对齐。</p>
+</blockquote>
+<p>然后执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>或者使用简化版的 hexo d -g</p>
+</blockquote>
+<p><strong>至此，你的博客就完全搭建好了，访问yourname.github.io查看效果吧</strong></p>
+<hr>
+<h2 id="hexo_简化命令">hexo 简化命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g == hexo generate <span class="comment">#生成静态页面</span></span><br><span class="line">$ hexo d == hexo deploy <span class="comment">#部署到github</span></span><br><span class="line">$ hexo s == hexo server <span class="comment">#开启本地服务器</span></span><br><span class="line">$ hexo n == hexo new <span class="comment">#生成新文章</span></span><br></pre></td></tr></table></figure>
+<p>命令可以一起使用，如<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d -g <span class="comment">#生成文章并部署</span></span><br><span class="line">$ hexo s -g <span class="comment">#生成文章并在本地查看</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="参考文献">参考文献</h2><ol>
+<li><a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank" rel="external">hexo你的博客</a></li>
+<li><a href="http://zipperary.com/2013/05/28/hexo-guide-2/" target="_blank" rel="external">hexo系列教程：（二）搭建hexo博客</a></li>
+<li><a href="http://hexo.io/docs/" target="_blank" rel="external">官方文档</a></li>
+</ol>
+<hr>
+<p><strong>下一篇将介绍<a href="http://mclspace.com/2014/10/28/mark-down/" target="_blank" rel="external">Markdown的使用方法</a>。</strong></p>
+</div></article></div></section><footer><div class="paginator"><a href="/2014/10/28/markdown-intro/" class="prev">上一篇</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'mcl';
+var disqus_identifier = '2014/10/19/about-hexo/';
+var disqus_title = 'hexo 简易教程 入门';
+var disqus_url = 'http://www.mclspace.com/2014/10/19/about-hexo/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//mcl.disqus.com/count.js" async></script><div class="copyright"><p>© 2015 - 2016 <a href="http://www.mclspace.com">LinChen</a>, unless otherwise noted.</p></div></footer><script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "//hm.baidu.com/hm.js?6b26d13232555e4d64b5a8c3567ccda9";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script><script src="https://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script></body></html>

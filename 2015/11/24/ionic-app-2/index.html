@@ -1,0 +1,46 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Ionic+Nodejs+Mongod开发端到端混合应用系列教程三 - 整体架构 · Mcl's space</title><meta name="description" content="Ionic+Nodejs+Mongod开发端到端混合应用系列教程三 - 整体架构 - LinChen"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" type="text/css"></head><body><header><a href="/" class="logo-link"><img src="/favicon.ico"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/rdmclin2" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/rdmclin2" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">Ionic+Nodejs+Mongod开发端到端混合应用系列教程三 - 整体架构</h1><div class="post-time">Nov 24, 2015</div><div class="post-content"><blockquote>
+<p>本篇为Ionic App 系列教程的整体架构部分，描述该应用的整体运行流程以及功能设计。</p>
+<p>我已经把项目文件整理起来放到<a href="https://github.com/rdmclin2/fcws" target="_blank" rel="external">github</a>上了，供大家参考。</p>
+<p>注意该教程还使用的老的rest api设计，新的api设计参考<a href="http://mclspace.com/2015/11/18/fcws-api-doc/" target="_blank" rel="external">凤城卫士API文档</a>以及<a href="http://mclspace.com/2015/11/03/restful-note/" target="_blank" rel="external">Restful API浅析 之设计原则与案例修正</a></p>
+</blockquote>
+<a id="more"></a>
+<h2 id="软件整体架构">软件整体架构</h2><p><img src="http://7pun7p.com1.z0.glb.clouddn.com/hexo/structure.png" alt=""><br>软件的整体架构如上图所示，客户端部分我们使用Ionic框架，用HTML+CSS编写界面部分，用JS编写交互。<br>服务器端我们使用Nodejs框架，使用Restify模块编写REST服务器，为每一个业务层编写相应的CRUD(Creat,Read,Update,Delete)接口。并使用Mongodb作为数据库存储非结构化数据，mongojs为服务器与数据库交互的驱动。</p>
+<p>我们用用户登录的过程详细讲解整个过程。当用户点开应用，输入用户名和密码，应用后台获取用户的信息，将该信息封装成Http post请求发送给服务器，服务器收到请求后，首先对请求url进行解析获取客户端传来的数据，根据设定的路由找到相应的处理函数，该函数获取用户的用户名和密码，然后在数据库中通过用户名查找该用户，如果找到此用户并且用户的密码和传过来的密码一致，则认为登录成功，服务器会向客户端发送200响应码代表请求成功，返回用户数据,客户端获取到用户数据后存储用户信息到本地并路由到应用的首页并加载用户相关的信息进行展示。</p>
+<h2 id="系统功能设计">系统功能设计</h2><p>系统设计对原型设计进一步分析，抽离出具体每个页面元素的功能，以及功能设计的流程。</p>
+<h3 id="登录">登录</h3><p>登录过程交互功能的流程图如下所示，因为我们的用户信息是服务器端录入的，因此这里没有提供注册流程。在登录界面中，用户首先输入自己的用户名和密码，然后点击登录按钮，系统后台验证是否输入是否合法，如果合法，向服务器发送登录请求，服务器收到请求后进行校验后应答，如果用户名和密码存在且一致，则登录成功，跳转到系统首页，如果出现错误，则提示用户重新输入用户名和密码重试，重新进行上述流程。<br><img src="http://7pun7p.com1.z0.glb.clouddn.com/hexo/login_pro.png" alt=""></p>
+<h3 id="首页">首页</h3><p>首页交互的流程图如下所示，首页显示的是用户最近的活动的汇总，用户可以点击查看最新的情报，点击某条通知查看最新的通知。特别地，我们将信箱放在页面右上角，方便用户及时的查看自己收到的消息。信箱页面显示未读消息和已读消息，点击某一条消息后能弹出对话框显示详细信息。<br><img src="http://7pun7p.com1.z0.glb.clouddn.com/hexo/dashboard_pro.png" alt=""></p>
+<h3 id="情报信息">情报信息</h3><p>情报信息的流程图如下所示，情报信息用户获取他人发布情报的页面，点击某一个情报会跳转到情报详情，在情报详情页面你可以对该情报进行回复，或者进行点赞，通过返回按钮回到情报信息的主页面。在主页面上可以点击发布一条情报，输入内容和紧急情况之后点击发送可以发送一条情报到主页面上。或者点击取消放弃发布该情报。<br><img src="http://7pun7p.com1.z0.glb.clouddn.com/hexo/posts_pro.png" alt=""></p>
+<h3 id="指挥控制">指挥控制</h3><p>指挥控制的流程图如下图所示，指挥控制包括对下属下达命令以及对所属部队下达命令，点击下属或者部队会跳转到发布情报页面，在发布情报页面输入文本点击发送按钮会发送消息给下属或所属部队，然后返回上一级，点击取消回到上一级<br><img src="http://7pun7p.com1.z0.glb.clouddn.com/hexo/controls_pro.png" alt=""></p>
+<h3 id="军事训练_&amp;_教育管理_&amp;_国防动员">军事训练 &amp; 教育管理 &amp; 国防动员</h3><p>军事训练，教育管理，国防动员的流程图如下图所示，每一项下面都有4个tab界面，每个tab界面都有一个文档列表，点击列表中的某一项，会向服务器请求该文档的内容，获取内容后展示在页面上，通过点击右上方的关闭按钮关闭展示页面回到文档列表。<br><img src="http://7pun7p.com1.z0.glb.clouddn.com/hexo/docs_pro.png" alt=""></p>
+<h3 id="通讯录">通讯录</h3><p>通讯录包括单位通讯录，任务通讯录和用户自定义通讯录，点击具体的某个用户会弹出该用户的详细信息.<br><img src="http://7pun7p.com1.z0.glb.clouddn.com/hexo/contacts_pro.png" alt=""></p>
+<h3 id="用户主页">用户主页</h3><p>用户主页的流程图如下图所示，点击某个最近发布的情报或者最近回复的消息都会加载情报的详情界面。<br><img src="http://7pun7p.com1.z0.glb.clouddn.com/hexo/homepage_pro.png" alt=""></p>
+<h3 id="设置">设置</h3><p>设置界面的流程图如下图所示，点击修改密码后跳转到修改密码界面，输入原密码，新密码和重复新密码，点击修改，如果成功修改则返回到设置界面，如果失败提示用户重新输入，点击取消返回到设置界面。点击注销用户按钮会跳转到登录界面，点击退出应用按钮会关闭应用。<br><img src="http://7pun7p.com1.z0.glb.clouddn.com/hexo/config_pro.png" alt=""></p>
+<h2 id="性能设计">性能设计</h2><h3 id="利用多核提高性能">利用多核提高性能</h3><p>由于Node.js是单线程的，一个进程只能利用一个核心CPU，因此当大量的请求到来，单核心就无法满足那么高的吞吐量，再者多核时代来临如果无法充分利用机器多核心的优势带来的浪费是非常严重的，因此我们要用多进程来提高系统的性能。</p>
+<blockquote>
+<p>Nodejs 开发指南</p>
+</blockquote>
+<h3 id="反向代理">反向代理</h3><p>通常为了充分利用服务器的资源，我们会在服务器上部署多个网站，可能是ROR的，PHP的，或者Nodejs的，默认的http请求的请求端口是80，但这么多网站不能都使用80端口，因此需要使用反向代理来根据请求的网站url自动将请求转发到网站对应的端口上。</p>
+<blockquote>
+<p>Nodejs 开发指南</p>
+</blockquote>
+<h3 id="自动启动">自动启动</h3><p>先前我们启动我们的服务器都是用手动的方式打开数据库，打开服务器，但在产品环境中，无法全部由手动完成，因此需要制作启动服务器的脚本，通过该脚本实现服务器的开启和关闭</p>
+<blockquote>
+<p>Nodejs 开发指南</p>
+</blockquote>
+<h3 id="故障恢复">故障恢复</h3><p>对于一个后端服务器来说，稳定性是生命，不能一遇到错误服务器就停止，需要支持故障恢复。在调试过程中，当遇到错误的时候，服务器就会结束运行，需要在终端中重新开启，这在我们开发调试的过程没有多大的问题，但是在生产环境中如果用户的操作触发了某个隐藏的bug，服务器就结束运行，无法继续提供服务，这对产品来说是毁灭性，因此我们需要提供故障恢复机制来保证服务器的稳定运行。</p>
+<blockquote>
+<p>Nodejs 开发指南</p>
+</blockquote>
+<h3 id="日志功能">日志功能</h3><p>在产品开发的过程中，服务器日志尤其是错误日志会给开发者调试错误带来很大的好处，通过查看错误日志能够提高系统的可靠性，在发现问题的时候也能很快定位到出现问题的位置。</p>
+<blockquote>
+<p>Nodejs 开发指南</p>
+</blockquote>
+</div></article></div></section><footer><div class="paginator"><a href="/2015/11/28/ionic-app-3/" class="prev">上一篇</a><a href="/2015/11/23/ionic-app-1/" class="next">下一篇</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'mcl';
+var disqus_identifier = '2015/11/24/ionic-app-2/';
+var disqus_title = 'Ionic+Nodejs+Mongod开发端到端混合应用系列教程三 - 整体架构';
+var disqus_url = 'http://www.mclspace.com/2015/11/24/ionic-app-2/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//mcl.disqus.com/count.js" async></script><div class="copyright"><p>© 2015 - 2016 <a href="http://www.mclspace.com">LinChen</a>, unless otherwise noted.</p></div></footer><script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "//hm.baidu.com/hm.js?6b26d13232555e4d64b5a8c3567ccda9";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script><script src="https://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script></body></html>

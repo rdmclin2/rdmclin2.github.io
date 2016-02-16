@@ -1,0 +1,22 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Eclipse 安装 Fatjar.jar失败的解决方法 · Mcl's space</title><meta name="description" content="Eclipse 安装 Fatjar.jar失败的解决方法 - LinChen"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" type="text/css"></head><body><header><a href="/" class="logo-link"><img src="/favicon.ico"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/rdmclin2" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/rdmclin2" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">Eclipse 安装 Fatjar.jar失败的解决方法</h1><div class="post-time">May 10, 2015</div><div class="post-content"><h1 id="Fatjar简介">Fatjar简介</h1><p>Fatjar.jar是eclipse上很方便进行打包的插件，对于较小的项目使用eclipse内置的打包jar可能就够了，但是如果工程较大，需要引用资源之类的，用fatjar比较方便省心。不过笔者在安装的时候遇到不少困难，不管是在线方式，还是离线方式都无法安装成功，现在纪录一下。在Windows =&gt; prefernce =&gt; fat jar preference 看到他就说明已经安装成功。</p>
+<a id="more"></a>
+<hr>
+<h1 id="Fatjar在线安装">Fatjar在线安装</h1><p>help －&gt; Install New Sofware －&gt; Work with。<br>粘贴 <a href="http://kurucz-grafika.de/fatjar" target="_blank" rel="external">http://kurucz-grafika.de/fatjar</a><br>然后回车，等待安装即可,时间较长</p>
+<hr>
+<h1 id="Fatjar手动安装">Fatjar手动安装</h1><p>在<a href="http://sourceforge.net/projects/fjep/" target="_blank" rel="external">sourceforge</a>上手动下载最新版本（目前0.31），解压，将.jar文件复制粘贴到<br>$eclipse_Home\plugins文件夹下，重启eclipse即可。</p>
+<h1 id="使用方法">使用方法</h1><p>项目，右键，+Build Fat Jar.<br>勾选 use extern Jar-Name可以设定导出jar路径，否则生成在项目根目录<br>不要勾选select Manifest file<br>勾选One-JAR,next<br>选择要导入的jar包<br>finish</p>
+<hr>
+<h1 id="Fatjar安装失败的解决方法">Fatjar安装失败的解决方法</h1><p>1.清除缓存<br>新建eclipse的快捷方式，右键属性 -&gt; 目标 后添加 -clean 选项，eclipse将清除缓存重新加载插件。</p>
+<ol>
+<li>手动清除配置<br>删除$eclipse_Home\configuration\org.eclipse.update\platform.xml<br>该文件会自动生成。</li>
+</ol>
+<p>3.对于版本较高的eclipse，可能需要安装较低版本的eclipse的框架（笔者遇到的情况）<br>通过Help -&gt; Install New Software… -&gt; Work with.<br>选择“The Eclipse Project Updates - <a href="http://download.eclipse.org/eclipse/updates/4.4”" target="_blank" rel="external">http://download.eclipse.org/eclipse/updates/4.4”</a><br>然后 勾选”Eclipse Tests, Examples, and Extras” 下的 “Eclipse 2.0 Style Plugin Support”<br>之后再安装fatjar.jar即可</p>
+</div></article></div></section><footer><div class="paginator"><a href="/2015/05/28/ionic-steup/" class="prev">上一篇</a><a href="/2015/04/03/mac-things/" class="next">下一篇</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'mcl';
+var disqus_identifier = '2015/05/10/Fatjar-install/';
+var disqus_title = 'Eclipse 安装 Fatjar.jar失败的解决方法';
+var disqus_url = 'http://www.mclspace.com/2015/05/10/Fatjar-install/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//mcl.disqus.com/count.js" async></script><div class="copyright"><p>© 2015 - 2016 <a href="http://www.mclspace.com">LinChen</a>, unless otherwise noted.</p></div></footer><script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "//hm.baidu.com/hm.js?6b26d13232555e4d64b5a8c3567ccda9";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script><script src="https://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script></body></html>

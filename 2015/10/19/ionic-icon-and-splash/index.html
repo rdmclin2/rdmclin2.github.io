@@ -1,0 +1,30 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> ionic开发之自动生成icon和splash · Mcl's space</title><meta name="description" content="ionic开发之自动生成icon和splash - LinChen"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" type="text/css"></head><body><header><a href="/" class="logo-link"><img src="/favicon.ico"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/rdmclin2" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/rdmclin2" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">ionic开发之自动生成icon和splash</h1><div class="post-time">Oct 19, 2015</div><div class="post-content"><blockquote>
+<p>Icon（图标）和Splash（启动画面）是应用的门面，好的Icon和Splash能让用户对这款App产生良好的第一印象，不过我们这里不讲怎么设计他们，而是如何在Ionic应用中定制自己的icon和splash，在这里ionic为我们提供了非常方便的自动化生成工具。</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="准备资源">准备资源</h1><p>Ionic能帮你自动生成各个平台中各个不同尺寸的图片，但巧妇难为无米之炊，首先你得提供给他合适的图片资源。资源要求如下：</p>
+<ul>
+<li>格式: .png, .psd, .ai</li>
+<li>命名: 例如icon.png, splash.png</li>
+<li>大小: icon-192x192无圆角，splash-2208x2208居中</li>
+</ul>
+<h1 id="生成资源">生成资源</h1><p>准备好图片后将他们放到资源目录 <code>./resources</code>,然后输入命令:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ionic resources&#10;Ionic icon and splash screen resources generator&#10; uploading icon.png...&#10; uploading splash.png...&#10; &#10003; icon.png (192x192) upload complete&#10; &#10003; splash.png (2208x2208) upload complete&#10; generating splash ios Default~iphone.png (320x480)...&#10; generating splash ios Default@2x~iphone.png (640x960)...&#10; generating splash ios Default-Portrait~ipad.png (768x1024)...</span><br></pre></td></tr></table></figure></p>
+<p>如果只希望生成一种资源，可以<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ionic resources --icon&#10;$ ionic resources --splash</span><br></pre></td></tr></table></figure></p>
+<p>如果想为不同平台准备不同的图标，那么需要修改路径<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">resources/android/icon.png&#10;resources/ios/icon.png&#10;# splash &#21516;&#29702;</span><br></pre></td></tr></table></figure></p>
+<h1 id="测试验证">测试验证</h1><p>生成成功后在手机上验证一下吧<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ionic platform add android&#10;$ ionic run android</span><br></pre></td></tr></table></figure></p>
+<p>看看效果怎么样,在我手机上的截图如下:<br><img src="http://7pun7p.com1.z0.glb.clouddn.com/blog/splash.jpeg" alt=""></p>
+<h1 id="遇到的问题">遇到的问题</h1><p>一个很恼人的问题是，ionic在生成资源的时候，他会对上传的图片做一个checksum，如果一致则不会重新生成图标，而是从cache中取。这就导致它如果生成资源的时候出现错误会导致应用崩溃，然而重新运行命令还是从cache中取。要重新生成可以重新编辑图片以产生不同的checksum，然而这真是个nc的问题，为什么它不提供一个’clean-cache’选项！更多内容可以查看github上的<a href="https://github.com/driftyco/ionic-cli/issues/420" target="_blank" rel="external">issue</a></p>
+<h1 id="资源">资源</h1><ul>
+<li><a href="http://blog.ionic.io/automating-icons-and-splash-screens/" target="_blank" rel="external">官方博客</a></li>
+<li><a href="http://ionicframework.com/docs/cli/icon-splashscreen.html" target="_blank" rel="external">官方网页</a></li>
+<li><a href="http://ionichina.com/topic/54e455ab2be672f1111c01e2" target="_blank" rel="external">Ionic中国的翻译</a></li>
+</ul>
+</div></article></div></section><footer><div class="paginator"><a href="/2015/10/25/mac_latex_note/" class="prev">上一篇</a><a href="/2015/10/17/my-practices-websites/" class="next">下一篇</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'mcl';
+var disqus_identifier = '2015/10/19/ionic-icon-and-splash/';
+var disqus_title = 'ionic开发之自动生成icon和splash';
+var disqus_url = 'http://www.mclspace.com/2015/10/19/ionic-icon-and-splash/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//mcl.disqus.com/count.js" async></script><div class="copyright"><p>© 2015 - 2016 <a href="http://www.mclspace.com">LinChen</a>, unless otherwise noted.</p></div></footer><script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "//hm.baidu.com/hm.js?6b26d13232555e4d64b5a8c3567ccda9";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script><script src="https://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script></body></html>

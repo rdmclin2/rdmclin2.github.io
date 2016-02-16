@@ -1,0 +1,144 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Ionic 项目记录 · Mcl's space</title><meta name="description" content="Ionic 项目记录 - LinChen"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" type="text/css"></head><body><header><a href="/" class="logo-link"><img src="/favicon.ico"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/rdmclin2" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/rdmclin2" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">Ionic 项目记录</h1><div class="post-time">May 28, 2015</div><div class="post-content"><h1 id="前言">前言</h1><p>最近用ionic做hybrid app的开发，这篇文章用来记录探索过程中遇到的方方面面。<br>声明：在开始这个项目之前没有接触过任何web开发相关的知识,所以下面的内容是从一个初学者的角度出发。</p>
+<a id="more"></a>
+<hr>
+<p>首先对ionic有所了解，直接看<a href="http://ionicframework.com/" target="_blank" rel="external">官网</a>即可，跟着例子走一遍，有个直观的感觉。然后前端要学的东西很多，html5，css，js等，这些可以在<a href="http://www.w3schools.com/" target="_blank" rel="external">w3school</a>上学习,另外可以看看知乎上的<a href="http://www.zhihu.com/question/19651401" target="_blank" rel="external">这个回答</a><br>另外ionic的逻辑是用angularJS写的，因此必须要对其有比较好的理解:</p>
+<p>更新(2015-8-31)：w3school只能用作参考，实际学习知识请阅读书籍，参看教程，推荐<a href="http://product.dangdang.com/23348110.html" target="_blank" rel="external">《Head First Html &amp; Css》</a>和<a href="http://product.dangdang.com/22872884.html" target="_blank" rel="external">《javascript语言精粹》</a>和<br><a href="http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000" target="_blank" rel="external">廖大大的javascript教程</a></p>
+<h1 id="Ionic相关博文">Ionic相关博文</h1><ul>
+<li><a href="http://mclspace.com/2015/10/19/ionic-icon-and-splash/" target="_blank" rel="external">ionic开发之自动生成icon和splash</a></li>
+<li><a href="http://mclspace.com/2015/09/28/ionic-develop-sass/" target="_blank" rel="external">ionic开发之使用sass</a></li>
+<li><a href="http://mclspace.com/2016/01/16/ionic-problems-and-solutions/" target="_blank" rel="external">Ionic 常见问题及解决方案</a></li>
+</ul>
+<h1 id="ionic开发资料">ionic开发资料</h1><ul>
+<li><a href="http://learn.ionicframework.com/formulas/data-the-right-way/" target="_blank" rel="external">解析数据的正确方式</a></li>
+<li><a href="http://learn.ionicframework.com/formulas/sharing-data-between-views/" target="_blank" rel="external">views之间分享数据: list详情页面的处理方式</a></li>
+<li><a href="http://learn.ionicframework.com/formulas/navigation-and-routing-part-1/" target="_blank" rel="external">ionic导航和路由</a></li>
+<li><a href="http://blog.ionic.io/pull-to-refresh-directive/" target="_blank" rel="external">下拉刷新</a></li>
+<li><a href="http://gonehybrid.com/build-your-first-mobile-app-with-the-ionic-framework-part-6/" target="_blank" rel="external">ionic view.io使用</a></li>
+<li><a href="http://learn.ionicframework.com/formulas/cordova-camera/" target="_blank" rel="external">ionic使用摄像头</a>,<a href="https://github.com/driftyco/ionic-example-cordova-camera" target="_blank" rel="external">github例子</a></li>
+<li><a href="http://ionicframework.com/docs/api/directive/ionInfiniteScroll/" target="_blank" rel="external">下拉获取更多数据</a></li>
+<li><a href="http://codepen.io/rdelafuente/pen/tJrik" target="_blank" rel="external">全屏显示imgae的例子</a></li>
+<li><a href="http://devdactic.com/images-videos-fullscreen-ionic/" target="_blank" rel="external">美观的显示图像和视频</a></li>
+<li><a href="http://www.binpress.com/tutorial/a-simple-weather-forecast-app-with-ionic-framework-and-forecastio/107" target="_blank" rel="external">一个天气应用构造教程</a></li>
+<li><a href="https://github.com/driftyco/ionic-weather" target="_blank" rel="external">官方github例子</a></li>
+<li><a href="http://devdactic.com/how-to-capture-and-store-images-with-ionic/" target="_blank" rel="external">使用ionic拍摄和存储图片</a></li>
+<li><a href="https://github.com/mgonto/restangular" target="_blank" rel="external">用restangular处理Rest API</a></li>
+<li><a href="http://www.haomou.net/categories/ionic-reapp/page/2/" target="_blank" rel="external">皓眸大前端</a><br>这个网易前端工程师的博客值得好好研究，上面还有网易的内推邀请码。</li>
+<li><a href="http://www.haomou.net/2015/01/07/2015_ionic_fileOP/" target="_blank" rel="external">如何本地选择图片</a><blockquote>
+<p>$ 不过这个功能在某些机型上面会出错，例如荣耀六，＝＝别提我调bug调得多心烦了</p>
+</blockquote>
+</li>
+<li><a href="http://www.neilberry.com/blog/2015-08-24-how-to-run-your-ionic-app-on-real-devices" target="_blank" rel="external">ionic 在ios设备上运行</a></li>
+<li><a href="http://blog.ionic.io/automating-icons-and-splash-screens/" target="_blank" rel="external">app的icon和splash的处理</a></li>
+</ul>
+<h3 id="ionic_服务">ionic 服务</h3><ul>
+<li><p><a href="http://view.ionic.io/" target="_blank" rel="external">ionicView</a></p>
+<blockquote>
+<p>$ 将应用上传到ionic.io上，并在设备上浏览</p>
+</blockquote>
+</li>
+<li><p><a href="http://ionicons.com/" target="_blank" rel="external">ionic图标</a></p>
+<blockquote>
+<p>$ 如果要使用Ionic提供的图标，可以到该网站上查找名字，然后通过icon=”<name>“使用</name></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="优质博客">优质博客</h3><ul>
+<li><a href="https://calendee.com/" target="_blank" rel="external">calendee</a></li>
+</ul>
+<h3 id="ionic_提升性能">ionic 提升性能</h3><ul>
+<li>使用<a href="http://blog.ionic.io/collection-repeat-iteration-two/" target="_blank" rel="external">Collection Repeat</a></li>
+<li><p>使用<a href="https://blog.nraboy.com/2014/10/use-crosswalk-ionic-framework-android-apps/" target="_blank" rel="external">crosswalk</a>,<a href="http://blog.appgyver.com/heartbeat/steroids/android-chromium/" target="_blank" rel="external">还有这个</a></p>
+</li>
+<li><p><a href="https://www.binpress.com/tutorial/speeding-up-angular-js-with-simple-optimizations/135" target="_blank" rel="external">angularjs优化技巧</a></p>
+</li>
+<li><p><a href="http://coenraets.org/blog/2013/10/top-10-performance-techniques-for-phonegap-and-hybrid-apps-slides-available/" target="_blank" rel="external">phonegap应用优化</a></p>
+</li>
+<li><p><a href="http://devdactic.com/optimize-tinder-cards/" target="_blank" rel="external">cards 优化</a></p>
+</li>
+</ul>
+<hr>
+<h2 id="后端">后端</h2><h3 id="Node">Node</h3><p>现在写后端比较火的是用<a href="http://nodejs.org/" target="_blank" rel="external">nodejs</a>编写，然后nodejs有个很好的应用开发框架叫<a href="http://expressjs.com/zh/" target="_blank" rel="external">Express</a>，这里<a href="http://cwbuecheler.com/web/tutorials/2013/node-express-mongo/" target="_blank" rel="external">有篇文章</a>是教你如何从零开始搭建node,express,monggodb服务器，<a href="http://www.unfish.net/archives/772-20131207.html" target="_blank" rel="external">这里</a>是国人翻译的版本.</p>
+<h3 id="NodeJs_后端开发记录">NodeJs 后端开发记录</h3><p>上面推荐的文章是webapp的方式，和我们的需求有些不同，这篇文章<a href="http://thejackalofjavascript.com/an-end-to-end-hybrid-app/" target="_blank" rel="external">an-end-to-end-hybrid-app</a>和ionic结合的更紧密，推荐阅读。</p>
+<h3 id="Npm命令简介(转载自网络)">Npm命令简介(转载自网络)</h3><ul>
+<li>npm install <name>安装nodejs的依赖包</name></li>
+</ul>
+<p>例如npm install express 就会默认安装express的最新版本，也可以通过在后面加版本号的方式安装指定版本，如npm install express@3.0.6</p>
+<ul>
+<li>npm install <name> -g  将包安装到全局环境中</name></li>
+</ul>
+<p>但是代码中，直接通过require()的方式是没有办法调用全局安装的包的。全局的安装是供命令行使用的，就好像全局安装了vmarket后，就可以在命令行中直接运行vm命令</p>
+<ul>
+<li>npm install <name> —save  安装的同时，将信息写入package.json中<br>项目路径中如果有package.json文件时，直接使用npm install方法就可以根据dependencies配置安装所有的依赖包</name></li>
+</ul>
+<p>这样代码提交到github时，就不用提交node_modules这个文件夹了。</p>
+<ul>
+<li><p>npm init  会引导你创建一个package.json文件，包括名称、版本、作者这些信息等</p>
+</li>
+<li><p>npm remove <name>移除</name></p>
+</li>
+<li><p>npm update <name>更新</name></p>
+</li>
+<li><p>npm ls 列出当前安装的了所有包</p>
+</li>
+<li><p>npm root 查看当前包的安装路径</p>
+</li>
+<li><p>npm root -g  查看全局的包的安装路径</p>
+</li>
+<li><p>npm help  帮助，如果要单独查看install命令的帮助，可以使用的npm help install</p>
+</li>
+</ul>
+<p>官网文档：<a href="https://npmjs.org/doc/" target="_blank" rel="external">https://npmjs.org/doc/</a></p>
+<h3 id="生成的package-json文件中的dependencies前面的~,^符号的含义">生成的package.json文件中的dependencies前面的~,^符号的含义</h3><p>典型的文件形式是,其中的～和^ 是什么含义呢<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#34;dependencies&#34;: &#123;&#10;  &#34;express&#34;: &#34;~4.2.0&#34;,&#10;  &#34;body-parser&#34;: &#34;~1.0.0&#34;,&#10;  &#34;mongoose&#34;: &#34;~3.8.11&#34;,&#10;  &#34;bcrypt&#34;: &#34;^0.8.3&#34;,&#10;  &#34;mongojs&#34;: &#34;^0.18.2&#34;,&#10;  &#34;morgan&#34;: &#34;^1.5.3&#34;,&#10;  &#34;restify&#34;: &#34;^3.0.3&#34;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>借用stackoverflow上的<a href="https://stackoverflow.com/questions/22343224/difference-between-tilde-and-caret-in-package-json" target="_blank" rel="external">回答</a>:</p>
+<blockquote>
+<p>In the simplest terms, the tilde matches the most recent minor version (the middle number). ~1.2.3 will match all 1.2.x versions but will miss 1.3.0.<br>The caret, on the other hand, is more relaxed. It will update you to the most recent major version (the first number). ^1.2.3 will match any 1.x.x release including 1.3.0, but will hold off on 2.0.0.</p>
+</blockquote>
+<h3 id="Http_Status_code">Http Status code</h3><p>服务器发送响应时需要指定状态编码，如404，203等，看<a href="http://www.restapitutorial.com/httpstatuscodes.html" target="_blank" rel="external">这里</a></p>
+<hr>
+<h3 id="LeanCloud">LeanCloud</h3><p>如果不想自己租用服务器，编写后端代码，国外有<a href="https://www.parse.com/" target="_blank" rel="external">parse</a>，国内有<a href="https://leancloud.cn/" target="_blank" rel="external">LeanCloud</a>都提供后端云服务。尝试使用了，感觉不错，不过本app的数据比较敏感，所以还是得自己搭服务器。</p>
+<p>一些坑:</p>
+<ol>
+<li>对于javascript版本的leancloud api ，官方文档给出的方法是直接将<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;script src=&#34;https://cdn1.lncld.net/static/js/av-mini-0.5.4.js&#34;&#62;&#60;/script&#62;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这样一段代码插入到页面中，但我们这个hybird app，每次都要去网上下载太费时间，可以先将它下载到本地，在本地载入。</p>
+<h2 id="一些常用的工具网站">一些常用的工具网站</h2><ul>
+<li><a href="https://apiary.io/#" target="_blank" rel="external">apiary</a> 创建优美的api文档</li>
+<li><a href="https://www.heroku.com/" target="_blank" rel="external">heroku</a> 强大的App 部署云平台</li>
+<li><a href="https://mongolab.com/" target="_blank" rel="external">mongolab</a> 提供mongodb数据库服务</li>
+</ul>
+<h2 id="学习资源">学习资源</h2><ul>
+<li><a href="https://github.com/darcyliu/google-styleguide/blob/master/JSONStyleGuide.md" target="_blank" rel="external">JSON风格指南</a></li>
+<li><a href="http://www.w3schools.com/json/default.asp" target="_blank" rel="external">w3school的json教程</a></li>
+<li><a href="http://ionicmaterial.com/" target="_blank" rel="external">ionicmaterial</a><blockquote>
+<p>$ Ionic + Material Design,非常推荐<img src="https://github.com/zachsoft/Ionic-Material" alt="github地址"></p>
+</blockquote>
+</li>
+<li><a href="https://www.meteor.com/" target="_blank" rel="external">meteor</a><blockquote>
+<p>$ JavaScript App Platform</p>
+</blockquote>
+</li>
+<li><a href="https://github.com/meteoric/meteor-ionic" target="_blank" rel="external">meteor-ionic</a><blockquote>
+<p>$ meteor + ionic</p>
+</blockquote>
+</li>
+<li><a href="http://themeforest.net/item/ionic-responsive-template-v101/8498523" target="_blank" rel="external">某商业模版</a><blockquote>
+<p>$ <a href="http://themeforest.net/item/ionic-responsive-template-v101/full_screen_preview/8498523" target="_blank" rel="external">这里</a>是它的live</p>
+</blockquote>
+</li>
+<li><a href="https://play.google.com/store/apps/details?id=com.chargemap_beta.android" target="_blank" rel="external">用到地图服务</a></li>
+<li><a href="https://ccoenraets.github.io/ionic-tutorial/ionic-facebook-integration.html" target="_blank" rel="external">facebook分享</a></li>
+<li><a href="https://hackhands.com/building-instagram-clone-angularjs-satellizer-nodejs-mongodb/" target="_blank" rel="external">牛逼！用angularjs－nodejs克隆instgram的网站</a></li>
+<li><a href="http://martinmicunda.com/2015/04/10/build-ionic-photo-gallery-app-I/" target="_blank" rel="external">用ionic和nodejs做的图片墙app</a></li>
+<li><a href="http://learn.ionicframework.com/formulas/localstorage/" target="_blank" rel="external">如何使用本地存储</a></li>
+</ul>
+<hr>
+</div></article></div></section><footer><div class="paginator"><a href="/2015/06/09/docker-note/" class="prev">上一篇</a><a href="/2015/05/10/Fatjar-install/" class="next">下一篇</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'mcl';
+var disqus_identifier = '2015/05/28/ionic-steup/';
+var disqus_title = 'Ionic 项目记录';
+var disqus_url = 'http://www.mclspace.com/2015/05/28/ionic-steup/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//mcl.disqus.com/count.js" async></script><div class="copyright"><p>© 2015 - 2016 <a href="http://www.mclspace.com">LinChen</a>, unless otherwise noted.</p></div></footer><script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "//hm.baidu.com/hm.js?6b26d13232555e4d64b5a8c3567ccda9";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script><script src="https://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script></body></html>

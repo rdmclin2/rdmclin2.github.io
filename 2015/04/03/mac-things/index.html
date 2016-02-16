@@ -1,0 +1,95 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Mac 基本操作技巧 · Mcl's space</title><meta name="description" content="Mac 基本操作技巧 - LinChen"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" type="text/css"></head><body><header><a href="/" class="logo-link"><img src="/favicon.ico"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/rdmclin2" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/rdmclin2" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">Mac 基本操作技巧</h1><div class="post-time">Apr 3, 2015</div><div class="post-content"><h2 id="重装系统">重装系统</h2><h3 id="网络，TimeMachine">网络，TimeMachine</h3><p>1）关闭Mac系统<br>2）同时按下组合键 command +R<br>3）再按下开关键 ，command +R不能松开<br>ps：使用网络恢复系统由于网络原因时间较长，如果没有TimeMachine建议制作启动u盘,另强烈建议制作TimeMachine备份。</p>
+<h3 id="制作启动u盘">制作启动u盘</h3><p>教程<a href="http://bbs.feng.com/read-htm-tid-7057977.html" target="_blank" rel="external">这篇文章</a>说的比较详细了，不赘述。做完u盘，开机按住option键，选择制作的u盘即可，一般半小时内完成。</p>
+<hr>
+<a id="more"></a>
+<h2 id="环境配置">环境配置</h2><h3 id="配置android环境变量">配置android环境变量</h3><p>vim ~/.zshrc 添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ANDROID_HOME=$HOME/Library/Android/sdk&#10;export ANDROID_HOME&#10;&#10;PATH=$PATH:$ANDROID_HOME/tools&#10;PATH=$PATH:$ANDROID_HOME/platform-tools&#10;PATH=$PATH:$ANDROID_HOME/build-tools/19.0.0    # installed version number&#10;export PATH</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="配置java_home_环境变量">配置java_home 环境变量</h3><p>vim ~/.zshrc 添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)</span><br></pre></td></tr></table></figure></p>
+<p>然后source ~/.zshrc一下，用echo $JAVA_HOME$查看是否成功，其他终端下可以参考<a href="http://mclspace.com/2015/03/10/mac_java_home/" target="_blank" rel="external">我之前的文章</a></p>
+<hr>
+<h3 id="iTerm2配色">iTerm2配色</h3><p>安装完oh my zsh后你可能对iterm2默认的配色不太满意，可以到<a href="https://github.com/mbadolato/iTerm2-Color-Schemes" target="_blank" rel="external">iTerm2-Color-Schemes</a>将此工程克隆下来,然后在iterm2下用cmd+i呼出颜色配置，然后Colors -&gt; Load Presets -&gt; import 选项将schemes文件夹下面的配置都倒入进去，然后一个个试哪一款配色适合你，我选择的是kibble。</p>
+<hr>
+<h3 id="sublime2_配置">sublime2 配置</h3><p>设置macdown语法高亮 ,使用<a href="https://packagecontrol.io/packages/Monokai%20Extended" target="_blank" rel="external">Monokai Extended</a>这个主题。</p>
+<ol>
+<li>首先安装<a href="https://packagecontrol.io/installation" target="_blank" rel="external">package control</a></li>
+<li>输入cmd + shift + P 调出 package control,输入install package,回车</li>
+<li>输入Monokai Extended，回车，安装完成</li>
+<li>在Preferences -&gt; Color Scheme -&gt; Monokai Extended中选择一款自己喜欢的配色</li>
+</ol>
+<p>开启vim模式<br>在Preferences -&gt; Settings - User中将”Vintage”去掉，变成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#34;ignored_packages&#34;:[]</span><br></pre></td></tr></table></figure></p>
+<p>安装前端神器emmet,如上。</p>
+<hr>
+<h3 id="alias_设置别名">alias 设置别名</h3><p>如在命令行中添加sublime<br>如果你也用zshrc，在～目录，vim .zshrc，添加以下alias（别名）可以快捷调用应用，如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alias sublime=&#39;open -a &#34;Sublime Text 2&#34;&#39;&#10;alias chrome=&#39;open -a &#34;Google Chrome&#34;&#39;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="基本技巧">基本技巧</h2><h3 id="Mac下的截图技巧">Mac下的截图技巧</h3><ol>
+<li>Command＋shift＋3:全屏截图</li>
+<li>Command＋shift＋4:鼠标选定区域截图</li>
+<li>使用Command＋shift＋4后，按下空格键，鼠标会变成一个小相机，这时候你使用鼠标对一个窗口点击一下鼠标左键，你已经对一个窗口进行了截图。</li>
+<li>按Command＋shift＋4 后 ,画一个抓取的区域，不要松开鼠标，接着</li>
+</ol>
+<ul>
+<li>按住空格可以移动这个区域</li>
+<li>按住 Shift后，将锁定X 或者 Y轴进行拖动</li>
+<li>按住 Option后 将按照区域圆心进行放大.</li>
+</ul>
+<p>最后所有截图将直接显示在桌面上。</p>
+<p>另外ctrl+ cmd + shift + 4 可以将截图复制，方便粘贴,这种方式不会把截图显示在桌面上</p>
+<h3 id="Mac下命令行批量处理图片">Mac下命令行批量处理图片</h3><p>注意，命令行方式生成的新的图片会替代原来老的图片，而且命令行没有后悔药，所以写命令要谨慎，或做好备份</p>
+<ol>
+<li>重新定义单个图片尺寸长和宽（忽略比例）：<code>sips -z 768 1024 xxx.png</code> , 顺序为高/宽度</li>
+<li>重新定义单个图片尺寸（保留比例）：<code>sips -Z 500 xxx.png</code>, 大Z表示宽度为500，高度按比例缩放,</li>
+<li>在一个目录里批量修改同一后缀格式的图片 ：<code>sips -Z（-z） 300 *.png</code></li>
+<li>顺时针旋转90度 ：<code>sips -r 90 ~/Desktop/Test/*.JPG</code></li>
+<li>水平翻转 ： <code>sips -f horizontal ~/Desktop/Test/*.JPG</code></li>
+<li>垂直翻转 ：<code>sips -f vertical ~/Desktop/Test/*.JPG</code></li>
+</ol>
+<hr>
+<h3 id="通过wifi分享网络">通过wifi分享网络</h3><p>通过System Preferences -&gt; Sharing -&gt; Internet Sharing.<br>勾选Wi-Fi,并通过 Wi-Fi Options设置接入密码，然后在左侧勾选Internet Sharing。<br>可以看到menu bar上的wifi图标变成了向上的箭头。</p>
+<hr>
+<h3 id="office解决方案">office解决方案</h3><p>chrome有<a href="https://chrome.google.com/webstore/detail/office-editing-for-docs-s/gbkeegbaiigmenfmjfclcdgdpimamgkj?hl=en" target="_blank" rel="external">office扩展</a>，安装扩展后，直接将文档拖到chrome中就能打开编辑，非常方便。当然没办法做到像windows上那样，不过至少可以查看和简单的编辑。</p>
+<p>另外我觉得mac下的keynote和pages也很好用，可以学习学习。</p>
+<hr>
+<h3 id="修改电脑名称">修改电脑名称</h3><p>系统偏好设置 -&gt; 共享 －&gt; 电脑名称</p>
+<hr>
+<h3 id="为什么登录界面的大小写不灵？">为什么登录界面的大小写不灵？</h3><p>苹果为防止误触专门设计成这样。</p>
+<hr>
+<h3 id="剪切文件">剪切文件</h3><p>先复制，然后到移动的文件夹下，按opt+cmd+v使用move to here功能。</p>
+<h3 id="解决AppStore访问缓慢的问题">解决AppStore访问缓慢的问题</h3><p>将DNS换成114.114.114.114<br>系统偏好设置 -&gt; 网络 - &gt; 高级 -&gt;DNS -&gt; + -&gt; 114.114.114.114<br>保存应用即可</p>
+<hr>
+<h3 id="解决mac_chrome_看视频_风扇狂转">解决mac chrome 看视频 风扇狂转</h3><p>可以用<a href="https://github.com/feelinglucky/chrome-plugin-to-replace-fuck-flash-player" target="_blank" rel="external">chrome-plugin-to-replace-fuck-flash-player</a>,或者给safari安装ClickToFlash插件(<a href="https://extensions.apple.com/details/?id=com.hoyois.safari.clicktoflash-GY5KR7239Q),safari官方插件页都有了，作者当时还明令禁止传播的。" target="_blank" rel="external">https://extensions.apple.com/details/?id=com.hoyois.safari.clicktoflash-GY5KR7239Q),safari官方插件页都有了，作者当时还明令禁止传播的。</a></p>
+<hr>
+<h3 id="显示隐藏文件">显示隐藏文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#26174;&#31034;&#65306;defaults write com.apple.finder AppleShowAllFiles -bool true&#10;&#38544;&#34255;&#65306;defaults write com.apple.finder AppleShowAllFiles -bool false</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="打开文件">打开文件</h3><p>在mac下选中一个文件夹回车是重命名，打开一个文件夹的快捷键是<code>cmd + o</code>或者<code>cmd + down</code>，回到上一个文件夹是<code>cmd+up</code></p>
+<hr>
+<h3 id="chrome_vimium插件">chrome vimium插件</h3><p>chrome应用市场下搜索vimium，可以像使用vim一样操作网页</p>
+<hr>
+<h3 id="用splotlight定位文件后可以按住command键单击打开文件所在位置的文件夹">用splotlight定位文件后可以按住command键单击打开文件所在位置的文件夹</h3><hr>
+<h3 id="可以用smcFanCon进行夏天时候的风扇控制，3000-4000就够了">可以用smcFanCon进行夏天时候的风扇控制，3000-4000就够了</h3><hr>
+<h3 id="隐藏dock">隐藏dock</h3><p>快捷键 cmd + option + d,要显示的话再按一次即可</p>
+<hr>
+<h3 id="Mac_下如何像windows下那样连续查看文件夹下的图片？">Mac 下如何像windows下那样连续查看文件夹下的图片？</h3><p>加载到iPhoto中或者空格预览按tab键切换。</p>
+<hr>
+<h3 id="开启多个桌面">开启多个桌面</h3><p>三个手指向上滑，之后就看到上面有一个dashboard,另外一个就是你现在的桌面，鼠标滑到右上角就出现一个透明的加号，<br>点了就好了。想加几个加几个。</p>
+<hr>
+<h3 id="录制屏幕">录制屏幕</h3><p>打开QuickTime player，点文件 -&gt; 新建屏幕录制 -&gt; 点击红点，开始录制 -&gt; 录制完成后停止按钮在顶栏右上方</p>
+<h3 id="硬盘格式化的格式">硬盘格式化的格式</h3><p>选择exfat在mac和windows上都可以使用</p>
+<h3 id="keynote格式刷">keynote格式刷</h3><ul>
+<li>alt + command + c</li>
+<li>alt + command + v</li>
+</ul>
+<h3 id="扩展词典">扩展词典</h3><p>mac下自带的词典很好用，但是时常查不到想要的单词，可以为它扩展词典,将下载好的词典文件放到Library/Dictionaries文件夹中即可,<br><a href="http://pan.baidu.com/share/link?shareid=3608031382&amp;uk=1745957586#path=%252FMac%2520%25E8%25AF%258D%25E5%2585%25B8" target="_blank" rel="external">词典百度云盘</a><br>我用的langdao-ec</p>
+<h3 id="设置开机启动项">设置开机启动项</h3><p>系统偏好设置 -&gt; 用户与群组 -&gt; 登录项</p>
+<h3 id="修改默认打开方式">修改默认打开方式</h3><p>右击 -&gt; 显示简介 -&gt; 打开方式 -&gt; 全部更改</p>
+<h3 id="软件工具推荐">软件工具推荐</h3><ul>
+<li>Sip</li>
+</ul>
+</div></article></div></section><footer><div class="paginator"><a href="/2015/05/10/Fatjar-install/" class="prev">上一篇</a><a href="/2015/03/12/android-emma-coverage-md/" class="next">下一篇</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'mcl';
+var disqus_identifier = '2015/04/03/mac-things/';
+var disqus_title = 'Mac 基本操作技巧';
+var disqus_url = 'http://www.mclspace.com/2015/04/03/mac-things/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//mcl.disqus.com/count.js" async></script><div class="copyright"><p>© 2015 - 2016 <a href="http://www.mclspace.com">LinChen</a>, unless otherwise noted.</p></div></footer><script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "//hm.baidu.com/hm.js?6b26d13232555e4d64b5a8c3567ccda9";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script><script src="https://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script></body></html>

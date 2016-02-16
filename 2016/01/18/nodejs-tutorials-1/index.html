@@ -1,0 +1,33 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 使用Express快速创建web项目 · Mcl's space</title><meta name="description" content="使用Express快速创建web项目 - LinChen"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" type="text/css"></head><body><header><a href="/" class="logo-link"><img src="/favicon.ico"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/rdmclin2" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/rdmclin2" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">使用Express快速创建web项目</h1><div class="post-time">Jan 18, 2016</div><div class="post-content"><h1 id="前言">前言</h1><p>从很早开始就想通过Nodejs编写一个属于自己的网站，同时也想分享一些Nodejs开发过程中的一些感悟和经验，不过一直没有实施，再拖下去估计没有下文了=。=。准备从本篇开始，使用Nodejs的Express框架,配合Mongoose数据库构建一个网站,探索基于Nodejs的web应用的快速构建方法,并记录开发过程。目前有如下两个想法：</p>
+<ol>
+<li>类似知乎的网站（特点为限制答题字数，并且启用markdown回答题目),取名简言</li>
+<li>身边很多优秀的程序员居然还木有妹子！不能忍，决定了，写一个帮助程序员把妹的网站，不不不，是帮助妹子领养萌萌的小猿的网站，取名结缘（猿）。</li>
+</ol>
+<p>网站文件放在<a href="https://github.com/rdmclin2/NodeTurtorials" target="_blank" rel="external">github</a>上，欢迎拍砖点赞 :)</p>
+<p>PS: 本篇内容相关源码可以通过tag:v0.0.1进行查看</p>
+<a id="more"></a>
+<hr>
+<h3 id="创建过程">创建过程</h3><p><a href="http://expressjs.com" target="_blank" rel="external">Express</a>是基于<a href="https://nodejs.org" target="_blank" rel="external">Nodejs</a>的一个快速web开发框架,它提供了一个<code>Express application generator</code>可以帮助我们快速创建应用的骨架。</p>
+<p>使用如下命令安装generator:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install express-generator -g</span><br></pre></td></tr></table></figure></p>
+<p>安装完成后用以下命令生成骨架,<code>-e</code>选项代表使用EJS模板引擎:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ express -e myapp</span><br></pre></td></tr></table></figure></p>
+<p>生成后的应用文件结构如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#10;&#9500;&#9472;&#9472; LICENSE&#10;&#9500;&#9472;&#9472; README.md&#10;&#9500;&#9472;&#9472; app.js&#10;&#9500;&#9472;&#9472; bin&#10;&#9474;&#160;&#160; &#9492;&#9472;&#9472; www&#10;&#9500;&#9472;&#9472; package.json&#10;&#9500;&#9472;&#9472; public&#10;&#9474;&#160;&#160; &#9500;&#9472;&#9472; images&#10;&#9474;&#160;&#160; &#9500;&#9472;&#9472; javascripts&#10;&#9474;&#160;&#160; &#9492;&#9472;&#9472; stylesheets&#10;&#9474;&#160;&#160;     &#9492;&#9472;&#9472; style.css&#10;&#9500;&#9472;&#9472; routes&#10;&#9474;&#160;&#160; &#9500;&#9472;&#9472; index.js&#10;&#9474;&#160;&#160; &#9492;&#9472;&#9472; users.js&#10;&#9492;&#9472;&#9472; views&#10;    &#9500;&#9472;&#9472; error.ejs&#10;    &#9492;&#9472;&#9472; index.ejs&#10;&#10;7 directories, 10 files</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><code>app.js</code>是express的设置文件</li>
+<li><code>bin/www</code>是express执行文件</li>
+<li><code>package.json</code>是nodejs项目的配置文件，用于保存应用信息与依赖管理</li>
+<li><code>public</code>文件夹为web应用的资源文件夹</li>
+<li><code>routes</code>保存路由文件</li>
+<li><code>views</code>保存网站的ejs视图代码</li>
+</ul>
+<p>然后执行<code>$ npm install</code>安装项目依赖,该命令根据<code>package.json</code>文件中描述的<code>dependencies</code>安装依赖，默认安装到<code>node_modules</code>文件夹下。例如自动生成的<code>package.json</code>文件如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#10;  &#34;name&#34;: &#34;NodeTurtorials&#34;,&#10;  &#34;version&#34;: &#34;0.0.0&#34;,&#10;  &#34;private&#34;: true,&#10;  &#34;scripts&#34;: &#123;&#10;    &#34;start&#34;: &#34;node ./bin/www&#34;&#10;  &#125;,&#10;  &#34;dependencies&#34;: &#123;&#10;    &#34;body-parser&#34;: &#34;~1.13.2&#34;,&#10;    &#34;cookie-parser&#34;: &#34;~1.3.5&#34;,&#10;    &#34;debug&#34;: &#34;~2.2.0&#34;,&#10;    &#34;ejs&#34;: &#34;~2.3.3&#34;,&#10;    &#34;express&#34;: &#34;~4.13.1&#34;,&#10;    &#34;morgan&#34;: &#34;~1.6.1&#34;,&#10;    &#34;serve-favicon&#34;: &#34;~2.3.0&#34;&#10;  &#125;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>通过<code>$ npm start</code> 或者直接<code>$ node ./bin/www</code>启动项目。</p>
+<p>打开浏览器输入<code>localhost:3000</code>查看效果。</p>
+</div></article></div></section><footer><div class="paginator"><a href="/2016/01/20/java-shell-toolkit-using-processBuilder/" class="prev">上一篇</a><a href="/2016/01/16/ionic-problems-and-solutions/" class="next">下一篇</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'mcl';
+var disqus_identifier = '2016/01/18/nodejs-tutorials-1/';
+var disqus_title = '使用Express快速创建web项目';
+var disqus_url = 'http://www.mclspace.com/2016/01/18/nodejs-tutorials-1/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//mcl.disqus.com/count.js" async></script><div class="copyright"><p>© 2015 - 2016 <a href="http://www.mclspace.com">LinChen</a>, unless otherwise noted.</p></div></footer><script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "//hm.baidu.com/hm.js?6b26d13232555e4d64b5a8c3567ccda9";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script><script src="https://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script></body></html>

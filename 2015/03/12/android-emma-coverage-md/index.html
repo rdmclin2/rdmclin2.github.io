@@ -1,0 +1,37 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 如何用emma产生android程序的测试覆盖率报告 · Mcl's space</title><meta name="description" content="如何用emma产生android程序的测试覆盖率报告 - LinChen"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" type="text/css"></head><body><header><a href="/" class="logo-link"><img src="/favicon.ico"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/rdmclin2" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/rdmclin2" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">如何用emma产生android程序的测试覆盖率报告</h1><div class="post-time">Mar 12, 2015</div><div class="post-content"><h1 id="Emma是什么？">Emma是什么？</h1><p>Emma是用来生成java程序代码覆盖率报告的工具，具体的介绍和简单教程请看之前博客的链接<a href="http://mclspace.com/2014/12/25/emma-tutorial/" target="_blank" rel="external">EMMA教程</a>。而EMMA这款工具怎么生成安卓测试程序运行安卓程序的代码覆盖率呢？上网查了很多教程，但大多冗余没有干货，抄来抄去没有新的内容，导致能解决我的问题的内容少之又少。于是整理一下今天使用Emma的一些难点和心得。</p>
+<a id="more"></a>
+<hr>
+<h1 id="环境准备">环境准备</h1><ul>
+<li>Android SDK</li>
+<li>ANT</li>
+</ul>
+<p>没有的搜一下网上的教程就好，这里我们要用到ant进行插装编译，ant中集成了emma，所以emma也不用下了。这里的使用环境为Windows，SDK版本为Android-21.注意EMMA只能对有源码的工程进行覆盖率监测。</p>
+<hr>
+<h1 id="步骤">步骤</h1><p>假设待测APK的目录为\Lesson3,测试工程的目录为\Lesson3Test。\代表当前目录，步骤如下：</p>
+<ul>
+<li><p>首先cd到\Lesson3，输入android update project -p \ <code>Enter</code>,这一步将在Lesson3目录下生成ant的配置文件build.xml。</p>
+</li>
+<li><p>再cd到\Lesson3Test,输入android update test-project -m ..\Lesson3 -p \ <code>Enter</code> ,这一步将在测试工程Lesson3Test目录下生成ant的配置文件build.xml。</p>
+</li>
+<li><p>这一步针对你的应用依赖appcompat_v7这个库的工程。打开以上两个工程目录中的build.xml，在<code>&lt;fail\&gt;</code>标签前面加上</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;property name=&#34;aapt.ignore.assets&#34; value=&#34;!.svn:!.git:\x3Cdir\x3E_*:.*:!CVS:!thumbs.db:!picasa.ini:!*.scc:*~:crunch&#34; /&#62;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>否则会出return null 1的错误。</p>
+<ul>
+<li><p>如果工程有依赖的包，新建一个libs文件夹，放到其中，ant将自动建立依赖。</p>
+</li>
+<li><p>cd到\LessonTest文件夹，输入ant emma debug install test 命令，大功告成！</p>
+</li>
+</ul>
+<hr>
+<h1 id="参考目录">参考目录</h1><p><a href="http://www.haodaima.net/art/1769137" target="_blank" rel="external">EMMA对Android工程单元测试覆盖率进行检查</a><br><a href="http://clasnake.net/emma_for_android/" target="_blank" rel="external">使用EMMA获取Android测试覆盖率</a><br><a href="http://blog.csdn.net/zhbpd/article/details/41869987" target="_blank" rel="external">使用 ANT 命令行编译 Android 工程</a></p>
+</div></article></div></section><footer><div class="paginator"><a href="/2015/04/03/mac-things/" class="prev">上一篇</a><a href="/2015/03/10/mac_java_home/" class="next">下一篇</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'mcl';
+var disqus_identifier = '2015/03/12/android-emma-coverage-md/';
+var disqus_title = '如何用emma产生android程序的测试覆盖率报告';
+var disqus_url = 'http://www.mclspace.com/2015/03/12/android-emma-coverage-md/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//mcl.disqus.com/count.js" async></script><div class="copyright"><p>© 2015 - 2016 <a href="http://www.mclspace.com">LinChen</a>, unless otherwise noted.</p></div></footer><script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "//hm.baidu.com/hm.js?6b26d13232555e4d64b5a8c3567ccda9";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script><script src="https://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script></body></html>
