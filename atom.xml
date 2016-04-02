@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.mclspace.com/"/>
-  <updated>2016-02-15T17:35:42.000Z</updated>
+  <updated>2016-04-02T15:29:31.000Z</updated>
   <id>http://www.mclspace.com/</id>
   
   <author>
@@ -14,6 +14,74 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>我的前后端学习之旅[起航]</title>
+    <link href="http://www.mclspace.com/2016/04/02/my-front-end-learn-story-set-sail/"/>
+    <id>http://www.mclspace.com/2016/04/02/my-front-end-learn-story-set-sail/</id>
+    <published>2016-04-02T15:28:44.000Z</published>
+    <updated>2016-04-02T15:29:31.000Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;前言&quot;&gt;前言&lt;/h1&gt;&lt;p&gt;这段时间一直在找实习，博客也一直没有更新，一停下来就是一个半月,再拾起也不那么容易。去年6月份我写了一篇文章&lt;a href=&quot;http://mclspace.com/2015/06/26/my-front-end-learn-story-start/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;我的前后端学习之旅 — 开端&lt;/a&gt;，那是我第一次接触到前端开发,所谓初生牛犊不怕虎，再加上JavaScript上手很容易,又有丰富的库支持,看了几本HTML,CSS,JS的书就开始上手项目了。虽然遇到不少问题，但通过社区的帮助以及谷歌总归可以解决，自以为已经掌握前端开发了，然而在最近为实习准备面试的时候才发现要补的很多，参加&lt;a href=&quot;ife.baidu.com&quot;&gt;百度前端技术学院&lt;/a&gt;也让我有机会从基础开始了解和实践前端开发,弥补自己基础的薄弱。&lt;/p&gt;
+&lt;p&gt;在学习的过程中，总会有不同的阶段，我想拿到阿里前端实习offer算是对我之前学习前端的努力的肯定，因此想把这个offer作为在前端学习路上的一个里程碑，代表我正式将大前端作为以后技术路线的方向，转职初级前端魔法师学徒。这次阿里面试一共5面,3轮技术，1轮交叉面，1轮HR面,具体的问题就不讲了，每个人都会不一样，总结一下的话，有以下几点:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;一是平时的积累，很重要，面试官会看你对某个技术研究到什么程度，平时由于好奇所以研究的一些东西在面试的时候也许会派上大用场。&lt;/li&gt;
+&lt;li&gt;二是博客，github要早早的准备，博客代表了你学习过程中的总结和体会，优质的博客会为你加不少分，github上不需要你有多么牛掰的项目，不过要有长期维护的项目,完善的文档，大片的绿色代表你平时在github上积累较多。我在面试的过程中有两面的面试官都问到了github和博客的内容(虽然github上也没啥货…)。&lt;/li&gt;
+&lt;li&gt;三是对新知识的敏感程度和热情。前端目前的发展可以说是日新月异，Node,Angular,React,Vue,每隔几个月就有新的概念催生，优秀的前端不会视这些令人兴奋的项目而不见。例如面试的时候问到Grunt,Gulp,Webpack,平时没有积累的话很难回答。&lt;/li&gt;
+&lt;li&gt;四是需要有一个靠谱的由你主导的前端项目，例如我之前写的项目&lt;a href=&quot;https://github.com/rdmclin2/fcws-backend&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;凤城卫士&lt;/a&gt;，由于几乎是由我完全主导的项目，因此面试官和我聊这个项目的时候我可以扯得很好，面试官也吃不准你的水平，可以用这个项目带面试官的节奏。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&quot;前一段时间的学习过程&quot;&gt;前一段时间的学习过程&lt;/h1&gt;&lt;p&gt;该阶段学习过程比较粗犷，主要项目导向，边学边查，接触到广度有了，深度不够，不过也培养了对前端的兴趣，对自己应该学习什么有一定的认识.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;阅读《Javascript DOM编程艺术》&lt;/li&gt;
+&lt;li&gt;阅读《Head First Html &amp;amp; Css 》&lt;/li&gt;
+&lt;li&gt;阅读 &lt;a href=&quot;http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;廖雪峰的javascript教程js篇&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;阅读 &lt;a href=&quot;http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/001434499993118b8173572625b4afe93a8b19dd707ea1d000&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;廖雪峰的javascript教程jquery篇&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;阅读 &lt;a href=&quot;https://nqdeng.github.io/7-days-nodejs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《7天学会Nodejs》&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;阅读 &lt;a href=&quot;https://github.com/alsotang/node-lessons&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《Nodejs包教不包会》&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;阅读《Nodejs 开发指南》学习node，了解express框架，并重写其中的Microblog&lt;/li&gt;
+&lt;li&gt;学习 gulpjs,学会使用gulp编写简单的项目构建任务&lt;/li&gt;
+&lt;li&gt;阅读 &lt;a href=&quot;http://codeguide.bootcss.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;html&amp;amp;css 编码规范&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;学习使用 Ionic + Express+ Mongoose + Boostrap + Jquery等技术编写了一套端到端且具备后台数据管理功能的产品&lt;a href=&quot;https://github.com/rdmclin2/fcws-backend&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;凤城卫士&lt;/a&gt;。&lt;/li&gt;
+&lt;li&gt;阅读 《深入浅出Node.js》&lt;/li&gt;
+&lt;li&gt;学习 &lt;a href=&quot;http://vuejs.org&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Vue&lt;/a&gt;,并着手使用Vue编写&lt;a href=&quot;https://github.com/jie-yuan/Vue-jieyuan&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;结缘&lt;/a&gt;的前端界面中…&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;下一阶段的学习计划&quot;&gt;下一阶段的学习计划&lt;/h1&gt;&lt;p&gt;前一段时间主要是项目导向，没有注重基础的学习，因此这一阶段的重点是打牢基础，多多实践(IFE和结缘)，并紧密关注前端的发展。在去阿里实习前着重学习和掌握以下知识和技能:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;打牢HTML &amp;amp; CSS基础,盒模型,CSS布局,浏览器兼容,编码规范,快速H5构建&lt;/li&gt;
+&lt;li&gt;打牢JavaScript基础&lt;/li&gt;
+&lt;li&gt;使用原生JavaScript编写页面功能&lt;/li&gt;
+&lt;li&gt;ES6&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;记录学习过程&quot;&gt;记录学习过程&lt;/h1&gt;&lt;p&gt;将上一阶段未完成的挪到该阶段.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;阅读 《JavaScript高级程序设计》中…&lt;/li&gt;
+&lt;li&gt;参加 &lt;a href=&quot;ife.baidu.com&quot;&gt;百度前端技术学院&lt;/a&gt;中…&lt;/li&gt;
+&lt;li&gt;阅读《CSS设计指南》中…&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;待学习的库&quot;&gt;待学习的库&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/mbostock/d3&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;d3.js&lt;/a&gt;, &lt;a href=&quot;http://www.ourd3js.com/wordpress/?p=396&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;教程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/ecomfe/echarts&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Echarts&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;待阅读列表&quot;&gt;待阅读列表&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://learn.shayhowe.com/html-css/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Learn to Code HTML &amp;amp; CSS&lt;/a&gt;&lt;blockquote&gt;
+&lt;p&gt;$ 非常不错的教程&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;前言&quot;&gt;前言&lt;/h1&gt;&lt;p&gt;这段时间一直在找实习，博客也一直没有更新，一停下来就是一个半月,再拾起也不那么容易。去年6月份我写了一篇文章&lt;a href=&quot;http://mclspace.com/2015/06/26/my-front-end-learn-story
+    
+    </summary>
+    
+      <category term="fe" scheme="http://www.mclspace.com/categories/fe/"/>
+    
+    
+      <category term="fe" scheme="http://www.mclspace.com/tags/fe/"/>
+    
+  </entry>
   
   <entry>
     <title>Vue.js入门教程</title>
@@ -1536,55 +1604,6 @@ The popd command takes the last directory you pushed and &quot;pops&quot; it off
       <category term="ionic" scheme="http://www.mclspace.com/tags/ionic/"/>
     
       <category term="splash" scheme="http://www.mclspace.com/tags/splash/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>我的练习网页设计</title>
-    <link href="http://www.mclspace.com/2015/10/17/my-practices-websites/"/>
-    <id>http://www.mclspace.com/2015/10/17/my-practices-websites/</id>
-    <published>2015-10-17T07:20:55.000Z</published>
-    <updated>2015-10-18T03:48:27.000Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;最近对网页设计颇有兴趣，闲暇的时候便多练练手。不过如果仅仅在本地开发，设计，很难发现自己的问题，难以得到真正的提升，因此希望读者看到，帮助进行改进.以下是我进行练习的网站设计,大多都是按照教程来得,先借鉴临摹别人的作品,后面才能有自己的设计。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h1 id=&quot;Starbuzz_Coffee&quot;&gt;Starbuzz Coffee&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;访问地址 : &lt;a href=&quot;http://webstudy.mclspace.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://webstudy.mclspace.com&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;项目地址 : &lt;a href=&quot;https://github.com/rdmclin2/webStudy&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/rdmclin2/webStudy&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;项目来源 : 《Head First HTML 与 CSS》的练习页面&lt;br&gt;&lt;img src=&quot;http://7pun7p.com1.z0.glb.clouddn.com/blog/starbuzz.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;HeadFirst_Lounge&quot;&gt;HeadFirst Lounge&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;访问地址 : &lt;a href=&quot;http://test.mclspace.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://test.mclspace.com&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;项目地址 : &lt;a href=&quot;https://github.com/rdmclin2/test&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/rdmclin2/test&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;项目来源 : 《Head First HTML 与 CSS》的练习页面&lt;br&gt;&lt;img src=&quot;http://7pun7p.com1.z0.glb.clouddn.com/blog/lounge.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;Find_An_Agent&quot;&gt;Find An Agent&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;访问地址 : &lt;a href=&quot;http://mclspace.com/webDesign-1/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://mclspace.com/webDesign-1/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;项目地址 : &lt;a href=&quot;https://github.com/rdmclin2/webDesign-1&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/rdmclin2/webDesign-1&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;项目来源 : &lt;a href=&quot;https://juntao.gitbooks.io/3-web-designs-in-3-weeks/content/find_an_agent/index.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《3周3页面》第一周&lt;/a&gt;&lt;br&gt;&lt;img src=&quot;http://7pun7p.com1.z0.glb.clouddn.com/blog/design1.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;MicroBlog&quot;&gt;MicroBlog&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;项目地址 : &lt;a href=&quot;https://github.com/rdmclin2/Mircoblog&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/rdmclin2/Mircoblog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;项目来源 : 《Node.js开发指南》&lt;br&gt;&lt;img src=&quot;http://7pun7p.com1.z0.glb.clouddn.com/blog/microblog.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;最近对网页设计颇有兴趣，闲暇的时候便多练练手。不过如果仅仅在本地开发，设计，很难发现自己的问题，难以得到真正的提升，因此希望读者看到，帮助进行改进.以下是我进行练习的网站设计,大多都是按照教程来得,先借鉴临摹别人的作品,后面才能有自己的设计。&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="web" scheme="http://www.mclspace.com/categories/web/"/>
-    
-    
-      <category term="design" scheme="http://www.mclspace.com/tags/design/"/>
-    
-      <category term="web" scheme="http://www.mclspace.com/tags/web/"/>
     
   </entry>
   
