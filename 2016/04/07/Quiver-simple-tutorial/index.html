@@ -1,0 +1,37 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Quiver简易指南 · Mcl's space</title><meta name="description" content="Quiver简易指南 - LinChen"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" type="text/css"></head><body><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/rdmclin2" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/rdmclin2" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">Quiver简易指南</h1><div class="post-time">Apr 7, 2016</div><div class="post-content"><p>一直都是使用sublime在编写博客，用hexo发布,每次想写点什么的时候就用<code>hexo new draft xxx</code> 新建一个草稿。这种方式既没有组织，也不方便查阅，经常写了点草稿然后后面自己就忘记了，不方便知识管理。我理想中的笔记软件能使用Markdown，能用Vim模式，能进行笔记管理以及云存储。之前使用的笔记软件要么不够漂亮，要么不支持vim模式，要么不支持markdown，直到遇到Quiver，这才是为程序员准备的笔记软件。</p>
+<p><img src="http://7pun7p.com1.z0.glb.clouddn.com/quiver.png" alt="Quiver截图"></p>
+<a id="more"></a>
+<h1 id="Quiver快速入门">Quiver快速入门</h1><p>Quiver在github上提供了详细的使用指南,你可以阅读<a href="https://github.com/HappenApps/Quiver/wiki/Quiver快速入门" target="_blank" rel="external">Quiver快速入门</a>,如果你懒得看可以看我下文我总结的简洁版的使用指南。</p>
+<h1 id="亮点">亮点</h1><ul>
+<li>Quiver的笔记是由单元格组成，五种单元格类型,文本,代码,Markdown,LaTeX,图表单元格。</li>
+<li>代码单元格支持120种以上的程序语言，以及自定义主题等</li>
+<li>支持Markdown,Vim模式</li>
+<li>可以复制或拖图片到Quiver中，Quiver会复制一份在库中，即使源文件被删除仍然可以访问。</li>
+</ul>
+<h1 id="自定义配置">自定义配置</h1><ul>
+<li>设置同步: 在偏好设置 -&gt; 同步 下可以设置云同步</li>
+<li>设置默认单元格: 在偏好设置 -&gt; 常规 -&gt; 默认单元格 为Markdown</li>
+<li><strong>开启vim模式</strong> : 偏好设置 -&gt; 单元格 -&gt; Key Binding,可以为代码,Markdown和latex单元格内使用vim 模式</li>
+<li>设置主题: 偏好设置主题,题主使用的是SpaceGray,你可以在<a href="https://github.com/HappenApps/Quiver/wiki/Themes" target="_blank" rel="external">第三方主题</a>中找到适合自己的或者<a href="https://github.com/HappenApps/Quiver/wiki/How-to-Design-a-Custom-Theme" target="_blank" rel="external">自己定制</a></li>
+<li>设置字体大小: 偏好设置 -&gt; 风格 -&gt; 编辑器 ,将<code>font-size</code>都改成16px(或者你喜欢的的）</li>
+</ul>
+<h1 id="常用快捷键">常用快捷键</h1><ul>
+<li>新建笔记   “shift + 返回”(⇧⏎)</li>
+<li>合并单元格 退格键 只需将光标放在第二个单元格的开头，然后按回退键。请注意不同类型的单元格不能合并</li>
+<li>文本单元格 ⌥⌘1</li>
+<li>代码单元格 ⌥⌘2</li>
+<li>Markdown单元格 ⌥⌘3</li>
+<li>LaTeX 单元格 ⌥⌘4</li>
+<li>图表单元格 ⌥⌘5</li>
+<li>演示者模式 ⌘⌃⌥p</li>
+<li><strong>双指左右滑动有惊喜</strong></li>
+</ul>
+</div></article></div></section><footer><div class="paginator"><a href="/2016/04/02/my-front-end-learn-story-set-sail/" class="next">下一篇</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'mcl';
+var disqus_identifier = '2016/04/07/Quiver-simple-tutorial/';
+var disqus_title = 'Quiver简易指南';
+var disqus_url = 'http://www.mclspace.com/2016/04/07/Quiver-simple-tutorial/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//mcl.disqus.com/count.js" async></script><div class="copyright"><p>© 2015 - 2016 <a href="http://www.mclspace.com">LinChen</a>, unless otherwise noted.</p></div></footer><script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "//hm.baidu.com/hm.js?6b26d13232555e4d64b5a8c3567ccda9";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script><script src="https://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script></body></html>

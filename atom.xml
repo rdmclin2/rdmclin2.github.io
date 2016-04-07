@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.mclspace.com/"/>
-  <updated>2016-04-02T15:29:31.000Z</updated>
+  <updated>2016-04-07T11:19:30.000Z</updated>
   <id>http://www.mclspace.com/</id>
   
   <author>
@@ -14,6 +14,53 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Quiver简易指南</title>
+    <link href="http://www.mclspace.com/2016/04/07/Quiver-simple-tutorial/"/>
+    <id>http://www.mclspace.com/2016/04/07/Quiver-simple-tutorial/</id>
+    <published>2016-04-07T07:46:16.000Z</published>
+    <updated>2016-04-07T11:19:30.000Z</updated>
+    
+    <content type="html">&lt;p&gt;一直都是使用sublime在编写博客，用hexo发布,每次想写点什么的时候就用&lt;code&gt;hexo new draft xxx&lt;/code&gt; 新建一个草稿。这种方式既没有组织，也不方便查阅，经常写了点草稿然后后面自己就忘记了，不方便知识管理。我理想中的笔记软件能使用Markdown，能用Vim模式，能进行笔记管理以及云存储。之前使用的笔记软件要么不够漂亮，要么不支持vim模式，要么不支持markdown，直到遇到Quiver，这才是为程序员准备的笔记软件。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7pun7p.com1.z0.glb.clouddn.com/quiver.png&quot; alt=&quot;Quiver截图&quot;&gt;&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h1 id=&quot;Quiver快速入门&quot;&gt;Quiver快速入门&lt;/h1&gt;&lt;p&gt;Quiver在github上提供了详细的使用指南,你可以阅读&lt;a href=&quot;https://github.com/HappenApps/Quiver/wiki/Quiver快速入门&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Quiver快速入门&lt;/a&gt;,如果你懒得看可以看我下文我总结的简洁版的使用指南。&lt;/p&gt;
+&lt;h1 id=&quot;亮点&quot;&gt;亮点&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;Quiver的笔记是由单元格组成，五种单元格类型,文本,代码,Markdown,LaTeX,图表单元格。&lt;/li&gt;
+&lt;li&gt;代码单元格支持120种以上的程序语言，以及自定义主题等&lt;/li&gt;
+&lt;li&gt;支持Markdown,Vim模式&lt;/li&gt;
+&lt;li&gt;可以复制或拖图片到Quiver中，Quiver会复制一份在库中，即使源文件被删除仍然可以访问。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;自定义配置&quot;&gt;自定义配置&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;设置同步: 在偏好设置 -&amp;gt; 同步 下可以设置云同步&lt;/li&gt;
+&lt;li&gt;设置默认单元格: 在偏好设置 -&amp;gt; 常规 -&amp;gt; 默认单元格 为Markdown&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;开启vim模式&lt;/strong&gt; : 偏好设置 -&amp;gt; 单元格 -&amp;gt; Key Binding,可以为代码,Markdown和latex单元格内使用vim 模式&lt;/li&gt;
+&lt;li&gt;设置主题: 偏好设置主题,题主使用的是SpaceGray,你可以在&lt;a href=&quot;https://github.com/HappenApps/Quiver/wiki/Themes&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;第三方主题&lt;/a&gt;中找到适合自己的或者&lt;a href=&quot;https://github.com/HappenApps/Quiver/wiki/How-to-Design-a-Custom-Theme&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;自己定制&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;设置字体大小: 偏好设置 -&amp;gt; 风格 -&amp;gt; 编辑器 ,将&lt;code&gt;font-size&lt;/code&gt;都改成16px(或者你喜欢的的）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;常用快捷键&quot;&gt;常用快捷键&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;新建笔记   “shift + 返回”(⇧⏎)&lt;/li&gt;
+&lt;li&gt;合并单元格 退格键 只需将光标放在第二个单元格的开头，然后按回退键。请注意不同类型的单元格不能合并&lt;/li&gt;
+&lt;li&gt;文本单元格 ⌥⌘1&lt;/li&gt;
+&lt;li&gt;代码单元格 ⌥⌘2&lt;/li&gt;
+&lt;li&gt;Markdown单元格 ⌥⌘3&lt;/li&gt;
+&lt;li&gt;LaTeX 单元格 ⌥⌘4&lt;/li&gt;
+&lt;li&gt;图表单元格 ⌥⌘5&lt;/li&gt;
+&lt;li&gt;演示者模式 ⌘⌃⌥p&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;双指左右滑动有惊喜&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;一直都是使用sublime在编写博客，用hexo发布,每次想写点什么的时候就用&lt;code&gt;hexo new draft xxx&lt;/code&gt; 新建一个草稿。这种方式既没有组织，也不方便查阅，经常写了点草稿然后后面自己就忘记了，不方便知识管理。我理想中的笔记软件能使用Markdown，能用Vim模式，能进行笔记管理以及云存储。之前使用的笔记软件要么不够漂亮，要么不支持vim模式，要么不支持markdown，直到遇到Quiver，这才是为程序员准备的笔记软件。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7pun7p.com1.z0.glb.clouddn.com/quiver.png&quot; alt=&quot;Quiver截图&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>我的前后端学习之旅[起航]</title>
@@ -1555,55 +1602,6 @@ The popd command takes the last directory you pushed and &quot;pops&quot; it off
       <category term="latex" scheme="http://www.mclspace.com/tags/latex/"/>
     
       <category term="mac" scheme="http://www.mclspace.com/tags/mac/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ionic开发之自动生成icon和splash</title>
-    <link href="http://www.mclspace.com/2015/10/19/ionic-icon-and-splash/"/>
-    <id>http://www.mclspace.com/2015/10/19/ionic-icon-and-splash/</id>
-    <published>2015-10-19T03:30:28.000Z</published>
-    <updated>2015-10-19T14:06:15.000Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;Icon（图标）和Splash（启动画面）是应用的门面，好的Icon和Splash能让用户对这款App产生良好的第一印象，不过我们这里不讲怎么设计他们，而是如何在Ionic应用中定制自己的icon和splash，在这里ionic为我们提供了非常方便的自动化生成工具。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h1 id=&quot;准备资源&quot;&gt;准备资源&lt;/h1&gt;&lt;p&gt;Ionic能帮你自动生成各个平台中各个不同尺寸的图片，但巧妇难为无米之炊，首先你得提供给他合适的图片资源。资源要求如下：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;格式: .png, .psd, .ai&lt;/li&gt;
-&lt;li&gt;命名: 例如icon.png, splash.png&lt;/li&gt;
-&lt;li&gt;大小: icon-192x192无圆角，splash-2208x2208居中&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;生成资源&quot;&gt;生成资源&lt;/h1&gt;&lt;p&gt;准备好图片后将他们放到资源目录 &lt;code&gt;./resources&lt;/code&gt;,然后输入命令:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ ionic resources&amp;#10;Ionic icon and splash screen resources generator&amp;#10; uploading icon.png...&amp;#10; uploading splash.png...&amp;#10; &amp;#10003; icon.png (192x192) upload complete&amp;#10; &amp;#10003; splash.png (2208x2208) upload complete&amp;#10; generating splash ios Default~iphone.png (320x480)...&amp;#10; generating splash ios Default@2x~iphone.png (640x960)...&amp;#10; generating splash ios Default-Portrait~ipad.png (768x1024)...&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;如果只希望生成一种资源，可以&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ ionic resources --icon&amp;#10;$ ionic resources --splash&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;如果想为不同平台准备不同的图标，那么需要修改路径&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;resources/android/icon.png&amp;#10;resources/ios/icon.png&amp;#10;# splash &amp;#21516;&amp;#29702;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h1 id=&quot;测试验证&quot;&gt;测试验证&lt;/h1&gt;&lt;p&gt;生成成功后在手机上验证一下吧&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ ionic platform add android&amp;#10;$ ionic run android&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;看看效果怎么样,在我手机上的截图如下:&lt;br&gt;&lt;img src=&quot;http://7pun7p.com1.z0.glb.clouddn.com/blog/splash.jpeg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;遇到的问题&quot;&gt;遇到的问题&lt;/h1&gt;&lt;p&gt;一个很恼人的问题是，ionic在生成资源的时候，他会对上传的图片做一个checksum，如果一致则不会重新生成图标，而是从cache中取。这就导致它如果生成资源的时候出现错误会导致应用崩溃，然而重新运行命令还是从cache中取。要重新生成可以重新编辑图片以产生不同的checksum，然而这真是个nc的问题，为什么它不提供一个’clean-cache’选项！更多内容可以查看github上的&lt;a href=&quot;https://github.com/driftyco/ionic-cli/issues/420&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;issue&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&quot;资源&quot;&gt;资源&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://blog.ionic.io/automating-icons-and-splash-screens/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官方博客&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://ionicframework.com/docs/cli/icon-splashscreen.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官方网页&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://ionichina.com/topic/54e455ab2be672f1111c01e2&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Ionic中国的翻译&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;Icon（图标）和Splash（启动画面）是应用的门面，好的Icon和Splash能让用户对这款App产生良好的第一印象，不过我们这里不讲怎么设计他们，而是如何在Ionic应用中定制自己的icon和splash，在这里ionic为我们提供了非常方便的自动化生成工具。&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="ionic" scheme="http://www.mclspace.com/categories/ionic/"/>
-    
-    
-      <category term="icon" scheme="http://www.mclspace.com/tags/icon/"/>
-    
-      <category term="ionic" scheme="http://www.mclspace.com/tags/ionic/"/>
-    
-      <category term="splash" scheme="http://www.mclspace.com/tags/splash/"/>
     
   </entry>
   
