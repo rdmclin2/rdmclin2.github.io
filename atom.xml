@@ -106,7 +106,7 @@
     <link href="http://www.mclspace.com/2016/04/02/my-front-end-learn-story-set-sail/"/>
     <id>http://www.mclspace.com/2016/04/02/my-front-end-learn-story-set-sail/</id>
     <published>2016-04-02T15:28:44.000Z</published>
-    <updated>2016-04-02T15:29:31.000Z</updated>
+    <updated>2016-05-11T07:01:41.000Z</updated>
     
     <content type="html">&lt;h1 id=&quot;前言&quot;&gt;前言&lt;/h1&gt;&lt;p&gt;这段时间一直在找实习，博客也一直没有更新，一停下来就是一个半月,再拾起也不那么容易。去年6月份我写了一篇文章&lt;a href=&quot;http://mclspace.com/2015/06/26/my-front-end-learn-story-start/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;我的前后端学习之旅 — 开端&lt;/a&gt;，那是我第一次接触到前端开发,所谓初生牛犊不怕虎，再加上JavaScript上手很容易,又有丰富的库支持,看了几本HTML,CSS,JS的书就开始上手项目了。虽然遇到不少问题，但通过社区的帮助以及谷歌总归可以解决，自以为已经掌握前端开发了，然而在最近为实习准备面试的时候才发现要补的很多，参加&lt;a href=&quot;ife.baidu.com&quot;&gt;百度前端技术学院&lt;/a&gt;也让我有机会从基础开始了解和实践前端开发,弥补自己基础的薄弱。&lt;/p&gt;
 &lt;p&gt;在学习的过程中，总会有不同的阶段，我想拿到阿里前端实习offer算是对我之前学习前端的努力的肯定，因此想把这个offer作为在前端学习路上的一个里程碑，代表我正式将大前端作为以后技术路线的方向，转职初级前端魔法师学徒。这次阿里面试一共5面,3轮技术，1轮交叉面，1轮HR面,具体的问题就不讲了，每个人都会不一样，总结一下的话，有以下几点:&lt;/p&gt;
@@ -140,9 +140,12 @@
 &lt;/ul&gt;
 &lt;h1 id=&quot;记录学习过程&quot;&gt;记录学习过程&lt;/h1&gt;&lt;p&gt;将上一阶段未完成的挪到该阶段.&lt;/p&gt;
 &lt;ul&gt;
+&lt;li&gt;完成 &lt;a href=&quot;ife.baidu.com&quot;&gt;百度前端技术学院&lt;/a&gt;第一阶段，&lt;a href=&quot;https://htmlpreview.github.io/?https://github.com/rdmclin2/ife_baidu/blob/master/task1_1_6/index.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;代表作&lt;/a&gt;。&lt;/li&gt;
+&lt;li&gt;完成 &lt;a href=&quot;ife.baidu.com&quot;&gt;百度前端技术学院&lt;/a&gt;第二阶段,&lt;a href=&quot;https://htmlpreview.github.io/?https://github.com/rdmclin2/ife_baidu/blob/master/task1_2_22/index.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;代表作&lt;/a&gt;。&lt;/li&gt;
+&lt;li&gt;完成 &lt;a href=&quot;ife.baidu.com&quot;&gt;百度前端技术学院&lt;/a&gt;第三阶段,&lt;a href=&quot;http://mclspace.com/ife_baidu/task47/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;代表作&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;进行 &lt;a href=&quot;ife.baidu.com&quot;&gt;百度前端技术学院&lt;/a&gt;第四阶段&lt;/li&gt;
 &lt;li&gt;阅读 《JavaScript高级程序设计》中…&lt;/li&gt;
-&lt;li&gt;参加 &lt;a href=&quot;ife.baidu.com&quot;&gt;百度前端技术学院&lt;/a&gt;中…&lt;/li&gt;
-&lt;li&gt;阅读《CSS设计指南》中…&lt;/li&gt;
+&lt;li&gt;阅读 《CSS设计指南》中…&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1 id=&quot;待学习的库&quot;&gt;待学习的库&lt;/h1&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/mbostock/d3&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;d3.js&lt;/a&gt;, &lt;a href=&quot;http://www.ourd3js.com/wordpress/?p=396&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;教程&lt;/a&gt;&lt;/li&gt;
