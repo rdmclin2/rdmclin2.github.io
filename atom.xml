@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.mclspace.com/"/>
-  <updated>2016-04-19T15:53:23.000Z</updated>
+  <updated>2016-05-17T04:11:38.000Z</updated>
   <id>http://www.mclspace.com/</id>
   
   <author>
@@ -14,6 +14,54 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>创建并发布Node.js模块</title>
+    <link href="http://www.mclspace.com/2016/05/17/create-and-publish-a-nodejs-module/"/>
+    <id>http://www.mclspace.com/2016/05/17/create-and-publish-a-nodejs-module/</id>
+    <published>2016-05-17T04:07:32.000Z</published>
+    <updated>2016-05-17T04:11:38.000Z</updated>
+    
+    <content type="html">&lt;p&gt;我们跟着npmjs的视频教程来,您可以直接看视频,下面为简略步骤方便查阅&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.npmjs.com/getting-started/creating-node-modules&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;创建Node.js模块&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.npmjs.com/getting-started/publishing-npm-packages&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;发布Npm包&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h1 id=&quot;创建Node-js模块&quot;&gt;创建Node.js模块&lt;/h1&gt;&lt;h3 id=&quot;创建package-json包&quot;&gt;创建package.json包&lt;/h3&gt;&lt;p&gt;package.json记录你的包的元信息&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ mkdir npm-demo-pkg-mcl &amp;#38;&amp;#38; cd $_&amp;#10;$ npm init&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;author格式: &lt;code&gt;name &amp;lt;email&amp;gt; (website)&lt;/code&gt;    例如:&lt;code&gt;Calvin Meng &amp;lt;rdmclin2@gmail.com&amp;gt; (http://www.mclspace.com)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;PS: 取一个你自己的包名,例如npm-demo-pkg-yourname&lt;/p&gt;
+&lt;h3 id=&quot;添加Entry_Point&quot;&gt;添加Entry Point&lt;/h3&gt;&lt;p&gt;Entry Point是你程序的入口文件，类似于java里的main&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ vim index.js&amp;#10;&amp;#36755;&amp;#20837;:&amp;#10;exports.printMsg = function()&amp;#123;&amp;#10;    console.log(&amp;#34;This message is from npm package demo&amp;#34;);&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h1 id=&quot;发布NPM包&quot;&gt;发布NPM包&lt;/h1&gt;&lt;p&gt;任何一个有package.json文件的目录都可以发布成一个包,name和version为必须，其他为optional&lt;/p&gt;
+&lt;h3 id=&quot;添加用户&quot;&gt;添加用户&lt;/h3&gt;&lt;p&gt;首先你得注册一个账号。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ npm adduser&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;如果你有账号了可以用login登录&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ npm login&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;然后可以在用&lt;code&gt;www.npmjs.org/~username&lt;/code&gt;访问你的信息，也可以通过&lt;code&gt;npm config ls&lt;/code&gt;查看当前用户设置&lt;/p&gt;
+&lt;h3 id=&quot;发布包&quot;&gt;发布包&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ npm publish&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;如果你使用的是cnpm会报错:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;no_perms Private mode enable, only admin can publish this module&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;设置回原来的就好,记得重新adduser&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ npm config set registry http://registry.npmjs.org&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;如果你有一些文件不想上传，可以用&lt;code&gt;.gitignore&lt;/code&gt; 或者 &lt;code&gt;.npmignore&lt;/code&gt;,发布完成后你可以到&lt;code&gt;https://npmjs.com/package/&amp;lt;package&amp;gt;&lt;/code&gt; 查看你的包&lt;/p&gt;
+&lt;h1 id=&quot;更新NPM包&quot;&gt;更新NPM包&lt;/h1&gt;&lt;p&gt;直接&lt;code&gt;npm publish&lt;/code&gt;会出错,因为需要更新版本号。你可以手动更新，也可以使用version命令&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ npm version patch&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;会增加你版本号的最后一位,另外还有minor和major。注意如果你有github库地址，这个命令会给你的github库增加一个release tag。然后再&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ npm publish&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;我们跟着npmjs的视频教程来,您可以直接看视频,下面为简略步骤方便查阅&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.npmjs.com/getting-started/creating-node-modules&quot;&gt;创建Node.js模块&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.npmjs.com/getting-started/publishing-npm-packages&quot;&gt;发布Npm包&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="nodejs" scheme="http://www.mclspace.com/categories/nodejs/"/>
+    
+    
+      <category term="nodejs" scheme="http://www.mclspace.com/tags/nodejs/"/>
+    
+  </entry>
   
   <entry>
     <title>Github 个性卡片</title>
@@ -106,7 +154,7 @@
     <link href="http://www.mclspace.com/2016/04/02/my-front-end-learn-story-set-sail/"/>
     <id>http://www.mclspace.com/2016/04/02/my-front-end-learn-story-set-sail/</id>
     <published>2016-04-02T15:28:44.000Z</published>
-    <updated>2016-05-11T07:01:41.000Z</updated>
+    <updated>2016-05-11T07:03:02.000Z</updated>
     
     <content type="html">&lt;h1 id=&quot;前言&quot;&gt;前言&lt;/h1&gt;&lt;p&gt;这段时间一直在找实习，博客也一直没有更新，一停下来就是一个半月,再拾起也不那么容易。去年6月份我写了一篇文章&lt;a href=&quot;http://mclspace.com/2015/06/26/my-front-end-learn-story-start/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;我的前后端学习之旅 — 开端&lt;/a&gt;，那是我第一次接触到前端开发,所谓初生牛犊不怕虎，再加上JavaScript上手很容易,又有丰富的库支持,看了几本HTML,CSS,JS的书就开始上手项目了。虽然遇到不少问题，但通过社区的帮助以及谷歌总归可以解决，自以为已经掌握前端开发了，然而在最近为实习准备面试的时候才发现要补的很多，参加&lt;a href=&quot;ife.baidu.com&quot;&gt;百度前端技术学院&lt;/a&gt;也让我有机会从基础开始了解和实践前端开发,弥补自己基础的薄弱。&lt;/p&gt;
 &lt;p&gt;在学习的过程中，总会有不同的阶段，我想拿到阿里前端实习offer算是对我之前学习前端的努力的肯定，因此想把这个offer作为在前端学习路上的一个里程碑，代表我正式将大前端作为以后技术路线的方向，转职初级前端魔法师学徒。这次阿里面试一共5面,3轮技术，1轮交叉面，1轮HR面,具体的问题就不讲了，每个人都会不一样，总结一下的话，有以下几点:&lt;/p&gt;
@@ -140,7 +188,7 @@
 &lt;/ul&gt;
 &lt;h1 id=&quot;记录学习过程&quot;&gt;记录学习过程&lt;/h1&gt;&lt;p&gt;将上一阶段未完成的挪到该阶段.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;完成 &lt;a href=&quot;ife.baidu.com&quot;&gt;百度前端技术学院&lt;/a&gt;第一阶段，&lt;a href=&quot;https://htmlpreview.github.io/?https://github.com/rdmclin2/ife_baidu/blob/master/task1_1_6/index.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;代表作&lt;/a&gt;。&lt;/li&gt;
+&lt;li&gt;完成 &lt;a href=&quot;ife.baidu.com&quot;&gt;百度前端技术学院&lt;/a&gt;第一阶段,&lt;a href=&quot;https://htmlpreview.github.io/?https://github.com/rdmclin2/ife_baidu/blob/master/task1_1_6/index.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;代表作&lt;/a&gt;。&lt;/li&gt;
 &lt;li&gt;完成 &lt;a href=&quot;ife.baidu.com&quot;&gt;百度前端技术学院&lt;/a&gt;第二阶段,&lt;a href=&quot;https://htmlpreview.github.io/?https://github.com/rdmclin2/ife_baidu/blob/master/task1_2_22/index.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;代表作&lt;/a&gt;。&lt;/li&gt;
 &lt;li&gt;完成 &lt;a href=&quot;ife.baidu.com&quot;&gt;百度前端技术学院&lt;/a&gt;第三阶段,&lt;a href=&quot;http://mclspace.com/ife_baidu/task47/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;代表作&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;进行 &lt;a href=&quot;ife.baidu.com&quot;&gt;百度前端技术学院&lt;/a&gt;第四阶段&lt;/li&gt;
@@ -1445,142 +1493,6 @@ The popd command takes the last directory you pushed and &quot;pops&quot; it off
       <category term="bash" scheme="http://www.mclspace.com/tags/bash/"/>
     
       <category term="shell" scheme="http://www.mclspace.com/tags/shell/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Restful API浅析 之设计原则与案例修正</title>
-    <link href="http://www.mclspace.com/2015/11/03/restful-note/"/>
-    <id>http://www.mclspace.com/2015/11/03/restful-note/</id>
-    <published>2015-11-02T16:00:00.000Z</published>
-    <updated>2015-11-18T12:53:11.000Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;之前写Restful的服务器端API，写的不好，痛定思痛，决心好好搞懂Restful。在这一篇中我们首先搞懂Rest的含义，然后以我编写的失败的api为例，讲解如何编写出符合Rest风格的API。注意本篇指导原则一节大部分来自阮一峰老师的&lt;a href=&quot;http://www.ruanyifeng.com/blog/2014/05/restful_api.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;RESTful API 设计指南&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h1 id=&quot;Restful浅析&quot;&gt;Restful浅析&lt;/h1&gt;&lt;p&gt;REST是”REpresentational State Transfer”，一种翻译是”表现层状态转移”,首先看看wiki百科的介绍:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;REST - 表征状态转移是Roy Fielding博士在2000年他的博士论文中提出来的一种软件架构风格。 目前在三种主流的Web服务实现方案中，因为REST模式的Web服务与复杂的SOAP和XML-RPC对比来讲明显的更加简洁，越来越多的web服务开始采用REST风格设计和实现。例如，Amazon.com提供接近REST风格的Web服务进行图书查找；雅虎提供的Web服务也是REST风格的。 — wiki&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;从以上的介绍中我们知道REST是一种web软件架构风格，不过我还是不知道REST是个什么鬼，再查查看，有人这么解释REST:&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;- REST &amp;#26159;&amp;#19968;&amp;#22871;&amp;#29992;&amp;#26469;&amp;#21019;&amp;#24314;Web Service&amp;#30340;&amp;#26041;&amp;#27861;&amp;#12290;&amp;#10;- REST&amp;#24335;&amp;#30340;Web Service&amp;#30340;&amp;#20027;&amp;#26088;&amp;#26159;&amp;#35753;&amp;#20107;&amp;#24773;&amp;#23613;&amp;#37327;&amp;#30340;&amp;#31616;&amp;#21333;&amp;#21270;&amp;#12290;&amp;#10;- REST&amp;#24335;&amp;#30340;Web Service&amp;#20351;&amp;#29992;HTTP&amp;#37324;&amp;#30340;&amp;#26041;&amp;#27861;&amp;#65306;GET&amp;#65292; POST&amp;#65292; DELETE&amp;#65292; PUT&amp;#12290;&amp;#20320;&amp;#19981;&amp;#38656;&amp;#35201;&amp;#20351;&amp;#29992;URL&amp;#25110;&amp;#35831;&amp;#27714;&amp;#30340;&amp;#20869;&amp;#23481;&amp;#26469;&amp;#25351;&amp;#23450;&amp;#36825;&amp;#20010;&amp;#26041;&amp;#27861;&amp;#12290;&amp;#10;- REST&amp;#24335;&amp;#30340;Web Service&amp;#20351;&amp;#29992;URL&amp;#26469;&amp;#25351;&amp;#26126;&amp;#20320;&amp;#23558;&amp;#35201;&amp;#25805;&amp;#20316;&amp;#20160;&amp;#20040;&amp;#23545;&amp;#35937;&amp;#12290;&amp;#10;- REST&amp;#24335;&amp;#30340;Web Service&amp;#20351;&amp;#29992;HTTP&amp;#29366;&amp;#24577;&amp;#30721;&amp;#20316;&amp;#20026;&amp;#36820;&amp;#22238;&amp;#20540;&amp;#12290;&amp;#10;- REST&amp;#24335;&amp;#30340;Web Service&amp;#35843;&amp;#29992;&amp;#20135;&amp;#29983;&amp;#30340;HTTP&amp;#35831;&amp;#27714;&amp;#20869;&amp;#23481;&amp;#21482;&amp;#26159;&amp;#29992;&amp;#20110;&amp;#26381;&amp;#21153;&amp;#25968;&amp;#25454;&amp;#8212;&amp;#8212;&amp;#19981;&amp;#26159;&amp;#29992;&amp;#26469;&amp;#25351;&amp;#26126;&amp;#35843;&amp;#29992;&amp;#26041;&amp;#27861;&amp;#65292;&amp;#30446;&amp;#26631;&amp;#23545;&amp;#35937;&amp;#25110;&amp;#36820;&amp;#22238;&amp;#20540;&amp;#30340;&amp;#12290;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;简单来说，REST是所有web应用都应该遵守的架构设计指导原则，每一个URL代表一种资源，客户端通过四个HTTP动词，对服务器端资源进行操作，实现”表现层状态转化”。&lt;/p&gt;
-&lt;h1 id=&quot;设计原则&quot;&gt;设计原则&lt;/h1&gt;&lt;p&gt;本来想写个REST API设计指南的，不过阮一峰老师在14年已经干了&lt;a href=&quot;http://www.ruanyifeng.com/blog/2014/05/restful_api.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这事&lt;/a&gt;，这里我们转载该文章的原则，然后重新修改我们的api。另外一些好的指南:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://bourgeois.me/rest/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Some REST best practices&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://codeplanet.io/principles-good-restful-api-design/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Principles of good RESTful API Design&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;指导原则&quot;&gt;指导原则&lt;/h2&gt;&lt;h3 id=&quot;域名&quot;&gt;域名&lt;/h3&gt;&lt;p&gt;应该尽量将API部署在专用域名之下,如:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;https://api.example.com&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;如果确定API很简单，不会有进一步扩展，可以考虑放在主域名下:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;https://example.org/api/&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h3 id=&quot;版本&quot;&gt;版本&lt;/h3&gt;&lt;p&gt;应该将API的版本号放入URL。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;https://api.example.com/v1/&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h3 id=&quot;路径&quot;&gt;路径&lt;/h3&gt;&lt;p&gt;在RESTful架构中，每个网址代表一种资源（resource），所以网址中不能有动词，只能有名词，而且所用的名词往往与数据库的表格名对应。一般来说，数据库中的表都是同种记录的”集合”（collection），所以API中的名词也应该使用复数。&lt;br&gt;举例来说，有一个API提供动物园（zoo）的信息，还包括各种动物和雇员的信息，则它的路径应该设计成下面这样。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;https://api.example.com/v1/zoos&amp;#10;https://api.example.com/v1/animals&amp;#10;https://api.example.com/v1/employees&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h3 id=&quot;HTTP动词&quot;&gt;HTTP动词&lt;/h3&gt;&lt;p&gt;对于资源的具体操作类型，由HTTP动词表示。&lt;br&gt;常用的HTTP动词有下面五个（括号里是对应的SQL命令）：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;GET&amp;#65288;SELECT&amp;#65289;&amp;#65306;&amp;#20174;&amp;#26381;&amp;#21153;&amp;#22120;&amp;#21462;&amp;#20986;&amp;#36164;&amp;#28304;&amp;#65288;&amp;#19968;&amp;#39033;&amp;#25110;&amp;#22810;&amp;#39033;&amp;#65289;&amp;#12290;&amp;#10;POST&amp;#65288;CREATE&amp;#65289;&amp;#65306;&amp;#22312;&amp;#26381;&amp;#21153;&amp;#22120;&amp;#26032;&amp;#24314;&amp;#19968;&amp;#20010;&amp;#36164;&amp;#28304;&amp;#12290;&amp;#10;PUT&amp;#65288;UPDATE&amp;#65289;&amp;#65306;&amp;#22312;&amp;#26381;&amp;#21153;&amp;#22120;&amp;#26356;&amp;#26032;&amp;#36164;&amp;#28304;&amp;#65288;&amp;#23458;&amp;#25143;&amp;#31471;&amp;#25552;&amp;#20379;&amp;#25913;&amp;#21464;&amp;#21518;&amp;#30340;&amp;#23436;&amp;#25972;&amp;#36164;&amp;#28304;&amp;#65289;&amp;#12290;&amp;#10;PATCH&amp;#65288;UPDATE&amp;#65289;&amp;#65306;&amp;#22312;&amp;#26381;&amp;#21153;&amp;#22120;&amp;#26356;&amp;#26032;&amp;#36164;&amp;#28304;&amp;#65288;&amp;#23458;&amp;#25143;&amp;#31471;&amp;#25552;&amp;#20379;&amp;#25913;&amp;#21464;&amp;#30340;&amp;#23646;&amp;#24615;&amp;#65289;&amp;#12290;&amp;#10;DELETE&amp;#65288;DELETE&amp;#65289;&amp;#65306;&amp;#20174;&amp;#26381;&amp;#21153;&amp;#22120;&amp;#21024;&amp;#38500;&amp;#36164;&amp;#28304;&amp;#12290;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;一些例子：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;GET /zoos&amp;#65306;&amp;#21015;&amp;#20986;&amp;#25152;&amp;#26377;&amp;#21160;&amp;#29289;&amp;#22253;&amp;#10;POST /zoos&amp;#65306;&amp;#26032;&amp;#24314;&amp;#19968;&amp;#20010;&amp;#21160;&amp;#29289;&amp;#22253;&amp;#10;GET /zoos/ID&amp;#65306;&amp;#33719;&amp;#21462;&amp;#26576;&amp;#20010;&amp;#25351;&amp;#23450;&amp;#21160;&amp;#29289;&amp;#22253;&amp;#30340;&amp;#20449;&amp;#24687;&amp;#10;PUT /zoos/ID&amp;#65306;&amp;#26356;&amp;#26032;&amp;#26576;&amp;#20010;&amp;#25351;&amp;#23450;&amp;#21160;&amp;#29289;&amp;#22253;&amp;#30340;&amp;#20449;&amp;#24687;&amp;#65288;&amp;#25552;&amp;#20379;&amp;#35813;&amp;#21160;&amp;#29289;&amp;#22253;&amp;#30340;&amp;#20840;&amp;#37096;&amp;#20449;&amp;#24687;&amp;#65289;&amp;#10;PATCH /zoos/ID&amp;#65306;&amp;#26356;&amp;#26032;&amp;#26576;&amp;#20010;&amp;#25351;&amp;#23450;&amp;#21160;&amp;#29289;&amp;#22253;&amp;#30340;&amp;#20449;&amp;#24687;&amp;#65288;&amp;#25552;&amp;#20379;&amp;#35813;&amp;#21160;&amp;#29289;&amp;#22253;&amp;#30340;&amp;#37096;&amp;#20998;&amp;#20449;&amp;#24687;&amp;#65289;&amp;#10;DELETE /zoos/ID&amp;#65306;&amp;#21024;&amp;#38500;&amp;#26576;&amp;#20010;&amp;#21160;&amp;#29289;&amp;#22253;&amp;#10;GET /zoos/ID/animals&amp;#65306;&amp;#21015;&amp;#20986;&amp;#26576;&amp;#20010;&amp;#25351;&amp;#23450;&amp;#21160;&amp;#29289;&amp;#22253;&amp;#30340;&amp;#25152;&amp;#26377;&amp;#21160;&amp;#29289;&amp;#10;DELETE /zoos/ID/animals/ID&amp;#65306;&amp;#21024;&amp;#38500;&amp;#26576;&amp;#20010;&amp;#25351;&amp;#23450;&amp;#21160;&amp;#29289;&amp;#22253;&amp;#30340;&amp;#25351;&amp;#23450;&amp;#21160;&amp;#29289;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;过滤信息（Filtering）&quot;&gt;过滤信息（Filtering）&lt;/h3&gt;&lt;p&gt;如果记录数量很多，服务器不可能都将它们返回给用户。API应该提供参数，过滤返回结果。&lt;br&gt;下面是一些常见的参数:&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;?limit=10&amp;#65306;&amp;#25351;&amp;#23450;&amp;#36820;&amp;#22238;&amp;#35760;&amp;#24405;&amp;#30340;&amp;#25968;&amp;#37327;&amp;#10;?offset=10&amp;#65306;&amp;#25351;&amp;#23450;&amp;#36820;&amp;#22238;&amp;#35760;&amp;#24405;&amp;#30340;&amp;#24320;&amp;#22987;&amp;#20301;&amp;#32622;&amp;#12290;&amp;#10;?page=2&amp;#38;per_page=100&amp;#65306;&amp;#25351;&amp;#23450;&amp;#31532;&amp;#20960;&amp;#39029;&amp;#65292;&amp;#20197;&amp;#21450;&amp;#27599;&amp;#39029;&amp;#30340;&amp;#35760;&amp;#24405;&amp;#25968;&amp;#12290;&amp;#10;?sortby=name&amp;#38;order=asc&amp;#65306;&amp;#25351;&amp;#23450;&amp;#36820;&amp;#22238;&amp;#32467;&amp;#26524;&amp;#25353;&amp;#29031;&amp;#21738;&amp;#20010;&amp;#23646;&amp;#24615;&amp;#25490;&amp;#24207;&amp;#65292;&amp;#20197;&amp;#21450;&amp;#25490;&amp;#24207;&amp;#39034;&amp;#24207;&amp;#12290;&amp;#10;?animal_type_id=1&amp;#65306;&amp;#25351;&amp;#23450;&amp;#31579;&amp;#36873;&amp;#26465;&amp;#20214;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;参数的设计允许存在冗余，即允许API路径和URL参数偶尔有重复。比如，GET /zoo/ID/animals 与 GET /animals?zoo_id=ID 的含义是相同的。&lt;/p&gt;
-&lt;h3 id=&quot;状态码（Status_Codes）&quot;&gt;状态码（Status Codes）&lt;/h3&gt;&lt;p&gt;服务器向用户返回的状态码和提示信息，常见的有以下一些（方括号中是该状态码对应的HTTP动词）:&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;200 OK - [GET]&amp;#65306;&amp;#26381;&amp;#21153;&amp;#22120;&amp;#25104;&amp;#21151;&amp;#36820;&amp;#22238;&amp;#29992;&amp;#25143;&amp;#35831;&amp;#27714;&amp;#30340;&amp;#25968;&amp;#25454;&amp;#65292;&amp;#35813;&amp;#25805;&amp;#20316;&amp;#26159;&amp;#24130;&amp;#31561;&amp;#30340;&amp;#65288;Idempotent&amp;#65289;&amp;#12290;&amp;#10;201 CREATED - [POST/PUT/PATCH]&amp;#65306;&amp;#29992;&amp;#25143;&amp;#26032;&amp;#24314;&amp;#25110;&amp;#20462;&amp;#25913;&amp;#25968;&amp;#25454;&amp;#25104;&amp;#21151;&amp;#12290;&amp;#10;202 Accepted - [*]&amp;#65306;&amp;#34920;&amp;#31034;&amp;#19968;&amp;#20010;&amp;#35831;&amp;#27714;&amp;#24050;&amp;#32463;&amp;#36827;&amp;#20837;&amp;#21518;&amp;#21488;&amp;#25490;&amp;#38431;&amp;#65288;&amp;#24322;&amp;#27493;&amp;#20219;&amp;#21153;&amp;#65289;&amp;#10;204 NO CONTENT - [DELETE]&amp;#65306;&amp;#29992;&amp;#25143;&amp;#21024;&amp;#38500;&amp;#25968;&amp;#25454;&amp;#25104;&amp;#21151;&amp;#12290;&amp;#10;400 INVALID REQUEST - [POST/PUT/PATCH]&amp;#65306;&amp;#29992;&amp;#25143;&amp;#21457;&amp;#20986;&amp;#30340;&amp;#35831;&amp;#27714;&amp;#26377;&amp;#38169;&amp;#35823;&amp;#65292;&amp;#26381;&amp;#21153;&amp;#22120;&amp;#27809;&amp;#26377;&amp;#36827;&amp;#34892;&amp;#26032;&amp;#24314;&amp;#25110;&amp;#20462;&amp;#25913;&amp;#25968;&amp;#25454;&amp;#30340;&amp;#25805;&amp;#20316;&amp;#65292;&amp;#35813;&amp;#25805;&amp;#20316;&amp;#26159;&amp;#24130;&amp;#31561;&amp;#30340;&amp;#12290;&amp;#10;401 Unauthorized - [*]&amp;#65306;&amp;#34920;&amp;#31034;&amp;#29992;&amp;#25143;&amp;#27809;&amp;#26377;&amp;#26435;&amp;#38480;&amp;#65288;&amp;#20196;&amp;#29260;&amp;#12289;&amp;#29992;&amp;#25143;&amp;#21517;&amp;#12289;&amp;#23494;&amp;#30721;&amp;#38169;&amp;#35823;&amp;#65289;&amp;#12290;&amp;#10;403 Forbidden - [*] &amp;#34920;&amp;#31034;&amp;#29992;&amp;#25143;&amp;#24471;&amp;#21040;&amp;#25480;&amp;#26435;&amp;#65288;&amp;#19982;401&amp;#38169;&amp;#35823;&amp;#30456;&amp;#23545;&amp;#65289;&amp;#65292;&amp;#20294;&amp;#26159;&amp;#35775;&amp;#38382;&amp;#26159;&amp;#34987;&amp;#31105;&amp;#27490;&amp;#30340;&amp;#12290;&amp;#10;404 NOT FOUND - [*]&amp;#65306;&amp;#29992;&amp;#25143;&amp;#21457;&amp;#20986;&amp;#30340;&amp;#35831;&amp;#27714;&amp;#38024;&amp;#23545;&amp;#30340;&amp;#26159;&amp;#19981;&amp;#23384;&amp;#22312;&amp;#30340;&amp;#35760;&amp;#24405;&amp;#65292;&amp;#26381;&amp;#21153;&amp;#22120;&amp;#27809;&amp;#26377;&amp;#36827;&amp;#34892;&amp;#25805;&amp;#20316;&amp;#65292;&amp;#35813;&amp;#25805;&amp;#20316;&amp;#26159;&amp;#24130;&amp;#31561;&amp;#30340;&amp;#12290;&amp;#10;406 Not Acceptable - [GET]&amp;#65306;&amp;#29992;&amp;#25143;&amp;#35831;&amp;#27714;&amp;#30340;&amp;#26684;&amp;#24335;&amp;#19981;&amp;#21487;&amp;#24471;&amp;#65288;&amp;#27604;&amp;#22914;&amp;#29992;&amp;#25143;&amp;#35831;&amp;#27714;JSON&amp;#26684;&amp;#24335;&amp;#65292;&amp;#20294;&amp;#26159;&amp;#21482;&amp;#26377;XML&amp;#26684;&amp;#24335;&amp;#65289;&amp;#12290;&amp;#10;410 Gone -[GET]&amp;#65306;&amp;#29992;&amp;#25143;&amp;#35831;&amp;#27714;&amp;#30340;&amp;#36164;&amp;#28304;&amp;#34987;&amp;#27704;&amp;#20037;&amp;#21024;&amp;#38500;&amp;#65292;&amp;#19988;&amp;#19981;&amp;#20250;&amp;#20877;&amp;#24471;&amp;#21040;&amp;#30340;&amp;#12290;&amp;#10;422 Unprocesable entity - [POST/PUT/PATCH] &amp;#24403;&amp;#21019;&amp;#24314;&amp;#19968;&amp;#20010;&amp;#23545;&amp;#35937;&amp;#26102;&amp;#65292;&amp;#21457;&amp;#29983;&amp;#19968;&amp;#20010;&amp;#39564;&amp;#35777;&amp;#38169;&amp;#35823;&amp;#12290;&amp;#10;500 INTERNAL SERVER ERROR - [*]&amp;#65306;&amp;#26381;&amp;#21153;&amp;#22120;&amp;#21457;&amp;#29983;&amp;#38169;&amp;#35823;&amp;#65292;&amp;#29992;&amp;#25143;&amp;#23558;&amp;#26080;&amp;#27861;&amp;#21028;&amp;#26029;&amp;#21457;&amp;#20986;&amp;#30340;&amp;#35831;&amp;#27714;&amp;#26159;&amp;#21542;&amp;#25104;&amp;#21151;&amp;#12290;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;错误处理（Error_handling）&quot;&gt;错误处理（Error handling）&lt;/h3&gt;&lt;p&gt;如果状态码是4xx，就应该向用户返回出错信息。一般来说，返回的信息中将error作为键名，出错信息作为键值即可。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&amp;#10;    error: &amp;#34;Invalid API key&amp;#34;&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h3 id=&quot;返回结果&quot;&gt;返回结果&lt;/h3&gt;&lt;p&gt;针对不同操作，服务器向用户返回的结果应该符合以下规范。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;GET /collection&amp;#65306;&amp;#36820;&amp;#22238;&amp;#36164;&amp;#28304;&amp;#23545;&amp;#35937;&amp;#30340;&amp;#21015;&amp;#34920;&amp;#65288;&amp;#25968;&amp;#32452;&amp;#65289;&amp;#10;GET /collection/resource&amp;#65306;&amp;#36820;&amp;#22238;&amp;#21333;&amp;#20010;&amp;#36164;&amp;#28304;&amp;#23545;&amp;#35937;&amp;#10;POST /collection&amp;#65306;&amp;#36820;&amp;#22238;&amp;#26032;&amp;#29983;&amp;#25104;&amp;#30340;&amp;#36164;&amp;#28304;&amp;#23545;&amp;#35937;&amp;#10;PUT /collection/resource&amp;#65306;&amp;#36820;&amp;#22238;&amp;#23436;&amp;#25972;&amp;#30340;&amp;#36164;&amp;#28304;&amp;#23545;&amp;#35937;&amp;#10;PATCH /collection/resource&amp;#65306;&amp;#36820;&amp;#22238;&amp;#23436;&amp;#25972;&amp;#30340;&amp;#36164;&amp;#28304;&amp;#23545;&amp;#35937;&amp;#10;DELETE /collection/resource&amp;#65306;&amp;#36820;&amp;#22238;&amp;#19968;&amp;#20010;&amp;#31354;&amp;#25991;&amp;#26723;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Hypermedia_API&quot;&gt;Hypermedia API&lt;/h3&gt;&lt;p&gt;RESTful API最好做到Hypermedia，即返回结果中提供链接，连向其他API方法，使得用户不查文档，也知道下一步应该做什么。&lt;br&gt;比如，当用户向api.example.com的根目录发出请求，会得到这样一个文档。&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&amp;#34;link&amp;#34;: &amp;#123;&amp;#10;  &amp;#34;rel&amp;#34;:   &amp;#34;collection https://www.example.com/zoos&amp;#34;,&amp;#10;  &amp;#34;href&amp;#34;:  &amp;#34;https://api.example.com/zoos&amp;#34;,&amp;#10;  &amp;#34;title&amp;#34;: &amp;#34;List of zoos&amp;#34;,&amp;#10;  &amp;#34;type&amp;#34;:  &amp;#34;application/vnd.yourformat+json&amp;#34;&amp;#10;&amp;#125;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;上面代码表示，文档中有一个link属性，用户读取这个属性就知道下一步该调用什么API了。rel表示这个API与当前网址的关系（collection关系，并给出该collection的网址），href表示API的路径，title表示API的标题，type表示返回类型。&lt;br&gt;Hypermedia API的设计被称为HATEOAS。Github的API就是这种设计，访问api.github.com会得到一个所有可用API的网址列表。&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&amp;#10;  &amp;#34;current_user_url&amp;#34;: &amp;#34;https://api.github.com/user&amp;#34;,&amp;#10;  &amp;#34;authorizations_url&amp;#34;: &amp;#34;https://api.github.com/authorizations&amp;#34;,&amp;#10;  // ...&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;从上面可以看到，如果想获取当前用户的信息，应该去访问api.github.com/user，然后就得到了下面结果。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&amp;#10;  &amp;#34;message&amp;#34;: &amp;#34;Requires authentication&amp;#34;,&amp;#10;  &amp;#34;documentation_url&amp;#34;: &amp;#34;https://developer.github.com/v3&amp;#34;&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;上面代码表示，服务器给出了提示信息，以及文档的网址。&lt;/p&gt;
-&lt;h3 id=&quot;其他&quot;&gt;其他&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;API的身份认证应该使用OAuth 2.0框架。&lt;/li&gt;
-&lt;li&gt;服务器返回的数据格式，应该尽量使用JSON，避免使用XML。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;案例修正&quot;&gt;案例修正&lt;/h1&gt;&lt;p&gt;下面我们使用上面的准则进行api的整理修改，注意我们目前没有做到Hypermedia&lt;/p&gt;
-&lt;h2 id=&quot;用户API_:_USERS&quot;&gt;用户API : USERS&lt;/h2&gt;&lt;p&gt;修改前我们的api是这样的：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;/api/v1/user/:user_id&lt;/code&gt; GET 获取用户信息&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/api/v1/auth/register&lt;/code&gt; POST 用户注册&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/api/v1/auth/login&lt;/code&gt; POST 用户登录&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/api/v1/auth/confirmpw&lt;/code&gt; POST 确认密码&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/api/v1/auth/changepw&lt;/code&gt; POST 修改密码&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;这里面的问题有:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;资源没有使用复数形式，如user&lt;/li&gt;
-&lt;li&gt;:user_id和users冗余，使用:id即可&lt;/li&gt;
-&lt;li&gt;存在动词如register,login等&lt;/li&gt;
-&lt;li&gt;confirmpw和changepw冗余,应该在改变密码的时候对密码进行确认。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;由于本项目的用户数据从后台导入，因此删除register功能，另外因为此项目为隐私项目进行授权后所有的请求需要附带token这里省略access_token参数。这里省略&lt;code&gt;/api/v1&lt;/code&gt;的前缀: &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;/auth/local&lt;/code&gt; GET 验证用户名密码，并重新生成token，返回基本的用户信息&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/users/changePassword&lt;/code&gt; POST 重置用户密码，重新生成盐值和hash存储到数据库中，返回修改后的用户基本信息(这个暂时不知道怎么改,是使用users UPDATE方法，或者将改变密码变成一个名词的服务)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/users/details&lt;/code&gt; GET 获取用户详细信息,如最近的主题以及最近的回复&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;帖子API_:_POSTS&quot;&gt;帖子API : POSTS&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;/api/v1/recent&lt;/code&gt; GET 获取最近帖子&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/api/v1/posts?limit=xx&amp;amp;page=xx&lt;/code&gt; GET 获取帖子列表&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/api/v1/post/:post_id&lt;/code&gt; GET 获取某个帖子内容&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/api/v1/post&lt;/code&gt; POST 新建一个帖子&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/api/v1/post/:post_id/likes&lt;/code&gt; POST 为某个帖子点赞&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/api/v1/post/:id&lt;/code&gt; PUT 更新某个帖子&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/api/v1/post/:id&lt;/code&gt; DELETE 删除某个帖子&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;诊断&quot;&gt;诊断&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;资源没有使用复数形式&lt;/li&gt;
-&lt;li&gt;post_id冗余&lt;/li&gt;
-&lt;li&gt;recent的api和获取帖子列表冗余，设置limit为某值,page为1即可获得最近的帖子&lt;/li&gt;
-&lt;li&gt;点赞功能并不在需求里，这里删除掉&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;修改后&quot;&gt;修改后&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;/posts?limit=xx&amp;amp;page=xx&lt;/code&gt; GET 获取帖子列表&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/posts/:id&lt;/code&gt; GET 获取某个帖子的具体内容&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/posts&lt;/code&gt; POST 创建帖子，返回帖子基本内容。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/posts/:id&lt;/code&gt; DELETE 删除帖子，返回空文档。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;回复API_：_REPLYS&quot;&gt;回复API ： REPLYS&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;/api/v1/reply&lt;/code&gt; POST 创建一个回复&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/api/v1/reply/:reply_id&lt;/code&gt; DELETE 删除某个回复&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;诊断-1&quot;&gt;诊断&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;资源没有使用复数形式&lt;/li&gt;
-&lt;li&gt;reply_id冗余&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;修改后-1&quot;&gt;修改后&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;replys&lt;/code&gt; POST 创建一个回复，返回该回复的信息&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;replys/:id&lt;/code&gt; DELETE 删除某个回复,返回空文档&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;其他API&quot;&gt;其他API&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;/api/v1/upload&lt;/code&gt; 上传图片到服务器,返回图片的路径&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;POST /api/v1/upload?access_token=89f178a4-9896-4ad7-98cc-251f4bbf1e4c 200 49.242 ms - 11&amp;#10;&amp;#123;&amp;#10;    &amp;#34;urls&amp;#34;: [&amp;#10;        &amp;#34;public/uploads/24ca7a0c1770807e6af978d7efbd7b82&amp;#34;,&amp;#10;        &amp;#34;public/uploads/a2c7c306cd2e479a0427dbc3161462e7&amp;#34;,&amp;#10;        &amp;#34;public/uploads/a8288faddc80eaed5d9d02d95e305fbb&amp;#34;&amp;#10;    ]&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h1 id=&quot;学习资料&quot;&gt;学习资料&lt;/h1&gt;&lt;p&gt;查看以下几篇文章深入地了解REST：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.ruanyifeng.com/blog/2011/09/restful.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;理解RESTful架构&lt;/a&gt; - 阮一峰老师11年的文章,浅显易懂&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.infoq.com/cn/articles/understanding-restful-style&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;理解本真的REST架构风格&lt;/a&gt;  -infoq上一篇翻译的文章，非常细致地解释了REST&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://martinfowler.com/articles/richardsonMaturityModel.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Richardson Maturity Model steps toward the glory of REST&lt;/a&gt; - Martin fowler解释Richardson的REST3层成熟度模型&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://hippoom.github.io/blogs/value-of-hypermedia-from-client-perspective.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;从消费者的角度评估REST的价值&lt;/a&gt; -以举例的方式解释Richardson成熟度模型的第三个级别：Hypermedia，很有意思的一篇文章。&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://arccode.net/2015/04/18/前后端完全分离之API设计/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;前后端完全分离之API设计&lt;/a&gt; 从业务角度出发&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;也许最快的学习方式是学习业界成熟的REST api设计,可以看看github是如何设计的:&lt;a href=&quot;https://developer.github.com/v3/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github API&lt;/a&gt;,另外也许你想看看提出REST的&lt;a href=&quot;http://www.ics.uci.edu/~fielding/pubs/webarch_icse2000.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;那篇论文&lt;/a&gt;，TL;DR&lt;/p&gt;
-&lt;!--`/posts/:id/likes` POST 为某个帖子点赞，返回该帖子的点赞列表
-
-- `/posts/:id/likes` DELETE 取消对某个帖子点赞,返回空文档--&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;之前写Restful的服务器端API，写的不好，痛定思痛，决心好好搞懂Restful。在这一篇中我们首先搞懂Rest的含义，然后以我编写的失败的api为例，讲解如何编写出符合Rest风格的API。注意本篇指导原则一节大部分来自阮一峰老师的&lt;a href=&quot;http://www.ruanyifeng.com/blog/2014/05/restful_api.html&quot;&gt;RESTful API 设计指南&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="web" scheme="http://www.mclspace.com/categories/web/"/>
-    
-    
-      <category term="rest" scheme="http://www.mclspace.com/tags/rest/"/>
     
   </entry>
   
