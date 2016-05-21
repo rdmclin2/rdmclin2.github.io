@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.mclspace.com/"/>
-  <updated>2016-05-17T04:11:38.000Z</updated>
+  <updated>2016-05-21T07:19:45.000Z</updated>
   <id>http://www.mclspace.com/</id>
   
   <author>
@@ -14,6 +14,69 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>基于ES6的Nodejs模块初始环境配置</title>
+    <link href="http://www.mclspace.com/2016/05/21/node-es6-module-template/"/>
+    <id>http://www.mclspace.com/2016/05/21/node-es6-module-template/</id>
+    <published>2016-05-21T07:18:42.000Z</published>
+    <updated>2016-05-21T07:19:45.000Z</updated>
+    
+    <content type="html">&lt;p&gt;本文主要记录基于ES6的Nodejs模块项目初始化的过程,主要参考&lt;a href=&quot;http://morning.work/page/2015-11/es6-es7-develop-npm-module-using-babel.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;ES2015 &amp;amp; babel 实战：开发 NPM 模块&lt;/a&gt;一文，原文比我写的详细的多，这里简略记录一下自己的配置过程，方便其他项目复制配置。项目文件详见&lt;a href=&quot;https://github.com/rdmclin2/node-es6-template&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;node-es6-template&lt;/a&gt;&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt; &lt;/p&gt;
+&lt;p&gt;本文主要配置项为:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用Babel为项目提供使用ES6的能力&lt;/li&gt;
+&lt;li&gt;接入babel-preset-stage-3 以支持使用async/await&lt;/li&gt;
+&lt;li&gt;加入Eslint以控制代码风格和质量&lt;/li&gt;
+&lt;li&gt;加入mocha配置单元测试的es6环境&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;初始化项目&quot;&gt;初始化项目&lt;/h1&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ mkdir node-es6-module-template &amp;#38;&amp;#38; cd node-es6-module-template &amp;#38;&amp;#38; git init &amp;#38;&amp;#38; npm init&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h1 id=&quot;安装babel&quot;&gt;安装babel&lt;/h1&gt;&lt;p&gt;为了能使用es2015以及async和await,新建文件&lt;code&gt;.babelrc&lt;/code&gt;:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&amp;#10;  &amp;#34;presets&amp;#34;: [&amp;#34;es2015&amp;#34;, &amp;#34;stage-3&amp;#34;]&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;安装babel插件:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ npm i babel-preset-es2015 babel-preset-stage-3 --save-dev&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;安装polyfill:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ npm i babel-polyfill --save-dev&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;要让babel正确编译需要在入口文件顶部添加&lt;code&gt;require(&amp;#39;babel-polyfill&amp;#39;);&lt;/code&gt;&lt;/p&gt;
+&lt;h1 id=&quot;配置Eslint&quot;&gt;配置Eslint&lt;/h1&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ npm install --save-dev eslint&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;然后配置&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ eslint --init&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;选择airbnb,json即可,为了让eslint能够识别es6的特性我们安装&lt;code&gt;babel-eslint&lt;/code&gt;模块:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ npm install babel-eslint@6 --save-dev&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;修改.eslintrc&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&amp;#10;    &amp;#34;extends&amp;#34;: &amp;#34;airbnb&amp;#34;,&amp;#10;    &amp;#34;parser&amp;#34;: &amp;#34;babel-eslint&amp;#34;,&amp;#10;    &amp;#34;parserOptions&amp;#34;: &amp;#123;&amp;#10;         &amp;#34;sourceType&amp;#34;: &amp;#34;module&amp;#34;&amp;#10;    &amp;#125;,&amp;#10;    &amp;#34;env&amp;#34;: &amp;#123;&amp;#10;        &amp;#34;mocha&amp;#34;: true,&amp;#10;        &amp;#34;node&amp;#34;: true&amp;#10;    &amp;#125;,&amp;#10;    &amp;#34;plugins&amp;#34;: [&amp;#10;        &amp;#34;react&amp;#34;&amp;#10;    ],&amp;#10;    &amp;#34;rules&amp;#34;: &amp;#123;&amp;#10;        &amp;#34;strict&amp;#34;: 0,&amp;#10;        &amp;#34;semi&amp;#34;: [2, &amp;#34;never&amp;#34;],&amp;#10;        &amp;#34;arrow-body-style&amp;#34;: [&amp;#34;off&amp;#34;, &amp;#34;always&amp;#34;],&amp;#10;        &amp;#34;no-console&amp;#34;: 0,&amp;#10;        &amp;#34;eol-last&amp;#34;: &amp;#34;off&amp;#34;,&amp;#10;        &amp;#34;quotes&amp;#34;: [2, &amp;#34;single&amp;#34;, &amp;#123;&amp;#34;avoidEscape&amp;#34;: true, &amp;#34;allowTemplateLiterals&amp;#34;: true&amp;#125;]&amp;#10;        &amp;#125;&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h1 id=&quot;基本文件结构&quot;&gt;基本文件结构&lt;/h1&gt;&lt;p&gt;新建&lt;code&gt;src&lt;/code&gt;和&lt;code&gt;test&lt;/code&gt;文件夹&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ mkdir src test&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;在&lt;code&gt;src&lt;/code&gt;中新建&lt;code&gt;index.js&lt;/code&gt;文件&lt;br&gt;导出一个示例函数&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;export default function foo() &amp;#123;&amp;#10;  return &amp;#39;foo&amp;#39;&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;可以用&lt;code&gt;babel-node index.js&lt;/code&gt;进行测试&lt;/p&gt;
+&lt;h1 id=&quot;单元测试&quot;&gt;单元测试&lt;/h1&gt;&lt;p&gt;为了让nodejs的require可以载入es6模块，需要&lt;code&gt;babel-core&lt;/code&gt;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ npm i babel-core mocha --save-dev&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;修改package.json的test命令&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&amp;#10;  &amp;#34;scripts&amp;#34;: &amp;#123;&amp;#10;    &amp;#34;test&amp;#34;: &amp;#34;mocha --compilers js:babel-core/register&amp;#34;&amp;#10;  &amp;#125;&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;在test文件夹中新建&lt;code&gt;test.js&lt;/code&gt;文件,写入如下：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;import foo from &amp;#39;../src&amp;#39;&amp;#10;import assert from &amp;#39;assert&amp;#39;&amp;#10;&amp;#10;describe(&amp;#39;node-es6-template&amp;#39;, () =&amp;#62; &amp;#123;&amp;#10;  it(&amp;#39;should return foo&amp;#39;, done =&amp;#62; &amp;#123;&amp;#10;    const output = foo()&amp;#10;    assert(output, &amp;#39;foo&amp;#39;)&amp;#10;    done()&amp;#10;  &amp;#125;)&amp;#10;&amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;使用&lt;code&gt;npm test&lt;/code&gt;进行测试&lt;/p&gt;
+&lt;h1 id=&quot;编译&quot;&gt;编译&lt;/h1&gt;&lt;p&gt;在&lt;code&gt;package.json&lt;/code&gt;中增加compile命令&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&amp;#10;  &amp;#34;scripts&amp;#34;: &amp;#123;&amp;#10;    &amp;#34;compile&amp;#34;: &amp;#34;babel -d lib/ src/&amp;#34;&amp;#10;  &amp;#125;&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;新建入口文件index.js&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;require(&amp;#39;babel-polyfill&amp;#39;);&amp;#10;module.exports = require(&amp;#39;./lib&amp;#39;).default;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;为了让我们能够测试转换后的lib中的模块, 修改test.js&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;import foo from &amp;#39;../src&amp;#39;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;为&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;import foo from &amp;#39;../&amp;#39;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;编辑package.json文件，将test命令改为先执行compile编译代码后再执行mocha测试&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&amp;#10;  &amp;#34;scripts&amp;#34;: &amp;#123;&amp;#10;    &amp;#34;test&amp;#34;: &amp;#34;npm run compile &amp;#38;&amp;#38; mocha --compilers js:babel-core/register&amp;#34;&amp;#10;  &amp;#125;&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;可以用&lt;code&gt;$ npm test&lt;/code&gt;测试&lt;/p&gt;
+&lt;h1 id=&quot;发布&quot;&gt;发布&lt;/h1&gt;&lt;p&gt;添加.gitignore文件&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;node_modules&amp;#10;lib&amp;#10;logs&amp;#10;*.log&amp;#10;npm-debug.log*&amp;#10;coverage&amp;#10;.DS_Store&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;添加.npmignore取消源文件&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;src&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;在package.json设置中设置prepublish让其在发布前自动执行编译&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&amp;#10;  &amp;#34;scripts&amp;#34;: &amp;#123;&amp;#10;    &amp;#34;prepublish&amp;#34;: &amp;#34;npm run compile&amp;#34;&amp;#10;  &amp;#125;&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h1 id=&quot;善后&quot;&gt;善后&lt;/h1&gt;&lt;p&gt;为了开发环境一致在本地安装mocha和babel&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ npm i babel-cli mocha --save-dev&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;更改package.json中的compile和test命令&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&amp;#10;  &amp;#34;scripts&amp;#34;: &amp;#123;&amp;#10;    &amp;#34;compile&amp;#34;: &amp;#34;./node_modules/.bin/babel -d lib/ src/&amp;#34;,&amp;#10;    &amp;#34;test&amp;#34;: &amp;#34;npm run compile &amp;#38;&amp;#38; ./node_modules/.bin/mocha --compilers js:babel-core/register&amp;#34;&amp;#10;  &amp;#125;&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;可以用&lt;code&gt;npm test&lt;/code&gt;进行测试,使用&lt;code&gt;npm publish&lt;/code&gt;进行发布&lt;/p&gt;
+&lt;h1 id=&quot;参考资料&quot;&gt;参考资料&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://morning.work/page/2015-11/es6-es7-develop-npm-module-using-babel.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;ES2015 &amp;amp; babel 实战：开发 NPM 模块&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://eslint.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;ESLint官网&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/babel/babel-eslint&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;babel-eslint&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文主要记录基于ES6的Nodejs模块项目初始化的过程,主要参考&lt;a href=&quot;http://morning.work/page/2015-11/es6-es7-develop-npm-module-using-babel.html&quot;&gt;ES2015 &amp;amp; babel 实战：开发 NPM 模块&lt;/a&gt;一文，原文比我写的详细的多，这里简略记录一下自己的配置过程，方便其他项目复制配置。项目文件详见&lt;a href=&quot;https://github.com/rdmclin2/node-es6-template&quot;&gt;node-es6-template&lt;/a&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="nodejs" scheme="http://www.mclspace.com/categories/nodejs/"/>
+    
+    
+      <category term="nodejs" scheme="http://www.mclspace.com/tags/nodejs/"/>
+    
+  </entry>
   
   <entry>
     <title>创建并发布Node.js模块</title>
@@ -154,7 +217,7 @@
     <link href="http://www.mclspace.com/2016/04/02/my-front-end-learn-story-set-sail/"/>
     <id>http://www.mclspace.com/2016/04/02/my-front-end-learn-story-set-sail/</id>
     <published>2016-04-02T15:28:44.000Z</published>
-    <updated>2016-05-11T07:03:02.000Z</updated>
+    <updated>2016-05-18T13:27:19.000Z</updated>
     
     <content type="html">&lt;h1 id=&quot;前言&quot;&gt;前言&lt;/h1&gt;&lt;p&gt;这段时间一直在找实习，博客也一直没有更新，一停下来就是一个半月,再拾起也不那么容易。去年6月份我写了一篇文章&lt;a href=&quot;http://mclspace.com/2015/06/26/my-front-end-learn-story-start/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;我的前后端学习之旅 — 开端&lt;/a&gt;，那是我第一次接触到前端开发,所谓初生牛犊不怕虎，再加上JavaScript上手很容易,又有丰富的库支持,看了几本HTML,CSS,JS的书就开始上手项目了。虽然遇到不少问题，但通过社区的帮助以及谷歌总归可以解决，自以为已经掌握前端开发了，然而在最近为实习准备面试的时候才发现要补的很多，参加&lt;a href=&quot;ife.baidu.com&quot;&gt;百度前端技术学院&lt;/a&gt;也让我有机会从基础开始了解和实践前端开发,弥补自己基础的薄弱。&lt;/p&gt;
 &lt;p&gt;在学习的过程中，总会有不同的阶段，我想拿到阿里前端实习offer算是对我之前学习前端的努力的肯定，因此想把这个offer作为在前端学习路上的一个里程碑，代表我正式将大前端作为以后技术路线的方向，转职初级前端魔法师学徒。这次阿里面试一共5面,3轮技术，1轮交叉面，1轮HR面,具体的问题就不讲了，每个人都会不一样，总结一下的话，有以下几点:&lt;/p&gt;
@@ -194,6 +257,7 @@
 &lt;li&gt;进行 &lt;a href=&quot;ife.baidu.com&quot;&gt;百度前端技术学院&lt;/a&gt;第四阶段&lt;/li&gt;
 &lt;li&gt;阅读 《JavaScript高级程序设计》中…&lt;/li&gt;
 &lt;li&gt;阅读 《CSS设计指南》中…&lt;/li&gt;
+&lt;li&gt;学习Webpack的使用,&lt;a href=&quot;http://zhaoda.net/webpack-handbook&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Webpack 中文指南&lt;/a&gt;,&lt;a href=&quot;https://segmentfault.com/a/1190000002551952&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Webpack 入门指迷&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1 id=&quot;待学习的库&quot;&gt;待学习的库&lt;/h1&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/mbostock/d3&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;d3.js&lt;/a&gt;, &lt;a href=&quot;http://www.ourd3js.com/wordpress/?p=396&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;教程&lt;/a&gt;&lt;/li&gt;
@@ -1286,213 +1350,6 @@ http://www.iqiyi.com/v_19rro04pmg.html?share_sTime=0-share_eTime=259-src=sharemo
       <category term="api" scheme="http://www.mclspace.com/tags/api/"/>
     
       <category term="web" scheme="http://www.mclspace.com/tags/web/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Bash 学习笔记</title>
-    <link href="http://www.mclspace.com/2015/11/14/bash-note/"/>
-    <id>http://www.mclspace.com/2015/11/14/bash-note/</id>
-    <published>2015-11-13T16:21:11.000Z</published>
-    <updated>2016-02-14T08:11:20.000Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;本篇为学习bash命令时候的学习笔记，记录常用的bash命令和关于bash的常识 &lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h2 id=&quot;常识&quot;&gt;常识&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;kengen 的缩写是Key Generator, 所以读的时候是key gen（坚),不要问我是怎么知道的！&lt;/li&gt;
-&lt;li&gt;cd的含义是“change directory”，它会改变当前目录到你指定的目录。&lt;em&gt;如果你不指定，则会返回你的 home folder&lt;/em&gt;。&lt;/li&gt;
-&lt;li&gt;mac中系统卷是由开始的一个正斜杠(/)表示的,目录分隔符也是正斜杠(/),如何分辨正斜杠和反斜杠？向前倾的是正斜杠，向后倾的是反斜杠，除法用正斜杠表示&lt;/li&gt;
-&lt;li&gt;~是你的用户目录&lt;/li&gt;
-&lt;li&gt;如果由于你忘了使用sudo而导致命令行返回一个错误，只需输入sudo !!就可以用sudo来执行上一条指令&lt;/li&gt;
-&lt;li&gt;sudo -s 临时切换整个命令行 shell 来取得 root 级别的访问权限&lt;/li&gt;
-&lt;li&gt;输入 open . 可以用finder打开当前位置&lt;/li&gt;
-&lt;li&gt;输入&lt;code&gt;clear&lt;/code&gt;或’ctrl’+ ‘l’ 清屏&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;$_ Gives the last argument to the previous command. 表示歉意个指令的最后一个参数，所以我们创建文件并cd该文件可以写成&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;mkdir ~/test &amp;#38;&amp;#38; cd $_&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;在apt-get install 后加上-y参数可以防止终端询问你是否允许&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;用wget＋下载链接 下载文件&lt;/li&gt;
-&lt;li&gt;ssh user@hostname,例如mcl@114.212.87.56 进行ssh远程登录&lt;/li&gt;
-&lt;li&gt;whoami 查看当前系统的用户名&lt;/li&gt;
-&lt;li&gt;who 可以查看当前登录的用户&lt;/li&gt;
-&lt;li&gt;wc 可以统计数目,如: &lt;code&gt;who | wc -l&lt;/code&gt; ，显示当前登录的用户的数量&lt;/li&gt;
-&lt;li&gt;为什么zsh中没换行会出百分号？zsh里会有%，bash里不会有，因为输出的结果没有换行，在bash里命令提示符会直接跟在输出的结果后面也就是[]$…这种效果，而zsh里强制换行了，怕你自己不知道其实你没换行，就加了%&lt;/li&gt;
-&lt;li&gt;执行一个脚本时，会先开启一个子shell环境（不知道执行其它程序是不是这样），然后将父shell中的所有系统环境变量复制过来，这个脚本中的语句就在子shell中执行。（也就是说父shell的环境变量在子shell中可以调用，但反过来就不行，如果在子 shell中定义了环境变量，只对该shell或者它的子shell有效，当该子shell结束时，也可以理解为脚本执行完时，变量消失。） &lt;strong&gt;因此如果想要在当前shell中设置环境变量需要用source命令而不是sh,source会在当前shell中执行&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;du -sh 文件或目录名 可以插卡磁盘用量&lt;/li&gt;
-&lt;li&gt;ps -A 显示所有进程 -a显示终端中的所有进程 配合grep可以搜索某一进程&lt;/li&gt;
-&lt;li&gt;top 可以查看动态进程&lt;/li&gt;
-&lt;li&gt;lsof -i :8080 查看某一端口的占用情况&lt;/li&gt;
-&lt;/ul&gt;
-&lt;!-- ## [learn bash the hard way](http://cli.learncodethehardway.org/)
-- hostname 显示本机的网络名
-- pushd push directory
-&gt; $ push一个文件路径,左边是栈顶,如果只输入pushd会在你的当前目录和你pushd的上个目录切换
-The pushd command takes your current directory and &quot;pushes&quot; it into a list for later, then it changes to another directory. It&#39;s like saying, &quot;Save where I am, then go here.&quot;
-
-- popd pop directory
-&gt; $ pop刚刚输入的文件路径
-The popd command takes the last directory you pushed and &quot;pops&quot; it off, taking you back there.
-
-- xargs execute arguments
-- grep find things inside files
-- apropos find what man page is appropriate
-- env look at your environment
-- echo print some arguments
-- export export/set a new environment variable
-- exit exit the shell
-- chmod change permission modifiers
-- chown change ownership
-- touch 创建新文件 --&gt;
-&lt;h2 id=&quot;管道和重定向&quot;&gt;管道和重定向&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;| 如 &lt;code&gt;cat ex12.txt ex13.txt | less&lt;/code&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;将前一个命令(|之前)的输出作为下一个命令的输入，如上面的命令将ex12.txt和ex13.txt文件的内容合起来作为less的输入&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&amp;lt; 如 &lt;code&gt;cat &amp;lt; ex13.txt&lt;/code&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;将右边文件作为输入给左边的命令&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;blockquote&gt;
-&lt;p&gt;如 &lt;code&gt;cat ex13.txt &amp;gt; ex15.txt&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;命令行&quot;&gt;命令行&lt;/h2&gt;&lt;p&gt;纪录mac命令行使用过程中的经验技巧&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;&quot;&gt;mac terminal 入门教程&lt;/a&gt;,这篇文章对入门很有帮助&lt;/li&gt;
-&lt;li&gt;如果目录中有特殊字符（空格，括号，引号，[]，!，$，&amp;amp;，*，;，|，\），那么直接输入空格会造成系统识别困难，必须使用特殊的语法来表示这些字符。例如上例中，空格前添加反斜杠“\”（back slash）即可：&lt;code&gt;cd Punlic/Drop\ Box/&lt;/code&gt;。除了反斜杠，也可以用引号的方法：cd “Public/Drop Box”。&lt;/li&gt;
-&lt;li&gt;ls &lt;code&gt;-a&lt;/code&gt;选项显示以.开头的文件,即显示隐藏文件。&lt;code&gt;-A&lt;/code&gt;选项显示除了.和..以外的其他文件。&lt;/li&gt;
-&lt;li&gt;远程文件复制 scp&lt;/li&gt;
-&lt;li&gt;将本地文件上传到服务器上 如 &lt;code&gt;scp -P 2222 /home/lnmp0.4.tar.gz root@www.vpser.net:/root/lnmp0.4.tar.gz&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;获取远程服务器上的文件 如 &lt;code&gt;scp -P 2222 root@www.vpser.net:/root/lnmp0.4.tar.gz /home/lnmp0.4.tar.gz&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;检视文件和文件夹&quot;&gt;检视文件和文件夹&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;code&gt;cat&lt;/code&gt; 如 &lt;code&gt;cat test.file&lt;/code&gt; &lt;code&gt;cat test1.txt &amp;gt;&amp;gt; test2.txt&lt;/code&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;$ concatenate 按顺序读取文件并输出到 Terminal 窗口,&lt;code&gt;cat&lt;/code&gt;命令也可以用&lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt;来增加文本文件的内容,例如命令&lt;code&gt;cat ../textOne.txt &amp;gt;&amp;gt; textTwo.txt&lt;/code&gt;会把 textOne.txt 的内容添加到 textTwo.txt 的结尾&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;‘less’ 如 ‘less test.file’&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;$ 适合用来查看长文本文件,和用man时候一样，打开了一个查看器,用 v 使用&lt;code&gt;vi&lt;/code&gt;编辑器&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;‘more’ 如 ‘more test.file’&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;$ 和less一样，不过让画面在显示满一页时暂停，此时可按空格健继续显示下一个画面，或按Q键停止显示。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;‘which’ 如 ‘which man’&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;$ 这个命令会定位某个命令的文件路径,which后接某个命令&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;‘head’ 如 ‘head -n 50’&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;$ 显示&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;‘file’ 如 ‘file test.png’&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;$ 这个命令会尝试根据文件的内容输出文件类型。如果一个文件缺失了扩展名，那么这个命令可能会非常有用,语法为file后接文件路径，例如图片还会给出尺寸，颜色等数值&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;通配符 星号（＊，Asterisk）如&lt;code&gt;*.tiff&lt;/code&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;$ ——代表任何长度的任何字符。例如&lt;code&gt;*.tiff&lt;/code&gt;代表所有格式为tiff的文件。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;通配符 问号（?，Question mark）如 &lt;code&gt;b?ok&lt;/code&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;$ ——代表任何单个字符。例如&lt;code&gt;b?ok&lt;/code&gt;匹配 book 但是不匹配 brook。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;通配符 方括号（[]，Square brackets) 如&lt;code&gt;[Dd]ocument&lt;/code&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;$ ——定义一定范围的字符，例如&lt;code&gt;[Dd]ocument&lt;/code&gt;匹配 Document 以及 document；&lt;code&gt;doc[1-9]&lt;/code&gt;匹配doc1, doc2, …, doc9。实验下来似乎是一位一位的匹配&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;code&gt;-r&lt;/code&gt;或者&lt;code&gt;-R&lt;/code&gt;选项,如 &lt;code&gt;ls -R Desktop&lt;/code&gt; &lt;code&gt;rm -r test&lt;/code&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;$ 递归，递归命令可以允许命令不执行于一个特定文件，而是指定的路径下的所有文件，大多数命令包含一个&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;编辑文件和文件夹&quot;&gt;编辑文件和文件夹&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;code&gt;mkdir&lt;/code&gt; 如 &lt;code&gt;mkdir test&lt;/code&gt; &lt;code&gt;mkdir -p test/test1/test2&lt;/code&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;$ 创建目录，可以用&lt;code&gt;-p&lt;/code&gt;选项，来一起创建路径中不存在的文件夹（这样你就不用挨层创建了）&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;code&gt;cp&lt;/code&gt; 如&lt;code&gt;cp test1.txt test2.txt&lt;/code&gt; &lt;code&gt;cp test1.txt test/&lt;/code&gt; &lt;code&gt;cp test1.txt test/test2.txt&lt;/code&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;$ 用来把文件从一处复制到另一处,语法为cp后接原始路径，后接目标路径。如果你想复制整个文件夹和所有内容，需要添加&lt;code&gt;-R&lt;/code&gt;选项&lt;br&gt;如果指定的目标路径不含文件名，则 cp 命令会按原名复制,如果指定的目标路径包括文件名，则会复制为你指定的文件名。如果仅指定新文件名，则会在原处以新名称创建文件副本。&lt;em&gt;注意，系统会自动替换同名文件而不出现提示。&lt;/em&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;code&gt;mv&lt;/code&gt; 如’mv test1.txt test2.txt’&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;$ 用来移动文件,语法为mv后接原路径，后接新路径,没错，如果仅指定新文件名，它就成了重命名命令,路径规则和cp同&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;code&gt;rm&lt;/code&gt; 如&lt;code&gt;rm test1.txt&lt;/code&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;$ 永久删除文件，语法为rm后接文件路径,使用 rm 命令删除的文件有可能可以通过数据恢复工具恢复,安全删除文件，可以使用srm命令,这可以防止其他人利用命令恢复或复原文件&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;code&gt;rmdir&lt;/code&gt; 如 ‘rmdir test’ ‘rm -R test’&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;$ 永久删除文件夹，rmdir 命令无法删除含有任何其他文件的文件夹，所以大多数情形下rmdir命令是不适用的。不过，你可以利用rm添加-R选项来删除文件夹及包含的所有文件。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;code&gt;find&lt;/code&gt; 如 ‘find . -name “*.png”‘&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;$ 这个命令根据搜索关键词定位文件路径,语法为find后接搜索的起始路径，后接定义搜索的选项，后接搜索内容（包含在引号里),注意如果你要搜索根目录，也许你想使用-x选项来避免搜索 /Volumes 文件夹。如果想使用 Soptlight 搜索服务，使用mdfind命令后接搜索关键词即可。&lt;br&gt;进阶:&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#10;# -o &amp;#25628;&amp;#32034;&amp;#26465;&amp;#20214; &amp;#24182;&amp;#10;find . \\( -name &amp;#34;\*.txt&amp;#34; -o -name &amp;#34;\*.pdf&amp;#34; \\)&amp;#10;&amp;#10;# !&amp;#34920;&amp;#31034;&amp;#21542;&amp;#21017;, &amp;#26597;&amp;#25214;&amp;#25152;&amp;#26377;&amp;#19981;&amp;#26159;&amp;#20197;.txt&amp;#20026;&amp;#21518;&amp;#32512;&amp;#30340;&amp;#25991;&amp;#20214;&amp;#10;$ find . ! -name &amp;#34;*.txt&amp;#34;&amp;#10;&amp;#10;# -type &amp;#25353;&amp;#31867;&amp;#22411;&amp;#25628;&amp;#32034;, &amp;#21482;&amp;#25152;&amp;#26377;&amp;#30446;&amp;#24405;(f&amp;#34920;&amp;#31034;&amp;#25991;&amp;#20214; l&amp;#34920;&amp;#31034;&amp;#31526;&amp;#21495;&amp;#38142;&amp;#25509;(&amp;#36719;&amp;#38142;&amp;#25509;) d&amp;#34920;&amp;#31034;&amp;#30446;&amp;#24405;)&amp;#10;$ find . -type d&amp;#10;&amp;#10;# &amp;#25353;&amp;#29992;&amp;#25143;&amp;#25628;&amp;#32034; &amp;#25214;&amp;#21040;&amp;#25152;&amp;#26377;Calvin&amp;#30340;&amp;#29992;&amp;#25143;&amp;#25991;&amp;#20214;&amp;#10;find . -type f -user Calvin&amp;#10;&amp;#10;# &amp;#25353;&amp;#29031;&amp;#26102;&amp;#38388;&amp;#25628;&amp;#32034; -atime -30m  &amp;#25628;&amp;#32034;30&amp;#20998;&amp;#38047;&amp;#20869;&amp;#34987;&amp;#35775;&amp;#38382;&amp;#30340;&amp;#25991;&amp;#20214;&amp;#10;$ find . -atime -30m -type f -print&amp;#10;&amp;#10;# -atime +30m  &amp;#25628;&amp;#32034;&amp;#36229;&amp;#36807;30&amp;#20998;&amp;#38047;&amp;#34987;&amp;#35775;&amp;#38382;&amp;#30340;&amp;#25991;&amp;#20214;&amp;#10;$ find . -atime +30m -type f -print&amp;#10;&amp;#10;atime &amp;#35775;&amp;#38382;&amp;#26102;&amp;#38388; (&amp;#21333;&amp;#20301;&amp;#26377;&amp;#19968;&amp;#21608;w, &amp;#19968;&amp;#22825;d, &amp;#19968;&amp;#23567;&amp;#26102;h, &amp;#19968;&amp;#20998;&amp;#38047;m, &amp;#19968;&amp;#31186;s, &amp;#20197;&amp;#19979;&amp;#31867;&amp;#20284;&amp;#65289;&amp;#10;mtime &amp;#20462;&amp;#25913;&amp;#26102;&amp;#38388; &amp;#65288;&amp;#20869;&amp;#23481;&amp;#34987;&amp;#20462;&amp;#25913;&amp;#65289;&amp;#10;ctime &amp;#21464;&amp;#21270;&amp;#26102;&amp;#38388; &amp;#65288;&amp;#20803;&amp;#25968;&amp;#25454;&amp;#25110;&amp;#26435;&amp;#38480;&amp;#21464;&amp;#21270;&amp;#65289;&amp;#10;&amp;#10;# &amp;#25214;&amp;#21040;&amp;#20197;.txt&amp;#20026;&amp;#21518;&amp;#32512;&amp;#30340;&amp;#25991;&amp;#20214;&amp;#21518;&amp;#21024;&amp;#38500;&amp;#10;$ find . -type f -name &amp;#34;*.txt&amp;#34; -delete&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;code&gt;grep&lt;/code&gt; 如 &lt;code&gt;$ grep &amp;#39;hello&amp;#39; test.doc&lt;/code&gt; 匹配test.doc文件中所有存在hello的行&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;# &amp;#21305;&amp;#37197;test.doc&amp;#25991;&amp;#20214;&amp;#20013;&amp;#25152;&amp;#26377;&amp;#23384;&amp;#22312;hello&amp;#30340;&amp;#34892;&amp;#10;$ grep &amp;#39;hello&amp;#39; test.doc&amp;#10;&amp;#10;# &amp;#21305;&amp;#37197;test.doc&amp;#25991;&amp;#20214;&amp;#20013;&amp;#25152;&amp;#26377;&amp;#23384;&amp;#22312;hello&amp;#30340;&amp;#34892;, &amp;#24182;&amp;#25171;&amp;#21360;&amp;#34892;&amp;#21495;&amp;#10;$ grep -n &amp;#39;hello&amp;#39; test.doc&amp;#10;&amp;#10;# &amp;#25214;&amp;#21040;&amp;#25152;&amp;#26377;&amp;#34892;&amp;#19981;&amp;#21305;&amp;#37197;hel&amp;#25110;&amp;#32773;how, -e&amp;#21305;&amp;#37197;&amp;#22810;&amp;#20010;&amp;#27169;&amp;#24335;&amp;#10;$ grep -v -e &amp;#39;hel&amp;#39; -e &amp;#39;how&amp;#39; test.doc&amp;#10;&amp;#10;# &amp;#22312;&amp;#22810;&amp;#32423;&amp;#30446;&amp;#24405;&amp;#20013;&amp;#23545;&amp;#25991;&amp;#26412;&amp;#36882;&amp;#24402;&amp;#25628;&amp;#32034;&amp;#10;$ grep &amp;#34;class&amp;#34; . -R -n&amp;#10;&amp;#10;#&amp;#36755;&amp;#20986;&amp;#32467;&amp;#26524;:&amp;#10;./test/class.c:1:class&amp;#10;./test/class.c:2:class yes&amp;#10;./test/class.c:4:class fuck&amp;#10;./test.doc:5:class&amp;#10;./test.pdf:1:class&amp;#10;&amp;#10;# &amp;#25214;&amp;#21040;&amp;#25152;&amp;#26377;&amp;#20197;.hel&amp;#24320;&amp;#22836;&amp;#30340;&amp;#34892;, &amp;#24182;&amp;#20351;&amp;#29992;&amp;#31649;&amp;#36947;&amp;#21629;&amp;#20196;&amp;#10;$ cat test.doc | grep &amp;#39;^\.hel&amp;#39;&amp;#10;&amp;#10;# &amp;#25214;&amp;#21040;&amp;#25152;&amp;#26377;&amp;#21253;&amp;#21547;hel&amp;#34892;&amp;#30340;&amp;#34892;&amp;#25968;(&amp;#21482;&amp;#36755;&amp;#20986;&amp;#34892;&amp;#25968;, &amp;#27809;&amp;#26377;&amp;#20869;&amp;#23481;)&amp;#10;cat test.doc | grep -c &amp;#39;hel&amp;#39;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;p&gt;grep命令是强大的文本搜索命令&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;awk&quot;&gt;awk&lt;/h3&gt;&lt;p&gt;TODO&lt;/p&gt;
-&lt;h3 id=&quot;sed&quot;&gt;sed&lt;/h3&gt;&lt;p&gt;TODO&lt;/p&gt;
-&lt;h2 id=&quot;常用工具&quot;&gt;常用工具&lt;/h2&gt;&lt;h3 id=&quot;mtr_可以用来诊断路由节点问题&quot;&gt;mtr 可以用来诊断路由节点问题&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;MTR 是一款强大的网络诊断工具，网络管理员使用 MTR 可以诊断和隔离网络问题，并且为上游 ISP 提供有用的网络状态报告&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;直接用homebrew安装: &lt;code&gt;brew install mtr&lt;/code&gt;, 执行文件在’/usr/local/sbin/mtr’&lt;br&gt;如果出现&lt;code&gt;command not found&lt;/code&gt;,在.zshrc中添加alias,为 &lt;code&gt;alias mtr=&amp;quot;/usr/local/sbin/mtr&amp;quot;&lt;/code&gt;。&lt;br&gt;如果出现&lt;code&gt;mtr: unable to get raw sockets&lt;/code&gt;,改变owner和执行权限&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo chown root mtr&amp;#10;sudo chmod u+s mtr&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h3 id=&quot;tree_命令可以用来打印文件结构&quot;&gt;tree 命令可以用来打印文件结构&lt;/h3&gt;&lt;p&gt;tree 命令在mac下默认不存在，在ubuntu下可以用apt-get 安装，在mac下可以直接用homebrew安装: &lt;code&gt;brew install tree&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;通常使用 -L 参数控制层级,如 &lt;code&gt;tree -L 2&lt;/code&gt;&lt;br&gt;或使用 -d 参数只打印目录,如 &lt;code&gt;tree -d&lt;/code&gt;&lt;br&gt; -N 参数可以用来打印中文，避免转义&lt;/p&gt;
-&lt;h2 id=&quot;参考资料&quot;&gt;参考资料&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.renfei.org/blog/mac-os-x-terminal-101.html#comment-2159038737&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;入门&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://cli.learncodethehardway.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;进阶&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;&quot;&gt;bash cheat sheet&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;本篇为学习bash命令时候的学习笔记，记录常用的bash命令和关于bash的常识 &lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="shell" scheme="http://www.mclspace.com/categories/shell/"/>
-    
-    
-      <category term="bash" scheme="http://www.mclspace.com/tags/bash/"/>
-    
-      <category term="shell" scheme="http://www.mclspace.com/tags/shell/"/>
     
   </entry>
   

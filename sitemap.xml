@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://www.mclspace.com/2016/05/17/create-and-publish-a-nodejs-module/</loc>
+    <loc>http://www.mclspace.com/2016/05/21/node-es6-module-template/</loc>
     
-    <lastmod>2016-05-17T04:11:38.000Z</lastmod>
+    <lastmod>2016-05-21T07:19:45.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.mclspace.com/2016/04/02/my-front-end-learn-story-set-sail/</loc>
     
-    <lastmod>2016-05-11T07:03:02.000Z</lastmod>
+    <lastmod>2016-05-18T13:27:19.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.mclspace.com/2016/05/17/create-and-publish-a-nodejs-module/</loc>
+    
+    <lastmod>2016-05-17T04:11:38.000Z</lastmod>
     
   </url>
   
