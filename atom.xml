@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.mclspace.com/"/>
-  <updated>2016-05-21T07:19:45.000Z</updated>
+  <updated>2016-06-26T10:13:24.000Z</updated>
   <id>http://www.mclspace.com/</id>
   
   <author>
@@ -14,6 +14,44 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>30秒搭建一个Restful服务器（严肃脸）</title>
+    <link href="http://www.mclspace.com/2016/06/26/node-json-server/"/>
+    <id>http://www.mclspace.com/2016/06/26/node-json-server/</id>
+    <published>2016-06-26T10:12:34.000Z</published>
+    <updated>2016-06-26T10:13:24.000Z</updated>
+    
+    <content type="html">&lt;p&gt;我们开发前端代码的时候，通常需要模拟后端服务器提供mock数据，当然你可以从头开发一个node服务器，搭配后端数据库，但还有一些简易方法，可以在本机模拟后端数据，那就是今天要讲的&lt;a href=&quot;https://github.com/typicode/json-server&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;json-server&lt;/a&gt;，&lt;code&gt;json-server&lt;/code&gt;根据你提供的json文件快速搭建一个支持restful接口的本地server&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt; 
+&lt;h1 id=&quot;快速开始&quot;&gt;快速开始&lt;/h1&gt;&lt;p&gt;安装&lt;code&gt;json-server&lt;/code&gt;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ npm install -g json-server&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;本地创建&lt;code&gt;db.json&lt;/code&gt;文件:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&amp;#10;  &amp;#34;posts&amp;#34;: [&amp;#10;    &amp;#123; &amp;#34;id&amp;#34;: 1, &amp;#34;title&amp;#34;: &amp;#34;json-server&amp;#34;, &amp;#34;author&amp;#34;: &amp;#34;typicode&amp;#34; &amp;#125;&amp;#10;  ],&amp;#10;  &amp;#34;comments&amp;#34;: [&amp;#10;    &amp;#123; &amp;#34;id&amp;#34;: 1, &amp;#34;body&amp;#34;: &amp;#34;some comment&amp;#34;, &amp;#34;postId&amp;#34;: 1 &amp;#125;&amp;#10;  ],&amp;#10;  &amp;#34;profile&amp;#34;: &amp;#123; &amp;#34;name&amp;#34;: &amp;#34;typicode&amp;#34; &amp;#125;&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;开启server&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ json-server --watch db.json&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;在浏览器中输入&lt;code&gt;http://localhost:3000/posts/1&lt;/code&gt;会获得json数据:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&amp;#10;  &amp;#34;id&amp;#34;: 1,&amp;#10;  &amp;#34;title&amp;#34;: &amp;#34;json-server&amp;#34;,&amp;#10;  &amp;#34;author&amp;#34;: &amp;#34;typicode&amp;#34;&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;相应的还提供其他CRUD的路由以及sort等其他数据操作:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;GET    /posts&amp;#10;GET    /posts/1&amp;#10;POST   /posts&amp;#10;PUT    /posts/1&amp;#10;PATCH  /posts/1&amp;#10;DELETE /posts/1&amp;#10;&amp;#10;GET    /profile&amp;#10;POST   /profile&amp;#10;PUT    /profile&amp;#10;PATCH  /profile&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;s + enter 可以存储当前db的快照&lt;/p&gt;
+&lt;h1 id=&quot;进阶_-_生成随机数据库&quot;&gt;进阶 - 生成随机数据库&lt;/h1&gt;&lt;p&gt;我们可以使用程序来帮我们生成.json文件,这里我们使用faker来实现&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ touch generater.js&amp;#10;$ npm i faker lodash&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;写入:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;module.exports = function() &amp;#123;&amp;#10;  const faker = require(&amp;#39;faker&amp;#39;)&amp;#10;  const _ = require(&amp;#39;lodash&amp;#39;)&amp;#10;&amp;#10;  return &amp;#123;&amp;#10;    people: _.times(100, n =&amp;#62; &amp;#123;&amp;#10;      return &amp;#123;&amp;#10;        id: n,&amp;#10;        name: faker.name.findName(),&amp;#10;        avatar: faker.internet.avatar(),&amp;#10;      &amp;#125;&amp;#10;    &amp;#125;)&amp;#10;  &amp;#125;&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;然后:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ json-server generater.js&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;浏览器输入&lt;code&gt;http://localhost:3000/people&lt;/code&gt;，将会获得100个人的随机信息&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;我们开发前端代码的时候，通常需要模拟后端服务器提供mock数据，当然你可以从头开发一个node服务器，搭配后端数据库，但还有一些简易方法，可以在本机模拟后端数据，那就是今天要讲的&lt;a href=&quot;https://github.com/typicode/json-server&quot;&gt;json-server&lt;/a&gt;，&lt;code&gt;json-server&lt;/code&gt;根据你提供的json文件快速搭建一个支持restful接口的本地server&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="node" scheme="http://www.mclspace.com/categories/node/"/>
+    
+    
+      <category term="node" scheme="http://www.mclspace.com/tags/node/"/>
+    
+      <category term="restful" scheme="http://www.mclspace.com/tags/restful/"/>
+    
+      <category term="server" scheme="http://www.mclspace.com/tags/server/"/>
+    
+  </entry>
   
   <entry>
     <title>基于ES6的Nodejs模块初始环境配置</title>
@@ -1245,111 +1283,6 @@ http://www.iqiyi.com/v_19rro04pmg.html?share_sTime=0-share_eTime=259-src=sharemo
       <category term="mongodb" scheme="http://www.mclspace.com/tags/mongodb/"/>
     
       <category term="nodejs" scheme="http://www.mclspace.com/tags/nodejs/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>凤城卫士API文档</title>
-    <link href="http://www.mclspace.com/2015/11/18/fcws-api-doc/"/>
-    <id>http://www.mclspace.com/2015/11/18/fcws-api-doc/</id>
-    <published>2015-11-18T12:53:01.000Z</published>
-    <updated>2015-11-18T16:40:22.000Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;本篇为凤城卫士的API文档，包括其url,接受的参数，示例url以及返回值示例。对于REST API的 设计感兴趣的可以移步&lt;a href=&quot;http://mclspace.com/2015/11/03/restful-note/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这篇文章&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;注: 本篇中的url均具有前缀 &lt;em&gt;/api/v1&lt;/em&gt; ,这里为简便起见，进行了省略.&lt;/p&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h1 id=&quot;用户信息&quot;&gt;用户信息&lt;/h1&gt;&lt;h2 id=&quot;授权验证_&lt;!-这边应该POST,因为重新生成了token_-&gt;&quot;&gt;授权验证 &lt;!--这边应该POST,因为重新生成了token --&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;/auth/local&lt;/code&gt; GET 验证用户名密码，并重新生成token，返回基本的用户信息&lt;br&gt;接受参数:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;id     String 用户id&lt;/li&gt;
-&lt;li&gt;password         String 用户密码&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;示例 : &lt;code&gt;GET localhost:3000/api/v1/auth/local?id=44220&amp;amp;password=44220&lt;/code&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&amp;#10;  &amp;#34;id&amp;#34;: &amp;#34;44220&amp;#34;,&amp;#10;  &amp;#34;role&amp;#34;: &amp;#34;high-level&amp;#34;,&amp;#10;  &amp;#34;description&amp;#34;: &amp;#34;&amp;#24178;&amp;#20107;1&amp;#34;,&amp;#10;  &amp;#34;name&amp;#34;: &amp;#34;&amp;#34;,&amp;#10;  &amp;#34;accessToken&amp;#34;: &amp;#34;d827b0ef-4e21-4cb7-b89f-c0b601fbe4b1&amp;#34;&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;重置密码_&lt;!-这边应该用PUT_,因为用户更新了密码_-&gt;&quot;&gt;重置密码 &lt;!--这边应该用PUT ,因为用户更新了密码 --&gt;&lt;/h2&gt;&lt;p&gt; &lt;code&gt;/users/changePassword&lt;/code&gt; POST 重置用户密码，重新生成盐值和hash存储到数据库中，返回修改后的用户基本信息&lt;br&gt;接受参数:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;id     String 用户id&lt;/li&gt;
-&lt;li&gt;password         String 用户密码&lt;/li&gt;
-&lt;li&gt;new_password         String 新的用户密码&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;示例 : &lt;code&gt;POST localhost:3000/api/v1/users/changePassword&lt;/code&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&amp;#10;  &amp;#34;id&amp;#34;: &amp;#34;44220&amp;#34;,&amp;#10;  &amp;#34;role&amp;#34;: &amp;#34;high-level&amp;#34;,&amp;#10;  &amp;#34;description&amp;#34;: &amp;#34;&amp;#24178;&amp;#20107;1&amp;#34;,&amp;#10;  &amp;#34;name&amp;#34;: &amp;#34;&amp;#34;,&amp;#10;  &amp;#34;accessToken&amp;#34;: &amp;#34;d827b0ef-4e21-4cb7-b89f-c0b601fbe4b1&amp;#34;&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;获得用户信息_//这边应该用/users/:id&quot;&gt;获得用户信息 //这边应该用/users/:id&lt;/h2&gt;&lt;p&gt;&lt;code&gt;/users/details&lt;/code&gt; GET 获取用户详细信息,如最近的主题以及最近的回复&lt;/p&gt;
-&lt;p&gt;接受参数:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;access_token         String 用户的token&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;示例 :  &lt;code&gt;GET localhost:3000/api/v1/users/details?access_token=e25be7a2-0553-4104-a210-bde3873bfdb6&lt;/code&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&amp;#10;  &amp;#34;id&amp;#34;: &amp;#34;13852862738&amp;#34;,&amp;#10;  &amp;#34;role&amp;#34;: &amp;#34;low-level&amp;#34;,&amp;#10;  &amp;#34;description&amp;#34;: &amp;#34;&amp;#28023;&amp;#38517;&amp;#21306;&amp;#22478;&amp;#35199;&amp;#34903;&amp;#36947;&amp;#24773;&amp;#25253;&amp;#21592;&amp;#34;,&amp;#10;  &amp;#34;name&amp;#34;: &amp;#34;&amp;#39640;&amp;#26376;&amp;#34;,&amp;#10;  &amp;#34;recent_posts&amp;#34;: [&amp;#10;    &amp;#123;&amp;#10;      &amp;#34;_id&amp;#34;: &amp;#34;564aef7bd443b5243c7e826b&amp;#34;,&amp;#10;      &amp;#34;author_id&amp;#34;: &amp;#34;13852862738&amp;#34;,&amp;#10;      &amp;#34;content&amp;#34;: &amp;#34;&amp;#27979;&amp;#35797;&amp;#24773;&amp;#25253;&amp;#34;,&amp;#10;      &amp;#34;important&amp;#34;: false,&amp;#10;      &amp;#34;create_at&amp;#34;: &amp;#34;2015-11-17T09:12:27.217Z&amp;#34;&amp;#10;    &amp;#125;&amp;#10;  ],&amp;#10;  &amp;#34;recent_replies&amp;#34;: [&amp;#10;    &amp;#123;&amp;#10;      &amp;#34;_id&amp;#34;: &amp;#34;564aef8fd443b5243c7e826d&amp;#34;,&amp;#10;      &amp;#34;author_id&amp;#34;: &amp;#34;13852862738&amp;#34;,&amp;#10;      &amp;#34;content&amp;#34;: &amp;#34;&amp;#21621;&amp;#21621;&amp;#34;,&amp;#10;      &amp;#34;create_at&amp;#34;: &amp;#34;2015-11-17T09:12:47.664Z&amp;#34;&amp;#10;    &amp;#125;,&amp;#10;    &amp;#123;&amp;#10;      &amp;#34;_id&amp;#34;: &amp;#34;564aef85d443b5243c7e826c&amp;#34;,&amp;#10;      &amp;#34;author_id&amp;#34;: &amp;#34;13852862738&amp;#34;,&amp;#10;      &amp;#34;content&amp;#34;: &amp;#34;&amp;#35780;&amp;#35770;&amp;#19968;&amp;#20010;&amp;#34;,&amp;#10;      &amp;#34;create_at&amp;#34;: &amp;#34;2015-11-17T09:12:37.741Z&amp;#34;&amp;#10;    &amp;#125;&amp;#10;  ]&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h1 id=&quot;情报信息&quot;&gt;情报信息&lt;/h1&gt;&lt;h2 id=&quot;获取情报列表&quot;&gt;获取情报列表&lt;/h2&gt;&lt;p&gt;&lt;code&gt;/posts&lt;/code&gt; GET 获取帖子列表&lt;/p&gt;
-&lt;p&gt;接受参数:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;limit     Number 每页的情报数量&lt;/li&gt;
-&lt;li&gt;page         Number 页数&lt;/li&gt;
-&lt;li&gt;access_token         String 用户的token&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;示例: &lt;code&gt;GET localhost:3000/api/v1/posts?access_token=e25be7a2-0553-4104-a210-bde3873bfdb6&amp;amp;limit=5&amp;amp;page=1&lt;/code&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[&amp;#10;  &amp;#123;&amp;#10;    &amp;#34;_id&amp;#34;: &amp;#34;564aef7bd443b5243c7e826b&amp;#34;,&amp;#10;    &amp;#34;author_id&amp;#34;: &amp;#34;13852862738&amp;#34;,&amp;#10;    &amp;#34;content&amp;#34;: &amp;#34;&amp;#27979;&amp;#35797;&amp;#24773;&amp;#25253;&amp;#34;,&amp;#10;    &amp;#34;important&amp;#34;: false,&amp;#10;    &amp;#34;create_at&amp;#34;: &amp;#34;2015-11-17T09:12:27.217Z&amp;#34;,&amp;#10;    &amp;#34;author&amp;#34;: &amp;#123;&amp;#10;      &amp;#34;name&amp;#34;: &amp;#34;&amp;#39640;&amp;#26376;&amp;#34;&amp;#10;    &amp;#125;&amp;#10;  &amp;#125;,&amp;#10;  &amp;#123;&amp;#10;    &amp;#34;_id&amp;#34;: &amp;#34;564ae2c08bb772bf39386e2b&amp;#34;,&amp;#10;    &amp;#34;author_id&amp;#34;: &amp;#34;44121&amp;#34;,&amp;#10;    &amp;#34;content&amp;#34;: &amp;#34;hello&amp;#34;,&amp;#10;    &amp;#34;important&amp;#34;: true,&amp;#10;    &amp;#34;create_at&amp;#34;: &amp;#34;2015-11-17T08:18:08.800Z&amp;#34;,&amp;#10;    &amp;#34;author&amp;#34;: &amp;#123;&amp;#10;      &amp;#34;name&amp;#34;: &amp;#34;&amp;#34;&amp;#10;    &amp;#125;&amp;#10;  &amp;#125;&amp;#10;]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;获取某个帖子的具体内容&quot;&gt;获取某个帖子的具体内容&lt;/h2&gt;&lt;p&gt;&lt;code&gt;/posts/:id&lt;/code&gt; GET 获取某个帖子的具体内容&lt;/p&gt;
-&lt;p&gt;接受参数:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;id    String 帖子的id&lt;/li&gt;
-&lt;li&gt;access_token         String 用户的token&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;示例: &lt;code&gt;GET localhost:3000/api/v1/posts/564aef7bd443b5243c7e826b?access_token=e25be7a2-0553-4104-a210-bde3873bfdb6&lt;/code&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&amp;#10;  &amp;#34;_id&amp;#34;: &amp;#34;564aef7bd443b5243c7e826b&amp;#34;,&amp;#10;  &amp;#34;author_id&amp;#34;: &amp;#34;13852862738&amp;#34;,&amp;#10;  &amp;#34;content&amp;#34;: &amp;#34;&amp;#27979;&amp;#35797;&amp;#24773;&amp;#25253;&amp;#34;,&amp;#10;  &amp;#34;important&amp;#34;: false,&amp;#10;  &amp;#34;photos&amp;#34;: [],&amp;#10;  &amp;#34;create_at&amp;#34;: &amp;#34;2015-11-17T09:12:27.217Z&amp;#34;,&amp;#10;  &amp;#34;author&amp;#34;: &amp;#123;&amp;#10;    &amp;#34;name&amp;#34;: &amp;#34;&amp;#39640;&amp;#26376;&amp;#34;&amp;#10;  &amp;#125;,&amp;#10;  &amp;#34;replies&amp;#34;: [&amp;#10;    &amp;#123;&amp;#10;      &amp;#34;_id&amp;#34;: &amp;#34;564aef85d443b5243c7e826c&amp;#34;,&amp;#10;      &amp;#34;author_id&amp;#34;: &amp;#34;13852862738&amp;#34;,&amp;#10;      &amp;#34;post_id&amp;#34;: &amp;#34;564aef7bd443b5243c7e826b&amp;#34;,&amp;#10;      &amp;#34;content&amp;#34;: &amp;#34;&amp;#35780;&amp;#35770;&amp;#19968;&amp;#20010;&amp;#34;,&amp;#10;      &amp;#34;create_at&amp;#34;: &amp;#34;2015-11-17T09:12:37.741Z&amp;#34;,&amp;#10;      &amp;#34;author&amp;#34;: &amp;#123;&amp;#10;        &amp;#34;name&amp;#34;: &amp;#34;&amp;#39640;&amp;#26376;&amp;#34;&amp;#10;      &amp;#125;&amp;#10;    &amp;#125;,&amp;#10;    &amp;#123;&amp;#10;      &amp;#34;_id&amp;#34;: &amp;#34;564aef8fd443b5243c7e826d&amp;#34;,&amp;#10;      &amp;#34;author_id&amp;#34;: &amp;#34;13852862738&amp;#34;,&amp;#10;      &amp;#34;post_id&amp;#34;: &amp;#34;564aef7bd443b5243c7e826b&amp;#34;,&amp;#10;      &amp;#34;content&amp;#34;: &amp;#34;&amp;#21621;&amp;#21621;&amp;#34;,&amp;#10;      &amp;#34;create_at&amp;#34;: &amp;#34;2015-11-17T09:12:47.664Z&amp;#34;,&amp;#10;      &amp;#34;author&amp;#34;: &amp;#123;&amp;#10;        &amp;#34;name&amp;#34;: &amp;#34;&amp;#39640;&amp;#26376;&amp;#34;&amp;#10;      &amp;#125;&amp;#10;    &amp;#125;&amp;#10;  ]&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;创建情报&quot;&gt;创建情报&lt;/h2&gt;&lt;p&gt;&lt;code&gt;/posts&lt;/code&gt; POST 创建情报，返回情报基本内容&lt;/p&gt;
-&lt;p&gt;参数: &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;content    String 帖子的内容,不能为空&lt;/li&gt;
-&lt;li&gt;important     Boolean 是否为紧急情报，默认为false&lt;/li&gt;
-&lt;li&gt;photos     [String] 情报的配图，目前默认只能上传一张&lt;/li&gt;
-&lt;li&gt;access_token        String 用户的token&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;示例: &lt;code&gt;POST localhost:3000/api/v1/posts?access_token=e25be7a2-0553-4104-a210-bde3873bfdb6&lt;/code&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&amp;#10;  &amp;#34;_id&amp;#34;: &amp;#34;564c34da38cad35f288846c9&amp;#34;,&amp;#10;  &amp;#34;author_id&amp;#34;: &amp;#34;13852862738&amp;#34;,&amp;#10;  &amp;#34;content&amp;#34;: &amp;#34;&amp;#27979;&amp;#35797;&amp;#28040;&amp;#24687; from postman&amp;#34;,&amp;#10;  &amp;#34;important&amp;#34;: true,&amp;#10;  &amp;#34;create_at&amp;#34;: &amp;#34;2015-11-18T08:20:42.379Z&amp;#34;&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;删除情报&quot;&gt;删除情报&lt;/h2&gt;&lt;p&gt;&lt;code&gt;/posts/:id&lt;/code&gt; DELETE 删除情报，返回空文档。&lt;/p&gt;
-&lt;p&gt;接受参数:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;id     String 待删除的情报的id&lt;/li&gt;
-&lt;li&gt;access_token         String 用户的token&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;示例: &lt;code&gt;DELETE localhost:3000/api/v1/posts/564c34da38cad35f288846c9?access_token=e25be7a2-0553-4104-a210-bde3873bfdb6&lt;/code&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h1 id=&quot;回复&quot;&gt;回复&lt;/h1&gt;&lt;h2 id=&quot;创建回复&quot;&gt;创建回复&lt;/h2&gt;&lt;p&gt;&lt;code&gt;replys&lt;/code&gt; POST 创建一个回复，返回该回复&lt;/p&gt;
-&lt;p&gt;接受参数:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;post_id         String  回复的情报的id&lt;/li&gt;
-&lt;li&gt;content         String  回复内容&lt;/li&gt;
-&lt;li&gt;access_token     String  用户的token&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;示例: &lt;code&gt;POST localhost:3000/api/v1/replys?access_token=e25be7a2-0553-4104-a210-bde3873bfdb6&lt;/code&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&amp;#10;  &amp;#34;_id&amp;#34;: &amp;#34;564c7234d1739e4f0b056796&amp;#34;,&amp;#10;  &amp;#34;post_id&amp;#34;: &amp;#34; 564c65c34086d9a105d78243&amp;#34;,&amp;#10;  &amp;#34;content&amp;#34;: &amp;#34;&amp;#28155;&amp;#21152;&amp;#19968;&amp;#26465;&amp;#22238;&amp;#22797;&amp;#34;,&amp;#10;  &amp;#34;author_id&amp;#34;: &amp;#34;13852862738&amp;#34;,&amp;#10;  &amp;#34;create_at&amp;#34;: &amp;#34;2015-11-18T12:42:28.692Z&amp;#34;&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;删除回复&quot;&gt;删除回复&lt;/h2&gt;&lt;p&gt;&lt;code&gt;replys/:id&lt;/code&gt; DELETE 删除某个回复,返回空文档&lt;/p&gt;
-&lt;p&gt;接受参数:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;id String 该回复的id&lt;/li&gt;
-&lt;li&gt;access_token String 用户的token&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;示例: &lt;code&gt;DELETE localhost:3000/api/v1/replys/564c7234d1739e4f0b056796?access_token=e25be7a2-0553-4104-a210-bde3873bfdb6&lt;/code&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;本篇为凤城卫士的API文档，包括其url,接受的参数，示例url以及返回值示例。对于REST API的 设计感兴趣的可以移步&lt;a href=&quot;http://mclspace.com/2015/11/03/restful-note/&quot;&gt;这篇文章&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;注: 本篇中的url均具有前缀 &lt;em&gt;/api/v1&lt;/em&gt; ,这里为简便起见，进行了省略.&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="web" scheme="http://www.mclspace.com/categories/web/"/>
-    
-    
-      <category term="api" scheme="http://www.mclspace.com/tags/api/"/>
-    
-      <category term="web" scheme="http://www.mclspace.com/tags/web/"/>
     
   </entry>
   

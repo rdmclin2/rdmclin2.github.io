@@ -3,7 +3,7 @@
 <hr>
 <h1 id="过程">过程</h1><h2 id="在github上创建新的仓库,如本文的test-">在github上创建新的仓库,如本文的test.</h2><p><img src="http://7pun7p.com1.z0.glb.clouddn.com/hexo/新建仓库.png" alt="新建仓库"></p>
 <hr>
-<h2 id="创建本地站点并将本地站点github化">创建本地站点并将本地站点github化</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ echo &#34;hello world&#34; &#62; index.html&#10;$ git init&#10;$ git add .&#10;$ git commit -m &#34;first commit&#34;&#10;$ git remote add origin  &#10;$ git@github.com:&#60;username&#62;/&#60;reponame&#62;.git</span><br></pre></td></tr></table></figure>
+<h2 id="创建本地站点并将本地站点github化">创建本地站点并将本地站点github化</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ echo &#34;hello world&#34; &#62; index.html&#10;$ git init&#10;$ git add .&#10;$ git commit -m &#34;first commit&#34;&#10;$ git remote add origin git@github.com:&#60;username&#62;/&#60;reponame&#62;.git</span><br></pre></td></tr></table></figure>
 <hr>
 <h2 id="创建gh-pages分支并上传到远程">创建gh-pages分支并上传到远程</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b gh-pages&#10;$ git push -u origin gh-pages</span><br></pre></td></tr></table></figure>
 <p>经过此步,过几分钟，通过<code>&lt;username&gt;.github.io/&lt;reponame&gt;</code>应该就能访问你的页面了,这里因为我已经把rdmclin2.github.io绑定到mclspace.com上了，所以默认为已经替换掉了。<br><img src="http://7pun7p.com1.z0.glb.clouddn.com/hexo/效果.png" alt="效果"></p>
