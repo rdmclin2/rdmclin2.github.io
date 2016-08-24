@@ -55,7 +55,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#24555;&#36895;&#25552;&#20132;&#20195;&#30721;&#10;$ &#22914; git commit -m &#34;this is a commit&#34;&#65292;&#22810;&#27425;add&#65292;&#19968;&#27425;commit</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git checkout -- &lt;file&gt;</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#20002;&#24323;&#24037;&#20316;&#21306;&#30340;&#20462;&#25913;&#10;$ &#22914; git checkout -- readme.txt&#10;$ &#22914;&#26524;&#24050;&#32463;add&#65292;&#21487;&#20197;&#29992;git reset HEAD &#60;file&#62;&#20808;&#25764;&#38144;add&#65292;&#20877;&#20002;&#24323;&#26356;&#25913;&#10;$ &#22914;&#26524;&#20320;&#24050;&#32463;commit&#20102;&#65292;&#21487;&#20197;&#29992; git reset --hard HEAD^ &#36827;&#34892;&#22238;&#36864;&#21040;&#19978;&#19968;&#29256;&#26412;&#10;$ &#22914;&#26524;&#20320;&#36824;&#25512;&#36865;&#21040;&#20102;&#36828;&#31243;&#20998;&#25903;,&#37027;&#23601;gg&#20102;...</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#20002;&#24323;&#24037;&#20316;&#21306;&#30340;&#20462;&#25913;&#10;$ &#22914; git checkout -- readme.txt&#10;$ git checkout . &#20002;&#24323;&#25152;&#26377;&#26412;&#22320;&#20462;&#25913;&#10;$ &#22914;&#26524;&#24050;&#32463;add&#65292;&#21487;&#20197;&#29992;git reset HEAD &#60;file&#62;&#20808;&#25764;&#38144;add&#65292;&#20877;&#20002;&#24323;&#26356;&#25913;&#10;$ &#22914;&#26524;&#20320;&#24050;&#32463;commit&#20102;&#65292;&#21487;&#20197;&#29992; git reset --hard HEAD^ &#36827;&#34892;&#22238;&#36864;&#21040;&#19978;&#19968;&#29256;&#26412;&#10;$ &#22914;&#26524;&#20320;&#36824;&#25512;&#36865;&#21040;&#20102;&#36828;&#31243;&#20998;&#25903;,&#37027;&#23601;gg&#20102;...</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git rm  &lt;file&gt;</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#20174;&#29256;&#26412;&#24211;&#20013;&#21024;&#38500;&#26576;&#25991;&#20214;&#10;$ &#22914; git rm test.txt</span><br></pre></td></tr></table></figure>
@@ -94,6 +94,9 @@
 <li><p><code>git branch -D &lt;branch name&gt;</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#24378;&#34892;&#21024;&#38500;&#20998;&#25903;&#10;$ &#22914; git branch -D feature-vulcan &#27809;&#26377;&#36827;&#34892;&#21512;&#24182;&#30340;&#20998;&#25903;&#29992;-d&#21442;&#25968;&#20250;&#38144;&#27585;&#22833;&#36133;&#65292;&#10;$ &#22914;&#26524;&#23454;&#22312;&#35201;&#20002;&#24323;&#19968;&#20010;&#27809;&#26377;&#21512;&#24182;&#36807;&#30340;&#20998;&#25903;,&#29992;-D&#21442;&#25968;&#24378;&#34892;&#38144;&#27585;</span><br></pre></td></tr></table></figure>
 </li>
+<li><p><code>git branch -m &lt;old_branch_name&gt; &lt;new_branch_name&gt;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#20462;&#25913;&#26412;&#22320;&#20998;&#25903;&#21517;&#31216;&#10;$ &#22914; git branch -m feature-a feature-b</span><br></pre></td></tr></table></figure>
+</li>
 <li><p><code>git checkout &lt;branch name&gt;</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#20999;&#25442;&#20998;&#25903;&#10;$ &#22914; git checkout dev</span><br></pre></td></tr></table></figure>
 </li>
@@ -106,7 +109,7 @@
 <li><p><code>git merge --no-ff -m &lt;message&gt; &lt;branch name&gt;</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#31105;&#29992;fast forward&#10;$ &#22914; git merge --no-ff -m &#34;merge with no-ff&#34; dev&#10;$ --no-ff&#34920;&#31034;&#31105;&#29992;fast forward,&#22312;ff&#27169;&#24335;&#19979;&#21024;&#38500;&#20998;&#25903;&#21518;&#20250;&#20002;&#25481;&#20998;&#25903;&#20449;&#24687;&#65292;&#25152;&#20197;&#29992;--no-ff&#21518;&#10;$ git&#23601;&#20250;&#22312;merge&#30340;&#26102;&#20505;&#29983;&#25104;&#19968;&#20010;&#26032;&#30340;commit&#65292;&#22240;&#20026;&#35201;&#26377;&#19968;&#20010;&#26032;&#30340;commit&#25152;&#20197;&#35201;&#21152;&#19978;&#65293;m&#21442;&#25968;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><code>git stash</code>  </p>
+<li><p><code>git stash</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#20648;&#34255;&#24037;&#20316;&#29616;&#22330;&#10;$ &#21487;&#20197;&#25226;&#24403;&#21069;&#24037;&#20316;&#29616;&#22330;&#8220;&#20648;&#34255;&#8221;&#36215;&#26469;&#65292;&#31561;&#20197;&#21518;&#24674;&#22797;&#29616;&#22330;&#21518;&#32487;&#32493;&#24037;&#20316;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>git stash list</code></p>
