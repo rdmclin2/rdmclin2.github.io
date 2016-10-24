@@ -1,29 +1,29 @@
-<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 《Head First HTML 与 CSS》读书笔记之CSS篇 · Mcl's space</title><meta name="description" content="《Head First HTML 与 CSS》读书笔记之CSS篇 - LinChen"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" type="text/css"></head><body><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/rdmclin2" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/rdmclin2" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li><li class="nav-list-item"><a href="http://www.jianshu.com/users/34733105f724/latest_articles" target="_blank" class="nav-list-link">JIANSHU</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">《Head First HTML 与 CSS》读书笔记之CSS篇</h1><div class="post-time">Aug 20, 2015</div><div class="post-content"><blockquote>
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 《Head First HTML 与 CSS》读书笔记之CSS篇 · 兼续</title><meta name="description" content="《Head First HTML 与 CSS》读书笔记之CSS篇 - LinChen"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" type="text/css"></head><body><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/rdmclin2" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/rdmclin2" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li><li class="nav-list-item"><a href="http://www.jianshu.com/users/34733105f724/latest_articles" target="_blank" class="nav-list-link">JIANSHU</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">《Head First HTML 与 CSS》读书笔记之CSS篇</h1><div class="post-time">2015年8月20日</div><div class="post-content"><blockquote>
 <p>本文为阅读《Head First HTML 与 CSS》的css部分的读书笔记，方便回顾书上的知识，另一篇为<a href="http://mclspace.com/2015/08/19/html-note/" target="_blank" rel="external">Head First HTML 与 CSS》读书笔记之HTML篇</a></p>
 </blockquote>
 <a id="more"></a>
 <hr>
-<h1 id="基本">基本</h1><h2 id="常识与实践">常识与实践</h2><ul>
+<h1 id="基本"><a href="#基本" class="headerlink" title="基本"></a>基本</h1><h2 id="常识与实践"><a href="#常识与实践" class="headerlink" title="常识与实践"></a>常识与实践</h2><ul>
 <li><p>css的每一个语句包括一个场所，以及这个场所的一个属性，还要应用到这个属性一个样式,一个典型的css规则如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p &#123; // &#38656;&#35201;&#22686;&#21152;&#26679;&#24335;&#30340;&#20803;&#32032;: p,&#36825;&#31216;&#20026;&#36873;&#25321;&#22120;(selector),&#21305;&#37197;&#39029;&#38754;&#20013;&#30340;&#25152;&#26377;p&#20803;&#32032;&#10;    background-color: red; //&#32972;&#26223;&#33394;&#20026;&#32418;&#33394;      &#26684;&#24335;: &#60; &#23646;&#24615;:&#20540;; &#62;&#10;    border: 1px solid gray; //&#36793;&#26694;: 1&#20687;&#32032;,&#23454;&#32447;,&#28784;&#33394;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">p &#123; // 需要增加样式的元素: p,这称为选择器(selector),匹配页面中的所有p元素</div><div class="line">    background-color: red; //背景色为红色      格式: &lt; 属性:值; &gt;</div><div class="line">    border: 1px solid gray; //边框: 1像素,实线,灰色</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>css 的注释: <code>/* */</code></p>
 </li>
 <li><a href="http://jigsaw.w3.org/css-validator/" target="_blank" rel="external">css验证工具</a>,你还可以把验证图标放到你的web页面中</li>
 </ul>
 <hr>
-<h2 id="链接方式">链接方式</h2><h3 id="基本-1">基本</h3><p>最基本的方式就是直接在html文件中指定元素样式，这种方式不推荐，因为将表现层和结构层混起来了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#34;style=&#34;background-image:url(&#123;&#123;user.avatar&#125;&#125;)&#34;</span><br></pre></td></tr></table></figure></p>
-<h3 id="内部链接">内部链接</h3><p>要为html直接增加css样式，需要在<head>元素中增加开始和结束style标记，css规则放在里面<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;style&#62;&#10;  p &#123;&#10;     color: gray;&#10;  &#125;&#10;&#60;/style&#62;</span><br></pre></td></tr></table></figure></head></p>
-<h3 id="css文件外置">css文件外置</h3><p>另一种方式将css文件外置，如style.css,作为样式表(stylesheets),然后从html众创建一个到这个文件的外部链接,用<link>元素,用外部样式表的好处是要修改整个网站的样式，只要进入这个样式表，对css进行几处修改即可。如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;link type=&#34;text/css&#34; rel=&#34;stylesheet&#34; href=&#34;lounge.css&#34; &#62;&#10;#&#25918;&#21040;&#60;head&#62;&#20803;&#32032;&#20013;,&#22312;html5&#20013;&#19981;&#20877;&#38656;&#35201;type&#36825;&#20010;&#23646;&#24615;(&#21487;&#36873;),rel(relation)&#25351;&#23450;html&#19982;&#25152;&#38142;&#25509;&#25991;&#20214;&#38388;&#30340;&#20851;&#31995;,&#36825;&#37324;&#25351;&#25105;&#20204;&#35201;&#38142;&#25509;&#21040;&#19968;&#20010;&#26679;&#24335;&#34920;&#10;#link&#26159;&#19968;&#20010;void&#20803;&#32032;</span><br></pre></td></tr></table></figure></p>
+<h2 id="链接方式"><a href="#链接方式" class="headerlink" title="链接方式"></a>链接方式</h2><h3 id="基本-1"><a href="#基本-1" class="headerlink" title="基本"></a>基本</h3><p>最基本的方式就是直接在html文件中指定元素样式，这种方式不推荐，因为将表现层和结构层混起来了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&quot;style=&quot;background-image:url(&#123;&#123;user.avatar&#125;&#125;)&quot;</div></pre></td></tr></table></figure></p>
+<h3 id="内部链接"><a href="#内部链接" class="headerlink" title="内部链接"></a>内部链接</h3><p>要为html直接增加css样式，需要在<head>元素中增加开始和结束style标记，css规则放在里面<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">  p &#123;</div><div class="line">     color: gray;</div><div class="line">  &#125;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure></head></p>
+<h3 id="css文件外置"><a href="#css文件外置" class="headerlink" title="css文件外置"></a>css文件外置</h3><p>另一种方式将css文件外置，如style.css,作为样式表(stylesheets),然后从html众创建一个到这个文件的外部链接,用<link>元素,用外部样式表的好处是要修改整个网站的样式，只要进入这个样式表，对css进行几处修改即可。如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;lounge.css&quot; &gt;</div><div class="line">#放到&lt;head&gt;元素中,在html5中不再需要type这个属性(可选),rel(relation)指定html与所链接文件间的关系,这里指我们要链接到一个样式表</div><div class="line">#link是一个void元素</div></pre></td></tr></table></figure></p>
 <hr>
-<h2 id="多样式表">多样式表</h2><p>使用多个样式表,顺序很重要，一个样式表会覆盖在它上面链接的样式表中的样式,有时会有一个样式表作为页面的基础样式，要修改样式，链接这个样式表，然后在下面提供自己的样式表，指定要修改的样式,如下所示:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;link rel=&#34;stylesheet&#34; href=&#34;corperate.css&#34;&#62;//&#24635;&#20844;&#21496;&#26679;&#24335;&#10;&#60;link rel=&#34;stylesheet&#34; href=&#34;beverage-division.css&#34;&#62;//&#37096;&#38376;&#23545;&#24635;&#20844;&#21496;&#30340;&#26679;&#24335;&#20570;&#20102;&#19968;&#20123;&#34917;&#20805;&#65292;&#29978;&#33267;&#21487;&#20197;&#35206;&#30422;&#20844;&#21496;&#30340;&#26679;&#24335;&#10;&#60;link rel=&#34;stylesheet&#34; href=&#34;lounge-seattle.css&#34;&#62;//&#35199;&#38597;&#22270;&#20241;&#38386;&#23460;&#23545;&#26679;&#24335;&#34920;&#20570;&#20102;&#33258;&#24049;&#30340;&#35843;&#25972;</span><br></pre></td></tr></table></figure></p>
+<h2 id="多样式表"><a href="#多样式表" class="headerlink" title="多样式表"></a>多样式表</h2><p>使用多个样式表,顺序很重要，一个样式表会覆盖在它上面链接的样式表中的样式,有时会有一个样式表作为页面的基础样式，要修改样式，链接这个样式表，然后在下面提供自己的样式表，指定要修改的样式,如下所示:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;corperate.css&quot;&gt;//总公司样式</div><div class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;beverage-division.css&quot;&gt;//部门对总公司的样式做了一些补充，甚至可以覆盖公司的样式</div><div class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;lounge-seattle.css&quot;&gt;//西雅图休闲室对样式表做了自己的调整</div></pre></td></tr></table></figure></p>
 <hr>
-<h2 id="简写">简写</h2><p>css属性太多，能不能不费吹灰之力就指定这些属性呢？可以把同一属性的值结合起来写成一句,即简写。</p>
-<h3 id="简写格式">简写格式</h3><h4 id="padding"><code>padding</code></h4><p><code>padding: 0px 40px 30px 20px;</code>,顺序是上右下左,顺时针有木有,如果都相同可以用<code>padding: 20px;</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">padding-top: 0px;&#10;padding-right: 40px;&#10;padding-bottom:30px;&#10;padding-left: 20px;</span><br></pre></td></tr></table></figure></p>
-<h4 id="margin"><code>margin</code></h4><p>上面的padding格式同样对margin也适用,还有另一种方法,如果上下一样，左右一致,可以这样写:<code>margin: 0px 20px</code>,前面指定上下，后面指定左右。</p>
-<h4 id="border"><code>border</code></h4><p>边框属性简写 <code>border: thin solid #007e73;</code>,可以用你喜欢的任何顺序。</p>
-<h4 id="background"><code>background</code></h4><p>背景简写 <code>background: white url(images/cocktail.gif) repeat-x;</code>，同样顺序随便</p>
-<h4 id="字体"><code>字体</code></h4><p>字体简写的格式稍微复杂一些:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">font : font-style font-variant font-weight font-size/line-height font-family</span><br></pre></td></tr></table></figure></p>
+<h2 id="简写"><a href="#简写" class="headerlink" title="简写"></a>简写</h2><p>css属性太多，能不能不费吹灰之力就指定这些属性呢？可以把同一属性的值结合起来写成一句,即简写。</p>
+<h3 id="简写格式"><a href="#简写格式" class="headerlink" title="简写格式"></a>简写格式</h3><h4 id="padding"><a href="#padding" class="headerlink" title="padding"></a><code>padding</code></h4><p><code>padding: 0px 40px 30px 20px;</code>,顺序是上右下左,顺时针有木有,如果都相同可以用<code>padding: 20px;</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">padding-top: 0px;</div><div class="line">padding-right: 40px;</div><div class="line">padding-bottom:30px;</div><div class="line">padding-left: 20px;</div></pre></td></tr></table></figure></p>
+<h4 id="margin"><a href="#margin" class="headerlink" title="margin"></a><code>margin</code></h4><p>上面的padding格式同样对margin也适用,还有另一种方法,如果上下一样，左右一致,可以这样写:<code>margin: 0px 20px</code>,前面指定上下，后面指定左右。</p>
+<h4 id="border"><a href="#border" class="headerlink" title="border"></a><code>border</code></h4><p>边框属性简写 <code>border: thin solid #007e73;</code>,可以用你喜欢的任何顺序。</p>
+<h4 id="background"><a href="#background" class="headerlink" title="background"></a><code>background</code></h4><p>背景简写 <code>background: white url(images/cocktail.gif) repeat-x;</code>，同样顺序随便</p>
+<h4 id="字体"><a href="#字体" class="headerlink" title="字体"></a><code>字体</code></h4><p>字体简写的格式稍微复杂一些:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">font : font-style font-variant font-weight font-size/line-height font-family</div></pre></td></tr></table></figure></p>
 <ul>
 <li>font的属性中<code>font-size</code>必须有</li>
 <li><code>font-size</code>前的属性是可选的，组合任意，不过必须出现在font-size之前</li>
@@ -31,63 +31,64 @@
 <li><code>font-family</code>名之间要使用逗号分隔</li>
 <li>如: <code>font : small/1.6em Verdana, Helvetica, Arial,sans-serif;</code></li>
 </ul>
-<h3 id="简写的优劣">简写的优劣</h3><ul>
+<p>###简写的优劣</p>
+<ul>
 <li>不一定要用简写形式，有些人觉得长形式更可读。</li>
 <li>简写的好处: 缩写css文件大小，输入更快。</li>
 <li>简写的不足: 如果存在问题，或者顺序有误，比较难调试</li>
 <li>简写记起来复杂，可以用参考手册</li>
 </ul>
 <hr>
-<h1 id="选择">选择</h1><h2 id="子孙选择器">子孙选择器</h2><p>父元素和子孙元素名之间有一个空格,子孙选择器会选择所有子孙，包括这个元素中嵌套的所有,不管嵌套多深,例如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#elixirs h2 &#123;//&#36873;&#25321;elixirs&#23376;&#23385;&#30340;&#25152;&#26377;h2&#10;  color: black;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="直接孩子">直接孩子</h3><p>如果要选择直接的孩子,用&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#elixirs&#62;h2 &#123;//&#36873;&#25321;elixirs&#30340;&#30452;&#25509;&#23401;&#23376;h2&#10;  color: black;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="复杂选择">复杂选择</h3><p>更复杂的选择,方法还是一样<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#elixirs blockquote h2 &#123;//&#36873;&#25321;elixirs&#20013;&#30340;blockquote&#20013;&#30340;h2&#20803;&#32032;&#10;  color: blue;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="选择"><a href="#选择" class="headerlink" title="选择"></a>选择</h1><h2 id="子孙选择器"><a href="#子孙选择器" class="headerlink" title="子孙选择器"></a>子孙选择器</h2><p>父元素和子孙元素名之间有一个空格,子孙选择器会选择所有子孙，包括这个元素中嵌套的所有,不管嵌套多深,例如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#elixirs h2 &#123;//选择elixirs子孙的所有h2</div><div class="line">  color: black;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="直接孩子"><a href="#直接孩子" class="headerlink" title="直接孩子"></a>直接孩子</h3><p>如果要选择直接的孩子,用&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#elixirs&gt;h2 &#123;//选择elixirs的直接孩子h2</div><div class="line">  color: black;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="复杂选择"><a href="#复杂选择" class="headerlink" title="复杂选择"></a>复杂选择</h3><p>更复杂的选择,方法还是一样<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#elixirs blockquote h2 &#123;//选择elixirs中的blockquote中的h2元素</div><div class="line">  color: blue;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <hr>
-<h2 id="规则添加">规则添加</h2><ul>
+<h2 id="规则添加"><a href="#规则添加" class="headerlink" title="规则添加"></a>规则添加</h2><ul>
 <li><p>要为多个元素编写一个规则，只需要在选择器之间加上逗号，如 “h1,h2”。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">h1,h2 &#123;// &#22810;&#20010;&#36873;&#25321;&#22120;&#10; font-family: sans-serif;&#10; color: gray;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">h1,h2 &#123;// 多个选择器</div><div class="line"> font-family: sans-serif;</div><div class="line"> color: gray;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>元素可以指定多次规则,例如我们想给h1添加下边框，但是不想给h2页也加上，也不想分解上面的规则，可以给h1再增加一个属性:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">h1,h2 &#123;&#10; font-family: sans-serif;&#10; color: gray;&#10;&#125;&#10;h1&#123;&#10;border-bottom: 1px solid black;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">h1,h2 &#123;</div><div class="line"> font-family: sans-serif;</div><div class="line"> color: gray;</div><div class="line">&#125;</div><div class="line">h1&#123;</div><div class="line">border-bottom: 1px solid black;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>把元素的所有共同样式归组在一起(如果改变，只需要在一个规则中修改)，然后把一个元素特定的样式写在另一个规则中.</p>
 </li>
 </ul>
 <hr>
-<h2 id="类">类</h2><p>当我们用选择器选择元素使用一个规则时,会对所有该元素应用这个样式，所以如何单独地选择这些元素呢?这里就需要类class,class可以定义一类元素，对属于该类的所有元素应用样式.要将一个元素加入一个类，只需要增加属性”class”,并提供类名,如”greentea”:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;p class=&#34;greentea&#34;&#62;&#10;...&#10;&#60;/p&#62;</span><br></pre></td></tr></table></figure></p>
-<h3 id="类元素选择器">类元素选择器</h3><p>先选择这个类中的元素,再用”.”指定一个类,最后是类名,如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p.greentea &#123;&#10;  color: green;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="添加类元素">添加类元素</h3><p>如果想对所有<code>&lt;blockquote&gt;</code>也做同样的处理，可以:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">blockquote.greentea,p.greentea &#123;&#10;    color: green;&#10;&#125;&#10;&#60;blockquote class = &#34;greentea&#34;</span><br></pre></td></tr></table></figure></p>
-<h3 id="类选择器">类选择器</h3><p>如果想把<code>&lt;h1&gt;</code>,<code>&lt;h2&gt;</code>,<code>&lt;h3&gt;</code>,<code>&lt;p&gt;</code>和<code>&lt;blockquote&gt;</code>都增加到greentea呢？要对类中的所有元素都用同一样式可以用:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.greentea&#123;&#10;  color: green;&#10;&#125;&#10;/*&#30465;&#30053;&#25152;&#26377;&#20803;&#32032;&#21517;,&#21482;&#26377;&#19968;&#20010;&#28857;,&#21017;&#20250;&#24212;&#29992;&#21040;&#25152;&#26377;&#25104;&#21592;*/</span><br></pre></td></tr></table></figure></p>
-<h3 id="多类元素">多类元素</h3><p>元素可以有多个类,例如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;p class=&#34;greentea raspberry blueberry&#34;&#10;#&#21508;&#20010;&#31867;&#21517;&#29992;&#31354;&#26684;&#20998;&#38548;&#10;#&#31867;&#20013;&#39034;&#24207;&#19981;&#37325;&#35201;</span><br></pre></td></tr></table></figure></p>
-<h3 id="特定元素选择器">特定元素选择器</h3><p>如果多个选择器都选择了一个元素呢？例如上面的3个类都与p元素匹配，并且都定义了color属性，那么那个会胜出?</p>
+<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><p>当我们用选择器选择元素使用一个规则时,会对所有该元素应用这个样式，所以如何单独地选择这些元素呢?这里就需要类class,class可以定义一类元素，对属于该类的所有元素应用样式.要将一个元素加入一个类，只需要增加属性”class”,并提供类名,如”greentea”:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;p class=&quot;greentea&quot;&gt;</div><div class="line">...</div><div class="line">&lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="类元素选择器"><a href="#类元素选择器" class="headerlink" title="类元素选择器"></a>类元素选择器</h3><p>先选择这个类中的元素,再用”.”指定一个类,最后是类名,如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">p.greentea &#123;</div><div class="line">  color: green;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="添加类元素"><a href="#添加类元素" class="headerlink" title="添加类元素"></a>添加类元素</h3><p>如果想对所有<code>&lt;blockquote&gt;</code>也做同样的处理，可以:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">blockquote.greentea,p.greentea &#123;</div><div class="line">    color: green;</div><div class="line">&#125;</div><div class="line">&lt;blockquote class = &quot;greentea&quot;</div></pre></td></tr></table></figure></p>
+<h3 id="类选择器"><a href="#类选择器" class="headerlink" title="类选择器"></a>类选择器</h3><p>如果想把<code>&lt;h1&gt;</code>,<code>&lt;h2&gt;</code>,<code>&lt;h3&gt;</code>,<code>&lt;p&gt;</code>和<code>&lt;blockquote&gt;</code>都增加到greentea呢？要对类中的所有元素都用同一样式可以用:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">.greentea&#123;</div><div class="line">  color: green;</div><div class="line">&#125;</div><div class="line">/*省略所有元素名,只有一个点,则会应用到所有成员*/</div></pre></td></tr></table></figure></p>
+<h3 id="多类元素"><a href="#多类元素" class="headerlink" title="多类元素"></a>多类元素</h3><p>元素可以有多个类,例如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;p class=&quot;greentea raspberry blueberry&quot;</div><div class="line">#各个类名用空格分隔</div><div class="line">#类中顺序不重要</div></pre></td></tr></table></figure></p>
+<h3 id="特定元素选择器"><a href="#特定元素选择器" class="headerlink" title="特定元素选择器"></a>特定元素选择器</h3><p>如果多个选择器都选择了一个元素呢？例如上面的3个类都与p元素匹配，并且都定义了color属性，那么那个会胜出?</p>
 <ul>
 <li>如果某个规则更特定，则选择更特定的元素</li>
-<li>如果特定程度相同，那么会选择css文件中最后列出的规则，例如下面的例子中会选择p.blueberry的规则:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p &#123; color : black;&#125; // &#23545;&#20110;&#25152;&#26377;&#27573;&#33853;&#10;.greentea &#123; color: green;&#125; //&#23545;&#20110;&#25152;&#26377;greentea&#31867;&#65292;&#27604;&#19978;&#38754;&#29305;&#23450;&#10;p.greentea &#123; color : green;&#125; //&#21482;&#36873;&#25321;greentea&#31867;&#20013;&#30340;&#27573;&#33853;,&#27604;&#19978;&#38754;&#29305;&#23450;&#10;p.raspberry &#123; color : blue;&#125; //&#21516;&#19978;,&#19982;greentea&#29305;&#23450;&#31243;&#24230;&#30456;&#21516;&#10;p.blueberry &#123; color : purple;&#125; //&#21516;&#19978;,&#19982;greentea&#29305;&#23450;&#31243;&#24230;&#30456;&#21516;</span><br></pre></td></tr></table></figure>
+<li>如果特定程度相同，那么会选择css文件中最后列出的规则，例如下面的例子中会选择p.blueberry的规则:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">p &#123; color : black;&#125; // 对于所有段落</div><div class="line">.greentea &#123; color: green;&#125; //对于所有greentea类，比上面特定</div><div class="line">p.greentea &#123; color : green;&#125; //只选择greentea类中的段落,比上面特定</div><div class="line">p.raspberry &#123; color : blue;&#125; //同上,与greentea特定程度相同</div><div class="line">p.blueberry &#123; color : purple;&#125; //同上,与greentea特定程度相同</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <hr>
-<h2 id="id"><code>id</code></h2><h3 id="id的作用"><code>id</code>的作用</h3><p>id属性用来唯一地命名元素,通常你想对多个元素重用某些样式，才能真正发挥类的作用。但是如果只有一个元素需要样式，或者页面上只有一个元素，那就应该使用id,每个元素只能有一个id，页面中只能有一个元素拥有特定id,一个元素有一个id，同时可以属于一个或多个类,id中不允许出现空格或其他特殊字符,如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;p id=&#34;footer&#34;&#62;...&#60;/p&#62;</span><br></pre></td></tr></table></figure></p>
-<h3 id="选择元素">选择元素</h3><p>用id选择一个元素,需要在id前面使用一个#字符(类是[.]),id选择器只与页面中的一个元素匹配<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#footer&#123;&#10;  color: red;&#10;&#125;//&#36873;&#25321;id&#20026;footer&#30340;&#20219;&#24847;&#20803;&#32032;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p#footer&#123;&#10;  color: red;&#10;&#125;//&#36873;&#25321;id&#20026;footer&#30340;&#60;p&#62;&#20803;&#32032;</span><br></pre></td></tr></table></figure>
-<h3 id="实践建议">实践建议</h3><ul>
+<h2 id="id"><a href="#id" class="headerlink" title="id"></a><code>id</code></h2><h3 id="id的作用"><a href="#id的作用" class="headerlink" title="id的作用"></a><code>id</code>的作用</h3><p>id属性用来唯一地命名元素,通常你想对多个元素重用某些样式，才能真正发挥类的作用。但是如果只有一个元素需要样式，或者页面上只有一个元素，那就应该使用id,每个元素只能有一个id，页面中只能有一个元素拥有特定id,一个元素有一个id，同时可以属于一个或多个类,id中不允许出现空格或其他特殊字符,如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;p id=&quot;footer&quot;&gt;...&lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="选择元素"><a href="#选择元素" class="headerlink" title="选择元素"></a>选择元素</h3><p>用id选择一个元素,需要在id前面使用一个#字符(类是[.]),id选择器只与页面中的一个元素匹配<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#footer&#123;</div><div class="line">  color: red;</div><div class="line">&#125;//选择id为footer的任意元素</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">p#footer&#123;</div><div class="line">  color: red;</div><div class="line">&#125;//选择id为footer的&lt;p&gt;元素</div></pre></td></tr></table></figure>
+<h3 id="实践建议"><a href="#实践建议" class="headerlink" title="实践建议"></a>实践建议</h3><ul>
 <li>在复杂页面中，可能有些页面把id指定给一个段落，有些页面分配给了一个列表，那么需要为该id定义多个规则,根据页面上不同类型的元素应用不同的规则,如p#someid和blockquote#someid</li>
 <li>类名要以一个字母开头，不过id名可以以一个数字或字母开头，但它们都不能有空格</li>
 </ul>
 <hr>
-<h2 id="继承">继承</h2><h3 id="样式继承">样式继承</h3><ul>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><h3 id="样式继承"><a href="#样式继承" class="headerlink" title="样式继承"></a>样式继承</h3><ul>
 <li>为p选择器增加font-family属性时，也会影响到<code>&lt;p&gt;</code>元素中内部元素的字体。</li>
 <li>元素能够从他们的父元素继承样式。</li>
 <li>不是所有的样式都能继承,只有一部分,如font-family。</li>
 <li>并不是所有元素都会继承，如img没有文本，所以不会受到字体影响。</li>
-<li>继承的样式可以覆盖,例如给<code>&lt;em&gt;</code>提供一个特定的规则来覆盖body中指定font-family,浏览器会使用更特定的规则：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">body &#123;&#10;  font-family : sans-serif;&#10;&#125;&#10;&#10;em &#123;&#10;  font-family: serif;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<li>继承的样式可以覆盖,例如给<code>&lt;em&gt;</code>提供一个特定的规则来覆盖body中指定font-family,浏览器会使用更特定的规则：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">body &#123;</div><div class="line">  font-family : sans-serif;</div><div class="line">&#125;</div><div class="line"></div><div class="line">em &#123;</div><div class="line">  font-family: serif;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="那哪些元素能够继承">那哪些元素能够继承</h3><ul>
+<h3 id="那哪些元素能够继承"><a href="#那哪些元素能够继承" class="headerlink" title="那哪些元素能够继承"></a>那哪些元素能够继承</h3><ul>
 <li>如果样式会影响你的文本外观，那么所有这些样式都能继承,如color,font-family,font-size,font-weight,font-style等和字体相关的属性</li>
 <li>其他属性不能继承，如边框，因为如果body元素有边框，不表示你希望body内的所有元素都有边框</li>
 <li>根据常识确定，或者试试看</li>
 </ul>
 <hr>
-<h3 id="层叠">层叠</h3><ul>
+<h3 id="层叠"><a href="#层叠" class="headerlink" title="层叠"></a>层叠</h3><ul>
 <li>浏览器会用多个样式表组织样式，首先是你的ccs所有样式表，其次是用户创建的样式，最后浏览器本身会维护一组默认样式</li>
 <li>给定一组样式表中的一组样式，浏览器会以层叠的方式确定具体使用哪个样式</li>
 <li>读者可以在他的css属性上加上!important，那他就能覆盖你的样式</li>
@@ -102,38 +103,38 @@
 <li>浏览器首先收集样式表找到所有的声明,然后对所有匹配的规则按作者，读者和浏览器排序，再按特定性对组内的所有声明分别排序，<br>最后对于冲突的规则，按照他们在各个样式表中出现的顺序排序，如果两个规则得分相同，最后出现的规则胜出。</li>
 </ul>
 <hr>
-<h2 id="媒体查询">媒体查询</h2><h3 id="link媒体查询">link媒体查询</h3><p>你可能想针对将要显示页面的设备调整页面的样式，可以用media属性,在link元素中增加这个属性.如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;link rel=&#34;stylesheet&#34; href=&#34;lounge-mobile.css&#34; mdeia=&#34;screen and (max-device-width: 480px)&#34;&#62;&#10;&#60;link rel=&#34;stylesheet&#34; href=&#34;lounge-print.css&#34; media=&#34;print&#34;&#62;&#10;# &#20854;&#20182;&#23646;&#24615;&#21253;&#25324;min-device-width,max-device-width,orientation(&#27178;&#21521;landscape,&#32437;&#21521;portrait)</span><br></pre></td></tr></table></figure></p>
-<h3 id="css媒体查询">css媒体查询</h3><p>可以直接在css中增加媒体查询,使用@media规则,把对所有媒体类型都通用的规则放在@media规则下面,例如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@media screen and (min-device-width: 481px)&#123;//&#24403;&#35774;&#22791;&#23631;&#24149;&#23485;&#24230;&#22823;&#20110;480px&#26102;&#20351;&#29992;&#10;#guarantee &#123;&#10;  margin-right: 250px;&#10;&#125;&#10;&#125;&#10;@media screen and (max-device-width: 480px)&#123;//&#24403;&#35774;&#22791;&#23631;&#24149;&#23567;&#20110;&#31561;&#20110;480px&#26102;&#20351;&#29992;&#10; #guarantee &#123;&#10;   margin-right: 30px;&#10; &#125;&#10;&#125;&#10;@media print &#123; // &#22914;&#26524;&#35201;&#25171;&#21360;&#39029;&#38754;&#65292;&#20351;&#29992;&#35813;&#35268;&#21017;&#10;body &#123;&#10;  font-family: Times, &#34;Times New Roman&#34;, serif;&#10;&#125;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="实践建议-1">实践建议</h3><ul>
+<h2 id="媒体查询"><a href="#媒体查询" class="headerlink" title="媒体查询"></a>媒体查询</h2><h3 id="link媒体查询"><a href="#link媒体查询" class="headerlink" title="link媒体查询"></a>link媒体查询</h3><p>你可能想针对将要显示页面的设备调整页面的样式，可以用media属性,在link元素中增加这个属性.如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;lounge-mobile.css&quot; mdeia=&quot;screen and (max-device-width: 480px)&quot;&gt;</div><div class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;lounge-print.css&quot; media=&quot;print&quot;&gt;</div><div class="line"># 其他属性包括min-device-width,max-device-width,orientation(横向landscape,纵向portrait)</div></pre></td></tr></table></figure></p>
+<h3 id="css媒体查询"><a href="#css媒体查询" class="headerlink" title="css媒体查询"></a>css媒体查询</h3><p>可以直接在css中增加媒体查询,使用@media规则,把对所有媒体类型都通用的规则放在@media规则下面,例如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">@media screen and (min-device-width: 481px)&#123;//当设备屏幕宽度大于480px时使用</div><div class="line">#guarantee &#123;</div><div class="line">  margin-right: 250px;</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">@media screen and (max-device-width: 480px)&#123;//当设备屏幕小于等于480px时使用</div><div class="line"> #guarantee &#123;</div><div class="line">   margin-right: 30px;</div><div class="line"> &#125;</div><div class="line">&#125;</div><div class="line">@media print &#123; // 如果要打印页面，使用该规则</div><div class="line">body &#123;</div><div class="line">  font-family: Times, &quot;Times New Roman&quot;, serif;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="实践建议-1"><a href="#实践建议-1" class="headerlink" title="实践建议"></a>实践建议</h3><ul>
 <li>如果css文件相当庞大，建议使用link元素</li>
 <li>除了给出设备的媒体属性，如果你更关心浏览器大小，可以用max-width和min-width</li>
 </ul>
 <hr>
-<h1 id="属性">属性</h1><h2 id="盒模型">盒模型</h2><p>盒模型是css看待元素的一种方式，css将每个元素看作由一个盒子表示,每个盒子由一个内容区以及可选的内边距，边框和外边距组成。由内而外分别是:</p>
+<h1 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h1><h2 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h2><p>盒模型是css看待元素的一种方式，css将每个元素看作由一个盒子表示,每个盒子由一个内容区以及可选的内边距，边框和外边距组成。由内而外分别是:</p>
 <ul>
 <li><code>内容区</code>: content ,包含内容，如文本或图像</li>
 <li><code>透明内边距</code>: padding ,可选,包围内容区</li>
 <li><code>边框</code>: border ,可选,内边距周围</li>
 <li><code>透明外边距</code>: margin,可选,包围所有部分</li>
 </ul>
-<h3 id="内容区">内容区</h3><p>内容区包含元素的内容，它的大小通常正好包含全部内容</p>
-<h3 id="padding_内边距"><code>padding</code> 内边距</h3><ul>
+<h3 id="内容区"><a href="#内容区" class="headerlink" title="内容区"></a>内容区</h3><p>内容区包含元素的内容，它的大小通常正好包含全部内容</p>
+<h3 id="padding-内边距"><a href="#padding-内边距" class="headerlink" title="padding 内边距"></a><code>padding</code> 内边距</h3><ul>
 <li>使用内边距可以在内容与盒子边框之间创建一些看得到的空间</li>
 <li>css可以控制内边距的宽度，甚至任意一边的宽度,上下左右</li>
 <li>透明,无法指定样式</li>
 <li>元素的背景颜色或背景图像会延伸到内边距下面，但不会延伸到外边距</li>
-<li>设置padding的顺序很重要，如果先设置padding-left再设置padding，刚才设置的padding-left就会被覆盖<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">padding: 25px;&#10;padding-left: 80px;&#10;# &#25105;&#20204;&#39318;&#20808;&#26377;&#19968;&#20010;&#23646;&#24615;&#26469;&#25511;&#21046;&#25152;&#26377;4&#20010;&#36793;&#65292;&#21478;&#22806;&#20877;&#23545;&#27599;&#20010;&#36793;&#21333;&#29420;&#35774;&#32622;</span><br></pre></td></tr></table></figure>
+<li>设置padding的顺序很重要，如果先设置padding-left再设置padding，刚才设置的padding-left就会被覆盖<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">padding: 25px;</div><div class="line">padding-left: 80px;</div><div class="line"># 我们首先有一个属性来控制所有4个边，另外再对每个边单独设置</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="border_边框"><code>border</code> 边框</h3><ul>
+<h3 id="border-边框"><a href="#border-边框" class="headerlink" title="border 边框"></a><code>border</code> 边框</h3><ul>
 <li>他是围绕内容的一条线</li>
 <li>边框可以有不同的宽度，颜色和样式</li>
 <li>内边距将内容区与边框隔开</li>
 <li>可以指定任意一边的边框样式 border-top-color,border-top-style,border-top-width等</li>
-<li>锯齿边框(破折线＋白色):<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">border-style: dashed;&#10;border-color: white;</span><br></pre></td></tr></table></figure>
+<li>锯齿边框(破折线＋白色):<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">border-style: dashed;</div><div class="line">border-color: white;</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="border-style_边框样式"><code>border-style</code> 边框样式</h3><ul>
+<h3 id="border-style-边框样式"><a href="#border-style-边框样式" class="headerlink" title="border-style 边框样式"></a><code>border-style</code> 边框样式</h3><ul>
 <li><code>solid</code> 实线</li>
 <li><code>ridge</code> 脊线</li>
 <li><code>dashed</code> 破折</li>
@@ -143,51 +144,51 @@
 <li><code>outset</code> 外凸</li>
 <li><code>inset</code> 内凸</li>
 </ul>
-<h3 id="border-width_边框宽度"><code>border-width</code> 边框宽度</h3><ul>
+<h3 id="border-width-边框宽度"><a href="#border-width-边框宽度" class="headerlink" title="border-width 边框宽度"></a><code>border-width</code> 边框宽度</h3><ul>
 <li>关键字 thin medium thick</li>
 <li>像素 5px;</li>
 </ul>
-<h3 id="border-color_边框颜色"><code>border-color</code> 边框颜色</h3><p>和color 类似,使用颜色名，rgb或16进制码</p>
-<h3 id="border-radius_边框圆角"><code>border-radius</code> 边框圆角</h3><ul>
+<h3 id="border-color-边框颜色"><a href="#border-color-边框颜色" class="headerlink" title="border-color 边框颜色"></a><code>border-color</code> 边框颜色</h3><p>和color 类似,使用颜色名，rgb或16进制码</p>
+<h3 id="border-radius-边框圆角"><a href="#border-radius-边框圆角" class="headerlink" title="border-radius 边框圆角"></a><code>border-radius</code> 边框圆角</h3><ul>
 <li>可以为4个角分别指定，如border-top-left-radius</li>
-<li>可以用px或em(相对于元素字体大小)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">border-radius: 15px;</span><br></pre></td></tr></table></figure>
+<li>可以用px或em(相对于元素字体大小)<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">border-radius: 15px;</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="margin_外边距"><code>margin</code> 外边距</h3><ul>
+<h3 id="margin-外边距"><a href="#margin-外边距" class="headerlink" title="margin 外边距"></a><code>margin</code> 外边距</h3><ul>
 <li>用外边距在同一个页面上的不同元素之间增加空间</li>
 <li>和内边距一样，css可以控制外边距的宽度，甚至任意一边的宽度,上下左右</li>
 <li>透明,无法指定样式</li>
-<li>和padding一样，设置margin的顺序很重要<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">margin: 30px;&#10;margin-right: 250px;</span><br></pre></td></tr></table></figure>
+<li>和padding一样，设置margin的顺序很重要<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">margin: 30px;</div><div class="line">margin-right: 250px;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <hr>
-<h2 id="color_颜色"><code>color</code> 颜色</h2><h3 id="文本元素的字体颜色">文本元素的字体颜色</h3><ul>
+<h2 id="color-颜色"><a href="#color-颜色" class="headerlink" title="color 颜色"></a><code>color</code> 颜色</h2><h3 id="文本元素的字体颜色"><a href="#文本元素的字体颜色" class="headerlink" title="文本元素的字体颜色"></a>文本元素的字体颜色</h3><ul>
 <li>color 元素实际控制着一个元素的前景色,他会控制文本和边框颜色，不过你也可以用border-color属性为边框指定自己的颜色</li>
 <li>改变p的字体颜色不会影响里面的链接颜色.</li>
 <li>web颜色按构成颜色的红，绿，蓝三个分量所占数量来指定,每种颜色会分别指定一个从0到100%的数值,然后把它们混合起来得到最终的颜色.如100%红,100%绿，100%蓝混合在一起是白色。所有指定web颜色的方法最终都是告诉浏览器：一个颜色的红绿蓝分量分别是多少.</li>
 <li>对于文本和背景，要使用对比度最大的颜色，能提高可读性</li>
 </ul>
-<h3 id="用16进制码指定指定颜色">用16进制码指定指定颜色</h3><ul>
+<h3 id="用16进制码指定指定颜色"><a href="#用16进制码指定指定颜色" class="headerlink" title="用16进制码指定指定颜色"></a>用16进制码指定指定颜色</h3><ul>
 <li>如<code>#fc1257</code>,这种方式最常用</li>
 <li>以#开头,分别用2位数字指定红绿蓝</li>
 <li><p>例如:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">body &#123;&#10;    background-color: #cc6600;&#10;  &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">body &#123;</div><div class="line">    background-color: #cc6600;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p><a href="http://en.wikipedia.org/wiki/web_colors" target="_blank" rel="external">wiki的web颜色表</a></p>
 </li>
 <li>如果每一组分量中的两位数字都相同，可以使用简写,例如<code>#ccbb00</code>可以简写成<code>#cb0</code>,不过如果是<code>#ccbb10</code>则不能简写</li>
 </ul>
-<h3 id="按名指定颜色">按名指定颜色</h3><ul>
+<h3 id="按名指定颜色"><a href="#按名指定颜色" class="headerlink" title="按名指定颜色"></a>按名指定颜色</h3><ul>
 <li>css只定义了大约150个颜色名,颜色名不区分大小写</li>
 <li>16种基本颜色,所有浏览器都有,以及150种扩展色,它们是:<code>aqua, black, blue, fuchsia, gray, green, lime, maroon, navy, olive, purple, red, silver, teal, white, yellow</code></li>
-<li>例如:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">body &#123;&#10;  background-color: silver;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<li>例如:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">body &#123;</div><div class="line">  background-color: silver;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="用红绿蓝值指定颜色">用红绿蓝值指定颜色</h3><p>以rgb开头，在小括号里指定红绿蓝的百分比,例如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">body&#123;&#10;  background-color: rgb(80%, 40% , 0%)//&#27225;&#33394;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
-<p>还可以指定0-255之间的一个数值,例如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">body&#123;&#10;  background-color: rgb(204, 102, 0)//&#21644;&#19978;&#38754;&#39068;&#33394;&#19968;&#33268;,255*80% = 204...&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="用红绿蓝值指定颜色"><a href="#用红绿蓝值指定颜色" class="headerlink" title="用红绿蓝值指定颜色"></a>用红绿蓝值指定颜色</h3><p>以rgb开头，在小括号里指定红绿蓝的百分比,例如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">body&#123;</div><div class="line">  background-color: rgb(80%, 40% , 0%)//橙色</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>还可以指定0-255之间的一个数值,例如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">body&#123;</div><div class="line">  background-color: rgb(204, 102, 0)//和上面颜色一致,255*80% = 204...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <hr>
-<h2 id="font-family_字体"><code>font-family</code> 字体</h2><p>大多数计算机上通常只安装了部分字体,所以选择字体时要当心,通常指定的font-family包含一个候选字体列表,他们都来自同一个字体系列,候选字体用逗号分隔,大小写字母必须一致,最后总是放一个通用的字体系列名,如果一个字体名中包含多个单词,比如Courier New，如何指定？用引号,”Courier New”,如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">body&#123;&#10;  font-family: Verdana, Geneva, Arial, sans-serif;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="字体系列">字体系列</h3><p>每个font-family包含一组有共同特征的字体。共有5个字体系列:</p>
+<h2 id="font-family-字体"><a href="#font-family-字体" class="headerlink" title="font-family 字体"></a><code>font-family</code> 字体</h2><p>大多数计算机上通常只安装了部分字体,所以选择字体时要当心,通常指定的font-family包含一个候选字体列表,他们都来自同一个字体系列,候选字体用逗号分隔,大小写字母必须一致,最后总是放一个通用的字体系列名,如果一个字体名中包含多个单词,比如Courier New，如何指定？用引号,”Courier New”,如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">body&#123;</div><div class="line">  font-family: Verdana, Geneva, Arial, sans-serif;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="字体系列"><a href="#字体系列" class="headerlink" title="字体系列"></a>字体系列</h3><p>每个font-family包含一组有共同特征的字体。共有5个字体系列:</p>
 <ul>
 <li><p><code>Sans-serif</code> : 无衬线体 , 在计算机上更容易识别, 很多人认为在计算机显示中最适合体文本,包括: [<code>Verdana</code> : 大多数pc上都有],[<code>Geneva</code> : 大多数Mac上都有],[<code>Arial</code> : 在PC和Mac上都很常见]</p>
 </li>
@@ -200,7 +201,7 @@
 <li><p><code>Fantasy</code> : 包含有某种风格的装饰性字体</p>
 </li>
 </ul>
-<h3 id="@font-face_指定字体"><code>@font-face</code> 指定字体</h3><ul>
+<h3 id="font-face-指定字体"><a href="#font-face-指定字体" class="headerlink" title="@font-face 指定字体"></a><code>@font-face</code> 指定字体</h3><ul>
 <li><code>@font-face</code> 允许你定义一种字体的名字和位置,然后可以在你的页面中使用。</li>
 <li>web字体标准: 字体文件使用”.woff”文件扩展名,表示web开放字体格式(web open font format)</li>
 <li>常用字体格式: ［<code>TrueType</code> : .ttf］，［<code>OpenType</code> : .otf 建立在tt之上］，［<code>Embedded OpenType字体</code> : .eot otf的压缩形式 微软专用，仅ie支持］，［<code>SVG字体</code> : .svg 通用图像格式］，［<code>Web开放字体格式</code> : .woff 推荐使用,浏览器支持最广泛］</li>
@@ -208,30 +209,30 @@
 <li>有字体托管服务可以为你托管web字体。</li>
 <li>浏览器会先在用户计算机上查找Verdana字体，如果有，这个元素就使用这个字体，如果不可用，找Geneva,以此类推,<br>如果前面指定的字体都没有找到，就用浏览器默认的Sans-serif字体，就是我们最后指定的通用字体。</li>
 <li>利用font-family可以创建一个首选字体列表</li>
-<li>把该规则增加到文件的最上面,放在body规则之上<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@font-face &#123;&#10;font-family: &#34;Emblema One&#34;; //&#21019;&#24314;&#19968;&#20010;&#21517;&#23383;&#10;src: url(&#34;http://wickedlysmart.com/hfhtmlcss/chapter8/journal/EmblemaOne-Regular.woff&#34;),&#10;     url(&#34;http://wickedlysmart.com/hfhtmlcss/chapter8/journal/EmblemaOne-Regular.tff&#34;);&#10;//src&#23646;&#24615;&#21578;&#35785;&#27983;&#35272;&#22120;&#21040;&#21738;&#37324;&#25214;&#21040;&#36825;&#20010;&#23383;&#20307;,&#27983;&#35272;&#22120;&#20250;&#23581;&#35797;&#27599;&#19968;&#20010;src&#25991;&#20214;&#65292;&#30452;&#21040;&#25214;&#21040;&#23427;&#25903;&#25345;&#30340;&#19968;&#20010;&#25991;&#20214;&#12290;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<li>把该规则增加到文件的最上面,放在body规则之上<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@font-face &#123;</div><div class="line">font-family: &quot;Emblema One&quot;; //创建一个名字</div><div class="line">src: url(&quot;http://wickedlysmart.com/hfhtmlcss/chapter8/journal/EmblemaOne-Regular.woff&quot;),</div><div class="line">     url(&quot;http://wickedlysmart.com/hfhtmlcss/chapter8/journal/EmblemaOne-Regular.tff&quot;);</div><div class="line">//src属性告诉浏览器到哪里找到这个字体,浏览器会尝试每一个src文件，直到找到它支持的一个文件。</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="@import"><code>@import</code></h3><p><code>@import</code> 允许导入其他CSS文件</p>
-<h3 id="font-weight_控制文本的粗细"><code>font-weight</code> 控制文本的粗细</h3><ul>
+<h3 id="import"><a href="#import" class="headerlink" title="@import"></a><code>@import</code></h3><p><code>@import</code> 允许导入其他CSS文件</p>
+<h3 id="font-weight-控制文本的粗细"><a href="#font-weight-控制文本的粗细" class="headerlink" title="font-weight 控制文本的粗细"></a><code>font-weight</code> 控制文本的粗细</h3><ul>
 <li><code>lighter</code> : 相对于继承的值使文本稍细一点。</li>
 <li><code>normal</code> : 正常</li>
 <li><code>bold</code> : 粗体</li>
 <li><code>bolder</code> : 相对于继承的值使文本稍粗一点。</li>
 <li>还可以设置为100到900之间的一个数（100的倍数),不过并没有广泛支持，通常不使用</li>
 </ul>
-<h3 id="font-size_让文本更大或更小"><code>font-size</code> 让文本更大或更小</h3><ul>
+<h3 id="font-size-让文本更大或更小"><a href="#font-size-让文本更大或更小" class="headerlink" title="font-size 让文本更大或更小"></a><code>font-size</code> 让文本更大或更小</h3><ul>
 <li>像素px指定大小 : <code>font-size: 14px;</code> //告诉浏览器字母高度是多少像素.14px中间不能有空格</li>
 <li>百分数%指定大小 : <code>font-size: 150%;</code> //指定相对于父元素的字体大小</li>
 <li>em指定字体大小 : <code>font-size: 1.2em;</code> //指定相对于父元素的字体的比例因子,称为相对大小</li>
 <li><p>好吧，百分数和em看上去差别不大，可能%更容易理解些,例子:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">body &#123;&#10;    font-size: 14px;&#10;&#125;&#10;h1 &#123;&#10;    font-size: 150%; //&#29238;&#20803;&#32032;body,&#36825;&#37324;&#26159;14*150% = 21px&#10;&#125;&#10;h2 &#123;&#10;    font-size: 1.2em; //&#29238;&#20803;&#32032;body,&#36825;&#37324;&#26159;14*1.2 = 17px&#10;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">body &#123;</div><div class="line">    font-size: 14px;</div><div class="line">&#125;</div><div class="line">h1 &#123;</div><div class="line">    font-size: 150%; //父元素body,这里是14*150% = 21px</div><div class="line">&#125;</div><div class="line">h2 &#123;</div><div class="line">    font-size: 1.2em; //父元素body,这里是14*1.2 = 17px</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>关键字指定字体大小 : <code>font-size: small;</code>, small通常定义为12px,下面每一级大小约比前一个大小大20%，包括:<code>xx-small</code>,<code>x-small</code>,<code>small</code>,<code>medium</code>,<code>large</code>,<code>x-large</code>,<code>xx-large</code></p>
 </li>
 </ul>
-<h3 id="指定字体大小的秘诀">指定字体大小的秘诀</h3><p>(1)选择一个关键字(推荐small或medium),作为body的字体大小,为页面默认字体大小 (2)使用em或百分数,相对于body字体大小指定其他元素的字体大小(em或百分数)这样改变web页面中字体大小就很容易，只要改变body字体大小就可以了,例如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">body &#123; font-size : small; &#125;&#10;h1 &#123; font-size : 150%; &#125;&#10;h2 &#123; font-size : 120%; &#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="指定字体大小的秘诀"><a href="#指定字体大小的秘诀" class="headerlink" title="指定字体大小的秘诀"></a>指定字体大小的秘诀</h3><p>(1)选择一个关键字(推荐small或medium),作为body的字体大小,为页面默认字体大小 (2)使用em或百分数,相对于body字体大小指定其他元素的字体大小(em或百分数)这样改变web页面中字体大小就很容易，只要改变body字体大小就可以了,例如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">body &#123; font-size : small; &#125;</div><div class="line">h1 &#123; font-size : 150%; &#125;</div><div class="line">h2 &#123; font-size : 120%; &#125;</div></pre></td></tr></table></figure></p>
 <p>注意老版IE不支持用像素指定的文本缩放</p>
-<h3 id="浏览器默认字体大小">浏览器默认字体大小</h3><ul>
+<h3 id="浏览器默认字体大小"><a href="#浏览器默认字体大小" class="headerlink" title="浏览器默认字体大小"></a>浏览器默认字体大小</h3><ul>
 <li>大多数情况下，浏览器默认的body字体大小都是16像素</li>
 <li>如果在body中指定字体大小为90%,这将是默认字体的90%</li>
 <li>h1 : 200%, 相对于默认字体,下同</li>
@@ -241,7 +242,7 @@
 <li>h5 : 90%</li>
 <li>h6 : 60%</li>
 </ul>
-<h3 id="text-decoration_文本装饰"><code>text-decoration</code> 文本装饰</h3><ul>
+<h3 id="text-decoration-文本装饰"><a href="#text-decoration-文本装饰" class="headerlink" title="text-decoration 文本装饰"></a><code>text-decoration</code> 文本装饰</h3><ul>
 <li><code>underline</code> : 下划线 ,下划线文本通常被用户误认为是链接文本，所以要谨慎使用</li>
 <li><code>none</code> : 无效果</li>
 <li><code>overline</code> : 上划线</li>
@@ -249,14 +250,14 @@
 <li>一次可以设置多个装饰</li>
 <li>如果文本继承了你不想要的文本装饰，可以使用值”none”来去除装饰</li>
 <li>如果em有两个不同的规则，不会累加，要把这两个值合并到一个规则中，才能同时得到这两个文本装饰.</li>
-<li>例如:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">em &#123;&#10;  text-decoration: line-through;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<li>例如:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">em &#123;</div><div class="line">  text-decoration: line-through;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="font-style_字体风格"><code>font-style</code> 字体风格</h3><ul>
+<h3 id="font-style-字体风格"><a href="#font-style-字体风格" class="headerlink" title="font-style 字体风格"></a><code>font-style</code> 字体风格</h3><ul>
 <li><code>italic</code> : 斜体 ,斜体文本向右倾斜,另外衬线还有弯曲</li>
 <li><code>oblique</code> : 倾斜 ,并不是使用一组专门设计的倾斜字符,而是由浏览器将正常文字倾斜</li>
 </ul>
-<h3 id="list-style_改变列表中列表项的外观"><code>list-style</code> 改变列表中列表项的外观</h3><ul>
+<h3 id="list-style-改变列表中列表项的外观"><a href="#list-style-改变列表中列表项的外观" class="headerlink" title="list-style 改变列表中列表项的外观"></a><code>list-style</code> 改变列表中列表项的外观</h3><ul>
 <li>列表的主要属性是<code>list-style-type</code>,利用这个属性可以控制列表中使用的项目符号<ul>
 <li><code>disc</code>,默认</li>
 <li><code>circle</code>,圆圈标记</li>
@@ -265,9 +266,9 @@
 </ul>
 </li>
 </ul>
-<h3 id="定制列表标记">定制列表标记</h3><ul>
+<h3 id="定制列表标记"><a href="#定制列表标记" class="headerlink" title="定制列表标记"></a>定制列表标记</h3><ul>
 <li><p>如果想定制列表的标记，可以用<code>list-style-image</code>为列表设置标记图像,如:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">li&#123;&#10;  list-style-image: url(images/backpack.gif);&#10;  padding-top: 5px;&#10;  margin-left: 20px;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">li&#123;</div><div class="line">  list-style-image: url(images/backpack.gif);</div><div class="line">  padding-top: 5px;</div><div class="line">  margin-left: 20px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>对于有序列表也一样，可以用<code>list-style-type</code>控制一个有序列表标记:</p>
 <ul>
@@ -280,36 +281,36 @@
 </li>
 <li>列表项的项目符号的位置如何控制?用<code>list-style-position</code>,有两个取值<code>inside</code>(标记在列表项里)和<code>outside</code>（列表项外)。<br>区别如下:<img src="http://www.wibibi.com/upload/20130930162132.png" alt="区别"></li>
 </ul>
-<h2 id="其他属性">其他属性</h2><h3 id="left_指定一个元素的左边所在位置"><code>left</code> 指定一个元素的左边所在位置</h3><h3 id="top_控制一个元素顶部的位置"><code>top</code> 控制一个元素顶部的位置</h3><h3 id="background-image_在元素后面放置一个图像,如"><code>background-image</code> 在元素后面放置一个图像,如</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background-image: url(images/background.gif);&#10;//&#29992;url&#25324;&#36215;&#26469;,&#27880;&#24847;&#27809;&#26377;&#24341;&#21495;</span><br></pre></td></tr></table></figure>
-<h3 id="background-repeat_背景图像是否重复"><code>background-repeat</code> 背景图像是否重复</h3><ul>
+<h2 id="其他属性"><a href="#其他属性" class="headerlink" title="其他属性"></a>其他属性</h2><h3 id="left-指定一个元素的左边所在位置"><a href="#left-指定一个元素的左边所在位置" class="headerlink" title="left 指定一个元素的左边所在位置"></a><code>left</code> 指定一个元素的左边所在位置</h3><h3 id="top-控制一个元素顶部的位置"><a href="#top-控制一个元素顶部的位置" class="headerlink" title="top 控制一个元素顶部的位置"></a><code>top</code> 控制一个元素顶部的位置</h3><h3 id="background-image-在元素后面放置一个图像-如"><a href="#background-image-在元素后面放置一个图像-如" class="headerlink" title="background-image 在元素后面放置一个图像,如"></a><code>background-image</code> 在元素后面放置一个图像,如</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">background-image: url(images/background.gif);</div><div class="line">//用url括起来,注意没有引号</div></pre></td></tr></table></figure>
+<h3 id="background-repeat-背景图像是否重复"><a href="#background-repeat-背景图像是否重复" class="headerlink" title="background-repeat 背景图像是否重复"></a><code>background-repeat</code> 背景图像是否重复</h3><ul>
 <li>默认在水平和垂直方向上重复</li>
-<li>控制平铺行为,no-repeat,repeat-x,repeat-y,inherit;<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background-repeat: no-repeat;</span><br></pre></td></tr></table></figure>
+<li>控制平铺行为,no-repeat,repeat-x,repeat-y,inherit;<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">background-repeat: no-repeat;</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="background-position_背景图像的位置"><code>background-position</code> 背景图像的位置</h3><ul>
-<li>可以按像素指定，或百分数,还可以用关键字,如top,left,right,bottom和center<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background-position: top left;</span><br></pre></td></tr></table></figure>
+<h3 id="background-position-背景图像的位置"><a href="#background-position-背景图像的位置" class="headerlink" title="background-position 背景图像的位置"></a><code>background-position</code> 背景图像的位置</h3><ul>
+<li>可以按像素指定，或百分数,还可以用关键字,如top,left,right,bottom和center<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">background-position: top left;</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="background-color_控制元素的背景颜色"><code>background-color</code> 控制元素的背景颜色</h3><h3 id="text-align_对齐"><code>text-align</code> 对齐</h3><ul>
+<h3 id="background-color-控制元素的背景颜色"><a href="#background-color-控制元素的背景颜色" class="headerlink" title="background-color 控制元素的背景颜色"></a><code>background-color</code> 控制元素的背景颜色</h3><h3 id="text-align-对齐"><a href="#text-align-对齐" class="headerlink" title="text-align 对齐"></a><code>text-align</code> 对齐</h3><ul>
 <li>text-align会对块元素中的所有内联内容对齐,而不仅仅是文本</li>
 <li>text-align只能在块元素上设置，对内联元素无效</li>
 <li><code>left</code> 左对齐</li>
 <li><code>center</code> 居中</li>
 <li><code>right</code> 右对齐</li>
 </ul>
-<h3 id="letter-spacing_在字母之间设置间距"><code>letter-spacing</code> 在字母之间设置间距</h3><h3 id="line-height_设置文本元素中的行间距"><code>line-height</code> 设置文本元素中的行间距</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">body &#123;&#10;    font-size: small;&#10;    font-family: Verdana, Helvetica, Arial, sans-serif;&#10;    line-height: 1.6em; //&#35843;&#25972;&#20026;&#23383;&#20307;&#22823;&#23567;&#30340;1.6&#20493;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="letter-spacing-在字母之间设置间距"><a href="#letter-spacing-在字母之间设置间距" class="headerlink" title="letter-spacing 在字母之间设置间距"></a><code>letter-spacing</code> 在字母之间设置间距</h3><h3 id="line-height-设置文本元素中的行间距"><a href="#line-height-设置文本元素中的行间距" class="headerlink" title="line-height 设置文本元素中的行间距"></a><code>line-height</code> 设置文本元素中的行间距</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">body &#123;</div><div class="line">    font-size: small;</div><div class="line">    font-family: Verdana, Helvetica, Arial, sans-serif;</div><div class="line">    line-height: 1.6em; //调整为字体大小的1.6倍</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li><p>line-height元素有点特殊,可以对它直接使用一个数,而不是相对度量,代表各元素行高是其自己字体大小的多少倍</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#elixirs &#123;&#10;  line-height: 1;//&#20195;&#34920;elixirs&#20013;&#30340;&#25152;&#26377;&#20803;&#32032;&#30340;&#34892;&#38388;&#36317;&#20026;&#20854;&#33258;&#24049;&#23383;&#20307;&#22823;&#23567;&#30340;1&#20493;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#elixirs &#123;</div><div class="line">  line-height: 1;//代表elixirs中的所有元素的行间距为其自己字体大小的1倍</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>设置<code>line-height</code>为<code>normal</code>，允许浏览器选择一个适当的行高大小,通常根据字体来确定。</p>
 </li>
 </ul>
-<h3 id="border-bottom_下边框"><code>border-bottom</code> 下边框</h3><ul>
+<h3 id="border-bottom-下边框"><a href="#border-bottom-下边框" class="headerlink" title="border-bottom 下边框"></a><code>border-bottom</code> 下边框</h3><ul>
 <li>下边框会延伸到页面边缘,但是文本的underline属性的下划线只会出现在文本下面</li>
 <li>1px solid black</li>
 </ul>
-<h3 id="width_指定元素宽度"><code>width</code> 指定元素宽度</h3><ul>
+<h3 id="width-指定元素宽度"><a href="#width-指定元素宽度" class="headerlink" title="width 指定元素宽度"></a><code>width</code> 指定元素宽度</h3><ul>
 <li>宽度永远是设置的值</li>
 <li>width属性只指定内容区的宽度</li>
 <li>要确定整个盒子的宽度，需要将内容区的宽度加上左和右内边距,左右外边距和边框的宽度</li>
@@ -317,63 +318,63 @@
 <li>如果使用百分数，那么宽度会计算为元素所在容器宽度的一个百分比</li>
 <li>高度也是默认的，也是”auto”,一般，不用指定元素的高度，就让它们默认为auto</li>
 </ul>
-<h3 id="a元素和它的多重人格"><code>a</code>元素和它的多重人格</h3><ul>
+<h3 id="a元素和它的多重人格"><a href="#a元素和它的多重人格" class="headerlink" title="a元素和它的多重人格"></a><code>a</code>元素和它的多重人格</h3><ul>
 <li>页面上的链接有多重显示样式，包括未访问，已访问或者处于悬停状态等(还有focus和active),这里需要用到伪类</li>
 <li>foucs是指浏览器将焦点放在你的链接上时就是焦点状态，浏览器允许用户按下tab键轮流访问时，浏览器访问到某个链接，某个链接就拥有了”焦点”</li>
 <li>active是指用户第一次单击一个链接时，就处于活动状态。<br>－ a元素可能同时处于多个状态，一般认为适当的顺序是link,visited,hover,focus,active</li>
-<li>例子:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a:link &#123;&#10;  color: green;&#10;&#125;&#10;a:visited &#123;&#10;  color: red;&#10;&#125;&#10;a:hover &#123;&#10;  color: yellow;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<li>例子:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">a:link &#123;</div><div class="line">  color: green;</div><div class="line">&#125;</div><div class="line">a:visited &#123;</div><div class="line">  color: red;</div><div class="line">&#125;</div><div class="line">a:hover &#123;</div><div class="line">  color: yellow;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="伪类">伪类</h3><ul>
+<h3 id="伪类"><a href="#伪类" class="headerlink" title="伪类"></a>伪类</h3><ul>
 <li>上面的a:link,a:visited和a:hover就是伪类</li>
 <li>它们都允许我指定样式，就好像他们是类一样，但是没有人在html中真正输入这些类</li>
 <li>浏览器会仔细检查所有a元素，把它们增加到正确的伪类中，如果一个链接已访问过，会放到:visited类中，如果悬停，浏览器会把这个链接<br>扔到:hover伪类中。浏览器会在后台向这些类增加和删除元素.</li>
 <li>伪类不止能处理链接，还能对其他类型的元素提供处理，如first-child对应元素的第一个子元素。</li>
 </ul>
-<h1 id="布局和定位">布局和定位</h1><h2 id="流">流</h2><ul>
+<h1 id="布局和定位"><a href="#布局和定位" class="headerlink" title="布局和定位"></a>布局和定位</h1><h2 id="流"><a href="#流" class="headerlink" title="流"></a>流</h2><ul>
 <li>流：浏览器从html文件最上面开始，从上到下沿着元素流逐个显示所遇到的各个元素。</li>
 <li>块元素从上向下流，各元素之间有一个换行，内联元素从左上方流向右下方,在水平方向上相互挨着摆放（只要右边还有空间放的下）</li>
 <li>文本是内联函数的特殊情况，浏览器会把它分解成适当大小的内联元素，以适应给定的空间。</li>
 <li>对于外边距，浏览器并排放置两个内联元素时，外边距会相加，但是当上下放置两个块元素时，会把它们共同的外边距折叠在一起，高度为最大的外边距高度。<br>事实上只要两个垂直外边距碰到一起，它们就会折叠，但是如果外面的元素有一个边框，那么两个元素的外边距就不会碰到一起，就不会折叠</li>
 </ul>
-<h3 id="float"><code>float</code></h3><ul>
+<h3 id="float"><a href="#float" class="headerlink" title="float"></a><code>float</code></h3><ul>
 <li>float属性首先尽可能远地向左或向右浮动一个元素，然后在它下面的所有内容会绕流这个元素。</li>
 <li>对于所有浮动元素都有一个要求：它必须有一个宽度。</li>
 <li>浮动元素的外边距不会折叠,因为它只是浮在页面上，注意到这一点可以避免常见css错误.</li>
 <li>内联元素也可以浮动，如浮动图像</li>
 <li><p>float属性可以设置为left或right,不能是中间</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#amazing &#123;&#10;  width: 200px;&#10;  float: right;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#amazing &#123;</div><div class="line">  width: 200px;</div><div class="line">  float: right;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>下面看浏览器如何处理float（想象一下word的图片浮动):<br>(1)首先，浏览器像往常一样，正常将元素流入页面，从最上面开始。<br>(2)浏览器遇到浮动元素时，会把它尽可能放在最右边，还会从流中删除这个段落，好像它浮在页面上一样。<br>(3)由于该浮动段落已经从正常的流中删除，所以其他块元素会填在这里，就好像没有这个段落一样。<br>(4)对于内联元素定位时，它们会考虑浮动元素的边界，因此会绕着浮动元素。</p>
 </li>
 </ul>
-<h3 id="clear"><code>clear</code></h3><ul>
+<h3 id="clear"><a href="#clear" class="headerlink" title="clear"></a><code>clear</code></h3><ul>
 <li><p>当元素流入页面时，在这个元素左边，右边或两边不允许有浮动内容,例如为防止页脚和右边栏重叠，可以用clear设置:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#footer &#123;&#10;  background-color: #675c47;&#10;  color:            #efe5d0;&#10;  text-align:       center;&#10;  padding:          15px;&#10;  margin:           10px;&#10;  font-size:        90%;&#10;  clear:            right;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">#footer &#123;</div><div class="line">  background-color: #675c47;</div><div class="line">  color:            #efe5d0;</div><div class="line">  text-align:       center;</div><div class="line">  padding:          15px;</div><div class="line">  margin:           10px;</div><div class="line">  font-size:        90%;</div><div class="line">  clear:            right;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>现在浏览器放置元素时会查看右边有没有浮动元素，如果有就下移，直到没有浮动元素为止。</p>
 </li>
 </ul>
-<h3 id="两栏效果">两栏效果</h3><ul>
+<h3 id="两栏效果"><a href="#两栏效果" class="headerlink" title="两栏效果"></a>两栏效果</h3><ul>
 <li>把sidebar放在页眉下面，然后用float将sidebar栏向右浮动,通过将main div的右外边距设置得和sidebar的宽度相同，来创建两栏效果,不过此时如果页面太宽，页脚会上移造成重叠问题,<br>这个问题可以在页脚肿添加clear属性解决。还有一个问题是因为我们把sidebar放在主要内容前，所以在小的移动设备上会看到边栏在最前面。</li>
 <li>右紧左松，让主内容向左浮动，设置仿照上面的。这样div的顺序是正确的，不过边栏过于扩展不好，还是固定些好</li>
 <li>使用绝对定位，类似浮动效果，当主内容区的垂直空间缩小，边栏会向下覆盖页脚</li>
 <li>使用css表格</li>
 </ul>
-<h3 id="流体与冻结设计">流体与冻结设计</h3><ul>
-<li>上面讨论的都是流体布局(liquid layouts)，下面讨论冻结布局(frozen layouts),冻结布局会锁定元素，<br>如将body中的所有内容都放到一个id为#allcontent的div中<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#allcontent &#123;&#10;  width: 800px;&#10;  padding-top: 5px;&#10;  padding-bottom: 5px;&#10;  background-color: #675c47;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="流体与冻结设计"><a href="#流体与冻结设计" class="headerlink" title="流体与冻结设计"></a>流体与冻结设计</h3><ul>
+<li>上面讨论的都是流体布局(liquid layouts)，下面讨论冻结布局(frozen layouts),冻结布局会锁定元素，<br>如将body中的所有内容都放到一个id为#allcontent的div中<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#allcontent &#123;</div><div class="line">  width: 800px;</div><div class="line">  padding-top: 5px;</div><div class="line">  padding-bottom: 5px;</div><div class="line">  background-color: #675c47;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>那么页面的宽度将被限制为800px，无论浏览器宽度如何变化都不会移动,但这会导致浏览器很宽时，右边有很多空白空间</p>
-<h3 id="凝胶布局_Jello">凝胶布局 <code>Jello</code></h3><ul>
-<li>凝胶布局会锁定页面中内容区的宽度，不过会将它在浏览器中居中，将内容区的内外边距设为auto即可，浏览器会确定正确的外边距是多少，确保左和右外边距相同，所以内容会居中,如下所示<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#allcontent &#123;&#10;  width: 800px;&#10;  padding-top: 5px;&#10;  padding-bottom: 5px;&#10;  background-color: #675c47;&#10;  margin-left: auto;&#10;  margin-right: auto;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="凝胶布局-Jello"><a href="#凝胶布局-Jello" class="headerlink" title="凝胶布局 Jello"></a>凝胶布局 <code>Jello</code></h3><ul>
+<li>凝胶布局会锁定页面中内容区的宽度，不过会将它在浏览器中居中，将内容区的内外边距设为auto即可，浏览器会确定正确的外边距是多少，确保左和右外边距相同，所以内容会居中,如下所示<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#allcontent &#123;</div><div class="line">  width: 800px;</div><div class="line">  padding-top: 5px;</div><div class="line">  padding-bottom: 5px;</div><div class="line">  background-color: #675c47;</div><div class="line">  margin-left: auto;</div><div class="line">  margin-right: auto;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="绝对定位">绝对定位</h2><ul>
+<h2 id="绝对定位"><a href="#绝对定位" class="headerlink" title="绝对定位"></a>绝对定位</h2><ul>
 <li>例如上面的边栏，将边栏绝对定位时，它会从流中删除并根据制定的top，left，right或bottom属性定位</li>
 <li>由于边栏在流之外，其他元素甚至不知道有这样一个元素，它们会将它完全忽略,所以流中的内联内容不会围绕在一个绝对定位的元素周围。</li>
 <li><p>如将侧边栏绝对定位</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#sidebar &#123;&#10;  position: absolute;&#10;  top:  100px;&#10;  right:  200px;&#10;  width:  280px;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#sidebar &#123;</div><div class="line">  position: absolute;</div><div class="line">  top:  100px;</div><div class="line">  right:  200px;</div><div class="line">  width:  280px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>关于绝对定位还有一个分层放置的问题，一个元素可以放在另一个绝对定位元素上面，那如何分层？谁在上面？每个定位元素都有一个z-index的属性，这会指定它在一个虚拟z轴上的位置（上面的元素“更靠近”你，z-index更大).</p>
 </li>
@@ -382,14 +383,14 @@
 <li>绝对元素不必像浮动元素一样指定宽度，不过默认会占浏览器的整个宽度，所以如果要改变这种行为就要设置width属性</li>
 <li>指定元素位置还可以用百分数,相对于浏览器宽度.</li>
 </ul>
-<h2 id="css表格">css表格</h2><ul>
+<h2 id="css表格"><a href="#css表格" class="headerlink" title="css表格"></a>css表格</h2><ul>
 <li>类似电子表格，在表格中只放置块元素，所以要把图像包围在一个div中。</li>
 <li>为整个表格创建一个div，然后为每一行分别创建一个div，对于每一列，只要在行div中放置一个块级元素。  </li>
 <li><p>例如一行两列的表格可以按如下方式创建：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;div id=&#34;tableContainer&#34;&#62;&#10;  &#60;div id=&#34;tableRow&#34;&#62;&#10;    &#60;div id=&#34;main&#34;&#62;&#10;      ...&#10;    &#60;/div&#62;&#10;    &#60;div id=&#34;sidebar&#34;&#62;&#10;      ...&#10;    &#60;/div&#62;&#10;  &#60;/div&#62;&#10;&#60;/div&#62;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;div id=&quot;tableContainer&quot;&gt;</div><div class="line">  &lt;div id=&quot;tableRow&quot;&gt;</div><div class="line">    &lt;div id=&quot;main&quot;&gt;</div><div class="line">      ...</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;div id=&quot;sidebar&quot;&gt;</div><div class="line">      ...</div><div class="line">    &lt;/div&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
 </li>
 <li><p>对应的css为:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#tableContainer &#123;&#10;  display: table;&#10;  border-spacing: 10px;//&#20110;&#26159;&#19981;&#20877;&#38656;&#35201;div&#20013;&#30340;&#22806;&#36793;&#36317;&#10;&#125;&#10;&#10;#tableRow &#123;&#10;  display: table-row;&#10;&#125;&#10;#main &#123;&#10;  display: table-cell;&#10;  background:       #efe5d0 url(images/background.gif) top left;&#10;  font-size:        105%;&#10;  padding:          15px;&#10;  /*margin:           0px 10px 10px 10px;*/&#10;  vertical-align: top;//&#30830;&#20445;&#34920;&#26684;&#20004;&#20010;&#21333;&#20803;&#26684;&#20013;&#30340;&#25152;&#26377;&#20869;&#23481;&#30456;&#23545;&#20110;&#21333;&#20803;&#26684;&#19978;&#36793;&#23545;&#40784;&#65292;&#40664;&#35748;&#20026;&#20013;&#38388;&#23545;&#40784;,&#21487;&#20197;&#35774;&#32622;&#20026;top,middle,bottom&#10;&#125;&#10;&#10;#sidebar &#123;&#10;  display: table-cell;&#10;  background:       #efe5d0 url(images/background.gif) bottom right;&#10;  font-size:        105%;&#10;  padding:          15px;&#10;  /*margin:           0px 10px 10px 10px;*/&#10;  vertical-align: top;&#10;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">#tableContainer &#123;</div><div class="line">  display: table;</div><div class="line">  border-spacing: 10px;//于是不再需要div中的外边距</div><div class="line">&#125;</div><div class="line"></div><div class="line">#tableRow &#123;</div><div class="line">  display: table-row;</div><div class="line">&#125;</div><div class="line">#main &#123;</div><div class="line">  display: table-cell;</div><div class="line">  background:       #efe5d0 url(images/background.gif) top left;</div><div class="line">  font-size:        105%;</div><div class="line">  padding:          15px;</div><div class="line">  /*margin:           0px 10px 10px 10px;*/</div><div class="line">  vertical-align: top;//确保表格两个单元格中的所有内容相对于单元格上边对齐，默认为中间对齐,可以设置为top,middle,bottom</div><div class="line">&#125;</div><div class="line"></div><div class="line">#sidebar &#123;</div><div class="line">  display: table-cell;</div><div class="line">  background:       #efe5d0 url(images/background.gif) bottom right;</div><div class="line">  font-size:        105%;</div><div class="line">  padding:          15px;</div><div class="line">  /*margin:           0px 10px 10px 10px;*/</div><div class="line">  vertical-align: top;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>上面的border-spacing会在单元格之间增加10像素空间，另外在边界周围也会增加10像素空间，但是border-spacing和外边距创建的空间不会折叠！就会导致页眉和页脚与两列之间有20像素的空间，如何修正？将页眉（页脚）的下边距（上边距）设为0即可。</p>
 </li>

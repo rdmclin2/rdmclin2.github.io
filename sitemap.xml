@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.mclspace.com/2016/10/24/building-nodejs-cmd-line-tools-with-commander/</loc>
+    
+    <lastmod>2016-10-24T03:04:23.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.mclspace.com/2016/06/26/node-json-server/</loc>
+    
+    <lastmod>2016-08-31T16:05:36.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.mclspace.com/2016/02/16/jieyuan-development-2/</loc>
     
     <lastmod>2016-08-24T10:50:40.000Z</lastmod>
@@ -19,13 +33,6 @@
     <loc>http://www.mclspace.com/2015/04/03/mac-things/</loc>
     
     <lastmod>2016-06-29T12:42:19.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.mclspace.com/2016/06/26/node-json-server/</loc>
-    
-    <lastmod>2016-06-26T10:13:24.000Z</lastmod>
     
   </url>
   

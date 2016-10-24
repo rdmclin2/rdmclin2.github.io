@@ -1,12 +1,12 @@
-<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 基于有限状态自动机的测试 · Mcl's space</title><meta name="description" content="基于有限状态自动机的测试 - LinChen"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" type="text/css"></head><body><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/rdmclin2" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/rdmclin2" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li><li class="nav-list-item"><a href="http://www.jianshu.com/users/34733105f724/latest_articles" target="_blank" class="nav-list-link">JIANSHU</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">基于有限状态自动机的测试</h1><div class="post-time">Dec 3, 2014</div><div class="post-content"><h2 id="前言">前言</h2><p>本篇为阅读ACM digital的论文Using Formal Specifications to Support Testing的第五章Finite State Based Testing的笔记。该论文在后文文献中给出了链接。</p>
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 基于有限状态自动机的测试 · 兼续</title><meta name="description" content="基于有限状态自动机的测试 - LinChen"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" type="text/css"></head><body><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/rdmclin2" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/rdmclin2" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li><li class="nav-list-item"><a href="http://www.jianshu.com/users/34733105f724/latest_articles" target="_blank" class="nav-list-link">JIANSHU</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">基于有限状态自动机的测试</h1><div class="post-time">2014年12月3日</div><div class="post-content"><p>##前言<br>本篇为阅读ACM digital的论文Using Formal Specifications to Support Testing的第五章Finite State Based Testing的笔记。该论文在后文文献中给出了链接。</p>
 <a id="more"></a>
 <hr>
-<h2 id="什么是基于有限状态机(FSM)的测试">什么是基于有限状态机(FSM)的测试</h2><p><strong>FSM</strong> 是<em>finite-state machine</em>的缩写，许多系统都可以自然地被描述成一个有限状态的结构，因此基于FSM的测试问题得到了极大的关注。基于FSM的很多测试方法都依赖于测试假设或者错误模型，这两种情况下测试集能够保证可以确定其正确性，通常情况下测试假设或错误模型会给<strong>SUT</strong>（<em>Software under test</em> )的状态数量设置一个范围。</p>
+<h2 id="什么是基于有限状态机-FSM-的测试"><a href="#什么是基于有限状态机-FSM-的测试" class="headerlink" title="什么是基于有限状态机(FSM)的测试"></a>什么是基于有限状态机(FSM)的测试</h2><p><strong>FSM</strong> 是<em>finite-state machine</em>的缩写，许多系统都可以自然地被描述成一个有限状态的结构，因此基于FSM的测试问题得到了极大的关注。基于FSM的很多测试方法都依赖于测试假设或者错误模型，这两种情况下测试集能够保证可以确定其正确性，通常情况下测试假设或错误模型会给<strong>SUT</strong>（<em>Software under test</em> )的状态数量设置一个范围。</p>
 <p>在基于FSM <strong>F</strong>进行测试时，我们通常假设SUT 等价于一个未知的FSM <strong>I</strong>（这里I是最小的FSM，使用最小性假设），测试集就是用来检查I是否和F一致。如果F是确定性的，那么如果I等价于F即I和F一致。如果F是不确定性的，那么存在I和F一致的其他表示形式，包括F和I等价(equivalent)，I是F的归约(reduction)，或者I和F是<a href="http://www.chinabaike.com/article/baike/1002/2008/200806041507474.html" target="_blank" rel="external">拟等价</a>的。</p>
 <hr>
-<h3 id="一个简单的FSM规格(Specification)的例子">一个简单的FSM规格(Specification)的例子</h3><p><img src="http://icoco.qiniudn.com/image/test/FSM.PNG" alt="FSM F"></p>
+<h3 id="一个简单的FSM规格-Specification-的例子"><a href="#一个简单的FSM规格-Specification-的例子" class="headerlink" title="一个简单的FSM规格(Specification)的例子"></a>一个简单的FSM规格(Specification)的例子</h3><p><img src="http://icoco.qiniudn.com/image/test/FSM.PNG" alt="FSM F"></p>
 <hr>
-<h2 id="测试标准">测试标准</h2><p>典型的测试策略致力于检测<strong>输出错误</strong>（转移产生了错误输出）和<strong>状态迁移错误</strong>（转到了错误的状态）。测试集通常称为<em>test suite</em>,是从规格模型F中产生的。在测试中我们通常期望确定是否一组行为能够造成内部状态错误（corrupt).如果有输入x让 h2(s,x) 和 h2(t,x)没有交集则称x将s和t<strong>区分</strong>(<em>distinguished</em>)，在例子中b能够将s2和s0与s1区分开来。在确定性FSM（DFSM）中我们通常用以下方法检查内部状态。<br><img src="http://icoco.qiniudn.com/image/test/检验内部状态.PNG" alt="检查内部状态"></p>
+<h2 id="测试标准"><a href="#测试标准" class="headerlink" title="测试标准"></a>测试标准</h2><p>典型的测试策略致力于检测<strong>输出错误</strong>（转移产生了错误输出）和<strong>状态迁移错误</strong>（转到了错误的状态）。测试集通常称为<em>test suite</em>,是从规格模型F中产生的。在测试中我们通常期望确定是否一组行为能够造成内部状态错误（corrupt).如果有输入x让 h2(s,x) 和 h2(t,x)没有交集则称x将s和t<strong>区分</strong>(<em>distinguished</em>)，在例子中b能够将s2和s0与s1区分开来。在确定性FSM（DFSM）中我们通常用以下方法检查内部状态。<br><img src="http://icoco.qiniudn.com/image/test/检验内部状态.PNG" alt="检查内部状态"></p>
 <ul>
 <li><strong>特征集</strong>：该集合中的输入可以把任意两个不同状态分开</li>
 <li><strong>区分序列（D)</strong>：该序列对任意两个不同状态的输出不同</li>
@@ -15,7 +15,7 @@
 <p>一个FSM F称为最小FSM如果没有更少状态的FSM和F等价。任何最小FSM都有一个特征集合，但不是每个最小FSM都有D-sequence 或者 UIO-sequence。如果每一对有序状态(s,t)都存在输入序列让F从s转到t我们就称F是<strong>强连通</strong>的(<em>strongly connected</em>).</p>
 <p>如果F是DFSM，那么一组输入序列Q是F的状态覆盖(<em>state cover</em>)如果Q包含空序列并且对于S中的每一个状态s都有 Xs 属于Q 使得 s = theta(s0,Xs).<br>一组输入序列P称为F的转移覆盖如果对于每一个转移pi = (s,a/t,t)都有序列p,pa 属于P使 s = theta(s0,p).</p>
 <hr>
-<h2 id="产生测试集">产生测试集</h2><h3 id="完全规格化的确定FSMs">完全规格化的确定FSMs</h3><p>首先考虑确定性的，最小的，完全规格化的FSM，这里的一致关系是等价，等价的意思就是对于每一个输入序列，他们都有相同的输出序列</p>
+<h2 id="产生测试集"><a href="#产生测试集" class="headerlink" title="产生测试集"></a>产生测试集</h2><p>###完全规格化的确定FSMs<br>首先考虑确定性的，最小的，完全规格化的FSM，这里的一致关系是等价，等价的意思就是对于每一个输入序列，他们都有相同的输出序列</p>
 <ul>
 <li><p><strong>TT</strong><br>TT是transition tour的缩写，TT产生一个能够遍历所有转移的test suite。例如上图的例子中就会产生&lt; a/e,c/f,a/f.b/f,b/f,a/f,c/e,c/e,b/e &gt;的测试序列。这种方法只试图找到输出错误，并且假设I的每个转移都有预期的最终状态。</p>
 </li>
@@ -25,9 +25,9 @@
 </li>
 </ul>
 <hr>
-<h3 id="局部FSM">局部FSM</h3><p>现实中很多规格说明都是局部的，他们没有覆盖多有可能的状态输入组合，因此会使用局部定义的FSM。因为未定义的转换将会带来各种干扰，因此这些转换要么被空输出的自循环转换代替，要么会进入错误状态输出error。这样就得到了一个完全的FSM，前面的方法就可以使用了。也有将这些转换表示为<em>forbidden transitions</em>的,他们将永远不被执行。</p>
+<p>###局部FSM<br>现实中很多规格说明都是局部的，他们没有覆盖多有可能的状态输入组合，因此会使用局部定义的FSM。因为未定义的转换将会带来各种干扰，因此这些转换要么被空输出的自循环转换代替，要么会进入错误状态输出error。这样就得到了一个完全的FSM，前面的方法就可以使用了。也有将这些转换表示为<em>forbidden transitions</em>的,他们将永远不被执行。</p>
 <hr>
-<h3 id="非确定性有限自动机">非确定性有限自动机</h3><p>多种情况会导致不确定性，一种是对于状态s的一个输入x，有2个或多个转移，但是输出相同。另一种是输出不同。如果只有第一种情况可以转成DFSM，第二种不行。第三种不确定性是没有输入的内部状态，如果一个状态的所有的内部操作都有相同的输出，那么情况和第一种一样，否则和第二种一样。<br>不确定性出现在规格中有以下几个原因</p>
+<p>###非确定性有限自动机<br>多种情况会导致不确定性，一种是对于状态s的一个输入x，有2个或多个转移，但是输出相同。另一种是输出不同。如果只有第一种情况可以转成DFSM，第二种不行。第三种不确定性是没有输入的内部状态，如果一个状态的所有的内部操作都有相同的输出，那么情况和第一种一样，否则和第二种一样。<br>不确定性出现在规格中有以下几个原因</p>
 <ul>
 <li>可以代表SUT I中需要的的不确定性，这种情况下如果I和F等价那么I就和F一致</li>
 <li>不确定性代表选择。那么I中的所有行为都要包括在F中，I是F的归约（reduction，减少？子集？）。</li>
@@ -40,7 +40,7 @@
 <p>对于<strong>第一个问题</strong>，使用一个公平的假设(fair assumption) 叫做<strong>完全测试假设</strong>，就是说只要同一个输入x对于某个状态s输入足够的次数，就能保证每个输出序列都被观测到。在DFSM中是成立的，但不是DFSM就不知道了。<strong>第二个问题</strong>导致了<strong>可观察不确定性有限自动机(ONFSM)</strong>概念的出现,一个NFSM是可观测的如果对于S中的任何状态s，X中的任何输入a,(s,a)都属于DA，并且对于Y中的输出b,S中至多只有一个状态t 使(t,b)属于h(s,a)。每个NFSM都可以被重写成等价的ONFSM但是可能导致组合爆炸问题。</p>
 <p>如果ONFSM是最小的，其实现是一个只有至多给定个数状态的FSM，并且我们测试其等价性，那么<strong>Wp-method</strong>可以用来产生测试集。如果其实现是一个有上限状态个数的FSM，并且其关系是归约，那么测试集也可以产生。这些测试集在测试假设下保证正确性。</p>
 <hr>
-<h3 id="沟通有限自动机(Communicating_FSMs)">沟通有限自动机(Communicating FSMs)</h3><p>一些系统可能更适合用一组FSM来建模，这些FSM可以相互通信并且合作，我们称之为<strong>CFSMs</strong>(<em>Communicating FSMs</em>).他们之间的沟通通过队列和信道来支持，我们用F1,。。。Fp来表示CFSMs中的自动机。以下是它的模型</p>
+<p>###沟通有限自动机(Communicating FSMs)<br>一些系统可能更适合用一组FSM来建模，这些FSM可以相互通信并且合作，我们称之为<strong>CFSMs</strong>(<em>Communicating FSMs</em>).他们之间的沟通通过队列和信道来支持，我们用F1,。。。Fp来表示CFSMs中的自动机。以下是它的模型</p>
 <ul>
 <li>每个Fi都由一个FSM加一个FIFO队列构成，信道中的输入符号或环境中的输入符号都被存放在队列中</li>
 <li>在每一对Fi,Fj之间都由两个FIFO信道，每个一个方向</li>
@@ -49,7 +49,7 @@
 <p>一个CFSM系统有时候可以通过穷尽可达性分析被转换成一个等价的FSM。如果所有的队列和信道都有有限的长度，只有队列和信道为空时环境中的输入才能被送到系统中（<em>slow environment assumption</em>)，那么生成的FSM最多有n1 * n2 * n3 …*np个状态，ni是Fi的状态个数。这可能会导致组合爆炸。</p>
 <p>另一个方法是<strong>Hit-or-Jump</strong>。这个算法执行一个由另一个机器定义上下文的SUT A中的所有转换。该算法是迭代的，直到A中所有的状态被包括才停止。在每一次迭代中，算法都会进行给定深度的搜索，如果找到一个还未被覆盖的转换的序列，那么就hit，加入当前的测试序列，否则随机产生一个序列称为jump。</p>
 <hr>
-<h3 id="扩展有限自动机">扩展有限自动机</h3><p>很多有限状态的规格实际上是<strong>扩展的FSMs(EFSMs)</strong>,一个FMS可以被扩展输入输出参数，环境变量，操作，预测等。可以通过对数据使用一致性假设来抽象出EFSM中的数据来产生测试序列。这个可以看做是测试SUT的控制结构，但选择的路径不一定是可运性的。</p>
+<p>###扩展有限自动机<br>很多有限状态的规格实际上是<strong>扩展的FSMs(EFSMs)</strong>,一个FMS可以被扩展输入输出参数，环境变量，操作，预测等。可以通过对数据使用一致性假设来抽象出EFSM中的数据来产生测试序列。这个可以看做是测试SUT的控制结构，但选择的路径不一定是可运性的。</p>
 <p>如果不适用一致性假设意味着测试EFSM要测试控制部分和数据部分，他们可以被看做不同的元素可以被独立的测试。基于FSM的方法用来测试控制部分，数据流测试方法用来测试数据部分。有时候EFSM可以被转成等价的FSM。上面的方法通常会遇到有名的状态爆炸问题。</p>
 <p><strong>X-machines</strong>是一种描述EFSMs的方法，在X-machines中一系列的测试假设被提出来称为 <em>design for test conditions</em>,这些假设极大地简化了测试产生问题并且消除了可行路径和状态爆炸问题。</p>
 <p>上面说的技术都致力于通过产生测试序列在某种程度上覆盖EFSM的规格，然而他们除非使用很强的限制否则将会有状态爆炸和可行路径问题。一个解决方法是使用<strong>测试目的</strong>集合，我们对每个测试目的都生成满足该目的的测试用例。一个测试目的可以被表示成一个有穷状态自动机，然后对它进行可达性分析自动产生测试用例。虽然可达性分析可能导致状态爆炸，但在实践中效果不错。</p>

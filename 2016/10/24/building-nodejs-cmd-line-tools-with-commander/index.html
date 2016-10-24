@@ -1,0 +1,49 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 使用Commander编写Node.js命令行程序 · 兼续</title><meta name="description" content="使用Commander编写Node.js命令行程序 - LinChen"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" type="text/css"></head><body><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/rdmclin2" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/rdmclin2" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li><li class="nav-list-item"><a href="http://www.jianshu.com/users/34733105f724/latest_articles" target="_blank" class="nav-list-link">JIANSHU</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">使用Commander编写Node.js命令行程序</h1><div class="post-time">2016年10月24日</div><div class="post-content"><blockquote>
+<p>commander, tj编写的又一个nodejs库，主要用于为你的Nodejs程序提供命令行支持,本篇以nata-dfs为例讲解如何使用commander为项目编写命令行支持。</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ol>
+<li><p>安装commander模块,这里使用npminstall模块提升安装速度<code>npminstall --save commmander</code></p>
+</li>
+<li><p>创建bin目录与你的命令行文件比如natadfs<code>mkdir bin &amp;&amp; touch natadfs</code></p>
+</li>
+<li><p>添加命令行文件执行权限<code>chmod +x natadfs</code></p>
+</li>
+<li><p>引入commander包与基本结构代码</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var program = require(&apos;commander&apos;);</div><div class="line">program</div><div class="line">  .parse(process.argv);</div></pre></td></tr></table></figure>
+<p>现在运行<code>./natadfs -h</code>就可以看到<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Usage: natadfs [options]</div><div class="line"></div><div class="line">Options:</div><div class="line"></div><div class="line">  -h, --help  output usage information</div></pre></td></tr></table></figure></p>
+<p><code>-h</code>为commander默认的选项</p>
+<h3 id="添加基本选项"><a href="#添加基本选项" class="headerlink" title="添加基本选项"></a>添加基本选项</h3><h4 id="version"><a href="#version" class="headerlink" title="version"></a>version</h4><p>我们希望能够显示工具的版本并与项目package.json中保持一致</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var program = require(&apos;commander&apos;);</div><div class="line"></div><div class="line">program</div><div class="line">  .version(require(&apos;../package.json&apos;).version)</div><div class="line">  .parse(process.argv);</div></pre></td></tr></table></figure>
+<p>现在使用<code>./natadfs -h</code>可以看到多出来一个<code>-V, --version  output the version number</code>的选项,使用<code>./natadfs -V</code>可以看到当前的版本号与package.json中一致</p>
+<h4 id="option"><a href="#option" class="headerlink" title="option"></a>option</h4><p>配置参数选项</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">.option(&apos;-p, --apk-path &lt;apk&gt;&apos;, &apos;absolute apk path, if set we will parse the apk and install&apos;)</div></pre></td></tr></table></figure>
+<p>option有4个参数</p>
+<ul>
+<li>第一个参数中， <code>-p</code> 为short option， <code>--apk-path</code> 为对应的long option, 二者的分割符是<code>|,</code>。可以在程序里通过<code>program.apkPath</code> 的方式取到该option的值,以由<code>-</code>分隔的变量会转成骆驼形式,即apk-path -&gt; apkPath</li>
+<li>第二个为option描述, 会在help信息里展示出来</li>
+<li>第三个参数为回调函数</li>
+<li>第四个参数为默认值</li>
+</ul>
+<p>option 有两种类型</p>
+<ul>
+<li><code>&lt;lang&gt;</code> required参数, 使用时后边必须跟参数值, 否则程序会报错</li>
+<li><code>[db]</code> optional参数, 后面可以选择是否跟参数值</li>
+</ul>
+<p>对于<code>nata-dfs</code>目前我们定义了部分选项,仅供参考</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">program</div><div class="line">  .version(require(&apos;../package.json&apos;).version)</div><div class="line">  .option(&apos;-p, --apk-path &lt;apk&gt;&apos;, &apos;absolute apk path, if set we will parse the apk and install&apos;)</div><div class="line">  .option(&apos;-n, --number &lt;num&gt;&apos;, `set limited actions number, default to 1000`, 1000)</div><div class="line">  .option(&apos;-p, --pkg &lt;pkg&gt;&apos;, &apos;specify the package name&apos;)</div><div class="line">  .option(&apos;-e, --entry &lt;entry&gt;&apos;, &apos;specify the starting activity entry&apos;)</div><div class="line">  .option(&apos;-d, --directory &lt;directory&gt;&apos;, &apos;specify the running directory, default to be &lt;results&gt; in the package&apos;)</div><div class="line">  .option(&apos;--device &lt;device&gt;&apos;, &apos;specify the runnging device id, default to run on all connected devices&apos;)</div><div class="line">  .option(&apos;--verbose&apos;, &apos;show more running information&apos;)</div><div class="line">  .parse(process.argv)</div></pre></td></tr></table></figure>
+<h4 id="command"><a href="#command" class="headerlink" title="command"></a>command</h4><p>子命令,由于nata-dfs中没有用到，这里给出官方的示例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">program</div><div class="line">  .command(&apos;setup [env]&apos;)</div><div class="line">  .description(&apos;run setup commands for all envs&apos;)</div><div class="line">  .option(&quot;-s, --setup_mode [mode]&quot;, &quot;Which setup mode to use&quot;)</div><div class="line">  .action(function(env, options)&#123;</div><div class="line">    var mode = options.setup_mode || &quot;normal&quot;;</div><div class="line">    env = env || &apos;all&apos;;</div><div class="line">    console.log(&apos;setup for %s env(s) with %s mode&apos;, env, mode);</div><div class="line">  &#125;);</div></pre></td></tr></table></figure></p>
+<h3 id="运行主程序"><a href="#运行主程序" class="headerlink" title="运行主程序"></a>运行主程序</h3><p>定义完成后，我们需要拿到用户设定的值对程序进行设置,然后运行我们的主程序,一个简单的例子如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function *run() &#123;</div><div class="line">  if (program.entry) &#123;</div><div class="line">    console.log(chalk.blue(`Using specified act $&#123;program.pkg&#125;`))</div><div class="line">    generator.entry(program.entry)</div><div class="line">  &#125;</div><div class="line">  yield generator.run()</div><div class="line">&#125;</div><div class="line">co(run)</div></pre></td></tr></table></figure></p>
+<p>我们简单的判断有没有定义<code>entry</code>,如果定义了就设置entry,然后运行主程序,全程序可以参考<a href="https://github.com/open-nata/nata-dfs/blob/master/bin/natadfs" target="_blank" rel="external">github</a></p>
+<p>另外command可以做一些定制的工作，可以在<a href="https://www.npmjs.com/package/commander" target="_blank" rel="external">官网</a>查看</p>
+</div></article></div></section><footer><div class="paginator"><a href="/2016/06/26/node-json-server/" class="next">下一篇</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'mcl';
+var disqus_identifier = '2016/10/24/building-nodejs-cmd-line-tools-with-commander/';
+var disqus_title = '使用Commander编写Node.js命令行程序';
+var disqus_url = 'http://www.mclspace.com/2016/10/24/building-nodejs-cmd-line-tools-with-commander/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//mcl.disqus.com/count.js" async></script><div class="copyright"><p>© 2015 - 2016 <a href="http://www.mclspace.com">LinChen</a>, unless otherwise noted.</p></div></footer><script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "//hm.baidu.com/hm.js?6b26d13232555e4d64b5a8c3567ccda9";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script><script src="https://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script></body></html>

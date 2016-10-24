@@ -1,16 +1,17 @@
-<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Docker 学习笔记 · Mcl's space</title><meta name="description" content="Docker 学习笔记 - LinChen"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" type="text/css"></head><body><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/rdmclin2" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/rdmclin2" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li><li class="nav-list-item"><a href="http://www.jianshu.com/users/34733105f724/latest_articles" target="_blank" class="nav-list-link">JIANSHU</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">Docker 学习笔记</h1><div class="post-time">Jun 9, 2015</div><div class="post-content"><h2 id="前言">前言</h2><p>本篇为学习使用docker过程中的一些记录，学习docker的原因是希望使用docker在服务器上自动化部署本地编写的服务端程序。本文为学习笔记型文章，方便快速查阅，关于docker的安装等内容请移步<a href="docker.com">官网</a>,想系统的学习docker可以看dockerpool出的<a href="http://dockerpool.com/static/books/docker_practice" target="_blank" rel="external">书</a>。<br>PS:下文的使用环境为macos</p>
-<h2 id="比较好的教程">比较好的教程</h2><ul>
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Docker 学习笔记 · 兼续</title><meta name="description" content="Docker 学习笔记 - LinChen"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" type="text/css"></head><body><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/rdmclin2" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/rdmclin2" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li><li class="nav-list-item"><a href="http://www.jianshu.com/users/34733105f724/latest_articles" target="_blank" class="nav-list-link">JIANSHU</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">Docker 学习笔记</h1><div class="post-time">2015年6月9日</div><div class="post-content"><p>##前言<br>本篇为学习使用docker过程中的一些记录，学习docker的原因是希望使用docker在服务器上自动化部署本地编写的服务端程序。本文为学习笔记型文章，方便快速查阅，关于docker的安装等内容请移步<a href="docker.com">官网</a>,想系统的学习docker可以看dockerpool出的<a href="http://dockerpool.com/static/books/docker_practice" target="_blank" rel="external">书</a>。<br>PS:下文的使用环境为macos</p>
+<h2 id="比较好的教程"><a href="#比较好的教程" class="headerlink" title="比较好的教程"></a>比较好的教程</h2><ul>
 <li><a href="http://segmentfault.com/a/1190000000366923" target="_blank" rel="external">http://segmentfault.com/a/1190000000366923</a></li>
 </ul>
 <a id="more"></a>
-<h2 id="常用命令">常用命令</h2><ul>
-<li>获取镜像<code>docker pull</code>,如<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker pull ubuntu:12.04&#10;Pulling repository ubuntu&#10;ab8e2728644c: Pulling dependent layers&#10;511136ea3c5a: Download complete&#10;5f0ffaa9455e: Download complete&#10;a300658979be: Download complete&#10;904483ae0c30: Download complete&#10;ffdaafd1ca50: Download complete&#10;d047ae21eeaf: Download complete</span><br></pre></td></tr></table></figure>
+<p>##常用命令</p>
+<ul>
+<li>获取镜像<code>docker pull</code>,如<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ docker pull ubuntu:12.04</div><div class="line">Pulling repository ubuntu</div><div class="line">ab8e2728644c: Pulling dependent layers</div><div class="line">511136ea3c5a: Download complete</div><div class="line">5f0ffaa9455e: Download complete</div><div class="line">a300658979be: Download complete</div><div class="line">904483ae0c30: Download complete</div><div class="line">ffdaafd1ca50: Download complete</div><div class="line">d047ae21eeaf: Download complete</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>从 Docker Hub 仓库下载一个 Ubuntu 12.04 操作系统的镜像</p>
 <ul>
 <li><p>列出本地镜像<code>docker images</code>,如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker images&#10;REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE&#10;nginx               latest              a785ba7493fd        12 days ago         132.9 MB&#10;hello-world         latest              91c95931e552        7 weeks ago         910 B</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ docker images</div><div class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE</div><div class="line">nginx               latest              a785ba7493fd        12 days ago         132.9 MB</div><div class="line">hello-world         latest              91c95931e552        7 weeks ago         910 B</div></pre></td></tr></table></figure>
 </li>
 <li><p>Mac环境下启动docker <code>boot2docker start</code><br>mac下需要开启一个虚拟机，和其他linux系统不同</p>
 </li>
@@ -21,7 +22,7 @@
 <li><p>启动一个容器并运行一个镜像 如：<code>docker run -d -P --name web nginx</code><br>-d :让容器在命令完成后在后台继续运行<br>－P :The -P flag publishes exposed ports from the container to your local host; this lets you access them from your Mac.</p>
 </li>
 <li><p>查看容器端口<code>docker port web</code>,如:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker port web&#10;443/tcp -&#62; 0.0.0.0:32770&#10;80/tcp -&#62; 0.0.0.0:32771</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ docker port web</div><div class="line">443/tcp -&gt; 0.0.0.0:32770</div><div class="line">80/tcp -&gt; 0.0.0.0:32771</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>容器端口80映射到host端口32771</p>
@@ -31,55 +32,55 @@
 <li><p>在网页中访问应用的地址为 <code>$VM ip地址 /host port</code>，如:<br><a href="http://192.168.59.103:32771" target="_blank" rel="external">http://192.168.59.103:32771</a></p>
 </li>
 <li><p>停止容器 <code>docker stop</code>,如:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop web</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker stop web</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>stop container name / container id</p>
 <ul>
-<li>删除容器 <code>docker rm</code>,如:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm web</span><br></pre></td></tr></table></figure>
+<li>删除容器 <code>docker rm</code>,如:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker rm web</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>rm container name / container id</p>
 <ul>
 <li><p>从dockerfile中构建镜像<code>docker build</code> 如:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># -t &#38236;&#20687;&#30340;&#21517;&#31216;&#10;# --rm &#26500;&#24314;&#25104;&#21151;&#21518;&#65292;&#21024;&#38500;&#20020;&#26102;&#38236;&#20687;&#65288;&#27599;&#25191;&#34892;&#19968;&#34892; Dockerfile &#20013;&#30340;&#21629;&#20196;&#65292;&#23601;&#20250;&#21019;&#24314;&#19968;&#20010;&#20020;&#26102;&#38236;&#20687;&#65289;&#10;# &#8220;.&#8221; &#26159; Dockerfile &#25152;&#22312;&#30340;&#36335;&#24452;&#65288;&#24403;&#21069;&#30446;&#24405;&#65289;, &#20063;&#21487;&#20197;&#26367;&#25442;&#20026;&#19968;&#20010;&#20855;&#20307;&#30340; Dockerfile &#30340;&#36335;&#24452;&#12290;&#10;docker build -t=&#34;ouruser/sinatra:v2&#34; .&#10;&#25110; docker build --rm -t ouruser/sinatra:v2 .</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># -t 镜像的名称</div><div class="line"># --rm 构建成功后，删除临时镜像（每执行一行 Dockerfile 中的命令，就会创建一个临时镜像）</div><div class="line"># “.” 是 Dockerfile 所在的路径（当前目录）, 也可以替换为一个具体的 Dockerfile 的路径。</div><div class="line">docker build -t=&quot;ouruser/sinatra:v2&quot; .</div><div class="line">或 docker build --rm -t ouruser/sinatra:v2 .</div></pre></td></tr></table></figure>
 </li>
 <li><p>推送到dockerhub <code>docker push</code> 如:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker push user/sinatra</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker push user/sinatra</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>注意创建和推送时把user替换成自己的用户名</p>
 <ul>
-<li>进入容器控制台 <code>docker attach</code>如:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker attach name</span><br></pre></td></tr></table></figure>
+<li>进入容器控制台 <code>docker attach</code>如:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker attach name</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>按两次回车进入，按ctrl+p+q退出(按住ctrl，先按p再按q)</p>
 <ul>
 <li><p>查看容器信息 <code>docker inspect</code> 如:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect name</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker inspect name</div></pre></td></tr></table></figure>
 </li>
 <li><p>将本地文件挂载到container中,<code>-v</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -v /data:/mnt -i -t rdmclin2/node /bin/bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -v /data:/mnt -i -t rdmclin2/node /bin/bash</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>例如将data文件夹挂载到container中的mnt文件夹中，可以在mnt文件夹中查看，这个文件是共享的，所以两边的操作都会互相看到。<br>将mnt的文件拷贝到container中即可。</p>
 <ul>
 <li><p>启动容器的终端</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -t -i ouruser/sinatra:v2 /bin/bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -t -i ouruser/sinatra:v2 /bin/bash</div></pre></td></tr></table></figure>
 </li>
 <li><p>提交修改过的container创建为image,<code>docker commit</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker commit -m &#34;Added app file and do npm insall&#34; -a &#34;xxxx&#34; 6f878669e0d7 rdmclin2/node</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker commit -m &quot;Added app file and do npm insall&quot; -a &quot;xxxx&quot; 6f878669e0d7 rdmclin2/node</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p><code>-m</code>为信息，<code>－a</code>为用户信息。后面的id胃container的id</p>
 <ul>
-<li>指定端口运行image <code>-p</code>,如:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 49160:8080 -d &#60;your username&#62;/centos-node-hello</span><br></pre></td></tr></table></figure>
+<li>指定端口运行image <code>-p</code>,如:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -p 49160:8080 -d &lt;your username&gt;/centos-node-hello</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>在docker run 后面追加-d=true或者-d，则containter将会运行在后台模式(Detached mode)</p>
 <ul>
 <li><p>重启一个停止的容器 <code>docker restart</code>，如:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker restart containerName</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo docker restart containerName</div></pre></td></tr></table></figure>
 </li>
 <li><p>如何编写Dockerfile ?</p>
 <blockquote>
@@ -87,10 +88,10 @@
 </blockquote>
 </li>
 <li><p>停止并删除所有container</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop $(docker ps -a -q)&#10;docker rm $(docker ps -a -q)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">docker stop $(docker ps -a -q)</div><div class="line">docker rm $(docker ps -a -q)</div></pre></td></tr></table></figure>
 </li>
 <li><p>批量删除所有<none>的镜像</none></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi $(docker images -q --filter &#34;dangling=true&#34;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker rmi $(docker images -q --filter &quot;dangling=true&quot;)</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <hr>
@@ -102,60 +103,60 @@
 为了防止意外请做好备份。
 
 1. 终端中cd到你的服务器文件夹中，创建Dockerfile 文件
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch Dockerfile</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">touch Dockerfile</div></pre></td></tr></table></figure>
 <ol>
-<li>打开Dockerfile 输入：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FROM    centos:6&#10;&#10;# Enable EPEL for Node.js&#10;RUN     rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm&#10;# Install Node.js and npm&#10;RUN     yum install -y npm&#10;&#10;# Bundle app source&#10;COPY . /server&#10;# Install app dependencies,remove node-modules dir&#10;RUN &#9;cd /server;rm -rf node-modules; npm install&#10;&#10;EXPOSE  9804&#10;CMD [&#34;node&#34;, &#34;/server/server.js&#34;]</span><br></pre></td></tr></table></figure>
+<li>打开Dockerfile 输入：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">FROM    centos:6</div><div class="line"></div><div class="line"># Enable EPEL for Node.js</div><div class="line">RUN     rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm</div><div class="line"># Install Node.js and npm</div><div class="line">RUN     yum install -y npm</div><div class="line"></div><div class="line"># Bundle app source</div><div class="line">COPY . /server</div><div class="line"># Install app dependencies,remove node-modules dir</div><div class="line">RUN 	cd /server;rm -rf node-modules; npm install</div><div class="line"></div><div class="line">EXPOSE  9804</div><div class="line">CMD [&quot;node&quot;, &quot;/server/server.js&quot;]</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>server是你要创建的应用文件夹的名字。<br>下面的端口换成服务器的默认端口。server.js是nodejs app的入口。<br>PS:注意如果是1.2.20的nodejs你的应用的package.json中要添加private标签，你也可以添加自己的respository：<br>如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#10;  &#34;name&#34;: &#34;my-super-amazing-app&#34;,&#10;  &#34;version&#34;: &#34;1.0.0&#34;,&#10;  &#34;private&#34;: true&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>server是你要创建的应用文件夹的名字。<br>下面的端口换成服务器的默认端口。server.js是nodejs app的入口。<br>PS:注意如果是1.2.20的nodejs你的应用的package.json中要添加private标签，你也可以添加自己的respository：<br>如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;name&quot;: &quot;my-super-amazing-app&quot;,</div><div class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</div><div class="line">  &quot;private&quot;: true</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <ol>
-<li>终端输入<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t &#34;username/my-nodejs-app&#34; .</span><br></pre></td></tr></table></figure>
+<li>终端输入<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker build -t &quot;username/my-nodejs-app&quot; .</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>-t指定tag,tag中指定用户名，避免等会不能push到dockerhub上,因为我们不能push一个”root” repository.</p>
 <ol>
-<li>在终端中输入<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+<li>在终端中输入<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker images</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>查看你的应用是否成功打包.</p>
 <ol>
-<li>将应用push到dockerhub上<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker push username/my-nodejs-app</span><br></pre></td></tr></table></figure>
+<li>将应用push到dockerhub上<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker push username/my-nodejs-app</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>如果你之前没有登录过dockerhub会提示你输入用户名密码邮箱，如果登录过了，会将认证信息存在本地，下次登录就只要回车就行。</p>
 <ol>
-<li>服务器端安装运行mongodb 的docker image：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run --name db -d mongo</span><br></pre></td></tr></table></figure>
+<li>服务器端安装运行mongodb 的docker image：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo docker run --name db -d mongo</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>可以查看<a href="https://registry.hub.docker.com/_/mongo/">mongodb的docker repo的地址</a><br>将—name 后的名字改成你想要的的名称。</p>
+<p>可以查看<a href="https://registry.hub.docker.com/_/mongo/">mongodb的docker repo的地址</a><br>将–name 后的名字改成你想要的的名称。</p>
 <ol>
-<li>终端输入<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect db</span><br></pre></td></tr></table></figure>
+<li>终端输入<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker inspect db</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>记下db的NetworkSettings中的IPAddress等会需要用。</p>
 <ol>
 <li><p>服务器端下载我们上传的image</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull username/my-nodejs-app</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker pull username/my-nodejs-app</div></pre></td></tr></table></figure>
 </li>
 <li><p>终端输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -t -i username/my-nodejs-app /bin/bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -t -i username/my-nodejs-app /bin/bash</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>修改你的app中db的地址为上面记录的ip。保存退出。</p>
 <ol>
 <li><p>将刚刚的container存成image</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker commit -m &#34;edit db address&#34; &#60;container id&#62; username/server:v1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker commit -m &quot;edit db address&quot; &lt;container id&gt; username/server:v1</div></pre></td></tr></table></figure>
 </li>
 <li><p>指定端口启动我们的node_server，这里image里是9804，host端的映射也可以是9804或者任意你指定的端口。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 9804:9804 -d username/server:v1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -p 9804:9804 -d username/server:v1</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>172.17.0.10<br>如果你的image不是用dockerfile生成的，没有build时候的CMD,可以先用交互窗口将端口暴露出来.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name nodejs_server -it -p 9804:9804 rdmclin2/server:v1 /bin/bash</span><br></pre></td></tr></table></figure></p>
+<p>172.17.0.10<br>如果你的image不是用dockerfile生成的，没有build时候的CMD,可以先用交互窗口将端口暴露出来.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run --name nodejs_server -it -p 9804:9804 rdmclin2/server:v1 /bin/bash</div></pre></td></tr></table></figure></p>
 <p>然后再用docker attach 进入container，手动运行服务。再用ctrl+p+q退出。</p>
-<p>设置多个端口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name ionic  -it -p 35729:35729 -p 8100:8100 rdmclin2/ionic:v2 /bin/bash</span><br></pre></td></tr></table></figure></p>
+<p>设置多个端口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run --name ionic  -it -p 35729:35729 -p 8100:8100 rdmclin2/ionic:v2 /bin/bash</div></pre></td></tr></table></figure></p>
 <p>即使dockerfile中expose了端口，启动的时候还是要指定映射的端口</p>
 <p><a href="http://nemoworks.info:9804/apks/fcws_debug.apk">http://nemoworks.info:9804/apks/fcws_debug.apk</a></p>
-<p>—&gt;</p>
+<p>–&gt;</p>
 --></div></article></div></section><footer><div class="paginator"><a href="/2015/06/26/my-front-end-learn-story-start/" class="prev">上一篇</a><a href="/2015/05/28/ionic-steup/" class="next">下一篇</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'mcl';
 var disqus_identifier = '2015/06/09/docker-note/';
 var disqus_title = 'Docker 学习笔记';
