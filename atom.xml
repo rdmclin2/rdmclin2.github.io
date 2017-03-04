@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.mclspace.com/"/>
-  <updated>2017-03-04T08:13:42.000Z</updated>
+  <updated>2017-03-04T12:16:47.000Z</updated>
   <id>http://www.mclspace.com/</id>
   
   <author>
@@ -14,6 +14,82 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>从零开始的深度学习过程</title>
+    <link href="http://www.mclspace.com/2017/03/04/deep-learning-start-from-zero/"/>
+    <id>http://www.mclspace.com/2017/03/04/deep-learning-start-from-zero/</id>
+    <published>2017-03-04T12:11:27.000Z</published>
+    <updated>2017-03-04T12:16:47.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>持续学习，持续更新</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="主要目标"><a href="#主要目标" class="headerlink" title="主要目标"></a>主要目标</h3><p>扩展技术视野，了解其实用价值，会简单的使用库和工具进行应用，成为深度神经网络的使用者</p>
+<h3 id="方法论"><a href="#方法论" class="headerlink" title="方法论"></a>方法论</h3><ul>
+<li><a href="https://zhuanlan.zhihu.com/p/25381420" target="_blank" rel="external">人人都可以做深度学习应用：入门篇</a></li>
+<li><a href="https://gist.github.com/ronaldhan/4fedc9b7f3cf95cf64b8" target="_blank" rel="external">成为深度学习专家的七个步骤</a><blockquote>
+<p>深度学习为什么最近这么火，其中一个重要的原因就是不需要（太多）提取feature</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="深度学习的应用"><a href="#深度学习的应用" class="headerlink" title="深度学习的应用"></a>深度学习的应用</h3><p>自顶向下，了解应用，产生兴趣，再持续学习基础</p>
+<ul>
+<li><a href="https://iamtrask.github.io/2015/07/12/basic-python-network/" target="_blank" rel="external">使用python实现一个神经网络</a></li>
+<li><a href="https://github.com/pfnet/PaintsChainer" target="_blank" rel="external">PaintsChainer</a> 深度学习给漫画着色,在<a href="https://paintschainer.preferred.tech/" target="_blank" rel="external">官网</a>上尝试</li>
+<li><a href="https://github.com/anishathalye/neural-style" target="_blank" rel="external">图像风格转换,neural-style</a></li>
+<li>生成音乐<a href="https://github.com/tensorflow/magenta" target="_blank" rel="external">magenta</a>: Music and Art Generation with Machine Intelligence</li>
+</ul>
+<h3 id="tensorflow"><a href="#tensorflow" class="headerlink" title="tensorflow"></a>tensorflow</h3><ul>
+<li><a href="http://www.leiphone.com/news/201511/UDLyNds2oSTwM2yZ.html" target="_blank" rel="external">揭秘TensorFlow：Google开源到底开的是什么？</a></li>
+<li>安装<a href="https://github.com/tensorflow" target="_blank" rel="external">tensorflow</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pip install tensorflow</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>TensorFlow一大亮点是支持异构设备分布式计算，它能够在各个平台上自动运行模型，从电话、单个CPU / GPU到成百上千GPU卡组成的分布式系统</p>
+<ul>
+<li>python图像处理库<a href="https://github.com/python-pillow/Pillow" target="_blank" rel="external">Pillow</a></li>
+<li>python科学相关库<a href="https://www.scipy.org/about.html" target="_blank" rel="external">scipy</a></li>
+<li>python视频编辑库<a href="https://github.com/Zulko/moviepy" target="_blank" rel="external">moviepy</a></li>
+</ul>
+</blockquote>
+<h3 id="CNN"><a href="#CNN" class="headerlink" title="CNN"></a>CNN</h3><blockquote>
+<p>其中，CNN是Image领域常见的一种深度神经网络。由Yann LeCun提出，通过卷积来发现位置无关的feature，而且这些feature的参数是相同的，从而与全连接的神经网络相比大大减少了参数的数量。<br>?不懂</p>
+</blockquote>
+<h1 id="生成式对抗网络（GAN"><a href="#生成式对抗网络（GAN" class="headerlink" title="生成式对抗网络（GAN)"></a>生成式对抗网络（GAN)</h1><ul>
+<li>使用opencv进行漫画人脸的识别: <a href="https://github.com/nagadomi/lbpcascade_animeface" target="_blank" rel="external">The face detector for anime/manga using OpenCV.</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/24767059?refer=c_56019742" target="_blank" rel="external">GAN学习指南：从原理入门到制作生成Demo</a> 通过动漫头像自动生成能够以假乱真的动漫头像，很有意思,遇到一个<a href="https://github.com/carpedm20/DCGAN-tensorflow/issues/102" target="_blank" rel="external">格式转换的问题</a></li>
+<li>深度卷积的生成对抗网络<a href="https://github.com/carpedm20/DCGAN-tensorflow" target="_blank" rel="external">Deep Convolutional Generative Adversarial Networks</a></li>
+<li><a href="https://segmentfault.com/a/1190000003742411" target="_blank" rel="external">Mac 下安装 Python-OpenCV</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ brew tap homebrew/science</div><div class="line">$ brew install opencv</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="课程-Andrew-Ng在coursera上的机器学习公开课"><a href="#课程-Andrew-Ng在coursera上的机器学习公开课" class="headerlink" title="课程: Andrew Ng在coursera上的机器学习公开课"></a>课程: <a href="https://www.coursera.org/learn/machine-learning" target="_blank" rel="external">Andrew Ng在coursera上的机器学习公开课</a></h1><h2 id="第一周"><a href="#第一周" class="headerlink" title="第一周"></a>第一周</h2><h3 id="监督学习"><a href="#监督学习" class="headerlink" title="监督学习"></a>监督学习</h3><ul>
+<li>给数据和正确的答案，让机器学习</li>
+<li>分类问题: 离散预测,期待离散的取值</li>
+<li>回归问题: 连续预测,期待一个连续的取值</li>
+</ul>
+<h3 id="非监督学习"><a href="#非监督学习" class="headerlink" title="非监督学习"></a>非监督学习</h3><p>只给数据，没有答案，让机器自动区分数据的结构</p>
+<ul>
+<li>聚类问题: 比如谷歌新闻，相关新闻聚类在一起</li>
+<li>Non-clustering: “Cocktail Party Algorithm”, 比如区分两个人的声音</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;持续学习，持续更新&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="dl" scheme="http://www.mclspace.com/categories/dl/"/>
+    
+    
+      <category term="dl" scheme="http://www.mclspace.com/tags/dl/"/>
+    
+  </entry>
   
   <entry>
     <title>如何给你的Mac瘦身</title>
@@ -1068,59 +1144,6 @@ http://www.iqiyi.com/v_19rro04pmg.html?share_sTime=0-share_eTime=259-src=sharemo
     
     
       <category term="随感" scheme="http://www.mclspace.com/tags/%E9%9A%8F%E6%84%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Nodejs微信公众平台服务器接入指南</title>
-    <link href="http://www.mclspace.com/2015/12/11/nodejs-weixin-server/"/>
-    <id>http://www.mclspace.com/2015/12/11/nodejs-weixin-server/</id>
-    <published>2015-12-10T17:09:41.000Z</published>
-    <updated>2015-12-11T06:44:08.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>最近申请了一个阿里云服务器,尝试着在上面用Nodejs搞个微信公众号机器人玩玩，申请了个人公众账号【技术栈】，你可以加关注然后尝试机器人的效果,虽然它现在还只会回“你来我家接我吧”,而且你看到的时候也不知道这服务器还在不在=。=.</p>
-</blockquote>
-<a id="more"></a>
-<h1 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h1><p>首先在阿里云服务器上搭建Nodejs开发环境，参考<a href="http://mclspace.com/2015/12/09/aliyun-build-nodejs-environment/" target="_blank" rel="external">在阿里云上搭建Nodejs开发环境</a></p>
-<h1 id="接入过程"><a href="#接入过程" class="headerlink" title="接入过程"></a>接入过程</h1><p>首先如果你没有<a href="https://mp.weixin.qq.com" target="_blank" rel="external">微信公众平台</a>账号，先去注册一个。</p>
-<p>然后进入开发 -&gt; 基本配置,这里会显示你的应用ID和应用密钥,记下这里你的AppID。</p>
-<p>在服务器配置一栏中有3个参数:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">URL是你的服务器的响应微信请求的地址</div><div class="line">Token是你和微信通信的凭证，可以任意设置(3-32字符),例如设置为123456</div><div class="line">EncodingAESKey 用于消息加密的密钥,我们点击后面的随机生成然后记下来就好。</div></pre></td></tr></table></figure></p>
-<p>Ok,现在我们有3个参数:AppID,Token和EncodingAESKey，然后我们在本地新建Nodejs服务器。</p>
-<p>我们使用Express-generator快捷地生成一个可用的服务器,nodemon用来启动服务器:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ express -e weixin_server</div><div class="line">$ cd weixin_server &amp;&amp; npm install</div><div class="line">$ npm install --save nodemon</div></pre></td></tr></table></figure></p>
-<p>在weixin_server中新建文件Makefile和config.js,分别用来自动化构建服务器以及配置服务器:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ touch Makefile config.js</div></pre></td></tr></table></figure></p>
-<p>建好的工程的目录如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">.</div><div class="line">├── app.js</div><div class="line">├── bin</div><div class="line">├── config.js</div><div class="line">├── makefile</div><div class="line">├── node_modules</div><div class="line">├── package.json</div><div class="line">├── public</div><div class="line">├── routes</div><div class="line">└── views</div></pre></td></tr></table></figure></p>
-<p>在config.js中写入刚刚我们获得的3个参数:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var config = &#123;</div><div class="line">    token: &apos;xxxxxxx&apos;,</div><div class="line">    appid: &apos;xxxxxxxxxxx&apos;,</div><div class="line">    encodingAESKey: &apos;xxxxxxxxxxxxxxxxxxxxxxxx&apos;</div><div class="line">&#125;;</div><div class="line">module.exports = config;</div></pre></td></tr></table></figure></p>
-<p>在Makefile中写入运行命令,这里我们设置运行端口为80，目前微信只支持80:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">run :</div><div class="line">	@PORT=80 ./node_modules/.bin/nodemon ./bin/www</div><div class="line">.PHONY: run</div></pre></td></tr></table></figure></p>
-<p>在routes文件夹中新建我们用来处理微信消息的路由wechat.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cd routes &amp;&amp; touch wechat.js</div></pre></td></tr></table></figure></p>
-<p>在app.js中的routes和users变量下添加我们处理微信消息的路由wechat,并配置使用该路由<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var routes = require(&apos;./routes/index&apos;);</div><div class="line">var users = require(&apos;./routes/users&apos;);</div><div class="line">var wechat = require(&apos;./routes/wechat&apos;);</div><div class="line"></div><div class="line">...</div><div class="line"></div><div class="line">app.use(&apos;/&apos;, routes);</div><div class="line">app.use(&apos;/users&apos;, users);</div><div class="line">app.use(&apos;/wechat&apos;,wechat);</div></pre></td></tr></table></figure></p>
-<p>下面我们安装wechat模块，这是卜灵大叔写的用于和微信服务器进行通信的Nodejs模块<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --save wechat</div></pre></td></tr></table></figure></p>
-<p>然后在我们的wechat.js中填入以下代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">var express = require(&apos;express&apos;);</div><div class="line">var router = express.Router();</div><div class="line"></div><div class="line">var wechat = require(&apos;wechat&apos;);</div><div class="line">var config = require(&apos;../config.js&apos;);</div><div class="line"></div><div class="line">router.use(&apos;/&apos;, wechat(config, function (req, res, next) &#123;</div><div class="line">    // 微信输入信息都在req.weixin上</div><div class="line">    var message = req.weixin;</div><div class="line">    if (message.FromUserName === &apos;diaosi&apos;) &#123;</div><div class="line">        // 回复屌丝(普通回复)</div><div class="line">        res.reply(&apos;hehe&apos;);</div><div class="line">    &#125; else if (message.FromUserName === &apos;text&apos;) &#123;</div><div class="line">        //你也可以这样回复text类型的信息</div><div class="line">        res.reply(&#123;</div><div class="line">            content: &apos;text object&apos;,</div><div class="line">            type: &apos;text&apos;</div><div class="line">        &#125;);</div><div class="line">    &#125; else if (message.FromUserName === &apos;hehe&apos;) &#123;</div><div class="line">        // 回复一段音乐</div><div class="line">        res.reply(&#123;</div><div class="line">            type: &quot;music&quot;,</div><div class="line">            content: &#123;</div><div class="line">                title: &quot;来段音乐吧&quot;,</div><div class="line">                description: &quot;一无所有&quot;,</div><div class="line">                musicUrl: &quot;http://mp3.com/xx.mp3&quot;,</div><div class="line">                hqMusicUrl: &quot;http://mp3.com/xx.mp3&quot;,</div><div class="line">                thumbMediaId: &quot;thisThumbMediaId&quot;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125; else &#123;</div><div class="line">        // 回复高富帅(图文回复)</div><div class="line">        res.reply([</div><div class="line">            &#123;</div><div class="line">                title: &apos;你来我家接我吧&apos;,</div><div class="line">                description: &apos;这是女神与高富帅之间的对话&apos;,</div><div class="line">                picurl: &apos;http://nodeapi.cloudfoundry.com/qrcode.jpg&apos;,</div><div class="line">                url: &apos;http://nodeapi.cloudfoundry.com/&apos;</div><div class="line">            &#125;</div><div class="line">        ]);</div><div class="line">    &#125;</div><div class="line">&#125;));</div><div class="line"></div><div class="line">module.exports = router;</div></pre></td></tr></table></figure></p>
-<p>这是wechat模块给的示例代码，我们暂时先用着，下面我们部署服务器,首先将该服务器上传到github或者任何能够从远程部署代码的代码托管服务商上。以github为例新增.gitignore防止将node_modules和.DS_Store上传到服务器:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">node_modules</div><div class="line">example</div><div class="line">.DS_Store</div><div class="line">coverage</div></pre></td></tr></table></figure></p>
-<p>然后在github新建工程上传，不赘述。</p>
-<p>在阿里云上clone我们刚刚上传的工程, 然后用make命令运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ git clone git@github.com:rdmclin2/weixin_server.git</div><div class="line">$ cd wexin_server &amp;&amp; npm install</div><div class="line">$ make run</div></pre></td></tr></table></figure></p>
-<p>ok,我们继续到微信公众平台 -&gt; 开发 -&gt; 基本配置,填入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">URL : &lt;your ip&gt;/wechat</div><div class="line">Token : &lt;your token&gt;</div><div class="line">EncodingAESKey: &lt;your EncodingAESKey&gt;</div><div class="line">消息加解密方式 : 安全模式</div></pre></td></tr></table></figure></p>
-<p>点击提交,完成接入。</p>
-<h1 id="github"><a href="#github" class="headerlink" title="github"></a>github</h1><p>本篇示例代码已经上传到github<a href="https://github.com/rdmclin2/weixin_server" target="_blank" rel="external">weixin_server</a>，欢迎各种拍砖提issue。</p>
-<h1 id="本地调试"><a href="#本地调试" class="headerlink" title="本地调试"></a>本地调试</h1><p>微信消息不能发到内网ip上，这给本地调试带来了很多困难，要在本地接受微信服务器的消息需要用拥有公网IP的主机转发来实现内网穿透。现在很多方案总的来说就是使用ngrok，不过这玩意不幸被墙，不过它是开源的，提供了1.0的源码。</p>
-<p>一种方案就是自己在vps配置上配置ngrok,适合喜欢折腾的人,可以参考<a href="https://imququ.com/post/self-hosted-ngrokd.html" target="_blank" rel="external">搭建 ngrok 服务实现内网穿透</a></p>
-<p>另一种方案就是别人在自己的vps上已经配置好了，用的时候它给你分配一个子域名给你使用。国内有<a href="http://natapp.cn" target="_blank" rel="external">natapp</a>,更接腾讯地气的是用QQ浏览器的微信本地调试插件详见<a href="http://blog.qqbrowser.cc/wei-xin-gong-zhong-hao-ben-di-diao-shi/" target="_blank" rel="external">http://blog.qqbrowser.cc/wei-xin-gong-zhong-hao-ben-di-diao-shi/</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;最近申请了一个阿里云服务器,尝试着在上面用Nodejs搞个微信公众号机器人玩玩，申请了个人公众账号【技术栈】，你可以加关注然后尝试机器人的效果,虽然它现在还只会回“你来我家接我吧”,而且你看到的时候也不知道这服务器还在不在=。=.&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="nodejs" scheme="http://www.mclspace.com/categories/nodejs/"/>
-    
-    
-      <category term="nodejs" scheme="http://www.mclspace.com/tags/nodejs/"/>
-    
-      <category term="weixin" scheme="http://www.mclspace.com/tags/weixin/"/>
     
   </entry>
   
