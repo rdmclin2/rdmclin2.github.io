@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>兼续</title>
-  <subtitle>谦虚</subtitle>
+  <title>坐在键盘上的猫</title>
+  
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.mclspace.com/"/>
@@ -9,8 +9,8 @@
   <id>http://www.mclspace.com/</id>
   
   <author>
-    <name>LinChen</name>
-    <email>rdmclin2@gmail.com</email>
+    <name>John Doe</name>
+    
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
