@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.mclspace.com/links/index.html</loc>
+    
+    <lastmod>2017-03-12T15:03:05.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.mclspace.com/about/index.html</loc>
+    
+    <lastmod>2017-03-12T15:02:05.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.mclspace.com/2017/03/04/deep-learning-start-from-zero/</loc>
     
     <lastmod>2017-03-04T12:16:47.000Z</lastmod>
